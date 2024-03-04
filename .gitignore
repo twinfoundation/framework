@@ -1,0 +1,5 @@
+node_modules
+.updatable-packages
+dist
+coverage
+*.tgz

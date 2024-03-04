@@ -1,0 +1,38 @@
+{
+	"name": "@gtsc/nameof",
+	"version": "0.0.1",
+	"description": "Framework nameof TypeScript types package for GTSC",
+	"author": "martyn.janes@iota.org",
+	"license": "Apache-2.0",
+	"type": "module",
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"scripts": {
+		"clean": "rimraf dist",
+		"build": "tsc",
+		"package": "rollup --config rollup.config.js",
+		"dist": "npm run clean && npm run build && npm run package",
+		"test": "echo No Tests"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^25.0.7",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"rimraf": "^5.0.5",
+		"rollup": "^4.12.0",
+		"typescript": "^5.3.3"
+	},
+	"main": "./dist/cjs/index.cjs",
+	"module": "./dist/esm/index.js",
+	"types": "./dist/types/index.d.ts",
+	"exports": {
+		".": {
+			"require": "./dist/cjs/index.cjs",
+			"import": "./dist/esm/index.js",
+			"types": "./dist/types/index.d.ts"
+		}
+	},
+	"files": [
+		"dist"
+	]
+}

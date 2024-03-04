@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"module": "NodeNext",
+		"outDir": "dist/esm",
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"stripInternal": true,
+		"noEmitHelpers": true,
+		"sourceMap": true,
+		"sourceRoot": "./src",
+		"declaration": true,
+		"declarationDir": "dist/types"
+	},
+	"include": ["src/**/*.ts"]
+}

@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"vitest.explorer",
+		"davidanson.vscode-markdownlint",
+		"dbaeumer.vscode-eslint",
+		"ryanluker.vscode-coverage-gutters",
+		"esbenp.prettier-vscode"
+	]
+}
