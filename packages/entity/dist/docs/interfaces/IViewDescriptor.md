@@ -17,10 +17,6 @@ Definition of a view.
 
 The entity this view is associated with.
 
-#### Defined in
-
-[models/IViewDescriptor.ts:13](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IViewDescriptor.ts#L13)
-
 ___
 
 ### members
@@ -28,7 +24,3 @@ ___
 • **members**: [`IViewMemberDescriptor`](IViewMemberDescriptor.md)\<`U`\>[]
 
 The view members.
-
-#### Defined in
-
-[models/IViewDescriptor.ts:17](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IViewDescriptor.ts#L17)

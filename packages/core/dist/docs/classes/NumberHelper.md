@@ -32,10 +32,6 @@ Strict parse as float.
 
 The parsed value.
 
-#### Defined in
-
-[packages/core/src/utils/numberHelper.ts:15](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/numberHelper.ts#L15)
-
 ___
 
 ### strictParseInt
@@ -55,7 +51,3 @@ Strict parse as integer.
 `number`
 
 The parsed value.
-
-#### Defined in
-
-[packages/core/src/utils/numberHelper.ts:30](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/numberHelper.ts#L30)

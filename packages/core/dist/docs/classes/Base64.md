@@ -33,10 +33,6 @@ Convert the base 64 string to a byte array.
 
 The byte array.
 
-#### Defined in
-
-[packages/core/src/encoding/base64.ts:106](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/encoding/base64.ts#L106)
-
 ___
 
 ### encode
@@ -56,7 +52,3 @@ Convert a byte array to base 64.
 `string`
 
 The data as bas64 string.
-
-#### Defined in
-
-[packages/core/src/encoding/base64.ts:155](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/encoding/base64.ts#L155)

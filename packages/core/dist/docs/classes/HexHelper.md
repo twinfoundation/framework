@@ -20,10 +20,6 @@ Helper methods for hex conversions.
 
 Const defining the maximum value for a 256 bit int.
 
-#### Defined in
-
-[packages/core/src/utils/hexHelper.ts:11](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L11)
-
 ## Methods
 
 ### addPrefix
@@ -43,10 +39,6 @@ Add the 0x prefix if it does not exist.
 `string`
 
 The hex with the prefix.
-
-#### Defined in
-
-[packages/core/src/utils/hexHelper.ts:56](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L56)
 
 ___
 
@@ -68,10 +60,6 @@ Convert the big int 256 bit to hex string.
 
 The hex encoded big int.
 
-#### Defined in
-
-[packages/core/src/utils/hexHelper.ts:20](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L20)
-
 ___
 
 ### hasPrefix
@@ -91,10 +79,6 @@ Does the hex string have the prefix.
 `boolean`
 
 True if the hex string has the prefix.
-
-#### Defined in
-
-[packages/core/src/utils/hexHelper.ts:65](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L65)
 
 ___
 
@@ -116,10 +100,6 @@ Strip the 0x prefix if it exists.
 
 The stripped hex without the prefix.
 
-#### Defined in
-
-[packages/core/src/utils/hexHelper.ts:47](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L47)
-
 ___
 
 ### toBigInt256
@@ -139,7 +119,3 @@ Convert the hex string to a big int.
 `bigint`
 
 The big int.
-
-#### Defined in
-
-[packages/core/src/utils/hexHelper.ts:32](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L32)

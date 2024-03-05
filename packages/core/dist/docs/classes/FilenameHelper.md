@@ -31,7 +31,3 @@ Replaces any unsafe characters in the filename.
 `string`
 
 The safe filename.
-
-#### Defined in
-
-[packages/core/src/utils/filenameHelper.ts:16](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/filenameHelper.ts#L16)

@@ -32,10 +32,6 @@ Strip comments from the config.
 
 The configuration content with comments stripped.
 
-#### Defined in
-
-[packages/core/src/utils/configHelper.ts:23](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/configHelper.ts#L23)
-
 ___
 
 ### substituteEnvironment
@@ -62,7 +58,3 @@ Expand environment variables.
 `T`
 
 The updated configuration object.
-
-#### Defined in
-
-[packages/core/src/utils/configHelper.ts:34](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/configHelper.ts#L34)

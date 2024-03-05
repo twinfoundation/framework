@@ -16,10 +16,6 @@ Definition of a view member.
 
 Is this the primary index property.
 
-#### Defined in
-
-[models/IViewMemberDescriptor.ts:16](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IViewMemberDescriptor.ts#L16)
-
 ___
 
 ### isSecondary
@@ -28,10 +24,6 @@ ___
 
 Is this a secondary index property.
 
-#### Defined in
-
-[models/IViewMemberDescriptor.ts:21](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IViewMemberDescriptor.ts#L21)
-
 ___
 
 ### name
@@ -39,7 +31,3 @@ ___
 • **name**: keyof `T`
 
 The name of the property.
-
-#### Defined in
-
-[models/IViewMemberDescriptor.ts:11](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IViewMemberDescriptor.ts#L11)

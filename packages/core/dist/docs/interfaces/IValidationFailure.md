@@ -14,10 +14,6 @@ Additional properties for the validation failure.
 
 ▪ [id: `string`]: `unknown`
 
-#### Defined in
-
-[packages/core/src/models/IValidationFailure.ts:20](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/models/IValidationFailure.ts#L20)
-
 ___
 
 ### property
@@ -26,10 +22,6 @@ ___
 
 The property that failed validation.
 
-#### Defined in
-
-[packages/core/src/models/IValidationFailure.ts:10](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/models/IValidationFailure.ts#L10)
-
 ___
 
 ### reason
@@ -37,7 +29,3 @@ ___
 • **reason**: `string`
 
 The reason the validation failed.
-
-#### Defined in
-
-[packages/core/src/models/IValidationFailure.ts:15](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/models/IValidationFailure.ts#L15)

@@ -33,10 +33,6 @@ Camel case all the words.
 
 The camel case version of the input.
 
-#### Defined in
-
-[packages/core/src/utils/stringHelper.ts:94](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/stringHelper.ts#L94)
-
 ___
 
 ### kebabCase
@@ -57,10 +53,6 @@ Convert the input string to kebab case.
 `string`
 
 The kebab case version of the input.
-
-#### Defined in
-
-[packages/core/src/utils/stringHelper.ts:39](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/stringHelper.ts#L39)
 
 ___
 
@@ -83,10 +75,6 @@ Pascal case all the words.
 
 The pascal case version of the input.
 
-#### Defined in
-
-[packages/core/src/utils/stringHelper.ts:75](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/stringHelper.ts#L75)
-
 ___
 
 ### stripPrefix
@@ -106,10 +94,6 @@ Strip interface prefix if there is one.
 `string`
 
 The input with any interface prefix stripped.
-
-#### Defined in
-
-[packages/core/src/utils/stringHelper.ts:134](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/stringHelper.ts#L134)
 
 ___
 
@@ -132,10 +116,6 @@ Title case all the words.
 
 The title case version of the input.
 
-#### Defined in
-
-[packages/core/src/utils/stringHelper.ts:56](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/stringHelper.ts#L56)
-
 ___
 
 ### trimLeadingSlashes
@@ -156,10 +136,6 @@ Trim leading slashes from a string.
 
 The trimmed value.
 
-#### Defined in
-
-[packages/core/src/utils/stringHelper.ts:26](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/stringHelper.ts#L26)
-
 ___
 
 ### trimTrailingSlashes
@@ -179,10 +155,6 @@ Trim trailing slashes from a string.
 `string`
 
 The trimmed value.
-
-#### Defined in
-
-[packages/core/src/utils/stringHelper.ts:14](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/stringHelper.ts#L14)
 
 ___
 
@@ -205,10 +177,6 @@ Convert the words to a path.
 
 The path version of the input.
 
-#### Defined in
-
-[packages/core/src/utils/stringHelper.ts:117](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/stringHelper.ts#L117)
-
 ___
 
 ### words
@@ -228,7 +196,3 @@ Split a string into words.
 `string`[]
 
 The string split into words.
-
-#### Defined in
-
-[packages/core/src/utils/stringHelper.ts:150](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/stringHelper.ts#L150)

@@ -21,10 +21,6 @@ Create a new instance of Urn.
 
 [`Urn`](Urn.md)
 
-#### Defined in
-
-[packages/core/src/types/urn.ts:38](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L38)
-
 ## Methods
 
 ### namespaceIdentifier
@@ -39,10 +35,6 @@ Get the namespace identifier.
 
 The namespace identifier.
 
-#### Defined in
-
-[packages/core/src/types/urn.ts:194](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L194)
-
 ___
 
 ### namespaceSpecific
@@ -56,10 +48,6 @@ Get the namespace specific.
 `string`
 
 The namespace specific.
-
-#### Defined in
-
-[packages/core/src/types/urn.ts:202](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L202)
 
 ___
 
@@ -81,10 +69,6 @@ Convert the parts in to a full string.
 
 The formatted urn.
 
-#### Defined in
-
-[packages/core/src/types/urn.ts:211](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L211)
-
 ___
 
 ### addPrefix
@@ -104,10 +88,6 @@ Add a urn: prefix if there isn't one already.
 `undefined` \| `string`
 
 The urn with a prefix.
-
-#### Defined in
-
-[packages/core/src/types/urn.ts:129](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L129)
 
 ___
 
@@ -129,10 +109,6 @@ Construct a urn from a string that has already been validated.
 
 The formatted urn.
 
-#### Defined in
-
-[packages/core/src/types/urn.ts:114](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L114)
-
 ___
 
 ### generateRandom
@@ -152,10 +128,6 @@ Generate a random identifier with 32 byte id.
 [`Urn`](Urn.md)
 
 A new Id in URN format.
-
-#### Defined in
-
-[packages/core/src/types/urn.ts:51](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L51)
 
 ___
 
@@ -181,10 +153,6 @@ asserts value is string
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/types/urn.ts:145](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L145)
-
 ___
 
 ### hasNamespace
@@ -206,10 +174,6 @@ Does the provided urn match the namespace.
 
 True if the namespace matches.
 
-#### Defined in
-
-[packages/core/src/types/urn.ts:61](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L61)
-
 ___
 
 ### tryParseExact
@@ -229,10 +193,6 @@ Try and parse a string into the urn parts it must start with urn:.
 `undefined` \| [`Urn`](Urn.md)
 
 The formatted urn or undefined if the value is not a urn.
-
-#### Defined in
-
-[packages/core/src/types/urn.ts:81](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L81)
 
 ___
 
@@ -255,7 +215,3 @@ Validate a string as a Urn.
 value is string
 
 The formatted urn.
-
-#### Defined in
-
-[packages/core/src/types/urn.ts:162](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L162)

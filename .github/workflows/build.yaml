@@ -29,4 +29,4 @@ jobs:
       - name: Run Dist
         run: |
           npm run lint
-          node ./scripts/workspaces.mjs dist
+          npm run dist

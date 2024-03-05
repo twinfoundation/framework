@@ -10,10 +10,6 @@ The types ofcomparisons available to comparators.
 
 Equals.
 
-#### Defined in
-
-[models/comparisonType.ts:11](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/comparisonType.ts#L11)
-
 ___
 
 ### GreaterThan
@@ -21,10 +17,6 @@ ___
 • **GreaterThan** = ``"GreaterThan"``
 
 Greater Than.
-
-#### Defined in
-
-[models/comparisonType.ts:21](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/comparisonType.ts#L21)
 
 ___
 
@@ -34,10 +26,6 @@ ___
 
 Greater Than Or Equal.
 
-#### Defined in
-
-[models/comparisonType.ts:26](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/comparisonType.ts#L26)
-
 ___
 
 ### In
@@ -45,10 +33,6 @@ ___
 • **In** = ``"In"``
 
 In operator.
-
-#### Defined in
-
-[models/comparisonType.ts:51](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/comparisonType.ts#L51)
 
 ___
 
@@ -58,10 +42,6 @@ ___
 
 Includes.
 
-#### Defined in
-
-[models/comparisonType.ts:41](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/comparisonType.ts#L41)
-
 ___
 
 ### LessThan
@@ -69,10 +49,6 @@ ___
 • **LessThan** = ``"LessThan"``
 
 Less Than.
-
-#### Defined in
-
-[models/comparisonType.ts:31](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/comparisonType.ts#L31)
 
 ___
 
@@ -82,10 +58,6 @@ ___
 
 Less Than Or Equal.
 
-#### Defined in
-
-[models/comparisonType.ts:36](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/comparisonType.ts#L36)
-
 ___
 
 ### NotEquals
@@ -94,10 +66,6 @@ ___
 
 Not Equals.
 
-#### Defined in
-
-[models/comparisonType.ts:16](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/comparisonType.ts#L16)
-
 ___
 
 ### NotIncludes
@@ -105,7 +73,3 @@ ___
 • **NotIncludes** = ``"NotIncludes"``
 
 Not Includes.
-
-#### Defined in
-
-[models/comparisonType.ts:46](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/comparisonType.ts#L46)

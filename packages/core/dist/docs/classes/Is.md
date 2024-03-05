@@ -38,10 +38,6 @@ value is T[]
 
 True if the value is an array.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:224](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L224)
-
 ___
 
 ### arrayOneOf
@@ -69,10 +65,6 @@ value is T
 
 True if the value is an element from the options array.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:243](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L243)
-
 ___
 
 ### arrayValue
@@ -99,10 +91,6 @@ value is T[]
 
 True if the value is an array with at least one element.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:233](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L233)
-
 ___
 
 ### boolean
@@ -122,10 +110,6 @@ Is the value a boolean.
 value is boolean
 
 True if the value is a boolean.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:106](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L106)
 
 ___
 
@@ -147,10 +131,6 @@ value is Date
 
 True if the value is a date.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:115](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L115)
-
 ___
 
 ### dateEmpty
@@ -170,10 +150,6 @@ Is the value an empty date.
 `boolean`
 
 True if the value is an empty date.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:127](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L127)
 
 ___
 
@@ -195,10 +171,6 @@ Is the value a date string.
 
 True if the value is a string in ISO 8601 date format.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:139](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L139)
-
 ___
 
 ### dateTimeString
@@ -218,10 +190,6 @@ Is the value a date string.
 `boolean`
 
 True if the value is a string in ISO 8601 date/time format.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:151](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L151)
 
 ___
 
@@ -243,10 +211,6 @@ value is string
 
 True if the value is a string.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:279](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L279)
-
 ___
 
 ### empty
@@ -266,10 +230,6 @@ Is the property null or undefined.
 value is undefined \| null
 
 True if the value is a empty.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:33](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L33)
 
 ___
 
@@ -291,10 +251,6 @@ value is Function
 
 True if the value is a function.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:270](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L270)
-
 ___
 
 ### integer
@@ -314,10 +270,6 @@ Is the value an integer.
 value is number
 
 True if the value is a number.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:97](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L97)
 
 ___
 
@@ -339,10 +291,6 @@ value is number
 
 True if the value is a date.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:188](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L188)
-
 ___
 
 ### notEmpty
@@ -362,10 +310,6 @@ Is the property is not null or undefined.
 `boolean`
 
 True if the value is a not empty.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:42](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L42)
 
 ___
 
@@ -387,10 +331,6 @@ value is null
 
 True if the value is a empty.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:24](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L24)
-
 ___
 
 ### number
@@ -410,10 +350,6 @@ Is the value a number.
 value is number
 
 True if the value is a number.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:88](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L88)
 
 ___
 
@@ -441,10 +377,6 @@ value is T
 
 True if the value is a object.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:201](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L201)
-
 ___
 
 ### objectValue
@@ -471,10 +403,6 @@ value is T
 
 True if the value is a object.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:210](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L210)
-
 ___
 
 ### seconds
@@ -494,10 +422,6 @@ Is the value a timestamp in seconds.
 value is number
 
 True if the value is a date.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:175](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L175)
 
 ___
 
@@ -519,10 +443,6 @@ value is string
 
 True if the value is a string.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:51](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L51)
-
 ___
 
 ### stringHex
@@ -542,10 +462,6 @@ Is the value a hex string.
 value is string
 
 True if the value is a hex string.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:69](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L69)
 
 ___
 
@@ -568,10 +484,6 @@ value is string
 
 True if the value is a hex string of required length.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:79](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L79)
-
 ___
 
 ### stringValue
@@ -591,10 +503,6 @@ Is the value a string.
 value is string
 
 True if the value is a string.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:60](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L60)
 
 ___
 
@@ -616,10 +524,6 @@ Is the value a time string.
 
 True if the value is a string in ISO 8601 time format.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:163](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L163)
-
 ___
 
 ### uint8Array
@@ -640,10 +544,6 @@ value is Uint8Array
 
 True if the value is a Uint8Array.
 
-#### Defined in
-
-[packages/core/src/utils/is.ts:261](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L261)
-
 ___
 
 ### undefined
@@ -663,7 +563,3 @@ Is the property undefined.
 value is undefined
 
 True if the value is a empty.
-
-#### Defined in
-
-[packages/core/src/utils/is.ts:15](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/is.ts#L15)

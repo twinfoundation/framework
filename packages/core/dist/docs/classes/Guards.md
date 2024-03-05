@@ -42,10 +42,6 @@ asserts value is T[]
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:224](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L224)
-
 ___
 
 ### arrayOneOf
@@ -77,10 +73,6 @@ asserts value is T
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:258](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L258)
-
 ___
 
 ### arrayValue
@@ -111,10 +103,6 @@ asserts value is T[]
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:237](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L237)
-
 ___
 
 ### boolean
@@ -138,10 +126,6 @@ asserts value is boolean
 **`Throws`**
 
 GuardError If the value does not match the assertion.
-
-#### Defined in
-
-[packages/core/src/utils/guards.ts:121](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L121)
 
 ___
 
@@ -167,10 +151,6 @@ asserts value is Date
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:138](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L138)
-
 ___
 
 ### email
@@ -194,10 +174,6 @@ asserts value is string
 **`Throws`**
 
 GuardError If the value does not match the assertion.
-
-#### Defined in
-
-[packages/core/src/utils/guards.ts:311](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L311)
 
 ___
 
@@ -225,10 +201,6 @@ True if the value is a function.
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:297](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L297)
-
 ___
 
 ### integer
@@ -252,10 +224,6 @@ asserts value is number
 **`Throws`**
 
 GuardError If the value does not match the assertion.
-
-#### Defined in
-
-[packages/core/src/utils/guards.ts:108](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L108)
 
 ___
 
@@ -281,10 +249,6 @@ asserts value is number
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:151](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L151)
-
 ___
 
 ### number
@@ -308,10 +272,6 @@ asserts value is number
 **`Throws`**
 
 GuardError If the value does not match the assertion.
-
-#### Defined in
-
-[packages/core/src/utils/guards.ts:95](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L95)
 
 ___
 
@@ -343,10 +303,6 @@ asserts value is T
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:181](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L181)
-
 ___
 
 ### objectValue
@@ -377,10 +333,6 @@ asserts value is T
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:201](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L201)
-
 ___
 
 ### seconds
@@ -404,10 +356,6 @@ asserts value is number
 **`Throws`**
 
 GuardError If the value does not match the assertion.
-
-#### Defined in
-
-[packages/core/src/utils/guards.ts:168](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L168)
 
 ___
 
@@ -433,10 +381,6 @@ asserts value is string
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:18](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L18)
-
 ___
 
 ### stringHex
@@ -460,10 +404,6 @@ asserts value is string
 **`Throws`**
 
 GuardError If the value does not match the assertion.
-
-#### Defined in
-
-[packages/core/src/utils/guards.ts:51](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L51)
 
 ___
 
@@ -490,10 +430,6 @@ asserts value is string
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:70](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L70)
-
 ___
 
 ### stringValue
@@ -518,10 +454,6 @@ asserts value is string
 
 GuardError If the value does not match the assertion.
 
-#### Defined in
-
-[packages/core/src/utils/guards.ts:31](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L31)
-
 ___
 
 ### uint8Array
@@ -545,7 +477,3 @@ asserts value is Uint8Array
 **`Throws`**
 
 GuardError If the value does not match the assertion.
-
-#### Defined in
-
-[packages/core/src/utils/guards.ts:279](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/guards.ts#L279)

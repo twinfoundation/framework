@@ -14,10 +14,6 @@ Renames and re-exports [factory](modules.md#factory)
 
 Exports the factory name.
 
-#### Defined in
-
-[index.ts:22](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/index.ts#L22)
-
 ___
 
 ### version
@@ -25,10 +21,6 @@ ___
 • `Const` **version**: ``"0.0.1"``
 
 Exports the factory version.
-
-#### Defined in
-
-[index.ts:16](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/index.ts#L16)
 
 ## Functions
 
@@ -43,10 +35,6 @@ Exports the factory.
 `TransformerFactory`\<`Node`\>
 
 The factory.
-
-#### Defined in
-
-[index.ts:10](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/index.ts#L10)
 
 ___
 
@@ -68,10 +56,6 @@ Replace the transformers manually.
 
 The content with the transformers replace.
 
-#### Defined in
-
-[manual.ts:9](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/manual.ts#L9)
-
 ___
 
 ### tsTransformersPreProcess
@@ -89,7 +73,3 @@ The preprocessor.
 | Name | Type |
 | :------ | :------ |
 | `markup` | `unknown` |
-
-#### Defined in
-
-[svelte.ts:9](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/svelte.ts#L9)

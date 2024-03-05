@@ -26,7 +26,3 @@ Placeholder method which substitutes the type name as a string at runtime.
 `string`
 
 The type name as a string.
-
-#### Defined in
-
-[index.ts:11](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof/src/index.ts#L11)

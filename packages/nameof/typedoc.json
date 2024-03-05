@@ -5,6 +5,7 @@
 	"hideBreadcrumbs": true,
 	"hideInPageTOC": true,
 	"githubPages": false,
+	"disableSources": true,
 	"entryDocument": "overview.md",
 	"plugin": ["typedoc-plugin-markdown"]
 }

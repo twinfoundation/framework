@@ -10,10 +10,6 @@ An enum defining logical operators.
 
 Logical operator AND.
 
-#### Defined in
-
-[models/logicalOperator.ts:11](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/logicalOperator.ts#L11)
-
 ___
 
 ### OR
@@ -21,7 +17,3 @@ ___
 • **OR** = ``"OR"``
 
 Logical operator OR.
-
-#### Defined in
-
-[models/logicalOperator.ts:15](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/logicalOperator.ts#L15)

@@ -32,10 +32,6 @@ Create a new instance of UnauthorizedError.
 
 [BaseError](BaseError.md).[constructor](BaseError.md#constructor)
 
-#### Defined in
-
-[packages/core/src/errors/unauthorizedError.ts:21](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/unauthorizedError.ts#L21)
-
 ## Properties
 
 ### cause
@@ -45,10 +41,6 @@ Create a new instance of UnauthorizedError.
 #### Inherited from
 
 [BaseError](BaseError.md).[cause](BaseError.md#cause)
-
-#### Defined in
-
-node_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 ___
 
@@ -62,10 +54,6 @@ The inner error if there was one.
 
 [BaseError](BaseError.md).[inner](BaseError.md#inner)
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:25](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L25)
-
 ___
 
 ### message
@@ -78,10 +66,6 @@ The message for the error.
 
 [BaseError](BaseError.md).[message](BaseError.md#message)
 
-#### Defined in
-
-node_modules/typescript/lib/lib.es5.d.ts:1076
-
 ___
 
 ### name
@@ -93,10 +77,6 @@ The name for the error.
 #### Inherited from
 
 [BaseError](BaseError.md).[name](BaseError.md#name)
-
-#### Defined in
-
-node_modules/typescript/lib/lib.es5.d.ts:1075
 
 ___
 
@@ -114,10 +94,6 @@ Any additional information for the error.
 
 [BaseError](BaseError.md).[properties](BaseError.md#properties)
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:20](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L20)
-
 ___
 
 ### source
@@ -129,10 +105,6 @@ The source of the error.
 #### Inherited from
 
 [BaseError](BaseError.md).[source](BaseError.md#source)
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:15](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L15)
 
 ___
 
@@ -146,10 +118,6 @@ The stack trace for the error.
 
 [BaseError](BaseError.md).[stack](BaseError.md#stack)
 
-#### Defined in
-
-node_modules/typescript/lib/lib.es5.d.ts:1077
-
 ___
 
 ### CLASS\_NAME
@@ -157,10 +125,6 @@ ___
 ▪ `Static` `Readonly` **CLASS\_NAME**: `string`
 
 Runtime name for the class.
-
-#### Defined in
-
-[packages/core/src/errors/unauthorizedError.ts:13](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/unauthorizedError.ts#L13)
 
 ## Methods
 
@@ -186,10 +150,6 @@ The error model.
 
 [BaseError](BaseError.md).[toJsonObject](BaseError.md#tojsonobject)
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:222](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L222)
-
 ___
 
 ### expand
@@ -213,10 +173,6 @@ The first level error.
 #### Inherited from
 
 [BaseError](BaseError.md).[expand](BaseError.md#expand)
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:133](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L133)
 
 ___
 
@@ -242,10 +198,6 @@ The list of all internal errors.
 
 [BaseError](BaseError.md).[flatten](BaseError.md#flatten)
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:113](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L113)
-
 ___
 
 ### fromError
@@ -269,10 +221,6 @@ The new instance.
 #### Inherited from
 
 [BaseError](BaseError.md).[fromError](BaseError.md#fromerror)
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:66](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L66)
 
 ___
 
@@ -299,10 +247,6 @@ True if the error has the code.
 
 [BaseError](BaseError.md).[isErrorCode](BaseError.md#iserrorcode)
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:180](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L180)
-
 ___
 
 ### isErrorMessage
@@ -327,10 +271,6 @@ True if the error has the name.
 #### Inherited from
 
 [BaseError](BaseError.md).[isErrorMessage](BaseError.md#iserrormessage)
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:167](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L167)
 
 ___
 
@@ -357,10 +297,6 @@ True if the error has the name.
 
 [BaseError](BaseError.md).[isErrorName](BaseError.md#iserrorname)
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:154](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L154)
-
 ___
 
 ### someErrorCode
@@ -385,10 +321,6 @@ True if the error has the name.
 #### Inherited from
 
 [BaseError](BaseError.md).[someErrorCode](BaseError.md#someerrorcode)
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:213](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L213)
 
 ___
 
@@ -415,10 +347,6 @@ True if the error has the name.
 
 [BaseError](BaseError.md).[someErrorMessage](BaseError.md#someerrormessage)
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:203](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L203)
-
 ___
 
 ### someErrorName
@@ -443,7 +371,3 @@ True if the error has the name.
 #### Inherited from
 
 [BaseError](BaseError.md).[someErrorName](BaseError.md#someerrorname)
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:193](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L193)

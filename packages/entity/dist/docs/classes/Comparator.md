@@ -38,7 +38,3 @@ See if the entity matches the comparators.
 `boolean`
 
 True if the entity matches.
-
-#### Defined in
-
-[utils/comparator.ts:18](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/utils/comparator.ts#L18)

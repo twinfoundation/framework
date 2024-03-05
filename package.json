@@ -8,6 +8,7 @@
 		"node": ">=20.0.0"
 	},
 	"scripts": {
+		"dist": "node ./scripts/workspaces.mjs dist",
 		"format": "prettier --config .prettierrc --write .",
 		"lint:format": "prettier --config .prettierrc --check .",
 		"lint:code": "eslint . --ext .js,.mjs,.ts",

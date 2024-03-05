@@ -16,10 +16,6 @@ Definition of an entity field.
 
 Fields of the structured type.
 
-#### Defined in
-
-[models/IStructuredTypeDescriptor.ts:17](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IStructuredTypeDescriptor.ts#L17)
-
 ___
 
 ### name
@@ -27,7 +23,3 @@ ___
 • **name**: `string`
 
 The name of the type.
-
-#### Defined in
-
-[models/IStructuredTypeDescriptor.ts:12](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IStructuredTypeDescriptor.ts#L12)

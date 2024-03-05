@@ -32,7 +32,3 @@ Do the two arrays match.
 `boolean`
 
 True if both arrays are empty of have the same values.
-
-#### Defined in
-
-[packages/core/src/utils/arrayHelper.ts:15](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/arrayHelper.ts#L15)

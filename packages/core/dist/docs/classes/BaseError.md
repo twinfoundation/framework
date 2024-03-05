@@ -56,10 +56,6 @@ Create a new instance of BaseError.
 
 Error.constructor
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:35](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L35)
-
 ## Properties
 
 ### cause
@@ -69,10 +65,6 @@ Error.constructor
 #### Inherited from
 
 Error.cause
-
-#### Defined in
-
-node_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 ___
 
@@ -85,10 +77,6 @@ The inner error if there was one.
 #### Implementation of
 
 [IError](../interfaces/IError.md).[inner](../interfaces/IError.md#inner)
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:25](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L25)
 
 ___
 
@@ -106,10 +94,6 @@ The message for the error.
 
 Error.message
 
-#### Defined in
-
-node_modules/typescript/lib/lib.es5.d.ts:1076
-
 ___
 
 ### name
@@ -125,10 +109,6 @@ The name for the error.
 #### Inherited from
 
 Error.name
-
-#### Defined in
-
-node_modules/typescript/lib/lib.es5.d.ts:1075
 
 ___
 
@@ -146,10 +126,6 @@ Any additional information for the error.
 
 [IError](../interfaces/IError.md).[properties](../interfaces/IError.md#properties)
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:20](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L20)
-
 ___
 
 ### source
@@ -161,10 +137,6 @@ The source of the error.
 #### Implementation of
 
 [IError](../interfaces/IError.md).[source](../interfaces/IError.md#source)
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:15](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L15)
 
 ___
 
@@ -181,10 +153,6 @@ The stack trace for the error.
 #### Inherited from
 
 Error.stack
-
-#### Defined in
-
-node_modules/typescript/lib/lib.es5.d.ts:1077
 
 ## Methods
 
@@ -206,10 +174,6 @@ Serialize the error to the error model.
 
 The error model.
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:222](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L222)
-
 ___
 
 ### expand
@@ -229,10 +193,6 @@ Expand an error tree.
 `undefined` \| [`IError`](../interfaces/IError.md)
 
 The first level error.
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:133](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L133)
 
 ___
 
@@ -254,10 +214,6 @@ Flatten an error tree.
 
 The list of all internal errors.
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:113](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L113)
-
 ___
 
 ### fromError
@@ -277,10 +233,6 @@ Construct an error from an existing one.
 [`BaseError`](BaseError.md)
 
 The new instance.
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:66](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L66)
 
 ___
 
@@ -303,10 +255,6 @@ Test to see if the error has the specified error code.
 
 True if the error has the code.
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:180](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L180)
-
 ___
 
 ### isErrorMessage
@@ -327,10 +275,6 @@ Test to see if the error has the specified error message.
 error is BaseError
 
 True if the error has the name.
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:167](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L167)
 
 ___
 
@@ -353,10 +297,6 @@ error is BaseError
 
 True if the error has the name.
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:154](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L154)
-
 ___
 
 ### someErrorCode
@@ -377,10 +317,6 @@ Test to see if any of the errors or children have the given error code.
 error is BaseError
 
 True if the error has the name.
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:213](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L213)
 
 ___
 
@@ -403,10 +339,6 @@ error is BaseError
 
 True if the error has the name.
 
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:203](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L203)
-
 ___
 
 ### someErrorName
@@ -427,7 +359,3 @@ Test to see if any of the errors or children have the given error name.
 error is BaseError
 
 True if the error has the name.
-
-#### Defined in
-
-[packages/core/src/errors/baseError.ts:193](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L193)
