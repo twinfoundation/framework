@@ -1,4 +1,9 @@
-name: Build, Lint, Test
+name: Build, Lint, Test, Docs
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
