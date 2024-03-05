@@ -41,6 +41,8 @@ jobs:
           npm run dist
 
       - name: Publish
-        run: npm publish --access public --prefix packages/${{ github.event.inputs.package }}
+        run: |
+          cd packages/${{ github.event.inputs.package }}
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

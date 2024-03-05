@@ -91,7 +91,6 @@ export class Base64 {
 	 * Get the byte length of the data.
 	 * @param base64 The base64 string.
 	 * @returns The byte length of the data.
-	 * @internal
 	 */
 	public static byteLength(base64: string): number {
 		const lens = Base64.getLengths(base64);
