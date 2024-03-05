@@ -13,9 +13,9 @@
 		"build": "tspc",
 		"package": "rollup --config rollup.config.js",
 		"test": "vitest --run --coverage --config ./vitest.config.ts",
-		"docs:clean": "rimraf docs/dist",
+		"docs:clean": "rimraf dist/docs",
 		"docs:generate": "typedoc",
-		"docs:copy": "copyfiles -u 2 docs/src/**/* docs/dist",
+		"docs:copy": "copyfiles -u 1 docs/**/* dist/docs",
 		"docs": "npm run docs:clean && npm run docs:generate && npm run docs:copy",
 		"dist": "npm run clean && npm run build && npm run test && npm run package && npm run docs"
 	},
@@ -54,6 +54,7 @@
 	},
 	"files": [
 		"dist",
-		"locales"
+		"locales",
+		"CHANGELOG.md"
 	]
 }

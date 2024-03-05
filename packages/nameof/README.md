@@ -12,8 +12,8 @@ npm install @gtsc/nameof
 
 ## Examples
 
-Usage of the APIs can be seen in the examples [./docs/dist/examples.md](./docs/dist/examples.md)
+Usage of the APIs can be seen in the examples [./dist/docs/examples.md](./dist/docs/examples.md)
 
 ## Reference
 
-Detailed reference documentation for the API can be found in [./docs/dist/modules.md](./docs/dist/modules.md)
+Detailed reference documentation for the API can be found in [./dist/docs/modules.md](./dist/docs/modules.md)

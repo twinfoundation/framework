@@ -1,6 +1,6 @@
 {
 	"entryPoints": ["src/index.ts"],
-	"out": "./docs/dist",
+	"out": "./dist/docs",
 	"hideGenerator": true,
 	"hideBreadcrumbs": true,
 	"hideInPageTOC": true,

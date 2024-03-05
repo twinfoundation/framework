@@ -1,5 +1,7 @@
 node_modules
 .updatable-packages
-dist
+**/dist/esm
+**/dist/cjs
+**/dist/types
 coverage
 *.tgz
