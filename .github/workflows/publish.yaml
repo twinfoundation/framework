@@ -1,0 +1,46 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Which package to publish"
+        required: true
+        options:
+          - "core"
+          - "framework"
+          - "nameof"
+          - "nameof-transformer"
+
+jobs:
+  dist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Restore root node_modules from cache
+        id: node-cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Dist
+        run: |
+          npm run lint
+          npm run npm run dist --workspace @gtsc/${{ github.event.inputs.package }}
+
+      - name: Publish
+        run: |
+          cd packages/${{ github.event.inputs.package }}
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
