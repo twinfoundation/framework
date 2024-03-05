@@ -40,8 +40,6 @@ jobs:
           npm run dist --workspace @gtsc/${{ github.event.inputs.package }}
 
       - name: Publish
-        run: |
-          cd packages/${{ github.event.inputs.package }}
-          npm publish
+        run: npm publish --prefix packages/${{ github.event.inputs.package }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
