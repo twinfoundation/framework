@@ -11,7 +11,7 @@
 		"format": "prettier --config .prettierrc --write .",
 		"lint:format": "prettier --config .prettierrc --check .",
 		"lint:code": "eslint . --ext .js,.mjs,.ts",
-		"lint:markdown": "markdownlint **/*.md --ignore **/node_modules/** --ignore **/docs/**",
+		"lint:markdown": "markdownlint **/*.md --ignore **/node_modules/** --ignore **/dist/docs/**",
 		"lint": "npm run lint:format && npm run lint:code && npm run lint:markdown"
 	},
 	"devDependencies": {
