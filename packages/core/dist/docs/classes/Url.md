@@ -12,8 +12,8 @@ Create a new instance of Url.
 
 #### Parameters
 
-| Name  | Type     | Description     |
-| :---- | :------- | :-------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `url` | `string` | The url string. |
 
 #### Returns
@@ -22,7 +22,7 @@ Create a new instance of Url.
 
 #### Defined in
 
-[packages/core/src/types/url.ts:31](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/url.ts#L31)
+[packages/core/src/types/url.ts:31](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/url.ts#L31)
 
 ## Methods
 
@@ -40,9 +40,9 @@ The parts of the url.
 
 #### Defined in
 
-[packages/core/src/types/url.ts:143](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/url.ts#L143)
+[packages/core/src/types/url.ts:143](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/url.ts#L143)
 
----
+___
 
 ### toString
 
@@ -58,9 +58,9 @@ The formatted url.
 
 #### Defined in
 
-[packages/core/src/types/url.ts:151](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/url.ts#L151)
+[packages/core/src/types/url.ts:151](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/url.ts#L151)
 
----
+___
 
 ### fromParts
 
@@ -70,8 +70,8 @@ Construct a url from valid parts.
 
 #### Parameters
 
-| Name       | Type                                      | Description                       |
-| :--------- | :---------------------------------------- | :-------------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `urlParts` | [`IUrlParts`](../interfaces/IUrlParts.md) | The url to create the parts from. |
 
 #### Returns
@@ -82,9 +82,9 @@ The formatted url.
 
 #### Defined in
 
-[packages/core/src/types/url.ts:133](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/url.ts#L133)
+[packages/core/src/types/url.ts:133](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/url.ts#L133)
 
----
+___
 
 ### fromURLToParts
 
@@ -94,8 +94,8 @@ Construct a url from a URL.
 
 #### Parameters
 
-| Name  | Type  | Description                |
-| :---- | :---- | :------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `url` | `URL` | The url to construct from. |
 
 #### Returns
@@ -106,9 +106,9 @@ The formatted url.
 
 #### Defined in
 
-[packages/core/src/types/url.ts:117](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/url.ts#L117)
+[packages/core/src/types/url.ts:117](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/url.ts#L117)
 
----
+___
 
 ### guard
 
@@ -118,11 +118,11 @@ Parse a string into the url parts.
 
 #### Parameters
 
-| Name       | Type      | Description               |
-| :--------- | :-------- | :------------------------ |
-| `source`   | `string`  | The source of the error.  |
-| `property` | `string`  | The name of the property. |
-| `value`    | `unknown` | The url to parse.         |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `source` | `string` | The source of the error. |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The url to parse. |
 
 #### Returns
 
@@ -134,9 +134,9 @@ GuardError If the value does not match the assertion.
 
 #### Defined in
 
-[packages/core/src/types/url.ts:67](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/url.ts#L67)
+[packages/core/src/types/url.ts:67](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/url.ts#L67)
 
----
+___
 
 ### tryParseExact
 
@@ -146,8 +146,8 @@ Try and parse a string into the url parts.
 
 #### Parameters
 
-| Name  | Type      | Description       |
-| :---- | :-------- | :---------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `url` | `unknown` | The url to parse. |
 
 #### Returns
@@ -158,9 +158,9 @@ The formatted url or undefined if the value is not a url.
 
 #### Defined in
 
-[packages/core/src/types/url.ts:47](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/url.ts#L47)
+[packages/core/src/types/url.ts:47](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/url.ts#L47)
 
----
+___
 
 ### validate
 
@@ -170,11 +170,11 @@ Validate a string as a Url.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                                        |
-| :--------- | :------------------------------------------------------------ | :------------------------------------------------- |
-| `property` | `string`                                                      | Throw an exception if the url property is invalid. |
-| `value`    | `unknown`                                                     | The url to parse.                                  |
-| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to.                    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | Throw an exception if the url property is invalid. |
+| `value` | `unknown` | The url to parse. |
+| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
 
@@ -184,4 +184,4 @@ The formatted url.
 
 #### Defined in
 
-[packages/core/src/types/url.ts:84](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/url.ts#L84)
+[packages/core/src/types/url.ts:84](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/url.ts#L84)

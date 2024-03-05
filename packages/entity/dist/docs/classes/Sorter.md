@@ -23,18 +23,18 @@ Compare two properties.
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name        | Type                                                                                 | Default value | Description                |
-| :---------- | :----------------------------------------------------------------------------------- | :------------ | :------------------------- |
-| `entity1`   | `T`                                                                                  | `undefined`   | The first entity.          |
-| `entity2`   | `T`                                                                                  | `undefined`   | The second entity.         |
-| `prop`      | keyof `T`                                                                            | `undefined`   | The property to compare.   |
-| `type`      | [`EntityPropertyDescriptorDataType`](../modules.md#entitypropertydescriptordatatype) | `undefined`   | The type of the property.  |
-| `direction` | `"desc"` \| `"asc"`                                                                  | `"asc"`       | The direction of the sort. |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `entity1` | `T` | `undefined` | The first entity. |
+| `entity2` | `T` | `undefined` | The second entity. |
+| `prop` | keyof `T` | `undefined` | The property to compare. |
+| `type` | [`EntityPropertyDescriptorDataType`](../modules.md#entitypropertydescriptordatatype) | `undefined` | The type of the property. |
+| `direction` | ``"desc"`` \| ``"asc"`` | `"asc"` | The direction of the sort. |
 
 #### Returns
 
@@ -44,4 +44,4 @@ The result of the comparison.
 
 #### Defined in
 
-[utils/sorter.ts:19](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/utils/sorter.ts#L19)
+[utils/sorter.ts:19](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/utils/sorter.ts#L19)

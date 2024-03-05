@@ -16,9 +16,9 @@ The inner error if there was one.
 
 #### Defined in
 
-[packages/core/src/models/IError.ts:36](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/models/IError.ts#L36)
+[packages/core/src/models/IError.ts:36](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/models/IError.ts#L36)
 
----
+___
 
 ### message
 
@@ -28,9 +28,9 @@ The message for the error.
 
 #### Defined in
 
-[packages/core/src/models/IError.ts:16](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/models/IError.ts#L16)
+[packages/core/src/models/IError.ts:16](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/models/IError.ts#L16)
 
----
+___
 
 ### name
 
@@ -40,9 +40,9 @@ The name for the error.
 
 #### Defined in
 
-[packages/core/src/models/IError.ts:11](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/models/IError.ts#L11)
+[packages/core/src/models/IError.ts:11](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/models/IError.ts#L11)
 
----
+___
 
 ### properties
 
@@ -56,9 +56,9 @@ Any additional information for the error.
 
 #### Defined in
 
-[packages/core/src/models/IError.ts:26](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/models/IError.ts#L26)
+[packages/core/src/models/IError.ts:26](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/models/IError.ts#L26)
 
----
+___
 
 ### source
 
@@ -68,9 +68,9 @@ The source of the error.
 
 #### Defined in
 
-[packages/core/src/models/IError.ts:21](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/models/IError.ts#L21)
+[packages/core/src/models/IError.ts:21](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/models/IError.ts#L21)
 
----
+___
 
 ### stack
 
@@ -80,4 +80,4 @@ The stack trace for the error.
 
 #### Defined in
 
-[packages/core/src/models/IError.ts:31](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/models/IError.ts#L31)
+[packages/core/src/models/IError.ts:31](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/models/IError.ts#L31)

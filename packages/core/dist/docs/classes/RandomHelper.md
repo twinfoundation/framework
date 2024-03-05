@@ -22,8 +22,8 @@ Generate a new random array.
 
 #### Parameters
 
-| Name     | Type     | Description                     |
-| :------- | :------- | :------------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `length` | `number` | The length of buffer to create. |
 
 #### Returns
@@ -34,4 +34,4 @@ The random array.
 
 #### Defined in
 
-[packages/core/src/utils/randomHelper.ts:13](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/randomHelper.ts#L13)
+[packages/core/src/utils/randomHelper.ts:13](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/randomHelper.ts#L13)

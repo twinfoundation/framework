@@ -22,8 +22,8 @@ Strip comments from the config.
 
 #### Parameters
 
-| Name     | Type     | Description                |
-| :------- | :------- | :------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `config` | `string` | The configuration content. |
 
 #### Returns
@@ -34,9 +34,9 @@ The configuration content with comments stripped.
 
 #### Defined in
 
-[packages/core/src/utils/configHelper.ts:23](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/configHelper.ts#L23)
+[packages/core/src/utils/configHelper.ts:23](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/configHelper.ts#L23)
 
----
+___
 
 ### substituteEnvironment
 
@@ -47,15 +47,15 @@ Expand environment variables.
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name         | Type     | Description               |
-| :----------- | :------- | :------------------------ |
-| `config`     | `string` | The configuration object. |
-| `processEnv` | `Object` | -                         |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `config` | `string` | The configuration object. |
+| `processEnv` | `Object` | - |
 
 #### Returns
 
@@ -65,4 +65,4 @@ The updated configuration object.
 
 #### Defined in
 
-[packages/core/src/utils/configHelper.ts:34](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/configHelper.ts#L34)
+[packages/core/src/utils/configHelper.ts:34](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/configHelper.ts#L34)

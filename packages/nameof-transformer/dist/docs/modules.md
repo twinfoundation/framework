@@ -10,25 +10,25 @@ Renames and re-exports [factory](modules.md#factory)
 
 ### name
 
-• `Const` **name**: `"@gtsc/nameof-transformer"`
+• `Const` **name**: ``"@gtsc/nameof-transformer"``
 
 Exports the factory name.
 
 #### Defined in
 
-[index.ts:22](https://github.com/gtscio/framework/blob/51767d6/packages/nameof-transformer/src/index.ts#L22)
+[index.ts:22](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/index.ts#L22)
 
----
+___
 
 ### version
 
-• `Const` **version**: `"0.0.1"`
+• `Const` **version**: ``"0.0.1"``
 
 Exports the factory version.
 
 #### Defined in
 
-[index.ts:16](https://github.com/gtscio/framework/blob/51767d6/packages/nameof-transformer/src/index.ts#L16)
+[index.ts:16](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/index.ts#L16)
 
 ## Functions
 
@@ -46,9 +46,9 @@ The factory.
 
 #### Defined in
 
-[index.ts:10](https://github.com/gtscio/framework/blob/51767d6/packages/nameof-transformer/src/index.ts#L10)
+[index.ts:10](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/index.ts#L10)
 
----
+___
 
 ### manual
 
@@ -58,8 +58,8 @@ Replace the transformers manually.
 
 #### Parameters
 
-| Name      | Type     | Description                                 |
-| :-------- | :------- | :------------------------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `content` | `string` | The content to replace the transformers in. |
 
 #### Returns
@@ -70,9 +70,9 @@ The content with the transformers replace.
 
 #### Defined in
 
-[manual.ts:9](https://github.com/gtscio/framework/blob/51767d6/packages/nameof-transformer/src/manual.ts#L9)
+[manual.ts:9](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/manual.ts#L9)
 
----
+___
 
 ### tsTransformersPreProcess
 
@@ -86,10 +86,10 @@ Return a function that can be used as a svelte preprocessor.
 
 The preprocessor.
 
-| Name     | Type      |
-| :------- | :-------- |
+| Name | Type |
+| :------ | :------ |
 | `markup` | `unknown` |
 
 #### Defined in
 
-[svelte.ts:9](https://github.com/gtscio/framework/blob/51767d6/packages/nameof-transformer/src/svelte.ts#L9)
+[svelte.ts:9](https://github.com/gtscio/framework/blob/e3dfdc9/packages/nameof-transformer/src/svelte.ts#L9)

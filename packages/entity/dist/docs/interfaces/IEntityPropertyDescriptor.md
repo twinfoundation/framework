@@ -5,8 +5,8 @@ Definition of an entity property.
 ## Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 ## Properties
 
@@ -18,9 +18,9 @@ An additional hint for the format of the data.
 
 #### Defined in
 
-[models/IEntityPropertyDescriptor.ts:27](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityPropertyDescriptor.ts#L27)
+[models/IEntityPropertyDescriptor.ts:27](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityPropertyDescriptor.ts#L27)
 
----
+___
 
 ### isPrimary
 
@@ -30,9 +30,9 @@ Is this the primary index property.
 
 #### Defined in
 
-[models/IEntityPropertyDescriptor.ts:37](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityPropertyDescriptor.ts#L37)
+[models/IEntityPropertyDescriptor.ts:37](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityPropertyDescriptor.ts#L37)
 
----
+___
 
 ### isSecondary
 
@@ -42,9 +42,9 @@ Is this a secondary index property.
 
 #### Defined in
 
-[models/IEntityPropertyDescriptor.ts:42](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityPropertyDescriptor.ts#L42)
+[models/IEntityPropertyDescriptor.ts:42](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityPropertyDescriptor.ts#L42)
 
----
+___
 
 ### itemType
 
@@ -54,9 +54,9 @@ The type of the item (only applies when type is either `list` or `structure`).
 
 #### Defined in
 
-[models/IEntityPropertyDescriptor.ts:22](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityPropertyDescriptor.ts#L22)
+[models/IEntityPropertyDescriptor.ts:22](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityPropertyDescriptor.ts#L22)
 
----
+___
 
 ### name
 
@@ -66,9 +66,9 @@ The name of the property.
 
 #### Defined in
 
-[models/IEntityPropertyDescriptor.ts:12](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityPropertyDescriptor.ts#L12)
+[models/IEntityPropertyDescriptor.ts:12](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityPropertyDescriptor.ts#L12)
 
----
+___
 
 ### optional
 
@@ -78,9 +78,9 @@ Is the property optional.
 
 #### Defined in
 
-[models/IEntityPropertyDescriptor.ts:52](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityPropertyDescriptor.ts#L52)
+[models/IEntityPropertyDescriptor.ts:52](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityPropertyDescriptor.ts#L52)
 
----
+___
 
 ### size
 
@@ -90,21 +90,21 @@ The length of the property if applicable.
 
 #### Defined in
 
-[models/IEntityPropertyDescriptor.ts:32](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityPropertyDescriptor.ts#L32)
+[models/IEntityPropertyDescriptor.ts:32](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityPropertyDescriptor.ts#L32)
 
----
+___
 
 ### sortDirection
 
-• `Optional` **sortDirection**: `"desc"` \| `"asc"`
+• `Optional` **sortDirection**: ``"desc"`` \| ``"asc"``
 
 Default sort direction for this column, leave empty if not sortable.
 
 #### Defined in
 
-[models/IEntityPropertyDescriptor.ts:47](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityPropertyDescriptor.ts#L47)
+[models/IEntityPropertyDescriptor.ts:47](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityPropertyDescriptor.ts#L47)
 
----
+___
 
 ### type
 
@@ -114,4 +114,4 @@ The type of the property.
 
 #### Defined in
 
-[models/IEntityPropertyDescriptor.ts:17](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityPropertyDescriptor.ts#L17)
+[models/IEntityPropertyDescriptor.ts:17](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityPropertyDescriptor.ts#L17)

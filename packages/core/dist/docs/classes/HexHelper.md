@@ -14,15 +14,15 @@ Helper methods for hex conversions.
 
 ## Properties
 
-### BIG_INT_MAX_256_BIT
+### BIG\_INT\_MAX\_256\_BIT
 
-▪ `Static` `Readonly` **BIG_INT_MAX_256_BIT**: `bigint`
+▪ `Static` `Readonly` **BIG\_INT\_MAX\_256\_BIT**: `bigint`
 
 Const defining the maximum value for a 256 bit int.
 
 #### Defined in
 
-[packages/core/src/utils/hexHelper.ts:11](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/hexHelper.ts#L11)
+[packages/core/src/utils/hexHelper.ts:11](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L11)
 
 ## Methods
 
@@ -34,8 +34,8 @@ Add the 0x prefix if it does not exist.
 
 #### Parameters
 
-| Name  | Type     | Description                         |
-| :---- | :------- | :---------------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `hex` | `string` | The hex value to add the prefix to. |
 
 #### Returns
@@ -46,9 +46,9 @@ The hex with the prefix.
 
 #### Defined in
 
-[packages/core/src/utils/hexHelper.ts:56](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/hexHelper.ts#L56)
+[packages/core/src/utils/hexHelper.ts:56](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L56)
 
----
+___
 
 ### fromBigInt256
 
@@ -58,8 +58,8 @@ Convert the big int 256 bit to hex string.
 
 #### Parameters
 
-| Name    | Type     | Description                   |
-| :------ | :------- | :---------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `value` | `bigint` | The big int value to convert. |
 
 #### Returns
@@ -70,9 +70,9 @@ The hex encoded big int.
 
 #### Defined in
 
-[packages/core/src/utils/hexHelper.ts:20](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/hexHelper.ts#L20)
+[packages/core/src/utils/hexHelper.ts:20](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L20)
 
----
+___
 
 ### hasPrefix
 
@@ -82,8 +82,8 @@ Does the hex string have the prefix.
 
 #### Parameters
 
-| Name  | Type     | Description                            |
-| :---- | :------- | :------------------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `hex` | `string` | The hex value to check for the prefix. |
 
 #### Returns
@@ -94,9 +94,9 @@ True if the hex string has the prefix.
 
 #### Defined in
 
-[packages/core/src/utils/hexHelper.ts:65](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/hexHelper.ts#L65)
+[packages/core/src/utils/hexHelper.ts:65](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L65)
 
----
+___
 
 ### stripPrefix
 
@@ -106,8 +106,8 @@ Strip the 0x prefix if it exists.
 
 #### Parameters
 
-| Name  | Type     | Description             |
-| :---- | :------- | :---------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `hex` | `string` | The hex value to strip. |
 
 #### Returns
@@ -118,9 +118,9 @@ The stripped hex without the prefix.
 
 #### Defined in
 
-[packages/core/src/utils/hexHelper.ts:47](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/hexHelper.ts#L47)
+[packages/core/src/utils/hexHelper.ts:47](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L47)
 
----
+___
 
 ### toBigInt256
 
@@ -130,8 +130,8 @@ Convert the hex string to a big int.
 
 #### Parameters
 
-| Name  | Type     | Description               |
-| :---- | :------- | :------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `hex` | `string` | The hex value to convert. |
 
 #### Returns
@@ -142,4 +142,4 @@ The big int.
 
 #### Defined in
 
-[packages/core/src/utils/hexHelper.ts:32](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/hexHelper.ts#L32)
+[packages/core/src/utils/hexHelper.ts:32](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/hexHelper.ts#L32)

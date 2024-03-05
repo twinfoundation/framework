@@ -18,11 +18,11 @@ Create a new instance of ValidationError.
 
 #### Parameters
 
-| Name                 | Type                                                          | Description                        |
-| :------------------- | :------------------------------------------------------------ | :--------------------------------- |
-| `source`             | `string`                                                      | The source of the error.           |
-| `validationObject`   | `string`                                                      | The object that failed validation. |
-| `validationFailures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures.           |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `source` | `string` | The source of the error. |
+| `validationObject` | `string` | The object that failed validation. |
+| `validationFailures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures. |
 
 #### Returns
 
@@ -34,7 +34,7 @@ Create a new instance of ValidationError.
 
 #### Defined in
 
-[packages/core/src/errors/validationError.ts:23](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/validationError.ts#L23)
+[packages/core/src/errors/validationError.ts:23](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/validationError.ts#L23)
 
 ## Properties
 
@@ -50,7 +50,7 @@ Create a new instance of ValidationError.
 
 node_modules/typescript/lib/lib.es2022.error.d.ts:24
 
----
+___
 
 ### inner
 
@@ -64,9 +64,9 @@ The inner error if there was one.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:25](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L25)
+[packages/core/src/errors/baseError.ts:25](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L25)
 
----
+___
 
 ### message
 
@@ -82,7 +82,7 @@ The message for the error.
 
 node_modules/typescript/lib/lib.es5.d.ts:1076
 
----
+___
 
 ### name
 
@@ -98,7 +98,7 @@ The name for the error.
 
 node_modules/typescript/lib/lib.es5.d.ts:1075
 
----
+___
 
 ### properties
 
@@ -116,9 +116,9 @@ Any additional information for the error.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:20](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L20)
+[packages/core/src/errors/baseError.ts:20](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L20)
 
----
+___
 
 ### source
 
@@ -132,9 +132,9 @@ The source of the error.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:15](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L15)
+[packages/core/src/errors/baseError.ts:15](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L15)
 
----
+___
 
 ### stack
 
@@ -150,17 +150,17 @@ The stack trace for the error.
 
 node_modules/typescript/lib/lib.es5.d.ts:1077
 
----
+___
 
-### CLASS_NAME
+### CLASS\_NAME
 
-▪ `Static` `Readonly` **CLASS_NAME**: `string`
+▪ `Static` `Readonly` **CLASS\_NAME**: `string`
 
 Runtime name for the class.s
 
 #### Defined in
 
-[packages/core/src/errors/validationError.ts:15](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/validationError.ts#L15)
+[packages/core/src/errors/validationError.ts:15](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/validationError.ts#L15)
 
 ## Methods
 
@@ -172,8 +172,8 @@ Serialize the error to the error model.
 
 #### Parameters
 
-| Name            | Type      | Description                     |
-| :-------------- | :-------- | :------------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `includeStack?` | `boolean` | Include the stack in the error. |
 
 #### Returns
@@ -188,9 +188,9 @@ The error model.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:222](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L222)
+[packages/core/src/errors/baseError.ts:222](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L222)
 
----
+___
 
 ### expand
 
@@ -200,8 +200,8 @@ Expand an error tree.
 
 #### Parameters
 
-| Name     | Type                                                 | Description                   |
-| :------- | :--------------------------------------------------- | :---------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `errors` | `undefined` \| [`IError`](../interfaces/IError.md)[] | The list of errors to expand. |
 
 #### Returns
@@ -216,9 +216,9 @@ The first level error.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:133](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L133)
+[packages/core/src/errors/baseError.ts:133](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L133)
 
----
+___
 
 ### flatten
 
@@ -228,8 +228,8 @@ Flatten an error tree.
 
 #### Parameters
 
-| Name  | Type      | Description         |
-| :---- | :-------- | :------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `err` | `unknown` | The starting error. |
 
 #### Returns
@@ -244,9 +244,9 @@ The list of all internal errors.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:113](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L113)
+[packages/core/src/errors/baseError.ts:113](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L113)
 
----
+___
 
 ### fromError
 
@@ -256,8 +256,8 @@ Construct an error from an existing one.
 
 #### Parameters
 
-| Name  | Type      | Description        |
-| :---- | :-------- | :----------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `err` | `unknown` | The exising error. |
 
 #### Returns
@@ -272,9 +272,9 @@ The new instance.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:66](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L66)
+[packages/core/src/errors/baseError.ts:66](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L66)
 
----
+___
 
 ### isErrorCode
 
@@ -284,10 +284,10 @@ Test to see if the error has the specified error code.
 
 #### Parameters
 
-| Name    | Type                 | Description            |
-| :------ | :------------------- | :--------------------- |
-| `error` | `unknown`            | The error to test.     |
-| `code`  | `string` \| `RegExp` | The code to check for. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `unknown` | The error to test. |
+| `code` | `string` \| `RegExp` | The code to check for. |
 
 #### Returns
 
@@ -301,9 +301,9 @@ True if the error has the code.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:180](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L180)
+[packages/core/src/errors/baseError.ts:180](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L180)
 
----
+___
 
 ### isErrorMessage
 
@@ -313,9 +313,9 @@ Test to see if the error has the specified error message.
 
 #### Parameters
 
-| Name      | Type                 | Description               |
-| :-------- | :------------------- | :------------------------ |
-| `error`   | `unknown`            | The error to test.        |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `unknown` | The error to test. |
 | `message` | `string` \| `RegExp` | The message to check for. |
 
 #### Returns
@@ -330,9 +330,9 @@ True if the error has the name.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:167](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L167)
+[packages/core/src/errors/baseError.ts:167](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L167)
 
----
+___
 
 ### isErrorName
 
@@ -342,10 +342,10 @@ Test to see if the error has the specified error name.
 
 #### Parameters
 
-| Name    | Type                 | Description            |
-| :------ | :------------------- | :--------------------- |
-| `error` | `unknown`            | The error to test.     |
-| `name`  | `string` \| `RegExp` | The name to check for. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `unknown` | The error to test. |
+| `name` | `string` \| `RegExp` | The name to check for. |
 
 #### Returns
 
@@ -359,9 +359,9 @@ True if the error has the name.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:154](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L154)
+[packages/core/src/errors/baseError.ts:154](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L154)
 
----
+___
 
 ### someErrorCode
 
@@ -371,10 +371,10 @@ Test to see if any of the errors or children have the given error code.
 
 #### Parameters
 
-| Name    | Type                 | Description            |
-| :------ | :------------------- | :--------------------- |
-| `error` | `unknown`            | The error to test.     |
-| `code`  | `string` \| `RegExp` | The code to check for. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `unknown` | The error to test. |
+| `code` | `string` \| `RegExp` | The code to check for. |
 
 #### Returns
 
@@ -388,9 +388,9 @@ True if the error has the name.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:213](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L213)
+[packages/core/src/errors/baseError.ts:213](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L213)
 
----
+___
 
 ### someErrorMessage
 
@@ -400,9 +400,9 @@ Test to see if any of the errors or children have the given error message.
 
 #### Parameters
 
-| Name      | Type                 | Description               |
-| :-------- | :------------------- | :------------------------ |
-| `error`   | `unknown`            | The error to test.        |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `unknown` | The error to test. |
 | `message` | `string` \| `RegExp` | The message to check for. |
 
 #### Returns
@@ -417,9 +417,9 @@ True if the error has the name.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:203](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L203)
+[packages/core/src/errors/baseError.ts:203](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L203)
 
----
+___
 
 ### someErrorName
 
@@ -429,10 +429,10 @@ Test to see if any of the errors or children have the given error name.
 
 #### Parameters
 
-| Name    | Type                 | Description            |
-| :------ | :------------------- | :--------------------- |
-| `error` | `unknown`            | The error to test.     |
-| `name`  | `string` \| `RegExp` | The name to check for. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `unknown` | The error to test. |
+| `name` | `string` \| `RegExp` | The name to check for. |
 
 #### Returns
 
@@ -446,4 +446,4 @@ True if the error has the name.
 
 #### Defined in
 
-[packages/core/src/errors/baseError.ts:193](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/errors/baseError.ts#L193)
+[packages/core/src/errors/baseError.ts:193](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/errors/baseError.ts#L193)

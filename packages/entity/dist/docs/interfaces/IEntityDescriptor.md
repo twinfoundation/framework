@@ -5,8 +5,8 @@ Definition of an entity field.
 ## Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 ## Properties
 
@@ -18,9 +18,9 @@ Does the entity contain dynamic unknown properties.
 
 #### Defined in
 
-[models/IEntityDescriptor.ts:18](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityDescriptor.ts#L18)
+[models/IEntityDescriptor.ts:18](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityDescriptor.ts#L18)
 
----
+___
 
 ### properties
 
@@ -30,9 +30,9 @@ The properties.
 
 #### Defined in
 
-[models/IEntityDescriptor.ts:13](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityDescriptor.ts#L13)
+[models/IEntityDescriptor.ts:13](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityDescriptor.ts#L13)
 
----
+___
 
 ### structuredTypes
 
@@ -42,4 +42,4 @@ Structured types on which the entity depends on.
 
 #### Defined in
 
-[models/IEntityDescriptor.ts:24](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IEntityDescriptor.ts#L24)
+[models/IEntityDescriptor.ts:24](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IEntityDescriptor.ts#L24)

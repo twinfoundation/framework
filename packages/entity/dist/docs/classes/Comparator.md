@@ -22,15 +22,15 @@ See if the entity matches the comparators.
 
 #### Type parameters
 
-| Name | Type             |
-| :--- | :--------------- |
-| `T`  | extends `object` |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `object` |
 
 #### Parameters
 
-| Name           | Type                                            | Description             |
-| :------------- | :---------------------------------------------- | :---------------------- |
-| `entity`       | `T`                                             | The entity to test.     |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `entity` | `T` | The entity to test. |
 | `comparators?` | [`IComparator`](../interfaces/IComparator.md)[] | The conditions to test. |
 
 #### Returns
@@ -41,4 +41,4 @@ True if the entity matches.
 
 #### Defined in
 
-[utils/comparator.ts:18](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/utils/comparator.ts#L18)
+[utils/comparator.ts:18](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/utils/comparator.ts#L18)

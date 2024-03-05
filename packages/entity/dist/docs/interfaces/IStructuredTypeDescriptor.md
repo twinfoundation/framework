@@ -5,8 +5,8 @@ Definition of an entity field.
 ## Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 ## Properties
 
@@ -18,9 +18,9 @@ Fields of the structured type.
 
 #### Defined in
 
-[models/IStructuredTypeDescriptor.ts:17](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IStructuredTypeDescriptor.ts#L17)
+[models/IStructuredTypeDescriptor.ts:17](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IStructuredTypeDescriptor.ts#L17)
 
----
+___
 
 ### name
 
@@ -30,4 +30,4 @@ The name of the type.
 
 #### Defined in
 
-[models/IStructuredTypeDescriptor.ts:12](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IStructuredTypeDescriptor.ts#L12)
+[models/IStructuredTypeDescriptor.ts:12](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IStructuredTypeDescriptor.ts#L12)

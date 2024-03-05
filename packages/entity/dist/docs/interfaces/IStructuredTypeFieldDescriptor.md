@@ -5,8 +5,8 @@ Definition of an entity field.
 ## Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 ## Properties
 
@@ -18,9 +18,9 @@ The type of the item (only applies when type is either `list` or `structure`).
 
 #### Defined in
 
-[models/IStructuredTypeFieldDescriptor.ts:22](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IStructuredTypeFieldDescriptor.ts#L22)
+[models/IStructuredTypeFieldDescriptor.ts:22](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IStructuredTypeFieldDescriptor.ts#L22)
 
----
+___
 
 ### name
 
@@ -30,9 +30,9 @@ The name of the field it has to correspond to one of the properties of the bound
 
 #### Defined in
 
-[models/IStructuredTypeFieldDescriptor.ts:12](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IStructuredTypeFieldDescriptor.ts#L12)
+[models/IStructuredTypeFieldDescriptor.ts:12](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IStructuredTypeFieldDescriptor.ts#L12)
 
----
+___
 
 ### size
 
@@ -42,9 +42,9 @@ The length of the property if applicable.
 
 #### Defined in
 
-[models/IStructuredTypeFieldDescriptor.ts:27](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IStructuredTypeFieldDescriptor.ts#L27)
+[models/IStructuredTypeFieldDescriptor.ts:27](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IStructuredTypeFieldDescriptor.ts#L27)
 
----
+___
 
 ### type
 
@@ -54,4 +54,4 @@ The type of the field.
 
 #### Defined in
 
-[models/IStructuredTypeFieldDescriptor.ts:17](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IStructuredTypeFieldDescriptor.ts#L17)
+[models/IStructuredTypeFieldDescriptor.ts:17](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IStructuredTypeFieldDescriptor.ts#L17)

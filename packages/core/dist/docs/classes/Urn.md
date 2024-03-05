@@ -12,10 +12,10 @@ Create a new instance of Urn.
 
 #### Parameters
 
-| Name                  | Type     | Description                         |
-| :-------------------- | :------- | :---------------------------------- |
-| `namespaceIdentifier` | `string` | The identifier for the namespace.   |
-| `namespaceSpecific`   | `string` | The specific part of the namespace. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `namespaceIdentifier` | `string` | The identifier for the namespace. |
+| `namespaceSpecific` | `string` | The specific part of the namespace. |
 
 #### Returns
 
@@ -23,7 +23,7 @@ Create a new instance of Urn.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:38](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L38)
+[packages/core/src/types/urn.ts:38](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L38)
 
 ## Methods
 
@@ -41,9 +41,9 @@ The namespace identifier.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:194](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L194)
+[packages/core/src/types/urn.ts:194](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L194)
 
----
+___
 
 ### namespaceSpecific
 
@@ -59,9 +59,9 @@ The namespace specific.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:202](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L202)
+[packages/core/src/types/urn.ts:202](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L202)
 
----
+___
 
 ### toString
 
@@ -71,8 +71,8 @@ Convert the parts in to a full string.
 
 #### Parameters
 
-| Name          | Type      | Description                           |
-| :------------ | :-------- | :------------------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `omitPrefix?` | `boolean` | Omit the urn: prefix from the string. |
 
 #### Returns
@@ -83,9 +83,9 @@ The formatted urn.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:211](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L211)
+[packages/core/src/types/urn.ts:211](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L211)
 
----
+___
 
 ### addPrefix
 
@@ -95,8 +95,8 @@ Add a urn: prefix if there isn't one already.
 
 #### Parameters
 
-| Name  | Type      | Description                        |
-| :---- | :-------- | :--------------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `urn` | `unknown` | The urn string to add a prefix to. |
 
 #### Returns
@@ -107,9 +107,9 @@ The urn with a prefix.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:129](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L129)
+[packages/core/src/types/urn.ts:129](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L129)
 
----
+___
 
 ### fromValidString
 
@@ -119,8 +119,8 @@ Construct a urn from a string that has already been validated.
 
 #### Parameters
 
-| Name  | Type     | Description       |
-| :---- | :------- | :---------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `urn` | `string` | The urn to parse. |
 
 #### Returns
@@ -131,9 +131,9 @@ The formatted urn.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:114](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L114)
+[packages/core/src/types/urn.ts:114](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L114)
 
----
+___
 
 ### generateRandom
 
@@ -143,8 +143,8 @@ Generate a random identifier with 32 byte id.
 
 #### Parameters
 
-| Name        | Type     | Description             |
-| :---------- | :------- | :---------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `namespace` | `string` | The prefix for the urn. |
 
 #### Returns
@@ -155,9 +155,9 @@ A new Id in URN format.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:51](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L51)
+[packages/core/src/types/urn.ts:51](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L51)
 
----
+___
 
 ### guard
 
@@ -167,11 +167,11 @@ Parse a string into the urn parts.
 
 #### Parameters
 
-| Name       | Type      | Description               |
-| :--------- | :-------- | :------------------------ |
-| `source`   | `string`  | The source of the error.  |
-| `property` | `string`  | The name of the property. |
-| `value`    | `unknown` | The urn to parse.         |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `source` | `string` | The source of the error. |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The urn to parse. |
 
 #### Returns
 
@@ -183,9 +183,9 @@ GuardError If the value does not match the assertion.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:145](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L145)
+[packages/core/src/types/urn.ts:145](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L145)
 
----
+___
 
 ### hasNamespace
 
@@ -195,9 +195,9 @@ Does the provided urn match the namespace.
 
 #### Parameters
 
-| Name        | Type     | Description             |
-| :---------- | :------- | :---------------------- |
-| `urn`       | `string` | The urn to check.       |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `urn` | `string` | The urn to check. |
 | `namespace` | `string` | The namespace to match. |
 
 #### Returns
@@ -208,9 +208,9 @@ True if the namespace matches.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:61](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L61)
+[packages/core/src/types/urn.ts:61](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L61)
 
----
+___
 
 ### tryParseExact
 
@@ -220,8 +220,8 @@ Try and parse a string into the urn parts it must start with urn:.
 
 #### Parameters
 
-| Name  | Type      | Description       |
-| :---- | :-------- | :---------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `urn` | `unknown` | The urn to parse. |
 
 #### Returns
@@ -232,9 +232,9 @@ The formatted urn or undefined if the value is not a urn.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:81](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L81)
+[packages/core/src/types/urn.ts:81](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L81)
 
----
+___
 
 ### validate
 
@@ -244,11 +244,11 @@ Validate a string as a Urn.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                                        |
-| :--------- | :------------------------------------------------------------ | :------------------------------------------------- |
-| `property` | `string`                                                      | Throw an exception if the urn property is invalid. |
-| `value`    | `unknown`                                                     | The urn to parse.                                  |
-| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to.                    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | Throw an exception if the urn property is invalid. |
+| `value` | `unknown` | The urn to parse. |
+| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
 
@@ -258,4 +258,4 @@ The formatted urn.
 
 #### Defined in
 
-[packages/core/src/types/urn.ts:162](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/types/urn.ts#L162)
+[packages/core/src/types/urn.ts:162](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/types/urn.ts#L162)

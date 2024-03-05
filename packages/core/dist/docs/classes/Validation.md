@@ -22,11 +22,11 @@ Append failures to the parent for a child object.
 
 #### Parameters
 
-| Name            | Type                                                          | Description                            |
-| :-------------- | :------------------------------------------------------------ | :------------------------------------- |
-| `failures`      | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures.               |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures. |
 | `childfailures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures for the child. |
-| `childName?`    | `string`                                                      | The name of the child object.          |
+| `childName?` | `string` | The name of the child object. |
 
 #### Returns
 
@@ -34,9 +34,9 @@ Append failures to the parent for a child object.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:617](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L617)
+[packages/core/src/utils/validation.ts:617](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L617)
 
----
+___
 
 ### array
 
@@ -47,15 +47,15 @@ Is the property an array.
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -66,9 +66,9 @@ True if the value is an array.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:434](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L434)
+[packages/core/src/utils/validation.ts:434](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L434)
 
----
+___
 
 ### arrayOneOf
 
@@ -79,17 +79,17 @@ Is the property one of a list of items.
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name       | Type                                                          | Description                           |
-| :--------- | :------------------------------------------------------------ | :------------------------------------ |
-| `property` | `string`                                                      | The name of the property.             |
-| `value`    | `T`                                                           | The value to test.                    |
-| `options`  | `T`[]                                                         | The options the value must be one of. |
-| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to.       |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `T` | The value to test. |
+| `options` | `T`[] | The options the value must be one of. |
+| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
 
@@ -99,9 +99,9 @@ True if the value is one of the items in the options.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:485](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L485)
+[packages/core/src/utils/validation.ts:485](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L485)
 
----
+___
 
 ### arrayValue
 
@@ -112,15 +112,15 @@ Is the property an array with at least one item.
 #### Type parameters
 
 | Name |
-| :--- |
-| `T`  |
+| :------ |
+| `T` |
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -131,9 +131,9 @@ True if the value is an array with at least one element.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:459](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L459)
+[packages/core/src/utils/validation.ts:459](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L459)
 
----
+___
 
 ### asValidationError
 
@@ -143,11 +143,11 @@ Throw the validation failures as a ValidationError.
 
 #### Parameters
 
-| Name         | Type                                                          | Description                          |
-| :----------- | :------------------------------------------------------------ | :----------------------------------- |
-| `source`     | `string`                                                      | The source of the error.             |
-| `objectName` | `string`                                                      | The object that was being validated. |
-| `failures`   | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures.             |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `source` | `string` | The source of the error. |
+| `objectName` | `string` | The object that was being validated. |
+| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures. |
 
 #### Returns
 
@@ -159,9 +159,9 @@ ValidationError From the converted failures.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:601](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L601)
+[packages/core/src/utils/validation.ts:601](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L601)
 
----
+___
 
 ### boolean
 
@@ -171,10 +171,10 @@ Is the property a boolean.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -185,9 +185,9 @@ True if the value is a boolean.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:168](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L168)
+[packages/core/src/utils/validation.ts:168](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L168)
 
----
+___
 
 ### date
 
@@ -197,10 +197,10 @@ Is the property a date.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -211,9 +211,9 @@ True if the value is a date.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:193](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L193)
+[packages/core/src/utils/validation.ts:193](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L193)
 
----
+___
 
 ### dateString
 
@@ -223,10 +223,10 @@ Is the property a date in ISO 8601 format.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -237,9 +237,9 @@ True if the value is a date.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:229](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L229)
+[packages/core/src/utils/validation.ts:229](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L229)
 
----
+___
 
 ### dateTimeString
 
@@ -249,10 +249,10 @@ Is the property a date/time in ISO 8601 format.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -263,9 +263,9 @@ True if the value is a date/time.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:265](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L265)
+[packages/core/src/utils/validation.ts:265](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L265)
 
----
+___
 
 ### email
 
@@ -275,10 +275,10 @@ Is the property a string in e-mail format.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -289,9 +289,9 @@ True if the value is a valid looking e-mail.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:576](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L576)
+[packages/core/src/utils/validation.ts:576](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L576)
 
----
+___
 
 ### empty
 
@@ -301,10 +301,10 @@ Is the property null or undefined.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -315,9 +315,9 @@ True if the value is a empty.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:18](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L18)
+[packages/core/src/utils/validation.ts:18](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L18)
 
----
+___
 
 ### integer
 
@@ -327,10 +327,10 @@ Is the property an integer.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -341,9 +341,9 @@ True if the value is a number.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:143](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L143)
+[packages/core/src/utils/validation.ts:143](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L143)
 
----
+___
 
 ### json
 
@@ -353,10 +353,10 @@ Is the property valid JSON.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -367,9 +367,9 @@ True if the value is valid JSON.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:547](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L547)
+[packages/core/src/utils/validation.ts:547](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L547)
 
----
+___
 
 ### milliseconds
 
@@ -379,10 +379,10 @@ Is the property a timestamp in milliseconds.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -393,9 +393,9 @@ True if the value is a timestamp in milliseconds.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:337](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L337)
+[packages/core/src/utils/validation.ts:337](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L337)
 
----
+___
 
 ### notEmpty
 
@@ -405,10 +405,10 @@ Is the property is not null or undefined.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -419,9 +419,9 @@ True if the value is a not empty.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:43](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L43)
+[packages/core/src/utils/validation.ts:43](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L43)
 
----
+___
 
 ### number
 
@@ -431,10 +431,10 @@ Is the property a number.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -445,9 +445,9 @@ True if the value is a number.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:118](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L118)
+[packages/core/src/utils/validation.ts:118](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L118)
 
----
+___
 
 ### object
 
@@ -457,16 +457,16 @@ Is the property an object.
 
 #### Type parameters
 
-| Name | Type                            |
-| :--- | :------------------------------ |
-| `T`  | \{ `[id: string]`: `unknown`; } |
+| Name | Type |
+| :------ | :------ |
+| `T` | \{ `[id: string]`: `unknown`;  } |
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -477,9 +477,9 @@ True if the value is a object.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:409](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L409)
+[packages/core/src/utils/validation.ts:409](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L409)
 
----
+___
 
 ### seconds
 
@@ -489,10 +489,10 @@ Is the property a timestamp in seconds.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -503,9 +503,9 @@ True if the value is a timestamp in seconds.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:373](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L373)
+[packages/core/src/utils/validation.ts:373](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L373)
 
----
+___
 
 ### string
 
@@ -515,10 +515,10 @@ Is the property a string.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -529,9 +529,9 @@ True if the value is a string.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:68](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L68)
+[packages/core/src/utils/validation.ts:68](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L68)
 
----
+___
 
 ### stringValue
 
@@ -541,10 +541,10 @@ Is the property a string with a value.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -555,9 +555,9 @@ True if the value is a string.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:93](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L93)
+[packages/core/src/utils/validation.ts:93](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L93)
 
----
+___
 
 ### timeString
 
@@ -567,10 +567,10 @@ Is the property a time in ISO 8601 format.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -581,9 +581,9 @@ True if the value is a time.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:301](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L301)
+[packages/core/src/utils/validation.ts:301](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L301)
 
----
+___
 
 ### toPropertyMap
 
@@ -593,8 +593,8 @@ Map a list of failures to their properties.
 
 #### Parameters
 
-| Name       | Type                                                          | Description              |
-| :--------- | :------------------------------------------------------------ | :----------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures. |
 
 #### Returns
@@ -605,9 +605,9 @@ The failures mapped to their properties.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:642](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L642)
+[packages/core/src/utils/validation.ts:642](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L642)
 
----
+___
 
 ### uint8Array
 
@@ -617,10 +617,10 @@ Is the property a Uint8Array.
 
 #### Parameters
 
-| Name       | Type                                                          | Description                     |
-| :--------- | :------------------------------------------------------------ | :------------------------------ |
-| `property` | `string`                                                      | The name of the property.       |
-| `value`    | `unknown`                                                     | The value to test.              |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
 
 #### Returns
@@ -631,4 +631,4 @@ True if the value is a Uint8Array.
 
 #### Defined in
 
-[packages/core/src/utils/validation.ts:522](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/validation.ts#L522)
+[packages/core/src/utils/validation.ts:522](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/validation.ts#L522)

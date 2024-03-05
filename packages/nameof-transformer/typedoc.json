@@ -4,6 +4,7 @@
 	"hideGenerator": true,
 	"hideBreadcrumbs": true,
 	"hideInPageTOC": true,
+	"githubPages": false,
 	"entryDocument": "overview.md",
 	"plugin": ["typedoc-plugin-markdown"]
 }

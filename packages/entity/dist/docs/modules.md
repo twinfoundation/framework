@@ -24,10 +24,10 @@
 
 ### EntityPropertyDescriptorDataType
 
-Ƭ **EntityPropertyDescriptorDataType**: `"string"` \| `"integer"` \| `"float"` \| `"double"` \| `"timestamp"` \| `"UUID"` \| `"binary"` \| `"boolean"` \| `"object"` \| `"list"` \| `"structure"`
+Ƭ **EntityPropertyDescriptorDataType**: ``"string"`` \| ``"integer"`` \| ``"float"`` \| ``"double"`` \| ``"timestamp"`` \| ``"UUID"`` \| ``"binary"`` \| ``"boolean"`` \| ``"object"`` \| ``"list"`` \| ``"structure"``
 
 Definition of the entity property data types.
 
 #### Defined in
 
-[models/entityPropertyDescriptorDataType.ts:7](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/entityPropertyDescriptorDataType.ts#L7)
+[models/entityPropertyDescriptorDataType.ts:7](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/entityPropertyDescriptorDataType.ts#L7)

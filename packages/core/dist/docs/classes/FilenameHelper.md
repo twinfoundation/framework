@@ -22,8 +22,8 @@ Replaces any unsafe characters in the filename.
 
 #### Parameters
 
-| Name       | Type      | Description                |
-| :--------- | :-------- | :------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `filename` | `unknown` | The filename to make safe. |
 
 #### Returns
@@ -34,4 +34,4 @@ The safe filename.
 
 #### Defined in
 
-[packages/core/src/utils/filenameHelper.ts:16](https://github.com/gtscio/framework/blob/51767d6/packages/core/src/utils/filenameHelper.ts#L16)
+[packages/core/src/utils/filenameHelper.ts:16](https://github.com/gtscio/framework/blob/e3dfdc9/packages/core/src/utils/filenameHelper.ts#L16)

@@ -12,9 +12,9 @@ The comparison to perform.
 
 #### Defined in
 
-[models/IComparator.ts:23](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IComparator.ts#L23)
+[models/IComparator.ts:23](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IComparator.ts#L23)
 
----
+___
 
 ### logicalOperator
 
@@ -24,9 +24,9 @@ The logical operator to use.
 
 #### Defined in
 
-[models/IComparator.ts:28](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IComparator.ts#L28)
+[models/IComparator.ts:28](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IComparator.ts#L28)
 
----
+___
 
 ### property
 
@@ -36,9 +36,9 @@ The name of the property in the object to compare.
 
 #### Defined in
 
-[models/IComparator.ts:13](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IComparator.ts#L13)
+[models/IComparator.ts:13](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IComparator.ts#L13)
 
----
+___
 
 ### value
 
@@ -48,4 +48,4 @@ The value of the property to compare.
 
 #### Defined in
 
-[models/IComparator.ts:18](https://github.com/gtscio/framework/blob/51767d6/packages/entity/src/models/IComparator.ts#L18)
+[models/IComparator.ts:18](https://github.com/gtscio/framework/blob/e3dfdc9/packages/entity/src/models/IComparator.ts#L18)
