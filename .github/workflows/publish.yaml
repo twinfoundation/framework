@@ -14,7 +14,7 @@ on:
           - nameof-transformer
 
 jobs:
-  dist:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
