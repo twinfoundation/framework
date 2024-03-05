@@ -1,4 +1,4 @@
-# GTSC / Nameof TypeScript Transformer
+# @gtsc/name-of-transformer - Overview
 
 This transformer is used to convert class/type/property names to embedded strings, so that they are available to the code at runtime.
 
@@ -13,11 +13,3 @@ You will also need to include the `@gtsc/nameof` to be able to reference the met
 ```shell
 npm install @gtsc/nameof-transformer -D
 ```
-
-## Examples
-
-Usage of the APIs can be seen in the examples [./docs/dist/examples.md](./docs/dist/examples.md)
-
-## Reference
-
-Detailed reference documentation for the API can be found in [./docs/dist/modules.md](./docs/dist/modules.md)

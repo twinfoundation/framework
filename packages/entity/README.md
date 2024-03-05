@@ -12,6 +12,10 @@ This package contains helper methods and clases for working with entities.
 npm install @gtsc/entity
 ```
 
-## Documentation
+## Examples
 
-More detailed documentation of the API can be found in [./docs](./docs)
+Usage of the APIs can be seen in the examples [./docs/dist/examples.md](./docs/dist/examples.md)
+
+## Reference
+
+Detailed reference documentation for the API can be found in [./docs/dist/modules.md](./docs/dist/modules.md)

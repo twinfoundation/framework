@@ -12,4 +12,3 @@ export * from "./models/entityPropertyDescriptorDataType.js";
 export * from "./models/logicalOperator.js";
 export * from "./utils/comparator.js";
 export * from "./utils/sorter.js";
-

@@ -1,0 +1,9 @@
+{
+	"entryPoints": ["src/index.ts"],
+	"out": "./docs/dist",
+	"hideGenerator": true,
+	"hideBreadcrumbs": true,
+	"hideInPageTOC": true,
+	"entryDocument": "overview.md",
+	"plugin": ["typedoc-plugin-markdown"]
+}

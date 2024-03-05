@@ -1,4 +1,4 @@
-# GTSC Framework Core
+# @gtsc/core - Overview
 
 This package contains helper methods and clases which implement some of the fundamental features required for a framework.
 
@@ -15,11 +15,3 @@ This package contains helper methods and clases which implement some of the fund
 ```shell
 npm install @gtsc/core
 ```
-
-## Examples
-
-Usage of the APIs can be seen in the examples [./docs/dist/examples.md](./docs/dist/examples.md)
-
-## Reference
-
-Detailed reference documentation for the API can be found in [./docs/dist/modules.md](./docs/dist/modules.md)

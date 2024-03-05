@@ -15,7 +15,7 @@ module.exports = {
 		'plugin:promise/recommended',
 		'plugin:unicorn/all'
 	],
-	ignorePatterns: ['dist', 'rollup.config.js', 'coverage'],
+	ignorePatterns: ['dist', 'rollup.config.js', 'coverage', 'docs'],
 	parserOptions: {
 		ecmaVersion: 2020,
 		project: './tsconfig.eslint.json',

@@ -1,4 +1,4 @@
-# GTSC / Nameof
+# @gtsc/nameof - Overview
 
 The methods in this package are used to convert TypeScript class/type/property names to embedded strings, so that they are available to your JavaScript code at runtime.
 
@@ -9,11 +9,3 @@ This package is used in conjunction with the `@gtsc/nameof-transformer` package,
 ```shell
 npm install @gtsc/nameof
 ```
-
-## Examples
-
-Usage of the APIs can be seen in the examples [./docs/dist/examples.md](./docs/dist/examples.md)
-
-## Reference
-
-Detailed reference documentation for the API can be found in [./docs/dist/modules.md](./docs/dist/modules.md)
