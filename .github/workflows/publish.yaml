@@ -6,11 +6,12 @@ on:
       package:
         description: "Which package to publish"
         required: true
+        type: choice
         options:
-          - "core"
-          - "framework"
-          - "nameof"
-          - "nameof-transformer"
+          - core
+          - framework
+          - nameof
+          - nameof-transformer
 
 jobs:
   dist:
