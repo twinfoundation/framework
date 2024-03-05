@@ -37,7 +37,7 @@ jobs:
       - name: Run Dist
         run: |
           npm run lint
-          npm run dist --workspace @gtsc/${{ github.event.inputs.package }}
+          npm run dist
 
       - name: Publish
         run: npm publish --prefix packages/${{ github.event.inputs.package }}
