@@ -25,7 +25,7 @@ export class Converter {
 	 * @param array The bytes to encode.
 	 * @param startIndex The index to start in the bytes.
 	 * @param length The length of bytes to read.
-	 * @returns The array formated as UTF8.
+	 * @returns The array formatted as UTF8.
 	 */
 	public static bytesToUtf8(
 		array: ArrayLike<number>,
@@ -75,16 +75,16 @@ export class Converter {
 		const bytes: number[] = [];
 
 		for (let i = 0; i < utf8.length; i++) {
-			let charcode = utf8.charCodeAt(i);
-			if (charcode < 0x80) {
-				bytes.push(charcode);
-			} else if (charcode < 0x800) {
-				bytes.push(0xc0 | (charcode >> 6), 0x80 | (charcode & 0x3f));
-			} else if (charcode < 0xd800 || charcode >= 0xe000) {
+			let charCode = utf8.charCodeAt(i);
+			if (charCode < 0x80) {
+				bytes.push(charCode);
+			} else if (charCode < 0x800) {
+				bytes.push(0xc0 | (charCode >> 6), 0x80 | (charCode & 0x3f));
+			} else if (charCode < 0xd800 || charCode >= 0xe000) {
 				bytes.push(
-					0xe0 | (charcode >> 12),
-					0x80 | ((charcode >> 6) & 0x3f),
-					0x80 | (charcode & 0x3f)
+					0xe0 | (charCode >> 12),
+					0x80 | ((charCode >> 6) & 0x3f),
+					0x80 | (charCode & 0x3f)
 				);
 			} else {
 				// surrogate pair
@@ -92,12 +92,12 @@ export class Converter {
 				// UTF-16 encodes 0x10000-0x10FFFF by
 				// subtracting 0x10000 and splitting the
 				// 20 bits of 0x0-0xFFFFF into two halves
-				charcode = 0x10000 + (((charcode & 0x3ff) << 10) | (utf8.charCodeAt(i) & 0x3ff));
+				charCode = 0x10000 + (((charCode & 0x3ff) << 10) | (utf8.charCodeAt(i) & 0x3ff));
 				bytes.push(
-					0xf0 | (charcode >> 18),
-					0x80 | ((charcode >> 12) & 0x3f),
-					0x80 | ((charcode >> 6) & 0x3f),
-					0x80 | (charcode & 0x3f)
+					0xf0 | (charCode >> 18),
+					0x80 | ((charCode >> 12) & 0x3f),
+					0x80 | ((charCode >> 6) & 0x3f),
+					0x80 | (charCode & 0x3f)
 				);
 			}
 		}
@@ -112,7 +112,7 @@ export class Converter {
 	 * @param startIndex The index to start in the bytes.
 	 * @param length The length of bytes to read.
 	 * @param reverse Reverse the combine direction.
-	 * @returns The array formated as hex.
+	 * @returns The array formatted as hex.
 	 */
 	public static bytesToHex(
 		array: ArrayLike<number>,

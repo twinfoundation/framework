@@ -1,0 +1,17 @@
+{
+	"language": "en-GB",
+	"ignorePaths": [
+		"**/node_modules/**",
+		"LICENSE",
+		"**/coverage/**",
+		"**/dist/**",
+		"**/tests/**",
+		"package.json",
+		"rollup.config.js",
+		"vitest.config.ts",
+		"tsconfig.json",
+		"typedoc.json"
+	],
+	"words": ["Stiftung", "GTSC", "nameof", "ttsc", "ttypescript", "tspc"],
+	"ignoreRegExpList": ["/from\\s+(['\"]).*\\1/", "/eslint-disable.*/"]
+}

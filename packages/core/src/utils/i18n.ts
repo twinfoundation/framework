@@ -9,7 +9,7 @@ import type { ILocaleDictionary } from "../models/ILocaleDictionary.js";
  */
 export class I18n {
 	/**
-	 * The default translaction.
+	 * The default translation.
 	 */
 	public static DEFAULT_LOCALE: string = "en";
 

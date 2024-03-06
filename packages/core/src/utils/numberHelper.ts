@@ -16,7 +16,7 @@ export class NumberHelper {
 		if (Is.stringValue(value)) {
 			// Use Number cast instead of parseFloat as this will return NaN
 			// if there are any invalid characters, parseFloat still works
-			// with 1.23kjhkjh
+			// with 1.23aaa
 			return Number(value);
 		}
 		return Number.NaN;
@@ -31,7 +31,7 @@ export class NumberHelper {
 		if (Is.stringValue(value) && /^[+-]?(\d+)$/.test(value)) {
 			// Use Number cast instead of parseInt as this will return NaN
 			// if there are any invalid characters, parseInt still works
-			// with 123kjhkjh
+			// with 123aaa
 			return Number(value);
 		}
 		return Number.NaN;

@@ -1,6 +1,6 @@
 # GTSC Framework Core
 
-This package contains helper methods and clases which implement some of the fundamental features required for a framework.
+This package contains helper methods and classes which implement some of the fundamental features required for a framework.
 
 - Guards
 - Type Checking

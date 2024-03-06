@@ -611,16 +611,16 @@ export class Validation {
 	/**
 	 * Append failures to the parent for a child object.
 	 * @param failures The validation failures.
-	 * @param childfailures The validation failures for the child.
+	 * @param childFailures The validation failures for the child.
 	 * @param childName The name of the child object.
 	 */
 	public static appendChildFailures(
 		failures: IValidationFailure[],
-		childfailures: IValidationFailure[],
+		childFailures: IValidationFailure[],
 		childName?: string
 	): void {
 		if (Is.stringValue(childName)) {
-			for (const childValidationFailure of childfailures) {
+			for (const childValidationFailure of childFailures) {
 				failures.push({
 					property: `${childName}.${childValidationFailure.property}`,
 					reason: childValidationFailure.reason,
@@ -628,7 +628,7 @@ export class Validation {
 				});
 			}
 		} else {
-			for (const childValidationFailure of childfailures) {
+			for (const childValidationFailure of childFailures) {
 				failures.push(childValidationFailure);
 			}
 		}

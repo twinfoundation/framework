@@ -218,7 +218,7 @@ export class Base64 {
 	/**
 	 * Convert the triplet to base 64.
 	 * @param num The number to convert.
-	 * @returns The base64 erncoding.
+	 * @returns The base64 encoding.
 	 * @internal
 	 */
 	private static tripletToBase64(num: number): string {
