@@ -60,7 +60,7 @@ export class BaseError extends Error implements IError {
 
 	/**
 	 * Construct an error from an existing one.
-	 * @param err The exising error.
+	 * @param err The existing error.
 	 * @returns The new instance.
 	 */
 	public static fromError(err: unknown): BaseError {

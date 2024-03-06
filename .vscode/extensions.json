@@ -1,9 +1,10 @@
 {
 	"recommendations": [
-		"vitest.explorer",
 		"davidanson.vscode-markdownlint",
 		"dbaeumer.vscode-eslint",
 		"ryanluker.vscode-coverage-gutters",
-		"esbenp.prettier-vscode"
+		"esbenp.prettier-vscode",
+		"streetsidesoftware.code-spell-checker",
+		"redhat.vscode-yaml"
 	]
 }

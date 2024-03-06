@@ -6,9 +6,9 @@
  * but it fails fast when there is an error.
  */
 import { spawn } from 'child_process';
-import FastGlob from 'fast-glob';
 import fs from 'fs/promises';
 import path from 'path';
+import FastGlob from 'fast-glob';
 
 /**
  * Execute the process.

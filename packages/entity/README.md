@@ -1,6 +1,6 @@
 # GTSC Framework Entity
 
-This package contains helper methods and clases for working with entities.
+This package contains helper methods and classes for working with entities.
 
 - Defining
 - Sorting

@@ -15,6 +15,26 @@ Sourced from https://github.com/beatgammit/base64-js.
 
 ## Methods
 
+### byteLength
+
+▸ **byteLength**(`base64`): `number`
+
+Get the byte length of the data.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `base64` | `string` | The base64 string. |
+
+#### Returns
+
+`number`
+
+The byte length of the data.
+
+___
+
 ### decode
 
 ▸ **decode**(`base64`): `Uint8Array`
