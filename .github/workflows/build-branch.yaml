@@ -1,9 +1,9 @@
-name: Build, Lint, Test, Docs
+name: Branch Build, Lint, Test, Docs
 
 on:
   pull_request:
-  push:
-  workflow_dispatch:
+    branches-ignore:
+      - main
 
 jobs:
   dist:
