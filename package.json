@@ -4,6 +4,7 @@
 	"description": "Framework packages for GTSC",
 	"author": "martyn.janes@iota.org",
 	"license": "Apache-2.0",
+	"private": true,
 	"engines": {
 		"node": ">=20.0.0"
 	},
