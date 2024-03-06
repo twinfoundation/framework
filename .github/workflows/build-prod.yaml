@@ -1,4 +1,4 @@
-name: Main Build, Lint, Test, Docs
+name: Build, Lint, Test, Docs Production
 
 on:
   push:

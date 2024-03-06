@@ -1,4 +1,4 @@
-name: Branch Build, Lint, Test, Docs
+name: Build, Lint, Test, Docs Branch
 
 on:
   pull_request:
