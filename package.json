@@ -2,6 +2,10 @@
 	"name": "@gtsc/framework",
 	"version": "0.0.1",
 	"description": "Framework packages for GTSC",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gtscio/framework.git"
+	},
 	"author": "martyn.janes@iota.org",
 	"license": "Apache-2.0",
 	"private": true,

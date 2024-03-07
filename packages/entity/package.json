@@ -4,7 +4,7 @@
 	"description": "Framework Entity packages for GTSC",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/gtscio/framework",
+		"url": "https://github.com/gtscio/framework.git",
 		"directory": "packages/entity"
 	},
 	"author": "martyn.janes@iota.org",
