@@ -52,7 +52,7 @@ jobs:
           cd packages/${{ github.event.inputs.package }}
           PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
           NEXT_VERSION="$PACKAGE_VERSION-next.${{ github.event.inputs.next }}"
-          npm pgk set version="$NEXT_VERSION"
+          npm pkg set version="$NEXT_VERSION"
 
       - name: Cleanup package properties
         run: |
