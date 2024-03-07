@@ -1,4 +1,4 @@
-name: Publish
+name: Publish Next
 
 on:
   workflow_dispatch:
@@ -12,12 +12,14 @@ on:
           - framework
           - nameof
           - nameof-transformer
+      next-version:
+        description: 'What is the next version e.g. -next.1'
+        default: -next.1
+        required: true
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-
-    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout
@@ -46,6 +48,6 @@ jobs:
       - name: Publish
         run: |
           cd packages/${{ github.event.inputs.package }}
-          npm publish --access public
+          npm publish --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

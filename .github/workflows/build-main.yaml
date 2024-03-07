@@ -1,8 +1,8 @@
-name: Build, Lint, Test, Docs Branch
+name: Build, Lint, Test, Docs Main
 
 on:
-  pull_request:
-    branches-ignore:
+  push:
+    branches:
       - main
 
 jobs:

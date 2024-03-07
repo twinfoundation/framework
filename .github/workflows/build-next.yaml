@@ -1,8 +1,8 @@
-name: Build, Lint, Test, Docs Production
+name: Build, Lint, Test, Docs Next
 
 on:
-  push:
-    branches:
+  pull_request:
+    branches-ignore:
       - main
 
 jobs:
