@@ -54,6 +54,12 @@ jobs:
           NEXT_VERSION="$PACKAGE_VERSION-next.${{ github.event.inputs.next }}"
           jq --arg v "$NEXT_VERSION" '.version = $v' package.json > "tmp.json" && mv "tmp.json" "package.json"
 
+      - name: Cleanup package properties
+        run: |
+          cd packages/${{ github.event.inputs.package }}
+          jq 'del(.scripts)' package.json > tmp.json && mv tmp.json package.json
+          jq 'del(.devDependencies)' package.json > tmp.json && mv tmp.json package.json
+
       - name: Publish
         run: |
           cd packages/${{ github.event.inputs.package }}

@@ -43,6 +43,12 @@ jobs:
           npm run lint
           npm run dist
 
+      - name: Cleanup package properties
+        run: |
+          cd packages/${{ github.event.inputs.package }}
+          jq 'del(.scripts)' package.json > tmp.json && mv tmp.json package.json
+          jq 'del(.devDependencies)' package.json > tmp.json && mv tmp.json package.json
+
       - name: Publish
         run: |
           cd packages/${{ github.event.inputs.package }}
