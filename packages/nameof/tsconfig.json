@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"module": "NodeNext",
-		"outDir": "dist/esm",
+		"outDir": "dist/es",
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"stripInternal": true,

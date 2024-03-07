@@ -23,7 +23,7 @@ Create a new instance of ConflictError.
 | `source` | `string` | The source of the error. |
 | `message` | `string` | The message as a code. |
 | `conflictId?` | `string` | The id that has conflicts. |
-| `conflicts?` | `string`[] | The conflicts that occured. |
+| `conflicts?` | `string`[] | The conflicts that occurred. |
 | `inner?` | `unknown` | The inner error if we have wrapped another error. |
 
 #### Returns
@@ -212,7 +212,7 @@ Construct an error from an existing one.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `err` | `unknown` | The exising error. |
+| `err` | `unknown` | The existing error. |
 
 #### Returns
 

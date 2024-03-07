@@ -1,18 +1,10 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
 import packageDetails from './package.json' with { type: 'json' };
 
-const plugins = [
-	commonjs({
-		ignoreDynamicRequires: true
-	}),
-	resolve({
-		preferBuiltins: true,
-		browser: process.env.BROWSER
-	})
-];
+const isEsm = process.env.MODULE === 'esm';
+
+const plugins = [];
 
 const globs = {};
 for (const dep in packageDetails.dependencies) {
@@ -20,16 +12,15 @@ for (const dep in packageDetails.dependencies) {
 }
 
 export default {
-	input: `./dist/esm/index.js`,
+	input: `./dist/es/index.js`,
 	output: {
-		file: `dist/cjs/index.cjs`,
-		format: 'cjs',
+		file: isEsm ? `dist/esm/index.mjs` : `dist/cjs/index.cjs`,
+		format: isEsm ? 'esm' : 'cjs',
 		name: packageDetails.name
 			.split('-')
 			.map((p) => p[0].toUpperCase() + p.slice(1))
 			.join(''),
 		compact: false,
-		sourcemap: 'inline',
 		exports: 'auto',
 		globals: globs,
 		exports: 'named'

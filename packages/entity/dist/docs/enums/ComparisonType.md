@@ -1,6 +1,6 @@
 # Enumeration: ComparisonType
 
-The types ofcomparisons available to comparators.
+The types of comparisons available to comparators.
 
 ## Enumeration Members
 

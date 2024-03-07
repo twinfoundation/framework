@@ -16,7 +16,7 @@ Class to handle validation operations.
 
 ### appendChildFailures
 
-▸ **appendChildFailures**(`failures`, `childfailures`, `childName?`): `void`
+▸ **appendChildFailures**(`failures`, `childFailures`, `childName?`): `void`
 
 Append failures to the parent for a child object.
 
@@ -25,7 +25,7 @@ Append failures to the parent for a child object.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures. |
-| `childfailures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures for the child. |
+| `childFailures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The validation failures for the child. |
 | `childName?` | `string` | The name of the child object. |
 
 #### Returns
