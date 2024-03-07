@@ -52,13 +52,13 @@ jobs:
           cd packages/${{ github.event.inputs.package }}
           PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
           NEXT_VERSION="$PACKAGE_VERSION-next.${{ github.event.inputs.next }}"
-          jq --arg v "$NEXT_VERSION" '.version = $v' package.json > "tmp.json" && mv "tmp.json" "package.json"
+          npm pgk set version="$NEXT_VERSION"
 
       - name: Cleanup package properties
         run: |
           cd packages/${{ github.event.inputs.package }}
-          jq 'del(.scripts)' package.json > tmp.json && mv tmp.json package.json
-          jq 'del(.devDependencies)' package.json > tmp.json && mv tmp.json package.json
+          npm pkg delete scripts
+          npm pkg delete devDependencies
 
       - name: Publish
         run: |
