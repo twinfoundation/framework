@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { IStructuredTypeFieldDescriptor } from "./IStructuredTypeFieldDescriptor.js";
+import type { IStructuredTypeFieldDescriptor } from "./IStructuredTypeFieldDescriptor";
 
 /**
  * Definition of an entity field.

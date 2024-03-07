@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Converter } from "./converter.js";
-import { Is } from "./is.js";
-import { GuardError } from "../errors/guardError.js";
+import { Converter } from "./converter";
+import { Is } from "./is";
+import { GuardError } from "../errors/guardError";
 
 /**
  * Class to handle guard operations for parameters.

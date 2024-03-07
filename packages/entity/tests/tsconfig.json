@@ -1,9 +1,6 @@
 {
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
-		"module": "ES2022",
-		"target": "ES2022",
-		"moduleResolution": "Bundler",
 		"types": ["vitest/globals"]
 	},
 	"include": ["../src/**/*.ts", "./**/*.ts"]

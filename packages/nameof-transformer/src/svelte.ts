@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { manual } from "./manual.js";
+import { manual } from "./manual";
 
 /**
  * Return a function that can be used as a svelte preprocessor.

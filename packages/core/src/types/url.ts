@@ -1,12 +1,12 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { nameof } from "@gtsc/nameof";
-import { GuardError } from "../errors/guardError.js";
-import type { IUrlParts } from "../models/IUrlParts.js";
-import type { IValidationFailure } from "../models/IValidationFailure.js";
-import { Coerce } from "../utils/coerce.js";
-import { Guards } from "../utils/guards.js";
-import { Is } from "../utils/is.js";
+import { GuardError } from "../errors/guardError";
+import type { IUrlParts } from "../models/IUrlParts";
+import type { IValidationFailure } from "../models/IValidationFailure";
+import { Coerce } from "../utils/coerce";
+import { Guards } from "../utils/guards";
+import { Is } from "../utils/is";
 
 /**
  * Class to help with urls.

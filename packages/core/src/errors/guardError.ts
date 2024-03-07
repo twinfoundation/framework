@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { nameof } from "@gtsc/nameof";
-import { BaseError } from "./baseError.js";
-import { Is } from "../utils/is.js";
+import { BaseError } from "./baseError";
+import { Is } from "../utils/is";
 
 /**
  * Class to handle errors which are triggered by data guards.

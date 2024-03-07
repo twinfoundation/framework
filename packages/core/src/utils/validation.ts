@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Is } from "./is.js";
-import { ValidationError } from "../errors/validationError.js";
-import type { IValidationFailure } from "../models/IValidationFailure.js";
+import { Is } from "./is";
+import { ValidationError } from "../errors/validationError";
+import type { IValidationFailure } from "../models/IValidationFailure";
 
 /**
  * Class to handle validation operations.

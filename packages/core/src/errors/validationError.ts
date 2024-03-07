@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 import { nameof } from "@gtsc/nameof";
-import { BaseError } from "./baseError.js";
-import type { IValidationFailure } from "../models/IValidationFailure.js";
+import { BaseError } from "./baseError";
+import type { IValidationFailure } from "../models/IValidationFailure";
 
 /**
  * Class to handle errors which are triggered by entity validation.

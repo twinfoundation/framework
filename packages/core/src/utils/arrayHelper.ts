@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Is } from "./is.js";
+import { Is } from "./is";
 
 /**
  * Class to help with arrays.

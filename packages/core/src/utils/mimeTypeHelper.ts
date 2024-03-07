@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-continue */
 /* eslint-disable no-bitwise */
-import { Converter } from "./converter.js";
-import { Is } from "./is.js";
+import { Converter } from "./converter";
+import { Is } from "./is";
 
 /**
  * Class to help with mime types.

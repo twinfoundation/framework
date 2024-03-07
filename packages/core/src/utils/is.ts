@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { DateTime } from "luxon";
-import { Converter } from "./converter.js";
+import { Converter } from "./converter";
 
 /**
  * Class to check types of objects.

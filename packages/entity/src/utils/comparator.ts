@@ -1,9 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { ArrayHelper, Is } from "@gtsc/core";
-import { ComparisonType } from "../models/comparisonType.js";
-import type { IComparator } from "../models/IComparator.js";
-import { LogicalOperator } from "../models/logicalOperator.js";
+import { ComparisonType } from "../models/comparisonType";
+import type { IComparator } from "../models/IComparator";
+import { LogicalOperator } from "../models/logicalOperator";
 
 /**
  * Class to perform comparison operations using comparators.

@@ -7,7 +7,7 @@
 		"**/dist/**",
 		"**/tests/**",
 		"package.json",
-		"rollup.config.js",
+		"rollup.config.mjs",
 		"vitest.config.ts",
 		"tsconfig.json",
 		"typedoc.json"

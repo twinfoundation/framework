@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { ComparisonType } from "./comparisonType.js";
-import type { LogicalOperator } from "./logicalOperator.js";
+import type { ComparisonType } from "./comparisonType";
+import type { LogicalOperator } from "./logicalOperator";
 
 /**
  * Interface defining comparison operator.

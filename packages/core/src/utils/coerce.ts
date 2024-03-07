@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 import { DateTime } from "luxon";
-import { Is } from "./is.js";
+import { Is } from "./is";
 
 /**
  * Coerce an object from one type to another.

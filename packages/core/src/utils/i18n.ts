@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { IntlMessageFormat } from "intl-messageformat";
-import { Is } from "./is.js";
-import type { ILocaleDictionary } from "../models/ILocaleDictionary.js";
+import { Is } from "./is";
+import type { ILocaleDictionary } from "../models/ILocaleDictionary";
 
 /**
  * Class to perform internationalization.

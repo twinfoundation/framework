@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { Is } from "@gtsc/core";
-import type { EntityPropertyDescriptorDataType } from "../models/entityPropertyDescriptorDataType.js";
+import type { EntityPropertyDescriptorDataType } from "../models/entityPropertyDescriptorDataType";
 
 /**
  * Class to perform sort operations.

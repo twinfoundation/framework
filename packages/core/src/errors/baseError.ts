@@ -1,9 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 
-import type { IError } from "../models/IError.js";
-import { Is } from "../utils/is.js";
-import { StringHelper } from "../utils/stringHelper.js";
+import type { IError } from "../models/IError";
+import { Is } from "../utils/is";
+import { StringHelper } from "../utils/stringHelper";
 
 /**
  * Class to handle errors.

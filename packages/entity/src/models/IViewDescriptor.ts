@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { IEntityDescriptor } from "./IEntityDescriptor.js";
-import type { IViewMemberDescriptor } from "./IViewMemberDescriptor.js";
+import type { IEntityDescriptor } from "./IEntityDescriptor";
+import type { IViewMemberDescriptor } from "./IViewMemberDescriptor";
 
 /**
  * Definition of a view.
