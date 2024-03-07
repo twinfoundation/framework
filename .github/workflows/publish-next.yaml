@@ -12,7 +12,7 @@ on:
           - framework
           - nameof
           - nameof-transformer
-      next-version:
+      next:
         description: 'What is the next version e.g. -next.1'
         default: -next.1
         required: true
@@ -46,6 +46,13 @@ jobs:
         run: |
           npm run lint
           npm run dist
+
+      - name: Patch package version
+        run: |
+          cd packages/${{ github.event.inputs.package }}
+          PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
+          NEXT_VERSION="$PACKAGE_VERSION${{ github.event.inputs.next }}"
+          jq --arg v "$NEXT_VERSION" '.version = $v' package.json > "tmp.json" && mv "tmp.json" "package.json"
 
       - name: Publish
         run: |
