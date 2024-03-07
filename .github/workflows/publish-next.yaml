@@ -13,8 +13,8 @@ on:
           - nameof
           - nameof-transformer
       next:
-        description: 'What is the next version e.g. -next.1'
-        default: -next.1
+        description: 'What is the next version e.g. 1 will be appended as -next.1'
+        default: 1
         required: true
 
 jobs:
@@ -51,7 +51,7 @@ jobs:
         run: |
           cd packages/${{ github.event.inputs.package }}
           PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
-          NEXT_VERSION="$PACKAGE_VERSION${{ github.event.inputs.next }}"
+          NEXT_VERSION="$PACKAGE_VERSION-next.${{ github.event.inputs.next }}"
           jq --arg v "$NEXT_VERSION" '.version = $v' package.json > "tmp.json" && mv "tmp.json" "package.json"
 
       - name: Publish

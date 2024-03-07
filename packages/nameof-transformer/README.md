@@ -14,10 +14,10 @@ You will also need to include the `@gtsc/nameof` to be able to reference the met
 npm install @gtsc/nameof-transformer -D
 ```
 
-## Examples
+## Configuration
 
-Usage of the APIs can be seen in the examples [./dist/docs/examples.md](./dist/docs/examples.md)
+Configuration of the package is shown in [dist/docs/configuration.md](dist/docs/configuration.md)
 
 ## Reference
 
-Detailed reference documentation for the API can be found in [./dist/docs/modules.md](./dist/docs/modules.md)
+Detailed reference documentation for the API can be found in [dist/docs/modules.md](dist/docs/modules.md)
