@@ -5,6 +5,7 @@
 		"LICENSE",
 		"**/coverage/**",
 		"**/dist/**",
+		"**/docs/reference/**",
 		"**/tests/**",
 		"package.json",
 		"rollup.config.mjs",

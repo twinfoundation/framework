@@ -1,7 +1,7 @@
 name: Build, Lint, Test, Docs Main
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
