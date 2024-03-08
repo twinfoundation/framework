@@ -1,4 +1,4 @@
-# Changelog
+# @gtsc/nameof - Changelog
 
 ## v0.0.1
 
