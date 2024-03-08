@@ -13,6 +13,22 @@
 		"tsconfig.json",
 		"typedoc.json"
 	],
-	"words": ["Stiftung", "GTSC", "nameof", "ttsc", "ttypescript", "tspc"],
+	"words": [
+		"Bech",
+		"GTSC",
+		"Hmac",
+		"Hotp",
+		"hram",
+		"Karatsuba",
+		"nameof",
+		"parallelisable",
+		"Stiftung",
+		"SUPERCOP",
+		"Totp",
+		"tspc",
+		"ttsc",
+		"ttypescript",
+		"vectorisable"
+	],
 	"ignoreRegExpList": ["/from\\s+(['\"]).*\\1/", "/eslint-disable.*/"]
 }

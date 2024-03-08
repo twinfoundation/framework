@@ -42,7 +42,8 @@
 		"packages/nameof-transformer",
 		"packages/nameof",
 		"packages/core",
-		"packages/entity"
+		"packages/entity",
+		"packages/crypto"
 	],
 	"type": "module"
 }

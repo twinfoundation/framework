@@ -30,4 +30,8 @@ describe("ArrayHelper", () => {
 	test("can match when same lengths and multiple same values", () => {
 		expect(ArrayHelper.matches([1, 2], [1, 2])).toEqual(true);
 	});
+
+	test("can match when same lengths and multiple same values in typed array", () => {
+		expect(ArrayHelper.matches(new Uint8Array([1, 2]), new Uint8Array([1, 2]))).toEqual(true);
+	});
 });

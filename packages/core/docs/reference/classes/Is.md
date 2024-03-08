@@ -526,6 +526,26 @@ True if the value is a string in ISO 8601 time format.
 
 ___
 
+### typedArray
+
+▸ **typedArray**(`value`): value is Int8Array \| Uint8Array \| Int16Array \| Uint16Array \| Int32Array \| Uint32Array \| Float32Array \| Float64Array
+
+Is the value a TypedArray.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `unknown` | The value to test. |
+
+#### Returns
+
+value is Int8Array \| Uint8Array \| Int16Array \| Uint16Array \| Int32Array \| Uint32Array \| Float32Array \| Float64Array
+
+True if the value is a TypedArray.
+
+___
+
 ### uint8Array
 
 ▸ **uint8Array**(`value`): value is Uint8Array

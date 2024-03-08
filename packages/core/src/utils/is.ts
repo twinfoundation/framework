@@ -263,6 +263,25 @@ export class Is {
 	}
 
 	/**
+	 * Is the value a TypedArray.
+	 * @param value The value to test.
+	 * @returns True if the value is a TypedArray.
+	 */
+	public static typedArray(
+		value: unknown
+	): value is
+		| Uint8Array
+		| Int8Array
+		| Uint16Array
+		| Int16Array
+		| Uint32Array
+		| Int32Array
+		| Float32Array
+		| Float64Array {
+		return value instanceof Object.getPrototypeOf(Uint8Array);
+	}
+
+	/**
 	 * Is the property a function.
 	 * @param value The value to test.
 	 * @returns True if the value is a function.

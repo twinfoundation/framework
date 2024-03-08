@@ -4,11 +4,13 @@
 
 - [AlreadyExistsError](classes/AlreadyExistsError.md)
 - [ArrayHelper](classes/ArrayHelper.md)
+- [Base32](classes/Base32.md)
 - [Base64](classes/Base64.md)
 - [BaseError](classes/BaseError.md)
 - [Coerce](classes/Coerce.md)
 - [ConfigHelper](classes/ConfigHelper.md)
 - [ConflictError](classes/ConflictError.md)
+- [Converter](classes/Converter.md)
 - [FilenameHelper](classes/FilenameHelper.md)
 - [GeneralError](classes/GeneralError.md)
 - [GuardError](classes/GuardError.md)

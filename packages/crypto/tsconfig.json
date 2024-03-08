@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"target": "ES2022",
+		"outDir": "dist/es",
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"stripInternal": true,
+		"noEmitHelpers": true,
+		"sourceMap": true,
+		"sourceRoot": "./src",
+		"declaration": true,
+		"declarationDir": "dist/types",
+		"plugins": [{ "transform": "@gtsc/nameof-transformer" }]
+	},
+	"include": ["src/**/*.ts"]
+}

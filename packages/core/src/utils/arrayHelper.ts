@@ -16,7 +16,10 @@ export class ArrayHelper {
 		if (Is.empty(arr1) && Is.empty(arr2)) {
 			return true;
 		}
-		if (!Is.array(arr1) || !Is.array(arr2) || arr1.length !== arr2.length) {
+		if (!((Is.array(arr1) && Is.array(arr2)) || (Is.typedArray(arr1) && Is.typedArray(arr2)))) {
+			return false;
+		}
+		if (arr1.length !== arr2.length) {
 			return false;
 		}
 		for (let i = 0; i < arr1.length; i++) {

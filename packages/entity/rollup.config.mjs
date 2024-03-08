@@ -27,7 +27,7 @@ export default {
 	},
 	external: ['fs/promises'].concat(Object.keys(globs)),
 	onwarn: (message) => {
-		if (!['EMPTY_BUNDLE'].includes(message.code)) {
+		if (!['EMPTY_BUNDLE', 'CIRCULAR_DEPENDENCY'].includes(message.code)) {
 			console.error(message);
 			// eslint-disable-next-line unicorn/no-process-exit
 			process.exit(1);

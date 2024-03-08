@@ -1,0 +1,71 @@
+{
+	"error": {
+		"validation": {
+			"empty": "",
+			"notEmpty": "",
+			"notRecognised": "",
+			"beText": "",
+			"beNumber": "",
+			"beWholeNumber": "",
+			"beBoolean": "",
+			"beDate": "",
+			"beDateTime": "",
+			"beTime": "",
+			"beMilliseconds": "",
+			"beSeconds": "",
+			"beObject": "",
+			"beArray": "",
+			"beArrayValue": "",
+			"beByteArray": "",
+			"beUrn": "",
+			"beUrl": "",
+			"beJSON": "",
+			"beEmail": "",
+			"failed": "",
+			"failedObject": ""
+		},
+		"guard": {
+			"string": "",
+			"stringEmpty": "",
+			"stringHex": "",
+			"stringHexLength": "",
+			"number": "",
+			"integer": "",
+			"boolean": "",
+			"date": "",
+			"milliseconds": "",
+			"seconds": "",
+			"objectUndefined": "",
+			"object": "",
+			"objectValue": "",
+			"array": "",
+			"arrayValue": "",
+			"arrayOneOf": "",
+			"uint8Array": "",
+			"function": "",
+			"urn": "",
+			"url": "",
+			"email": ""
+		},
+		"objectHelper": {
+			"failedBytesToJSON": ""
+		},
+		"configHelper": {
+			"missingEnvironmentVariable": ""
+		},
+		"common": {
+			"notImplementedMethod": "",
+			"validation": ""
+		}
+	},
+	"errorNames": {
+		"error": "",
+		"generalError": "",
+		"guardError": "",
+		"conflictError": "",
+		"notFoundError": "",
+		"alreadyExistsError": "",
+		"notImplementedError": "",
+		"validationError": ""
+	}
+}
