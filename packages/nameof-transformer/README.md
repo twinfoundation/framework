@@ -16,8 +16,12 @@ npm install @gtsc/nameof-transformer -D
 
 ## Configuration
 
-Configuration of the package is shown in [dist/docs/configuration.md](dist/docs/configuration.md)
+Configuration of the package is shown in [docs/configuration.md](docs/configuration.md)
 
 ## Reference
 
-Detailed reference documentation for the API can be found in [dist/docs/modules.md](dist/docs/modules.md)
+Detailed reference documentation for the API can be found in [docs/reference/modules.md](docs/reference/modules.md)
+
+## Changelog
+
+The changes between each version can be found in [docs/changelog.md](docs/changelog.md)

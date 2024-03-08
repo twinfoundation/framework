@@ -1,11 +1,10 @@
 {
 	"entryPoints": ["src/index.ts"],
-	"out": "./dist/docs",
+	"out": "./docs/reference",
 	"hideGenerator": true,
 	"hideBreadcrumbs": true,
 	"hideInPageTOC": true,
 	"githubPages": false,
 	"disableSources": true,
-	"entryDocument": "overview.md",
 	"plugin": ["typedoc-plugin-markdown"]
 }

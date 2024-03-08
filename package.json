@@ -17,7 +17,7 @@
 		"format": "prettier --config .prettierrc --write .",
 		"lint:format": "prettier --config .prettierrc --check .",
 		"lint:code": "eslint . --ext .js,.mjs,.ts",
-		"lint:markdown": "markdownlint **/*.md --ignore **/node_modules/** --ignore **/dist/docs/**",
+		"lint:markdown": "markdownlint **/*.md --ignore **/node_modules/** --ignore **/docs/reference/**",
 		"lint:spell": "cspell ** --no-progress",
 		"lint": "npm run lint:format && npm run lint:code && npm run lint:markdown && npm run lint:spell"
 	},
@@ -28,7 +28,7 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-header": "^3.1.1",
 		"eslint-plugin-import": "^2.29.1",
-		"eslint-plugin-jsdoc": "^48.2.0",
+		"eslint-plugin-jsdoc": "^48.2.1",
 		"eslint-plugin-prettier": "^5.1.3",
 		"eslint-plugin-promise": "^6.1.1",
 		"eslint-plugin-simple-import-sort": "^12.0.0",

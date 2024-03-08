@@ -20,14 +20,14 @@
 		"bundle:esm": "rollup --config rollup.config.mjs --environment MODULE:esm",
 		"bundle:cjs": "rollup --config rollup.config.mjs --environment MODULE:cjs",
 		"bundle": "npm run bundle:esm && npm run bundle:cjs",
-		"docs:clean": "rimraf dist/docs",
+		"docs:clean": "rimraf docs/reference",
 		"docs:generate": "typedoc",
-		"docs:copy": "copyfiles -u 1 docs/**/* dist/docs",
-		"docs": "npm run docs:clean && npm run docs:generate && npm run docs:copy",
+		"docs:finalise": "rimraf docs/reference/README.md",
+		"docs": "npm run docs:clean && npm run docs:generate && npm run docs:finalise",
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"typescript": "^5.3.3"
+		"typescript": "^5.4.2"
 	},
 	"devDependencies": {
 		"@gtsc/nameof-transformer": "^0.0.1",
@@ -38,7 +38,7 @@
 		"rollup-plugin-typescript2": "^0.36.0",
 		"typedoc": "^0.25.11",
 		"typedoc-plugin-markdown": "^3.17.1",
-		"typescript": "^5.3.3",
+		"typescript": "^5.4.2",
 		"vitest": "^1.3.1"
 	},
 	"main": "./dist/cjs/index.cjs",
@@ -51,9 +51,9 @@
 	},
 	"files": [
 		"dist/cjs",
-		"dist/docs",
 		"dist/esm",
 		"dist/types",
-		"CHANGELOG.md"
+		"locales",
+		"docs"
 	]
 }
