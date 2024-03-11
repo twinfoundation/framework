@@ -8,7 +8,7 @@
 		},
 		{
 			"name": "nameof",
-			"description": "Provides the definitions for the methods which are processed by the nameof-transformer"
+			"description": "Provides the definitions for the methods which are processed by the nameof-transformer."
 		},
 		{
 			"name": "core",
