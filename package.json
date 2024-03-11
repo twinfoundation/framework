@@ -43,7 +43,9 @@
 		"packages/nameof",
 		"packages/core",
 		"packages/entity",
-		"packages/crypto"
+		"packages/crypto",
+		"packages/image",
+		"packages/qr"
 	],
 	"type": "module"
 }

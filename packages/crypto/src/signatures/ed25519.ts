@@ -154,13 +154,13 @@ export class Ed25519 {
 		sha512.update(encodedR);
 		sha512.update(privateKey.subarray(32));
 		sha512.update(block);
-		const hramDigest = sha512.digest();
+		const hRamDigest = sha512.digest();
 
-		const hramDigestReduced = new Uint8Array(32);
-		scalarReduce(hramDigestReduced, hramDigest);
+		const hRamDigestReduced = new Uint8Array(32);
+		scalarReduce(hRamDigestReduced, hRamDigest);
 
 		const s = new Uint8Array(32);
-		scalarMulAdd(s, hramDigestReduced, expandedSecretKey, blockDigestReduced);
+		scalarMulAdd(s, hRamDigestReduced, expandedSecretKey, blockDigestReduced);
 
 		const signature = new Uint8Array(Ed25519.SIGNATURE_SIZE);
 		signature.set(encodedR);
