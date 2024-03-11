@@ -18,7 +18,7 @@ export default {
 		format: isEsm ? 'esm' : 'cjs',
 		name: packageDetails.name
 			.split('-')
-			.map((p) => p[0].toUpperCase() + p.slice(1))
+			.map(p => p[0].toUpperCase() + p.slice(1))
 			.join(''),
 		compact: false,
 		exports: 'auto',
@@ -26,8 +26,8 @@ export default {
 		exports: 'named'
 	},
 	external: ['fs/promises'].concat(Object.keys(globs)),
-	onwarn: (message) => {
-		if (!['EMPTY_BUNDLE'].includes(message.code)) {
+	onwarn: message => {
+		if (!['EMPTY_BUNDLE', 'CIRCULAR_DEPENDENCY'].includes(message.code)) {
 			console.error(message);
 			// eslint-disable-next-line unicorn/no-process-exit
 			process.exit(1);

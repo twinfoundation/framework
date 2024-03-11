@@ -13,5 +13,7 @@
 		"editor.codeActionsOnSave": {
 			"source.fixAll": "always"
 		}
-	}
+	},
+	"prettier.configPath": ".prettierrc",
+	"cSpell.autoFormatConfigFile": true
 }

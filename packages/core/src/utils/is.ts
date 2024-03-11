@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { DateTime } from "luxon";
-import { Converter } from "./converter";
+import { HexHelper } from "../helpers/hexHelper";
 
 /**
  * Class to check types of objects.
@@ -67,7 +67,7 @@ export class Is {
 	 * @returns True if the value is a hex string.
 	 */
 	public static stringHex(value: unknown): value is string {
-		return Is.string(value) && Converter.isHex(value);
+		return Is.string(value) && HexHelper.isHex(value);
 	}
 
 	/**
@@ -260,6 +260,25 @@ export class Is {
 	 */
 	public static uint8Array(value: unknown): value is Uint8Array {
 		return value instanceof Uint8Array;
+	}
+
+	/**
+	 * Is the value a TypedArray.
+	 * @param value The value to test.
+	 * @returns True if the value is a TypedArray.
+	 */
+	public static typedArray(
+		value: unknown
+	): value is
+		| Uint8Array
+		| Int8Array
+		| Uint16Array
+		| Int16Array
+		| Uint32Array
+		| Int32Array
+		| Float32Array
+		| Float64Array {
+		return value instanceof Object.getPrototypeOf(Uint8Array);
 	}
 
 	/**
