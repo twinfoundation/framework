@@ -35,7 +35,7 @@ function visitNodeAndChildren(context: ts.TransformationContext, node: ts.Node):
 		return node;
 	}
 
-	node = ts.visitEachChild(node, (childNode) => visitNodeAndChildren(context, childNode), context);
+	node = ts.visitEachChild(node, childNode => visitNodeAndChildren(context, childNode), context);
 
 	return visitNode(node);
 }

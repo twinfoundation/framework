@@ -11,8 +11,31 @@
 		"rollup.config.mjs",
 		"vitest.config.ts",
 		"tsconfig.json",
-		"typedoc.json"
+		"typedoc.json",
+		".eslintrc.cjs",
+		"**/wordlists/**"
 	],
-	"words": ["Stiftung", "GTSC", "nameof", "ttsc", "ttypescript", "tspc"],
+	"words": [
+		"Bech",
+		"chacha",
+		"decryptor",
+		"encryptor",
+		"GTSC",
+		"Hmac",
+		"Hotp",
+		"hram",
+		"Karatsuba",
+		"nameof",
+		"otpauth",
+		"parallelisable",
+		"polymod",
+		"Stiftung",
+		"SUPERCOP",
+		"Totp",
+		"tspc",
+		"ttsc",
+		"ttypescript",
+		"vectorisable"
+	],
 	"ignoreRegExpList": ["/from\\s+(['\"]).*\\1/", "/eslint-disable.*/"]
 }

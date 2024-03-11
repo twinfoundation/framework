@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
-import { HexHelper } from "./hexHelper";
 import { Base64 } from "../encoding/base64";
+import { HexHelper } from "../helpers/hexHelper";
 
 /**
  * Convert arrays to and from different formats.
@@ -186,21 +186,6 @@ export class Converter {
 	 */
 	public static hexToUtf8(hex: string): string {
 		return Converter.bytesToUtf8(Converter.hexToBytes(HexHelper.stripPrefix(hex)));
-	}
-
-	/**
-	 * Is the data hex format.
-	 * @param value The value to test.
-	 * @param allowPrefix Allow the hex to have the 0x prefix.
-	 * @returns True if the string is hex.
-	 */
-	public static isHex(value: string, allowPrefix: boolean = false): boolean {
-		const localHex = allowPrefix ? HexHelper.stripPrefix(value) : value;
-
-		if (localHex.length % 2 === 1) {
-			return false;
-		}
-		return /^[\da-f]+$/g.test(localHex);
 	}
 
 	/**

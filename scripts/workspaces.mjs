@@ -95,4 +95,4 @@ async function fileExists(filename) {
 	}
 }
 
-run().catch((err) => console.error(err));
+run().catch(err => console.error(err));

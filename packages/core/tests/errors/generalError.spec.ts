@@ -6,6 +6,7 @@ import { Is } from "../../src/utils/is";
 
 describe("GeneralError", () => {
 	test("can construct", () => {
+		// eslint-disable-next-line no-restricted-syntax
 		const error = new GeneralError("foo", "extended", { bar: 1 }, new Error("bar"));
 		expect(error.source).toEqual("foo");
 		expect(error.name).toEqual("GeneralError");

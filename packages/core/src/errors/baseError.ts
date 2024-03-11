@@ -1,9 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 
+import { StringHelper } from "../helpers/stringHelper";
 import type { IError } from "../models/IError";
 import { Is } from "../utils/is";
-import { StringHelper } from "../utils/stringHelper";
 
 /**
  * Class to handle errors.
@@ -191,7 +191,7 @@ export class BaseError extends Error implements IError {
 	 * @returns True if the error has the name.
 	 */
 	public static someErrorName(error: unknown, name: string | RegExp): error is BaseError {
-		return BaseError.flatten(error).some((e) => BaseError.isErrorName(e, name));
+		return BaseError.flatten(error).some(e => BaseError.isErrorName(e, name));
 	}
 
 	/**
@@ -201,7 +201,7 @@ export class BaseError extends Error implements IError {
 	 * @returns True if the error has the name.
 	 */
 	public static someErrorMessage(error: unknown, message: string | RegExp): error is BaseError {
-		return BaseError.flatten(error).some((e) => BaseError.isErrorMessage(e, message));
+		return BaseError.flatten(error).some(e => BaseError.isErrorMessage(e, message));
 	}
 
 	/**
@@ -211,7 +211,7 @@ export class BaseError extends Error implements IError {
 	 * @returns True if the error has the name.
 	 */
 	public static someErrorCode(error: unknown, code: string | RegExp): error is BaseError {
-		return BaseError.flatten(error).some((e) => BaseError.isErrorCode(e, code));
+		return BaseError.flatten(error).some(e => BaseError.isErrorCode(e, code));
 	}
 
 	/**

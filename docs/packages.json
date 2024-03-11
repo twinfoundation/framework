@@ -1,0 +1,26 @@
+{
+	"category": "framework",
+	"label": "Framework",
+	"packages": [
+		{
+			"name": "nameof-transformer",
+			"description": "A TypeScript transformer which converts types and properties to their actual name for use at runtime."
+		},
+		{
+			"name": "nameof",
+			"description": "Provides the definitions for the methods which are processed by the nameof-transformer."
+		},
+		{
+			"name": "core",
+			"description": "Helper methods/classes for data type checking/validation/guarding/error handling."
+		},
+		{
+			"name": "entity",
+			"description": "Helpers for defining and working with entities."
+		},
+		{
+			"name": "crypto",
+			"description": "Contains helper methods and classes which implement cryptographic functions."
+		}
+	]
+}

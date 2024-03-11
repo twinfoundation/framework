@@ -32,11 +32,11 @@ module.exports = {
 	root: true,
 	rules: {
 		'accessor-pairs': ['error'],
-		'array-bracket-newline': ['error'],
+		'array-bracket-newline': ['off'],
 		'array-bracket-spacing': ['error'],
 		'array-element-newline': ['off'],
 		'arrow-body-style': ['error'],
-		'arrow-parens': ['error'],
+		'arrow-parens': ['error', 'as-needed'],
 		'arrow-spacing': ['error'],
 		'block-scoped-var': ['error'],
 		'block-spacing': ['error'],
@@ -150,7 +150,7 @@ module.exports = {
 		'no-control-regex': ['off'],
 		'no-debugger': ['error'],
 		'no-delete-var': ['error'],
-		'no-div-regex': ['error'],
+		'no-div-regex': ['off'],
 		'no-dupe-args': ['off'],
 		'no-dupe-class-members': ['off'],
 		'no-dupe-else-if': ['error'],
@@ -218,7 +218,24 @@ module.exports = {
 		'no-restricted-globals': ['error'],
 		'no-restricted-imports': ['error'],
 		'no-restricted-properties': ['error'],
-		'no-restricted-syntax': ['error'],
+		'no-restricted-syntax': [
+			'error',
+			{
+				selector: "NewExpression[callee.name='Error']",
+				message:
+					'new Error is disallowed as it is not specific enough, and bypasses the i18n formatting'
+			},
+			{
+				selector: "ImportDeclaration[source.value='..']",
+				message:
+					'Importing from ".." is not allowed, use specific file import instead to avoid circular dependencies'
+			},
+			{
+				selector: "ImportDeclaration[source.value='.']",
+				message:
+					'Importing from "." is not allowed, use specific file import instead to avoid circular dependencies'
+			}
+		],
 		'no-return-assign': ['error'],
 		'no-return-await': ['off'],
 		'no-script-url': ['error'],
@@ -490,7 +507,8 @@ module.exports = {
 		{
 			files: ['*.js', '*.cjs', '*.mjs'],
 			rules: {
-				'no-shadow': ['error']
+				'no-shadow': ['error'],
+				'no-restricted-syntax': ['off']
 			}
 		},
 		{

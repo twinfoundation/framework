@@ -2,11 +2,21 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 /* eslint-disable no-mixed-operators */
+
+import { nameof } from "@gtsc/nameof";
+import { GeneralError } from "../errors/generalError";
+
 /**
  * Class to help with base64 Encoding/Decoding.
  * Sourced from https://github.com/beatgammit/base64-js.
  */
 export class Base64 {
+	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<Base64>();
+
 	/**
 	 * Alphabet table for encoding.
 	 * @internal
@@ -200,7 +210,7 @@ export class Base64 {
 		const len = base64.length;
 
 		if (len % 4 > 0) {
-			throw new Error("Invalid string. Length must be a multiple of 4");
+			throw new GeneralError(Base64._CLASS_NAME, "length4Multiple", { value: len });
 		}
 
 		// Trim off extra bytes after placeholder bytes are found
