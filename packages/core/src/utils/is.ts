@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { DateTime } from "luxon";
-import { Converter } from "./converter";
+import { HexHelper } from "../helpers/hexHelper";
 
 /**
  * Class to check types of objects.
@@ -67,7 +67,7 @@ export class Is {
 	 * @returns True if the value is a hex string.
 	 */
 	public static stringHex(value: unknown): value is string {
-		return Is.string(value) && Converter.isHex(value);
+		return Is.string(value) && HexHelper.isHex(value);
 	}
 
 	/**

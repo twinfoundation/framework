@@ -87,19 +87,19 @@ export class ProjectiveGroupElement {
 	 * @param s The bytes.
 	 */
 	public toBytes(s: Uint8Array): void {
-		const recip = new FieldElement();
+		const recipient = new FieldElement();
 		const x = new FieldElement();
 		const y = new FieldElement();
 
-		recip.invert(this.Z);
-		x.mul(this.X, recip);
-		y.mul(this.Y, recip);
+		recipient.invert(this.Z);
+		x.mul(this.X, recipient);
+		y.mul(this.Y, recipient);
 		y.toBytes(s);
 		s[31] ^= x.isNegative() << 7;
 	}
 
 	/**
-	 * GeDoubleScalarMultVartime sets r = a*A + b*B
+	 * GeDoubleScalarMultiplyVarTime sets r = a*A + b*B
 	 * where a = a[0]+256*a[1]+...+256^31 a[31]
 	 * and b = b[0]+256*b[1]+...+256^31 b[31]
 	 * B is the Ed25519 base point (x,4/5) with x positive.

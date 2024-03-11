@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-continue */
 /* eslint-disable no-bitwise */
-import { Converter } from "./converter";
-import { Is } from "./is";
+import { Converter } from "../utils/converter";
+import { Is } from "../utils/is";
 
 /**
  * Class to help with mime types.
@@ -140,7 +140,7 @@ export class MimeTypeHelper {
 	 * @internal
 	 */
 	private static checkText(data: Uint8Array, texts: string[], startOffset = 0): boolean {
-		return texts.some((text) =>
+		return texts.some(text =>
 			MimeTypeHelper.checkBytes(data, Array.from(Converter.utf8ToBytes(text)), startOffset)
 		);
 	}

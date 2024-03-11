@@ -3,7 +3,8 @@
 		"guard": {
 			"length32Multiple": "Property \"{property}\" length should be a multiple of 32, it is \"{value}\"",
 			"lengthEntropy": "Property \"{property}\" length should be a multiple of 4, >=16 and <= 32, it is \"{value}\"",
-			"length3Multiple": "Property \"{property}\" length should be a multiple of 3, it is \"{value}\""
+			"length3Multiple": "Property \"{property}\" length should be a multiple of 3, it is \"{value}\"",
+			"greaterThan0": "Property \"{property}\" must be greater than zero, it is \"{value}\""
 		},
 		"bip39": {
 			"missingMnemonicWord": "The mnemonic contains a word not in the wordlist, \"{value}\"",
@@ -20,6 +21,9 @@
 			"outputLength64": "The output length should be between 1 and 64, it is \"{outputLength}\"",
 			"keyLength64": "The key length should be between 1 and 64, it is \"{keyLength}\""
 		},
+		"sha1": {
+			"alreadyFinalised": "The hash has already been finalised"
+		},
 		"sha512": {
 			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\"",
 			"alreadyFinalised": "The hash has already been finalised"
@@ -27,6 +31,31 @@
 		"sha256": {
 			"bitSize": "Only 224 or 256 bits are supported, it is \"{bitSize}\"",
 			"alreadyFinalised": "The hash has already been finalised"
+		},
+		"base32": {
+			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"
+		},
+		"base64": {
+			"length4Multiple": "Invalid length should be a multiple of 4, it is \"{value}\""
+		},
+		"bech64": {
+			"noSeparator": "There is no separator \"{value}\" in the data",
+			"separatorPos": "The separator position is \"{value}\", which is too early in the string",
+			"separatorNoSpace": "The separator position is \"{value}\", which doesn't leave enough space for data",
+			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset",
+			"excessPadding": "The data contains excess padding",
+			"nonZeroPadding": "The data contains non-zero padding"
+		},
+		"pbkdf2": {
+			"keyTooLong": "The requested key length \"{keyLength}\" is too long, based on the \"{macLength}\""
+		},
+		"chaCha20Poly1305": {
+			"noAadWithData": "You can not set the aad when there is already data",
+			"noAuthTag": "Can not finalise when the auth tag is not set",
+			"authenticationFailed": "The data could not be authenticated",
+			"authTagDecrypting": "Can not get the auth tag when decrypting",
+			"authTagEncrypting": "Can not set the auth tag when encrypting",
+			"noAuthTagSet": "The auth tag has not been set"
 		}
 	}
 }

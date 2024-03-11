@@ -1,6 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
+/* eslint-disable no-bitwise */
 
+import { GeneralError } from "@gtsc/core";
+import { nameof } from "@gtsc/nameof";
 import { ChaCha20 } from "./chaCha20";
 import { Poly1305 } from "../macs/poly1305";
 import { BitHelper } from "../utils/bitHelper";
@@ -9,6 +12,12 @@ import { BitHelper } from "../utils/bitHelper";
  * Implementation of the ChaCha20Poly1305 cipher.
  */
 export class ChaCha20Poly1305 {
+	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<ChaCha20Poly1305>();
+
 	/**
 	 * Instance of chacha20.
 	 * @internal
@@ -90,10 +99,11 @@ export class ChaCha20Poly1305 {
 	/**
 	 * Set the AAD.
 	 * @param aad The aad to set.
+	 * @throws GeneralError if the aad is set after data.
 	 */
 	public setAAD(aad: Uint8Array): void {
 		if (this._hasData) {
-			throw new Error("You can not set the aad when there is already data");
+			throw new GeneralError(ChaCha20Poly1305._CLASS_NAME, "noAadWithData");
 		}
 		this._aadLength = aad.length;
 		this._poly.update(aad);
@@ -128,10 +138,12 @@ export class ChaCha20Poly1305 {
 
 	/**
 	 * Finalise the data.
+	 * @throws GeneralError if the auth tag is not set when decrypting.
+	 * @throws GeneralError if the authentication fails.
 	 */
 	public final(): void {
 		if (this._decrypt && !this._authTag) {
-			throw new Error("Can not finalise when the auth tag is not set");
+			throw new GeneralError(ChaCha20Poly1305._CLASS_NAME, "noAuthTag");
 		}
 
 		const padLength = this.padLength(this._cipherLength);
@@ -146,7 +158,7 @@ export class ChaCha20Poly1305 {
 		const tag = this._poly.digest();
 		if (this._decrypt) {
 			if (this._authTag && this.xorTest(tag, this._authTag)) {
-				throw new Error("The data could not be authenticated");
+				throw new GeneralError(ChaCha20Poly1305._CLASS_NAME, "authenticationFailed");
 			}
 		} else {
 			this._authTag = tag;
@@ -156,13 +168,15 @@ export class ChaCha20Poly1305 {
 	/**
 	 * Get the auth tag.
 	 * @returns The auth tag.
+	 * @throws GeneralError if trying to get the auth tag while decrypting.
+	 * @throws GeneralError if the auth tag is not set.
 	 */
 	public getAuthTag(): Uint8Array {
 		if (this._decrypt) {
-			throw new Error("Can not get the auth tag when decrypting");
+			throw new GeneralError(ChaCha20Poly1305._CLASS_NAME, "authTagDecrypting");
 		}
 		if (!this._authTag) {
-			throw new Error("The auth tag has not been set");
+			throw new GeneralError(ChaCha20Poly1305._CLASS_NAME, "noAuthTag");
 		}
 
 		return this._authTag;
@@ -171,12 +185,13 @@ export class ChaCha20Poly1305 {
 	/**
 	 * Set the auth tag.
 	 * @param authTag Set the auth tag.
+	 * @throws GeneralError if trying to set the auth tag while encrypting.
 	 */
 	public setAuthTag(authTag: Uint8Array): void {
 		if (this._decrypt) {
 			this._authTag = authTag;
 		} else {
-			throw new Error("Can not set the auth tag when encrypting");
+			throw new GeneralError(ChaCha20Poly1305._CLASS_NAME, "authTagEncrypting");
 		}
 	}
 

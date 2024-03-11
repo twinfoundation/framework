@@ -2,10 +2,19 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 
+import { GeneralError } from "@gtsc/core";
+import { nameof } from "@gtsc/nameof";
+
 /**
  * Perform a SHA-1 hash on the data.
  */
 export class Sha1 {
+	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<Sha1>();
+
 	/**
 	 * Extra constants.
 	 * @internal
@@ -22,7 +31,7 @@ export class Sha1 {
 	 * Blocks.
 	 * @internal
 	 */
-	private readonly _blocks: number[] = [];
+	private readonly _blocks: number[];
 
 	/**
 	 * H0.
@@ -136,7 +145,7 @@ export class Sha1 {
 	 */
 	public update(message: Uint8Array): Sha1 {
 		if (this._finalized) {
-			throw new Error("The hash has already been finalized.");
+			throw new GeneralError(Sha1._CLASS_NAME, "alreadyFinalised");
 		}
 		let index = 0;
 		let i;

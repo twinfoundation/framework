@@ -14,6 +14,14 @@ Finalise the data.
 
 `void`
 
+**`Throws`**
+
+GeneralError if the auth tag is not set when decrypting.
+
+**`Throws`**
+
+GeneralError if the authentication fails.
+
 ___
 
 ### getAuthTag
@@ -27,6 +35,14 @@ Get the auth tag.
 `Uint8Array`
 
 The auth tag.
+
+**`Throws`**
+
+GeneralError if trying to get the auth tag while decrypting.
+
+**`Throws`**
+
+GeneralError if the auth tag is not set.
 
 ___
 
@@ -46,6 +62,10 @@ Set the AAD.
 
 `void`
 
+**`Throws`**
+
+GeneralError if the aad is set after data.
+
 ___
 
 ### setAuthTag
@@ -63,6 +83,10 @@ Set the auth tag.
 #### Returns
 
 `void`
+
+**`Throws`**
+
+GeneralError if trying to set the auth tag while encrypting.
 
 ___
 

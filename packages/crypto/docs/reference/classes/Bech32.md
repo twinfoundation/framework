@@ -52,6 +52,10 @@ Decode a bech32 string to 5 bit array.
 
 The decoded data or undefined if it could not be decoded.
 
+**`Throws`**
+
+GeneralError if the bech32 string is invalid.
+
 ___
 
 ### encode

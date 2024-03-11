@@ -74,6 +74,6 @@ export class Bip32Path {
 	 * @returns The segments as numbers.
 	 */
 	public numberSegments(): number[] {
-		return this._path.map((p) => Number.parseInt(p, 10));
+		return this._path.map(p => Number.parseInt(p, 10));
 	}
 }

@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Is } from "./is";
+import { Is } from "../utils/is";
 
 /**
  * Class to help with string.
@@ -60,7 +60,7 @@ export class StringHelper {
 				output = output.slice(1);
 			}
 			return StringHelper.words(output)
-				.map((w) => `${w[0].toUpperCase()}${w.slice(1).toLowerCase()}`)
+				.map(w => `${w[0].toUpperCase()}${w.slice(1).toLowerCase()}`)
 				.join(" ");
 		}
 		return "";
@@ -79,7 +79,7 @@ export class StringHelper {
 				output = output.slice(1);
 			}
 			return StringHelper.words(output)
-				.map((w) => `${w[0].toUpperCase()}${w.slice(1).toLowerCase()}`)
+				.map(w => `${w[0].toUpperCase()}${w.slice(1).toLowerCase()}`)
 				.join("");
 		}
 		return "";
@@ -102,7 +102,7 @@ export class StringHelper {
 				? ""
 				: `${words[0].toLowerCase()}${words
 						.slice(1)
-						.map((w) => `${w[0].toUpperCase()}${w.slice(1).toLowerCase()}`)
+						.map(w => `${w[0].toUpperCase()}${w.slice(1).toLowerCase()}`)
 						.join("")}`;
 		}
 		return "";

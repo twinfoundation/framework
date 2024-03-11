@@ -181,27 +181,6 @@ The UTF8 version of the bytes.
 
 ___
 
-### isHex
-
-▸ **isHex**(`value`, `allowPrefix?`): `boolean`
-
-Is the data hex format.
-
-#### Parameters
-
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `value` | `string` | `undefined` | The value to test. |
-| `allowPrefix` | `boolean` | `false` | Allow the hex to have the 0x prefix. |
-
-#### Returns
-
-`boolean`
-
-True if the string is hex.
-
-___
-
 ### utf8ToBytes
 
 ▸ **utf8ToBytes**(`utf8`): `Uint8Array`

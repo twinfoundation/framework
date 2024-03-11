@@ -6,19 +6,21 @@ import { Bech32 } from "../../src/address/bech32";
 
 describe("Bech32", () => {
 	test("Can fail to decode if there is no separator", () => {
-		expect(() => Bech32.decode("a".repeat(91))).toThrow("no separator");
+		expect(() => Bech32.decode("a".repeat(91))).toThrow("bech32.noSeparator");
 	});
 
 	test("Can fail to decode if the separator is too early", () => {
-		expect(() => Bech32.decode(`1${"a".repeat(89)}`)).toThrow("too early");
+		expect(() => Bech32.decode(`1${"a".repeat(89)}`)).toThrow("bech32.separatorPos");
 	});
 
 	test("Can fail to decode if the separator is too late", () => {
-		expect(() => Bech32.decode(`${"a".repeat(84)}1${"a".repeat(5)}`)).toThrow("space for data");
+		expect(() => Bech32.decode(`${"a".repeat(84)}1${"a".repeat(5)}`)).toThrow(
+			"bech32.separatorNoSpace"
+		);
 	});
 
 	test("Can fail to decode with non 5 bit characters", () => {
-		expect(() => Bech32.decodeTo5BitArray("iot1!aaaaa")).toThrow("not in the charset");
+		expect(() => Bech32.decodeTo5BitArray("iot1!aaaaa")).toThrow("bech32.invalidCharacter");
 	});
 
 	test("Can fail to decode with invalid checksum", () => {

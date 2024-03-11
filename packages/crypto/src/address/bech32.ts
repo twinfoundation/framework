@@ -2,14 +2,24 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 
+import { GeneralError } from "@gtsc/core";
+import { nameof } from "@gtsc/nameof";
+
 /**
  * Bech32 encoding and decoding.
  */
 export class Bech32 {
 	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<Bech32>();
+
+	/**
 	 * The alphabet to use.
 	 * @internal
 	 */
+	/* cspell:disable-next-line */
 	private static readonly _CHARSET: string = "qpzry9x8gf2tvdw0s3jn54khce6mua7l";
 
 	/**
@@ -82,6 +92,7 @@ export class Bech32 {
 	 * Decode a bech32 string to 5 bit array.
 	 * @param bech The text to decode.
 	 * @returns The decoded data or undefined if it could not be decoded.
+	 * @throws GeneralError if the bech32 string is invalid.
 	 */
 	public static decodeTo5BitArray(
 		bech: string
@@ -90,30 +101,27 @@ export class Bech32 {
 
 		const separatorPos = bech.lastIndexOf(Bech32._SEPARATOR);
 		if (separatorPos === -1) {
-			throw new Error(`There is no separator character ${Bech32._SEPARATOR} in the data`);
+			throw new GeneralError(Bech32._CLASS_NAME, "noSeparator", { value: Bech32._SEPARATOR });
 		}
 
 		if (separatorPos < 1) {
-			throw new Error(
-				`The separator position is ${separatorPos}, which is too early in the string`
-			);
+			throw new GeneralError(Bech32._CLASS_NAME, "separatorPos", { value: separatorPos });
 		}
 
 		if (separatorPos + 7 > bech.length) {
-			throw new Error(
-				`The separator position is ${separatorPos}, which doesn't leave enough space for data`
-			);
+			throw new GeneralError(Bech32._CLASS_NAME, "separatorNoSpace", { value: separatorPos });
 		}
 
 		const data = new Uint8Array(bech.length - separatorPos - 1);
 		let idx = 0;
 
 		for (let i = separatorPos + 1; i < bech.length; i++) {
-			const d = Bech32._CHARSET.indexOf(bech.charAt(i));
+			const bChar = bech.charAt(i);
+			const d = Bech32._CHARSET.indexOf(bChar);
 			if (d === -1) {
-				throw new Error(`Data contains characters not in the charset ${bech.charAt(i)}`);
+				throw new GeneralError(Bech32._CLASS_NAME, "invalidCharacter", { value: bChar });
 			}
-			data[idx++] = Bech32._CHARSET.indexOf(bech.charAt(i));
+			data[idx++] = Bech32._CHARSET.indexOf(bChar);
 		}
 
 		const humanReadablePart = bech.slice(0, separatorPos);
@@ -274,10 +282,10 @@ export class Bech32 {
 			}
 		} else {
 			if (bits >= fromBits) {
-				throw new Error("Excess padding");
+				throw new GeneralError(Bech32._CLASS_NAME, "excessPadding");
 			}
 			if ((value << (toBits - bits)) & maxV) {
-				throw new Error("Non-zero padding");
+				throw new GeneralError(Bech32._CLASS_NAME, "nonZeroPadding");
 			}
 		}
 		return new Uint8Array(res);

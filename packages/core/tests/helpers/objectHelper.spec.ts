@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { ObjectHelper } from "../../src/utils/objectHelper";
+import { ObjectHelper } from "../../src/helpers/objectHelper";
 
 describe("ObjectHelper", () => {
 	test("toBytes can return empty array with undefined object", () => {

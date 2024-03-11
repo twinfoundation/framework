@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 
+import { GeneralError, GuardError } from "@gtsc/core";
+import { nameof } from "@gtsc/nameof";
 import { HmacSha256 } from "../macs/hmacSha256";
 import { HmacSha512 } from "../macs/hmacSha512";
 
@@ -9,6 +11,12 @@ import { HmacSha512 } from "../macs/hmacSha512";
  * Implementation of the password based key derivation function 2.
  */
 export class Pbkdf2 {
+	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<Pbkdf2>();
+
 	/**
 	 * Derive a key from the parameters using Sha256.
 	 * @param password The password to derive the key from.
@@ -67,11 +75,11 @@ export class Pbkdf2 {
 		sumFunc: (pass: Uint8Array, block: Uint8Array) => Uint8Array
 	): Uint8Array {
 		if (iterations < 1) {
-			throw new Error("Iterations must be > 0");
+			throw new GuardError(Pbkdf2._CLASS_NAME, nameof(iterations), "greaterThan0", iterations);
 		}
 
 		if (keyLength > (Math.pow(2, 32) - 1) * macLength) {
-			throw new Error("Requested key length is too long");
+			throw new GeneralError(Pbkdf2._CLASS_NAME, "keyTooLong", { keyLength, macLength });
 		}
 
 		const DK = new Uint8Array(keyLength);

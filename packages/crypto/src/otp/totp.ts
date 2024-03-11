@@ -54,7 +54,6 @@ export class Totp {
 		const encodedBase32 = Base32.encode(RandomHelper.generate(length));
 
 		// Strip the trailing = the authenticator apps don't need them
-		// eslint-disable-next-line no-div-regex
 		return encodedBase32.replace(/=/g, "");
 	}
 

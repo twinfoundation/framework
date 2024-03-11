@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { nameof } from "@gtsc/nameof";
 import stripJsonComments from "strip-json-comments";
-import { Guards } from "./guards";
-import { Is } from "./is";
+import { Guards } from "../utils/guards";
+import { Is } from "../utils/is";
 
 /**
  * Class to help with configuration object.

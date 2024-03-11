@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { ConfigHelper } from "../../src/utils/configHelper";
+import { ConfigHelper } from "../../src/helpers/configHelper";
 
 describe("ConfigHelper", () => {
 	test("can fail silently to substitute a missing string environment variable", () => {

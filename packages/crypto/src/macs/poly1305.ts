@@ -186,7 +186,7 @@ export class Poly1305 {
 	 * @returns Hasher instance.
 	 */
 	public update(input: Uint8Array): Poly1305 {
-		let mpos = 0;
+		let mPos = 0;
 		let bytes = input.length;
 		let want: number;
 
@@ -196,10 +196,10 @@ export class Poly1305 {
 				want = bytes;
 			}
 			for (let i = 0; i < want; i++) {
-				this._buffer[this._leftover + i] = input[mpos + i];
+				this._buffer[this._leftover + i] = input[mPos + i];
 			}
 			bytes -= want;
-			mpos += want;
+			mPos += want;
 			this._leftover += want;
 			if (this._leftover < 16) {
 				return this;
@@ -210,14 +210,14 @@ export class Poly1305 {
 
 		if (bytes >= 16) {
 			want = bytes - (bytes % 16);
-			this.blocks(input, mpos, want);
-			mpos += want;
+			this.blocks(input, mPos, want);
+			mPos += want;
 			bytes -= want;
 		}
 
 		if (bytes) {
 			for (let i = 0; i < bytes; i++) {
-				this._buffer[this._leftover + i] = input[mpos + i];
+				this._buffer[this._leftover + i] = input[mPos + i];
 			}
 			this._leftover += bytes;
 		}
@@ -239,11 +239,11 @@ export class Poly1305 {
 	/**
 	 * Perform the block operations.
 	 * @param m The data,
-	 * @param mpos The index in the data,
+	 * @param mPos The index in the data,
 	 * @param bytes The number of bytes.
 	 * @internal
 	 */
-	private blocks(m: Uint8Array, mpos: number, bytes: number): void {
+	private blocks(m: Uint8Array, mPos: number, bytes: number): void {
 		const hiBit = this._fin ? 0 : 1 << 11;
 
 		let h0 = this._h[0];
@@ -269,22 +269,22 @@ export class Poly1305 {
 		const r9 = this._r[9];
 
 		while (bytes >= 16) {
-			const t0 = m[mpos + 0] | (m[mpos + 1] << 8);
+			const t0 = m[mPos + 0] | (m[mPos + 1] << 8);
 			h0 += t0 & 0x1fff;
-			const t1 = m[mpos + 2] | (m[mpos + 3] << 8);
+			const t1 = m[mPos + 2] | (m[mPos + 3] << 8);
 			h1 += ((t0 >>> 13) | (t1 << 3)) & 0x1fff;
-			const t2 = m[mpos + 4] | (m[mpos + 5] << 8);
+			const t2 = m[mPos + 4] | (m[mPos + 5] << 8);
 			h2 += ((t1 >>> 10) | (t2 << 6)) & 0x1fff;
-			const t3 = m[mpos + 6] | (m[mpos + 7] << 8);
+			const t3 = m[mPos + 6] | (m[mPos + 7] << 8);
 			h3 += ((t2 >>> 7) | (t3 << 9)) & 0x1fff;
-			const t4 = m[mpos + 8] | (m[mpos + 9] << 8);
+			const t4 = m[mPos + 8] | (m[mPos + 9] << 8);
 			h4 += ((t3 >>> 4) | (t4 << 12)) & 0x1fff;
 			h5 += (t4 >>> 1) & 0x1fff;
-			const t5 = m[mpos + 10] | (m[mpos + 11] << 8);
+			const t5 = m[mPos + 10] | (m[mPos + 11] << 8);
 			h6 += ((t4 >>> 14) | (t5 << 2)) & 0x1fff;
-			const t6 = m[mpos + 12] | (m[mpos + 13] << 8);
+			const t6 = m[mPos + 12] | (m[mPos + 13] << 8);
 			h7 += ((t5 >>> 11) | (t6 << 5)) & 0x1fff;
-			const t7 = m[mpos + 14] | (m[mpos + 15] << 8);
+			const t7 = m[mPos + 14] | (m[mPos + 15] << 8);
 			h8 += ((t6 >>> 8) | (t7 << 8)) & 0x1fff;
 			h9 += (t7 >>> 5) | hiBit;
 
@@ -467,7 +467,7 @@ export class Poly1305 {
 			h8 = d8;
 			h9 = d9;
 
-			mpos += 16;
+			mPos += 16;
 			bytes -= 16;
 		}
 		this._h[0] = h0;

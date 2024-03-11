@@ -407,7 +407,7 @@ export class Sha256 {
 		let bc;
 
 		for (j = 16; j < 64; ++j) {
-			// rightrotate
+			// right rotate
 			t1 = blocks[j - 15];
 			s0 = ((t1 >>> 7) | (t1 << 25)) ^ ((t1 >>> 18) | (t1 << 14)) ^ (t1 >>> 3);
 			t1 = blocks[j - 2];

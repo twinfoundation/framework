@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { HexHelper } from "../../src/utils/hexHelper";
+import { HexHelper } from "../../src/helpers/hexHelper";
 
 describe("HexHelper", () => {
 	test("Can convert a 0 value 256 bit int to hex", () => {

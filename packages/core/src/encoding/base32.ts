@@ -2,10 +2,19 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 
+import { nameof } from "@gtsc/nameof";
+import { GeneralError } from "../errors/generalError";
+
 /**
  * Class to help with base63 Encoding/Decoding.
  */
 export class Base32 {
+	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<Base32>();
+
 	/**
 	 * Alphabet table for encoding.
 	 * @internal
@@ -22,7 +31,6 @@ export class Base32 {
 		let bits = 0;
 		let value = 0;
 
-		// eslint-disable-next-line no-div-regex
 		base32 = base32.replace(/=+$/, "");
 
 		let index = 0;
@@ -32,7 +40,9 @@ export class Base32 {
 			const idx = Base32._ALPHABET.indexOf(base32[i]);
 
 			if (idx === -1) {
-				throw new Error(`"Invalid character found '${base32[i]}'`);
+				throw new GeneralError(Base32._CLASS_NAME, "invalidCharacter", {
+					invalidCharacter: base32[i]
+				});
 			}
 			value = (value << 5) | idx;
 			bits += 5;

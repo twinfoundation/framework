@@ -61,7 +61,7 @@ export class Blake2b {
 	 * because this is Javascript and we don't have uint64s
 	 * @internal
 	 */
-	private static readonly _SIGMA82 = new Uint8Array(Blake2b._SIGMA8.map((x) => x * 2));
+	private static readonly _SIGMA82 = new Uint8Array(Blake2b._SIGMA8.map(x => x * 2));
 
 	/**
 	 * The V vector.

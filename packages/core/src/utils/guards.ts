@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Converter } from "./converter";
 import { Is } from "./is";
 import { GuardError } from "../errors/guardError";
+import { HexHelper } from "../helpers/hexHelper";
 
 /**
  * Class to handle guard operations for parameters.
@@ -54,7 +54,7 @@ export class Guards {
 		value: unknown
 	): asserts value is string {
 		Guards.stringValue(source, property, value);
-		if (!Converter.isHex(value)) {
+		if (!HexHelper.isHex(value)) {
 			throw new GuardError(source, "guard.stringHex", property, value);
 		}
 	}

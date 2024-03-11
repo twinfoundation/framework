@@ -65,4 +65,19 @@ export class HexHelper {
 	public static hasPrefix(hex: string): boolean {
 		return hex.startsWith("0x");
 	}
+
+	/**
+	 * Is the data hex format.
+	 * @param value The value to test.
+	 * @param allowPrefix Allow the hex to have the 0x prefix.
+	 * @returns True if the string is hex.
+	 */
+	public static isHex(value: string, allowPrefix: boolean = false): boolean {
+		const localHex = allowPrefix ? HexHelper.stripPrefix(value) : value;
+
+		if (localHex.length % 2 === 1) {
+			return false;
+		}
+		return /^[\da-f]+$/g.test(localHex);
+	}
 }

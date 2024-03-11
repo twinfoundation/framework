@@ -4,7 +4,7 @@
 import { Converter, GeneralError, GuardError, RandomHelper } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { Pbkdf2 } from "./pbkdf2";
-import { english } from "./wordlists/english";
+import { ENGLISH } from "./wordlists/english";
 import { Sha256 } from "../hashes/sha256";
 
 /**
@@ -61,7 +61,7 @@ export class Bip39 {
 	 */
 	public static entropyToMnemonic(entropy: Uint8Array): string {
 		if (!Bip39._wordlist) {
-			Bip39.setWordList(english, " ");
+			Bip39.setWordList(ENGLISH, " ");
 		}
 
 		if (entropy.length % 4 !== 0 || entropy.length < 16 || entropy.length > 32) {
@@ -113,7 +113,7 @@ export class Bip39 {
 	 */
 	public static mnemonicToEntropy(mnemonic: string): Uint8Array {
 		if (!Bip39._wordlist) {
-			Bip39.setWordList(english, " ");
+			Bip39.setWordList(ENGLISH, " ");
 		}
 
 		const words = mnemonic.normalize("NFKD").split(Bip39._joiningChar);
@@ -128,7 +128,7 @@ export class Bip39 {
 		}
 
 		const bits = words
-			.map((word) => {
+			.map(word => {
 				const index = Bip39._wordlist.indexOf(word);
 				if (index === -1) {
 					throw new GeneralError(Bip39._CLASS_NAME, "missingMnemonicWord", { word });

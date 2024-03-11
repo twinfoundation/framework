@@ -1,6 +1,10 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
+/*
+	Based on https://github.com/quartzjer/chacha20/blob/master/chacha20.js.
+	Implementation of  https://tools.ietf.org/html/rfc8439
+*/
 
 import { BitHelper } from "../utils/bitHelper";
 
@@ -70,15 +74,14 @@ export class ChaCha20 {
 	public encrypt(data: Uint8Array): Uint8Array {
 		const x = new Uint32Array(16);
 		const output = new Uint8Array(64);
-		let dpos = 0;
+		let dPos = 0;
 		let i;
-		let spos = 0;
+		let sPos = 0;
 		let len = data.length;
 		const dst = new Uint8Array(data.length);
 
 		while (len > 0) {
-			// eslint-disable-next-line space-in-parens
-			for (i = 16; i--; ) {
+			for (i = 16; i >= 0; i--) {
 				x[i] = this._input[i];
 			}
 			for (i = 20; i > 0; i -= 2) {
@@ -91,10 +94,10 @@ export class ChaCha20 {
 				ChaCha20.quarterRound(x, 2, 7, 8, 13);
 				ChaCha20.quarterRound(x, 3, 4, 9, 14);
 			}
-			for (i = 16; i--; ) {
+			for (i = 16; i >= 0; i--) {
 				x[i] += this._input[i];
 			}
-			for (i = 16; i--; ) {
+			for (i = 16; i >= 0; i--) {
 				BitHelper.u32To8LittleEndian(output, 4 * i, x[i]);
 			}
 
@@ -103,17 +106,17 @@ export class ChaCha20 {
 				this._input[13] += 1;
 			}
 			if (len <= 64) {
-				for (i = len; i--; ) {
-					dst[i + dpos] = data[i + spos] ^ output[i];
+				for (i = len; i >= 0; i--) {
+					dst[i + dPos] = data[i + sPos] ^ output[i];
 				}
 				return dst;
 			}
-			for (i = 64; i--; ) {
-				dst[i + dpos] = data[i + spos] ^ output[i];
+			for (i = 64; i >= 0; i--) {
+				dst[i + dPos] = data[i + sPos] ^ output[i];
 			}
 			len -= 64;
-			spos += 64;
-			dpos += 64;
+			sPos += 64;
+			dPos += 64;
 		}
 
 		return dst;
