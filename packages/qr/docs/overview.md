@@ -1,17 +1,9 @@
 # @gtsc/qr - Overview
 
-This package contains helper methods and classes which implement some of the fundamental features required for a framework.
-
-- Guards
-- Type Checking
-- Error Handling
-- Validation
-- Encoding
-- Conversion
-- Localisation
+The package contains classes for generating QR codes.
 
 ## Installation
 
 ```shell
-npm install @gtsc/core
+npm install @gtsc/qr
 ```
