@@ -1,7 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 
-import { DateTime } from "luxon";
 import { Is } from "./is";
 
 /**
@@ -103,9 +102,14 @@ export class Coerce {
 			return new Date(value);
 		}
 		if (Is.string(value)) {
-			const dt = DateTime.fromISO(value, { zone: "utc" });
-			if (dt.isValid) {
-				return dt.set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).toJSDate();
+			const dt = new Date(value);
+			if (!Number.isNaN(dt.getTime())) {
+				const utc = Date.UTC(
+					dt.getUTCFullYear(),
+					dt.getUTCMonth(),
+					dt.getUTCDate()
+				);
+				return new Date(utc);
 			}
 		}
 	}
@@ -127,9 +131,18 @@ export class Coerce {
 			return new Date(value);
 		}
 		if (Is.string(value)) {
-			const dt = DateTime.fromISO(value, { zone: "utc" });
-			if (dt.isValid) {
-				return dt.toJSDate();
+			const dt = new Date(value);
+			if (!Number.isNaN(dt.getTime())) {
+				const utc = Date.UTC(
+					dt.getUTCFullYear(),
+					dt.getUTCMonth(),
+					dt.getUTCDate(),
+					dt.getUTCHours(),
+            dt.getUTCMinutes(),
+						dt.getUTCSeconds(),
+						dt.getUTCMilliseconds()
+				);
+				return new Date(utc);
 			}
 		}
 	}
@@ -153,9 +166,18 @@ export class Coerce {
 			return dt;
 		}
 		if (Is.string(value)) {
-			const dt = DateTime.fromISO(value, { zone: "utc" });
-			if (dt.isValid) {
-				return dt.set({ year: 1970, month: 1, day: 1 }).toJSDate();
+			const dt = new Date(value);
+			if (!Number.isNaN(dt.getTime())) {
+				const utc = Date.UTC(
+					1970,
+					0,
+					1,
+					dt.getUTCHours(),
+            dt.getUTCMinutes(),
+						dt.getUTCSeconds(),
+						dt.getUTCMilliseconds()
+				);
+				return new Date(utc);
 			}
 		}
 	}

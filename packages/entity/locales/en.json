@@ -50,9 +50,6 @@
 		"objectHelper": {
 			"failedBytesToJSON": "Failed converting bytes to JSON"
 		},
-		"configHelper": {
-			"missingEnvironmentVariable": "The environment variable \"{property}\" could not be found to use in the configuration"
-		},
 		"common": {
 			"notImplementedMethod": "The method \"{method}\" has not been implemented",
 			"validation": "Validation failed"

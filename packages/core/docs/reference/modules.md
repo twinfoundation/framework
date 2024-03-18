@@ -8,7 +8,6 @@
 - [Base64](classes/Base64.md)
 - [BaseError](classes/BaseError.md)
 - [Coerce](classes/Coerce.md)
-- [ConfigHelper](classes/ConfigHelper.md)
 - [ConflictError](classes/ConflictError.md)
 - [Converter](classes/Converter.md)
 - [FilenameHelper](classes/FilenameHelper.md)
