@@ -234,6 +234,11 @@ module.exports = {
 				selector: "ImportDeclaration[source.value='.']",
 				message:
 					'Importing from "." is not allowed, use specific file import instead to avoid circular dependencies'
+			},
+			{
+				selector: 'PropertyDefinition[value!=null][static=false]',
+				message:
+					'Do not use property initializers inline, perform the initialization in the constructor instead'
 			}
 		],
 		'no-return-assign': ['error'],
@@ -421,6 +426,7 @@ module.exports = {
 		'jsdoc/empty-tags': 'error',
 		'jsdoc/implements-on-classes': 'error',
 		'jsdoc/match-description': ['error'],
+		'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true }],
 		'jsdoc/newline-after-description': 'off',
 		'jsdoc/no-bad-blocks': 'error',
 		'jsdoc/no-defaults': 'error',

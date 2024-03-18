@@ -694,7 +694,7 @@ export class JpegEncoder {
 		this.writeByte(0x46); // F
 		this.writeByte(0x49); // I
 		this.writeByte(0x46); // F
-		/** cspell:disable-next-line */
+		// cspell:disable-next-line
 		this.writeByte(0); // = "JFIF",'\0'
 		this.writeByte(1); // version hi
 		this.writeByte(1); // version lo

@@ -1,0 +1,13 @@
+{
+	"error": {
+		"frameworkServices": {
+			"namespaceNotSupported": "The namespace is not supported, this service supports \"{namespace}\" the urn was \"{urn}\""
+		},
+		"dataTypeHandlerFactory": {
+			"unregister": "There is no handler registered with the type \"{type}\""
+		},
+		"identifierHandlerFactory": {
+			"unregister": "There is no handler registered with the namespace \"{namespace}\""
+		}
+	}
+}
