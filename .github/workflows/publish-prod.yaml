@@ -32,6 +32,11 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Remove Mono-Repo Node Modules
+        run: |
+          rm package.json
+          rm package-lock.json
+
       - name: Run Dist
         run: |
           cd packages/${{ github.event.inputs.package }}
