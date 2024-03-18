@@ -9,9 +9,12 @@ on:
         type: choice
         options:
           - core
-          - framework
+          - crypto
+          - entity
+          - image
           - nameof
           - nameof-transformer
+          - qr
       next:
         description: 'What is the next version e.g. 1 will be appended as -next.1'
         default: 1
