@@ -8,6 +8,9 @@ This mono-repository contains some of the fundamental packages that the rest of 
 - [nameof](packages/nameof/README.md) - Provides the definitions for the methods which are processed by the `nameof-transformer`
 - [core](packages/core/README.md) - Helper methods/classes for data type checking/validation/guarding/error handling.
 - [entity](packages/entity/README.md) - Helpers for defining and working with entities.
+- [crypto](packages/crypto/README.md) - Helpers which implement cryptographic functions.
+- [image](packages/image/README.md) - Package contains classes for processing images.
+- [qr](packages/qr/README.md) - Package contains classes for generating QR codes.
 
 ## Building
 

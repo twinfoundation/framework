@@ -104,11 +104,7 @@ export class Coerce {
 		if (Is.string(value)) {
 			const dt = new Date(value);
 			if (!Number.isNaN(dt.getTime())) {
-				const utc = Date.UTC(
-					dt.getUTCFullYear(),
-					dt.getUTCMonth(),
-					dt.getUTCDate()
-				);
+				const utc = Date.UTC(dt.getUTCFullYear(), dt.getUTCMonth(), dt.getUTCDate());
 				return new Date(utc);
 			}
 		}
@@ -138,9 +134,9 @@ export class Coerce {
 					dt.getUTCMonth(),
 					dt.getUTCDate(),
 					dt.getUTCHours(),
-            dt.getUTCMinutes(),
-						dt.getUTCSeconds(),
-						dt.getUTCMilliseconds()
+					dt.getUTCMinutes(),
+					dt.getUTCSeconds(),
+					dt.getUTCMilliseconds()
 				);
 				return new Date(utc);
 			}
@@ -173,9 +169,9 @@ export class Coerce {
 					0,
 					1,
 					dt.getUTCHours(),
-            dt.getUTCMinutes(),
-						dt.getUTCSeconds(),
-						dt.getUTCMilliseconds()
+					dt.getUTCMinutes(),
+					dt.getUTCSeconds(),
+					dt.getUTCMilliseconds()
 				);
 				return new Date(utc);
 			}
