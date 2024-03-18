@@ -35,7 +35,7 @@ export class PngEncoder {
 
 		this.writeUint(data, offset, 13);
 		offset += 4;
-		/** cspell:disable-next-line */
+		// cspell:disable-next-line
 		this.writeASCII(data, offset, "IHDR");
 		offset += 4;
 		this.writeUint(data, offset, w);
@@ -148,7 +148,7 @@ export class PngEncoder {
 			this.writeUint(data, offset, dl + (j === 0 ? 0 : 4));
 			offset += 4;
 			const iOff = offset;
-			/** cspell:disable-next-line */
+			// cspell:disable-next-line
 			this.writeASCII(data, offset, j === 0 ? "IDAT" : "fdAT");
 			offset += 4;
 			if (j !== 0) {
@@ -167,7 +167,7 @@ export class PngEncoder {
 
 		this.writeUint(data, offset, 0);
 		offset += 4;
-		/** cspell:disable-next-line */
+		// cspell:disable-next-line
 		this.writeASCII(data, offset, "IEND");
 		offset += 4;
 		this.writeUint(data, offset, this.crc(data, offset - 4, 4));

@@ -45,7 +45,9 @@
 		"packages/entity",
 		"packages/crypto",
 		"packages/image",
-		"packages/qr"
+		"packages/qr",
+		"packages/services",
+		"packages/schema"
 	],
 	"type": "module"
 }

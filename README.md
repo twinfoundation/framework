@@ -11,6 +11,8 @@ This mono-repository contains some of the fundamental packages that the rest of 
 - [crypto](packages/crypto/README.md) - Helpers which implement cryptographic functions.
 - [image](packages/image/README.md) - Package contains classes for processing images.
 - [qr](packages/qr/README.md) - Package contains classes for generating QR codes.
+- [services](packages/services/README.md) - Package contains definitions and helpers for services.
+- [schema](packages/services/README.md) - Package contains definitions and helpers for schemas.
 
 ## Building
 
