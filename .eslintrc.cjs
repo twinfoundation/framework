@@ -226,14 +226,9 @@ module.exports = {
 					'new Error is disallowed as it is not specific enough, and bypasses the i18n formatting'
 			},
 			{
-				selector: "ImportDeclaration[source.value='..']",
+				selector: 'ImportDeclaration[source.value=/\\.$/]',
 				message:
-					'Importing from ".." is not allowed, use specific file import instead to avoid circular dependencies'
-			},
-			{
-				selector: "ImportDeclaration[source.value='.']",
-				message:
-					'Importing from "." is not allowed, use specific file import instead to avoid circular dependencies'
+					'Importing from paths ending in "." are not allowed, use specific file import instead to avoid circular dependencies'
 			},
 			{
 				selector: 'PropertyDefinition[value!=null][static=false]',
