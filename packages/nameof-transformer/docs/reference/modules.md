@@ -18,7 +18,7 @@ ___
 
 ### version
 
-• `Const` **version**: ``"0.0.1"``
+• `Const` **version**: ``"0.0.2"``
 
 Exports the factory version.
 

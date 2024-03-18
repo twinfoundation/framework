@@ -23,6 +23,14 @@
 			"description": "Contains helper methods and classes which implement cryptographic functions."
 		},
 		{
+			"name": "services",
+			"description": "Contains definitions and helpers for services."
+		},
+		{
+			"name": "schema",
+			"description": "Contains definitions and helpers for schemas."
+		},
+		{
 			"name": "image",
 			"description": "Contains classes for processing images."
 		},
