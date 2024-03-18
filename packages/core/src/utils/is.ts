@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { DateTime } from "luxon";
 import { HexHelper } from "../helpers/hexHelper";
 
 /**
@@ -140,7 +139,7 @@ export class Is {
 		if (typeof value !== "string" || value.length === 0 || value.includes("T")) {
 			return false;
 		}
-		return DateTime.fromISO(value).isValid;
+		return !Number.isNaN(Date.parse(value));
 	}
 
 	/**
@@ -152,7 +151,7 @@ export class Is {
 		if (typeof value !== "string" || value.length === 0 || !value.includes("T")) {
 			return false;
 		}
-		return DateTime.fromISO(value).isValid;
+		return !Number.isNaN(Date.parse(value));
 	}
 
 	/**
@@ -164,7 +163,7 @@ export class Is {
 		if (typeof value !== "string" || value.length === 0 || value.includes("T")) {
 			return false;
 		}
-		return DateTime.fromISO(value).isValid;
+		return !Number.isNaN(Date.parse(`1970-01-01T${value}`));
 	}
 
 	/**

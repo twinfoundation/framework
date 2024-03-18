@@ -13,7 +13,6 @@ export * from "./errors/notSupportedError";
 export * from "./errors/unauthorizedError";
 export * from "./errors/validationError";
 export * from "./helpers/arrayHelper";
-export * from "./helpers/configHelper";
 export * from "./helpers/filenameHelper";
 export * from "./helpers/hexHelper";
 export * from "./helpers/mimeTypeHelper";
