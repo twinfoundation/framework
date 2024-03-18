@@ -40,7 +40,7 @@ jobs:
       - name: Run Dist
         run: |
           cd packages/${{ github.event.inputs.package }}
-          npm ci
+          npm install
           npm run dist
 
       - name: Cleanup package properties
