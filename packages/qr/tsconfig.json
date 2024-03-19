@@ -12,6 +12,7 @@
 		"sourceRoot": "./src",
 		"declaration": true,
 		"declarationDir": "dist/types",
+		"types": [],
 		"plugins": [{ "transform": "@gtsc/nameof-transformer" }]
 	},
 	"include": ["src/**/*.ts"]
