@@ -231,6 +231,11 @@ module.exports = {
 					'Importing from paths ending in "." are not allowed, use specific file import instead to avoid circular dependencies'
 			},
 			{
+				selector: 'ImportDeclaration[source.value=/\\..src$/]',
+				message:
+					'Importing from paths ending in "/src" are not allowed, use specific file import instead to avoid circular dependencies'
+			},
+			{
 				selector: 'PropertyDefinition[value!=null][static=false]',
 				message:
 					'Do not use property initializers inline, perform the initialization in the constructor instead'
