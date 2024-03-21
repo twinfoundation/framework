@@ -1,6 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
+export * from "./address/addressType";
 export * from "./address/bech32";
+export * from "./address/bip44";
 export * from "./ciphers/chaCha20";
 export * from "./ciphers/chaCha20Poly1305";
 export * from "./hashes/blake2b";
@@ -23,3 +25,4 @@ export * from "./signatures/ed25519";
 export * from "./signatures/x25519";
 export * from "./signatures/zip215";
 export * from "./utils/bitHelper";
+

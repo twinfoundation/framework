@@ -2,4 +2,4 @@
 
 ## v0.0.3
 
-- Initial Release
+- Added: Bip44
