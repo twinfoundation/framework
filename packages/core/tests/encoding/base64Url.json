@@ -5,11 +5,11 @@
 	},
 	{
 		"decoded": "f",
-		"encoded": "Zg=="
+		"encoded": "Zg"
 	},
 	{
 		"decoded": "fo",
-		"encoded": "Zm8="
+		"encoded": "Zm8"
 	},
 	{
 		"decoded": "foo",
@@ -17,14 +17,14 @@
 	},
 	{
 		"decoded": "foob",
-		"encoded": "Zm9vYg=="
+		"encoded": "Zm9vYg"
 	},
 	{
 		"decoded": "fooba",
-		"encoded": "Zm9vYmE="
+		"encoded": "Zm9vYmE"
 	},
 	{
 		"decoded": ">*:nGv*d)sr>UG: a6nr?1i_\\",
-		"encoded": "Pio6bkd2KmQpc3I+VUc6IGE2bnI/MWlfXA=="
+		"encoded": "Pio6bkd2KmQpc3I-VUc6IGE2bnI_MWlfXA"
 	}
 ]

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 export * from "./encoding/base32";
 export * from "./encoding/base64";
+export * from "./encoding/base64Url";
 export * from "./errors/alreadyExistsError";
 export * from "./errors/baseError";
 export * from "./errors/conflictError";

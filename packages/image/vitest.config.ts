@@ -13,8 +13,7 @@ export default defineConfig({
 		})
 	],
 	test: {
-		include: ["./tests/**/*.ts"],
-		exclude: ["./tests/**/I[A-Z]*.ts"],
+		include: ["./tests/**/*.spec.ts"],
 		globals: true,
 		coverage: {
 			provider: "v8",

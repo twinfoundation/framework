@@ -7,7 +7,7 @@ import { Converter } from "../../src/utils/converter";
 
 // Test vectors
 // https://datatracker.ietf.org/doc/html/rfc4648#section-10
-describe("Base32Helper", () => {
+describe("Base32", () => {
 	test("Can encode bytes to base32", () => {
 		expect(Base32.encode(new Uint8Array([1, 2, 3, 4]))).toEqual("AEBAGBA=");
 	});

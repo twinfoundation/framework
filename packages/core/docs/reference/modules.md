@@ -6,6 +6,7 @@
 - [ArrayHelper](classes/ArrayHelper.md)
 - [Base32](classes/Base32.md)
 - [Base64](classes/Base64.md)
+- [Base64Url](classes/Base64Url.md)
 - [BaseError](classes/BaseError.md)
 - [Coerce](classes/Coerce.md)
 - [ConflictError](classes/ConflictError.md)

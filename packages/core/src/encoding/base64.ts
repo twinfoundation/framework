@@ -159,7 +159,7 @@ export class Base64 {
 	/**
 	 * Convert a byte array to base 64.
 	 * @param bytes The byte array to convert.
-	 * @returns The data as bas64 string.
+	 * @returns The data as base64 string.
 	 */
 	public static encode(bytes: Uint8Array): string {
 		let tmp;

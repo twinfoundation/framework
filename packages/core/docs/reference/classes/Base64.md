@@ -71,4 +71,4 @@ Convert a byte array to base 64.
 
 `string`
 
-The data as bas64 string.
+The data as base64 string.

@@ -34,6 +34,26 @@ The bytes.
 
 ___
 
+### base64UrlToBytes
+
+▸ **base64UrlToBytes**(`base64Url`): `Uint8Array`
+
+Convert a base64 url string to bytes.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `base64Url` | `string` | The base64 url string. |
+
+#### Returns
+
+`Uint8Array`
+
+The bytes.
+
+___
+
 ### binaryToBytes
 
 ▸ **binaryToBytes**(`binary`): `Uint8Array`
@@ -71,6 +91,26 @@ Convert bytes to base64 string.
 `string`
 
 A base64 string of the bytes.
+
+___
+
+### bytesToBase64Url
+
+▸ **bytesToBase64Url**(`bytes`): `string`
+
+Convert bytes to base64 url string.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `bytes` | `Uint8Array` | The bytes to convert. |
+
+#### Returns
+
+`string`
+
+A base64 url string of the bytes.
 
 ___
 
