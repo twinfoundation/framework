@@ -94,7 +94,7 @@ export class Bip44 {
 		if (addressType === AddressType.Ed25519) {
 			const keyPair = Ed25519.keyPairFromSeed(keys.privateKey);
 			return {
-				privateKey:	keyPair.privateKey.slice(0, 32),
+				privateKey: keyPair.privateKey.slice(0, 32),
 				publicKey: keyPair.publicKey
 			};
 		}
