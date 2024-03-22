@@ -3,11 +3,12 @@
 
 import { GeneralError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
-import { AddressType } from "./addressType";
 import { Bech32 } from "../address/bech32";
 import { Blake2b } from "../hashes/blake2b";
 import { Bip32Path } from "../keys/bip32Path";
 import { Slip0010 } from "../keys/slip0010";
+import type { IKeyPair } from "../models/IKeyPair";
+import { KeyType } from "../models/keyType";
 import { Ed25519 } from "../signatures/ed25519";
 
 /**
@@ -23,7 +24,7 @@ export class Bip44 {
 	/**
 	 * Generate a bip44 address from the seed and parts.
 	 * @param seed The account seed.
-	 * @param addressType The address type.
+	 * @param keyType The key type.
 	 * @param hrp The human readable part of the address.
 	 * @param coinType The coin type.
 	 * @param accountIndex The account index.
@@ -33,7 +34,7 @@ export class Bip44 {
 	 */
 	public static addressBech32(
 		seed: Uint8Array,
-		addressType: AddressType,
+		keyType: KeyType,
 		hrp: string,
 		coinType: number,
 		accountIndex: number,
@@ -41,23 +42,13 @@ export class Bip44 {
 		addressIndex: number
 	): {
 		address: string;
-		keyPair: {
-			privateKey: Uint8Array;
-			publicKey: Uint8Array;
-		};
+		keyPair: IKeyPair;
 	} {
-		const keyPair = Bip44.keyPair(
-			seed,
-			addressType,
-			coinType,
-			accountIndex,
-			isInternal,
-			addressIndex
-		);
+		const keyPair = Bip44.keyPair(seed, keyType, coinType, accountIndex, isInternal, addressIndex);
 
 		const addressData = Blake2b.sum256(keyPair.publicKey);
 		const bech32Data = new Uint8Array(1 + addressData.length);
-		bech32Data[0] = addressType;
+		bech32Data[0] = keyType;
 		bech32Data.set(addressData, 1);
 
 		return {
@@ -69,7 +60,7 @@ export class Bip44 {
 	/**
 	 * Generate a bip44 key pair from the seed and parts.
 	 * @param seed The account seed.
-	 * @param addressType The address type.
+	 * @param keyType The key type.
 	 * @param coinType The coin type.
 	 * @param accountIndex The account index.
 	 * @param isInternal Is this an internal address.
@@ -79,27 +70,25 @@ export class Bip44 {
 	 */
 	public static keyPair(
 		seed: Uint8Array,
-		addressType: AddressType,
+		keyType: KeyType,
 		coinType: number,
 		accountIndex: number,
 		isInternal: boolean,
 		addressIndex: number
-	): {
-		privateKey: Uint8Array;
-		publicKey: Uint8Array;
-	} {
+	): IKeyPair {
 		const bip44Path = Bip44.path(coinType, accountIndex, isInternal, addressIndex);
 		const keys = Slip0010.derivePath(seed, bip44Path);
 
-		if (addressType === AddressType.Ed25519) {
+		if (keyType === KeyType.Ed25519) {
 			const keyPair = Ed25519.keyPairFromSeed(keys.privateKey);
 			return {
+				type: keyType,
 				privateKey: keyPair.privateKey.slice(0, 32),
 				publicKey: keyPair.publicKey
 			};
 		}
 
-		throw new GeneralError(Bip44._CLASS_NAME, "unsupportedAddressType", { addressType });
+		throw new GeneralError(Bip44._CLASS_NAME, "unsupportedKeyType", { keyType });
 	}
 
 	/**

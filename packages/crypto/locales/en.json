@@ -58,7 +58,7 @@
 			"noAuthTagSet": "The auth tag has not been set"
 		},
 		"bip44": {
-			"unsupportedAddressType": "The address type \"{addressType}\" is not supported"
+			"unsupportedKeyType": "The key type \"{keyType}\" is not supported"
 		}
 	}
 }

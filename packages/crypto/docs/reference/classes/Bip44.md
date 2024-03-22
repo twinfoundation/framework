@@ -16,7 +16,7 @@ Implementation of Bip44 for address generation.
 
 ### addressBech32
 
-▸ **addressBech32**(`seed`, `addressType`, `hrp`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `Object`
+▸ **addressBech32**(`seed`, `keyType`, `hrp`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `Object`
 
 Generate a bip44 address from the seed and parts.
 
@@ -25,7 +25,7 @@ Generate a bip44 address from the seed and parts.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `seed` | `Uint8Array` | The account seed. |
-| `addressType` | [`Ed25519`](../enums/AddressType.md#ed25519) | The address type. |
+| `keyType` | [`Ed25519`](../enums/KeyType.md#ed25519) | The key type. |
 | `hrp` | `string` | The human readable part of the address. |
 | `coinType` | `number` | The coin type. |
 | `accountIndex` | `number` | The account index. |
@@ -41,9 +41,7 @@ The generated path.
 | Name | Type |
 | :------ | :------ |
 | `address` | `string` |
-| `keyPair` | \{ `privateKey`: `Uint8Array` ; `publicKey`: `Uint8Array`  } |
-| `keyPair.privateKey` | `Uint8Array` |
-| `keyPair.publicKey` | `Uint8Array` |
+| `keyPair` | [`IKeyPair`](../interfaces/IKeyPair.md) |
 
 ___
 
@@ -69,7 +67,7 @@ ___
 
 ### keyPair
 
-▸ **keyPair**(`seed`, `addressType`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `Object`
+▸ **keyPair**(`seed`, `keyType`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): [`IKeyPair`](../interfaces/IKeyPair.md)
 
 Generate a bip44 key pair from the seed and parts.
 
@@ -78,7 +76,7 @@ Generate a bip44 key pair from the seed and parts.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `seed` | `Uint8Array` | The account seed. |
-| `addressType` | [`Ed25519`](../enums/AddressType.md#ed25519) | The address type. |
+| `keyType` | [`Ed25519`](../enums/KeyType.md#ed25519) | The key type. |
 | `coinType` | `number` | The coin type. |
 | `accountIndex` | `number` | The account index. |
 | `isInternal` | `boolean` | Is this an internal address. |
@@ -86,14 +84,9 @@ Generate a bip44 key pair from the seed and parts.
 
 #### Returns
 
-`Object`
+[`IKeyPair`](../interfaces/IKeyPair.md)
 
 The key pair.
-
-| Name | Type |
-| :------ | :------ |
-| `privateKey` | `Uint8Array` |
-| `publicKey` | `Uint8Array` |
 
 **`Throws`**
 

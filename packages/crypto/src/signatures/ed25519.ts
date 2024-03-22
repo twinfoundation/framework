@@ -13,6 +13,8 @@ import { ExtendedGroupElement } from "./edwards25519/extendedGroupElement";
 import { ProjectiveGroupElement } from "./edwards25519/projectiveGroupElement";
 import { scalarMinimal, scalarMulAdd, scalarReduce } from "./edwards25519/scalar";
 import { Sha512 } from "../hashes/sha512";
+import type { IKeyPair } from "../models/IKeyPair";
+import { KeyType } from "../models/keyType";
 
 /**
  * Implementation of Ed25519.
@@ -58,18 +60,10 @@ export class Ed25519 {
 	 * @param seed The seed to generate the key pair for.
 	 * @returns The key pair.
 	 */
-	public static keyPairFromSeed(seed: Uint8Array): {
-		/**
-		 * The private key generated from the seed.
-		 */
-		publicKey: Uint8Array;
-		/**
-		 * The public key generated from the seed.
-		 */
-		privateKey: Uint8Array;
-	} {
+	public static keyPairFromSeed(seed: Uint8Array): IKeyPair {
 		const privateKey = Ed25519.privateKeyFromSeed(seed.slice(0, Ed25519.SEED_SIZE));
 		return {
+			type: KeyType.Ed25519,
 			privateKey,
 			publicKey: Ed25519.publicKeyFromPrivateKey(privateKey)
 		};

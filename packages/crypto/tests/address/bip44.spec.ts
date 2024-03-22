@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 import { Converter } from "@gtsc/core";
-import { AddressType } from "../../src/address/addressType";
 import { Bip44 } from "../../src/address/bip44";
 import { Bip39 } from "../../src/keys/bip39";
+import { KeyType } from "../../src/models/keyType";
 
 describe("Bip44", () => {
 	test("Can generate an address", () => {
@@ -12,15 +12,7 @@ describe("Bip44", () => {
 			"agree ill brick grant cement security expire appear unknown law toe keep believe project whale welcome easy twenty deposit hour doctor witness edit mimic";
 		const seed = Bip39.mnemonicToSeed(mnemonic);
 
-		const addressAndKeyPair = Bip44.addressBech32(
-			seed,
-			AddressType.Ed25519,
-			"rms",
-			4219,
-			0,
-			false,
-			0
-		);
+		const addressAndKeyPair = Bip44.addressBech32(seed, KeyType.Ed25519, "rms", 4219, 0, false, 0);
 
 		expect(addressAndKeyPair.address).toBe(
 			"rms1qrk2zfuwdmhtw0vc2larmsypvemgsmph25scptnmluyhhxlpkfwx5546u34"
