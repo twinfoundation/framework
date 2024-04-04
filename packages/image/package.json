@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/image",
-	"version": "0.0.3",
+	"version": "next",
 	"description": "Classes for image manipulation",
 	"repository": {
 		"type": "git",
