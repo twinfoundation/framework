@@ -33,7 +33,6 @@ describe("Base64Url", () => {
 
 	test("Can decode base64 bytes to string", () => {
 		for (const test of testData) {
-			console.log(test);
 			expect(Converter.bytesToUtf8(Base64Url.decode(test.encoded))).toEqual(test.decoded);
 		}
 	});
