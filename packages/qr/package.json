@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/qr",
-	"version": "0.0.3",
+	"version": "next",
 	"description": "Package for creating QR codes",
 	"repository": {
 		"type": "git",

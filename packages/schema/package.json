@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/schema",
-	"version": "0.0.3",
+	"version": "next",
 	"description": "Definitions and helpers for using with schemas",
 	"repository": {
 		"type": "git",

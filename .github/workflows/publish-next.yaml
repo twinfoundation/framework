@@ -17,6 +17,10 @@ on:
           - qr
           - services
           - schema
+      semver:
+        description: 'What is the semver version e.g. 0.0.1'
+        default: 0.0.1
+        required: true
       next:
         description: 'What is the next version e.g. 1 will be appended as -next.1'
         default: 1
@@ -54,8 +58,7 @@ jobs:
       - name: Patch package version
         run: |
           cd packages/${{ github.event.inputs.package }}
-          PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
-          NEXT_VERSION="$PACKAGE_VERSION-next.${{ github.event.inputs.next }}"
+          NEXT_VERSION="${{ github.event.inputs.semver }}-next.${{ github.event.inputs.next }}"
           npm pkg set version="$NEXT_VERSION"
 
       - name: Cleanup package properties

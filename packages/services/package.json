@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/services",
-	"version": "0.0.3",
+	"version": "next",
 	"description": "Package for base service types",
 	"repository": {
 		"type": "git",

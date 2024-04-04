@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/crypto",
-	"version": "0.0.3",
+	"version": "next",
 	"description": "Framework Crypto packages for GTSC",
 	"repository": {
 		"type": "git",
