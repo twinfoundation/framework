@@ -17,14 +17,6 @@ on:
           - qr
           - services
           - schema
-      semver:
-        description: 'What is the semver version e.g. 0.0.1'
-        default: 0.0.1
-        required: true
-      next:
-        description: 'What is the next version e.g. 1 will be appended as -next.1'
-        default: 1
-        required: true
 
 jobs:
   publish:
@@ -49,17 +41,20 @@ jobs:
           rm package.json
           rm package-lock.json
 
+      - name: Check package version contains .next
+        run: |
+          cd packages/${{ github.event.inputs.package }}
+          PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
+          if [[ $PACKAGE_VERSION != *".next"* ]]; then
+            echo "Error: package version does not contain .next"
+            exit 1
+          fi
+
       - name: Run Dist
         run: |
           cd packages/${{ github.event.inputs.package }}
           npm install
           npm run dist
-
-      - name: Patch package version
-        run: |
-          cd packages/${{ github.event.inputs.package }}
-          NEXT_VERSION="${{ github.event.inputs.semver }}-next.${{ github.event.inputs.next }}"
-          npm pkg set version="$NEXT_VERSION"
 
       - name: Cleanup package properties
         run: |

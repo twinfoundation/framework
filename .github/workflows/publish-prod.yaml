@@ -39,6 +39,15 @@ jobs:
           rm package.json
           rm package-lock.json
 
+      - name: Check package version does not contain .next
+        run: |
+          cd packages/${{ github.event.inputs.package }}
+          PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
+          if [[ $PACKAGE_VERSION == *".next"* ]]; then
+            echo "Error: package version contains .next"
+            exit 1
+          fi
+
       - name: Run Dist
         run: |
           cd packages/${{ github.event.inputs.package }}
