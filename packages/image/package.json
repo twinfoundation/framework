@@ -27,12 +27,12 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "^0.0.3",
-		"@gtsc/nameof": "^0.0.3",
+		"@gtsc/core": "next",
+		"@gtsc/nameof": "next",
 		"pako": "^2.1.0"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "^0.0.3",
+		"@gtsc/nameof-transformer": "next",
 		"@types/pako": "^2.0.3",
 		"@vitest/coverage-v8": "^1.4.0",
 		"copyfiles": "^2.4.1",
