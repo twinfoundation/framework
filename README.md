@@ -49,7 +49,7 @@ npm run lint
 
 The `main` branch is always the most recently published versions of the packages.
 
-The `dev` branch is where all PRs should be merged to, in preparation for a final merge to `main`.
+The `next` branch is where all PRs should be merged to, in preparation for a final merge to `main`.
 
 When creating a branch for a feature use the format e.g. `feature/my-feature`
 
@@ -62,7 +62,7 @@ To publish a new version of a package you should perform the following steps:
 - Increment the version in package.json following semver rules.
 - Update the CHANGELOG.md for the package with the relevant changes.
 - Create a PR for the changes and have it approved.
-- The PR with the version and changelog modifications is merged to `dev.
+- The PR with the version and changelog modifications is merged to `next`.
 - When the PR is merged to `main` you will be able to run the `publish` GitHub Action, which will publish the new version to the npm registry.
 
 ## Documentation
