@@ -39,7 +39,7 @@ jobs:
           rm package.json
           rm package-lock.json
 
-      - name: Check package version does not contain .next
+      - name: Check package version does not contain -next
         run: |
           cd packages/${{ github.event.inputs.package }}
           PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
