@@ -45,8 +45,9 @@ jobs:
         run: |
           cd packages/${{ github.event.inputs.package }}
           PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
-          if [[ $PACKAGE_VERSION != *".next"* ]]; then
-            echo "Error: package version does not contain .next"
+          echo Package Version $PACKAGE_VERSION
+          if [[ $PACKAGE_VERSION != *"-next"* ]]; then
+            echo "Error: package version does not contain -next"
             exit 1
           fi
 
