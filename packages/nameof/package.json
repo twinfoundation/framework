@@ -27,7 +27,7 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "^0.0.3",
+		"@gtsc/nameof-transformer": "next",
 		"@vitest/coverage-v8": "^1.4.0",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
