@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/nameof-transformer",
-	"version": "next",
+	"version": "0.0.3-next.9",
 	"description": "Framework nameof TypeScript Transform package for GTSC",
 	"repository": {
 		"type": "git",
