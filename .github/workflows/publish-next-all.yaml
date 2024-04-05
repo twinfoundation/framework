@@ -1,4 +1,4 @@
-name: Publish Next All
+name: Publish Next All Packages
 
 on: workflow_dispatch
 
