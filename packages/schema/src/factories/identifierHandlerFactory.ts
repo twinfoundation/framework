@@ -16,17 +16,11 @@ export const IdentifierHandlerFactory = new Factory<IIdentifierHandler>(
 
 		const urnParts = Urn.fromValidString(uri).parts(true);
 
-		console.log("names", names);
-		console.log("urnParts", urnParts);
-
 		for (let i = urnParts.length - 1; i >= 0; i--) {
 			const wholeNamespace = urnParts.slice(i).join(":");
-			console.log("wholeNamespace", wholeNamespace);
 			if (names.includes(wholeNamespace)) {
-				console.log("matches");
 				return wholeNamespace;
 			}
-			console.log("no matches");
 		}
 	}
 );
