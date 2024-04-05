@@ -11,7 +11,8 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-          package: [nameof-transformer, name-of, core, crypto, entity, image, nameof, qr, services, schema]
+        package:
+          [nameof-transformer, name-of, core, crypto, entity, image, nameof, qr, services, schema]
 
     steps:
       - name: Checkout
