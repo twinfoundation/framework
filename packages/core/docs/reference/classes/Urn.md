@@ -51,6 +51,26 @@ The namespace specific.
 
 ___
 
+### parts
+
+▸ **parts**(`omitPrefix?`): `string`[]
+
+Get the individual parts of the urn.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `omitPrefix?` | `boolean` | Omit the urn: prefix from the string. |
+
+#### Returns
+
+`string`[]
+
+The parts of the urn.
+
+___
+
 ### toString
 
 ▸ **toString**(`omitPrefix?`): `string`

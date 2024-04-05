@@ -3,7 +3,6 @@
 
 export * from "./factories/dataTypeHandlerFactory";
 export * from "./factories/identifierHandlerFactory";
-export * from "./helpers/jsonCanonicalization";
 export * from "./models/IDataTypeHandler";
 export * from "./models/IIdentifierHandler";
 export * from "./models/IProperty";

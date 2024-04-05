@@ -1,22 +1,23 @@
-# Class: JsonCanonicalization
+# Class: JsonHelper
 
-Canonicalizes a JSON object.
+Helpers methods for JSON objects.
+Based on https://www.rfc-editor.org/rfc/rfc8785
 
 ## Constructors
 
 ### constructor
 
-• **new JsonCanonicalization**(): [`JsonCanonicalization`](JsonCanonicalization.md)
+• **new JsonHelper**(): [`JsonHelper`](JsonHelper.md)
 
 #### Returns
 
-[`JsonCanonicalization`](JsonCanonicalization.md)
+[`JsonHelper`](JsonHelper.md)
 
 ## Methods
 
-### serialize
+### canonicalize
 
-▸ **serialize**(`object`): `string`
+▸ **canonicalize**(`object`): `string`
 
 Serializes in canonical format.
 

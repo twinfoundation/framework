@@ -4,6 +4,7 @@
 import { nameof } from "@gtsc/nameof";
 import { GeneralError } from "../errors/generalError";
 import { Guards } from "../utils/guards";
+import { Is } from "../utils/is";
 
 /**
  * Factory for creating implementation of generic types.
@@ -39,13 +40,40 @@ export class Factory<T> {
 	private _instances: { [name: string]: T };
 
 	/**
+	 * Counter for the ordering.
+	 * @internal
+	 */
+	private _orderCounter: number;
+
+	/**
+	 * Automatically created an instance when registered.
+	 * @internal
+	 */
+	private readonly _autoInstance: boolean;
+
+	/**
+	 * Match the name of the instance.
+	 * @internal
+	 */
+	private readonly _matcher: (names: string[], name: string) => string | undefined;
+
+	/**
 	 * Create a new instance of Factory.
 	 * @param typeName The type name for the instances.
+	 * @param autoInstance Automatically create an instance when registered.
+	 * @param matcher Match the name of the instance.
 	 */
-	constructor(typeName: string) {
+	constructor(
+		typeName: string,
+		autoInstance: boolean = false,
+		matcher?: (names: string[], name: string) => string | undefined
+	) {
 		this._typeName = typeName;
 		this._generators = {};
 		this._instances = {};
+		this._orderCounter = 0;
+		this._autoInstance = autoInstance;
+		this._matcher = matcher ?? this.defaultMatcher.bind(this);
 	}
 
 	/**
@@ -58,10 +86,13 @@ export class Factory<T> {
 		Guards.function(Factory._CLASS_NAME, nameof(generator), generator);
 		this._generators[name] = {
 			generator,
-			order: Object.keys(this._generators).length
+			order: this._orderCounter++
 		};
 		// Remove any existing instance
 		this.removeInstance(name);
+		if (this._autoInstance) {
+			this._instances[name] = generator();
+		}
 	}
 
 	/**
@@ -109,12 +140,14 @@ export class Factory<T> {
 	public getIfExists<U extends T>(name: string): U | undefined {
 		Guards.stringValue(Factory._CLASS_NAME, nameof(name), name);
 
-		if (this._generators[name]) {
-			if (!this._instances[name]) {
-				this._instances[name] = this._generators[name].generator();
+		const matchName = this._matcher(Object.keys(this._generators), name);
+
+		if (Is.stringValue(matchName) && this._generators[matchName]) {
+			if (!this._instances[matchName]) {
+				this._instances[matchName] = this._generators[matchName].generator();
 			}
-			if (this._instances[name]) {
-				return this._instances[name] as U;
+			if (this._instances[matchName]) {
+				return this._instances[matchName] as U;
 			}
 		}
 	}
@@ -130,11 +163,26 @@ export class Factory<T> {
 	}
 
 	/**
-	 * Get all the instances.
-	 * @returns The instances.
+	 * Get all the instances as a map.
+	 * @returns The instances as a map.
 	 */
-	public instances(): { [name: string]: T } {
+	public instancesMap(): { [name: string]: T } {
 		return this._instances;
+	}
+
+	/**
+	 * Get all the instances as a list in the order they were registered.
+	 * @returns The instances as a list in the order they were registered.
+	 */
+	public instancesList(): T[] {
+		const orderedInstances: { instance: T; order: number }[] = [];
+		for (const instanceName in this._instances) {
+			orderedInstances.push({
+				instance: this._instances[instanceName],
+				order: this._generators[instanceName].order
+			});
+		}
+		return orderedInstances.sort((a, b) => a.order - b.order).map(o => o.instance);
 	}
 
 	/**
@@ -159,5 +207,15 @@ export class Factory<T> {
 	 */
 	private removeInstance(name: string): void {
 		delete this._instances[name];
+	}
+
+	/**
+	 * Match the requested name to the generator name.
+	 * @param names The list of names for all the generators.
+	 * @param name The name to match.
+	 * @returns The matched name or undefined if no match.
+	 */
+	private defaultMatcher(names: string[], name: string): string | undefined {
+		return this._generators[name] ? name : undefined;
 	}
 }

@@ -19,6 +19,7 @@
 - [HexHelper](classes/HexHelper.md)
 - [I18n](classes/I18n.md)
 - [Is](classes/Is.md)
+- [JsonHelper](classes/JsonHelper.md)
 - [MimeTypeHelper](classes/MimeTypeHelper.md)
 - [NotFoundError](classes/NotFoundError.md)
 - [NotImplementedError](classes/NotImplementedError.md)

@@ -204,6 +204,15 @@ export class Urn {
 	}
 
 	/**
+	 * Get the individual parts of the urn.
+	 * @param omitPrefix Omit the urn: prefix from the string.
+	 * @returns The parts of the urn.
+	 */
+	public parts(omitPrefix?: boolean): string[] {
+		return this.toString(omitPrefix).split(":");
+	}
+
+	/**
 	 * Convert the parts in to a full string.
 	 * @param omitPrefix Omit the urn: prefix from the string.
 	 * @returns The formatted urn.
