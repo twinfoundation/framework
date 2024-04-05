@@ -2,9 +2,6 @@
 
 ## Classes
 
-- [DataTypeHandlerFactory](classes/DataTypeHandlerFactory.md)
-- [IdentifierHandlerFactory](classes/IdentifierHandlerFactory.md)
-- [JsonCanonicalization](classes/JsonCanonicalization.md)
 - [SchemaValidationService](classes/SchemaValidationService.md)
 
 ## Interfaces
@@ -22,3 +19,19 @@
 Ƭ **ISchemaValidationError**: `ErrorObject`[]
 
 Schema validation error.
+
+## Variables
+
+### DataTypeHandlerFactory
+
+• `Const` **DataTypeHandlerFactory**: `Factory`\<[`IDataTypeHandler`](interfaces/IDataTypeHandler.md)\>
+
+Factory for creating handlers for data types.
+
+___
+
+### IdentifierHandlerFactory
+
+• `Const` **IdentifierHandlerFactory**: `Factory`\<[`IIdentifierHandler`](interfaces/IIdentifierHandler.md)\>
+
+Factory for creating handlers for identifiers.

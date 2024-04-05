@@ -17,6 +17,7 @@ export * from "./factories/factory";
 export * from "./helpers/arrayHelper";
 export * from "./helpers/filenameHelper";
 export * from "./helpers/hexHelper";
+export * from "./helpers/jsonHelper";
 export * from "./helpers/mimeTypeHelper";
 export * from "./helpers/numberHelper";
 export * from "./helpers/objectHelper";

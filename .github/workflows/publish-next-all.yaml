@@ -1,28 +1,18 @@
-name: Publish Next
+name: Publish Next All
 
-on:
-  workflow_dispatch:
-    inputs:
-      package:
-        description: 'Which package to publish'
-        required: true
-        type: choice
-        options:
-          - nameof-transformer
-          - nameof
-          - core
-          - crypto
-          - entity
-          - image
-          - qr
-          - services
-          - schema
+on: workflow_dispatch
 
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     if: github.ref != 'refs/heads/main'
+
+    strategy:
+      max-parallel: 1
+      matrix:
+        package:
+          [nameof-transformer, name-of, core, crypto, entity, image, nameof, qr, services, schema]
 
     steps:
       - name: Checkout
@@ -43,7 +33,7 @@ jobs:
 
       - name: Check package version contains -next
         run: |
-          cd packages/${{ github.event.inputs.package }}
+          cd packages/${{ matrix.package }}
           PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
           echo Package Version $PACKAGE_VERSION
           if [[ $PACKAGE_VERSION != *"-next"* ]]; then
@@ -53,19 +43,19 @@ jobs:
 
       - name: Run Dist
         run: |
-          cd packages/${{ github.event.inputs.package }}
+          cd packages/${{ matrix.package }}
           npm install
           npm run dist
 
       - name: Cleanup package properties
         run: |
-          cd packages/${{ github.event.inputs.package }}
+          cd packages/${{ matrix.package }}
           npm pkg delete scripts
           npm pkg delete devDependencies
 
       - name: Publish
         run: |
-          cd packages/${{ github.event.inputs.package }}
+          cd packages/${{ matrix.package }}
           npm publish --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

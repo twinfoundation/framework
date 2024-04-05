@@ -12,7 +12,7 @@ Factory for creating implementation of generic types.
 
 ### constructor
 
-• **new Factory**\<`T`\>(`typeName`): [`Factory`](Factory.md)\<`T`\>
+• **new Factory**\<`T`\>(`typeName`, `autoInstance?`, `matcher?`): [`Factory`](Factory.md)\<`T`\>
 
 Create a new instance of Factory.
 
@@ -24,15 +24,38 @@ Create a new instance of Factory.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `typeName` | `string` | The type name for the instances. |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `typeName` | `string` | `undefined` | The type name for the instances. |
+| `autoInstance` | `boolean` | `false` | Automatically create an instance when registered. |
+| `matcher?` | (`names`: `string`[], `name`: `string`) => `undefined` \| `string` | `undefined` | Match the name of the instance. |
 
 #### Returns
 
 [`Factory`](Factory.md)\<`T`\>
 
 ## Methods
+
+### defaultMatcher
+
+▸ **defaultMatcher**(`names`, `name`): `undefined` \| `string`
+
+Match the requested name to the generator name.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `names` | `string`[] | The list of names for all the generators. |
+| `name` | `string` | The name to match. |
+
+#### Returns
+
+`undefined` \| `string`
+
+The matched name or undefined if no match.
+
+___
 
 ### get
 
@@ -94,17 +117,31 @@ An instance of the item or undefined if it does not exist.
 
 ___
 
-### instances
+### instancesList
 
-▸ **instances**(): `Object`
+▸ **instancesList**(): `T`[]
 
-Get all the instances.
+Get all the instances as a list in the order they were registered.
+
+#### Returns
+
+`T`[]
+
+The instances as a list in the order they were registered.
+
+___
+
+### instancesMap
+
+▸ **instancesMap**(): `Object`
+
+Get all the instances as a map.
 
 #### Returns
 
 `Object`
 
-The instances.
+The instances as a map.
 
 ___
 
