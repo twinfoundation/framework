@@ -4,17 +4,10 @@
 
 import type { ILogEntry } from "../../../services/src/models/ILogEntry";
 import type { IService } from "../../../services/src/models/IService";
-import { FactoryInstance } from "../../src/factories/factoryInstance";
+import { Factory } from "../../src/factories/factory";
 
-/**
- * Test factory for validation.
- */
-class TestFactory {
-	// eslint-disable-next-line @typescript-eslint/naming-convention
-	public static readonly Instance: FactoryInstance<IService> = new FactoryInstance<IService>(
-		"service"
-	);
-}
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const TestFactory = new Factory<IService>("service");
 
 /**
  * Test service for validation.
@@ -41,9 +34,9 @@ class TestService implements IService {
 	}
 }
 
-describe("FactoryInstance", () => {
+describe("Factory", () => {
 	test("register can fail if name is undefined", () => {
-		expect(() => TestFactory.Instance.register(undefined as never, undefined as never)).toThrow(
+		expect(() => TestFactory.register(undefined as never, undefined as never)).toThrow(
 			expect.objectContaining({
 				name: "GuardError",
 				message: "guard.string"
@@ -52,7 +45,7 @@ describe("FactoryInstance", () => {
 	});
 
 	test("register can fail if service is undefined", () => {
-		expect(() => TestFactory.Instance.register("test", undefined as never)).toThrow(
+		expect(() => TestFactory.register("test", undefined as never)).toThrow(
 			expect.objectContaining({
 				name: "GuardError",
 				message: "guard.function"
@@ -61,7 +54,7 @@ describe("FactoryInstance", () => {
 	});
 
 	test("get can fail if name is undefined", () => {
-		expect(() => TestFactory.Instance.get(undefined as never)).toThrow(
+		expect(() => TestFactory.get(undefined as never)).toThrow(
 			expect.objectContaining({
 				name: "GuardError",
 				message: "guard.string"
@@ -70,17 +63,17 @@ describe("FactoryInstance", () => {
 	});
 
 	test("get fail if unknown type", () => {
-		expect(() => TestFactory.Instance.get("test")).toThrow(
+		expect(() => TestFactory.get("test")).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "factoryInstance.noGet"
+				message: "factory.noGet"
 			})
 		);
 	});
 
 	test("register and get can succeed", () => {
-		TestFactory.Instance.register("test", () => new TestService());
-		const t = TestFactory.Instance.get<TestService>("test");
+		TestFactory.register("test", () => new TestService());
+		const t = TestFactory.get<TestService>("test");
 		expect(t).toBeDefined();
 		if (t) {
 			expect(t.foo).toEqual(1);
@@ -89,36 +82,36 @@ describe("FactoryInstance", () => {
 
 	test("register and get can succeed and return same instance", () => {
 		const testService = new TestService();
-		TestFactory.Instance.register("test2", () => testService);
-		const t2 = TestFactory.Instance.get<TestService>("test2");
+		TestFactory.register("test2", () => testService);
+		const t2 = TestFactory.get<TestService>("test2");
 		if (t2) {
 			expect(t2).toBeDefined();
 			expect(t2.foo).toEqual(1);
 		}
 		testService.foo = 2;
-		const t2b = TestFactory.Instance.get<TestService>("test2");
+		const t2b = TestFactory.get<TestService>("test2");
 		if (t2b) {
 			expect(t2b.foo).toEqual(2);
 		}
 	});
 
 	test("unregister can succeed", () => {
-		TestFactory.Instance.register("test3", () => new TestService());
-		const t3 = TestFactory.Instance.get<TestService>("test3");
+		TestFactory.register("test3", () => new TestService());
+		const t3 = TestFactory.get<TestService>("test3");
 		if (t3) {
 			expect(t3.foo).toEqual(1);
 		}
-		TestFactory.Instance.unregister("test3");
-		expect(() => TestFactory.Instance.get("test3")).toThrow(
+		TestFactory.unregister("test3");
+		expect(() => TestFactory.get("test3")).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "factoryInstance.noGet"
+				message: "factory.noGet"
 			})
 		);
 	});
 
 	test("unregister can fail if name is undefined", () => {
-		expect(() => TestFactory.Instance.unregister(undefined as never)).toThrow(
+		expect(() => TestFactory.unregister(undefined as never)).toThrow(
 			expect.objectContaining({
 				name: "GuardError",
 				message: "guard.string"
@@ -127,19 +120,34 @@ describe("FactoryInstance", () => {
 	});
 
 	test("unregister can fail with unknown type", () => {
-		expect(() => TestFactory.Instance.unregister("unknown")).toThrow(
+		expect(() => TestFactory.unregister("unknown")).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "factoryInstance.noUnregister"
+				message: "factory.noUnregister"
 			})
 		);
 	});
 
 	test("can reset the factory", () => {
-		TestFactory.Instance.register("test3", () => new TestService());
-		expect(TestFactory.Instance.get<TestService>("test3").foo).toEqual(1);
-		TestFactory.Instance.get<TestService>("test3").foo = 2;
-		TestFactory.Instance.reset();
-		expect(TestFactory.Instance.get<TestService>("test3").foo).toEqual(1);
+		TestFactory.register("test3", () => new TestService());
+		expect(TestFactory.get<TestService>("test3").foo).toEqual(1);
+		TestFactory.get<TestService>("test3").foo = 2;
+		TestFactory.reset();
+		expect(TestFactory.get<TestService>("test3").foo).toEqual(1);
+	});
+
+	test("can have two factories which don't collide", () => {
+		const testFactory1 = new Factory<IService>("service1");
+		const testFactory2 = new Factory<IService>("service2");
+		testFactory1.register("test1", () => new TestService());
+		testFactory2.register("test2", () => new TestService());
+
+		const names1 = testFactory1.names();
+		expect(names1.length).toEqual(1);
+		expect(names1[0]).toEqual("test1");
+
+		const names2 = testFactory2.names();
+		expect(names2.length).toEqual(1);
+		expect(names2[0]).toEqual("test2");
 	});
 });

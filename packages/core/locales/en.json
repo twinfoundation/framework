@@ -54,7 +54,7 @@
 			"notImplementedMethod": "The method \"{method}\" has not been implemented",
 			"validation": "Validation failed"
 		},
-		"factoryInstance": {
+		"factory": {
 			"noUnregister": "There is no {typeName} registered with the name \"{name}\"",
 			"noGet": "The requested {typeName} \"{name}\" does not exist in the factory"
 		}

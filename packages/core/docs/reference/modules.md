@@ -11,7 +11,7 @@
 - [Coerce](classes/Coerce.md)
 - [ConflictError](classes/ConflictError.md)
 - [Converter](classes/Converter.md)
-- [FactoryInstance](classes/FactoryInstance.md)
+- [Factory](classes/Factory.md)
 - [FilenameHelper](classes/FilenameHelper.md)
 - [GeneralError](classes/GeneralError.md)
 - [GuardError](classes/GuardError.md)

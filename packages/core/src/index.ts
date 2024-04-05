@@ -13,7 +13,7 @@ export * from "./errors/notImplementedError";
 export * from "./errors/notSupportedError";
 export * from "./errors/unauthorizedError";
 export * from "./errors/validationError";
-export * from "./factories/factoryInstance";
+export * from "./factories/factory";
 export * from "./helpers/arrayHelper";
 export * from "./helpers/filenameHelper";
 export * from "./helpers/hexHelper";

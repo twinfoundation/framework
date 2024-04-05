@@ -1,4 +1,4 @@
-# Class: FactoryInstance\<T\>
+# Class: Factory\<T\>
 
 Factory for creating implementation of generic types.
 
@@ -12,9 +12,9 @@ Factory for creating implementation of generic types.
 
 ### constructor
 
-• **new FactoryInstance**\<`T`\>(`typeName`): [`FactoryInstance`](FactoryInstance.md)\<`T`\>
+• **new Factory**\<`T`\>(`typeName`): [`Factory`](Factory.md)\<`T`\>
 
-Create a new instance of FactoryInstance.
+Create a new instance of Factory.
 
 #### Type parameters
 
@@ -30,7 +30,7 @@ Create a new instance of FactoryInstance.
 
 #### Returns
 
-[`FactoryInstance`](FactoryInstance.md)\<`T`\>
+[`Factory`](Factory.md)\<`T`\>
 
 ## Methods
 

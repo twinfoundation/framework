@@ -8,12 +8,12 @@ import { Guards } from "../utils/guards";
 /**
  * Factory for creating implementation of generic types.
  */
-export class FactoryInstance<T> {
+export class Factory<T> {
 	/**
 	 * Runtime name for the class.
 	 * @internal
 	 */
-	private static readonly _CLASS_NAME: string = nameof<FactoryInstance<unknown>>();
+	private static readonly _CLASS_NAME: string = nameof<Factory<unknown>>();
 
 	/**
 	 * Type name for the instances.
@@ -39,7 +39,7 @@ export class FactoryInstance<T> {
 	private _instances: { [name: string]: T };
 
 	/**
-	 * Create a new instance of FactoryInstance.
+	 * Create a new instance of Factory.
 	 * @param typeName The type name for the instances.
 	 */
 	constructor(typeName: string) {
@@ -54,8 +54,8 @@ export class FactoryInstance<T> {
 	 * @param generator The function to create an instance.
 	 */
 	public register<U extends T>(name: string, generator: () => U): void {
-		Guards.stringValue(FactoryInstance._CLASS_NAME, nameof(name), name);
-		Guards.function(FactoryInstance._CLASS_NAME, nameof(generator), generator);
+		Guards.stringValue(Factory._CLASS_NAME, nameof(name), name);
+		Guards.function(Factory._CLASS_NAME, nameof(generator), generator);
 		this._generators[name] = {
 			generator,
 			order: Object.keys(this._generators).length
@@ -71,9 +71,9 @@ export class FactoryInstance<T> {
 	 * @throws GeneralError if no generator exists.
 	 */
 	public unregister(name: string): void {
-		Guards.stringValue(FactoryInstance._CLASS_NAME, nameof(name), name);
+		Guards.stringValue(Factory._CLASS_NAME, nameof(name), name);
 		if (!this._generators[name]) {
-			throw new GeneralError(FactoryInstance._CLASS_NAME, "noUnregister", {
+			throw new GeneralError(Factory._CLASS_NAME, "noUnregister", {
 				typeName: this._typeName,
 				name
 			});
@@ -93,7 +93,7 @@ export class FactoryInstance<T> {
 	public get<U extends T>(name: string): U {
 		const instance = this.getIfExists(name);
 		if (!instance) {
-			throw new GeneralError(FactoryInstance._CLASS_NAME, "noGet", {
+			throw new GeneralError(Factory._CLASS_NAME, "noGet", {
 				typeName: this._typeName,
 				name
 			});
@@ -107,7 +107,7 @@ export class FactoryInstance<T> {
 	 * @returns An instance of the item or undefined if it does not exist.
 	 */
 	public getIfExists<U extends T>(name: string): U | undefined {
-		Guards.stringValue(FactoryInstance._CLASS_NAME, nameof(name), name);
+		Guards.stringValue(Factory._CLASS_NAME, nameof(name), name);
 
 		if (this._generators[name]) {
 			if (!this._instances[name]) {
