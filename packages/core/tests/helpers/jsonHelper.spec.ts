@@ -24,7 +24,7 @@ describe("JsonHelper", () => {
 	});
 
 	test("can canonicalize a date", () => {
-		expect(JsonHelper.canonicalize(new Date("1974-08-16:09:10:11.1234"))).toEqual(
+		expect(JsonHelper.canonicalize(new Date("1974-08-16:09:10:11.1234Z"))).toEqual(
 			'"1974-08-16T07:10:11.123Z"'
 		);
 	});
@@ -50,7 +50,7 @@ describe("JsonHelper", () => {
 			JsonHelper.canonicalize({
 				t: "foo",
 				n: 43,
-				dt: new Date("1974-08-16:09:10:11.1234"),
+				dt: new Date("1974-08-16:09:10:11.1234Z"),
 				arr: [1, 2, 3, { b: 123, a: "foo", c: undefined }, undefined]
 			})
 		).toEqual(
