@@ -1,4 +1,4 @@
-name: Publish Next All
+name: Publish Next All Packages
 
 on: workflow_dispatch
 
@@ -12,7 +12,7 @@ jobs:
       max-parallel: 1
       matrix:
         package:
-          [nameof-transformer, name-of, core, crypto, entity, image, nameof, qr, services, schema]
+          [nameof-transformer, nameof, core, crypto, entity, image, nameof, qr, services, schema]
 
     steps:
       - name: Checkout
