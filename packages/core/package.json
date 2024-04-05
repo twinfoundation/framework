@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/core",
-	"version": "0.0.3-next.10",
+	"version": "0.0.3-next.11",
 	"description": "Framework Core packages for GTSC",
 	"repository": {
 		"type": "git",
@@ -27,11 +27,11 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/nameof": "0.0.3-next.10",
+		"@gtsc/nameof": "0.0.3-next.11",
 		"intl-messageformat": "^10.5.11"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "0.0.3-next.10",
+		"@gtsc/nameof-transformer": "0.0.3-next.11",
 		"@vitest/coverage-v8": "^1.4.0",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
