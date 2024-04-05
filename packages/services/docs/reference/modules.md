@@ -3,7 +3,6 @@
 ## Classes
 
 - [RequestContextHelper](classes/RequestContextHelper.md)
-- [ServiceFactory](classes/ServiceFactory.md)
 
 ## Interfaces
 
@@ -18,3 +17,11 @@
 Ƭ **LogLevel**: ``"info"`` \| ``"warn"`` \| ``"error"``
 
 Log level.
+
+## Variables
+
+### ServiceFactory
+
+• `Const` **ServiceFactory**: `Factory`\<[`IService`](interfaces/IService.md)\>
+
+Factory for creating implementation of service types.
