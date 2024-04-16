@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/crypto",
-	"version": "0.0.3-next.13",
+	"version": "0.0.3-next.14",
 	"description": "Framework Crypto packages for GTSC",
 	"repository": {
 		"type": "git",
@@ -27,21 +27,21 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.3-next.13",
-		"@gtsc/nameof": "0.0.3-next.13"
+		"@gtsc/core": "0.0.3-next.14",
+		"@gtsc/nameof": "0.0.3-next.14"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "0.0.3-next.13",
-		"@vitest/coverage-v8": "^1.4.0",
+		"@gtsc/nameof-transformer": "0.0.3-next.14",
+		"@vitest/coverage-v8": "^1.5.0",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
-		"rollup": "^4.14.0",
+		"rollup": "^4.14.3",
 		"rollup-plugin-typescript2": "^0.36.0",
 		"ts-patch": "^3.1.2",
-		"typedoc": "^0.25.12",
+		"typedoc": "^0.25.13",
 		"typedoc-plugin-markdown": "^3.17.1",
-		"typescript": "^5.4.3",
-		"vitest": "^1.4.0"
+		"typescript": "^5.4.5",
+		"vitest": "^1.5.0"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",

@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { ILogEntry } from "./ILogEntry";
 import type { IRequestContext } from "./IRequestContext";
 
 /**
@@ -10,9 +9,9 @@ export interface IService {
 	/**
 	 * Bootstrap the service by creating and initializing any resources it needs.
 	 * @param requestContext The request context for bootstrapping.
-	 * @returns The response of the bootstrapping as log entries.
+	 * @returns Nothing.
 	 */
-	bootstrap?(requestContext: IRequestContext): Promise<ILogEntry[]>;
+	bootstrap?(requestContext: IRequestContext): Promise<void>;
 
 	/**
 	 * The service needs to be started when the application is initialized.

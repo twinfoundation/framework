@@ -6,7 +6,7 @@ Interface describing a service.
 
 ### bootstrap
 
-▸ **bootstrap**(`requestContext`): `Promise`\<[`ILogEntry`](ILogEntry.md)[]\>
+▸ **bootstrap**(`requestContext`): `Promise`\<`void`\>
 
 Bootstrap the service by creating and initializing any resources it needs.
 
@@ -18,9 +18,9 @@ Bootstrap the service by creating and initializing any resources it needs.
 
 #### Returns
 
-`Promise`\<[`ILogEntry`](ILogEntry.md)[]\>
+`Promise`\<`void`\>
 
-The response of the bootstrapping as log entries.
+Nothing.
 
 ___
 

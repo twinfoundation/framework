@@ -16,7 +16,7 @@ Schema Validator interface.
 
 ### bootstrap
 
-▸ **bootstrap**(`requestContext`): `Promise`\<`ILogEntry`[]\>
+▸ **bootstrap**(`requestContext`): `Promise`\<`void`\>
 
 Bootstrap the service by creating and initializing any resources it needs.
 
@@ -28,9 +28,9 @@ Bootstrap the service by creating and initializing any resources it needs.
 
 #### Returns
 
-`Promise`\<`ILogEntry`[]\>
+`Promise`\<`void`\>
 
-The response of the bootstrapping as log entries.
+Nothing.
 
 #### Inherited from
 

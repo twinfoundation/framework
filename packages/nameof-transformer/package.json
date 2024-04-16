@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/nameof-transformer",
-	"version": "0.0.3-next.13",
+	"version": "0.0.3-next.14",
 	"description": "Framework nameof TypeScript Transform package for GTSC",
 	"repository": {
 		"type": "git",
@@ -27,18 +27,18 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"typescript": "^5.4.3"
+		"typescript": "^5.4.5"
 	},
 	"devDependencies": {
-		"@vitest/coverage-v8": "^1.4.0",
+		"@vitest/coverage-v8": "^1.5.0",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
-		"rollup": "^4.14.0",
+		"rollup": "^4.14.3",
 		"rollup-plugin-typescript2": "^0.36.0",
-		"typedoc": "^0.25.12",
+		"typedoc": "^0.25.13",
 		"typedoc-plugin-markdown": "^3.17.1",
-		"typescript": "^5.4.3",
-		"vitest": "^1.4.0"
+		"typescript": "^5.4.5",
+		"vitest": "^1.5.0"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",

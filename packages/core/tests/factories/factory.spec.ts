@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable max-classes-per-file */
 
-import type { ILogEntry } from "../../../services/src/models/ILogEntry";
 import type { IService } from "../../../services/src/models/IService";
 import { Factory } from "../../src/factories/factory";
 
@@ -34,11 +33,9 @@ class TestService implements IService {
 
 	/**
 	 * Bootstrap the service by creating and initializing any resources it needs.
-	 * @returns The response of the bootstrapping as log entries.
+	 * @returns The nothing.
 	 */
-	public async bootstrap(): Promise<ILogEntry[]> {
-		return [];
-	}
+	public async bootstrap(): Promise<void> {}
 }
 
 describe("Factory", () => {

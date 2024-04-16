@@ -8,7 +8,7 @@ The context for the request.
 
 • `Optional` **identity**: `string`
 
-The identity of the requestor.
+The identity of the requestor if there is an authenticated user.
 
 ___
 
@@ -16,7 +16,7 @@ ___
 
 • `Optional` **locale**: `string`
 
-The locale of the context as a code eg es-ES.
+The locale of the context as a code e.g. es-ES, defaults to en.
 
 ___
 
@@ -24,4 +24,4 @@ ___
 
 • `Optional` **tenantId**: `string`
 
-The tenant id for partitioning data.
+The tenant id for partitioning data, correlated from the api key making the request.

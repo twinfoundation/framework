@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 import { ServiceFactory } from "../../src/factories/serviceFactory";
-import type { ILogEntry } from "../../src/models/ILogEntry";
 import type { IService } from "../../src/models/IService";
 
 /**
@@ -23,11 +22,9 @@ class TestService implements IService {
 
 	/**
 	 * Bootstrap the service by creating and initializing any resources it needs.
-	 * @returns The response of the bootstrapping as log entries.
+	 * @returns Nothing.
 	 */
-	public async bootstrap(): Promise<ILogEntry[]> {
-		return [];
-	}
+	public async bootstrap(): Promise<void> {}
 }
 
 describe("ServiceFactory", () => {

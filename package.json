@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/framework",
-	"version": "0.0.3-next.13",
+	"version": "0.0.3-next.14",
 	"description": "Framework packages for GTSC",
 	"repository": {
 		"type": "git",
@@ -22,16 +22,16 @@
 		"lint": "npm run lint:format && npm run lint:code && npm run lint:markdown && npm run lint:spell"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^7.5.0",
-		"cspell": "^8.6.1",
+		"@typescript-eslint/eslint-plugin": "^7.7.0",
+		"cspell": "^8.7.0",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-header": "^3.1.1",
 		"eslint-plugin-import": "^2.29.1",
-		"eslint-plugin-jsdoc": "^48.2.2",
+		"eslint-plugin-jsdoc": "^48.2.3",
 		"eslint-plugin-prettier": "^5.1.3",
 		"eslint-plugin-promise": "^6.1.1",
-		"eslint-plugin-simple-import-sort": "^12.0.0",
+		"eslint-plugin-simple-import-sort": "^12.1.0",
 		"eslint-plugin-unicorn": "^52.0.0",
 		"eslint-plugin-unused-imports": "^3.1.0",
 		"fast-glob": "^3.3.2",
