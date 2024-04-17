@@ -1,6 +1,12 @@
-# Interface: IComparator
+# Interface: IComparator\<T\>
 
 Interface defining comparison operator.
+
+## Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `unknown` |
 
 ## Properties
 
@@ -12,17 +18,9 @@ The comparison to perform.
 
 ___
 
-### logicalOperator
-
-• `Optional` **logicalOperator**: [`LogicalOperator`](../enums/LogicalOperator.md)
-
-The logical operator to use.
-
-___
-
 ### property
 
-• **property**: `string`
+• **property**: keyof `T`
 
 The name of the property in the object to compare.
 

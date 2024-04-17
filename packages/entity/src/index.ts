@@ -1,6 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 export * from "./models/IComparator";
+export * from "./models/IComparatorGroup";
 export * from "./models/IEntityDescriptor";
 export * from "./models/IEntityPropertyDescriptor";
 export * from "./models/IStructuredTypeDescriptor";

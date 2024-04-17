@@ -68,6 +68,14 @@ Not Equals.
 
 ___
 
+### NotIn
+
+• **NotIn** = ``"NotIn"``
+
+Not In operator.
+
+___
+
 ### NotIncludes
 
 • **NotIncludes** = ``"NotIncludes"``
