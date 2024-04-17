@@ -13,6 +13,7 @@
 ## Interfaces
 
 - [IComparator](interfaces/IComparator.md)
+- [IComparatorGroup](interfaces/IComparatorGroup.md)
 - [IEntityDescriptor](interfaces/IEntityDescriptor.md)
 - [IEntityPropertyDescriptor](interfaces/IEntityPropertyDescriptor.md)
 - [IStructuredTypeDescriptor](interfaces/IStructuredTypeDescriptor.md)

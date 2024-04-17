@@ -3,6 +3,7 @@
 import { ArrayHelper, Is } from "@gtsc/core";
 import { ComparisonType } from "../models/comparisonType";
 import type { IComparator } from "../models/IComparator";
+import type { IComparatorGroup } from "../models/IComparatorGroup";
 import { LogicalOperator } from "../models/logicalOperator";
 
 /**
@@ -12,147 +13,143 @@ export class Comparator {
 	/**
 	 * See if the entity matches the comparators.
 	 * @param entity The entity to test.
-	 * @param comparators The conditions to test.
+	 * @param comparator The conditions to test.
 	 * @returns True if the entity matches.
 	 */
-	public static testConditions<T extends object>(entity: T, comparators?: IComparator[]): boolean {
-		if (!Is.arrayValue(comparators)) {
+	public static testConditions<T>(
+		entity: T,
+		comparator?: IComparator<T> | IComparatorGroup<T>
+	): boolean {
+		// If no comparators are defined then it's a match
+		if (Is.undefined(comparator)) {
 			return true;
 		}
 
-		const results: boolean[] = [];
-
-		for (let i = 0; i < comparators.length; i++) {
-			if (!(comparators[i].property in entity)) {
-				results.push(false);
+		if ("comparators" in comparator) {
+			// It's a group of conditions, so check the individual items and combine with the logical operator
+			const results: boolean[] = comparator.comparators.map(c => this.testConditions(entity, c));
+			if ((comparator.logicalOperator ?? LogicalOperator.And) === LogicalOperator.And) {
+				return results.every(Boolean);
 			}
-			const val = entity[comparators[i].property as keyof T];
-			const conditionValue = comparators[i].value;
-
-			if (Is.string(val)) {
-				if (Is.string(conditionValue)) {
-					if (
-						!(
-							(comparators[i].comparison === ComparisonType.Equals && val === conditionValue) ||
-							(comparators[i].comparison === ComparisonType.NotEquals && val !== conditionValue) ||
-							(comparators[i].comparison === ComparisonType.GreaterThan && val > conditionValue) ||
-							(comparators[i].comparison === ComparisonType.LessThan && val < conditionValue) ||
-							(comparators[i].comparison === ComparisonType.GreaterThanOrEqual &&
-								val >= conditionValue) ||
-							(comparators[i].comparison === ComparisonType.LessThanOrEqual &&
-								val <= conditionValue) ||
-							(comparators[i].comparison === ComparisonType.Includes &&
-								val.includes(conditionValue)) ||
-							(comparators[i].comparison === ComparisonType.NotIncludes &&
-								!val.includes(conditionValue))
-						)
-					) {
-						results.push(false);
-					} else {
-						results.push(true);
-					}
-				} else {
-					results.push(false);
-				}
-			} else if (Is.number(val)) {
-				if (Is.number(conditionValue)) {
-					if (
-						!(
-							(comparators[i].comparison === ComparisonType.Equals && val === conditionValue) ||
-							(comparators[i].comparison === ComparisonType.NotEquals && val !== conditionValue) ||
-							(comparators[i].comparison === ComparisonType.GreaterThan && val > conditionValue) ||
-							(comparators[i].comparison === ComparisonType.LessThan && val < conditionValue) ||
-							(comparators[i].comparison === ComparisonType.GreaterThanOrEqual &&
-								val >= conditionValue) ||
-							(comparators[i].comparison === ComparisonType.LessThanOrEqual &&
-								val <= conditionValue)
-						)
-					) {
-						results.push(false);
-					} else {
-						results.push(true);
-					}
-				} else {
-					results.push(false);
-				}
-			} else if (Is.boolean(val)) {
-				if (Is.boolean(conditionValue)) {
-					if (
-						!(
-							(comparators[i].comparison === ComparisonType.Equals && val === conditionValue) ||
-							(comparators[i].comparison === ComparisonType.NotEquals && val !== conditionValue)
-						)
-					) {
-						results.push(false);
-					} else {
-						results.push(true);
-					}
-				} else {
-					results.push(false);
-				}
-			} else if (Is.array(val)) {
-				if (Is.array(conditionValue)) {
-					if (
-						comparators[i].comparison === ComparisonType.Equals ||
-						comparators[i].comparison === ComparisonType.NotEquals
-					) {
-						const matches = ArrayHelper.matches(val, conditionValue);
-						if (
-							!(
-								(comparators[i].comparison === ComparisonType.Equals && matches) ||
-								(comparators[i].comparison === ComparisonType.NotEquals && !matches)
-							)
-						) {
-							results.push(false);
-						} else {
-							results.push(true);
-						}
-					} else {
-						results.push(false);
-					}
-				} else if (Is.number(conditionValue) || Is.string(conditionValue)) {
-					if (
-						comparators[i].comparison === ComparisonType.Includes ||
-						comparators[i].comparison === ComparisonType.NotIncludes
-					) {
-						const includes = val.includes(conditionValue);
-						if (
-							!(
-								(comparators[i].comparison === ComparisonType.Includes && includes) ||
-								(comparators[i].comparison === ComparisonType.NotIncludes && !includes)
-							)
-						) {
-							results.push(false);
-						} else {
-							results.push(true);
-						}
-					} else {
-						results.push(false);
-					}
-				} else {
-					results.push(false);
-				}
-			}
+			return results.some(Boolean);
 		}
 
-		let currentLogicalOperator: LogicalOperator = LogicalOperator.AND;
+		// It's a single value so just check the condition
+		return Comparator.testCondition(entity, comparator);
+	}
 
-		let result = results[0];
-		for (let i = 0; i < results.length; i++) {
-			const val = results[i];
+	/**
+	 * See if the entity matches the comparator.
+	 * @param entity The entity to test.
+	 * @param comparator The condition to test.
+	 * @returns True if the entity matches.
+	 */
+	public static testCondition<T>(entity: T, comparator: IComparator<T>): boolean {
+		const val = entity[comparator.property];
+		const conditionValue = comparator.value;
 
-			if (i !== 0) {
-				if (currentLogicalOperator === LogicalOperator.AND) {
-					result = result && val;
-				}
-				if (currentLogicalOperator === LogicalOperator.OR) {
-					result = result || val;
-				}
+		if (Is.undefined(conditionValue)) {
+			const valUndefined = Is.undefined(val);
+			if (valUndefined && comparator.comparison === ComparisonType.Equals) {
+				return true;
+			} else if (!valUndefined && comparator.comparison === ComparisonType.NotEquals) {
+				return true;
 			}
-
-			currentLogicalOperator = comparators[i].logicalOperator ?? LogicalOperator.AND;
+			return false;
+		} else if (Is.string(val)) {
+			if (Is.string(conditionValue)) {
+				if (
+					!(
+						(comparator.comparison === ComparisonType.Equals && val === conditionValue) ||
+						(comparator.comparison === ComparisonType.NotEquals && val !== conditionValue) ||
+						(comparator.comparison === ComparisonType.GreaterThan && val > conditionValue) ||
+						(comparator.comparison === ComparisonType.LessThan && val < conditionValue) ||
+						(comparator.comparison === ComparisonType.GreaterThanOrEqual &&
+							val >= conditionValue) ||
+						(comparator.comparison === ComparisonType.LessThanOrEqual && val <= conditionValue) ||
+						(comparator.comparison === ComparisonType.Includes && val.includes(conditionValue)) ||
+						(comparator.comparison === ComparisonType.NotIncludes && !val.includes(conditionValue))
+					)
+				) {
+					return false;
+				}
+				return true;
+			}
+			return false;
+		} else if (Is.number(val)) {
+			if (Is.number(conditionValue)) {
+				if (
+					!(
+						(comparator.comparison === ComparisonType.Equals && val === conditionValue) ||
+						(comparator.comparison === ComparisonType.NotEquals && val !== conditionValue) ||
+						(comparator.comparison === ComparisonType.GreaterThan && val > conditionValue) ||
+						(comparator.comparison === ComparisonType.LessThan && val < conditionValue) ||
+						(comparator.comparison === ComparisonType.GreaterThanOrEqual &&
+							val >= conditionValue) ||
+						(comparator.comparison === ComparisonType.LessThanOrEqual && val <= conditionValue)
+					)
+				) {
+					return false;
+				}
+				return true;
+			}
+			return false;
+		} else if (Is.boolean(val)) {
+			if (Is.boolean(conditionValue)) {
+				if (
+					!(
+						(comparator.comparison === ComparisonType.Equals && val === conditionValue) ||
+						(comparator.comparison === ComparisonType.NotEquals && val !== conditionValue)
+					)
+				) {
+					return false;
+				}
+				return true;
+			}
+			return false;
+		} else if (Is.array(val)) {
+			if (Is.array(conditionValue)) {
+				if (
+					comparator.comparison === ComparisonType.Equals ||
+					comparator.comparison === ComparisonType.NotEquals
+				) {
+					const matches = ArrayHelper.matches(val, conditionValue);
+					if (
+						!(
+							(comparator.comparison === ComparisonType.Equals && matches) ||
+							(comparator.comparison === ComparisonType.NotEquals && !matches)
+						)
+					) {
+						return false;
+					}
+					return true;
+				}
+				return false;
+			} else if (Is.number(conditionValue) || Is.string(conditionValue)) {
+				if (
+					comparator.comparison === ComparisonType.Includes ||
+					comparator.comparison === ComparisonType.NotIncludes ||
+					comparator.comparison === ComparisonType.In ||
+					comparator.comparison === ComparisonType.NotIn
+				) {
+					const includes = val.includes(conditionValue);
+					if (
+						!(
+							(comparator.comparison === ComparisonType.Includes && includes) ||
+							(comparator.comparison === ComparisonType.NotIncludes && !includes) ||
+							(comparator.comparison === ComparisonType.In && includes) ||
+							(comparator.comparison === ComparisonType.NotIn && !includes)
+						)
+					) {
+						return false;
+					}
+					return true;
+				}
+				return false;
+			}
+			return false;
 		}
 
-		return result;
+		return false;
 	}
 }

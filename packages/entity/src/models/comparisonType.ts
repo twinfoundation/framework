@@ -48,5 +48,10 @@ export enum ComparisonType {
 	/**
 	 * In operator.
 	 */
-	In = "In"
+	In = "In",
+
+	/**
+	 * Not In operator.
+	 */
+	NotIn = "NotIn"
 }

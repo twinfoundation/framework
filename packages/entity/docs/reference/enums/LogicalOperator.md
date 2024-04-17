@@ -4,16 +4,16 @@ An enum defining logical operators.
 
 ## Enumeration Members
 
-### AND
+### And
 
-• **AND** = ``"AND"``
+• **And** = ``"And"``
 
 Logical operator AND.
 
 ___
 
-### OR
+### Or
 
-• **OR** = ``"OR"``
+• **Or** = ``"Or"``
 
 Logical operator OR.

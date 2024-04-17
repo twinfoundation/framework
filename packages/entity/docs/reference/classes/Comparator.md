@@ -14,24 +14,51 @@ Class to perform comparison operations using comparators.
 
 ## Methods
 
-### testConditions
+### testCondition
 
-▸ **testConditions**\<`T`\>(`entity`, `comparators?`): `boolean`
+▸ **testCondition**\<`T`\>(`entity`, `comparator`): `boolean`
 
-See if the entity matches the comparators.
+See if the entity matches the comparator.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name |
+| :------ |
+| `T` |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `entity` | `T` | The entity to test. |
-| `comparators?` | [`IComparator`](../interfaces/IComparator.md)[] | The conditions to test. |
+| `comparator` | [`IComparator`](../interfaces/IComparator.md)\<`T`\> | The condition to test. |
+
+#### Returns
+
+`boolean`
+
+True if the entity matches.
+
+___
+
+### testConditions
+
+▸ **testConditions**\<`T`\>(`entity`, `comparator?`): `boolean`
+
+See if the entity matches the comparators.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `entity` | `T` | The entity to test. |
+| `comparator?` | [`IComparator`](../interfaces/IComparator.md)\<`T`\> \| [`IComparatorGroup`](../interfaces/IComparatorGroup.md)\<`T`\> | The conditions to test. |
 
 #### Returns
 

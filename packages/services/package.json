@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/services",
-	"version": "0.0.3-next.15",
+	"version": "0.0.3-next.16",
 	"description": "Package for base service types",
 	"repository": {
 		"type": "git",
@@ -27,11 +27,11 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.3-next.15",
-		"@gtsc/nameof": "0.0.3-next.15"
+		"@gtsc/core": "0.0.3-next.16",
+		"@gtsc/nameof": "0.0.3-next.16"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "0.0.3-next.15",
+		"@gtsc/nameof-transformer": "0.0.3-next.16",
 		"@vitest/coverage-v8": "^1.5.0",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
