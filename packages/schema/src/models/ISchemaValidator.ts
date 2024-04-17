@@ -1,12 +1,11 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { IService } from "@gtsc/services";
 import type { ISchemaValidationResult } from "./ISchemaValidationResult";
 
 /**
  * Schema Validator interface.
  */
-export interface ISchemaValidator extends IService {
+export interface ISchemaValidator {
 	/**
 	 * Validates data against a schema.
 	 * @param data Data to be validated.

@@ -1,6 +1,6 @@
-# Class: SchemaValidationService
+# Class: JsonSchemaValidator
 
-A service for validating Schemas. Takes the schemas from the configuration.
+A validator for JSON schemas.
 
 ## Implements
 
@@ -10,7 +10,7 @@ A service for validating Schemas. Takes the schemas from the configuration.
 
 ### constructor
 
-• **new SchemaValidationService**(`schemas`): [`SchemaValidationService`](SchemaValidationService.md)
+• **new JsonSchemaValidator**(`schemas`): [`JsonSchemaValidator`](JsonSchemaValidator.md)
 
 The constructor.
 
@@ -18,17 +18,17 @@ The constructor.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `schemas` | `Object` | The schemas to be loaded (defined at configuration). |
+| `schemas` | `Object` | The schemas to be loaded. |
 
 #### Returns
 
-[`SchemaValidationService`](SchemaValidationService.md)
+[`JsonSchemaValidator`](JsonSchemaValidator.md)
 
 ## Methods
 
 ### validate
 
-▸ **validate**(`data`, `schemaName`): `Promise`\<[`ISchemaValidationResult`](../interfaces/ISchemaValidationResult.md)\>
+▸ **validate**(`schemaName`, `data`): `Promise`\<[`ISchemaValidationResult`](../interfaces/ISchemaValidationResult.md)\>
 
 Validates data against the Schema passed as parameter.
 
@@ -36,8 +36,8 @@ Validates data against the Schema passed as parameter.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `data` | `unknown` | The data to be validated. |
 | `schemaName` | `string` | The name of the Schema. |
+| `data` | `unknown` | The data to be validated. |
 
 #### Returns
 

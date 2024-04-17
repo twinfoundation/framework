@@ -1,3 +1,31 @@
 {
-	"error": {}
+	"data-type-names": {
+		"http://schema.org/Text": "Text",
+		"http://schema.org/URL": "Url",
+		"http://schema.org/Integer": "Integer",
+		"http://schema.org/Float": "Float",
+		"http://schema.org/Boolean": "Boolean",
+		"http://schema.org/Date": "ISO Date",
+		"http://schema.org/DateTime": "ISO Date Time",
+		"http://schema.org/Time": "ISO Time",
+		"http://schema.org/image": "Image",
+		"http://schema.org/GeoCoordinates": "Geo Coordinates",
+		"http://schema.org/StructuredValue": "Structured Value",
+		"URN": "Urn",
+		"TimestampMilliseconds": "Milliseconds since 1970",
+		"TimestampSeconds": "Seconds since 1970"
+	},
+	"error": {
+		"validation": {
+			"geo": {
+				"coordinatesLatitudeNumber": "The latitude value must be a number",
+				"coordinatesLatitudeRange": "The latitude value must be between -90 and 90",
+				"coordinatesLongitudeNumber": "The longitude value must be a number",
+				"coordinatesLongitudeRange": "The longitude value must be between -180 and 180"
+			},
+			"properties": {
+				"keyAlreadyExists": "The key already exists"
+			}
+		}
+	}
 }
