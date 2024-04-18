@@ -2,13 +2,15 @@
 
 ## Enumerations
 
-- [ComparisonType](enums/ComparisonType.md)
+- [ComparisonOperator](enums/ComparisonOperator.md)
 - [LogicalOperator](enums/LogicalOperator.md)
+- [SortDirection](enums/SortDirection.md)
 
 ## Classes
 
-- [Comparator](classes/Comparator.md)
-- [Sorter](classes/Sorter.md)
+- [Conditions](classes/Conditions.md)
+- [EntityPropertyDescriptor](classes/EntityPropertyDescriptor.md)
+- [EntitySorter](classes/EntitySorter.md)
 
 ## Interfaces
 
@@ -16,15 +18,26 @@
 - [IComparatorGroup](interfaces/IComparatorGroup.md)
 - [IEntityDescriptor](interfaces/IEntityDescriptor.md)
 - [IEntityPropertyDescriptor](interfaces/IEntityPropertyDescriptor.md)
-- [IStructuredTypeDescriptor](interfaces/IStructuredTypeDescriptor.md)
-- [IStructuredTypeFieldDescriptor](interfaces/IStructuredTypeFieldDescriptor.md)
-- [IViewDescriptor](interfaces/IViewDescriptor.md)
-- [IViewMemberDescriptor](interfaces/IViewMemberDescriptor.md)
+- [IEntitySortDescriptor](interfaces/IEntitySortDescriptor.md)
 
 ## Type Aliases
 
+### Condition
+
+Ƭ **Condition**\<`T`\>: [`IComparator`](interfaces/IComparator.md)\<`T`\> \| [`IComparatorGroup`](interfaces/IComparatorGroup.md)\<`T`\>
+
+Type defining condition.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+___
+
 ### EntityPropertyDescriptorDataType
 
-Ƭ **EntityPropertyDescriptorDataType**: ``"string"`` \| ``"integer"`` \| ``"float"`` \| ``"double"`` \| ``"timestamp"`` \| ``"UUID"`` \| ``"binary"`` \| ``"boolean"`` \| ``"object"`` \| ``"list"`` \| ``"structure"``
+Ƭ **EntityPropertyDescriptorDataType**: ``"string"`` \| ``"integer"`` \| ``"float"`` \| ``"double"`` \| ``"timestamp"`` \| ``"uuid"`` \| ``"binary"`` \| ``"boolean"`` \| ``"object"`` \| ``"list"``
 
 Definition of the entity property data types.

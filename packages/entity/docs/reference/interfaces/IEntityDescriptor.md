@@ -18,16 +18,16 @@ Does the entity contain dynamic unknown properties.
 
 ___
 
+### name
+
+• **name**: `string`
+
+The name of the entity type that the descriptor is for.
+
+___
+
 ### properties
 
 • **properties**: [`IEntityPropertyDescriptor`](IEntityPropertyDescriptor.md)\<`T`\>[]
 
 The properties.
-
-___
-
-### structuredTypes
-
-• `Optional` **structuredTypes**: [`IStructuredTypeDescriptor`](IStructuredTypeDescriptor.md)\<`any`\>[]
-
-Structured types on which the entity depends on.

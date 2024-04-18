@@ -38,7 +38,7 @@ ___
 
 • `Optional` **itemType**: `string`
 
-The type of the item (only applies when type is either `list` or `structure`).
+The type of the item (only applies when type is either `list` or `object`).
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 ### sortDirection
 
-• `Optional` **sortDirection**: ``"desc"`` \| ``"asc"``
+• `Optional` **sortDirection**: [`SortDirection`](../enums/SortDirection.md)
 
 Default sort direction for this column, leave empty if not sortable.
 

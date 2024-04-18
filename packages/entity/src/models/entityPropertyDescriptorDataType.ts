@@ -10,9 +10,8 @@ export type EntityPropertyDescriptorDataType =
 	| "float"
 	| "double"
 	| "timestamp"
-	| "UUID"
+	| "uuid"
 	| "binary"
 	| "boolean"
 	| "object"
-	| "list"
-	| "structure";
+	| "list";

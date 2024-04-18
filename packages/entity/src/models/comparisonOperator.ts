@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 /**
- * The types of comparisons available to comparators.
+ * The types of comparison types.
  */
-export enum ComparisonType {
+export enum ComparisonOperator {
 	/**
 	 * Equals.
 	 */

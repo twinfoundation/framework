@@ -1,6 +1,6 @@
 # Interface: IComparatorGroup\<T\>
 
-Interface defining comparison group operator.
+Interface defining condition group operator.
 
 ## Type parameters
 
@@ -10,11 +10,11 @@ Interface defining comparison group operator.
 
 ## Properties
 
-### comparators
+### conditions
 
-• **comparators**: ([`IComparatorGroup`](IComparatorGroup.md)\<`T`\> \| [`IComparator`](IComparator.md)\<`T`\>)[]
+• **conditions**: [`Condition`](../modules.md#condition)\<`T`\>[]
 
-The comparators to join in a group.
+The conditions to join in a group.
 
 ___
 
