@@ -5,9 +5,9 @@
  * It is much like using the --workspaces option for npm commands,
  * but it fails fast when there is an error.
  */
-import { spawn } from 'child_process';
-import fs from 'fs/promises';
-import path from 'path';
+import { spawn } from 'node:child_process';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import FastGlob from 'fast-glob';
 
 /**
