@@ -16,5 +16,10 @@
 	},
 	"prettier.configPath": ".prettierrc",
 	"cSpell.autoFormatConfigFile": true,
-	"markdownlint.ignore": ["**/docs/reference/**"]
+	"vitest.disableWorkspaceWarning": true,
+	"markdownlint.lintWorkspaceGlobs": [
+		"**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+		"!**/node_modules",
+		"**/docs/reference/**"
+	]
 }
