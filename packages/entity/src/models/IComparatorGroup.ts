@@ -1,16 +1,16 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { IComparator } from "./IComparator";
+import type { Condition } from "./condition";
 import type { LogicalOperator } from "./logicalOperator";
 
 /**
- * Interface defining comparison group operator.
+ * Interface defining condition group operator.
  */
 export interface IComparatorGroup<T = unknown> {
 	/**
-	 * The comparators to join in a group.
+	 * The conditions to join in a group.
 	 */
-	comparators: (IComparator<T> | IComparatorGroup<T>)[];
+	conditions: Condition<T>[];
 
 	/**
 	 * The logical operator to use.

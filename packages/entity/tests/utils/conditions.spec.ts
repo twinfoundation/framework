@@ -1,26 +1,26 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { ComparisonType } from "../../src/models/comparisonType";
+import { ComparisonOperator } from "../../src/models/comparisonOperator";
 import { LogicalOperator } from "../../src/models/logicalOperator";
-import { Comparator } from "../../src/utils/comparator";
+import { Conditions } from "../../src/utils/conditions";
 
-describe("Comparator", () => {
+describe("Conditions", () => {
 	test("can match if conditions are undefined", async () => {
-		expect(Comparator.testConditions({}, undefined)).toEqual(true);
+		expect(Conditions.check({}, undefined)).toEqual(true);
 	});
 
 	test("can match if conditions are empty", async () => {
-		expect(Comparator.testConditions({}, undefined)).toEqual(true);
+		expect(Conditions.check({}, undefined)).toEqual(true);
 	});
 
 	test("can match if undefined condition equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: undefined },
 				{
 					property: "foo",
 					value: undefined,
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -28,12 +28,12 @@ describe("Comparator", () => {
 
 	test("can match if undefined condition notequals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
 					value: undefined,
-					comparison: ComparisonType.NotEquals
+					operator: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -41,12 +41,12 @@ describe("Comparator", () => {
 
 	test("can match if undefined condition equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
 					value: undefined,
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -54,12 +54,12 @@ describe("Comparator", () => {
 
 	test("can not match if string condition different type", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "bar2" },
 				{
 					property: "foo",
 					value: 1,
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -67,12 +67,12 @@ describe("Comparator", () => {
 
 	test("can not match if string condition not equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "bar2" },
 				{
 					property: "foo",
 					value: "bar",
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -80,12 +80,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "bar" },
 				{
 					property: "foo",
 					value: "bar",
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -93,12 +93,12 @@ describe("Comparator", () => {
 
 	test("can not match if string condition not notequals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "bar2" },
 				{
 					property: "foo",
 					value: "bar",
-					comparison: ComparisonType.NotEquals
+					operator: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -106,12 +106,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition notequals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "bar" },
 				{
 					property: "foo",
 					value: "bar",
-					comparison: ComparisonType.NotEquals
+					operator: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(false);
@@ -119,12 +119,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition less than", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
 					value: "b",
-					comparison: ComparisonType.LessThan
+					operator: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(true);
@@ -132,12 +132,12 @@ describe("Comparator", () => {
 
 	test("can not match if string condition less than", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
 					value: "a",
-					comparison: ComparisonType.LessThan
+					operator: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(false);
@@ -145,12 +145,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition less than or equal 1", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
 					value: "a",
-					comparison: ComparisonType.LessThanOrEqual
+					operator: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -158,12 +158,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition less than or equal 2", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
 					value: "aa",
-					comparison: ComparisonType.LessThanOrEqual
+					operator: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -171,12 +171,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition greater than", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "b" },
 				{
 					property: "foo",
 					value: "a",
-					comparison: ComparisonType.GreaterThan
+					operator: ComparisonOperator.GreaterThan
 				}
 			)
 		).toEqual(true);
@@ -184,12 +184,12 @@ describe("Comparator", () => {
 
 	test("can not match if string condition greater than", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
 					value: "a",
-					comparison: ComparisonType.GreaterThan
+					operator: ComparisonOperator.GreaterThan
 				}
 			)
 		).toEqual(false);
@@ -197,12 +197,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition greater than or equal 1", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
 					value: "a",
-					comparison: ComparisonType.GreaterThanOrEqual
+					operator: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -210,12 +210,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition greater than or equal 2", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "aa" },
 				{
 					property: "foo",
 					value: "a",
-					comparison: ComparisonType.GreaterThanOrEqual
+					operator: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -223,12 +223,12 @@ describe("Comparator", () => {
 
 	test("can not match if string condition not contains", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "bebar" },
 				{
 					property: "foo",
 					value: "bar",
-					comparison: ComparisonType.Includes
+					operator: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(true);
@@ -236,12 +236,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition contains", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "bebar" },
 				{
 					property: "foo",
 					value: "bab",
-					comparison: ComparisonType.Includes
+					operator: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -249,12 +249,12 @@ describe("Comparator", () => {
 
 	test("can not match if string condition not contains", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "bebar" },
 				{
 					property: "foo",
 					value: "bar",
-					comparison: ComparisonType.NotIncludes
+					operator: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(false);
@@ -262,12 +262,12 @@ describe("Comparator", () => {
 
 	test("can match if string condition contains", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "bebar" },
 				{
 					property: "foo",
 					value: "bab",
-					comparison: ComparisonType.NotIncludes
+					operator: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(true);
@@ -275,12 +275,12 @@ describe("Comparator", () => {
 
 	test("can not match if number condition different type", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
 					value: "bar",
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -288,12 +288,12 @@ describe("Comparator", () => {
 
 	test("can not match if number condition not equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
 					value: 1,
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -301,12 +301,12 @@ describe("Comparator", () => {
 
 	test("can match if number condition equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
 					value: 2,
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -314,12 +314,12 @@ describe("Comparator", () => {
 
 	test("can not match if number condition not notequals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
 					value: 2,
-					comparison: ComparisonType.NotEquals
+					operator: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -327,12 +327,12 @@ describe("Comparator", () => {
 
 	test("can match if number condition notequals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
 					value: 1,
-					comparison: ComparisonType.NotEquals
+					operator: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(false);
@@ -340,12 +340,12 @@ describe("Comparator", () => {
 
 	test("can not match if number condition not greater than", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
 					value: 2,
-					comparison: ComparisonType.GreaterThan
+					operator: ComparisonOperator.GreaterThan
 				}
 			)
 		).toEqual(false);
@@ -353,12 +353,12 @@ describe("Comparator", () => {
 
 	test("can match if number condition greater than", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
 					value: 1,
-					comparison: ComparisonType.GreaterThan
+					operator: ComparisonOperator.GreaterThan
 				}
 			)
 		).toEqual(true);
@@ -366,12 +366,12 @@ describe("Comparator", () => {
 
 	test("can not match if number condition not greater than or equal 1", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
 					value: 2,
-					comparison: ComparisonType.GreaterThanOrEqual
+					operator: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(false);
@@ -379,12 +379,12 @@ describe("Comparator", () => {
 
 	test("can match if number condition greater than or equal 1", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
 					value: 1,
-					comparison: ComparisonType.GreaterThanOrEqual
+					operator: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -392,12 +392,12 @@ describe("Comparator", () => {
 
 	test("can match if number condition greater than or equal 2", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
 					value: 2,
-					comparison: ComparisonType.GreaterThanOrEqual
+					operator: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -405,12 +405,12 @@ describe("Comparator", () => {
 
 	test("can not match if number condition not less than", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
 					value: 1,
-					comparison: ComparisonType.LessThan
+					operator: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(false);
@@ -418,12 +418,12 @@ describe("Comparator", () => {
 
 	test("can match if number condition less than", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
 					value: 2,
-					comparison: ComparisonType.LessThan
+					operator: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(true);
@@ -431,12 +431,12 @@ describe("Comparator", () => {
 
 	test("can not match if number condition not less than or equal 1", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
 					value: 1,
-					comparison: ComparisonType.LessThanOrEqual
+					operator: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(false);
@@ -444,12 +444,12 @@ describe("Comparator", () => {
 
 	test("can match if number condition less than or equal 2", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
 					value: 2,
-					comparison: ComparisonType.LessThanOrEqual
+					operator: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -457,12 +457,12 @@ describe("Comparator", () => {
 
 	test("can match if number condition less than or equal 2", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
 					value: 1,
-					comparison: ComparisonType.LessThanOrEqual
+					operator: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -470,12 +470,12 @@ describe("Comparator", () => {
 
 	test("can not match if number condition never contains", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: 111 },
 				{
 					property: "foo",
 					value: 1,
-					comparison: ComparisonType.Includes
+					operator: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -483,12 +483,12 @@ describe("Comparator", () => {
 
 	test("can not match if boolean condition different type", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: true },
 				{
 					property: "foo",
 					value: "bar",
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -496,12 +496,12 @@ describe("Comparator", () => {
 
 	test("can not match if boolean condition not equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: true },
 				{
 					property: "foo",
 					value: false,
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -509,12 +509,12 @@ describe("Comparator", () => {
 
 	test("can match if boolean condition equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: true },
 				{
 					property: "foo",
 					value: true,
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -522,12 +522,12 @@ describe("Comparator", () => {
 
 	test("can not match if boolean condition not notequals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: false },
 				{
 					property: "foo",
 					value: true,
-					comparison: ComparisonType.NotEquals
+					operator: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -535,12 +535,12 @@ describe("Comparator", () => {
 
 	test("can match if boolean condition notequals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: false },
 				{
 					property: "foo",
 					value: false,
-					comparison: ComparisonType.NotEquals
+					operator: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(false);
@@ -548,12 +548,12 @@ describe("Comparator", () => {
 
 	test("can not match if number condition never contains", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: false },
 				{
 					property: "foo",
 					value: false,
-					comparison: ComparisonType.Includes
+					operator: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -561,12 +561,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition different type", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [] },
 				{
 					property: "foo",
 					value: "bar",
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -574,12 +574,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition not equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [] },
 				{
 					property: "foo",
 					value: [1],
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -587,12 +587,12 @@ describe("Comparator", () => {
 
 	test("can match if array condition equals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1] },
 				{
 					property: "foo",
 					value: [1],
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -600,12 +600,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition not notequals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1] },
 				{
 					property: "foo",
 					value: [2],
-					comparison: ComparisonType.NotEquals
+					operator: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -613,12 +613,12 @@ describe("Comparator", () => {
 
 	test("can match if array condition notequals", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [] },
 				{
 					property: "foo",
 					value: [],
-					comparison: ComparisonType.NotEquals
+					operator: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(false);
@@ -626,12 +626,12 @@ describe("Comparator", () => {
 
 	test("can not match if array unknown comparison", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [] },
 				{
 					property: "foo",
 					value: [],
-					comparison: ComparisonType.LessThan
+					operator: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(false);
@@ -639,12 +639,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition does not contain", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 4,
-					comparison: ComparisonType.Includes
+					operator: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -652,12 +652,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition contains", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 3,
-					comparison: ComparisonType.Includes
+					operator: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(true);
@@ -665,12 +665,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition does contain", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 4,
-					comparison: ComparisonType.NotIncludes
+					operator: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(true);
@@ -678,12 +678,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition does not contains", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 3,
-					comparison: ComparisonType.NotIncludes
+					operator: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(false);
@@ -691,12 +691,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition is not in", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 4,
-					comparison: ComparisonType.In
+					operator: ComparisonOperator.In
 				}
 			)
 		).toEqual(false);
@@ -704,12 +704,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition in", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 3,
-					comparison: ComparisonType.In
+					operator: ComparisonOperator.In
 				}
 			)
 		).toEqual(true);
@@ -717,12 +717,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition does notin", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 4,
-					comparison: ComparisonType.NotIn
+					operator: ComparisonOperator.NotIn
 				}
 			)
 		).toEqual(true);
@@ -730,12 +730,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition does not notin", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 3,
-					comparison: ComparisonType.NotIn
+					operator: ComparisonOperator.NotIn
 				}
 			)
 		).toEqual(false);
@@ -743,12 +743,12 @@ describe("Comparator", () => {
 
 	test("can not match if array condition value is not string or number", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: new Date(),
-					comparison: ComparisonType.NotIn
+					operator: ComparisonOperator.NotIn
 				}
 			)
 		).toEqual(false);
@@ -756,32 +756,32 @@ describe("Comparator", () => {
 
 	test("can not match if unknown type", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: new Date() },
 				{
 					property: "foo",
 					value: 3,
-					comparison: ComparisonType.Equals
+					operator: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
 	});
 
-	test("can match if has multiple comparators", async () => {
+	test("can match if has multiple conditions", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a", val: 2 },
 				{
-					comparators: [
+					conditions: [
 						{
 							property: "foo",
 							value: "a",
-							comparison: ComparisonType.Equals
+							operator: ComparisonOperator.Equals
 						},
 						{
 							property: "val",
 							value: 2,
-							comparison: ComparisonType.Equals
+							operator: ComparisonOperator.Equals
 						}
 					]
 				}
@@ -789,21 +789,21 @@ describe("Comparator", () => {
 		).toEqual(true);
 	});
 
-	test("can not match if has multiple comparators", async () => {
+	test("can not match if has multiple conditions", async () => {
 		expect(
-			Comparator.testConditions(
+			Conditions.check(
 				{ foo: "a", val: 3 },
 				{
-					comparators: [
+					conditions: [
 						{
 							property: "foo",
 							value: "a",
-							comparison: ComparisonType.Equals
+							operator: ComparisonOperator.Equals
 						},
 						{
 							property: "val",
 							value: 2,
-							comparison: ComparisonType.Equals
+							operator: ComparisonOperator.Equals
 						}
 					],
 					logicalOperator: LogicalOperator.And
@@ -813,19 +813,19 @@ describe("Comparator", () => {
 	});
 
 	test("can match with logical AND", async () => {
-		const results = Comparator.testConditions(
+		const results = Conditions.check(
 			{ foo: "a", val: 2 },
 			{
-				comparators: [
+				conditions: [
 					{
 						property: "foo",
 						value: "a",
-						comparison: ComparisonType.Equals
+						operator: ComparisonOperator.Equals
 					},
 					{
 						property: "val",
 						value: 2,
-						comparison: ComparisonType.Equals
+						operator: ComparisonOperator.Equals
 					}
 				],
 				logicalOperator: LogicalOperator.And
@@ -836,19 +836,19 @@ describe("Comparator", () => {
 	});
 
 	test("can match with logical OR", async () => {
-		const results = Comparator.testConditions(
+		const results = Conditions.check(
 			{ foo: "a", val: 2 },
 			{
-				comparators: [
+				conditions: [
 					{
 						property: "foo",
 						value: "a",
-						comparison: ComparisonType.Equals
+						operator: ComparisonOperator.Equals
 					},
 					{
 						property: "val",
 						value: 3,
-						comparison: ComparisonType.Equals
+						operator: ComparisonOperator.Equals
 					}
 				],
 				logicalOperator: LogicalOperator.Or
@@ -859,26 +859,26 @@ describe("Comparator", () => {
 	});
 
 	test("can match with both logical AND and OR", async () => {
-		const results = Comparator.testConditions(
+		const results = Conditions.check(
 			{ foo: "a", val: 2, age: 5 },
 			{
-				comparators: [
+				conditions: [
 					{
 						property: "foo",
 						value: "b",
-						comparison: ComparisonType.Equals
+						operator: ComparisonOperator.Equals
 					},
 					{
-						comparators: [
+						conditions: [
 							{
 								property: "val",
 								value: 2,
-								comparison: ComparisonType.Equals
+								operator: ComparisonOperator.Equals
 							},
 							{
 								property: "age",
 								value: 9,
-								comparison: ComparisonType.Equals
+								operator: ComparisonOperator.Equals
 							}
 						],
 						logicalOperator: LogicalOperator.And
@@ -892,26 +892,26 @@ describe("Comparator", () => {
 	});
 
 	test("can match with both logical AND and OR", async () => {
-		const results = Comparator.testConditions(
+		const results = Conditions.check(
 			{ foo: "a", val: 2, age: 5 },
 			{
-				comparators: [
+				conditions: [
 					{
 						property: "foo",
 						value: "b",
-						comparison: ComparisonType.Equals
+						operator: ComparisonOperator.Equals
 					},
 					{
-						comparators: [
+						conditions: [
 							{
 								property: "val",
 								value: 2,
-								comparison: ComparisonType.Equals
+								operator: ComparisonOperator.Equals
 							},
 							{
 								property: "age",
 								value: 9,
-								comparison: ComparisonType.Equals
+								operator: ComparisonOperator.Equals
 							}
 						],
 						logicalOperator: LogicalOperator.Or
@@ -925,26 +925,26 @@ describe("Comparator", () => {
 	});
 
 	test("can match with both logical AND and OR", async () => {
-		const results = Comparator.testConditions(
+		const results = Conditions.check(
 			{ foo: "a", val: 2, age: 5 },
 			{
-				comparators: [
+				conditions: [
 					{
 						property: "foo",
 						value: "b",
-						comparison: ComparisonType.Equals
+						operator: ComparisonOperator.Equals
 					},
 					{
-						comparators: [
+						conditions: [
 							{
 								property: "val",
 								value: 2,
-								comparison: ComparisonType.Equals
+								operator: ComparisonOperator.Equals
 							},
 							{
 								property: "age",
 								value: 9,
-								comparison: ComparisonType.Equals
+								operator: ComparisonOperator.Equals
 							}
 						],
 						logicalOperator: LogicalOperator.And
@@ -958,26 +958,26 @@ describe("Comparator", () => {
 	});
 
 	test("can match with both logical AND and OR", async () => {
-		const results = Comparator.testConditions(
+		const results = Conditions.check(
 			{ foo: "a", val: 2, age: 9 },
 			{
-				comparators: [
+				conditions: [
 					{
 						property: "foo",
 						value: "b",
-						comparison: ComparisonType.Equals
+						operator: ComparisonOperator.Equals
 					},
 					{
-						comparators: [
+						conditions: [
 							{
 								property: "val",
 								value: 2,
-								comparison: ComparisonType.Equals
+								operator: ComparisonOperator.Equals
 							},
 							{
 								property: "age",
 								value: 9,
-								comparison: ComparisonType.Equals
+								operator: ComparisonOperator.Equals
 							}
 						],
 						logicalOperator: LogicalOperator.And

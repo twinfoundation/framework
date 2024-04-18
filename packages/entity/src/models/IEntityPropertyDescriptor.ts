@@ -1,6 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import type { EntityPropertyDescriptorDataType } from "./entityPropertyDescriptorDataType";
+import type { SortDirection } from "./sortDirection";
 
 /**
  * Definition of an entity property.
@@ -17,7 +18,7 @@ export interface IEntityPropertyDescriptor<T> {
 	type: EntityPropertyDescriptorDataType;
 
 	/**
-	 * The type of the item (only applies when type is either `list` or `structure`).
+	 * The type of the item (only applies when type is either `list` or `object`).
 	 */
 	itemType?: string;
 
@@ -44,7 +45,7 @@ export interface IEntityPropertyDescriptor<T> {
 	/**
 	 * Default sort direction for this column, leave empty if not sortable.
 	 */
-	sortDirection?: "asc" | "desc";
+	sortDirection?: SortDirection;
 
 	/**
 	 * Is the property optional.

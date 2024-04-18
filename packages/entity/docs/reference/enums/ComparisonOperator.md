@@ -1,6 +1,6 @@
-# Enumeration: ComparisonType
+# Enumeration: ComparisonOperator
 
-The types of comparisons available to comparators.
+The types of comparison types.
 
 ## Enumeration Members
 

@@ -1,23 +1,23 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { ComparisonType } from "./comparisonType";
+import type { ComparisonOperator } from "./comparisonOperator";
 
 /**
- * Interface defining comparison operator.
+ * Interface defining comparator operator.
  */
 export interface IComparator<T = unknown> {
 	/**
-	 * The name of the property in the object to compare.
+	 * The name of the property in the object to check.
 	 */
 	property: keyof T;
 
 	/**
-	 * The value of the property to compare.
+	 * The value of the property to check.
 	 */
 	value: unknown;
 
 	/**
-	 * The comparison to perform.
+	 * The check to perform.
 	 */
-	comparison: ComparisonType;
+	operator: ComparisonOperator;
 }

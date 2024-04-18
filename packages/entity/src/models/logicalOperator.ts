@@ -9,6 +9,7 @@ export enum LogicalOperator {
 	 * Logical operator AND.
 	 */
 	And = "And",
+
 	/**
 	 * Logical operator OR.
 	 */
