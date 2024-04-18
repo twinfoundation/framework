@@ -25,7 +25,7 @@ export default {
 		globals: globs,
 		exports: 'named'
 	},
-	external: ['fs/promises'].concat(Object.keys(globs).map(g => new RegExp(`^${g}`))),
+	external: [/^node:.*/].concat(Object.keys(globs).map(g => new RegExp(`^${g}`))),
 	onwarn: message => {
 		if (!['EMPTY_BUNDLE', 'CIRCULAR_DEPENDENCY'].includes(message.code)) {
 			console.error(message);
