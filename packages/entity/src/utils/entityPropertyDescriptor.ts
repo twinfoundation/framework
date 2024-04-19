@@ -5,6 +5,7 @@ import { nameof } from "@gtsc/nameof";
 import type { IEntityDescriptor } from "../models/IEntityDescriptor";
 import type { IEntityPropertyDescriptor } from "../models/IEntityPropertyDescriptor";
 import type { IEntitySortDescriptor } from "../models/IEntitySortDescriptor";
+import type { SortDirection } from "../models/sortDirection";
 
 /**
  * Class to perform sort operations.
@@ -40,20 +41,61 @@ export class EntityPropertyDescriptor {
 	/**
 	 * Get the sort keys from the descriptor.
 	 * @param entityDescriptor The entity descriptor to find the primary key from.
-	 * @returns The sort keys from the descriptor.
+	 * @returns The sort keys from the descriptor or undefined if there are none.
 	 */
-	public static getSortKeys<T>(entityDescriptor: IEntityDescriptor<T>): IEntitySortDescriptor<T>[] {
+	public static getSortKeys<T>(
+		entityDescriptor: IEntityDescriptor<T>
+	): IEntitySortDescriptor<T>[] | undefined {
 		Guards.object(EntityPropertyDescriptor._CLASS_NAME, nameof(entityDescriptor), entityDescriptor);
 
 		const sortFields = entityDescriptor.properties.filter(p => !Is.undefined(p.sortDirection));
 
-		return sortFields.map(
-			p =>
-				({
-					name: p.name,
-					type: p.type,
-					sortDirection: p.sortDirection
-				}) as IEntitySortDescriptor<T>
-		);
+		return sortFields.length > 0
+			? sortFields.map(
+					p =>
+						({
+							name: p.name,
+							type: p.type,
+							sortDirection: p.sortDirection
+						}) as IEntitySortDescriptor<T>
+				)
+			: undefined;
+	}
+
+	/**
+	 * Build sort keys from the descriptor and override if necessary.
+	 * @param entityDescriptor The entity descriptor to retrieve the default sort keys.
+	 * @param overrideSortKeys The override sort keys.
+	 * @returns The finalised sort keys.
+	 */
+	public static buildSortKeys<T>(
+		entityDescriptor: IEntityDescriptor<T>,
+		overrideSortKeys?: {
+			name: keyof T;
+			sortDirection: SortDirection;
+		}[]
+	): IEntitySortDescriptor<T>[] | undefined {
+		Guards.object(EntityPropertyDescriptor._CLASS_NAME, nameof(entityDescriptor), entityDescriptor);
+
+		let finalSortKeys: IEntitySortDescriptor<T>[] | undefined;
+
+		if (Is.arrayValue(overrideSortKeys)) {
+			finalSortKeys = [];
+
+			for (const sortKey of overrideSortKeys) {
+				const property = entityDescriptor.properties.find(p => p.name === sortKey.name);
+				if (property) {
+					finalSortKeys.push({
+						name: sortKey.name,
+						sortDirection: sortKey.sortDirection,
+						type: property.type
+					});
+				}
+			}
+		} else {
+			finalSortKeys = EntityPropertyDescriptor.getSortKeys(entityDescriptor);
+		}
+
+		return finalSortKeys;
 	}
 }

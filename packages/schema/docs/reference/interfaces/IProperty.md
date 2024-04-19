@@ -16,7 +16,7 @@ ___
 
 • **type**: `string`
 
-The type for the item as a urn.
+The type for the item.
 
 ___
 

@@ -12,54 +12,29 @@ import type { IProperty } from "../models/IProperty";
  */
 export class PropertyHelper {
 	/**
-	 * Reduce the keys in the property list.
-	 * @param properties The properties list to filter.
-	 * @param includeKeys The keys to include.
-	 * @returns The filtered list.
-	 */
-	public static filterInclude(
-		properties: IProperty[] | undefined,
-		includeKeys: string[]
-	): IProperty[] | undefined {
-		if (Is.arrayValue(properties)) {
-			return properties.filter(p => includeKeys.includes(p.key));
-		}
-	}
-
-	/**
-	 * Filter the keys from the properties.
-	 * @param properties The properties list to filter.
-	 * @param excludeKeys The keys to filter.
-	 * @returns The filtered list.
-	 */
-	public static filterExclude(
-		properties: IProperty[] | undefined,
-		excludeKeys: string[]
-	): IProperty[] | undefined {
-		if (Is.arrayValue(properties)) {
-			return properties.filter(p => !excludeKeys.includes(p.key));
-		}
-	}
-
-	/**
-	 * Get properties with the specific key.
+	 * Get property with the specific key.
 	 * @param properties The properties list to look in.
 	 * @param key The key of the item to find.
+	 * @param type Will only return the value if the type matches or is undefined.
 	 * @returns The item if it was found.
 	 */
-	public static getValue<T>(properties: IProperty[] | undefined, key: string): T | undefined {
-		Guards.stringValue("properties", nameof(key), key);
+	public static getValue<T>(
+		properties: IProperty[] | undefined,
+		key: string,
+		type?: string
+	): T | undefined {
+		Guards.stringValue(nameof<PropertyHelper>(), nameof(key), key);
 		if (Is.arrayValue(properties)) {
 			const item = properties.find(p => p.key === key);
 
-			if (Is.object<IProperty>(item)) {
+			if (Is.object<IProperty>(item) && (Is.undefined(type) || item.type === type)) {
 				return item.value as T;
 			}
 		}
 	}
 
 	/**
-	 * Set a value to the list.
+	 * Set a property in to the list.
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param type The type of the item to add.
@@ -71,9 +46,9 @@ export class PropertyHelper {
 		type: string,
 		value: T | undefined
 	): void {
-		Guards.array("properties", nameof(properties), properties);
-		Guards.stringValue("properties", nameof(key), key);
-		Guards.stringValue("properties", nameof(type), type);
+		Guards.array(nameof<PropertyHelper>(), nameof(properties), properties);
+		Guards.stringValue(nameof<PropertyHelper>(), nameof(key), key);
+		Guards.stringValue(nameof<PropertyHelper>(), nameof(type), type);
 
 		const isEmpty = Is.empty(value);
 
@@ -94,13 +69,29 @@ export class PropertyHelper {
 	}
 
 	/**
+	 * Remove property with the specific key.
+	 * @param properties The properties list to look in.
+	 * @param key The key of the item to remove.
+	 */
+	public static removeValue(properties: IProperty[] | undefined, key: string): void {
+		Guards.stringValue(nameof<PropertyHelper>(), nameof(key), key);
+		if (Is.arrayValue(properties)) {
+			const item = properties.findIndex(p => p.key === key);
+
+			if (item >= 0) {
+				properties.splice(item, 1);
+			}
+		}
+	}
+
+	/**
 	 * Get some text from the list.
 	 * @param properties The properties list to get from.
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
 	public static getText(properties: IProperty[] | undefined, key: string): string | undefined {
-		return PropertyHelper.getValue<string>(properties, key);
+		return PropertyHelper.getValue<string>(properties, key, SchemaOrgDataTypes.TYPE_TEXT);
 	}
 
 	/**
@@ -111,7 +102,7 @@ export class PropertyHelper {
 	 */
 	public static setText(properties: IProperty[], key: string, value: string | undefined): void {
 		if (!Is.empty(value)) {
-			Guards.string("properties", nameof(value), value);
+			Guards.string(nameof<PropertyHelper>(), nameof(value), value);
 		}
 		PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_TEXT, value);
 	}
@@ -123,7 +114,7 @@ export class PropertyHelper {
 	 * @returns The value if found.
 	 */
 	public static getUrn(properties: IProperty[] | undefined, key: string): string | undefined {
-		return PropertyHelper.getValue<string>(properties, key);
+		return PropertyHelper.getValue<string>(properties, key, StockDataTypes.TYPE_URN);
 	}
 
 	/**
@@ -134,7 +125,7 @@ export class PropertyHelper {
 	 */
 	public static setUrn(properties: IProperty[], key: string, value: string | undefined): void {
 		if (!Is.empty(value)) {
-			Urn.guard("properties", "value", value);
+			Urn.guard(nameof<PropertyHelper>(), "value", value);
 		}
 		PropertyHelper.setValue(properties, key, StockDataTypes.TYPE_URN, value);
 	}
@@ -146,7 +137,7 @@ export class PropertyHelper {
 	 * @returns The value if found.
 	 */
 	public static getInteger(properties: IProperty[] | undefined, key: string): number | undefined {
-		return PropertyHelper.getValue<number>(properties, key);
+		return PropertyHelper.getValue<number>(properties, key, SchemaOrgDataTypes.TYPE_INTEGER);
 	}
 
 	/**
@@ -157,7 +148,7 @@ export class PropertyHelper {
 	 */
 	public static setInteger(properties: IProperty[], key: string, value: number | undefined): void {
 		if (!Is.empty(value)) {
-			Guards.integer("properties", nameof(value), value);
+			Guards.integer(nameof<PropertyHelper>(), nameof(value), value);
 		}
 		PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_INTEGER, value);
 	}
@@ -169,7 +160,7 @@ export class PropertyHelper {
 	 * @returns The value if found.
 	 */
 	public static getFloat(properties: IProperty[] | undefined, key: string): number | undefined {
-		return PropertyHelper.getValue<number>(properties, key);
+		return PropertyHelper.getValue<number>(properties, key, SchemaOrgDataTypes.TYPE_FLOAT);
 	}
 
 	/**
@@ -180,7 +171,7 @@ export class PropertyHelper {
 	 */
 	public static setFloat(properties: IProperty[], key: string, value: number | undefined): void {
 		if (!Is.empty(value)) {
-			Guards.number("properties", nameof(value), value);
+			Guards.number(nameof<PropertyHelper>(), nameof(value), value);
 		}
 		PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_FLOAT, value);
 	}
@@ -192,7 +183,7 @@ export class PropertyHelper {
 	 * @returns The value if found.
 	 */
 	public static getBoolean(properties: IProperty[] | undefined, key: string): boolean | undefined {
-		return PropertyHelper.getValue<boolean>(properties, key);
+		return PropertyHelper.getValue<boolean>(properties, key, SchemaOrgDataTypes.TYPE_BOOLEAN);
 	}
 
 	/**
@@ -203,30 +194,32 @@ export class PropertyHelper {
 	 */
 	public static setBoolean(properties: IProperty[], key: string, value: boolean | undefined): void {
 		if (!Is.empty(value)) {
-			Guards.boolean("properties", nameof(value), value);
+			Guards.boolean(nameof<PropertyHelper>(), nameof(value), value);
 		}
 		PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_BOOLEAN, value);
 	}
 
 	/**
-	 * Get a date from the list.
+	 * Get a date time from the list.
 	 * @param properties The properties list to get from.
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getDate(properties: IProperty[] | undefined, key: string): Date | undefined {
-		return Coerce.date(PropertyHelper.getValue<string>(properties, key));
+	public static getDateTime(properties: IProperty[] | undefined, key: string): Date | undefined {
+		return Coerce.dateTime(
+			PropertyHelper.getValue<string>(properties, key, SchemaOrgDataTypes.TYPE_DATE_TIME)
+		);
 	}
 
 	/**
-	 * Set a date in ISO format in to the list.
+	 * Set a date time in to the list.
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
 	 */
-	public static setDate(properties: IProperty[], key: string, value: Date | undefined): void {
+	public static setDateTime(properties: IProperty[], key: string, value: Date | undefined): void {
 		if (!Is.empty(value)) {
-			Guards.date("properties", nameof(value), value);
+			Guards.date(nameof<PropertyHelper>(), nameof(value), value);
 		}
 		PropertyHelper.setValue(
 			properties,
@@ -237,13 +230,43 @@ export class PropertyHelper {
 	}
 
 	/**
+	 * Get a date from the list.
+	 * @param properties The properties list to get from.
+	 * @param key The key of the item to add.
+	 * @returns The value if found.
+	 */
+	public static getDate(properties: IProperty[] | undefined, key: string): Date | undefined {
+		return Coerce.date(
+			PropertyHelper.getValue<string>(properties, key, SchemaOrgDataTypes.TYPE_DATE)
+		);
+	}
+
+	/**
+	 * Set a date in ISO format in to the list.
+	 * @param properties The properties list to add to.
+	 * @param key The key of the item to add.
+	 * @param value The value of the item to add.
+	 */
+	public static setDate(properties: IProperty[], key: string, value: Date | undefined): void {
+		if (!Is.empty(value)) {
+			Guards.date(nameof<PropertyHelper>(), nameof(value), value);
+			const dt = value.toISOString();
+			const idx = dt.indexOf("T");
+			PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_DATE, dt.slice(0, idx));
+		} else {
+			PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_DATE, value);
+		}
+	}
+
+	/**
 	 * Get a time from the list.
 	 * @param properties The properties list to get from.
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
 	public static getTime(properties: IProperty[] | undefined, key: string): Date | undefined {
-		return Coerce.time(PropertyHelper.getValue<string>(properties, key));
+		const time = PropertyHelper.getValue<string>(properties, key, SchemaOrgDataTypes.TYPE_TIME);
+		return Coerce.time(`1970-01-01T${time}Z`);
 	}
 
 	/**
@@ -254,10 +277,16 @@ export class PropertyHelper {
 	 */
 	public static setTime(properties: IProperty[], key: string, value: Date | undefined): void {
 		if (!Is.empty(value)) {
-			Guards.date("properties", nameof(value), value);
+			Guards.date(nameof<PropertyHelper>(), nameof(value), value);
 			const dt = value.toISOString();
 			const idx = dt.indexOf("T");
-			PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_TIME, dt.slice(idx + 1));
+			const idx2 = dt.indexOf("Z");
+			PropertyHelper.setValue(
+				properties,
+				key,
+				SchemaOrgDataTypes.TYPE_TIME,
+				dt.slice(idx + 1, idx2)
+			);
 		} else {
 			PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_TIME, value);
 		}
@@ -273,7 +302,11 @@ export class PropertyHelper {
 		properties: IProperty[] | undefined,
 		key: string
 	): number | undefined {
-		return PropertyHelper.getValue<number>(properties, key);
+		return PropertyHelper.getValue<number>(
+			properties,
+			key,
+			StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS
+		);
 	}
 
 	/**
@@ -288,7 +321,7 @@ export class PropertyHelper {
 		value: number | undefined
 	): void {
 		if (!Is.empty(value)) {
-			Guards.milliseconds("properties", nameof(value), value);
+			Guards.milliseconds(nameof<PropertyHelper>(), nameof(value), value);
 		}
 		PropertyHelper.setValue(properties, key, StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS, value);
 	}
@@ -303,7 +336,7 @@ export class PropertyHelper {
 		properties: IProperty[] | undefined,
 		key: string
 	): number | undefined {
-		return PropertyHelper.getValue<number>(properties, key);
+		return PropertyHelper.getValue<number>(properties, key, StockDataTypes.TYPE_TIMESTAMP_SECONDS);
 	}
 
 	/**
@@ -318,25 +351,58 @@ export class PropertyHelper {
 		value: number | undefined
 	): void {
 		if (!Is.empty(value)) {
-			Guards.seconds("properties", nameof(value), value);
+			Guards.seconds(nameof<PropertyHelper>(), nameof(value), value);
 		}
 		PropertyHelper.setValue(properties, key, StockDataTypes.TYPE_TIMESTAMP_SECONDS, value);
 	}
 
 	/**
+	 * Reduce the keys in the property list.
+	 * @param properties The properties list to filter.
+	 * @param includeKeys The keys to include.
+	 * @returns The filtered list.
+	 */
+	public static filterInclude(
+		properties?: IProperty[],
+		includeKeys?: string[]
+	): IProperty[] | undefined {
+		if (Is.arrayValue(properties)) {
+			return Is.array(includeKeys)
+				? properties.filter(p => includeKeys.includes(p.key))
+				: properties;
+		}
+	}
+
+	/**
+	 * Filter the keys from the properties.
+	 * @param properties The properties list to filter.
+	 * @param excludeKeys The keys to filter.
+	 * @returns The filtered list.
+	 */
+	public static filterExclude(
+		properties?: IProperty[],
+		excludeKeys?: string[]
+	): IProperty[] | undefined {
+		if (Is.arrayValue(properties)) {
+			return Is.array(excludeKeys)
+				? properties.filter(p => !excludeKeys.includes(p.key))
+				: properties;
+		}
+	}
+
+	/**
 	 * Merge two property lists.
-	 * @param properties The current profile properties.
-	 * @param newProperties The new properties to merge in to the first list.
+	 * @param properties1 The current profile properties.
+	 * @param properties2 The new properties to merge in to the first list.
 	 * @returns The merged list.
 	 */
-	public static mergeProperties(properties: IProperty[], newProperties: IProperty[]): IProperty[] {
-		const listMerged = ObjectHelper.clone<IProperty[]>(properties);
-		if (Is.empty(listMerged)) {
-			return [];
-		}
+	public static merge(properties1: IProperty[], properties2: IProperty[]): IProperty[] {
+		const listMerged = ObjectHelper.clone<IProperty[]>(properties1) ?? [];
 
-		for (const prop of newProperties) {
-			PropertyHelper.setValue(listMerged, prop.key, prop.type, prop.value);
+		if (Is.arrayValue(properties2)) {
+			for (const prop of properties2) {
+				PropertyHelper.setValue(listMerged, prop.key, prop.type, prop.value);
+			}
 		}
 
 		return listMerged;
