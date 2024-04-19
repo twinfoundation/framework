@@ -53,9 +53,9 @@ export class ObjectHelper {
 	 * @param obj The object to clone.
 	 * @returns The objects clone.
 	 */
-	public static clone<T>(obj: T): T | undefined {
+	public static clone<T>(obj: T): T {
 		if (Is.undefined(obj)) {
-			return undefined;
+			return undefined as T;
 		}
 		return JSON.parse(JSON.stringify(obj)) as T;
 	}

@@ -16,7 +16,7 @@ Class to help with objects.
 
 ### clone
 
-▸ **clone**\<`T`\>(`obj`): `undefined` \| `T`
+▸ **clone**\<`T`\>(`obj`): `T`
 
 Make a deep clone of an object.
 
@@ -34,7 +34,7 @@ Make a deep clone of an object.
 
 #### Returns
 
-`undefined` \| `T`
+`T`
 
 The objects clone.
 
