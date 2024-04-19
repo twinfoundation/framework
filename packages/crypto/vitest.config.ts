@@ -14,8 +14,9 @@ export default defineConfig({
 	],
 	test: {
 		include: ["./tests/**/*.spec.ts"],
-		exclude: ["./tests/**/I[A-Z]*.ts"],
 		globals: true,
+		bail: 1,
+		testTimeout: 120000,
 		coverage: {
 			provider: "v8",
 			reporter: ["text", "lcov"],

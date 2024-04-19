@@ -296,7 +296,7 @@ ___
 
 ### merge
 
-▸ **merge**(`properties1`, `properties2`): [`IProperty`](../interfaces/IProperty.md)[]
+▸ **merge**(`properties1?`, `properties2?`): [`IProperty`](../interfaces/IProperty.md)[]
 
 Merge two property lists.
 
@@ -304,8 +304,8 @@ Merge two property lists.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `properties1` | [`IProperty`](../interfaces/IProperty.md)[] | The current profile properties. |
-| `properties2` | [`IProperty`](../interfaces/IProperty.md)[] | The new properties to merge in to the first list. |
+| `properties1?` | [`IProperty`](../interfaces/IProperty.md)[] | The current profile properties. |
+| `properties2?` | [`IProperty`](../interfaces/IProperty.md)[] | The new properties to merge in to the first list. |
 
 #### Returns
 

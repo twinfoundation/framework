@@ -330,7 +330,7 @@ describe("PropertyHelper", () => {
 		expect(properties[0].value).toEqual("09:10:11.123");
 
 		const value = PropertyHelper.getTime(properties, "a");
-		console.log(value);
+
 		expect(value?.getUTCFullYear()).toEqual(1970);
 		expect(value?.getUTCMonth()).toEqual(0);
 		expect(value?.getUTCDate()).toEqual(1);

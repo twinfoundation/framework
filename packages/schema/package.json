@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/schema",
-	"version": "0.0.3-next.18",
+	"version": "0.0.3-next.19",
 	"description": "Definitions and helpers for using with schemas",
 	"repository": {
 		"type": "git",
@@ -27,15 +27,15 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.3-next.18",
-		"@gtsc/nameof": "0.0.3-next.18",
-		"@gtsc/services": "0.0.3-next.18",
+		"@gtsc/core": "0.0.3-next.19",
+		"@gtsc/nameof": "0.0.3-next.19",
+		"@gtsc/services": "0.0.3-next.19",
 		"ajv": "^8.12.0",
 		"ajv-formats": "^3.0.1",
 		"schema-dts": "^1.1.2"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "0.0.3-next.18",
+		"@gtsc/nameof-transformer": "0.0.3-next.19",
 		"@vitest/coverage-v8": "^1.5.0",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
