@@ -14,6 +14,33 @@ Class to perform sort operations.
 
 ## Methods
 
+### buildSortKeys
+
+▸ **buildSortKeys**\<`T`\>(`entityDescriptor`, `overrideSortKeys?`): `undefined` \| [`IEntitySortDescriptor`](../interfaces/IEntitySortDescriptor.md)\<`T`\>[]
+
+Build sort keys from the descriptor and override if necessary.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `entityDescriptor` | [`IEntityDescriptor`](../interfaces/IEntityDescriptor.md)\<`T`\> | The entity descriptor to retrieve the default sort keys. |
+| `overrideSortKeys?` | \{ `name`: keyof `T` ; `sortDirection`: [`SortDirection`](../enums/SortDirection.md)  }[] | The override sort keys. |
+
+#### Returns
+
+`undefined` \| [`IEntitySortDescriptor`](../interfaces/IEntitySortDescriptor.md)\<`T`\>[]
+
+The finalised sort keys.
+
+___
+
 ### getPrimaryKey
 
 ▸ **getPrimaryKey**\<`T`\>(`entityDescriptor`): [`IEntityPropertyDescriptor`](../interfaces/IEntityPropertyDescriptor.md)\<`T`\>
@@ -46,7 +73,7 @@ ___
 
 ### getSortKeys
 
-▸ **getSortKeys**\<`T`\>(`entityDescriptor`): [`IEntitySortDescriptor`](../interfaces/IEntitySortDescriptor.md)\<`T`\>[]
+▸ **getSortKeys**\<`T`\>(`entityDescriptor`): `undefined` \| [`IEntitySortDescriptor`](../interfaces/IEntitySortDescriptor.md)\<`T`\>[]
 
 Get the sort keys from the descriptor.
 
@@ -64,6 +91,6 @@ Get the sort keys from the descriptor.
 
 #### Returns
 
-[`IEntitySortDescriptor`](../interfaces/IEntitySortDescriptor.md)\<`T`\>[]
+`undefined` \| [`IEntitySortDescriptor`](../interfaces/IEntitySortDescriptor.md)\<`T`\>[]
 
-The sort keys from the descriptor.
+The sort keys from the descriptor or undefined if there are none.

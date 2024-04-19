@@ -16,7 +16,7 @@ Class to help with properties.
 
 ### filterExclude
 
-▸ **filterExclude**(`properties`, `excludeKeys`): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+▸ **filterExclude**(`properties?`, `excludeKeys?`): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
 
 Filter the keys from the properties.
 
@@ -24,8 +24,8 @@ Filter the keys from the properties.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `properties` | `undefined` \| [`IProperty`](../interfaces/IProperty.md)[] | The properties list to filter. |
-| `excludeKeys` | `string`[] | The keys to filter. |
+| `properties?` | [`IProperty`](../interfaces/IProperty.md)[] | The properties list to filter. |
+| `excludeKeys?` | `string`[] | The keys to filter. |
 
 #### Returns
 
@@ -37,7 +37,7 @@ ___
 
 ### filterInclude
 
-▸ **filterInclude**(`properties`, `includeKeys`): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+▸ **filterInclude**(`properties?`, `includeKeys?`): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
 
 Reduce the keys in the property list.
 
@@ -45,8 +45,8 @@ Reduce the keys in the property list.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `properties` | `undefined` \| [`IProperty`](../interfaces/IProperty.md)[] | The properties list to filter. |
-| `includeKeys` | `string`[] | The keys to include. |
+| `properties?` | [`IProperty`](../interfaces/IProperty.md)[] | The properties list to filter. |
+| `includeKeys?` | `string`[] | The keys to include. |
 
 #### Returns
 
@@ -82,6 +82,27 @@ ___
 ▸ **getDate**(`properties`, `key`): `undefined` \| `Date`
 
 Get a date from the list.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `properties` | `undefined` \| [`IProperty`](../interfaces/IProperty.md)[] | The properties list to get from. |
+| `key` | `string` | The key of the item to add. |
+
+#### Returns
+
+`undefined` \| `Date`
+
+The value if found.
+
+___
+
+### getDateTime
+
+▸ **getDateTime**(`properties`, `key`): `undefined` \| `Date`
+
+Get a date time from the list.
 
 #### Parameters
 
@@ -247,9 +268,9 @@ ___
 
 ### getValue
 
-▸ **getValue**\<`T`\>(`properties`, `key`): `undefined` \| `T`
+▸ **getValue**\<`T`\>(`properties`, `key`, `type?`): `undefined` \| `T`
 
-Get properties with the specific key.
+Get property with the specific key.
 
 #### Type parameters
 
@@ -263,6 +284,7 @@ Get properties with the specific key.
 | :------ | :------ | :------ |
 | `properties` | `undefined` \| [`IProperty`](../interfaces/IProperty.md)[] | The properties list to look in. |
 | `key` | `string` | The key of the item to find. |
+| `type?` | `string` | Will only return the value if the type matches or is undefined. |
 
 #### Returns
 
@@ -272,9 +294,9 @@ The item if it was found.
 
 ___
 
-### mergeProperties
+### merge
 
-▸ **mergeProperties**(`properties`, `newProperties`): [`IProperty`](../interfaces/IProperty.md)[]
+▸ **merge**(`properties1`, `properties2`): [`IProperty`](../interfaces/IProperty.md)[]
 
 Merge two property lists.
 
@@ -282,14 +304,33 @@ Merge two property lists.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `properties` | [`IProperty`](../interfaces/IProperty.md)[] | The current profile properties. |
-| `newProperties` | [`IProperty`](../interfaces/IProperty.md)[] | The new properties to merge in to the first list. |
+| `properties1` | [`IProperty`](../interfaces/IProperty.md)[] | The current profile properties. |
+| `properties2` | [`IProperty`](../interfaces/IProperty.md)[] | The new properties to merge in to the first list. |
 
 #### Returns
 
 [`IProperty`](../interfaces/IProperty.md)[]
 
 The merged list.
+
+___
+
+### removeValue
+
+▸ **removeValue**(`properties`, `key`): `void`
+
+Remove property with the specific key.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `properties` | `undefined` \| [`IProperty`](../interfaces/IProperty.md)[] | The properties list to look in. |
+| `key` | `string` | The key of the item to remove. |
+
+#### Returns
+
+`void`
 
 ___
 
@@ -318,6 +359,26 @@ ___
 ▸ **setDate**(`properties`, `key`, `value`): `void`
 
 Set a date in ISO format in to the list.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `properties` | [`IProperty`](../interfaces/IProperty.md)[] | The properties list to add to. |
+| `key` | `string` | The key of the item to add. |
+| `value` | `undefined` \| `Date` | The value of the item to add. |
+
+#### Returns
+
+`void`
+
+___
+
+### setDateTime
+
+▸ **setDateTime**(`properties`, `key`, `value`): `void`
+
+Set a date time in to the list.
 
 #### Parameters
 
@@ -477,7 +538,7 @@ ___
 
 ▸ **setValue**\<`T`\>(`properties`, `key`, `type`, `value`): `void`
 
-Set a value to the list.
+Set a property in to the list.
 
 #### Type parameters
 
