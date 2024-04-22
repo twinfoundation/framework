@@ -8,4 +8,4 @@ coverage
 *.tgz
 **/.tmp
 .env.dev
-vite.config.ts.timestamp*
+vitest.config.ts.timestamp*
