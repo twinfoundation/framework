@@ -15,7 +15,7 @@ export class EntitySorter {
 	 * @param sortDescriptors The sort keys to use.
 	 * @returns The sorted list.
 	 */
-	public static sort<T>(entities: T[], sortDescriptors: IEntitySortDescriptor<T>[]): T[] {
+	public static sort<T>(entities: T[], sortDescriptors?: IEntitySortDescriptor<T>[]): T[] {
 		if (!Is.arrayValue(entities) || Is.empty(sortDescriptors)) {
 			return entities;
 		}

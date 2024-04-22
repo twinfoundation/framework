@@ -46,7 +46,7 @@ ___
 
 ### sort
 
-▸ **sort**\<`T`\>(`entities`, `sortDescriptors`): `T`[]
+▸ **sort**\<`T`\>(`entities`, `sortDescriptors?`): `T`[]
 
 Sort a list of entities using multiple keys and direction.
 
@@ -61,7 +61,7 @@ Sort a list of entities using multiple keys and direction.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `entities` | `T`[] | The list of entities. |
-| `sortDescriptors` | [`IEntitySortDescriptor`](../interfaces/IEntitySortDescriptor.md)\<`T`\>[] | The sort keys to use. |
+| `sortDescriptors?` | [`IEntitySortDescriptor`](../interfaces/IEntitySortDescriptor.md)\<`T`\>[] | The sort keys to use. |
 
 #### Returns
 

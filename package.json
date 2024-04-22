@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/framework",
-	"version": "0.0.3-next.20",
+	"version": "0.0.3-next.21",
 	"description": "Framework packages for GTSC",
 	"repository": {
 		"type": "git",
