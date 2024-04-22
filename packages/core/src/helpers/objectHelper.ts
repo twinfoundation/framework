@@ -91,4 +91,20 @@ export class ObjectHelper {
 			obj[property] = value;
 		}
 	}
+
+	/**
+	 * Pick a subset of properties from an object.
+	 * @param obj The object to pick the properties from.
+	 * @param keys The property keys to pick.
+	 * @returns The partial object.
+	 */
+	public static pick<T>(obj: T, keys?: (keyof T)[]): Partial<T> {
+		if (Is.object(obj) && Is.arrayValue(keys)) {
+			return Object.fromEntries(
+				keys.filter(key => key in obj).map(key => [key, obj[key]])
+			) as Partial<T>;
+		}
+
+		return obj;
+	}
 }

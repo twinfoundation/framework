@@ -50,4 +50,26 @@ describe("ObjectHelper", () => {
 			foo: "bar"
 		});
 	});
+
+	test("pick can return the original object with no keys provided", () => {
+		const result = ObjectHelper.pick({ foo: "bar", val1: true });
+
+		expect(result.foo).toEqual("bar");
+		expect(result.val1).toEqual(true);
+	});
+
+	test("pick can return the original object with empty keys provided", () => {
+		const result = ObjectHelper.pick({ foo: "bar", val1: true }, []);
+
+		expect(result.foo).toEqual("bar");
+		expect(result.val1).toEqual(true);
+	});
+
+	test("pick can return a subset when keys are provided", () => {
+		const result = ObjectHelper.pick({ foo: "bar", val1: true, val2: false }, ["foo", "val1"]);
+
+		expect(result.foo).toEqual("bar");
+		expect(result.val1).toEqual(true);
+		expect(result.val2).toBeUndefined();
+	});
 });

@@ -97,6 +97,33 @@ GeneralError if there was an error parsing the JSON.
 
 ___
 
+### pick
+
+▸ **pick**\<`T`\>(`obj`, `keys?`): `Partial`\<`T`\>
+
+Pick a subset of properties from an object.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `obj` | `T` | The object to pick the properties from. |
+| `keys?` | keyof `T`[] | The property keys to pick. |
+
+#### Returns
+
+`Partial`\<`T`\>
+
+The partial object.
+
+___
+
 ### propertyGet
 
 ▸ **propertyGet**(`obj`, `property`): `unknown`
