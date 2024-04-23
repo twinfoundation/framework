@@ -43,28 +43,28 @@ export class StockDataTypes {
 			isInternal: false,
 			type: StockDataTypes.TYPE_URN,
 			defaultValue: "",
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Urn.validate(propertyName, value, failures)
 		}));
 		DataTypeHandlerFactory.register(StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS, () => ({
 			isInternal: false,
 			type: StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS,
 			defaultValue: Date.now(),
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Validation.milliseconds(propertyName, value, failures)
 		}));
 		DataTypeHandlerFactory.register(StockDataTypes.TYPE_TIMESTAMP_SECONDS, () => ({
 			isInternal: false,
 			type: StockDataTypes.TYPE_TIMESTAMP_SECONDS,
 			defaultValue: Math.floor(Date.now() / 1000),
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Validation.seconds(propertyName, value, failures)
 		}));
 		DataTypeHandlerFactory.register(StockDataTypes.TYPE_PROPERTY_LIST, () => ({
 			isInternal: true,
 			type: StockDataTypes.TYPE_PROPERTY_LIST,
 			defaultValue: {},
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				StockDataTypes.validateIPropertyList(
 					propertyName,
 					value as IProperty[],
@@ -77,7 +77,7 @@ export class StockDataTypes {
 			isInternal: true,
 			type: StockDataTypes.TYPE_PROPERTY,
 			defaultValue: {},
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				StockDataTypes.validateIProperty(
 					propertyName,
 					value as IProperty,

@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/framework",
-	"version": "0.0.3-next.21",
+	"version": "0.0.3-next.22",
 	"description": "Framework packages for GTSC",
 	"repository": {
 		"type": "git",
@@ -22,7 +22,7 @@
 		"lint": "npm run lint:format && npm run lint:code && npm run lint:markdown && npm run lint:spell"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^7.7.0",
+		"@typescript-eslint/eslint-plugin": "^7.7.1",
 		"cspell": "^8.7.0",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
@@ -39,8 +39,6 @@
 		"prettier": "^3.2.5"
 	},
 	"workspaces": [
-		"packages/nameof-transformer",
-		"packages/nameof",
 		"packages/core",
 		"packages/entity",
 		"packages/crypto",

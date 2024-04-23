@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/qr",
-	"version": "0.0.3-next.21",
+	"version": "0.0.3-next.22",
 	"description": "Package for creating QR codes",
 	"repository": {
 		"type": "git",
@@ -28,16 +28,16 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.3-next.21",
-		"@gtsc/image": "0.0.3-next.21",
-		"@gtsc/nameof": "0.0.3-next.21"
+		"@gtsc/core": "0.0.3-next.22",
+		"@gtsc/image": "0.0.3-next.22",
+		"@gtsc/nameof": "0.0.4"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "0.0.3-next.21",
+		"@gtsc/nameof-transformer": "0.0.4",
 		"@vitest/coverage-v8": "^1.5.0",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
-		"rollup": "^4.14.3",
+		"rollup": "^4.16.3",
 		"rollup-plugin-typescript2": "^0.36.0",
 		"ts-patch": "^3.1.2",
 		"typedoc": "^0.25.13",
