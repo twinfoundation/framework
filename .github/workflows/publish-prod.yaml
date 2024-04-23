@@ -12,8 +12,6 @@ on:
           - crypto
           - entity
           - image
-          - nameof
-          - nameof-transformer
           - qr
           - services
           - schema

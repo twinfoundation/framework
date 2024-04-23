@@ -1,4 +1,4 @@
-name: Publish Next All Packages
+name: Publish Prod All Packages
 
 on: workflow_dispatch
 
@@ -6,7 +6,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
-    if: github.ref != 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
 
     strategy:
       max-parallel: 1
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: next
+          ref: main
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -30,13 +30,13 @@ jobs:
           rm package.json
           rm package-lock.json
 
-      - name: Check package version contains -next
+      - name: Check package version does not contains -next
         run: |
           cd packages/${{ matrix.package }}
           PACKAGE_VERSION=$(cat package.json | jq '.version' | tr -d '"')
           echo Package Version $PACKAGE_VERSION
-          if [[ $PACKAGE_VERSION != *"-next"* ]]; then
-            echo "Error: package version does not contain -next"
+          if [[ $PACKAGE_VERSION == *"-next"* ]]; then
+            echo "Error: package version contains -next"
             exit 1
           fi
 
@@ -55,6 +55,6 @@ jobs:
       - name: Publish
         run: |
           cd packages/${{ matrix.package }}
-          npm publish --access public --tag next
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

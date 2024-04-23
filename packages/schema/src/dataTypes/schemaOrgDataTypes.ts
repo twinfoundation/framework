@@ -73,7 +73,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_TEXT,
 			defaultValue: "",
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Validation.string(propertyName, value, failures)
 		}));
 
@@ -81,7 +81,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_INTEGER,
 			defaultValue: 0,
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Validation.integer(propertyName, value, failures)
 		}));
 
@@ -89,7 +89,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_FLOAT,
 			defaultValue: 0,
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Validation.number(propertyName, value, failures)
 		}));
 
@@ -97,7 +97,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_BOOLEAN,
 			defaultValue: true,
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Validation.boolean(propertyName, value, failures)
 		}));
 
@@ -105,7 +105,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_URL,
 			defaultValue: "",
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Url.validate(propertyName, value, failures)
 		}));
 
@@ -113,7 +113,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_DATE,
 			defaultValue: new Date(),
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Validation.dateString(propertyName, value, failures)
 		}));
 
@@ -121,7 +121,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_DATE_TIME,
 			defaultValue: new Date(),
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Validation.dateTimeString(propertyName, value, failures)
 		}));
 
@@ -129,7 +129,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_TIME,
 			defaultValue: new Date(),
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Validation.timeString(propertyName, value, failures)
 		}));
 
@@ -137,7 +137,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_IMAGE,
 			defaultValue: "",
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				Url.validate(propertyName, value, failures)
 		}));
 
@@ -145,7 +145,7 @@ export class SchemaOrgDataTypes {
 			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_GEO_COORDINATES,
 			defaultValue: { longitude: 0, latitude: 0 },
-			validate: (propertyName, value, failures, container, previousValue) =>
+			validate: (propertyName, value, failures, container, previousValue): boolean =>
 				SchemaOrgDataTypes.validateGeoCoordinates(propertyName, value, failures)
 		}));
 	}
