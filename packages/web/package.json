@@ -1,11 +1,11 @@
 {
-	"name": "@gtsc/services",
+	"name": "@gtsc/web",
 	"version": "0.0.3-next.23",
-	"description": "Package for base service types",
+	"description": "Contains classes for use with web operations",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/gtscio/framework.git",
-		"directory": "packages/services"
+		"directory": "packages/web"
 	},
 	"author": "martyn.janes@iota.org",
 	"license": "Apache-2.0",
@@ -29,6 +29,7 @@
 	},
 	"dependencies": {
 		"@gtsc/core": "0.0.3-next.23",
+		"@gtsc/crypto": "0.0.3-next.23",
 		"@gtsc/nameof": "^0.0.4"
 	},
 	"devDependencies": {

@@ -11,6 +11,7 @@ This mono-repository contains some of the fundamental packages that the rest of 
 - [qr](packages/qr/README.md) - Package contains classes for generating QR codes.
 - [services](packages/services/README.md) - Package contains definitions and helpers for services.
 - [schema](packages/services/README.md) - Package contains definitions and helpers for schemas.
+- [web](packages/services/README.md) - Contains classes for use with web operations.
 
 ## Contributing
 

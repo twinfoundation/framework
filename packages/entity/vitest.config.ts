@@ -17,6 +17,7 @@ export default defineConfig({
 		globals: true,
 		bail: 1,
 		testTimeout: 120000,
+		hookTimeout: 120000,
 		coverage: {
 			provider: "v8",
 			reporter: ["text", "lcov"],
