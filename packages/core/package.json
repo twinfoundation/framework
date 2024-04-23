@@ -28,11 +28,11 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/nameof": "0.0.4",
+		"@gtsc/nameof": "^0.0.4",
 		"intl-messageformat": "^10.5.11"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "0.0.4",
+		"@gtsc/nameof-transformer": "^0.0.4",
 		"@vitest/coverage-v8": "^1.5.0",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
