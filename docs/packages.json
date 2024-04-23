@@ -29,6 +29,10 @@
 		{
 			"name": "qr",
 			"description": "Contains classes for generating QR codes."
+		},
+		{
+			"name": "web",
+			"description": "Contains classes for use with web operations."
 		}
 	]
 }

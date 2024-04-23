@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/image",
-	"version": "0.0.3-next.22",
+	"version": "0.0.3-next.23",
 	"description": "Classes for image manipulation",
 	"repository": {
 		"type": "git",
@@ -15,7 +15,7 @@
 	},
 	"scripts": {
 		"clean": "rimraf dist coverage",
-		"build": "tsc",
+		"build": "tspc",
 		"test": "vitest --run --config ./vitest.config.ts",
 		"coverage": "vitest --run --coverage --config ./vitest.config.ts",
 		"bundle:esm": "rollup --config rollup.config.mjs --environment MODULE:esm",
@@ -28,7 +28,7 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.3-next.22",
+		"@gtsc/core": "0.0.3-next.23",
 		"@gtsc/nameof": "^0.0.4",
 		"pako": "^2.1.0"
 	},

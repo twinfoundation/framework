@@ -15,6 +15,7 @@ on:
           - qr
           - services
           - schema
+          - web
 
 jobs:
   publish:

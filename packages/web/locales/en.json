@@ -1,0 +1,14 @@
+{
+	"error": {
+		"fetchHelper": {
+			"decodingJSON": "Decoding JSON failed for route \"{route}\"",
+			"failureStatusText": "The request to the API failed: \"{statusText}\"",
+			"connectivity": "The request failed, the API could be offline, or there are other connectivity issues",
+			"timeout": "The request timed out",
+			"general": "A general failure occurred during the request"
+		}
+	},
+	"errorMessages": {
+		"fetch": "Fetch"
+	}
+}
