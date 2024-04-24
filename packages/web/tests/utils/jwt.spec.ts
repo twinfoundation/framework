@@ -16,13 +16,9 @@ describe("Jwt", () => {
 	});
 
 	test("can decode a jwt using HS256", () => {
-		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key"));
-
 		const decoded = Jwt.decode(
-			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
-			key
+			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc"
 		);
-		expect(decoded.verified).toBeTruthy();
 		expect(decoded?.header?.alg).toEqual("HS256");
 		expect(decoded?.header?.typ).toEqual("JWT");
 		expect(decoded?.payload?.sub).toEqual("123456");
@@ -46,16 +42,9 @@ describe("Jwt", () => {
 	});
 
 	test("can decode a jwt using EdDSA", () => {
-		const mnemonic =
-			"merge skate cycle typical service scrub idea gaze alert lion primary mosquito arrow hover ensure unusual immune length antique shrug earn spatial era pass";
-		const seed = Bip39.mnemonicToSeed(mnemonic);
-		const keyPair = Ed25519.keyPairFromSeed(seed);
-
 		const decoded = Jwt.decode(
-			"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.fGmPmgy96AwZ__G_7Y6CDsPQXVPqEQy6x9I1ENKuEAOKJMWS4wZiCZGaGzXxSJbNXXyIfd5m7mUJInyK-KE5CQ",
-			keyPair.publicKey
+			"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.fGmPmgy96AwZ__G_7Y6CDsPQXVPqEQy6x9I1ENKuEAOKJMWS4wZiCZGaGzXxSJbNXXyIfd5m7mUJInyK-KE5CQ"
 		);
-		expect(decoded.verified).toBeTruthy();
 		expect(decoded?.header?.alg).toEqual("EdDSA");
 		expect(decoded?.header?.typ).toEqual("JWT");
 		expect(decoded?.payload?.sub).toEqual("123456");
@@ -68,7 +57,7 @@ describe("Jwt", () => {
 		const seed = Bip39.mnemonicToSeed(mnemonic);
 		const keyPair = Ed25519.keyPairFromSeed(seed);
 
-		const decoded = Jwt.decode(
+		const decoded = Jwt.verify(
 			"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.fGmPmgy96AwZ__G_7Y6CDsPQXVPqEQy6x9I1ENKuEAOKJMWS4wZiCZGaGzXxSJbNXXyIfd5m7mUJInyK-KE5C",
 			keyPair.publicKey
 		);
@@ -82,7 +71,7 @@ describe("Jwt", () => {
 	test("can fail to verify a jwt with wrong number of segments", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
 
-		const decoded = Jwt.decode(
+		const decoded = Jwt.verify(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc.sfdhdfjhg",
 			key
 		);
@@ -92,7 +81,7 @@ describe("Jwt", () => {
 	test("can fail to verify a jwt with incorrect key but still return data", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
 
-		const decoded = Jwt.decode(
+		const decoded = Jwt.verify(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
 			key
 		);
@@ -106,7 +95,7 @@ describe("Jwt", () => {
 	test("can fail to decode a jwt with invalid key but still return data", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
 
-		const decoded = Jwt.decode(
+		const decoded = Jwt.verify(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
 			key
 		);
@@ -120,14 +109,14 @@ describe("Jwt", () => {
 	test("can fail to decode with invalid base64", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
 
-		const decoded = Jwt.decode("!.!.!", key);
+		const decoded = Jwt.verify("!.!.", key);
 		expect(decoded.verified).toEqual(false);
 	});
 
 	test("can fail to decode with missing segments", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
 
-		const decoded = Jwt.decode(
+		const decoded = Jwt.verify(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0",
 			key
 		);
@@ -137,7 +126,7 @@ describe("Jwt", () => {
 	test("can decode a jwt", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key"));
 
-		const decoded = Jwt.decode(
+		const decoded = Jwt.verify(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
 			key
 		);

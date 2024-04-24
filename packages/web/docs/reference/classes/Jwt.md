@@ -16,7 +16,7 @@ Class to encode and decode JavaScript Web Tokens.
 
 ### decode
 
-▸ **decode**\<`U`, `T`\>(`token`, `key`): `Object`
+▸ **decode**\<`U`, `T`\>(`token`): `Object`
 
 Decode a token.
 
@@ -32,7 +32,6 @@ Decode a token.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `token` | `string` | The token to decode. |
-| `key` | `Uint8Array` | The key for verifying the token. |
 
 #### Returns
 
@@ -44,7 +43,7 @@ The decoded payload.
 | :------ | :------ |
 | `header?` | `U` |
 | `payload?` | `T` |
-| `verified` | `boolean` |
+| `signature?` | `Uint8Array` |
 
 ___
 
@@ -74,3 +73,68 @@ Encode a token.
 `string`
 
 The encoded token.
+
+___
+
+### verify
+
+▸ **verify**\<`U`, `T`\>(`token`, `key`): `Object`
+
+Verify a token.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `U` | extends [`IJwtHeader`](../interfaces/IJwtHeader.md) |
+| `T` | extends [`IJwtPayload`](../interfaces/IJwtPayload.md) |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `token` | `string` | The token to verify. |
+| `key` | `Uint8Array` | The key for verifying the token, if not provided no verification occurs. |
+
+#### Returns
+
+`Object`
+
+The decoded payload.
+
+| Name | Type |
+| :------ | :------ |
+| `header?` | `U` |
+| `payload?` | `T` |
+| `signature?` | `Uint8Array` |
+| `verified` | `boolean` |
+
+___
+
+### verifySignature
+
+▸ **verifySignature**\<`U`, `T`\>(`header?`, `payload?`, `signature?`, `key?`): `boolean`
+
+Verify a token by parts.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `U` | extends [`IJwtHeader`](../interfaces/IJwtHeader.md) |
+| `T` | extends [`IJwtPayload`](../interfaces/IJwtPayload.md) |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `header?` | `U` | The header to verify. |
+| `payload?` | `T` | The payload to verify. |
+| `signature?` | `Uint8Array` | The signature to verify. |
+| `key?` | `Uint8Array` | The key for verifying the token, if not provided no verification occurs. |
+
+#### Returns
+
+`boolean`
+
+True if the parts are verified.
