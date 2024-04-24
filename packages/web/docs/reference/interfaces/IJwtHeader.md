@@ -1,6 +1,6 @@
 # Interface: IJwtHeader
 
-The fields in a JWT header.
+The fields in a JSON Web Token header.
 
 ## Indexable
 
@@ -12,7 +12,7 @@ Additional fields in the header.
 
 ### alg
 
-• **alg**: [`JwtSigningMethods`](../modules.md#jwtsigningmethods)
+• **alg**: [`JwtAlgorithms`](../modules.md#jwtalgorithms)
 
 The algorithm used to sign the token.
 

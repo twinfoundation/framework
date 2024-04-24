@@ -1,6 +1,6 @@
 # Class: Jwt
 
-Class to encode and decode JavaScript Web Tokens.
+Class to encode and decode JSON Web Tokens.
 
 ## Constructors
 

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 /**
- * The fields in a JWT payload.
+ * The fields in a JSON Web Token payload.
  */
 export interface IJwtPayload {
 	/**

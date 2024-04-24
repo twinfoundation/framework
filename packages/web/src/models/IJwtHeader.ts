@@ -1,9 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { JwtSigningMethods } from "./jwtSigningMethods";
+import type { JwtAlgorithms } from "./jwtAlgorithms";
 
 /**
- * The fields in a JWT header.
+ * The fields in a JSON Web Token header.
  */
 export interface IJwtHeader {
 	/**
@@ -19,7 +19,7 @@ export interface IJwtHeader {
 	/**
 	 * The algorithm used to sign the token.
 	 */
-	alg: JwtSigningMethods;
+	alg: JwtAlgorithms;
 
 	/**
 	 * The key ID.

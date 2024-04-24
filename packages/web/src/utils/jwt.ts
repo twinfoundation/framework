@@ -6,10 +6,10 @@ import { Ed25519, HmacSha256 } from "@gtsc/crypto";
 import { nameof } from "@gtsc/nameof";
 import type { IJwtHeader } from "../models/IJwtHeader";
 import type { IJwtPayload } from "../models/IJwtPayload";
-import type { JwtSigningMethods } from "../models/jwtSigningMethods";
+import type { JwtAlgorithms } from "../models/jwtAlgorithms";
 
 /**
- * Class to encode and decode JavaScript Web Tokens.
+ * Class to encode and decode JSON Web Tokens.
  */
 export class Jwt {
 	/**
@@ -31,7 +31,7 @@ export class Jwt {
 		key: Uint8Array
 	): string {
 		Guards.object<IJwtHeader>(Jwt._CLASS_NAME, nameof(header), header);
-		Guards.arrayOneOf<JwtSigningMethods>(Jwt._CLASS_NAME, nameof(header.alg), header.alg, [
+		Guards.arrayOneOf<JwtAlgorithms>(Jwt._CLASS_NAME, nameof(header.alg), header.alg, [
 			"HS256",
 			"EdDSA"
 		]);
@@ -161,7 +161,7 @@ export class Jwt {
 			Is.object<T>(payload) &&
 			Is.uint8Array(signature) &&
 			Is.uint8Array(key) &&
-			Is.arrayOneOf<JwtSigningMethods>(header.alg, ["HS256", "EdDSA"])
+			Is.arrayOneOf<JwtAlgorithms>(header.alg, ["HS256", "EdDSA"])
 		) {
 			const segments: string[] = [];
 			const headerBytes = Converter.utf8ToBytes(JSON.stringify(header));

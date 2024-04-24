@@ -11,6 +11,7 @@
 
 - [IFetchOptions](interfaces/IFetchOptions.md)
 - [IHttpRequestHeaders](interfaces/IHttpRequestHeaders.md)
+- [IJwk](interfaces/IJwk.md)
 - [IJwtHeader](interfaces/IJwtHeader.md)
 - [IJwtPayload](interfaces/IJwtPayload.md)
 
@@ -24,8 +25,8 @@ The HTTP Methods.
 
 ___
 
-### JwtSigningMethods
+### JwtAlgorithms
 
-Ƭ **JwtSigningMethods**: ``"HS256"`` \| ``"EdDSA"``
+Ƭ **JwtAlgorithms**: ``"HS256"`` \| ``"EdDSA"``
 
-The Signing methods available for JavaScript Web Tokens.
+The cryptographic algorithms supported for JSON Web Tokens and JSON Web Keys.
