@@ -9,15 +9,18 @@
 
 ## Interfaces
 
+- [IFetchOptions](interfaces/IFetchOptions.md)
 - [IHttpRequestHeaders](interfaces/IHttpRequestHeaders.md)
+- [IJwtHeader](interfaces/IJwtHeader.md)
+- [IJwtPayload](interfaces/IJwtPayload.md)
 
 ## Type Aliases
 
-### HttpRestVerbs
+### HttpMethods
 
-Ƭ **HttpRestVerbs**: ``"get"`` \| ``"post"`` \| ``"put"`` \| ``"patch"`` \| ``"delete"`` \| ``"options"``
+Ƭ **HttpMethods**: ``"GET"`` \| ``"POST"`` \| ``"PUT"`` \| ``"PATCH"`` \| ``"DELETE"`` \| ``"OPTIONS"`` \| ``"HEAD"`` \| ``"CONNECT"`` \| ``"TRACE"``
 
-The HTTP REST Verbs.
+The HTTP Methods.
 
 ___
 

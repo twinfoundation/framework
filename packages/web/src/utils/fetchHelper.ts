@@ -1,9 +1,11 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Is, type IError } from "@gtsc/core";
+import { Guards, Is, type IError } from "@gtsc/core";
+import { nameof } from "@gtsc/nameof";
 import { FetchError } from "../errors/fetchError";
-import type { HttpRestVerbs } from "../models/httpRestVerbs";
+import type { HttpMethods } from "../models/httpMethods";
 import { HttpStatusCodes } from "../models/httpStatusCodes";
+import type { IFetchOptions } from "../models/IFetchOptions";
 import type { IHttpRequestHeaders } from "../models/IHttpRequestHeaders";
 
 /**
@@ -11,43 +13,200 @@ import type { IHttpRequestHeaders } from "../models/IHttpRequestHeaders";
  */
 export class FetchHelper {
 	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<FetchHelper>();
+
+	/**
+	 * Perform a fetch request.
+	 * @param source The source for the request.
+	 * @param endpoint The base endpoint for the request.
+	 * @param path The path of the request.
+	 * @param method The http method.
+	 * @param body Request to send to the endpoint.
+	 * @param options Options for sending the requests.
+	 * @returns The response.
+	 */
+	public static async fetch(
+		source: string,
+		endpoint: string,
+		path: string,
+		method: HttpMethods,
+		body?: string | Uint8Array,
+		options?: IFetchOptions
+	): Promise<Response> {
+		Guards.string(FetchHelper._CLASS_NAME, nameof(source), source);
+		Guards.string(FetchHelper._CLASS_NAME, nameof(endpoint), endpoint);
+		Guards.string(FetchHelper._CLASS_NAME, nameof(path), path);
+		Guards.arrayOneOf<HttpMethods>(FetchHelper._CLASS_NAME, nameof(method), method, [
+			"GET",
+			"POST",
+			"PUT",
+			"PATCH",
+			"DELETE",
+			"OPTIONS",
+			"HEAD",
+			"CONNECT",
+			"TRACE"
+		]);
+		if (!Is.undefined(body) && !Is.uint8Array(body)) {
+			Guards.string(FetchHelper._CLASS_NAME, nameof(body), body);
+		}
+		if (!Is.undefined(options)) {
+			Guards.object<IFetchOptions>(FetchHelper._CLASS_NAME, nameof(options), options);
+			if (!Is.undefined(options.headers)) {
+				Guards.object<IHttpRequestHeaders>(
+					FetchHelper._CLASS_NAME,
+					nameof(options.headers),
+					options.headers
+				);
+			}
+			if (!Is.undefined(options.timeoutMs)) {
+				Guards.integer(FetchHelper._CLASS_NAME, nameof(options.timeoutMs), options.timeoutMs);
+			}
+			if (!Is.undefined(options.includeCredentials)) {
+				Guards.boolean(
+					FetchHelper._CLASS_NAME,
+					nameof(options.includeCredentials),
+					options.includeCredentials
+				);
+			}
+			if (!Is.undefined(options.retryCount)) {
+				Guards.integer(FetchHelper._CLASS_NAME, nameof(options.retryCount), options.retryCount);
+			}
+			if (!Is.undefined(options.retryDelayMs)) {
+				Guards.integer(FetchHelper._CLASS_NAME, nameof(options.retryDelayMs), options.retryDelayMs);
+			}
+		}
+
+		let controller: AbortController | undefined;
+		let timerId: number | undefined;
+		const retryCount = options?.retryCount ?? 1;
+		const baseDelayMilliseconds = options?.retryDelayMs ?? 3000;
+
+		let lastError: IError | undefined;
+		let attempt;
+		for (attempt = 0; attempt < retryCount; attempt++) {
+			if (attempt > 0) {
+				const exponentialBackoffDelay = baseDelayMilliseconds * Math.pow(2, attempt - 1);
+				await new Promise(resolve => globalThis.setTimeout(resolve, exponentialBackoffDelay));
+			}
+
+			if (options?.timeoutMs !== undefined) {
+				controller = new AbortController();
+				timerId = globalThis.setTimeout(() => {
+					if (controller) {
+						controller.abort();
+					}
+				}, options?.timeoutMs);
+			}
+
+			try {
+				const requestOptions: RequestInit = {
+					method,
+					headers: options?.headers as HeadersInit,
+					body: method === "POST" || method === "PUT" ? body : undefined,
+					signal: controller ? controller.signal : undefined
+				};
+				if (Is.boolean(options?.includeCredentials)) {
+					requestOptions.credentials = "include";
+				}
+
+				const response = await fetch(`${endpoint}${path}`, requestOptions);
+
+				if (!response.ok && retryCount > 1) {
+					lastError = new FetchError(
+						source,
+						"fetchHelper.general",
+						response.status ?? HttpStatusCodes.INTERNAL_SERVER_ERROR,
+						{
+							path,
+							statusText: response.statusText
+						}
+					);
+				} else {
+					return response;
+				}
+			} catch (err) {
+				const isErr = Is.object<IError>(err);
+				if (isErr && Is.stringValue(err.message) && err.message.includes("Failed to fetch")) {
+					lastError = new FetchError(
+						source,
+						"fetchHelper.connectivity",
+						HttpStatusCodes.SERVICE_UNAVAILABLE,
+						{
+							path
+						}
+					);
+				} else {
+					const isAbort = isErr && err.name === "AbortError";
+					const props: { [id: string]: unknown } = { path };
+					let httpStatus: HttpStatusCodes = HttpStatusCodes.INTERNAL_SERVER_ERROR;
+					if (isAbort) {
+						httpStatus = HttpStatusCodes.REQUEST_TIMEOUT;
+					} else if (isErr && "httpStatus" in err) {
+						httpStatus = err.httpStatus as HttpStatusCodes;
+					}
+					if (isErr && "statusText" in err) {
+						props.statusText = err.statusText;
+					}
+					lastError = new FetchError(
+						source,
+						`fetchHelper.${isAbort ? "timeout" : "general"}`,
+						httpStatus,
+						props
+					);
+				}
+			} finally {
+				if (timerId) {
+					globalThis.clearTimeout(timerId);
+				}
+			}
+		}
+
+		if (retryCount > 1 && attempt === retryCount) {
+			// False positive as FetchError is derived from Error
+			// eslint-disable-next-line @typescript-eslint/only-throw-error
+			throw new FetchError(
+				source,
+				"fetchHelper.retryLimitExceeded",
+				HttpStatusCodes.INTERNAL_SERVER_ERROR,
+				{ path },
+				lastError
+			);
+		}
+
+		throw lastError;
+	}
+
+	/**
 	 * Perform a request in json format.
 	 * @param source The source for the request.
 	 * @param endpoint The base endpoint for the request.
-	 * @param route The route of the request.
+	 * @param path The path of the request.
 	 * @param method The http method.
 	 * @param requestData Request to send to the endpoint.
 	 * @param options Options for sending the requests.
-	 * @param options.timeout Timeout for requests.
-	 * @param options.includeCredentials Include credentials in the requests.
-	 * @param options.extraHeaders Include those extra headers.
-	 * @param options.maxRetries The number of times to retry fetching defaults to no retries.
-	 * @param options.baseDelayMilliseconds The number of milliseconds we should delay any retry with.
 	 * @returns The response.
 	 */
 	public static async fetchJson<T, U>(
 		source: string,
 		endpoint: string,
-		route: string,
-		method: HttpRestVerbs,
+		path: string,
+		method: HttpMethods,
 		requestData?: T,
-		options?: {
-			extraHeaders?: IHttpRequestHeaders;
-			timeout?: number;
-			includeCredentials?: boolean;
-			maxRetries?: number;
-			baseDelayMilliseconds?: number;
-		}
+		options?: IFetchOptions
 	): Promise<U> {
-		const response = await FetchHelper.fetchWithTimeout(
+		options ??= {};
+		options.headers ??= {};
+		options.headers.Accept = "application/json, application/ld+json";
+
+		const response = await FetchHelper.fetch(
 			source,
 			endpoint,
-			route,
+			path,
 			method,
-			{
-				...options?.extraHeaders,
-				Accept: "application/json, application/ld+json"
-			},
 			requestData ? JSON.stringify(requestData) : undefined,
 			options
 		);
@@ -61,7 +220,13 @@ export class FetchHelper {
 			} catch (err) {
 				// False positive as FetchError is derived from Error
 				// eslint-disable-next-line @typescript-eslint/only-throw-error
-				throw new FetchError(source, "fetchHelper.decodingJSON", response.status, { route }, err);
+				throw new FetchError(
+					source,
+					"fetchHelper.decodingJSON",
+					HttpStatusCodes.BAD_REQUEST,
+					{ path },
+					err
+				);
 			}
 		}
 
@@ -75,7 +240,7 @@ export class FetchHelper {
 			response.status,
 			{
 				statusText: response.statusText,
-				route
+				path
 			},
 			errorResponseData
 		);
@@ -85,53 +250,45 @@ export class FetchHelper {
 	 * Perform a request for binary data.
 	 * @param source The source for the request.
 	 * @param endpoint The base endpoint for the request.
-	 * @param route The route of the request.
+	 * @param path The path of the request.
 	 * @param method The http method.
 	 * @param requestData Request to send to the endpoint.
 	 * @param options Options for sending the requests.
-	 * @param options.timeout Timeout for requests.
-	 * @param options.includeCredentials Include credentials in the requests.
-	 * @param options.extraHeaders Include those extra headers.
-	 * @param options.maxRetries The number of times to retry fetching defaults to no retries.
-	 * @param options.baseDelayMilliseconds The number of milliseconds we should delay any retry with.
 	 * @returns The response.
 	 */
 	public static async fetchBinary<T>(
 		source: string,
 		endpoint: string,
-		route: string,
-		method: Extract<HttpRestVerbs, "get" | "post">,
+		path: string,
+		method: Extract<HttpMethods, "GET" | "POST">,
 		requestData?: Uint8Array,
-		options?: {
-			extraHeaders?: IHttpRequestHeaders;
-			timeout?: number;
-			includeCredentials?: boolean;
-			maxRetries?: number;
-			baseDelayMilliseconds?: number;
-		}
+		options?: IFetchOptions
 	): Promise<Uint8Array | T> {
-		const response = await this.fetchWithTimeout(
-			source,
-			endpoint,
-			route,
-			method,
-			{ "Content-Type": "application/octet-stream" },
-			requestData,
-			options
-		);
+		options ??= {};
+		options.headers ??= {};
+		options.headers["Content-Type"] = "application/octet-stream";
+
+		const response = await this.fetch(source, endpoint, path, method, requestData, options);
 
 		if (response.ok) {
-			if (method === "get") {
+			if (method === "GET") {
+				if (response.status === HttpStatusCodes.NO_CONTENT) {
+					return new Uint8Array();
+				}
 				return new Uint8Array(await response.arrayBuffer());
 			}
 			try {
-				const responseData = await response.json();
-
-				return responseData as T;
+				return (await response.json()) as T;
 			} catch (err) {
 				// False positive as FetchError is derived from Error
 				// eslint-disable-next-line @typescript-eslint/only-throw-error
-				throw new FetchError(source, "fetchHelper.decodingJSON", response.status, { route }, err);
+				throw new FetchError(
+					source,
+					"fetchHelper.decodingJSON",
+					HttpStatusCodes.BAD_REQUEST,
+					{ path },
+					err
+				);
 			}
 		}
 
@@ -145,120 +302,9 @@ export class FetchHelper {
 			response.status,
 			{
 				statusText: response.statusText,
-				route
+				path
 			},
 			errorResponseData
 		);
-	}
-
-	/**
-	 * Perform a fetch request.
-	 * @param source The source for the request.
-	 * @param endpoint The base endpoint for the request.
-	 * @param route The route of the request.
-	 * @param method The http method.
-	 * @param headers The headers for the request.
-	 * @param body Request to send to the endpoint.
-	 * @param options Options for sending the requests.
-	 * @param options.timeout Timeout for requests.
-	 * @param options.includeCredentials Include credentials in the requests.
-	 * @param options.extraHeaders Include those extra headers.
-	 * @param options.maxRetries The number of times to retry fetching defaults to no retries.
-	 * @param options.baseDelayMilliseconds The number of milliseconds we should delay any retry with.
-	 * @returns The response.
-	 */
-	public static async fetchWithTimeout(
-		source: string,
-		endpoint: string,
-		route: string,
-		method: HttpRestVerbs,
-		headers?: IHttpRequestHeaders,
-		body?: string | Uint8Array,
-		options?: {
-			extraHeaders?: IHttpRequestHeaders;
-			timeout?: number;
-			includeCredentials?: boolean;
-			maxRetries?: number;
-			baseDelayMilliseconds?: number;
-		}
-	): Promise<Response> {
-		let controller: AbortController | undefined;
-		let timerId: number | undefined;
-		const maxRetries = options?.maxRetries ?? 1;
-		const baseDelayMilliseconds = options?.baseDelayMilliseconds ?? 3000;
-
-		let lastError: IError | undefined;
-		let attempt;
-		for (attempt = 0; attempt < maxRetries; attempt++) {
-			if (attempt > 0) {
-				const exponentialBackoffDelay = baseDelayMilliseconds * Math.pow(2, attempt - 1);
-				await new Promise(resolve => setTimeout(resolve, exponentialBackoffDelay));
-			}
-
-			if (options?.timeout !== undefined) {
-				controller = new AbortController();
-				timerId = globalThis.setTimeout(() => {
-					if (controller) {
-						controller.abort();
-					}
-				}, options?.timeout);
-			}
-
-			try {
-				const requestOptions: RequestInit = {
-					method,
-					headers: headers as HeadersInit,
-					body: method === "post" || method === "put" ? body : undefined,
-					signal: controller ? controller.signal : undefined
-				};
-				if (Is.boolean(options?.includeCredentials)) {
-					requestOptions.credentials = "include";
-				}
-
-				const response = await fetch(`${endpoint}${route}`, requestOptions);
-
-				return response;
-			} catch (err) {
-				if (
-					Is.object<IError>(err) &&
-					Is.stringValue(err.message) &&
-					err.message.includes("Failed to fetch")
-				) {
-					lastError = new FetchError(
-						source,
-						"fetchHelper.connectivity",
-						HttpStatusCodes.SERVICE_UNAVAILABLE,
-						{
-							route
-						}
-					);
-				} else {
-					lastError = new FetchError(
-						source,
-						`fetchHelper.${Is.object<IError>(err) && err.name === "AbortError" ? "timeout" : "general"}`,
-						HttpStatusCodes.INTERNAL_SERVER_ERROR,
-						{ route }
-					);
-				}
-			} finally {
-				if (timerId) {
-					clearTimeout(timerId);
-				}
-			}
-		}
-
-		if (attempt === maxRetries) {
-			// False positive as FetchError is derived from Error
-			// eslint-disable-next-line @typescript-eslint/only-throw-error
-			throw new FetchError(
-				source,
-				"fetchHelper.retryLimitExceeded",
-				HttpStatusCodes.INTERNAL_SERVER_ERROR,
-				{ route },
-				lastError
-			);
-		}
-
-		throw lastError;
 	}
 }

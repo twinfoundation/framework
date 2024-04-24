@@ -9,7 +9,7 @@ describe("Jwt", () => {
 	test("can encode a jwt using hs256", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key"));
 
-		const token = Jwt.encode({ sub: "123456", iat: 100000000 }, key, "HS256");
+		const token = Jwt.encode({ alg: "HS256" }, { sub: "123456", iat: 100000000 }, key);
 		expect(token).toEqual(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc"
 		);
@@ -31,7 +31,11 @@ describe("Jwt", () => {
 		const seed = Bip39.mnemonicToSeed(mnemonic);
 		const keyPair = Ed25519.keyPairFromSeed(seed);
 
-		const token = Jwt.encode({ sub: "123456", iat: 100000000 }, keyPair.privateKey, "EdDSA");
+		const token = Jwt.encode(
+			{ alg: "EdDSA" },
+			{ sub: "123456", iat: 100000000 },
+			keyPair.privateKey
+		);
 		expect(token).toEqual(
 			"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.fGmPmgy96AwZ__G_7Y6CDsPQXVPqEQy6x9I1ENKuEAOKJMWS4wZiCZGaGzXxSJbNXXyIfd5m7mUJInyK-KE5CQ"
 		);
@@ -86,7 +90,7 @@ describe("Jwt", () => {
 	test("can fail to decode a jwt with invalid key", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
 
-		const payload = Jwt.decode<{ sub: string; iat: number }>(
+		const payload = Jwt.decode(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
 			key
 		);
@@ -96,11 +100,13 @@ describe("Jwt", () => {
 	test("can decode a jwt", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key"));
 
-		const payload = Jwt.decode<{ sub: string; iat: number }>(
+		const payload = Jwt.decode(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
 			key
 		);
-		expect(payload?.sub).toEqual("123456");
-		expect(payload?.iat).toEqual(100000000);
+		expect(payload?.header?.alg).toEqual("HS256");
+		expect(payload?.header?.typ).toEqual("JWT");
+		expect(payload?.payload?.sub).toEqual("123456");
+		expect(payload?.payload?.iat).toEqual(100000000);
 	});
 });

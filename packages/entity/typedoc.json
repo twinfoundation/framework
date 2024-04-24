@@ -6,5 +6,6 @@
 	"hideInPageTOC": true,
 	"githubPages": false,
 	"disableSources": true,
+	"treatWarningsAsErrors": true,
 	"plugin": ["typedoc-plugin-markdown"]
 }
