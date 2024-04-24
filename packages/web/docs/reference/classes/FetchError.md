@@ -22,7 +22,7 @@ Create a new instance of FetchError.
 | :------ | :------ | :------ |
 | `source` | `string` | The source of the error. |
 | `message` | `string` | The message as a code. |
-| `httpStatus` | `number` | The http status code. |
+| `httpStatus` | [`HttpStatusCodes`](HttpStatusCodes.md) | The http status code. |
 | `properties?` | `Object` | Any additional information for the error. |
 | `inner?` | `unknown` | The inner error if we have wrapped another error. |
 

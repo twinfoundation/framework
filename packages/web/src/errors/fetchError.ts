@@ -3,6 +3,7 @@
 
 import { BaseError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
+import type { HttpStatusCodes } from "../models/httpStatusCodes";
 
 /**
  * Class to represent errors from fetch.
@@ -24,7 +25,7 @@ export class FetchError extends BaseError {
 	constructor(
 		source: string,
 		message: string,
-		httpStatus: number,
+		httpStatus: HttpStatusCodes,
 		properties?: {
 			[id: string]: unknown;
 		},

@@ -16,15 +16,16 @@ Class to encode and decode JavaScript Web Tokens.
 
 ### decode
 
-▸ **decode**\<`T`\>(`token`, `key`): `undefined` \| `T`
+▸ **decode**\<`U`, `T`\>(`token`, `key`): `undefined` \| \{ `header`: `U` ; `payload`: `T`  }
 
 Decode a token.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Type |
+| :------ | :------ |
+| `U` | extends [`IJwtHeader`](../interfaces/IJwtHeader.md) |
+| `T` | extends [`IJwtPayload`](../interfaces/IJwtPayload.md) |
 
 #### Parameters
 
@@ -35,7 +36,7 @@ Decode a token.
 
 #### Returns
 
-`undefined` \| `T`
+`undefined` \| \{ `header`: `U` ; `payload`: `T`  }
 
 The decoded payload.
 
@@ -43,23 +44,24 @@ ___
 
 ### encode
 
-▸ **encode**\<`T`\>(`payload`, `key`, `algorithm?`): `string`
+▸ **encode**\<`U`, `T`\>(`header`, `payload`, `key`): `string`
 
 Encode a token.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Type |
+| :------ | :------ |
+| `U` | extends [`IJwtHeader`](../interfaces/IJwtHeader.md) |
+| `T` | extends [`IJwtPayload`](../interfaces/IJwtPayload.md) |
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `payload` | `T` | `undefined` | The payload to encode. |
-| `key` | `Uint8Array` | `undefined` | The key for signing the token. |
-| `algorithm` | [`JwtSigningMethods`](../modules.md#jwtsigningmethods) | `"EdDSA"` | The algorithm to create the signature with. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `header` | `U` | The header to encode. |
+| `payload` | `T` | The payload to encode. |
+| `key` | `Uint8Array` | The key for signing the token. |
 
 #### Returns
 
@@ -71,7 +73,7 @@ ___
 
 ### verify
 
-▸ **verify**(`token`, `key`): `undefined` \| `Uint8Array`
+▸ **verify**(`token`, `key`): `undefined` \| \{ `header`: `Uint8Array` ; `payload`: `Uint8Array`  }
 
 Verify a token.
 
@@ -84,6 +86,6 @@ Verify a token.
 
 #### Returns
 
-`undefined` \| `Uint8Array`
+`undefined` \| \{ `header`: `Uint8Array` ; `payload`: `Uint8Array`  }
 
 The base64 payload or undefined if the verify failed.
