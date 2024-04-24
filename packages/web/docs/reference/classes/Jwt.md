@@ -16,7 +16,7 @@ Class to encode and decode JavaScript Web Tokens.
 
 ### decode
 
-▸ **decode**\<`U`, `T`\>(`token`, `key`): `undefined` \| \{ `header`: `U` ; `payload`: `T`  }
+▸ **decode**\<`U`, `T`\>(`token`, `key`): `Object`
 
 Decode a token.
 
@@ -36,9 +36,15 @@ Decode a token.
 
 #### Returns
 
-`undefined` \| \{ `header`: `U` ; `payload`: `T`  }
+`Object`
 
 The decoded payload.
+
+| Name | Type |
+| :------ | :------ |
+| `header?` | `U` |
+| `payload?` | `T` |
+| `verified` | `boolean` |
 
 ___
 
@@ -68,24 +74,3 @@ Encode a token.
 `string`
 
 The encoded token.
-
-___
-
-### verify
-
-▸ **verify**(`token`, `key`): `undefined` \| \{ `header`: `Uint8Array` ; `payload`: `Uint8Array`  }
-
-Verify a token.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `token` | `string` | The token to decode. |
-| `key` | `Uint8Array` | The key for verifying the token. |
-
-#### Returns
-
-`undefined` \| \{ `header`: `Uint8Array` ; `payload`: `Uint8Array`  }
-
-The base64 payload or undefined if the verify failed.

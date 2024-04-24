@@ -15,14 +15,18 @@ describe("Jwt", () => {
 		);
 	});
 
-	test("can verify a jwt using HS256", () => {
+	test("can decode a jwt using HS256", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key"));
 
-		const payload = Jwt.verify(
+		const decoded = Jwt.decode(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
 			key
 		);
-		expect(payload).toBeDefined();
+		expect(decoded.verified).toBeTruthy();
+		expect(decoded?.header?.alg).toEqual("HS256");
+		expect(decoded?.header?.typ).toEqual("JWT");
+		expect(decoded?.payload?.sub).toEqual("123456");
+		expect(decoded?.payload?.iat).toEqual(100000000);
 	});
 
 	test("can encode a jwt using EdDSA", () => {
@@ -41,72 +45,105 @@ describe("Jwt", () => {
 		);
 	});
 
-	test("can verify a jwt using EdDSA", () => {
+	test("can decode a jwt using EdDSA", () => {
 		const mnemonic =
 			"merge skate cycle typical service scrub idea gaze alert lion primary mosquito arrow hover ensure unusual immune length antique shrug earn spatial era pass";
 		const seed = Bip39.mnemonicToSeed(mnemonic);
 		const keyPair = Ed25519.keyPairFromSeed(seed);
 
-		const payload = Jwt.verify(
+		const decoded = Jwt.decode(
 			"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.fGmPmgy96AwZ__G_7Y6CDsPQXVPqEQy6x9I1ENKuEAOKJMWS4wZiCZGaGzXxSJbNXXyIfd5m7mUJInyK-KE5CQ",
 			keyPair.publicKey
 		);
-		expect(payload).toBeDefined();
+		expect(decoded.verified).toBeTruthy();
+		expect(decoded?.header?.alg).toEqual("EdDSA");
+		expect(decoded?.header?.typ).toEqual("JWT");
+		expect(decoded?.payload?.sub).toEqual("123456");
+		expect(decoded?.payload?.iat).toEqual(100000000);
 	});
 
-	test("can fail to verify a jwt using EdDSA with an invalid signature", () => {
+	test("can fail to verify a jwt using EdDSA with an invalid signature but still return data", () => {
 		const mnemonic =
 			"merge skate cycle typical service scrub idea gaze alert lion primary mosquito arrow hover ensure unusual immune length antique shrug earn spatial era pass";
 		const seed = Bip39.mnemonicToSeed(mnemonic);
 		const keyPair = Ed25519.keyPairFromSeed(seed);
 
-		const payload = Jwt.verify(
+		const decoded = Jwt.decode(
 			"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.fGmPmgy96AwZ__G_7Y6CDsPQXVPqEQy6x9I1ENKuEAOKJMWS4wZiCZGaGzXxSJbNXXyIfd5m7mUJInyK-KE5C",
 			keyPair.publicKey
 		);
-		expect(payload).toBeUndefined();
+		expect(decoded.verified).toEqual(false);
+		expect(decoded?.header?.alg).toEqual("EdDSA");
+		expect(decoded?.header?.typ).toEqual("JWT");
+		expect(decoded?.payload?.sub).toEqual("123456");
+		expect(decoded?.payload?.iat).toEqual(100000000);
 	});
 
 	test("can fail to verify a jwt with wrong number of segments", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
 
-		const payload = Jwt.verify(
+		const decoded = Jwt.decode(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc.sfdhdfjhg",
 			key
 		);
-		expect(payload).toBeUndefined();
+		expect(decoded.verified).toEqual(false);
 	});
 
-	test("can fail to verify a jwt with incorrect key", () => {
+	test("can fail to verify a jwt with incorrect key but still return data", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
 
-		const payloadString = Jwt.verify(
+		const decoded = Jwt.decode(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
 			key
 		);
-		expect(payloadString).toBeUndefined();
+		expect(decoded.verified).toEqual(false);
+		expect(decoded?.header?.alg).toEqual("HS256");
+		expect(decoded?.header?.typ).toEqual("JWT");
+		expect(decoded?.payload?.sub).toEqual("123456");
+		expect(decoded?.payload?.iat).toEqual(100000000);
 	});
 
-	test("can fail to decode a jwt with invalid key", () => {
+	test("can fail to decode a jwt with invalid key but still return data", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
 
-		const payload = Jwt.decode(
+		const decoded = Jwt.decode(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
 			key
 		);
-		expect(payload).toBeUndefined();
+		expect(decoded.verified).toEqual(false);
+		expect(decoded?.header?.alg).toEqual("HS256");
+		expect(decoded?.header?.typ).toEqual("JWT");
+		expect(decoded?.payload?.sub).toEqual("123456");
+		expect(decoded?.payload?.iat).toEqual(100000000);
+	});
+
+	test("can fail to decode with invalid base64", () => {
+		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
+
+		const decoded = Jwt.decode("!.!.!", key);
+		expect(decoded.verified).toEqual(false);
+	});
+
+	test("can fail to decode with missing segments", () => {
+		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
+
+		const decoded = Jwt.decode(
+			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0",
+			key
+		);
+		expect(decoded.verified).toEqual(false);
 	});
 
 	test("can decode a jwt", () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key"));
 
-		const payload = Jwt.decode(
+		const decoded = Jwt.decode(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
 			key
 		);
-		expect(payload?.header?.alg).toEqual("HS256");
-		expect(payload?.header?.typ).toEqual("JWT");
-		expect(payload?.payload?.sub).toEqual("123456");
-		expect(payload?.payload?.iat).toEqual(100000000);
+		expect(decoded?.header?.alg).toEqual("HS256");
+		expect(decoded?.header?.typ).toEqual("JWT");
+		expect(decoded?.payload?.sub).toEqual("123456");
+		expect(decoded?.payload?.iat).toEqual(100000000);
 	});
 });
