@@ -540,13 +540,12 @@ describe("FetchHelper", () => {
 		fetchMock.mockResolvedValue({
 			ok: true,
 			status: HttpStatusCodes.OK,
-			arrayBuffer: async () => new Promise(resolve => resolve(new Uint8Array([1, 2, 3, 4])))
+			arrayBuffer: async () => new Promise(resolve => resolve(new Uint8Array([1, 2, 3])))
 		});
 
 		const response: Uint8Array = await FetchHelper.fetchBinary("source", "endpoint", "path", "GET");
 		expect(response[0]).toEqual(1);
 		expect(response[1]).toEqual(2);
 		expect(response[2]).toEqual(3);
-		expect(response[3]).toEqual(4);
 	});
 });
