@@ -1,6 +1,6 @@
 # Interface: IJwtPayload
 
-The fields in a JWT payload.
+The fields in a JSON Web Token payload.
 
 ## Indexable
 
