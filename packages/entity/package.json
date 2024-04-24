@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/entity",
-	"version": "0.0.3-next.24",
+	"version": "0.0.3-next.25",
 	"description": "Framework Entity packages for GTSC",
 	"repository": {
 		"type": "git",
@@ -29,7 +29,7 @@
 	},
 	"dependencies": {
 		"@gtsc/nameof": "^0.0.4",
-		"@gtsc/core": "0.0.3-next.24"
+		"@gtsc/core": "0.0.3-next.25"
 	},
 	"devDependencies": {
 		"@gtsc/nameof-transformer": "^0.0.4",

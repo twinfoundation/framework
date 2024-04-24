@@ -65,61 +65,6 @@ export class Jwt {
 	}
 
 	/**
-	 * Verify a token.
-	 * @param token The token to decode.
-	 * @param key The key for verifying the token.
-	 * @returns The base64 payload or undefined if the verify failed.
-	 */
-	public static verify(
-		token: string,
-		key: Uint8Array
-	):
-		| {
-				header: Uint8Array;
-				payload: Uint8Array;
-		  }
-		| undefined {
-		Guards.stringValue(Jwt._CLASS_NAME, nameof(token), token);
-		Guards.uint8Array(Jwt._CLASS_NAME, nameof(key), key);
-
-		const segments = token.split(".");
-		if (segments.length !== 3) {
-			return;
-		}
-
-		const segmentBytes = segments.map(s => Converter.base64UrlToBytes(s));
-
-		const header: {
-			alg: JwtSigningMethods;
-			typ: "JWT";
-		} = JSON.parse(Converter.bytesToUtf8(segmentBytes[0]));
-
-		Guards.arrayOneOf<JwtSigningMethods>(Jwt._CLASS_NAME, nameof(header.alg), header.alg, [
-			"HS256",
-			"EdDSA"
-		]);
-
-		const sig = segments.pop();
-
-		const jwtHeaderAndPayload = Converter.utf8ToBytes(segments.join("."));
-
-		if (header.alg === "HS256") {
-			const algo = new HmacSha256(key);
-			const sigBytes = algo.update(jwtHeaderAndPayload).digest();
-			if (Converter.bytesToBase64Url(sigBytes) !== sig) {
-				return;
-			}
-		} else if (!Ed25519.verify(key, jwtHeaderAndPayload, segmentBytes[2])) {
-			return;
-		}
-
-		return {
-			header: segmentBytes[0],
-			payload: segmentBytes[1]
-		};
-	}
-
-	/**
 	 * Decode a token.
 	 * @param token The token to decode.
 	 * @param key The key for verifying the token.
@@ -128,20 +73,54 @@ export class Jwt {
 	public static decode<U extends IJwtHeader, T extends IJwtPayload>(
 		token: string,
 		key: Uint8Array
-	):
-		| {
-				header: U;
-				payload: T;
-		  }
-		| undefined {
-		const headerAndPayload = Jwt.verify(token, key);
-		if (Is.empty(headerAndPayload)) {
-			return;
+	): {
+		verified: boolean;
+		header?: U;
+		payload?: T;
+	} {
+		Guards.stringValue(Jwt._CLASS_NAME, nameof(token), token);
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(key), key);
+
+		const segments = token.split(".");
+		if (segments.length !== 3) {
+			return {
+				verified: false
+			};
 		}
 
+		let header: U | undefined;
+		let payload: T | undefined;
+		let verified = false;
+		try {
+			const bytesHeader = Converter.base64UrlToBytes(segments[0]);
+			header = JSON.parse(Converter.bytesToUtf8(bytesHeader));
+
+			const bytesPayload = Converter.base64UrlToBytes(segments[1]);
+			payload = JSON.parse(Converter.bytesToUtf8(bytesPayload));
+
+			if (
+				Is.object<U>(header) &&
+				Is.arrayOneOf<JwtSigningMethods>(header.alg, ["HS256", "EdDSA"])
+			) {
+				const sig = segments.pop();
+
+				const jwtHeaderAndPayload = Converter.utf8ToBytes(segments.join("."));
+
+				if (header.alg === "HS256") {
+					const algo = new HmacSha256(key);
+					const sigBytes = algo.update(jwtHeaderAndPayload).digest();
+					verified = Converter.bytesToBase64Url(sigBytes) === sig;
+				} else {
+					const bytesSig = Converter.base64UrlToBytes(sig as string);
+					verified = Ed25519.verify(key, jwtHeaderAndPayload, bytesSig);
+				}
+			}
+		} catch {}
+
 		return {
-			header: JSON.parse(Converter.bytesToUtf8(headerAndPayload.header)) as U,
-			payload: JSON.parse(Converter.bytesToUtf8(headerAndPayload.payload)) as T
+			verified,
+			header,
+			payload
 		};
 	}
 }
