@@ -63,6 +63,34 @@ describe("Coerce", () => {
 		expect(Coerce.number({})).toEqual(undefined);
 	});
 
+	test("bigint can coerce if value is undefined", () => {
+		expect(Coerce.bigint(undefined)).toEqual(undefined);
+	});
+
+	test("bigint can coerce if value is a string", () => {
+		expect(Coerce.bigint("123")).toEqual(123n);
+	});
+
+	test("bigint can fail if value is an invalid string", () => {
+		expect(Coerce.bigint("123.45")).toEqual(undefined);
+	});
+
+	test("bigint can coerce if value is a bigint", () => {
+		expect(Coerce.bigint(123n)).toEqual(123n);
+	});
+
+	test("bigint can coerce if value is a false boolean", () => {
+		expect(Coerce.bigint(false)).toEqual(0n);
+	});
+
+	test("bigint can coerce if value is a true boolean", () => {
+		expect(Coerce.bigint(true)).toEqual(1n);
+	});
+
+	test("bigint can fail if value is an object", () => {
+		expect(Coerce.bigint({})).toEqual(undefined);
+	});
+
 	test("boolean can coerce if value is undefined", () => {
 		expect(Coerce.boolean(undefined)).toEqual(undefined);
 	});

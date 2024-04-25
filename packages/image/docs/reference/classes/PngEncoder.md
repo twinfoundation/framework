@@ -17,7 +17,7 @@ Based on https://github.com/photopea/UPNG.js.
 
 ### encode
 
-▸ **encode**(`buffers`, `w`, `h`): `Uint8Array`
+▸ **encode**(`buffers`, `w`, `h`): `Promise`\<`Uint8Array`\>
 
 Encode the image frames to png.
 
@@ -31,6 +31,6 @@ Encode the image frames to png.
 
 #### Returns
 
-`Uint8Array`
+`Promise`\<`Uint8Array`\>
 
 The data for the image.

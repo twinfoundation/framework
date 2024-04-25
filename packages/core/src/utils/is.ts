@@ -91,10 +91,19 @@ export class Is {
 	/**
 	 * Is the value an integer.
 	 * @param value The value to test.
-	 * @returns True if the value is a number.
+	 * @returns True if the value is an integer.
 	 */
 	public static integer(value: unknown): value is number {
 		return Is.number(value) && Number.isInteger(value);
+	}
+
+	/**
+	 * Is the value a big integer.
+	 * @param value The value to test.
+	 * @returns True if the value is a big integer.
+	 */
+	public static bigint(value: unknown): value is bigint {
+		return typeof value === "bigint";
 	}
 
 	/**

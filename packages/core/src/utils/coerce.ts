@@ -59,6 +59,33 @@ export class Coerce {
 	}
 
 	/**
+	 * Coerce the value to a bigint.
+	 * @param value The value to coerce.
+	 * @throws TypeError If the value can not be coerced.
+	 * @returns The value if it can be coerced.
+	 */
+	public static bigint(value: unknown): bigint | undefined {
+		if (Is.undefined(value)) {
+			return value;
+		}
+		if (Is.bigint(value)) {
+			return value;
+		}
+		if (Is.number(value)) {
+			return BigInt(value);
+		}
+		if (Is.string(value)) {
+			const parsed = Number.parseFloat(value);
+			if (Is.integer(parsed)) {
+				return BigInt(parsed);
+			}
+		}
+		if (Is.boolean(value)) {
+			return value ? 1n : 0n;
+		}
+	}
+
+	/**
 	 * Coerce the value to a boolean.
 	 * @param value The value to coerce.
 	 * @throws TypeError If the value can not be coerced.
