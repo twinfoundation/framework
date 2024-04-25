@@ -36,6 +36,13 @@ export class Compression {
 			compressedData.push(...result.value);
 		}
 
+		// GZIP header contains a byte which specifies the OS the
+		// compression was performed on. We set this to 3 (Unix) to ensure
+		// that we produce consistent results.
+		if (type === "gzip" && compressedData.length >= 10) {
+			compressedData[9] = 3;
+		}
+
 		return new Uint8Array(compressedData);
 	}
 

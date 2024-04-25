@@ -8,22 +8,15 @@ describe("Compression", () => {
 	test("can compress a bytes array using gzip", async () => {
 		const bytes = Converter.utf8ToBytes("The quick brown fox jumps over the lazy dog");
 		const compressed = await Compression.compress(bytes, "gzip");
-		expect(compressed).toEqual(
-			new Uint8Array([
-				31, 139, 8, 0, 0, 0, 0, 0, 0, 10, 11, 201, 72, 85, 40, 44, 205, 76, 206, 86, 72, 42, 202,
-				47, 207, 83, 72, 203, 175, 80, 200, 42, 205, 45, 40, 86, 200, 47, 75, 45, 82, 40, 201, 72,
-				85, 200, 73, 172, 170, 84, 72, 201, 79, 7, 0, 57, 163, 79, 65, 43, 0, 0, 0
-			])
+		expect(Converter.bytesToBase64(compressed)).toEqual(
+			"H4sIAAAAAAAAAwvJSFUoLM1MzlZIKsovz1NIy69QyCrNLShWyC9LLVIoyUhVyEmsqlRIyU8HADmjT0ErAAAA"
 		);
 	});
 
 	test("can decompress a bytes array using gzip", async () => {
-		const bytes = new Uint8Array([
-			31, 139, 8, 0, 0, 0, 0, 0, 0, 10, 11, 201, 72, 85, 40, 44, 205, 76, 206, 86, 72, 42, 202, 47,
-			207, 83, 72, 203, 175, 80, 200, 42, 205, 45, 40, 86, 200, 47, 75, 45, 82, 40, 201, 72, 85,
-			200, 73, 172, 170, 84, 72, 201, 79, 7, 0, 57, 163, 79, 65, 43, 0, 0, 0
-		]);
-
+		const bytes = Converter.base64ToBytes(
+			"H4sIAAAAAAAAAwvJSFUoLM1MzlZIKsovz1NIy69QyCrNLShWyC9LLVIoyUhVyEmsqlRIyU8HADmjT0ErAAAA"
+		);
 		const decompressed = await Compression.decompress(bytes, "gzip");
 		expect(Converter.bytesToUtf8(decompressed)).toEqual(
 			"The quick brown fox jumps over the lazy dog"
@@ -33,21 +26,15 @@ describe("Compression", () => {
 	test("can compress a bytes array using deflate", async () => {
 		const bytes = Converter.utf8ToBytes("The quick brown fox jumps over the lazy dog");
 		const compressed = await Compression.compress(bytes, "deflate");
-		expect(compressed).toEqual(
-			new Uint8Array([
-				120, 156, 11, 201, 72, 85, 40, 44, 205, 76, 206, 86, 72, 42, 202, 47, 207, 83, 72, 203, 175,
-				80, 200, 42, 205, 45, 40, 86, 200, 47, 75, 45, 82, 40, 201, 72, 85, 200, 73, 172, 170, 84,
-				72, 201, 79, 7, 0, 91, 220, 15, 218
-			])
+		expect(Converter.bytesToBase64(compressed)).toEqual(
+			"eJwLyUhVKCzNTM5WSCrKL89TSMuvUMgqzS0oVsgvSy1SKMlIVchJrKpUSMlPBwBb3A/a"
 		);
 	});
 
 	test("can decompress a bytes array using deflate", async () => {
-		const bytes = new Uint8Array([
-			120, 156, 11, 201, 72, 85, 40, 44, 205, 76, 206, 86, 72, 42, 202, 47, 207, 83, 72, 203, 175,
-			80, 200, 42, 205, 45, 40, 86, 200, 47, 75, 45, 82, 40, 201, 72, 85, 200, 73, 172, 170, 84, 72,
-			201, 79, 7, 0, 91, 220, 15, 218
-		]);
+		const bytes = Converter.base64ToBytes(
+			"eJwLyUhVKCzNTM5WSCrKL89TSMuvUMgqzS0oVsgvSy1SKMlIVchJrKpUSMlPBwBb3A/a"
+		);
 		const decompressed = await Compression.decompress(bytes, "deflate");
 		expect(Converter.bytesToUtf8(decompressed)).toEqual(
 			"The quick brown fox jumps over the lazy dog"
