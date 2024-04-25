@@ -105,6 +105,30 @@ GuardError If the value does not match the assertion.
 
 ___
 
+### bigint
+
+▸ **bigint**(`source`, `property`, `value`): asserts value is bigint
+
+Is the property a bigint.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `source` | `string` | The source of the error. |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
+
+#### Returns
+
+asserts value is bigint
+
+**`Throws`**
+
+GuardError If the value does not match the assertion.
+
+___
+
 ### boolean
 
 ▸ **boolean**(`source`, `property`, `value`): asserts value is boolean

@@ -99,6 +99,22 @@ describe("Is", () => {
 		expect(Is.number(1.2345)).toEqual(true);
 	});
 
+	test("integer can fail if value is not an integer", () => {
+		expect(Is.integer(1.23)).toEqual(false);
+	});
+
+	test("integer can succeed if value is a integer", () => {
+		expect(Is.integer(1)).toEqual(true);
+	});
+
+	test("bigint can fail if value is not a bigint", () => {
+		expect(Is.bigint(1)).toEqual(false);
+	});
+
+	test("bigint can succeed if value is a bigint", () => {
+		expect(Is.bigint(1n)).toEqual(true);
+	});
+
 	test("boolean can fail if value is a falsy value", () => {
 		expect(Is.boolean(0)).toEqual(false);
 	});

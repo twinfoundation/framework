@@ -14,6 +14,30 @@ Coerce an object from one type to another.
 
 ## Methods
 
+### bigint
+
+▸ **bigint**(`value`): `undefined` \| `bigint`
+
+Coerce the value to a bigint.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `unknown` | The value to coerce. |
+
+#### Returns
+
+`undefined` \| `bigint`
+
+The value if it can be coerced.
+
+**`Throws`**
+
+TypeError If the value can not be coerced.
+
+___
+
 ### boolean
 
 ▸ **boolean**(`value`): `undefined` \| `boolean`

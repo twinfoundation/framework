@@ -143,6 +143,28 @@ ValidationError From the converted failures.
 
 ___
 
+### bigint
+
+▸ **bigint**(`property`, `value`, `failures`): value is bigint
+
+Is the property a bigint.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
+| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
+
+#### Returns
+
+value is bigint
+
+True if the value is a bigint.
+
+___
+
 ### boolean
 
 ▸ **boolean**(`property`, `value`, `failures`): value is boolean

@@ -30,7 +30,6 @@
 		"nameof",
 		"otpauth",
 		"paeth",
-		"pako",
 		"parallelisable",
 		"PLTE",
 		"polymod",
@@ -44,6 +43,7 @@
 		"tspc",
 		"ttsc",
 		"ttypescript",
+		"ungzip",
 		"UVQT",
 		"vectorisable"
 	],

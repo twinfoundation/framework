@@ -159,6 +159,31 @@ export class Validation {
 	}
 
 	/**
+	 * Is the property a bigint.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @param failures The list of failures to add to.
+	 * @returns True if the value is a bigint.
+	 */
+	public static bigint(
+		property: string,
+		value: unknown,
+		failures: IValidationFailure[]
+	): value is bigint {
+		const is = Is.bigint(value);
+		if (!is) {
+			failures.push({
+				property,
+				reason: "validation.beBigInteger",
+				properties: {
+					value
+				}
+			});
+		}
+		return is;
+	}
+
+	/**
 	 * Is the property a boolean.
 	 * @param property The name of the property.
 	 * @param value The value to test.

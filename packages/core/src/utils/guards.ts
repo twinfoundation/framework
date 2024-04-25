@@ -112,6 +112,19 @@ export class Guards {
 	}
 
 	/**
+	 * Is the property a bigint.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static bigint(source: string, property: string, value: unknown): asserts value is bigint {
+		if (!Is.bigint(value)) {
+			throw new GuardError(source, "guard.bigint", property, value);
+		}
+	}
+
+	/**
 	 * Is the property a boolean.
 	 * @param source The source of the error.
 	 * @param property The name of the property.

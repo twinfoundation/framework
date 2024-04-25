@@ -8,7 +8,9 @@
 - [Base64](classes/Base64.md)
 - [Base64Url](classes/Base64Url.md)
 - [BaseError](classes/BaseError.md)
+- [BitString](classes/BitString.md)
 - [Coerce](classes/Coerce.md)
+- [Compression](classes/Compression.md)
 - [ConflictError](classes/ConflictError.md)
 - [Converter](classes/Converter.md)
 - [Factory](classes/Factory.md)
@@ -44,3 +46,11 @@
 - [ILocalesIndex](interfaces/ILocalesIndex.md)
 - [IUrlParts](interfaces/IUrlParts.md)
 - [IValidationFailure](interfaces/IValidationFailure.md)
+
+## Type Aliases
+
+### CompressionType
+
+Ƭ **CompressionType**: ``"gzip"`` \| ``"deflate"``
+
+Compression types.

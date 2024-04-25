@@ -93,6 +93,26 @@ True if the value is an array with at least one element.
 
 ___
 
+### bigint
+
+▸ **bigint**(`value`): value is bigint
+
+Is the value a big integer.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `unknown` | The value to test. |
+
+#### Returns
+
+value is bigint
+
+True if the value is a big integer.
+
+___
+
 ### boolean
 
 ▸ **boolean**(`value`): value is boolean
@@ -269,7 +289,7 @@ Is the value an integer.
 
 value is number
 
-True if the value is a number.
+True if the value is an integer.
 
 ___
 

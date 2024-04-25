@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/image",
-	"version": "0.0.3-next.27",
+	"version": "0.0.3-next.28",
 	"description": "Classes for image manipulation",
 	"repository": {
 		"type": "git",
@@ -28,13 +28,11 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.3-next.27",
-		"@gtsc/nameof": "^0.0.4",
-		"pako": "^2.1.0"
+		"@gtsc/core": "0.0.3-next.28",
+		"@gtsc/nameof": "^0.0.4"
 	},
 	"devDependencies": {
 		"@gtsc/nameof-transformer": "^0.0.4",
-		"@types/pako": "^2.0.3",
 		"@vitest/coverage-v8": "^1.5.0",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
