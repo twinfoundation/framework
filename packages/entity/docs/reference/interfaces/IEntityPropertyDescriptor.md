@@ -42,19 +42,19 @@ The type of the item (only applies when type is either `list` or `object`).
 
 ___
 
-### name
-
-• **name**: keyof `T`
-
-The name of the property.
-
-___
-
 ### optional
 
 • `Optional` **optional**: `boolean`
 
 Is the property optional.
+
+___
+
+### property
+
+• **property**: keyof `T`
+
+The name of the property.
 
 ___
 

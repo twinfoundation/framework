@@ -4,6 +4,6 @@ import type { IComparator } from "./IComparator";
 import type { IComparatorGroup } from "./IComparatorGroup";
 
 /**
- * Type defining condition.
+ * Type defining condition for entities filtering.
  */
-export type Condition<T> = IComparator<T> | IComparatorGroup<T>;
+export type EntityCondition<T> = IComparator<T> | IComparatorGroup<T>;

@@ -2,20 +2,20 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { ComparisonOperator } from "../../src/models/comparisonOperator";
 import { LogicalOperator } from "../../src/models/logicalOperator";
-import { Conditions } from "../../src/utils/conditions";
+import { EntityConditions } from "../../src/utils/entityConditions";
 
 describe("Conditions", () => {
 	test("can match if conditions are undefined", async () => {
-		expect(Conditions.check({}, undefined)).toEqual(true);
+		expect(EntityConditions.check({}, undefined)).toEqual(true);
 	});
 
 	test("can match if conditions are empty", async () => {
-		expect(Conditions.check({}, undefined)).toEqual(true);
+		expect(EntityConditions.check({}, undefined)).toEqual(true);
 	});
 
 	test("can match if undefined condition equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: undefined },
 				{
 					property: "foo",
@@ -28,7 +28,7 @@ describe("Conditions", () => {
 
 	test("can match if undefined condition notequals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
@@ -41,7 +41,7 @@ describe("Conditions", () => {
 
 	test("can match if undefined condition equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
@@ -54,7 +54,7 @@ describe("Conditions", () => {
 
 	test("can not match if string condition different type", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "bar2" },
 				{
 					property: "foo",
@@ -67,7 +67,7 @@ describe("Conditions", () => {
 
 	test("can not match if string condition not equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "bar2" },
 				{
 					property: "foo",
@@ -80,7 +80,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "bar" },
 				{
 					property: "foo",
@@ -93,7 +93,7 @@ describe("Conditions", () => {
 
 	test("can not match if string condition not notequals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "bar2" },
 				{
 					property: "foo",
@@ -106,7 +106,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition notequals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "bar" },
 				{
 					property: "foo",
@@ -119,7 +119,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition less than", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
@@ -132,7 +132,7 @@ describe("Conditions", () => {
 
 	test("can not match if string condition less than", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
@@ -145,7 +145,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition less than or equal 1", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
@@ -158,7 +158,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition less than or equal 2", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
@@ -171,7 +171,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition greater than", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "b" },
 				{
 					property: "foo",
@@ -184,7 +184,7 @@ describe("Conditions", () => {
 
 	test("can not match if string condition greater than", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
@@ -197,7 +197,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition greater than or equal 1", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a" },
 				{
 					property: "foo",
@@ -210,7 +210,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition greater than or equal 2", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "aa" },
 				{
 					property: "foo",
@@ -223,7 +223,7 @@ describe("Conditions", () => {
 
 	test("can not match if string condition not contains", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "bebar" },
 				{
 					property: "foo",
@@ -236,7 +236,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition contains", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "bebar" },
 				{
 					property: "foo",
@@ -249,7 +249,7 @@ describe("Conditions", () => {
 
 	test("can not match if string condition not contains", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "bebar" },
 				{
 					property: "foo",
@@ -262,7 +262,7 @@ describe("Conditions", () => {
 
 	test("can match if string condition contains", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "bebar" },
 				{
 					property: "foo",
@@ -275,7 +275,7 @@ describe("Conditions", () => {
 
 	test("can not match if number condition different type", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
@@ -288,7 +288,7 @@ describe("Conditions", () => {
 
 	test("can not match if number condition not equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
@@ -301,7 +301,7 @@ describe("Conditions", () => {
 
 	test("can match if number condition equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
@@ -314,7 +314,7 @@ describe("Conditions", () => {
 
 	test("can not match if number condition not notequals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
@@ -327,7 +327,7 @@ describe("Conditions", () => {
 
 	test("can match if number condition notequals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
@@ -340,7 +340,7 @@ describe("Conditions", () => {
 
 	test("can not match if number condition not greater than", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
@@ -353,7 +353,7 @@ describe("Conditions", () => {
 
 	test("can match if number condition greater than", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
@@ -366,7 +366,7 @@ describe("Conditions", () => {
 
 	test("can not match if number condition not greater than or equal 1", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
@@ -379,7 +379,7 @@ describe("Conditions", () => {
 
 	test("can match if number condition greater than or equal 1", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
@@ -392,7 +392,7 @@ describe("Conditions", () => {
 
 	test("can match if number condition greater than or equal 2", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
@@ -405,7 +405,7 @@ describe("Conditions", () => {
 
 	test("can not match if number condition not less than", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
@@ -418,7 +418,7 @@ describe("Conditions", () => {
 
 	test("can match if number condition less than", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
@@ -431,7 +431,7 @@ describe("Conditions", () => {
 
 	test("can not match if number condition not less than or equal 1", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 2 },
 				{
 					property: "foo",
@@ -444,7 +444,7 @@ describe("Conditions", () => {
 
 	test("can match if number condition less than or equal 2", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
@@ -457,7 +457,7 @@ describe("Conditions", () => {
 
 	test("can match if number condition less than or equal 2", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 1 },
 				{
 					property: "foo",
@@ -470,7 +470,7 @@ describe("Conditions", () => {
 
 	test("can not match if number condition never contains", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: 111 },
 				{
 					property: "foo",
@@ -483,7 +483,7 @@ describe("Conditions", () => {
 
 	test("can not match if boolean condition different type", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: true },
 				{
 					property: "foo",
@@ -496,7 +496,7 @@ describe("Conditions", () => {
 
 	test("can not match if boolean condition not equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: true },
 				{
 					property: "foo",
@@ -509,7 +509,7 @@ describe("Conditions", () => {
 
 	test("can match if boolean condition equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: true },
 				{
 					property: "foo",
@@ -522,7 +522,7 @@ describe("Conditions", () => {
 
 	test("can not match if boolean condition not notequals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: false },
 				{
 					property: "foo",
@@ -535,7 +535,7 @@ describe("Conditions", () => {
 
 	test("can match if boolean condition notequals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: false },
 				{
 					property: "foo",
@@ -548,7 +548,7 @@ describe("Conditions", () => {
 
 	test("can not match if number condition never contains", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: false },
 				{
 					property: "foo",
@@ -561,7 +561,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition different type", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [] },
 				{
 					property: "foo",
@@ -574,7 +574,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition not equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [] },
 				{
 					property: "foo",
@@ -587,7 +587,7 @@ describe("Conditions", () => {
 
 	test("can match if array condition equals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1] },
 				{
 					property: "foo",
@@ -600,7 +600,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition not notequals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1] },
 				{
 					property: "foo",
@@ -613,7 +613,7 @@ describe("Conditions", () => {
 
 	test("can match if array condition notequals", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [] },
 				{
 					property: "foo",
@@ -626,7 +626,7 @@ describe("Conditions", () => {
 
 	test("can not match if array unknown comparison", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [] },
 				{
 					property: "foo",
@@ -639,7 +639,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition does not contain", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
@@ -652,7 +652,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition contains", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
@@ -665,7 +665,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition does contain", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
@@ -678,7 +678,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition does not contains", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
@@ -691,7 +691,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition is not in", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
@@ -704,7 +704,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition in", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
@@ -717,7 +717,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition does notin", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
@@ -730,7 +730,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition does not notin", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
@@ -743,7 +743,7 @@ describe("Conditions", () => {
 
 	test("can not match if array condition value is not string or number", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
@@ -756,7 +756,7 @@ describe("Conditions", () => {
 
 	test("can not match if unknown type", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: new Date() },
 				{
 					property: "foo",
@@ -769,7 +769,7 @@ describe("Conditions", () => {
 
 	test("can match if has multiple conditions", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a", val: 2 },
 				{
 					conditions: [
@@ -791,7 +791,7 @@ describe("Conditions", () => {
 
 	test("can not match if has multiple conditions", async () => {
 		expect(
-			Conditions.check(
+			EntityConditions.check(
 				{ foo: "a", val: 3 },
 				{
 					conditions: [
@@ -813,7 +813,7 @@ describe("Conditions", () => {
 	});
 
 	test("can match with logical AND", async () => {
-		const results = Conditions.check(
+		const results = EntityConditions.check(
 			{ foo: "a", val: 2 },
 			{
 				conditions: [
@@ -836,7 +836,7 @@ describe("Conditions", () => {
 	});
 
 	test("can match with logical OR", async () => {
-		const results = Conditions.check(
+		const results = EntityConditions.check(
 			{ foo: "a", val: 2 },
 			{
 				conditions: [
@@ -859,7 +859,7 @@ describe("Conditions", () => {
 	});
 
 	test("can match with both logical AND and OR", async () => {
-		const results = Conditions.check(
+		const results = EntityConditions.check(
 			{ foo: "a", val: 2, age: 5 },
 			{
 				conditions: [
@@ -892,7 +892,7 @@ describe("Conditions", () => {
 	});
 
 	test("can match with both logical AND and OR", async () => {
-		const results = Conditions.check(
+		const results = EntityConditions.check(
 			{ foo: "a", val: 2, age: 5 },
 			{
 				conditions: [
@@ -925,7 +925,7 @@ describe("Conditions", () => {
 	});
 
 	test("can match with both logical AND and OR", async () => {
-		const results = Conditions.check(
+		const results = EntityConditions.check(
 			{ foo: "a", val: 2, age: 5 },
 			{
 				conditions: [
@@ -958,7 +958,7 @@ describe("Conditions", () => {
 	});
 
 	test("can match with both logical AND and OR", async () => {
-		const results = Conditions.check(
+		const results = EntityConditions.check(
 			{ foo: "a", val: 2, age: 9 },
 			{
 				conditions: [

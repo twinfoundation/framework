@@ -10,7 +10,7 @@ export interface IEntityPropertyDescriptor<T> {
 	/**
 	 * The name of the property.
 	 */
-	name: keyof T;
+	property: keyof T;
 
 	/**
 	 * The type of the property.

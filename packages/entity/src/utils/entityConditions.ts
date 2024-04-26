@@ -2,21 +2,21 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { ArrayHelper, Is } from "@gtsc/core";
 import { ComparisonOperator } from "../models/comparisonOperator";
-import type { Condition } from "../models/condition";
+import type { EntityCondition } from "../models/entityCondition";
 import type { IComparator } from "../models/IComparator";
 import { LogicalOperator } from "../models/logicalOperator";
 
 /**
  * Class to perform condition checks.
  */
-export class Conditions {
+export class EntityConditions {
 	/**
 	 * See if the entity matches the conditions.
 	 * @param entity The entity to test.
 	 * @param condition The conditions to test.
 	 * @returns True if the entity matches.
 	 */
-	public static check<T>(entity: T, condition?: Condition<T>): boolean {
+	public static check<T>(entity: T, condition?: EntityCondition<T>): boolean {
 		// If no conditions are defined then it's a match
 		if (Is.undefined(condition)) {
 			return true;
@@ -32,7 +32,7 @@ export class Conditions {
 		}
 
 		// It's a single value so just check the condition
-		return Conditions.compare(entity, condition);
+		return EntityConditions.compare(entity, condition);
 	}
 
 	/**

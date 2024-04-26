@@ -8,7 +8,7 @@
 
 ## Classes
 
-- [Conditions](classes/Conditions.md)
+- [EntityConditions](classes/EntityConditions.md)
 - [EntityPropertyDescriptor](classes/EntityPropertyDescriptor.md)
 - [EntitySorter](classes/EntitySorter.md)
 
@@ -22,11 +22,11 @@
 
 ## Type Aliases
 
-### Condition
+### EntityCondition
 
-Ƭ **Condition**\<`T`\>: [`IComparator`](interfaces/IComparator.md)\<`T`\> \| [`IComparatorGroup`](interfaces/IComparatorGroup.md)\<`T`\>
+Ƭ **EntityCondition**\<`T`\>: [`IComparator`](interfaces/IComparator.md)\<`T`\> \| [`IComparatorGroup`](interfaces/IComparatorGroup.md)\<`T`\>
 
-Type defining condition.
+Type defining condition for entities filtering.
 
 #### Type parameters
 

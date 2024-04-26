@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { Condition } from "./condition";
+import type { EntityCondition } from "./entityCondition";
 import type { LogicalOperator } from "./logicalOperator";
 
 /**
@@ -10,7 +10,7 @@ export interface IComparatorGroup<T = unknown> {
 	/**
 	 * The conditions to join in a group.
 	 */
-	conditions: Condition<T>[];
+	conditions: EntityCondition<T>[];
 
 	/**
 	 * The logical operator to use.

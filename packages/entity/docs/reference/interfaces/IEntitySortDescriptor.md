@@ -10,9 +10,9 @@ Definition of an entity property sort details.
 
 ## Properties
 
-### name
+### property
 
-• **name**: keyof `T`
+• **property**: keyof `T`
 
 The name of the property.
 
