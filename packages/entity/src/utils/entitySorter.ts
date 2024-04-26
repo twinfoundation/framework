@@ -25,7 +25,7 @@ export class EntitySorter {
 				const compareResult = EntitySorter.compare(
 					a,
 					b,
-					soreDescriptor.name,
+					soreDescriptor.property,
 					soreDescriptor.type,
 					soreDescriptor.sortDirection
 				);

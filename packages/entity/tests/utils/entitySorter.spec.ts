@@ -130,7 +130,7 @@ describe("Sorter", () => {
 	test("can sort single keys with a single entry", async () => {
 		const result = EntitySorter.sort<{ id: string; value1: string; value2: string }>(
 			[{ id: "1", value1: "aaa", value2: "bbb" }],
-			[{ name: "id", type: "string", sortDirection: SortDirection.Ascending }]
+			[{ property: "id", type: "string", sortDirection: SortDirection.Ascending }]
 		);
 
 		expect(result.length).toEqual(1);
@@ -143,7 +143,7 @@ describe("Sorter", () => {
 				{ id: "2", value1: "aaa", value2: "bbb" },
 				{ id: "1", value1: "aaa", value2: "bbb" }
 			],
-			[{ name: "id", type: "string", sortDirection: SortDirection.Ascending }]
+			[{ property: "id", type: "string", sortDirection: SortDirection.Ascending }]
 		);
 
 		expect(result.length).toEqual(2);
@@ -159,8 +159,8 @@ describe("Sorter", () => {
 				{ id: "3", value1: "aaa", value2: "bbb" }
 			],
 			[
-				{ name: "value1", type: "string", sortDirection: SortDirection.Ascending },
-				{ name: "value2", type: "string", sortDirection: SortDirection.Ascending }
+				{ property: "value1", type: "string", sortDirection: SortDirection.Ascending },
+				{ property: "value2", type: "string", sortDirection: SortDirection.Ascending }
 			]
 		);
 
@@ -178,8 +178,8 @@ describe("Sorter", () => {
 				{ id: "3", value1: "aaa", value2: "bbb" }
 			],
 			[
-				{ name: "value1", type: "string", sortDirection: SortDirection.Ascending },
-				{ name: "value2", type: "string", sortDirection: SortDirection.Descending }
+				{ property: "value1", type: "string", sortDirection: SortDirection.Ascending },
+				{ property: "value2", type: "string", sortDirection: SortDirection.Descending }
 			]
 		);
 
@@ -197,8 +197,8 @@ describe("Sorter", () => {
 				{ id: "3", value1: "aaa", value2: "bbb" }
 			],
 			[
-				{ name: "value1", type: "string", sortDirection: SortDirection.Ascending },
-				{ name: "value2", type: "string", sortDirection: SortDirection.Ascending }
+				{ property: "value1", type: "string", sortDirection: SortDirection.Ascending },
+				{ property: "value2", type: "string", sortDirection: SortDirection.Ascending }
 			]
 		);
 

@@ -39,11 +39,11 @@ export class EntityPropertyDescriptor {
 	}
 
 	/**
-	 * Get the sort keys from the descriptor.
+	 * Get the sort properties from the descriptor.
 	 * @param entityDescriptor The entity descriptor to find the primary key from.
 	 * @returns The sort keys from the descriptor or undefined if there are none.
 	 */
-	public static getSortKeys<T>(
+	public static getSortProperties<T>(
 		entityDescriptor: IEntityDescriptor<T>
 	): IEntitySortDescriptor<T>[] | undefined {
 		Guards.object(EntityPropertyDescriptor._CLASS_NAME, nameof(entityDescriptor), entityDescriptor);
@@ -54,7 +54,7 @@ export class EntityPropertyDescriptor {
 			? sortFields.map(
 					p =>
 						({
-							name: p.name,
+							property: p.property,
 							type: p.type,
 							sortDirection: p.sortDirection
 						}) as IEntitySortDescriptor<T>
@@ -63,15 +63,15 @@ export class EntityPropertyDescriptor {
 	}
 
 	/**
-	 * Build sort keys from the descriptor and override if necessary.
+	 * Build sort properties from the descriptor and override if necessary.
 	 * @param entityDescriptor The entity descriptor to retrieve the default sort keys.
 	 * @param overrideSortKeys The override sort keys.
 	 * @returns The finalised sort keys.
 	 */
-	public static buildSortKeys<T>(
+	public static buildSortProperties<T>(
 		entityDescriptor: IEntityDescriptor<T>,
 		overrideSortKeys?: {
-			name: keyof T;
+			property: keyof T;
 			sortDirection: SortDirection;
 		}[]
 	): IEntitySortDescriptor<T>[] | undefined {
@@ -83,17 +83,17 @@ export class EntityPropertyDescriptor {
 			finalSortKeys = [];
 
 			for (const sortKey of overrideSortKeys) {
-				const property = entityDescriptor.properties.find(p => p.name === sortKey.name);
+				const property = entityDescriptor.properties.find(p => p.property === sortKey.property);
 				if (property) {
 					finalSortKeys.push({
-						name: sortKey.name,
+						property: sortKey.property,
 						sortDirection: sortKey.sortDirection,
 						type: property.type
 					});
 				}
 			}
 		} else {
-			finalSortKeys = EntityPropertyDescriptor.getSortKeys(entityDescriptor);
+			finalSortKeys = EntityPropertyDescriptor.getSortProperties(entityDescriptor);
 		}
 
 		return finalSortKeys;

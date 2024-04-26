@@ -1,4 +1,4 @@
-# Class: Conditions
+# Class: EntityConditions
 
 Class to perform condition checks.
 
@@ -6,11 +6,11 @@ Class to perform condition checks.
 
 ### constructor
 
-• **new Conditions**(): [`Conditions`](Conditions.md)
+• **new EntityConditions**(): [`EntityConditions`](EntityConditions.md)
 
 #### Returns
 
-[`Conditions`](Conditions.md)
+[`EntityConditions`](EntityConditions.md)
 
 ## Methods
 
@@ -31,7 +31,7 @@ See if the entity matches the conditions.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `entity` | `T` | The entity to test. |
-| `condition?` | [`Condition`](../modules.md#condition)\<`T`\> | The conditions to test. |
+| `condition?` | [`EntityCondition`](../modules.md#entitycondition)\<`T`\> | The conditions to test. |
 
 #### Returns
 
