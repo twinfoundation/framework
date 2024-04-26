@@ -136,7 +136,9 @@ describe("EntityPropertyDescriptor", () => {
 
 	test("can fail to build sort keys if there is no descriptor", async () => {
 		expect(() =>
-			EntityPropertyDescriptor.buildSortProperties(undefined as unknown as IEntityDescriptor<unknown>)
+			EntityPropertyDescriptor.buildSortProperties(
+				undefined as unknown as IEntityDescriptor<unknown>
+			)
 		).toThrow(
 			expect.objectContaining({
 				name: "GuardError",

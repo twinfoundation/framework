@@ -13,4 +13,3 @@ export * from "./models/sortDirection";
 export * from "./utils/entityConditions";
 export * from "./utils/entityPropertyDescriptor";
 export * from "./utils/entitySorter";
-
