@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 
-import { ArrayHelper, Converter, Guards, Is } from "@gtsc/core";
+import { ArrayHelper, Converter, GeneralError, Guards, Is } from "@gtsc/core";
 import { Ed25519, HmacSha256 } from "@gtsc/crypto";
 import { nameof } from "@gtsc/nameof";
 import type { IJwtHeader } from "../models/IJwtHeader";
@@ -22,14 +22,20 @@ export class Jwt {
 	 * Encode a token.
 	 * @param header The header to encode.
 	 * @param payload The payload to encode.
-	 * @param key The key for signing the token.
+	 * @param key The key for signing the token, can be omitted if a signer is provided.
+	 * @param signer Custom signer method.
 	 * @returns The encoded token.
 	 */
-	public static encode<U extends IJwtHeader, T extends IJwtPayload>(
+	public static async encode<U extends IJwtHeader, T extends IJwtPayload>(
 		header: U,
 		payload: T,
-		key: Uint8Array
-	): string {
+		key?: Uint8Array,
+		signer?: (
+			alg: JwtAlgorithms,
+			key: Uint8Array | undefined,
+			payload: Uint8Array
+		) => Promise<Uint8Array>
+	): Promise<string> {
 		Guards.object<IJwtHeader>(Jwt._CLASS_NAME, nameof(header), header);
 		Guards.arrayOneOf<JwtAlgorithms>(Jwt._CLASS_NAME, nameof(header.alg), header.alg, [
 			"HS256",
@@ -37,7 +43,18 @@ export class Jwt {
 		]);
 
 		Guards.object<IJwtPayload>(Jwt._CLASS_NAME, nameof(payload), payload);
-		Guards.uint8Array(Jwt._CLASS_NAME, nameof(key), key);
+
+		const hasKey = Is.notEmpty(key);
+		const hasSigner = Is.notEmpty(signer);
+		if (!hasKey && !hasSigner) {
+			throw new GeneralError(Jwt._CLASS_NAME, "noKeyOrSigner");
+		}
+
+		if (hasKey) {
+			Guards.uint8Array(Jwt._CLASS_NAME, nameof(key), key);
+		}
+
+		signer ??= async (alg, k, p): Promise<Uint8Array> => Jwt.defaultSigner(alg, k as Uint8Array, p);
 
 		if (Is.undefined(header.typ)) {
 			header.typ = "JWT";
@@ -52,13 +69,8 @@ export class Jwt {
 
 		const jwtHeaderAndPayload = Converter.utf8ToBytes(segments.join("."));
 
-		let sigBytes: Uint8Array;
-		if (header.alg === "HS256") {
-			const algo = new HmacSha256(key);
-			sigBytes = algo.update(jwtHeaderAndPayload).digest();
-		} else {
-			sigBytes = Ed25519.sign(key, jwtHeaderAndPayload);
-		}
+		const sigBytes = await signer(header.alg, key, jwtHeaderAndPayload);
+
 		segments.push(Converter.bytesToBase64Url(sigBytes));
 
 		return segments.join(".");
@@ -69,13 +81,13 @@ export class Jwt {
 	 * @param token The token to decode.
 	 * @returns The decoded payload.
 	 */
-	public static decode<U extends IJwtHeader, T extends IJwtPayload>(
+	public static async decode<U extends IJwtHeader, T extends IJwtPayload>(
 		token: string
-	): {
+	): Promise<{
 		header?: U;
 		payload?: T;
 		signature?: Uint8Array;
-	} {
+	}> {
 		Guards.stringValue(Jwt._CLASS_NAME, nameof(token), token);
 
 		let header: U | undefined;
@@ -111,27 +123,35 @@ export class Jwt {
 	/**
 	 * Verify a token.
 	 * @param token The token to verify.
-	 * @param key The key for verifying the token, if not provided no verification occurs.
+	 * @param key The key for verifying the token
+	 * @param verifier Custom verification method.
 	 * @returns The decoded payload.
 	 */
-	public static verify<U extends IJwtHeader, T extends IJwtPayload>(
+	public static async verify<U extends IJwtHeader, T extends IJwtPayload>(
 		token: string,
-		key: Uint8Array
-	): {
+		key: Uint8Array | undefined,
+		verifier?: (
+			alg: JwtAlgorithms,
+			key: Uint8Array | undefined,
+			payload: Uint8Array,
+			signature: Uint8Array
+		) => Promise<boolean>
+	): Promise<{
 		verified: boolean;
 		header?: U;
 		payload?: T;
 		signature?: Uint8Array;
-	} {
+	}> {
 		Guards.stringValue(Jwt._CLASS_NAME, nameof(token), token);
 		Guards.uint8Array(Jwt._CLASS_NAME, nameof(key), key);
 
-		const decoded = Jwt.decode<U, T>(token);
-		const verified = Jwt.verifySignature<U, T>(
+		const decoded = await Jwt.decode<U, T>(token);
+		const verified = await Jwt.verifySignature<U, T>(
 			decoded.header,
 			decoded.payload,
 			decoded.signature,
-			key
+			key,
+			verifier
 		);
 
 		return {
@@ -146,14 +166,21 @@ export class Jwt {
 	 * @param payload The payload to verify.
 	 * @param signature The signature to verify.
 	 * @param key The key for verifying the token, if not provided no verification occurs.
+	 * @param verifier Custom verification method.
 	 * @returns True if the parts are verified.
 	 */
-	public static verifySignature<U extends IJwtHeader, T extends IJwtPayload>(
+	public static async verifySignature<U extends IJwtHeader, T extends IJwtPayload>(
 		header?: U,
 		payload?: T,
 		signature?: Uint8Array,
-		key?: Uint8Array
-	): boolean {
+		key?: Uint8Array,
+		verifier?: (
+			alg: JwtAlgorithms,
+			key: Uint8Array | undefined,
+			payload: Uint8Array,
+			signature: Uint8Array
+		) => Promise<boolean>
+	): Promise<boolean> {
 		let verified = false;
 
 		if (
@@ -172,15 +199,53 @@ export class Jwt {
 
 			const jwtHeaderAndPayload = Converter.utf8ToBytes(segments.join("."));
 
-			if (header.alg === "HS256") {
-				const algo = new HmacSha256(key);
-				const sigBytes = algo.update(jwtHeaderAndPayload).digest();
-				verified = ArrayHelper.matches(sigBytes, signature);
-			} else {
-				verified = Ed25519.verify(key, jwtHeaderAndPayload, signature);
-			}
+			verifier ??= async (alg, k, p, s): Promise<boolean> =>
+				Jwt.defaultVerifier(alg, k as Uint8Array, p, s);
+
+			verified = await verifier(header.alg, key, jwtHeaderAndPayload, signature);
 		}
 
 		return verified;
+	}
+
+	/**
+	 * The default signer for the JWT.
+	 * @param alg The algorithm to use.
+	 * @param key The key to sign with.
+	 * @param payload The payload to sign.
+	 * @returns The signature.
+	 */
+	public static async defaultSigner(
+		alg: JwtAlgorithms,
+		key: Uint8Array,
+		payload: Uint8Array
+	): Promise<Uint8Array> {
+		if (alg === "HS256") {
+			const algo = new HmacSha256(key);
+			return algo.update(payload).digest();
+		}
+		return Ed25519.sign(key, payload);
+	}
+
+	/**
+	 * The default verifier for the JWT.
+	 * @param alg The algorithm to use.
+	 * @param key The key to verify with.
+	 * @param payload The payload to verify.
+	 * @param signature The signature to verify.
+	 * @returns True if the signature was verified.
+	 */
+	public static async defaultVerifier(
+		alg: JwtAlgorithms,
+		key: Uint8Array,
+		payload: Uint8Array,
+		signature: Uint8Array
+	): Promise<boolean> {
+		if (alg === "HS256") {
+			const algo = new HmacSha256(key);
+			const sigBytes = algo.update(payload).digest();
+			return ArrayHelper.matches(sigBytes, signature);
+		}
+		return Ed25519.verify(key, payload, signature);
 	}
 }
