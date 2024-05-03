@@ -2,8 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 import { BitString } from "../../src/types/bitString";
+import { I18n } from "../../src/utils/i18n";
 
 describe("BitString", () => {
+	beforeAll(async () => {
+		I18n.addDictionary("en", await import("../../locales/en.json"));
+	});
+
 	test("can fail to construct with no number bits", () => {
 		expect(() => new BitString(undefined as unknown as number)).toThrow(
 			expect.objectContaining({
@@ -68,6 +73,7 @@ describe("BitString", () => {
 				}
 			})
 		);
+		expect(I18n.hasMessage("error.bitString.outOfRange")).toEqual(true);
 	});
 
 	test("can set bits in an array", () => {
@@ -102,6 +108,7 @@ describe("BitString", () => {
 				}
 			})
 		);
+		expect(I18n.hasMessage("error.bitString.outOfRange")).toEqual(true);
 	});
 
 	test("can get bits in an array", () => {

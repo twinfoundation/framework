@@ -2,8 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0.
 import type { IValidationFailure } from "../../src/models/IValidationFailure";
 import { Urn } from "../../src/types/urn";
+import { I18n } from "../../src/utils/i18n";
 
 describe("Urn", () => {
+	beforeAll(async () => {
+		I18n.addDictionary("en", await import("../../locales/en.json"));
+	});
+
 	test("can generate an internal id", () => {
 		const id = Urn.generateRandom("gtsc-ilt");
 
@@ -118,6 +123,7 @@ describe("Urn", () => {
 				properties: { property: "foo", value: "urn:" }
 			})
 		);
+		expect(I18n.hasMessage("error.guard.urn")).toEqual(true);
 	});
 
 	test("can success to guard a valid urn", () => {

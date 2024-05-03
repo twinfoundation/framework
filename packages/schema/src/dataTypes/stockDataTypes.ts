@@ -51,14 +51,14 @@ export class StockDataTypes {
 			type: StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS,
 			defaultValue: Date.now(),
 			validate: (propertyName, value, failures, container, previousValue): boolean =>
-				Validation.milliseconds(propertyName, value, failures)
+				Validation.timestampMilliseconds(propertyName, value, failures)
 		}));
 		DataTypeHandlerFactory.register(StockDataTypes.TYPE_TIMESTAMP_SECONDS, () => ({
 			isInternal: false,
 			type: StockDataTypes.TYPE_TIMESTAMP_SECONDS,
 			defaultValue: Math.floor(Date.now() / 1000),
 			validate: (propertyName, value, failures, container, previousValue): boolean =>
-				Validation.seconds(propertyName, value, failures)
+				Validation.timestampSeconds(propertyName, value, failures)
 		}));
 		DataTypeHandlerFactory.register(StockDataTypes.TYPE_PROPERTY_LIST, () => ({
 			isInternal: true,

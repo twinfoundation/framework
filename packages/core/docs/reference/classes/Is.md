@@ -293,11 +293,11 @@ True if the value is an integer.
 
 ___
 
-### milliseconds
+### json
 
-▸ **milliseconds**(`value`): value is number
+▸ **json**(`value`): value is string
 
-Is the value a timestamp in milliseconds.
+Is the value a JSON string.
 
 #### Parameters
 
@@ -307,9 +307,9 @@ Is the value a timestamp in milliseconds.
 
 #### Returns
 
-value is number
+value is string
 
-True if the value is a date.
+True if the value is a JSON string.
 
 ___
 
@@ -425,26 +425,6 @@ True if the value is a object.
 
 ___
 
-### seconds
-
-▸ **seconds**(`value`): value is number
-
-Is the value a timestamp in seconds.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is number
-
-True if the value is a date.
-
-___
-
 ### string
 
 ▸ **string**(`value`): value is string
@@ -462,6 +442,46 @@ Is the value a string.
 value is string
 
 True if the value is a string.
+
+___
+
+### stringBase64
+
+▸ **stringBase64**(`value`): value is string
+
+Is the value a base64 string.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `unknown` | The value to test. |
+
+#### Returns
+
+value is string
+
+True if the value is a base64 string.
+
+___
+
+### stringBase64Url
+
+▸ **stringBase64Url**(`value`): value is string
+
+Is the value a base64 url string.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `unknown` | The value to test. |
+
+#### Returns
+
+value is string
+
+True if the value is a base64 string.
 
 ___
 
@@ -543,6 +563,46 @@ Is the value a time string.
 `boolean`
 
 True if the value is a string in ISO 8601 time format.
+
+___
+
+### timestampMilliseconds
+
+▸ **timestampMilliseconds**(`value`): value is number
+
+Is the value a timestamp in milliseconds.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `unknown` | The value to test. |
+
+#### Returns
+
+value is number
+
+True if the value is a date.
+
+___
+
+### timestampSeconds
+
+▸ **timestampSeconds**(`value`): value is number
+
+Is the value a timestamp in seconds.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `unknown` | The value to test. |
+
+#### Returns
+
+value is number
+
+True if the value is a date.
 
 ___
 

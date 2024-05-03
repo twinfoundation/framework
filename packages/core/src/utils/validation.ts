@@ -24,7 +24,7 @@ export class Validation {
 		if (!is) {
 			failures.push({
 				property,
-				reason: "validation.empty",
+				reason: "validation.beEmpty",
 				properties: {
 					value
 				}
@@ -49,7 +49,7 @@ export class Validation {
 		if (!is) {
 			failures.push({
 				property,
-				reason: "validation.notEmpty",
+				reason: "validation.beNotEmpty",
 				properties: {
 					value
 				}
@@ -99,7 +99,7 @@ export class Validation {
 		if (!is) {
 			failures.push({
 				property,
-				reason: "validation.notEmpty",
+				reason: "validation.beTextValue",
 				properties: {
 					value
 				}
@@ -220,10 +220,10 @@ export class Validation {
 		value: unknown,
 		failures: IValidationFailure[]
 	): value is Date {
-		if (!Is.dateEmpty(value)) {
+		if (Is.dateEmpty(value)) {
 			failures.push({
 				property,
-				reason: "validation.notEmpty",
+				reason: "validation.beDate",
 				properties: {
 					value
 				}
@@ -259,7 +259,7 @@ export class Validation {
 		if (!Is.stringValue(value)) {
 			failures.push({
 				property,
-				reason: "validation.notEmpty",
+				reason: "validation.beDate",
 				properties: {
 					value
 				}
@@ -295,7 +295,7 @@ export class Validation {
 		if (!Is.stringValue(value)) {
 			failures.push({
 				property,
-				reason: "validation.notEmpty",
+				reason: "validation.beDateTime",
 				properties: {
 					value
 				}
@@ -331,7 +331,7 @@ export class Validation {
 		if (!Is.stringValue(value)) {
 			failures.push({
 				property,
-				reason: "validation.notEmpty",
+				reason: "validation.beTime",
 				properties: {
 					value
 				}
@@ -359,15 +359,15 @@ export class Validation {
 	 * @param failures The list of failures to add to.
 	 * @returns True if the value is a timestamp in milliseconds.
 	 */
-	public static milliseconds(
+	public static timestampMilliseconds(
 		property: string,
 		value: unknown,
 		failures: IValidationFailure[]
 	): value is number {
-		if (Number.isNaN(value)) {
+		if (!Is.integer(value)) {
 			failures.push({
 				property,
-				reason: "validation.notEmpty",
+				reason: "validation.beTimestampMilliseconds",
 				properties: {
 					value
 				}
@@ -375,11 +375,11 @@ export class Validation {
 			return false;
 		}
 
-		const is = Is.milliseconds(value);
+		const is = Is.timestampMilliseconds(value);
 		if (!is) {
 			failures.push({
 				property,
-				reason: "validation.beMilliseconds",
+				reason: "validation.beTimestampMilliseconds",
 				properties: {
 					value
 				}
@@ -395,15 +395,15 @@ export class Validation {
 	 * @param failures The list of failures to add to.
 	 * @returns True if the value is a timestamp in seconds.
 	 */
-	public static seconds(
+	public static timestampSeconds(
 		property: string,
 		value: unknown,
 		failures: IValidationFailure[]
 	): value is number {
-		if (Number.isNaN(value)) {
+		if (!Is.integer(value)) {
 			failures.push({
 				property,
-				reason: "validation.notEmpty",
+				reason: "validation.beTimestampSeconds",
 				properties: {
 					value
 				}
@@ -411,11 +411,11 @@ export class Validation {
 			return false;
 		}
 
-		const is = Is.seconds(value);
+		const is = Is.timestampSeconds(value);
 		if (!is) {
 			failures.push({
 				property,
-				reason: "validation.beSeconds",
+				reason: "validation.beTimestampSeconds",
 				properties: {
 					value
 				}
@@ -513,24 +513,26 @@ export class Validation {
 		options: T[],
 		failures: IValidationFailure[]
 	): value is T {
-		if (Is.empty(value) || !Is.stringValue(value)) {
+		if (Is.empty(value)) {
 			failures.push({
 				property,
-				reason: "validation.notEmpty",
+				reason: "validation.beIncluded",
 				properties: {
-					value
+					value,
+					options
 				}
 			});
 			return false;
 		}
 
-		const is = Is.array<T>(options) && options.includes(value);
+		const is = Is.arrayOneOf(value, options);
 		if (!is) {
 			failures.push({
 				property,
-				reason: "validation.notRecognised",
+				reason: "validation.beIncluded",
 				properties: {
-					value
+					value,
+					options
 				}
 			});
 		}
@@ -574,12 +576,8 @@ export class Validation {
 		value: unknown,
 		failures: IValidationFailure[]
 	): value is string {
-		try {
-			if (Is.string(value)) {
-				JSON.parse(value);
-				return true;
-			}
-		} catch {
+		const is = Is.json(value);
+		if (!is) {
 			failures.push({
 				property,
 				reason: "validation.beJSON",
@@ -588,7 +586,7 @@ export class Validation {
 				}
 			});
 		}
-		return false;
+		return is;
 	}
 
 	/**

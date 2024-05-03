@@ -1,26 +1,34 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 
-import { Converter } from "@gtsc/core";
+import { Converter, I18n } from "@gtsc/core";
 import { Bech32 } from "../../src/address/bech32";
 
 describe("Bech32", () => {
+	beforeAll(async () => {
+		I18n.addDictionary("en", await import("../../locales/en.json"));
+	});
+
 	test("Can fail to decode if there is no separator", () => {
 		expect(() => Bech32.decode("a".repeat(91))).toThrow("bech32.noSeparator");
+		expect(I18n.hasMessage("error.bech32.noSeparator")).toEqual(true);
 	});
 
 	test("Can fail to decode if the separator is too early", () => {
 		expect(() => Bech32.decode(`1${"a".repeat(89)}`)).toThrow("bech32.separatorPos");
+		expect(I18n.hasMessage("error.bech32.separatorPos")).toEqual(true);
 	});
 
 	test("Can fail to decode if the separator is too late", () => {
 		expect(() => Bech32.decode(`${"a".repeat(84)}1${"a".repeat(5)}`)).toThrow(
 			"bech32.separatorNoSpace"
 		);
+		expect(I18n.hasMessage("error.bech32.separatorNoSpace")).toEqual(true);
 	});
 
 	test("Can fail to decode with non 5 bit characters", () => {
 		expect(() => Bech32.decodeTo5BitArray("iot1!aaaaa")).toThrow("bech32.invalidCharacter");
+		expect(I18n.hasMessage("error.bech32.invalidCharacter")).toEqual(true);
 	});
 
 	test("Can fail to decode with invalid checksum", () => {

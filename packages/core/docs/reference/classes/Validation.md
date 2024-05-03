@@ -341,28 +341,6 @@ True if the value is valid JSON.
 
 ___
 
-### milliseconds
-
-▸ **milliseconds**(`property`, `value`, `failures`): value is number
-
-Is the property a timestamp in milliseconds.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
-| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
-
-#### Returns
-
-value is number
-
-True if the value is a timestamp in milliseconds.
-
-___
-
 ### notEmpty
 
 ▸ **notEmpty**(`property`, `value`, `failures`): `boolean`
@@ -435,28 +413,6 @@ True if the value is a object.
 
 ___
 
-### seconds
-
-▸ **seconds**(`property`, `value`, `failures`): value is number
-
-Is the property a timestamp in seconds.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
-| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
-
-#### Returns
-
-value is number
-
-True if the value is a timestamp in seconds.
-
-___
-
 ### string
 
 ▸ **string**(`property`, `value`, `failures`): value is string
@@ -520,6 +476,50 @@ Is the property a time in ISO 8601 format.
 value is string
 
 True if the value is a time.
+
+___
+
+### timestampMilliseconds
+
+▸ **timestampMilliseconds**(`property`, `value`, `failures`): value is number
+
+Is the property a timestamp in milliseconds.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
+| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
+
+#### Returns
+
+value is number
+
+True if the value is a timestamp in milliseconds.
+
+___
+
+### timestampSeconds
+
+▸ **timestampSeconds**(`property`, `value`, `failures`): value is number
+
+Is the property a timestamp in seconds.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property` | `string` | The name of the property. |
+| `value` | `unknown` | The value to test. |
+| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
+
+#### Returns
+
+value is number
+
+True if the value is a timestamp in seconds.
 
 ___
 

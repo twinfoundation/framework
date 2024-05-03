@@ -321,7 +321,7 @@ export class PropertyHelper {
 		value: number | undefined
 	): void {
 		if (!Is.empty(value)) {
-			Guards.milliseconds(nameof<PropertyHelper>(), nameof(value), value);
+			Guards.timestampMilliseconds(nameof<PropertyHelper>(), nameof(value), value);
 		}
 		PropertyHelper.setValue(properties, key, StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS, value);
 	}
@@ -351,7 +351,7 @@ export class PropertyHelper {
 		value: number | undefined
 	): void {
 		if (!Is.empty(value)) {
-			Guards.seconds(nameof<PropertyHelper>(), nameof(value), value);
+			Guards.timestampSeconds(nameof<PropertyHelper>(), nameof(value), value);
 		}
 		PropertyHelper.setValue(properties, key, StockDataTypes.TYPE_TIMESTAMP_SECONDS, value);
 	}

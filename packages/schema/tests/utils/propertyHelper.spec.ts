@@ -375,7 +375,7 @@ describe("PropertyHelper", () => {
 		expect(() => PropertyHelper.setTimestampMilliseconds(properties, "a", 1)).toThrow(
 			expect.objectContaining({
 				name: "GuardError",
-				message: "guard.milliseconds",
+				message: "guard.timestampMilliseconds",
 				properties: {
 					property: "value",
 					value: 1
@@ -399,7 +399,7 @@ describe("PropertyHelper", () => {
 		expect(() => PropertyHelper.setTimestampSeconds(properties, "a", 145876211123)).toThrow(
 			expect.objectContaining({
 				name: "GuardError",
-				message: "guard.seconds",
+				message: "guard.timestampSeconds",
 				properties: {
 					property: "value",
 					value: 145876211123
