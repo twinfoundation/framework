@@ -7,7 +7,7 @@
  * Which is an extension of https://github.com/golang/crypto/tree/master/ed25519.
  * Which in a port of the “ref10” implementation of ed25519 from SUPERCOP.
  */
-import { ArrayHelper, GeneralError } from "@gtsc/core";
+import { ArrayHelper, GeneralError, Guards } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { ExtendedGroupElement } from "./edwards25519/extendedGroupElement";
 import { ProjectiveGroupElement } from "./edwards25519/projectiveGroupElement";
@@ -50,8 +50,16 @@ export class Ed25519 {
 	 * Public returns the PublicKey corresponding to private.
 	 * @param privateKey The private key to get the corresponding public key.
 	 * @returns The public key.
+	 * @throws Error if the private key is not the correct length.
 	 */
 	public static publicKeyFromPrivateKey(privateKey: Uint8Array): Uint8Array {
+		Guards.uint8Array(Ed25519._CLASS_NAME, nameof(privateKey), privateKey);
+		if (privateKey.length !== Ed25519.PRIVATE_KEY_SIZE) {
+			throw new GeneralError(Ed25519._CLASS_NAME, "privateKeyLength", {
+				requiredSize: Ed25519.PRIVATE_KEY_SIZE,
+				actualSize: privateKey.length
+			});
+		}
 		return privateKey.subarray(32).slice();
 	}
 
