@@ -1,10 +1,15 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
+import { I18n } from "@gtsc/core";
 import type { IEntityDescriptor } from "../../src/models/IEntityDescriptor";
 import { SortDirection } from "../../src/models/sortDirection";
 import { EntityPropertyDescriptor } from "../../src/utils/entityPropertyDescriptor";
 
 describe("EntityPropertyDescriptor", () => {
+	beforeAll(async () => {
+		I18n.addDictionary("en", await import("../../locales/en.json"));
+	});
+
 	test("can fail to get primary keys if there is no descriptor", async () => {
 		expect(() =>
 			EntityPropertyDescriptor.getPrimaryKey(undefined as unknown as IEntityDescriptor<unknown>)
@@ -33,6 +38,7 @@ describe("EntityPropertyDescriptor", () => {
 				message: "entityPropertyDescriptor.noIsPrimary"
 			})
 		);
+		expect(I18n.hasMessage("error.entityPropertyDescriptor.noIsPrimary")).toEqual(true);
 	});
 
 	test("can fail to get primary keys if there is are multiple", async () => {
@@ -58,6 +64,7 @@ describe("EntityPropertyDescriptor", () => {
 				message: "entityPropertyDescriptor.multipleIsPrimary"
 			})
 		);
+		expect(I18n.hasMessage("error.entityPropertyDescriptor.multipleIsPrimary")).toEqual(true);
 	});
 
 	test("can get primary keys if there is is only one", async () => {

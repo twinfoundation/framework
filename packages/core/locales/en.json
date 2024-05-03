@@ -1,10 +1,10 @@
 {
 	"error": {
 		"validation": {
-			"empty": "The value must be empty",
-			"notEmpty": "The value must not be empty",
-			"notRecognised": "The value is unrecognised",
+			"beEmpty": "The value must be empty",
+			"beNotEmpty": "The value must not be empty",
 			"beText": "The value must be text",
+			"beTextValue": "The value must be text with a value",
 			"beNumber": "The value must be a number",
 			"beWholeNumber": "The value must be a whole number",
 			"beBigInteger": "The value must be a bigint",
@@ -12,11 +12,12 @@
 			"beDate": "The value must be a date",
 			"beDateTime": "The value must be a date/time",
 			"beTime": "The value must be a time",
-			"beMilliseconds": "The value must be a timestamp in milliseconds",
-			"beSeconds": "The value must be a timestamp in seconds",
+			"beTimestampMilliseconds": "The value must be a timestamp in milliseconds",
+			"beTimestampSeconds": "The value must be a timestamp in seconds",
 			"beObject": "The value must be an object",
 			"beArray": "The value must be an array",
 			"beArrayValue": "The value must be an array with at least one item",
+			"beIncluded": "The value is unrecognised",
 			"beByteArray": "The value must be a byte array",
 			"beUrn": "The value must be a correctly formatted urn",
 			"beUrl": "The value must be a correctly formatted url",
@@ -28,6 +29,8 @@
 		"guard": {
 			"string": "Property \"{property}\" must be a string, it is \"{value}\"",
 			"stringEmpty": "Property \"{property}\" must have a value, it is empty",
+			"stringBase64": "Property \"{property}\" must be a base64 encoded string, it is \"{value}\"",
+			"stringBase64Url": "Property \"{property}\" must be a base64 url encoded string, it is \"{value}\"",
 			"stringHex": "Property \"{property}\" must be a hex string, it is \"{value}\"",
 			"stringHexLength": "Property \"{property}\" must be a hex string of length \"{options}\", it is \"{value}\"",
 			"number": "Property \"{property}\" must be a number, it is \"{value}\"",
@@ -35,8 +38,8 @@
 			"bigint": "Property \"{property}\" must be a bigint, it is \"{value}\"",
 			"boolean": "Property \"{property}\" must be a boolean, it is \"{value}\"",
 			"date": "Property \"{property}\" must be a date, it is \"{value}\"",
-			"milliseconds": "Property \"{property}\" must be a timestamp in milliseconds, it is \"{value}\"",
-			"seconds": "Property \"{property}\" must be a timestamp in seconds, it is \"{value}\"",
+			"timestampMilliseconds": "Property \"{property}\" must be a timestamp in milliseconds, it is \"{value}\"",
+			"timestampSeconds": "Property \"{property}\" must be a timestamp in seconds, it is \"{value}\"",
 			"objectUndefined": "Property \"{property}\" must be an object, it is \"undefined\"",
 			"object": "Property \"{property}\" must be an object, it is \"{value}\"",
 			"objectValue": "Property \"{property}\" must be an object, with at least one property, it is \"{value}\"",
@@ -59,6 +62,9 @@
 		"factory": {
 			"noUnregister": "There is no {typeName} registered with the name \"{name}\"",
 			"noGet": "The requested {typeName} \"{name}\" does not exist in the factory"
+		},
+		"bitString": {
+			"outOfRange": "The index should be >= 0 and less than the length of the bit string"
 		}
 	},
 	"errorNames": {

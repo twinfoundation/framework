@@ -61,6 +61,50 @@ export class Is {
 	}
 
 	/**
+	 * Is the value a JSON string.
+	 * @param value The value to test.
+	 * @returns True if the value is a JSON string.
+	 */
+	public static json(value: unknown): value is string {
+		if (!Is.stringValue(value)) {
+			return false;
+		}
+
+		try {
+			const json = JSON.parse(value);
+			return typeof json === "object";
+		} catch {
+			return false;
+		}
+	}
+
+	/**
+	 * Is the value a base64 string.
+	 * @param value The value to test.
+	 * @returns True if the value is a base64 string.
+	 */
+	public static stringBase64(value: unknown): value is string {
+		return (
+			Is.stringValue(value) &&
+			// eslint-disable-next-line unicorn/better-regex
+			/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(value)
+		);
+	}
+
+	/**
+	 * Is the value a base64 url string.
+	 * @param value The value to test.
+	 * @returns True if the value is a base64 string.
+	 */
+	public static stringBase64Url(value: unknown): value is string {
+		return (
+			Is.stringValue(value) &&
+			// eslint-disable-next-line unicorn/better-regex
+			/^(?:[A-Za-z0-9-_]{4})*(?:[A-Za-z0-9-_]{2}==|[A-Za-z0-9-_]{3}=)?$/.test(value)
+		);
+	}
+
+	/**
 	 * Is the value a hex string.
 	 * @param value The value to test.
 	 * @returns True if the value is a hex string.
@@ -180,7 +224,7 @@ export class Is {
 	 * @param value The value to test.
 	 * @returns True if the value is a date.
 	 */
-	public static seconds(value: unknown): value is number {
+	public static timestampSeconds(value: unknown): value is number {
 		if (!Is.integer(value)) {
 			return false;
 		}
@@ -193,7 +237,7 @@ export class Is {
 	 * @param value The value to test.
 	 * @returns True if the value is a date.
 	 */
-	public static milliseconds(value: unknown): value is number {
+	public static timestampMilliseconds(value: unknown): value is number {
 		if (!Is.integer(value)) {
 			return false;
 		}
@@ -249,12 +293,7 @@ export class Is {
 	 * @returns True if the value is an element from the options array.
 	 */
 	public static arrayOneOf<T>(value: T, options: T[]): value is T {
-		if (
-			Is.empty(value) ||
-			!Is.stringValue(value) ||
-			!Is.array<T>(options) ||
-			!options.includes(value)
-		) {
+		if (Is.empty(value) || !Is.array<T>(options) || !options.includes(value)) {
 			return false;
 		}
 
@@ -305,7 +344,7 @@ export class Is {
 	 */
 	public static email(value: unknown): value is string {
 		return (
-			Is.string(value) &&
+			Is.stringValue(value) &&
 			/^[\w!#$%&'*+./=?^`{|}~-]+@[\dA-Za-z](?:[\dA-Za-z-]{0,61}[\dA-Za-z])?(?:\.[\dA-Za-z](?:[\dA-Za-z-]{0,61}[\dA-Za-z])?)*$/.test(
 				value
 			)

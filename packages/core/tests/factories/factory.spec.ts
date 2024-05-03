@@ -4,6 +4,7 @@
 
 import type { IService } from "../../../services/src/models/IService";
 import { Factory } from "../../src/factories/factory";
+import { I18n } from "../../src/utils/i18n";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const TestFactory = new Factory<IService>("service");
@@ -39,6 +40,10 @@ class TestService implements IService {
 }
 
 describe("Factory", () => {
+	beforeAll(async () => {
+		I18n.addDictionary("en", await import("../../locales/en.json"));
+	});
+
 	test("register can fail if name is undefined", () => {
 		expect(() => TestFactory.register(undefined as never, undefined as never)).toThrow(
 			expect.objectContaining({
@@ -73,6 +78,7 @@ describe("Factory", () => {
 				message: "factory.noGet"
 			})
 		);
+		expect(I18n.hasMessage("error.factory.noGet")).toEqual(true);
 	});
 
 	test("register and get can succeed", () => {
@@ -130,6 +136,7 @@ describe("Factory", () => {
 				message: "factory.noUnregister"
 			})
 		);
+		expect(I18n.hasMessage("error.factory.noUnregister")).toEqual(true);
 	});
 
 	test("can reset the factory", () => {

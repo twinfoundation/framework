@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/core",
-	"version": "0.0.3-next.30",
+	"version": "0.0.3-next.31",
 	"description": "Framework Core packages for GTSC",
 	"repository": {
 		"type": "git",
@@ -33,16 +33,16 @@
 	},
 	"devDependencies": {
 		"@gtsc/nameof-transformer": "^0.0.4",
-		"@vitest/coverage-v8": "^1.5.0",
+		"@vitest/coverage-v8": "^1.5.3",
 		"copyfiles": "^2.4.1",
 		"rimraf": "^5.0.5",
-		"rollup": "^4.16.3",
+		"rollup": "^4.17.2",
 		"rollup-plugin-typescript2": "^0.36.0",
 		"ts-patch": "^3.1.2",
 		"typedoc": "^0.25.13",
 		"typedoc-plugin-markdown": "^3.17.1",
 		"typescript": "^5.4.5",
-		"vitest": "^1.5.0"
+		"vitest": "^1.5.3"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",

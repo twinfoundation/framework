@@ -42,6 +42,40 @@ export class Guards {
 	}
 
 	/**
+	 * Is the property a base64 string.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static stringBase64(
+		source: string,
+		property: string,
+		value: unknown
+	): asserts value is string {
+		if (!Is.stringBase64(value)) {
+			throw new GuardError(source, "guard.base64", property, value);
+		}
+	}
+
+	/**
+	 * Is the property a base64 url string.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static stringBase64Url(
+		source: string,
+		property: string,
+		value: unknown
+	): asserts value is string {
+		if (!Is.stringBase64Url(value)) {
+			throw new GuardError(source, "guard.base64Url", property, value);
+		}
+	}
+
+	/**
 	 * Is the property a string with a hex value.
 	 * @param source The source of the error.
 	 * @param property The name of the property.
@@ -161,13 +195,13 @@ export class Guards {
 	 * @param value The value to test.
 	 * @throws GuardError If the value does not match the assertion.
 	 */
-	public static milliseconds(
+	public static timestampMilliseconds(
 		source: string,
 		property: string,
 		value: unknown
 	): asserts value is number {
-		if (!Is.milliseconds(value)) {
-			throw new GuardError(source, "guard.milliseconds", property, value);
+		if (!Is.timestampMilliseconds(value)) {
+			throw new GuardError(source, "guard.timestampMilliseconds", property, value);
 		}
 	}
 
@@ -178,9 +212,13 @@ export class Guards {
 	 * @param value The value to test.
 	 * @throws GuardError If the value does not match the assertion.
 	 */
-	public static seconds(source: string, property: string, value: unknown): asserts value is number {
-		if (!Is.seconds(value)) {
-			throw new GuardError(source, "guard.seconds", property, value);
+	public static timestampSeconds(
+		source: string,
+		property: string,
+		value: unknown
+	): asserts value is number {
+		if (!Is.timestampSeconds(value)) {
+			throw new GuardError(source, "guard.timestampSeconds", property, value);
 		}
 	}
 
