@@ -1,7 +1,7 @@
 {
 	"name": "@gtsc/entity",
 	"version": "0.0.3-next.31",
-	"description": "Framework Entity packages for GTSC",
+	"description": "Helpers for defining and working with entities",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/gtscio/framework.git",

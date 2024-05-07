@@ -1,7 +1,7 @@
 {
 	"name": "@gtsc/crypto",
 	"version": "0.0.3-next.31",
-	"description": "Framework Crypto packages for GTSC",
+	"description": "Contains helper methods and classes which implement cryptographic functions",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/gtscio/framework.git",
