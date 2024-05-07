@@ -300,6 +300,31 @@ True if the error has the name.
 
 ___
 
+### someErrorClass
+
+▸ **someErrorClass**(`error`, `cls`): error is BaseError
+
+Test to see if any of the errors or children are from a specific class.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `unknown` | The error to test. |
+| `cls` | `string` | The class to check for. |
+
+#### Returns
+
+error is BaseError
+
+True if the error has the specific class.
+
+#### Inherited from
+
+[BaseError](BaseError.md).[someErrorClass](BaseError.md#someerrorclass)
+
+___
+
 ### someErrorCode
 
 ▸ **someErrorCode**(`error`, `code`): error is BaseError

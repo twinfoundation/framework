@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/core",
-	"version": "0.0.3-next.31",
+	"version": "0.0.3-next.32",
 	"description": "Helper methods/classes for data type checking/validation/guarding/error handling",
 	"repository": {
 		"type": "git",
