@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/entity",
-	"version": "0.0.3-next.31",
+	"version": "0.0.3-next.32",
 	"description": "Helpers for defining and working with entities",
 	"repository": {
 		"type": "git",
@@ -29,7 +29,7 @@
 	},
 	"dependencies": {
 		"@gtsc/nameof": "^0.0.4",
-		"@gtsc/core": "0.0.3-next.31"
+		"@gtsc/core": "0.0.3-next.32"
 	},
 	"devDependencies": {
 		"@gtsc/nameof-transformer": "^0.0.4",
