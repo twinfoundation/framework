@@ -72,9 +72,13 @@ If no primary key was found, or more than one.
 
 ### getSchema()
 
-> `static` **getSchema**(`target`): `undefined` \| [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`unknown`\>
+> `static` **getSchema**\<`T`\>(`target`): [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
 
 Get the schema for the specified object.
+
+#### Type parameters
+
+• **T** = `unknown`
 
 #### Parameters
 
@@ -84,7 +88,7 @@ The object to get the schema data for.
 
 #### Returns
 
-`undefined` \| [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`unknown`\>
+[`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
 
 The schema for the object if it can be found.
 

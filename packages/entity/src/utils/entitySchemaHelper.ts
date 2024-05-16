@@ -24,8 +24,8 @@ export class EntitySchemaHelper {
 	 * @returns The schema for the object if it can be found.
 	 */
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	public static getSchema(target: any): IEntitySchema | undefined {
-		return DecoratorHelper.getSchema(target);
+	public static getSchema<T = unknown>(target: any): IEntitySchema<T> {
+		return DecoratorHelper.getSchema<T>(target);
 	}
 
 	/**
