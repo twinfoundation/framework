@@ -53,7 +53,6 @@ describe("SchemaHelper", () => {
 			"https://schema.org/",
 			EntitySchemaHelper.getSchema(TestEntity)
 		);
-		console.log(JSON.stringify(jsonSchema, undefined, "\t"));
 
 		expect(jsonSchema.$schema).toEqual("https://json-schema.org/draft/2020-12/schema");
 		expect(jsonSchema.$id).toEqual("https://schema.org/TestEntity");
