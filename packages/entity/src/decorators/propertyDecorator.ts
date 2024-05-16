@@ -12,8 +12,7 @@ import { DecoratorHelper } from "../utils/decoratorHelper";
  */
 export function property(options: Omit<IEntitySchemaProperty, "property">): any {
 	return (target: any, propertyKey: string) => {
-		let entitySchema = DecoratorHelper.getSchema<any>(target);
-		entitySchema ??= { type: undefined };
+		const entitySchema = DecoratorHelper.getSchema<any>(target);
 		entitySchema.properties ??= [];
 		const idx = entitySchema.properties.findIndex(p => p.property === propertyKey);
 		if (idx >= 0) {

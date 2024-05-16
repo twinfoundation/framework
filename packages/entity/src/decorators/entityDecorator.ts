@@ -12,8 +12,7 @@ import { DecoratorHelper } from "../utils/decoratorHelper";
  */
 export function entity(options?: IEntitySchemaOptions): any {
 	return (target: any) => {
-		let entitySchema = DecoratorHelper.getSchema(target);
-		entitySchema ??= { type: undefined };
+		const entitySchema = DecoratorHelper.getSchema(target);
 		entitySchema.type = target.name;
 		entitySchema.options = options;
 		DecoratorHelper.setSchema(target, entitySchema);

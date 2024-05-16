@@ -15,10 +15,10 @@ export class DecoratorHelper {
 	 * @returns The schema from the metadata if it can be found.
 	 */
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	public static getSchema<T = unknown>(target: any): IEntitySchema<T> | undefined {
-		return Reflect.getMetadata(
-			META_DATA_KEY,
-			typeof target === "object" ? target : target.prototype
+	public static getSchema<T = unknown>(target: any): IEntitySchema<T> {
+		return (
+			Reflect.getMetadata(META_DATA_KEY, typeof target === "object" ? target : target.prototype) ??
+			{}
 		);
 	}
 

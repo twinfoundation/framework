@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-/* eslint-disable no-restricted-syntax */
 import { EntitySchemaHelper, SortDirection, entity, property } from "@gtsc/entity";
 import { SchemaHelper } from "../../src/utils/schemaHelper";
 
@@ -18,33 +17,33 @@ export class TestEntity {
 		examples: [1, 2, 3],
 		description: "My Number Property"
 	})
-	public prop1: number = 0;
+	public prop1!: number;
 
 	@property({
 		type: "string",
 		examples: ["a", "b", "c"],
 		description: "My String Property"
 	})
-	public prop2: string = "";
+	public prop2!: string;
 
 	@property({
 		type: "array",
 		itemType: "string"
 	})
-	public prop3: string[] = [];
+	public prop3!: string[];
 
 	@property({
 		type: "array",
 		itemType: "object",
 		itemTypeRef: "Event"
 	})
-	public prop4: unknown[] = [];
+	public prop4!: unknown[];
 
 	@property({
 		type: "object",
 		itemTypeRef: "Book"
 	})
-	public prop5: unknown = {};
+	public prop5!: unknown;
 }
 
 describe("SchemaHelper", () => {

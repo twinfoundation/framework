@@ -16,7 +16,7 @@ Class to help with decorators.
 
 ### getSchema()
 
-> `static` **getSchema**\<`T`\>(`target`): `undefined` \| [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
+> `static` **getSchema**\<`T`\>(`target`): [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
 
 Get the schema from the reflection metadata.
 
@@ -32,7 +32,7 @@ The object to get the schema data from.
 
 #### Returns
 
-`undefined` \| [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
+[`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
 
 The schema from the metadata if it can be found.
 
