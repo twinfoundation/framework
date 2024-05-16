@@ -1,7 +1,3 @@
-[**@gtsc/services**](../README.md) • **Docs**
-
-***
-
 # Interface: IService
 
 Interface describing a service.

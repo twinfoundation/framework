@@ -1,7 +1,3 @@
-[**@gtsc/web**](../README.md) • **Docs**
-
-***
-
 # Interface: IJwtHeader
 
 The fields in a JSON Web Token header.

@@ -1,7 +1,3 @@
-[**@gtsc/crypto**](../README.md) • **Docs**
-
-***
-
 # Class: Totp
 
 Perform TOTP.

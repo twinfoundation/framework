@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Interface: IEntitySchemaProperty\<T\>
 
 Definition for an entity schema property.

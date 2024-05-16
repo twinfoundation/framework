@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: NotSupportedError
 
 Class to handle errors when a feature is unsupported.

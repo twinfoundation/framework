@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Class: EntitySorter
 
 Class to perform sort operations on entities.

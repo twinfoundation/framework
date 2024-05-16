@@ -1,7 +1,3 @@
-[**@gtsc/crypto**](../README.md) • **Docs**
-
-***
-
 # Class: HmacSha512
 
 Class to help with HmacSha512 scheme.

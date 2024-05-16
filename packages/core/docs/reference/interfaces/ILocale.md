@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Interface: ILocale
 
 Model for a local.

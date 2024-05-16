@@ -1,7 +1,3 @@
-[**@gtsc/schema**](../README.md) • **Docs**
-
-***
-
 # Class: StockDataTypes
 
 Handle all the stock data types.

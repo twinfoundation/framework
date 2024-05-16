@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Interface: IComparator\<T\>
 
 Interface defining comparator operator.

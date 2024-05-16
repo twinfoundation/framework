@@ -1,7 +1,3 @@
-[**@gtsc/crypto**](../README.md) • **Docs**
-
-***
-
 # Class: ChaCha20Poly1305
 
 Implementation of the ChaCha20Poly1305 cipher.

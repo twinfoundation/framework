@@ -1,7 +1,3 @@
-[**@gtsc/web**](../README.md) • **Docs**
-
-***
-
 # Class: FetchError
 
 Class to represent errors from fetch.

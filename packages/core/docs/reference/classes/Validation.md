@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: Validation
 
 Class to handle validation operations.

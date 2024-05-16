@@ -1,7 +1,3 @@
-[**@gtsc/qr**](../README.md) • **Docs**
-
-***
-
 # Interface: ITextRendererOptions
 
 Options for rendering as text.

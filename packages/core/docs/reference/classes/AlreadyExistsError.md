@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: AlreadyExistsError
 
 Class to handle errors which are triggered by data already existing.

@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Interface: IValidationFailure
 
 Interface describing the reason a validation failed.

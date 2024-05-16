@@ -1,7 +1,3 @@
-[**@gtsc/web**](../README.md) • **Docs**
-
-***
-
 # Interface: IJwtPayload
 
 The fields in a JSON Web Token payload.

@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Interface: IEntitySort\<T\>
 
 Definition of an entity property sort details.

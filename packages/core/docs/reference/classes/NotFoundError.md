@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: NotFoundError
 
 Class to handle errors which are triggered by data not being found.

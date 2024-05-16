@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: UnauthorizedError
 
 Class to handle errors which are triggered by access not being unauthorized.

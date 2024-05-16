@@ -1,7 +1,3 @@
-[**@gtsc/qr**](../README.md) • **Docs**
-
-***
-
 # Type alias: QRCellData
 
 > **QRCellData**: (`boolean` \| `null`)[][]

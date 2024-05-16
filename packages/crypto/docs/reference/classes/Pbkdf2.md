@@ -1,7 +1,3 @@
-[**@gtsc/crypto**](../README.md) • **Docs**
-
-***
-
 # Class: Pbkdf2
 
 Implementation of the password based key derivation function 2.

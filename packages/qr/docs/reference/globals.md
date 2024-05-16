@@ -1,7 +1,3 @@
-[**@gtsc/qr**](README.md) • **Docs**
-
-***
-
 # @gtsc/qr
 
 ## Enumerations

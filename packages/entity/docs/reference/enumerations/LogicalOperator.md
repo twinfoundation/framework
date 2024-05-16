@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Enumeration: LogicalOperator
 
 An enum defining logical operators.

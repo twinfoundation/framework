@@ -1,7 +1,3 @@
-[**@gtsc/web**](../README.md) • **Docs**
-
-***
-
 # Interface: IJwk
 
 The fields in a JSON Web Key.

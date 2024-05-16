@@ -1,7 +1,3 @@
-[**@gtsc/schema**](../README.md) • **Docs**
-
-***
-
 # Class: PropertyHelper
 
 Class to help with properties.

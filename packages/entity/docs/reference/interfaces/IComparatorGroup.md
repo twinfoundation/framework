@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Interface: IComparatorGroup\<T\>
 
 Interface defining condition group operator.

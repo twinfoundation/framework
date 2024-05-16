@@ -1,7 +1,3 @@
-[**@gtsc/crypto**](../README.md) • **Docs**
-
-***
-
 # Class: Sha1
 
 Perform a SHA-1 hash on the data.

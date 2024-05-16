@@ -1,7 +1,3 @@
-[**@gtsc/web**](../README.md) • **Docs**
-
-***
-
 # Type alias: JwtAlgorithms
 
 > **JwtAlgorithms**: `"HS256"` \| `"EdDSA"`

@@ -1,7 +1,3 @@
-[**@gtsc/schema**](../README.md) • **Docs**
-
-***
-
 # Interface: IDataTypeHandler
 
 Interface describing a service which can handle a specific data type.

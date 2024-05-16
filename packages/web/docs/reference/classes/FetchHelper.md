@@ -1,7 +1,3 @@
-[**@gtsc/web**](../README.md) • **Docs**
-
-***
-
 # Class: FetchHelper
 
 Class to helper with fetch operations.

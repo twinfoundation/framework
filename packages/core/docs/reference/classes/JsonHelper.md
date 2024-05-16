@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: JsonHelper
 
 Helpers methods for JSON objects.

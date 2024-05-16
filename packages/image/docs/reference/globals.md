@@ -1,7 +1,3 @@
-[**@gtsc/image**](README.md) • **Docs**
-
-***
-
 # @gtsc/image
 
 ## Classes

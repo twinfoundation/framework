@@ -1,7 +1,3 @@
-[**@gtsc/web**](../README.md) • **Docs**
-
-***
-
 # Class: HttpStatusCodes
 
 Standard HTTP status codes.

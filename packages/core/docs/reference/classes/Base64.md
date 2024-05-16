@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: Base64
 
 Class to help with base64 Encoding/Decoding.

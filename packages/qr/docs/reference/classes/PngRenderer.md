@@ -1,7 +1,3 @@
-[**@gtsc/qr**](../README.md) • **Docs**
-
-***
-
 # Class: PngRenderer
 
 Class to render qr data as png.

@@ -1,7 +1,3 @@
-[**@gtsc/image**](../README.md) • **Docs**
-
-***
-
 # Class: Color
 
 Class to represent a color.

@@ -1,7 +1,3 @@
-[**@gtsc/image**](../README.md) • **Docs**
-
-***
-
 # Class: JpegEncoder
 
 JPEG Encoder.

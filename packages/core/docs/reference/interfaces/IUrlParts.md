@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Interface: IUrlParts
 
 Model to describe the parts of a url.

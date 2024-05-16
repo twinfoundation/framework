@@ -1,7 +1,3 @@
-[**@gtsc/schema**](../README.md) • **Docs**
-
-***
-
 # Class: SchemaOrgDataTypes
 
 Handle all the data types for schema.org.

@@ -1,7 +1,3 @@
-[**@gtsc/schema**](../README.md) • **Docs**
-
-***
-
 # Interface: IIdentifierHandler
 
 Interface describing a service which can handle a specific urn namespace.

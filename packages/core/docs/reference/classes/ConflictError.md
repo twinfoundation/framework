@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: ConflictError
 
 Class to handle errors which are triggered by conflicting data.

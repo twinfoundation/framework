@@ -1,7 +1,3 @@
-[**@gtsc/qr**](../README.md) • **Docs**
-
-***
-
 # Interface: IBitmapRendererOptions
 
 Options for rendering.

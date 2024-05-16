@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: MimeTypeHelper
 
 Class to help with mime types.

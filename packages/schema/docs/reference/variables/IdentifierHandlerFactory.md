@@ -1,7 +1,3 @@
-[**@gtsc/schema**](../README.md) • **Docs**
-
-***
-
 # Variable: IdentifierHandlerFactory
 
 > `const` **IdentifierHandlerFactory**: `Factory`\<[`IIdentifierHandler`](../interfaces/IIdentifierHandler.md)\>

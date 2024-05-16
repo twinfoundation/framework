@@ -1,7 +1,3 @@
-[**@gtsc/crypto**](../README.md) • **Docs**
-
-***
-
 # Class: Blake2b
 
 Class to help with Blake2B Signature scheme.

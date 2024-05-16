@@ -1,7 +1,3 @@
-[**@gtsc/services**](../README.md) • **Docs**
-
-***
-
 # Variable: ServiceFactory
 
 > `const` **ServiceFactory**: `Factory`\<[`IService`](../interfaces/IService.md)\>

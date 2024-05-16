@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Interface: IEntitySchemaOptions
 
 Definition for an entity schema options.

@@ -1,7 +1,3 @@
-[**@gtsc/web**](../README.md) • **Docs**
-
-***
-
 # Interface: IFetchOptions
 
 Options for call to the fetch helper.

@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: Factory\<T\>
 
 Factory for creating implementation of generic types.

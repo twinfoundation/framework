@@ -1,7 +1,3 @@
-[**@gtsc/crypto**](../README.md) • **Docs**
-
-***
-
 # Class: Bip39
 
 Implementation of Bip39 for mnemonic generation.

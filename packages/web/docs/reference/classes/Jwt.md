@@ -1,7 +1,3 @@
-[**@gtsc/web**](../README.md) • **Docs**
-
-***
-
 # Class: Jwt
 
 Class to encode and decode JSON Web Tokens.

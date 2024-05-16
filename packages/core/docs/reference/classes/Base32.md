@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: Base32
 
 Class to help with base63 Encoding/Decoding.

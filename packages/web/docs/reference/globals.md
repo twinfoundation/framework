@@ -1,7 +1,3 @@
-[**@gtsc/web**](README.md) • **Docs**
-
-***
-
 # @gtsc/web
 
 ## Classes

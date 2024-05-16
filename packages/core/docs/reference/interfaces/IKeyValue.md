@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Interface: IKeyValue\<T\>
 
 Interface describing a key/value pair.

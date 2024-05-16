@@ -1,7 +1,3 @@
-[**@gtsc/services**](../README.md) • **Docs**
-
-***
-
 # Class: RequestContextHelper
 
 Helper class for use with request contexts.

@@ -1,7 +1,3 @@
-[**@gtsc/crypto**](../README.md) • **Docs**
-
-***
-
 # Class: ChaCha20
 
 Implementation of the ChaCha20 cipher.

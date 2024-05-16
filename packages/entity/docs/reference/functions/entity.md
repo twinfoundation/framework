@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Function: entity()
 
 > **entity**(`options`?): `any`

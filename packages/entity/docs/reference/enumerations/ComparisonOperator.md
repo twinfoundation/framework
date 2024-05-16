@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Enumeration: ComparisonOperator
 
 The types of comparison types.

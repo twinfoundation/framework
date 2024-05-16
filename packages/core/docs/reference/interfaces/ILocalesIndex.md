@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Interface: ILocalesIndex
 
 Model for a locales index.

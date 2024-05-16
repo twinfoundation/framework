@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Interface: ILabelledValue\<T\>
 
 Interface describing a label/value pair.

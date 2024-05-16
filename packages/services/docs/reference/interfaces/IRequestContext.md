@@ -1,7 +1,3 @@
-[**@gtsc/services**](../README.md) • **Docs**
-
-***
-
 # Interface: IRequestContext
 
 The context for the request.

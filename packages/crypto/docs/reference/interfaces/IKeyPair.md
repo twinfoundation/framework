@@ -1,7 +1,3 @@
-[**@gtsc/crypto**](../README.md) • **Docs**
-
-***
-
 # Interface: IKeyPair
 
 Interface describing a key pair.

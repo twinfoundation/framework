@@ -1,7 +1,3 @@
-[**@gtsc/core**](README.md) • **Docs**
-
-***
-
 # @gtsc/core
 
 ## Classes

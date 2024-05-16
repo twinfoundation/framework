@@ -1,7 +1,3 @@
-[**@gtsc/qr**](../README.md) • **Docs**
-
-***
-
 # Class: TextRenderer
 
 Class to render qr data as text.

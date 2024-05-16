@@ -1,7 +1,3 @@
-[**@gtsc/core**](../README.md) • **Docs**
-
-***
-
 # Class: ValidationError
 
 Class to handle errors which are triggered by entity validation.

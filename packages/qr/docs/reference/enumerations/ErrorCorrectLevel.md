@@ -1,7 +1,3 @@
-[**@gtsc/qr**](../README.md) • **Docs**
-
-***
-
 # Enumeration: ErrorCorrectLevel
 
 Error correction level to use for the QR Code.

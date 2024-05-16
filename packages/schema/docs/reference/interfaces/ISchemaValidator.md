@@ -1,7 +1,3 @@
-[**@gtsc/schema**](../README.md) • **Docs**
-
-***
-
 # Interface: ISchemaValidator
 
 Schema Validator interface.

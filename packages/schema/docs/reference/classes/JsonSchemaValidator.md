@@ -1,7 +1,3 @@
-[**@gtsc/schema**](../README.md) • **Docs**
-
-***
-
 # Class: JsonSchemaValidator
 
 A validator for JSON schemas.

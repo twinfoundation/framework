@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../README.md) • **Docs**
-
-***
-
 # Class: DecoratorHelper
 
 Class to help with decorators.
