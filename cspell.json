@@ -6,6 +6,7 @@
 		"**/coverage/**",
 		"**/dist/**",
 		"**/docs/reference/**",
+		"**/docs/open-api/**",
 		"**/tests/**",
 		"*.yaml",
 		"package.json",
