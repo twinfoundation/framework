@@ -6,14 +6,14 @@ Model for a local.
 
 ### code
 
-• **code**: `string`
+> **code**: `string`
 
 The code.
 
-___
+***
 
 ### label
 
-• **label**: `string`
+> **label**: `string`
 
 The label.

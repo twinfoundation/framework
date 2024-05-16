@@ -4,62 +4,60 @@ The fields in a JSON Web Token payload.
 
 ## Indexable
 
-▪ [key: `string`]: `unknown`
-
-Additional fields in the payload.
+ \[`key`: `string`\]: `unknown`
 
 ## Properties
 
-### aud
+### aud?
 
-• `Optional` **aud**: `string`
+> `optional` **aud**: `string`
 
 The audience of the token.
 
-___
+***
 
-### exp
+### exp?
 
-• `Optional` **exp**: `number`
+> `optional` **exp**: `number`
 
 The expiration time of the token.
 
-___
+***
 
-### iat
+### iat?
 
-• `Optional` **iat**: `number`
+> `optional` **iat**: `number`
 
 The issued at time of the token.
 
-___
+***
 
-### iss
+### iss?
 
-• `Optional` **iss**: `string`
+> `optional` **iss**: `string`
 
 The issuer of the token.
 
-___
+***
 
-### jti
+### jti?
 
-• `Optional` **jti**: `string`
+> `optional` **jti**: `string`
 
 The JWT ID.
 
-___
+***
 
-### nbf
+### nbf?
 
-• `Optional` **nbf**: `number`
+> `optional` **nbf**: `number`
 
 The not before time of the token.
 
-___
+***
 
-### sub
+### sub?
 
-• `Optional` **sub**: `string`
+> `optional` **sub**: `string`
 
 The subject of the token.

@@ -2,48 +2,46 @@
 
 Options for rendering.
 
-## Hierarchy
+## Extends
 
 - [`IRendererOptions`](IRendererOptions.md)
 
-  ↳ **`IBitmapRendererOptions`**
-
 ## Properties
 
-### background
+### background?
 
-• `Optional` **background**: `string` \| `Color`
+> `optional` **background**: `string` \| `Color`
 
 Background color.
 
-___
+***
 
-### cellSize
+### cellSize?
 
-• `Optional` **cellSize**: `number`
+> `optional` **cellSize**: `number`
 
 The cell size.
 
 #### Inherited from
 
-[IRendererOptions](IRendererOptions.md).[cellSize](IRendererOptions.md#cellsize)
+[`IRendererOptions`](IRendererOptions.md).[`cellSize`](IRendererOptions.md#cellsize)
 
-___
+***
 
-### foreground
+### foreground?
 
-• `Optional` **foreground**: `string` \| `Color`
+> `optional` **foreground**: `string` \| `Color`
 
 Foreground color.
 
-___
+***
 
-### marginSize
+### marginSize?
 
-• `Optional` **marginSize**: `number`
+> `optional` **marginSize**: `number`
 
 The margin size.
 
 #### Inherited from
 
-[IRendererOptions](IRendererOptions.md).[marginSize](IRendererOptions.md#marginsize)
+[`IRendererOptions`](IRendererOptions.md).[`marginSize`](IRendererOptions.md#marginsize)

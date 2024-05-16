@@ -4,9 +4,9 @@ Class to help with base63 Encoding/Decoding.
 
 ## Constructors
 
-### constructor
+### new Base32()
 
-• **new Base32**(): [`Base32`](Base32.md)
+> **new Base32**(): [`Base32`](Base32.md)
 
 #### Returns
 
@@ -14,17 +14,17 @@ Class to help with base63 Encoding/Decoding.
 
 ## Methods
 
-### decode
+### decode()
 
-▸ **decode**(`base32`): `Uint8Array`
+> `static` **decode**(`base32`): `Uint8Array`
 
 Convert the base 32 string to a byte array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `base32` | `string` | The base32 string to convert. |
+• **base32**: `string`
+
+The base32 string to convert.
 
 #### Returns
 
@@ -32,23 +32,23 @@ Convert the base 32 string to a byte array.
 
 The byte array.
 
-**`Throws`**
+#### Throws
 
 If the input string contains a character not in the Base32 alphabet.
 
-___
+***
 
-### encode
+### encode()
 
-▸ **encode**(`bytes`): `string`
+> `static` **encode**(`bytes`): `string`
 
 Convert a byte array to base 32.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bytes` | `Uint8Array` | The byte array to convert. |
+• **bytes**: `Uint8Array`
+
+The byte array to convert.
 
 #### Returns
 

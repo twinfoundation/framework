@@ -5,9 +5,9 @@ Based on JPEG encoder ported to JavaScript and optimized by Andreas Ritter.
 
 ## Constructors
 
-### constructor
+### new JpegEncoder()
 
-• **new JpegEncoder**(): [`JpegEncoder`](JpegEncoder.md)
+> **new JpegEncoder**(): [`JpegEncoder`](JpegEncoder.md)
 
 Create a new instance of JpegEncoder.
 
@@ -17,20 +17,29 @@ Create a new instance of JpegEncoder.
 
 ## Methods
 
-### encode
+### encode()
 
-▸ **encode**(`width`, `height`, `imageData`, `quality`): `Uint8Array`
+> **encode**(`width`, `height`, `imageData`, `quality`): `Uint8Array`
 
 Encode the image with the given quality.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `width` | `number` | The width of the image to encode. |
-| `height` | `number` | The height of the image to encode. |
-| `imageData` | `Uint8Array` | The data for the image. |
-| `quality` | `number` | The quality to encode the image at. |
+• **width**: `number`
+
+The width of the image to encode.
+
+• **height**: `number`
+
+The height of the image to encode.
+
+• **imageData**: `Uint8Array`
+
+The data for the image.
+
+• **quality**: `number`
+
+The quality to encode the image at.
 
 #### Returns
 

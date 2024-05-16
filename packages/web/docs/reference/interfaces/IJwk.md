@@ -4,110 +4,108 @@ The fields in a JSON Web Key.
 
 ## Indexable
 
-▪ [key: `string`]: `unknown`
-
-Additional fields in the key.
+ \[`key`: `string`\]: `unknown`
 
 ## Properties
 
-### alg
+### alg?
 
-• `Optional` **alg**: [`JwtAlgorithms`](../modules.md#jwtalgorithms)
+> `optional` **alg**: [`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
 
 The cryptographic algorithm for the key.
 
-___
+***
 
-### d
+### d?
 
-• `Optional` **d**: `string`
-
-The private key parameters.
-
-___
-
-### dp
-
-• `Optional` **dp**: `string`
+> `optional` **d**: `string`
 
 The private key parameters.
 
-___
+***
 
-### dq
+### dp?
 
-• `Optional` **dq**: `string`
+> `optional` **dp**: `string`
 
 The private key parameters.
 
-___
+***
 
-### e
+### dq?
 
-• `Optional` **e**: `string`
+> `optional` **dq**: `string`
+
+The private key parameters.
+
+***
+
+### e?
+
+> `optional` **e**: `string`
 
 Exponent parameter.
 
-___
+***
 
-### key\_ops
+### key\_ops?
 
-• `Optional` **key\_ops**: `string`[]
+> `optional` **key\_ops**: `string`[]
 
 The operation(s) that the key is intended to be used for.
 
-___
+***
 
-### kid
+### kid?
 
-• `Optional` **kid**: `string`
+> `optional` **kid**: `string`
 
 The key ID.
 
-___
+***
 
 ### kty
 
-• **kty**: `string`
+> **kty**: `string`
 
 The key type parameter.
 
-___
+***
 
-### n
+### n?
 
-• `Optional` **n**: `string`
+> `optional` **n**: `string`
 
 The public key parameters.
 
-___
+***
 
-### p
+### p?
 
-• `Optional` **p**: `string`
-
-The private key parameters.
-
-___
-
-### q
-
-• `Optional` **q**: `string`
+> `optional` **p**: `string`
 
 The private key parameters.
 
-___
+***
 
-### qi
+### q?
 
-• `Optional` **qi**: `string`
+> `optional` **q**: `string`
 
 The private key parameters.
 
-___
+***
 
-### use
+### qi?
 
-• `Optional` **use**: `string`
+> `optional` **qi**: `string`
+
+The private key parameters.
+
+***
+
+### use?
+
+> `optional` **use**: `string`
 
 The intended use for the key.

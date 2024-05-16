@@ -4,9 +4,9 @@ Class to handle guard operations for parameters.
 
 ## Constructors
 
-### constructor
+### new Guards()
 
-• **new Guards**(): [`Guards`](Guards.md)
+> **new Guards**(): [`Guards`](Guards.md)
 
 #### Returns
 
@@ -14,206 +14,251 @@ Class to handle guard operations for parameters.
 
 ## Methods
 
-### array
+### array()
 
-▸ **array**\<`T`\>(`source`, `property`, `value`): asserts value is T[]
+> `static` **array**\<`T`\>(`source`, `property`, `value`): `asserts value is T[]`
 
 Is the property is an array.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is T[]
+`asserts value is T[]`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### arrayOneOf
+### arrayOneOf()
 
-▸ **arrayOneOf**\<`T`\>(`source`, `property`, `value`, `options`): asserts value is T
+> `static` **arrayOneOf**\<`T`\>(`source`, `property`, `value`, `options`): `asserts value is T`
 
 Is the property one of a list of items.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `T` | The value to test. |
-| `options` | `T`[] | The options the value must be one of. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `T`
+
+The value to test.
+
+• **options**: `T`[]
+
+The options the value must be one of.
 
 #### Returns
 
-asserts value is T
+`asserts value is T`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### arrayValue
+### arrayValue()
 
-▸ **arrayValue**\<`T`\>(`source`, `property`, `value`): asserts value is T[]
+> `static` **arrayValue**\<`T`\>(`source`, `property`, `value`): `asserts value is T[]`
 
 Is the property is an array with at least one item.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is T[]
+`asserts value is T[]`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### bigint
+### bigint()
 
-▸ **bigint**(`source`, `property`, `value`): asserts value is bigint
+> `static` **bigint**(`source`, `property`, `value`): `asserts value is bigint`
 
 Is the property a bigint.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is bigint
+`asserts value is bigint`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### boolean
+### boolean()
 
-▸ **boolean**(`source`, `property`, `value`): asserts value is boolean
+> `static` **boolean**(`source`, `property`, `value`): `asserts value is boolean`
 
 Is the property a boolean.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is boolean
+`asserts value is boolean`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### date
+### date()
 
-▸ **date**(`source`, `property`, `value`): asserts value is Date
+> `static` **date**(`source`, `property`, `value`): `asserts value is Date`
 
 Is the property a date.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is Date
+`asserts value is Date`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### email
+### email()
 
-▸ **email**(`source`, `property`, `value`): asserts value is string
+> `static` **email**(`source`, `property`, `value`): `asserts value is string`
 
 Is the property a string formatted as an email address.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is string
+`asserts value is string`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### function
+### function()
 
-▸ **function**(`source`, `property`, `value`): `boolean`
+> `static` **function**(`source`, `property`, `value`): `boolean`
 
 Is the property a function.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
@@ -221,331 +266,408 @@ Is the property a function.
 
 True if the value is a function.
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### integer
+### integer()
 
-▸ **integer**(`source`, `property`, `value`): asserts value is number
+> `static` **integer**(`source`, `property`, `value`): `asserts value is number`
 
 Is the property an integer.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is number
+`asserts value is number`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### number
+### number()
 
-▸ **number**(`source`, `property`, `value`): asserts value is number
+> `static` **number**(`source`, `property`, `value`): `asserts value is number`
 
 Is the property a number.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is number
+`asserts value is number`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### object
+### object()
 
-▸ **object**\<`T`\>(`source`, `property`, `value`): asserts value is T
+> `static` **object**\<`T`\>(`source`, `property`, `value`): `asserts value is T`
 
 Is the property an object.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | \{ `[id: string]`: `unknown`;  } |
+• **T** = `object`
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is T
+`asserts value is T`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### objectValue
+### objectValue()
 
-▸ **objectValue**\<`T`\>(`source`, `property`, `value`): asserts value is T
+> `static` **objectValue**\<`T`\>(`source`, `property`, `value`): `asserts value is T`
 
 Is the property is an object with at least one property.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | \{ `[id: string]`: `unknown`;  } |
+• **T** = `object`
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is T
+`asserts value is T`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### string
+### string()
 
-▸ **string**(`source`, `property`, `value`): asserts value is string
+> `static` **string**(`source`, `property`, `value`): `asserts value is string`
 
 Is the property a string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is string
+`asserts value is string`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### stringBase64
+### stringBase64()
 
-▸ **stringBase64**(`source`, `property`, `value`): asserts value is string
+> `static` **stringBase64**(`source`, `property`, `value`): `asserts value is string`
 
 Is the property a base64 string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is string
+`asserts value is string`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### stringBase64Url
+### stringBase64Url()
 
-▸ **stringBase64Url**(`source`, `property`, `value`): asserts value is string
+> `static` **stringBase64Url**(`source`, `property`, `value`): `asserts value is string`
 
 Is the property a base64 url string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is string
+`asserts value is string`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### stringHex
+### stringHex()
 
-▸ **stringHex**(`source`, `property`, `value`): asserts value is string
+> `static` **stringHex**(`source`, `property`, `value`): `asserts value is string`
 
 Is the property a string with a hex value.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is string
+`asserts value is string`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### stringHexLength
+### stringHexLength()
 
-▸ **stringHexLength**(`source`, `property`, `value`, `length`): asserts value is string
+> `static` **stringHexLength**(`source`, `property`, `value`, `length`): `asserts value is string`
 
 Is the property a string with a hex value with fixed length.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
-| `length` | `number` | The length of the string to match. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+• **length**: `number`
+
+The length of the string to match.
 
 #### Returns
 
-asserts value is string
+`asserts value is string`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### stringValue
+### stringValue()
 
-▸ **stringValue**(`source`, `property`, `value`): asserts value is string
+> `static` **stringValue**(`source`, `property`, `value`): `asserts value is string`
 
 Is the property a string with a value.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is string
+`asserts value is string`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### timestampMilliseconds
+### timestampMilliseconds()
 
-▸ **timestampMilliseconds**(`source`, `property`, `value`): asserts value is number
+> `static` **timestampMilliseconds**(`source`, `property`, `value`): `asserts value is number`
 
 Is the property a timestamp in milliseconds.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is number
+`asserts value is number`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### timestampSeconds
+### timestampSeconds()
 
-▸ **timestampSeconds**(`source`, `property`, `value`): asserts value is number
+> `static` **timestampSeconds**(`source`, `property`, `value`): `asserts value is number`
 
 Is the property a timestamp in seconds.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is number
+`asserts value is number`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### uint8Array
+### uint8Array()
 
-▸ **uint8Array**(`source`, `property`, `value`): asserts value is Uint8Array
+> `static` **uint8Array**(`source`, `property`, `value`): `asserts value is Uint8Array`
 
 Is the property a Uint8Array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The value to test. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
 
 #### Returns
 
-asserts value is Uint8Array
+`asserts value is Uint8Array`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.

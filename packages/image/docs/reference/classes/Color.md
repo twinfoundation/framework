@@ -4,20 +4,29 @@ Class to represent a color.
 
 ## Constructors
 
-### constructor
+### new Color()
 
-• **new Color**(`alpha`, `red`, `green`, `blue`): [`Color`](Color.md)
+> **new Color**(`alpha`, `red`, `green`, `blue`): [`Color`](Color.md)
 
 Create a new instance of color.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `alpha` | `number` | The alpha element of the color. |
-| `red` | `number` | The red element of the color. |
-| `green` | `number` | The green element of the color. |
-| `blue` | `number` | The blue element of the color. |
+• **alpha**: `number`
+
+The alpha element of the color.
+
+• **red**: `number`
+
+The red element of the color.
+
+• **green**: `number`
+
+The green element of the color.
+
+• **blue**: `number`
+
+The blue element of the color.
 
 #### Returns
 
@@ -25,9 +34,9 @@ Create a new instance of color.
 
 ## Methods
 
-### alpha
+### alpha()
 
-▸ **alpha**(): `number`
+> **alpha**(): `number`
 
 Get the alpha element.
 
@@ -37,11 +46,11 @@ Get the alpha element.
 
 The alpha element.
 
-___
+***
 
-### argb
+### argb()
 
-▸ **argb**(): `number`
+> **argb**(): `number`
 
 Get color as argb.
 
@@ -51,11 +60,11 @@ Get color as argb.
 
 The color as argb.
 
-___
+***
 
-### blue
+### blue()
 
-▸ **blue**(): `number`
+> **blue**(): `number`
 
 Get the blue element.
 
@@ -65,11 +74,11 @@ Get the blue element.
 
 The blue element.
 
-___
+***
 
-### green
+### green()
 
-▸ **green**(): `number`
+> **green**(): `number`
 
 Get the green element.
 
@@ -79,11 +88,11 @@ Get the green element.
 
 The green element.
 
-___
+***
 
-### hex
+### hex()
 
-▸ **hex**(): `string`
+> **hex**(): `string`
 
 Get color as hex no alpha.
 
@@ -93,11 +102,11 @@ Get color as hex no alpha.
 
 The color as hex with no alpha component.
 
-___
+***
 
-### hexWithAlpha
+### hexWithAlpha()
 
-▸ **hexWithAlpha**(): `string`
+> **hexWithAlpha**(): `string`
 
 Get color as hex with alpha.
 
@@ -107,11 +116,11 @@ Get color as hex with alpha.
 
 The color as hex with with alpha component.
 
-___
+***
 
-### red
+### red()
 
-▸ **red**(): `number`
+> **red**(): `number`
 
 Get the red element.
 
@@ -121,11 +130,11 @@ Get the red element.
 
 The red element.
 
-___
+***
 
-### rgbText
+### rgbText()
 
-▸ **rgbText**(): `string`
+> **rgbText**(): `string`
 
 Get color as rgb text.
 
@@ -135,11 +144,11 @@ Get color as rgb text.
 
 The color as rgb.
 
-___
+***
 
-### rgba
+### rgba()
 
-▸ **rgba**(): `number`
+> **rgba**(): `number`
 
 Get color as rgba.
 
@@ -149,11 +158,11 @@ Get color as rgba.
 
 The color as rgba.
 
-___
+***
 
-### rgbaText
+### rgbaText()
 
-▸ **rgbaText**(): `string`
+> **rgbaText**(): `string`
 
 Get color as rgba text.
 
@@ -163,19 +172,19 @@ Get color as rgba text.
 
 The color as rgba.
 
-___
+***
 
-### coerce
+### coerce()
 
-▸ **coerce**(`value`): `undefined` \| [`Color`](Color.md)
+> `static` **coerce**(`value`): `undefined` \| [`Color`](Color.md)
 
 Coerce an unknown type to a color.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to try and convert. |
+• **value**: `unknown`
+
+The value to try and convert.
 
 #### Returns
 
@@ -183,19 +192,19 @@ Coerce an unknown type to a color.
 
 The color if one can be created.
 
-___
+***
 
-### fromHex
+### fromHex()
 
-▸ **fromHex**(`hex`): [`Color`](Color.md)
+> `static` **fromHex**(`hex`): [`Color`](Color.md)
 
 Construct a color from a hex string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `hex` | `string` | The hex string to parse. |
+• **hex**: `string`
+
+The hex string to parse.
 
 #### Returns
 
@@ -203,6 +212,6 @@ Construct a color from a hex string.
 
 The color.
 
-**`Throws`**
+#### Throws
 
 Error if the format is incorrect.

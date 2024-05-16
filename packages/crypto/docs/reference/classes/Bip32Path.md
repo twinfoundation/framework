@@ -4,17 +4,17 @@ Class to help with bip32 paths.
 
 ## Constructors
 
-### constructor
+### new Bip32Path()
 
-• **new Bip32Path**(`initialPath?`): [`Bip32Path`](Bip32Path.md)
+> **new Bip32Path**(`initialPath`?): [`Bip32Path`](Bip32Path.md)
 
 Create a new instance of Bip32Path.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `initialPath?` | `string` | Initial path to create. |
+• **initialPath?**: `string`
+
+Initial path to create.
 
 #### Returns
 
@@ -22,9 +22,9 @@ Create a new instance of Bip32Path.
 
 ## Methods
 
-### numberSegments
+### numberSegments()
 
-▸ **numberSegments**(): `number`[]
+> **numberSegments**(): `number`[]
 
 Get the segments.
 
@@ -34,11 +34,11 @@ Get the segments.
 
 The segments as numbers.
 
-___
+***
 
-### pop
+### pop()
 
-▸ **pop**(): `void`
+> **pop**(): `void`
 
 Pop an index from the path.
 
@@ -46,47 +46,47 @@ Pop an index from the path.
 
 `void`
 
-___
+***
 
-### push
+### push()
 
-▸ **push**(`index`): `void`
+> **push**(`index`): `void`
 
 Push a new index on to the path.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `index` | `number` | The index to add to the path. |
+• **index**: `number`
+
+The index to add to the path.
 
 #### Returns
 
 `void`
 
-___
+***
 
-### pushHardened
+### pushHardened()
 
-▸ **pushHardened**(`index`): `void`
+> **pushHardened**(`index`): `void`
 
 Push a new hardened index on to the path.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `index` | `number` | The index to add to the path. |
+• **index**: `number`
+
+The index to add to the path.
 
 #### Returns
 
 `void`
 
-___
+***
 
-### toString
+### toString()
 
-▸ **toString**(): `string`
+> **toString**(): `string`
 
 Converts the path to a string.
 
@@ -96,19 +96,19 @@ Converts the path to a string.
 
 The path as a string.
 
-___
+***
 
-### fromPath
+### fromPath()
 
-▸ **fromPath**(`bip32Path`): [`Bip32Path`](Bip32Path.md)
+> `static` **fromPath**(`bip32Path`): [`Bip32Path`](Bip32Path.md)
 
 Construct a new path by cloning an existing one.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bip32Path` | [`Bip32Path`](Bip32Path.md) | The path to clone. |
+• **bip32Path**: [`Bip32Path`](Bip32Path.md)
+
+The path to clone.
 
 #### Returns
 

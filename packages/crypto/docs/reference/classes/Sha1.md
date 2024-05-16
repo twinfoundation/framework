@@ -4,9 +4,9 @@ Perform a SHA-1 hash on the data.
 
 ## Constructors
 
-### constructor
+### new Sha1()
 
-• **new Sha1**(): [`Sha1`](Sha1.md)
+> **new Sha1**(): [`Sha1`](Sha1.md)
 
 Create a new instance of Sha1.
 
@@ -16,9 +16,9 @@ Create a new instance of Sha1.
 
 ## Methods
 
-### digest
+### digest()
 
-▸ **digest**(): `Uint8Array`
+> **digest**(): `Uint8Array`
 
 Get the digest.
 
@@ -28,19 +28,19 @@ Get the digest.
 
 The digest.
 
-___
+***
 
-### update
+### update()
 
-▸ **update**(`message`): [`Sha1`](Sha1.md)
+> **update**(`message`): [`Sha1`](Sha1.md)
 
 Update the hash with the data.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `message` | `Uint8Array` | The data to update the hash with. |
+• **message**: `Uint8Array`
+
+The data to update the hash with.
 
 #### Returns
 
@@ -48,23 +48,23 @@ Update the hash with the data.
 
 The instance for chaining.
 
-**`Throws`**
+#### Throws
 
 Error if the hash has already been finalized.
 
-___
+***
 
-### sum
+### sum()
 
-▸ **sum**(`data`): `Uint8Array`
+> `static` **sum**(`data`): `Uint8Array`
 
 Perform Sum on the data.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `Uint8Array` | The data to operate on. |
+• **data**: `Uint8Array`
+
+The data to operate on.
 
 #### Returns
 

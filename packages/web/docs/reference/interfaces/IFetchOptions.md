@@ -4,42 +4,42 @@ Options for call to the fetch helper.
 
 ## Properties
 
-### headers
+### headers?
 
-• `Optional` **headers**: [`IHttpRequestHeaders`](IHttpRequestHeaders.md)
+> `optional` **headers**: [`IHttpRequestHeaders`](IHttpRequestHeaders.md)
 
-**`Param`**
+#### Param
 
 The headers for the request.
 
-___
+***
 
-### includeCredentials
+### includeCredentials?
 
-• `Optional` **includeCredentials**: `boolean`
+> `optional` **includeCredentials**: `boolean`
 
 Include credentials in the requests.
 
-___
+***
 
-### retryCount
+### retryCount?
 
-• `Optional` **retryCount**: `number`
+> `optional` **retryCount**: `number`
 
 The number of times to retry fetching defaults to no retries.
 
-___
+***
 
-### retryDelayMs
+### retryDelayMs?
 
-• `Optional` **retryDelayMs**: `number`
+> `optional` **retryDelayMs**: `number`
 
 The number of milliseconds we should delay before any retry.
 
-___
+***
 
-### timeoutMs
+### timeoutMs?
 
-• `Optional` **timeoutMs**: `number`
+> `optional` **timeoutMs**: `number`
 
 Timeout for requests in milliseconds.

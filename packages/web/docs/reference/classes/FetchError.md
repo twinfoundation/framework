@@ -2,29 +2,39 @@
 
 Class to represent errors from fetch.
 
-## Hierarchy
+## Extends
 
 - `BaseError`
 
-  ↳ **`FetchError`**
-
 ## Constructors
 
-### constructor
+### new FetchError()
 
-• **new FetchError**(`source`, `message`, `httpStatus`, `properties?`, `inner?`): [`FetchError`](FetchError.md)
+> **new FetchError**(`source`, `message`, `httpStatus`, `properties`?, `inner`?): [`FetchError`](FetchError.md)
 
 Create a new instance of FetchError.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `message` | `string` | The message as a code. |
-| `httpStatus` | [`HttpStatusCodes`](HttpStatusCodes.md) | The http status code. |
-| `properties?` | `Object` | Any additional information for the error. |
-| `inner?` | `unknown` | The inner error if we have wrapped another error. |
+• **source**: `string`
+
+The source of the error.
+
+• **message**: `string`
+
+The message as a code.
+
+• **httpStatus**: [`HttpStatusCodes`](HttpStatusCodes.md)
+
+The http status code.
+
+• **properties?**
+
+Any additional information for the error.
+
+• **inner?**: `unknown`
+
+The inner error if we have wrapped another error.
 
 #### Returns
 
@@ -32,109 +42,109 @@ Create a new instance of FetchError.
 
 #### Overrides
 
-BaseError.constructor
+`BaseError.constructor`
 
 ## Properties
 
-### cause
+### cause?
 
-• `Optional` **cause**: `unknown`
+> `optional` **cause**: `unknown`
 
 #### Inherited from
 
-BaseError.cause
+`BaseError.cause`
 
-___
+***
 
-### inner
+### inner?
 
-• `Optional` **inner**: `IError`
+> `optional` **inner**: `IError`
 
 The inner error if there was one.
 
 #### Inherited from
 
-BaseError.inner
+`BaseError.inner`
 
-___
+***
 
 ### message
 
-• **message**: `string`
+> **message**: `string`
 
 #### Inherited from
 
-BaseError.message
+`BaseError.message`
 
-___
+***
 
 ### name
 
-• **name**: `string`
+> **name**: `string`
 
 #### Inherited from
 
-BaseError.name
+`BaseError.name`
 
-___
+***
 
-### properties
+### properties?
 
-• `Optional` **properties**: `Object`
+> `optional` **properties**: `object`
 
 Any additional information for the error.
 
 #### Index signature
 
-▪ [id: `string`]: `unknown`
+ \[`id`: `string`\]: `unknown`
 
 #### Inherited from
 
-BaseError.properties
+`BaseError.properties`
 
-___
+***
 
-### source
+### source?
 
-• `Optional` **source**: `string`
+> `optional` **source**: `string`
 
 The source of the error.
 
 #### Inherited from
 
-BaseError.source
+`BaseError.source`
 
-___
+***
 
-### stack
+### stack?
 
-• `Optional` **stack**: `string`
+> `optional` **stack**: `string`
 
 #### Inherited from
 
-BaseError.stack
+`BaseError.stack`
 
-___
+***
 
 ### CLASS\_NAME
 
-▪ `Static` `Readonly` **CLASS\_NAME**: `string`
+> `static` `readonly` **CLASS\_NAME**: `string`
 
 Runtime name for the class.
 
 ## Methods
 
-### toJsonObject
+### toJsonObject()
 
-▸ **toJsonObject**(`includeStack?`): `IError`
+> **toJsonObject**(`includeStack`?): `IError`
 
 Serialize the error to the error model.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `includeStack?` | `boolean` | Include the stack in the error. |
+• **includeStack?**: `boolean`
+
+Include the stack in the error.
 
 #### Returns
 
@@ -144,21 +154,21 @@ The error model.
 
 #### Inherited from
 
-BaseError.toJsonObject
+`BaseError.toJsonObject`
 
-___
+***
 
-### expand
+### expand()
 
-▸ **expand**(`errors`): `undefined` \| `IError`
+> `static` **expand**(`errors`): `undefined` \| `IError`
 
 Expand an error tree.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `errors` | `undefined` \| `IError`[] | The list of errors to expand. |
+• **errors**: `undefined` \| `IError`[]
+
+The list of errors to expand.
 
 #### Returns
 
@@ -168,21 +178,21 @@ The first level error.
 
 #### Inherited from
 
-BaseError.expand
+`BaseError.expand`
 
-___
+***
 
-### flatten
+### flatten()
 
-▸ **flatten**(`err`): `IError`[]
+> `static` **flatten**(`err`): `IError`[]
 
 Flatten an error tree.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `err` | `unknown` | The starting error. |
+• **err**: `unknown`
+
+The starting error.
 
 #### Returns
 
@@ -192,21 +202,21 @@ The list of all internal errors.
 
 #### Inherited from
 
-BaseError.flatten
+`BaseError.flatten`
 
-___
+***
 
-### fromError
+### fromError()
 
-▸ **fromError**(`err`): `BaseError`
+> `static` **fromError**(`err`): `BaseError`
 
 Construct an error from an existing one.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `err` | `unknown` | The existing error. |
+• **err**: `unknown`
+
+The existing error.
 
 #### Returns
 
@@ -216,22 +226,25 @@ The new instance.
 
 #### Inherited from
 
-BaseError.fromError
+`BaseError.fromError`
 
-___
+***
 
-### isErrorCode
+### isErrorCode()
 
-▸ **isErrorCode**(`error`, `code`): `boolean`
+> `static` **isErrorCode**(`error`, `code`): `boolean`
 
 Test to see if the error has the specified error code.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `code` | `string` \| `RegExp` | The code to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **code**: `string` \| `RegExp`
+
+The code to check for.
 
 #### Returns
 
@@ -241,129 +254,172 @@ True if the error has the code.
 
 #### Inherited from
 
-BaseError.isErrorCode
+`BaseError.isErrorCode`
 
-___
+***
 
-### isErrorMessage
+### isErrorMessage()
 
-▸ **isErrorMessage**(`error`, `message`): error is BaseError
+> `static` **isErrorMessage**(`error`, `message`): `error is BaseError`
 
 Test to see if the error has the specified error message.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `message` | `string` \| `RegExp` | The message to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **message**: `string` \| `RegExp`
+
+The message to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.
 
 #### Inherited from
 
-BaseError.isErrorMessage
+`BaseError.isErrorMessage`
 
-___
+***
 
-### isErrorName
+### isErrorName()
 
-▸ **isErrorName**(`error`, `name`): error is BaseError
+> `static` **isErrorName**(`error`, `name`): `error is BaseError`
 
 Test to see if the error has the specified error name.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `name` | `string` \| `RegExp` | The name to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **name**: `string` \| `RegExp`
+
+The name to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.
 
 #### Inherited from
 
-BaseError.isErrorName
+`BaseError.isErrorName`
 
-___
+***
 
-### someErrorCode
+### someErrorClass()
 
-▸ **someErrorCode**(`error`, `code`): error is BaseError
+> `static` **someErrorClass**(`error`, `cls`): `error is BaseError`
+
+Test to see if any of the errors or children are from a specific class.
+
+#### Parameters
+
+• **error**: `unknown`
+
+The error to test.
+
+• **cls**: `string`
+
+The class to check for.
+
+#### Returns
+
+`error is BaseError`
+
+True if the error has the specific class.
+
+#### Inherited from
+
+`BaseError.someErrorClass`
+
+***
+
+### someErrorCode()
+
+> `static` **someErrorCode**(`error`, `code`): `error is BaseError`
 
 Test to see if any of the errors or children have the given error code.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `code` | `string` \| `RegExp` | The code to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **code**: `string` \| `RegExp`
+
+The code to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.
 
 #### Inherited from
 
-BaseError.someErrorCode
+`BaseError.someErrorCode`
 
-___
+***
 
-### someErrorMessage
+### someErrorMessage()
 
-▸ **someErrorMessage**(`error`, `message`): error is BaseError
+> `static` **someErrorMessage**(`error`, `message`): `error is BaseError`
 
 Test to see if any of the errors or children have the given error message.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `message` | `string` \| `RegExp` | The message to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **message**: `string` \| `RegExp`
+
+The message to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.
 
 #### Inherited from
 
-BaseError.someErrorMessage
+`BaseError.someErrorMessage`
 
-___
+***
 
-### someErrorName
+### someErrorName()
 
-▸ **someErrorName**(`error`, `name`): error is BaseError
+> `static` **someErrorName**(`error`, `name`): `error is BaseError`
 
 Test to see if any of the errors or children have the given error name.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `name` | `string` \| `RegExp` | The name to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **name**: `string` \| `RegExp`
+
+The name to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.
 
 #### Inherited from
 
-BaseError.someErrorName
+`BaseError.someErrorName`

@@ -4,31 +4,29 @@ Factory for creating implementation of generic types.
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 ## Constructors
 
-### constructor
+### new Factory()
 
-• **new Factory**\<`T`\>(`typeName`, `autoInstance?`, `matcher?`): [`Factory`](Factory.md)\<`T`\>
+> **new Factory**\<`T`\>(`typeName`, `autoInstance`, `matcher`?): [`Factory`](Factory.md)\<`T`\>
 
 Create a new instance of Factory.
 
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `typeName` | `string` | `undefined` | The type name for the instances. |
-| `autoInstance` | `boolean` | `false` | Automatically create an instance when registered. |
-| `matcher?` | (`names`: `string`[], `name`: `string`) => `undefined` \| `string` | `undefined` | Match the name of the instance. |
+• **typeName**: `string`
+
+The type name for the instances.
+
+• **autoInstance**: `boolean`= `false`
+
+Automatically create an instance when registered.
+
+• **matcher?**
+
+Match the name of the instance.
 
 #### Returns
 
@@ -36,18 +34,21 @@ Create a new instance of Factory.
 
 ## Methods
 
-### defaultMatcher
+### defaultMatcher()
 
-▸ **defaultMatcher**(`names`, `name`): `undefined` \| `string`
+> `private` **defaultMatcher**(`names`, `name`): `undefined` \| `string`
 
 Match the requested name to the generator name.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `names` | `string`[] | The list of names for all the generators. |
-| `name` | `string` | The name to match. |
+• **names**: `string`[]
+
+The list of names for all the generators.
+
+• **name**: `string`
+
+The name to match.
 
 #### Returns
 
@@ -55,25 +56,23 @@ Match the requested name to the generator name.
 
 The matched name or undefined if no match.
 
-___
+***
 
-### get
+### get()
 
-▸ **get**\<`U`\>(`name`): `U`
+> **get**\<`U`\>(`name`): `U`
 
 Get a generator instance.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `U` |
+• **U**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `name` | `string` | The name of the instance to generate. |
+• **name**: `string`
+
+The name of the instance to generate.
 
 #### Returns
 
@@ -81,33 +80,31 @@ Get a generator instance.
 
 An instance of the item.
 
-**`Throws`**
+#### Throws
 
 GuardError if the parameters are invalid.
 
-**`Throws`**
+#### Throws
 
 GeneralError if no item exists to get.
 
-___
+***
 
-### getIfExists
+### getIfExists()
 
-▸ **getIfExists**\<`U`\>(`name`): `undefined` \| `U`
+> **getIfExists**\<`U`\>(`name`): `undefined` \| `U`
 
 Get a generator instance with no exceptions.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `U` |
+• **U**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `name` | `string` | The name of the instance to generate. |
+• **name**: `string`
+
+The name of the instance to generate.
 
 #### Returns
 
@@ -115,11 +112,11 @@ Get a generator instance with no exceptions.
 
 An instance of the item or undefined if it does not exist.
 
-___
+***
 
-### instancesList
+### instancesList()
 
-▸ **instancesList**(): `T`[]
+> **instancesList**(): `T`[]
 
 Get all the instances as a list in the order they were registered.
 
@@ -129,25 +126,25 @@ Get all the instances as a list in the order they were registered.
 
 The instances as a list in the order they were registered.
 
-___
+***
 
-### instancesMap
+### instancesMap()
 
-▸ **instancesMap**(): `Object`
+> **instancesMap**(): `object`
 
 Get all the instances as a map.
 
 #### Returns
 
-`Object`
+`object`
 
 The instances as a map.
 
-___
+***
 
-### names
+### names()
 
-▸ **names**(): `string`[]
+> **names**(): `string`[]
 
 Get all the generator names in the order they were registered.
 
@@ -157,36 +154,37 @@ Get all the generator names in the order they were registered.
 
 The ordered generator names.
 
-___
+***
 
-### register
+### register()
 
-▸ **register**\<`U`\>(`name`, `generator`): `void`
+> **register**\<`U`\>(`name`, `generator`): `void`
 
 Register a new generator.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `U` |
+• **U**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `name` | `string` | The name of the generator. |
-| `generator` | () => `U` | The function to create an instance. |
+• **name**: `string`
+
+The name of the generator.
+
+• **generator**
+
+The function to create an instance.
 
 #### Returns
 
 `void`
 
-___
+***
 
-### reset
+### reset()
 
-▸ **reset**(): `void`
+> **reset**(): `void`
 
 Reset all the instances.
 
@@ -194,28 +192,28 @@ Reset all the instances.
 
 `void`
 
-___
+***
 
-### unregister
+### unregister()
 
-▸ **unregister**(`name`): `void`
+> **unregister**(`name`): `void`
 
 Unregister a generator.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `name` | `string` | The name of the generator to unregister. |
+• **name**: `string`
+
+The name of the generator to unregister.
 
 #### Returns
 
 `void`
 
-**`Throws`**
+#### Throws
 
 GuardError if the parameters are invalid.
 
-**`Throws`**
+#### Throws
 
 GeneralError if no generator exists.

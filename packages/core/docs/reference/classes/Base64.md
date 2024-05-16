@@ -5,9 +5,9 @@ Sourced from https://github.com/beatgammit/base64-js.
 
 ## Constructors
 
-### constructor
+### new Base64()
 
-• **new Base64**(): [`Base64`](Base64.md)
+> **new Base64**(): [`Base64`](Base64.md)
 
 #### Returns
 
@@ -15,17 +15,17 @@ Sourced from https://github.com/beatgammit/base64-js.
 
 ## Methods
 
-### byteLength
+### byteLength()
 
-▸ **byteLength**(`base64`): `number`
+> `static` **byteLength**(`base64`): `number`
 
 Get the byte length of the data.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `base64` | `string` | The base64 string. |
+• **base64**: `string`
+
+The base64 string.
 
 #### Returns
 
@@ -33,19 +33,19 @@ Get the byte length of the data.
 
 The byte length of the data.
 
-___
+***
 
-### decode
+### decode()
 
-▸ **decode**(`base64`): `Uint8Array`
+> `static` **decode**(`base64`): `Uint8Array`
 
 Convert the base 64 string to a byte array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `base64` | `string` | The base64 string to convert. |
+• **base64**: `string`
+
+The base64 string to convert.
 
 #### Returns
 
@@ -53,19 +53,19 @@ Convert the base 64 string to a byte array.
 
 The byte array.
 
-___
+***
 
-### encode
+### encode()
 
-▸ **encode**(`bytes`): `string`
+> `static` **encode**(`bytes`): `string`
 
 Convert a byte array to base 64.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bytes` | `Uint8Array` | The byte array to convert. |
+• **bytes**: `Uint8Array`
+
+The byte array to convert.
 
 #### Returns
 

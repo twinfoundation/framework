@@ -2,29 +2,21 @@
 
 Class to handle errors.
 
-## Hierarchy
+## Extends
 
 - `Error`
 
-  ↳ **`BaseError`**
+## Extended by
 
-  ↳↳ [`AlreadyExistsError`](AlreadyExistsError.md)
-
-  ↳↳ [`ConflictError`](ConflictError.md)
-
-  ↳↳ [`GeneralError`](GeneralError.md)
-
-  ↳↳ [`GuardError`](GuardError.md)
-
-  ↳↳ [`NotFoundError`](NotFoundError.md)
-
-  ↳↳ [`NotImplementedError`](NotImplementedError.md)
-
-  ↳↳ [`NotSupportedError`](NotSupportedError.md)
-
-  ↳↳ [`UnauthorizedError`](UnauthorizedError.md)
-
-  ↳↳ [`ValidationError`](ValidationError.md)
+- [`AlreadyExistsError`](AlreadyExistsError.md)
+- [`ConflictError`](ConflictError.md)
+- [`GeneralError`](GeneralError.md)
+- [`GuardError`](GuardError.md)
+- [`NotFoundError`](NotFoundError.md)
+- [`NotImplementedError`](NotImplementedError.md)
+- [`NotSupportedError`](NotSupportedError.md)
+- [`UnauthorizedError`](UnauthorizedError.md)
+- [`ValidationError`](ValidationError.md)
 
 ## Implements
 
@@ -32,21 +24,33 @@ Class to handle errors.
 
 ## Constructors
 
-### constructor
+### new BaseError()
 
-• **new BaseError**(`name`, `source`, `message`, `properties?`, `inner?`): [`BaseError`](BaseError.md)
+> **new BaseError**(`name`, `source`, `message`, `properties`?, `inner`?): [`BaseError`](BaseError.md)
 
 Create a new instance of BaseError.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `name` | `string` | The name of the error. |
-| `source` | `string` | The source of the error. |
-| `message` | `string` | The message as a code. |
-| `properties?` | `Object` | Any additional information for the error. |
-| `inner?` | `unknown` | The inner error if we have wrapped another error. |
+• **name**: `string`
+
+The name of the error.
+
+• **source**: `string`
+
+The source of the error.
+
+• **message**: `string`
+
+The message as a code.
+
+• **properties?**
+
+Any additional information for the error.
+
+• **inner?**: `unknown`
+
+The inner error if we have wrapped another error.
 
 #### Returns
 
@@ -54,119 +58,119 @@ Create a new instance of BaseError.
 
 #### Overrides
 
-Error.constructor
+`Error.constructor`
 
 ## Properties
 
-### cause
+### cause?
 
-• `Optional` **cause**: `unknown`
+> `optional` **cause**: `unknown`
 
 #### Inherited from
 
-Error.cause
+`Error.cause`
 
-___
+***
 
-### inner
+### inner?
 
-• `Optional` **inner**: [`IError`](../interfaces/IError.md)
+> `optional` **inner**: [`IError`](../interfaces/IError.md)
 
 The inner error if there was one.
 
 #### Implementation of
 
-[IError](../interfaces/IError.md).[inner](../interfaces/IError.md#inner)
+[`IError`](../interfaces/IError.md).[`inner`](../interfaces/IError.md#inner)
 
-___
+***
 
 ### message
 
-• **message**: `string`
+> **message**: `string`
 
 The message for the error.
 
 #### Implementation of
 
-[IError](../interfaces/IError.md).[message](../interfaces/IError.md#message)
+[`IError`](../interfaces/IError.md).[`message`](../interfaces/IError.md#message)
 
 #### Inherited from
 
-Error.message
+`Error.message`
 
-___
+***
 
 ### name
 
-• **name**: `string`
+> **name**: `string`
 
 The name for the error.
 
 #### Implementation of
 
-[IError](../interfaces/IError.md).[name](../interfaces/IError.md#name)
+[`IError`](../interfaces/IError.md).[`name`](../interfaces/IError.md#name)
 
 #### Inherited from
 
-Error.name
+`Error.name`
 
-___
+***
 
-### properties
+### properties?
 
-• `Optional` **properties**: `Object`
+> `optional` **properties**: `object`
 
 Any additional information for the error.
 
 #### Index signature
 
-▪ [id: `string`]: `unknown`
+ \[`id`: `string`\]: `unknown`
 
 #### Implementation of
 
-[IError](../interfaces/IError.md).[properties](../interfaces/IError.md#properties)
+[`IError`](../interfaces/IError.md).[`properties`](../interfaces/IError.md#properties)
 
-___
+***
 
-### source
+### source?
 
-• `Optional` **source**: `string`
+> `optional` **source**: `string`
 
 The source of the error.
 
 #### Implementation of
 
-[IError](../interfaces/IError.md).[source](../interfaces/IError.md#source)
+[`IError`](../interfaces/IError.md).[`source`](../interfaces/IError.md#source)
 
-___
+***
 
-### stack
+### stack?
 
-• `Optional` **stack**: `string`
+> `optional` **stack**: `string`
 
 The stack trace for the error.
 
 #### Implementation of
 
-[IError](../interfaces/IError.md).[stack](../interfaces/IError.md#stack)
+[`IError`](../interfaces/IError.md).[`stack`](../interfaces/IError.md#stack)
 
 #### Inherited from
 
-Error.stack
+`Error.stack`
 
 ## Methods
 
-### toJsonObject
+### toJsonObject()
 
-▸ **toJsonObject**(`includeStack?`): [`IError`](../interfaces/IError.md)
+> **toJsonObject**(`includeStack`?): [`IError`](../interfaces/IError.md)
 
 Serialize the error to the error model.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `includeStack?` | `boolean` | Include the stack in the error. |
+• **includeStack?**: `boolean`
+
+Include the stack in the error.
 
 #### Returns
 
@@ -174,19 +178,19 @@ Serialize the error to the error model.
 
 The error model.
 
-___
+***
 
-### expand
+### expand()
 
-▸ **expand**(`errors`): `undefined` \| [`IError`](../interfaces/IError.md)
+> `static` **expand**(`errors`): `undefined` \| [`IError`](../interfaces/IError.md)
 
 Expand an error tree.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `errors` | `undefined` \| [`IError`](../interfaces/IError.md)[] | The list of errors to expand. |
+• **errors**: `undefined` \| [`IError`](../interfaces/IError.md)[]
+
+The list of errors to expand.
 
 #### Returns
 
@@ -194,19 +198,19 @@ Expand an error tree.
 
 The first level error.
 
-___
+***
 
-### flatten
+### flatten()
 
-▸ **flatten**(`err`): [`IError`](../interfaces/IError.md)[]
+> `static` **flatten**(`err`): [`IError`](../interfaces/IError.md)[]
 
 Flatten an error tree.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `err` | `unknown` | The starting error. |
+• **err**: `unknown`
+
+The starting error.
 
 #### Returns
 
@@ -214,19 +218,19 @@ Flatten an error tree.
 
 The list of all internal errors.
 
-___
+***
 
-### fromError
+### fromError()
 
-▸ **fromError**(`err`): [`BaseError`](BaseError.md)
+> `static` **fromError**(`err`): [`BaseError`](BaseError.md)
 
 Construct an error from an existing one.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `err` | `unknown` | The existing error. |
+• **err**: `unknown`
+
+The existing error.
 
 #### Returns
 
@@ -234,20 +238,23 @@ Construct an error from an existing one.
 
 The new instance.
 
-___
+***
 
-### isErrorCode
+### isErrorCode()
 
-▸ **isErrorCode**(`error`, `code`): `boolean`
+> `static` **isErrorCode**(`error`, `code`): `boolean`
 
 Test to see if the error has the specified error code.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `code` | `string` \| `RegExp` | The code to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **code**: `string` \| `RegExp`
+
+The code to check for.
 
 #### Returns
 
@@ -255,128 +262,146 @@ Test to see if the error has the specified error code.
 
 True if the error has the code.
 
-___
+***
 
-### isErrorMessage
+### isErrorMessage()
 
-▸ **isErrorMessage**(`error`, `message`): error is BaseError
+> `static` **isErrorMessage**(`error`, `message`): `error is BaseError`
 
 Test to see if the error has the specified error message.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `message` | `string` \| `RegExp` | The message to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **message**: `string` \| `RegExp`
+
+The message to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.
 
-___
+***
 
-### isErrorName
+### isErrorName()
 
-▸ **isErrorName**(`error`, `name`): error is BaseError
+> `static` **isErrorName**(`error`, `name`): `error is BaseError`
 
 Test to see if the error has the specified error name.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `name` | `string` \| `RegExp` | The name to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **name**: `string` \| `RegExp`
+
+The name to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.
 
-___
+***
 
-### someErrorClass
+### someErrorClass()
 
-▸ **someErrorClass**(`error`, `cls`): error is BaseError
+> `static` **someErrorClass**(`error`, `cls`): `error is BaseError`
 
 Test to see if any of the errors or children are from a specific class.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `cls` | `string` | The class to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **cls**: `string`
+
+The class to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the specific class.
 
-___
+***
 
-### someErrorCode
+### someErrorCode()
 
-▸ **someErrorCode**(`error`, `code`): error is BaseError
+> `static` **someErrorCode**(`error`, `code`): `error is BaseError`
 
 Test to see if any of the errors or children have the given error code.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `code` | `string` \| `RegExp` | The code to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **code**: `string` \| `RegExp`
+
+The code to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.
 
-___
+***
 
-### someErrorMessage
+### someErrorMessage()
 
-▸ **someErrorMessage**(`error`, `message`): error is BaseError
+> `static` **someErrorMessage**(`error`, `message`): `error is BaseError`
 
 Test to see if any of the errors or children have the given error message.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `message` | `string` \| `RegExp` | The message to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **message**: `string` \| `RegExp`
+
+The message to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.
 
-___
+***
 
-### someErrorName
+### someErrorName()
 
-▸ **someErrorName**(`error`, `name`): error is BaseError
+> `static` **someErrorName**(`error`, `name`): `error is BaseError`
 
 Test to see if any of the errors or children have the given error name.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `unknown` | The error to test. |
-| `name` | `string` \| `RegExp` | The name to check for. |
+• **error**: `unknown`
+
+The error to test.
+
+• **name**: `string` \| `RegExp`
+
+The name to check for.
 
 #### Returns
 
-error is BaseError
+`error is BaseError`
 
 True if the error has the name.

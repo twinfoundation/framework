@@ -4,19 +4,25 @@ Implementation of the ChaCha20 cipher.
 
 ## Constructors
 
-### constructor
+### new ChaCha20()
 
-• **new ChaCha20**(`key`, `nonce`, `counter?`): [`ChaCha20`](ChaCha20.md)
+> **new ChaCha20**(`key`, `nonce`, `counter`): [`ChaCha20`](ChaCha20.md)
 
 Create a new instance of ChaCha20.
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `key` | `Uint8Array` | `undefined` | The key. |
-| `nonce` | `Uint8Array` | `undefined` | The nonce. |
-| `counter` | `number` | `0` | Counter. |
+• **key**: `Uint8Array`
+
+The key.
+
+• **nonce**: `Uint8Array`
+
+The nonce.
+
+• **counter**: `number`= `0`
+
+Counter.
 
 #### Returns
 
@@ -24,17 +30,17 @@ Create a new instance of ChaCha20.
 
 ## Methods
 
-### decrypt
+### decrypt()
 
-▸ **decrypt**(`data`): `Uint8Array`
+> **decrypt**(`data`): `Uint8Array`
 
 Decrypt the data.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `Uint8Array` | The source data to decrypt. |
+• **data**: `Uint8Array`
+
+The source data to decrypt.
 
 #### Returns
 
@@ -42,19 +48,19 @@ Decrypt the data.
 
 The decrypted data.
 
-___
+***
 
-### encrypt
+### encrypt()
 
-▸ **encrypt**(`data`): `Uint8Array`
+> **encrypt**(`data`): `Uint8Array`
 
 Encrypt the data.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `Uint8Array` | The source data to encrypt. |
+• **data**: `Uint8Array`
+
+The source data to encrypt.
 
 #### Returns
 
@@ -62,19 +68,19 @@ Encrypt the data.
 
 The encrypted data.
 
-___
+***
 
-### keyStream
+### keyStream()
 
-▸ **keyStream**(`length`): `Uint8Array`
+> **keyStream**(`length`): `Uint8Array`
 
 Create a keystream of the given length.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `length` | `number` | The length to create the keystream. |
+• **length**: `number`
+
+The length to create the keystream.
 
 #### Returns
 

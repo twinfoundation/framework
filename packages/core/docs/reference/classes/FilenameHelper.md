@@ -4,9 +4,9 @@ Class to help with filenames.
 
 ## Constructors
 
-### constructor
+### new FilenameHelper()
 
-• **new FilenameHelper**(): [`FilenameHelper`](FilenameHelper.md)
+> **new FilenameHelper**(): [`FilenameHelper`](FilenameHelper.md)
 
 #### Returns
 
@@ -14,17 +14,17 @@ Class to help with filenames.
 
 ## Methods
 
-### safeFilename
+### safeFilename()
 
-▸ **safeFilename**(`filename`): `string`
+> `static` **safeFilename**(`filename`): `string`
 
 Replaces any unsafe characters in the filename.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `filename` | `unknown` | The filename to make safe. |
+• **filename**: `unknown`
+
+The filename to make safe.
 
 #### Returns
 

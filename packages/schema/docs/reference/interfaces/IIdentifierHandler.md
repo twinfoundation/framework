@@ -6,25 +6,31 @@ Interface describing a service which can handle a specific urn namespace.
 
 ### namespace
 
-• **namespace**: `string`
+> **namespace**: `string`
 
 The namespace for the identifier.
 
 ## Methods
 
-### validate
+### validate()
 
-▸ **validate**(`propertyName`, `value`, `failures`): `boolean`
+> **validate**(`propertyName`, `value`, `failures`): `boolean`
 
 A method for validating the identifier.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `propertyName` | `string` | The name of the property being validated. |
-| `value` | `unknown` | The value to validate. |
-| `failures` | `IValidationFailure`[] | List of failures to add to. |
+• **propertyName**: `string`
+
+The name of the property being validated.
+
+• **value**: `unknown`
+
+The value to validate.
+
+• **failures**: `IValidationFailure`[]
+
+List of failures to add to.
 
 #### Returns
 

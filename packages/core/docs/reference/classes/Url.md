@@ -4,17 +4,17 @@ Class to help with urls.
 
 ## Constructors
 
-### constructor
+### new Url()
 
-• **new Url**(`url`): [`Url`](Url.md)
+> **new Url**(`url`): [`Url`](Url.md)
 
 Create a new instance of Url.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `url` | `string` | The url string. |
+• **url**: `string`
+
+The url string.
 
 #### Returns
 
@@ -22,9 +22,9 @@ Create a new instance of Url.
 
 ## Methods
 
-### parts
+### parts()
 
-▸ **parts**(): [`IUrlParts`](../interfaces/IUrlParts.md)
+> **parts**(): [`IUrlParts`](../interfaces/IUrlParts.md)
 
 Get the parts of the url.
 
@@ -34,11 +34,11 @@ Get the parts of the url.
 
 The parts of the url.
 
-___
+***
 
-### toString
+### toString()
 
-▸ **toString**(): `string`
+> **toString**(): `string`
 
 Convert the parts in to a full string.
 
@@ -48,19 +48,19 @@ Convert the parts in to a full string.
 
 The formatted url.
 
-___
+***
 
-### fromParts
+### fromParts()
 
-▸ **fromParts**(`urlParts`): [`Url`](Url.md)
+> `static` **fromParts**(`urlParts`): [`Url`](Url.md)
 
 Construct a url from valid parts.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `urlParts` | [`IUrlParts`](../interfaces/IUrlParts.md) | The url to create the parts from. |
+• **urlParts**: [`IUrlParts`](../interfaces/IUrlParts.md)
+
+The url to create the parts from.
 
 #### Returns
 
@@ -68,19 +68,19 @@ Construct a url from valid parts.
 
 The formatted url.
 
-___
+***
 
-### fromURLToParts
+### fromURLToParts()
 
-▸ **fromURLToParts**(`url`): [`IUrlParts`](../interfaces/IUrlParts.md)
+> `static` **fromURLToParts**(`url`): [`IUrlParts`](../interfaces/IUrlParts.md)
 
 Construct a url from a URL.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `url` | `URL` | The url to construct from. |
+• **url**: `URL`
+
+The url to construct from.
 
 #### Returns
 
@@ -88,43 +88,49 @@ Construct a url from a URL.
 
 The formatted url.
 
-___
+***
 
-### guard
+### guard()
 
-▸ **guard**(`source`, `property`, `value`): asserts value is string
+> `static` **guard**(`source`, `property`, `value`): `asserts value is string`
 
 Parse a string into the url parts.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The url to parse. |
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The url to parse.
 
 #### Returns
 
-asserts value is string
+`asserts value is string`
 
-**`Throws`**
+#### Throws
 
 GuardError If the value does not match the assertion.
 
-___
+***
 
-### tryParseExact
+### tryParseExact()
 
-▸ **tryParseExact**(`url`): `undefined` \| [`Url`](Url.md)
+> `static` **tryParseExact**(`url`): `undefined` \| [`Url`](Url.md)
 
 Try and parse a string into the url parts.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `url` | `unknown` | The url to parse. |
+• **url**: `unknown`
+
+The url to parse.
 
 #### Returns
 
@@ -132,24 +138,30 @@ Try and parse a string into the url parts.
 
 The formatted url or undefined if the value is not a url.
 
-___
+***
 
-### validate
+### validate()
 
-▸ **validate**(`property`, `value`, `failures`): value is Url
+> `static` **validate**(`property`, `value`, `failures`): `value is Url`
 
 Validate a string as a Url.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `property` | `string` | Throw an exception if the url property is invalid. |
-| `value` | `unknown` | The url to parse. |
-| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
+• **property**: `string`
+
+Throw an exception if the url property is invalid.
+
+• **value**: `unknown`
+
+The url to parse.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
 
 #### Returns
 
-value is Url
+`value is Url`
 
 The formatted url.

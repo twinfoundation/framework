@@ -4,9 +4,9 @@ Class to perform condition checks.
 
 ## Constructors
 
-### constructor
+### new EntityConditions()
 
-• **new EntityConditions**(): [`EntityConditions`](EntityConditions.md)
+> **new EntityConditions**(): [`EntityConditions`](EntityConditions.md)
 
 #### Returns
 
@@ -14,24 +14,25 @@ Class to perform condition checks.
 
 ## Methods
 
-### check
+### check()
 
-▸ **check**\<`T`\>(`entity`, `condition?`): `boolean`
+> `static` **check**\<`T`\>(`entity`, `condition`?): `boolean`
 
 See if the entity matches the conditions.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `entity` | `T` | The entity to test. |
-| `condition?` | [`EntityCondition`](../modules.md#entitycondition)\<`T`\> | The conditions to test. |
+• **entity**: `T`
+
+The entity to test.
+
+• **condition?**: [`EntityCondition`](../type-aliases/EntityCondition.md)\<`T`\>
+
+The conditions to test.
 
 #### Returns
 
@@ -39,26 +40,27 @@ See if the entity matches the conditions.
 
 True if the entity matches.
 
-___
+***
 
-### compare
+### compare()
 
-▸ **compare**\<`T`\>(`entity`, `comparator`): `boolean`
+> `static` **compare**\<`T`\>(`entity`, `comparator`): `boolean`
 
 See if the entity matches the conditions.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `entity` | `T` | The entity to test. |
-| `comparator` | [`IComparator`](../interfaces/IComparator.md)\<`T`\> | The condition to test. |
+• **entity**: `T`
+
+The entity to test.
+
+• **comparator**: [`IComparator`](../interfaces/IComparator.md)\<`T`\>
+
+The condition to test.
 
 #### Returns
 

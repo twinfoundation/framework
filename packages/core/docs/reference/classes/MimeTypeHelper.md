@@ -4,9 +4,9 @@ Class to help with mime types.
 
 ## Constructors
 
-### constructor
+### new MimeTypeHelper()
 
-• **new MimeTypeHelper**(): [`MimeTypeHelper`](MimeTypeHelper.md)
+> **new MimeTypeHelper**(): [`MimeTypeHelper`](MimeTypeHelper.md)
 
 #### Returns
 
@@ -14,17 +14,17 @@ Class to help with mime types.
 
 ## Methods
 
-### defaultExtension
+### defaultExtension()
 
-▸ **defaultExtension**(`mimeType`): `undefined` \| `string`
+> `static` **defaultExtension**(`mimeType`): `undefined` \| `string`
 
 Return the default extension for a mime type.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `mimeType` | `undefined` \| `string` | The mimetype to get the extension for. |
+• **mimeType**: `undefined` \| `string`
+
+The mimetype to get the extension for.
 
 #### Returns
 
@@ -32,19 +32,19 @@ Return the default extension for a mime type.
 
 The extension for the mime type.
 
-___
+***
 
-### detect
+### detect()
 
-▸ **detect**(`data`): `Promise`\<`undefined` \| `string`\>
+> `static` **detect**(`data`): `Promise`\<`undefined` \| `string`\>
 
 Detect the mime type from a byte array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `Uint8Array` | The data to test. |
+• **data**: `Uint8Array`
+
+The data to test.
 
 #### Returns
 

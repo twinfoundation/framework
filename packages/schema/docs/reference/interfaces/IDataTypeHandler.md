@@ -4,57 +4,69 @@ Interface describing a service which can handle a specific data type.
 
 ## Properties
 
-### childTypes
+### childTypes?
 
-• `Optional` **childTypes**: `Object`
+> `optional` **childTypes**: `object`
 
 Define the types of any children.
 
 #### Index signature
 
-▪ [prop: `string`]: `string`
+ \[`prop`: `string`\]: `string`
 
-___
+***
 
 ### defaultValue
 
-• **defaultValue**: `unknown`
+> **defaultValue**: `unknown`
 
 The default value for the item.
 
-___
+***
 
 ### isInternal
 
-• **isInternal**: `boolean`
+> **isInternal**: `boolean`
 
 Is internal data type.
 
-___
+***
 
 ### type
 
-• **type**: `string`
+> **type**: `string`
 
 The type for the item.
 
 ## Methods
 
-### validate
+### validate()?
 
-▸ **validate**(`propertyName`, `value`, `failures`, `container?`, `previousValue?`): `boolean`
+> `optional` **validate**(`propertyName`, `value`, `failures`, `container`?, `previousValue`?): `boolean`
 
 A method for validating the data type.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `propertyName` | `string` | The name of the property being validated. |
-| `value` | `unknown` | The value to validate. |
-| `failures` | `IValidationFailure`[] | List of failures to add to. |
-| `container?` | `unknown` | The object which contains this one. |
-| `previousValue?` | `unknown` | The previous value of the object. |
+• **propertyName**: `string`
+
+The name of the property being validated.
+
+• **value**: `unknown`
+
+The value to validate.
+
+• **failures**: `IValidationFailure`[]
+
+List of failures to add to.
+
+• **container?**: `unknown`
+
+The object which contains this one.
+
+• **previousValue?**: `unknown`
+
+The previous value of the object.
 
 #### Returns
 

@@ -5,9 +5,9 @@ Based on https://www.rfc-editor.org/rfc/rfc8785
 
 ## Constructors
 
-### constructor
+### new JsonHelper()
 
-• **new JsonHelper**(): [`JsonHelper`](JsonHelper.md)
+> **new JsonHelper**(): [`JsonHelper`](JsonHelper.md)
 
 #### Returns
 
@@ -15,17 +15,17 @@ Based on https://www.rfc-editor.org/rfc/rfc8785
 
 ## Methods
 
-### canonicalize
+### canonicalize()
 
-▸ **canonicalize**(`object`): `string`
+> `static` **canonicalize**(`object`): `string`
 
 Serializes in canonical format.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `object` | `unknown` | The object to be serialized. |
+• **object**: `unknown`
+
+The object to be serialized.
 
 #### Returns
 

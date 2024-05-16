@@ -4,9 +4,9 @@ Class to help with arrays.
 
 ## Constructors
 
-### constructor
+### new ArrayHelper()
 
-• **new ArrayHelper**(): [`ArrayHelper`](ArrayHelper.md)
+> **new ArrayHelper**(): [`ArrayHelper`](ArrayHelper.md)
 
 #### Returns
 
@@ -14,18 +14,21 @@ Class to help with arrays.
 
 ## Methods
 
-### matches
+### matches()
 
-▸ **matches**(`arr1`, `arr2`): `boolean`
+> `static` **matches**(`arr1`, `arr2`): `boolean`
 
 Do the two arrays match.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arr1` | `unknown` | The first array. |
-| `arr2` | `unknown` | The second array. |
+• **arr1**: `unknown`
+
+The first array.
+
+• **arr2**: `unknown`
+
+The second array.
 
 #### Returns
 

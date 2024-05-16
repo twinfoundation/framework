@@ -4,22 +4,20 @@ Interface defining condition group operator.
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `unknown` |
+• **T** = `unknown`
 
 ## Properties
 
 ### conditions
 
-• **conditions**: [`EntityCondition`](../modules.md#entitycondition)\<`T`\>[]
+> **conditions**: [`EntityCondition`](../type-aliases/EntityCondition.md)\<`T`\>[]
 
 The conditions to join in a group.
 
-___
+***
 
-### logicalOperator
+### logicalOperator?
 
-• `Optional` **logicalOperator**: [`LogicalOperator`](../enums/LogicalOperator.md)
+> `optional` **logicalOperator**: [`LogicalOperator`](../enumerations/LogicalOperator.md)
 
 The logical operator to use.

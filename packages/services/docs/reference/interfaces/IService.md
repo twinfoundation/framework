@@ -4,17 +4,17 @@ Interface describing a service.
 
 ## Methods
 
-### bootstrap
+### bootstrap()?
 
-▸ **bootstrap**(`requestContext`): `Promise`\<`void`\>
+> `optional` **bootstrap**(`requestContext`): `Promise`\<`void`\>
 
 Bootstrap the service by creating and initializing any resources it needs.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `requestContext` | [`IRequestContext`](IRequestContext.md) | The request context for bootstrapping. |
+• **requestContext**: [`IRequestContext`](IRequestContext.md)
+
+The request context for bootstrapping.
 
 #### Returns
 
@@ -22,11 +22,11 @@ Bootstrap the service by creating and initializing any resources it needs.
 
 Nothing.
 
-___
+***
 
-### start
+### start()?
 
-▸ **start**(): `Promise`\<`void`\>
+> `optional` **start**(): `Promise`\<`void`\>
 
 The service needs to be started when the application is initialized.
 
@@ -36,11 +36,11 @@ The service needs to be started when the application is initialized.
 
 Nothing.
 
-___
+***
 
-### stop
+### stop()?
 
-▸ **stop**(): `Promise`\<`void`\>
+> `optional` **stop**(): `Promise`\<`void`\>
 
 The service needs to be stopped when the application is closed.
 

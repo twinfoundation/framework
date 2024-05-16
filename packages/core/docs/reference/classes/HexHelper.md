@@ -4,9 +4,9 @@ Helper methods for hex conversions.
 
 ## Constructors
 
-### constructor
+### new HexHelper()
 
-• **new HexHelper**(): [`HexHelper`](HexHelper.md)
+> **new HexHelper**(): [`HexHelper`](HexHelper.md)
 
 #### Returns
 
@@ -16,23 +16,23 @@ Helper methods for hex conversions.
 
 ### BIG\_INT\_MAX\_256\_BIT
 
-▪ `Static` `Readonly` **BIG\_INT\_MAX\_256\_BIT**: `bigint`
+> `static` `readonly` **BIG\_INT\_MAX\_256\_BIT**: `bigint`
 
 Const defining the maximum value for a 256 bit int.
 
 ## Methods
 
-### addPrefix
+### addPrefix()
 
-▸ **addPrefix**(`hex`): `string`
+> `static` **addPrefix**(`hex`): `string`
 
 Add the 0x prefix if it does not exist.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `hex` | `string` | The hex value to add the prefix to. |
+• **hex**: `string`
+
+The hex value to add the prefix to.
 
 #### Returns
 
@@ -40,19 +40,19 @@ Add the 0x prefix if it does not exist.
 
 The hex with the prefix.
 
-___
+***
 
-### fromBigInt256
+### fromBigInt256()
 
-▸ **fromBigInt256**(`value`): `string`
+> `static` **fromBigInt256**(`value`): `string`
 
 Convert the big int 256 bit to hex string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `bigint` | The big int value to convert. |
+• **value**: `bigint`
+
+The big int value to convert.
 
 #### Returns
 
@@ -60,19 +60,19 @@ Convert the big int 256 bit to hex string.
 
 The hex encoded big int.
 
-___
+***
 
-### hasPrefix
+### hasPrefix()
 
-▸ **hasPrefix**(`hex`): `boolean`
+> `static` **hasPrefix**(`hex`): `boolean`
 
 Does the hex string have the prefix.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `hex` | `string` | The hex value to check for the prefix. |
+• **hex**: `string`
+
+The hex value to check for the prefix.
 
 #### Returns
 
@@ -80,20 +80,23 @@ Does the hex string have the prefix.
 
 True if the hex string has the prefix.
 
-___
+***
 
-### isHex
+### isHex()
 
-▸ **isHex**(`value`, `allowPrefix?`): `boolean`
+> `static` **isHex**(`value`, `allowPrefix`): `boolean`
 
 Is the data hex format.
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `value` | `string` | `undefined` | The value to test. |
-| `allowPrefix` | `boolean` | `false` | Allow the hex to have the 0x prefix. |
+• **value**: `string`
+
+The value to test.
+
+• **allowPrefix**: `boolean`= `false`
+
+Allow the hex to have the 0x prefix.
 
 #### Returns
 
@@ -101,19 +104,19 @@ Is the data hex format.
 
 True if the string is hex.
 
-___
+***
 
-### stripPrefix
+### stripPrefix()
 
-▸ **stripPrefix**(`hex`): `string`
+> `static` **stripPrefix**(`hex`): `string`
 
 Strip the 0x prefix if it exists.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `hex` | `string` | The hex value to strip. |
+• **hex**: `string`
+
+The hex value to strip.
 
 #### Returns
 
@@ -121,19 +124,19 @@ Strip the 0x prefix if it exists.
 
 The stripped hex without the prefix.
 
-___
+***
 
-### toBigInt256
+### toBigInt256()
 
-▸ **toBigInt256**(`hex`): `bigint`
+> `static` **toBigInt256**(`hex`): `bigint`
 
 Convert the hex string to a big int.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `hex` | `string` | The hex value to convert. |
+• **hex**: `string`
+
+The hex value to convert.
 
 #### Returns
 

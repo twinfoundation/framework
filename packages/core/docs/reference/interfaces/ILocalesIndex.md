@@ -6,6 +6,6 @@ Model for a locales index.
 
 ### locales
 
-• **locales**: [`ILocale`](ILocale.md)[]
+> **locales**: [`ILocale`](ILocale.md)[]
 
 The list of locales.

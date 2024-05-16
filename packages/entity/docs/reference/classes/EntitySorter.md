@@ -4,9 +4,9 @@ Class to perform sort operations on entities.
 
 ## Constructors
 
-### constructor
+### new EntitySorter()
 
-• **new EntitySorter**(): [`EntitySorter`](EntitySorter.md)
+> **new EntitySorter**(): [`EntitySorter`](EntitySorter.md)
 
 #### Returns
 
@@ -14,27 +14,37 @@ Class to perform sort operations on entities.
 
 ## Methods
 
-### compare
+### compare()
 
-▸ **compare**\<`T`\>(`entity1`, `entity2`, `prop`, `type`, `direction?`): `number`
+> `static` **compare**\<`T`\>(`entity1`, `entity2`, `prop`, `type`, `direction`): `number`
 
 Compare two properties.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `entity1` | `T` | `undefined` | The first entity. |
-| `entity2` | `T` | `undefined` | The second entity. |
-| `prop` | keyof `T` | `undefined` | The property to compare. |
-| `type` | [`EntityPropertyDescriptorDataType`](../modules.md#entitypropertydescriptordatatype) | `undefined` | The type of the property. |
-| `direction` | [`SortDirection`](../enums/SortDirection.md) | `SortDirection.Ascending` | The direction of the sort. |
+• **entity1**: `T`
+
+The first entity.
+
+• **entity2**: `T`
+
+The second entity.
+
+• **prop**: keyof `T`
+
+The property to compare.
+
+• **type**: [`EntitySchemaPropertyType`](../type-aliases/EntitySchemaPropertyType.md)
+
+The type of the property.
+
+• **direction**: [`SortDirection`](../enumerations/SortDirection.md)= `SortDirection.Ascending`
+
+The direction of the sort.
 
 #### Returns
 
@@ -42,26 +52,27 @@ Compare two properties.
 
 The result of the comparison.
 
-___
+***
 
-### sort
+### sort()
 
-▸ **sort**\<`T`\>(`entities`, `sortDescriptors?`): `T`[]
+> `static` **sort**\<`T`\>(`entities`, `entitySorters`?): `T`[]
 
 Sort a list of entities using multiple keys and direction.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `entities` | `T`[] | The list of entities. |
-| `sortDescriptors?` | [`IEntitySortDescriptor`](../interfaces/IEntitySortDescriptor.md)\<`T`\>[] | The sort keys to use. |
+• **entities**: `T`[]
+
+The list of entities.
+
+• **entitySorters?**: [`IEntitySort`](../interfaces/IEntitySort.md)\<`T`\>[]
+
+The sort keys to use.
 
 #### Returns
 

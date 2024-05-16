@@ -4,9 +4,9 @@ Class to help with random generation.
 
 ## Constructors
 
-### constructor
+### new RandomHelper()
 
-• **new RandomHelper**(): [`RandomHelper`](RandomHelper.md)
+> **new RandomHelper**(): [`RandomHelper`](RandomHelper.md)
 
 #### Returns
 
@@ -14,17 +14,17 @@ Class to help with random generation.
 
 ## Methods
 
-### generate
+### generate()
 
-▸ **generate**(`length`): `Uint8Array`
+> `static` **generate**(`length`): `Uint8Array`
 
 Generate a new random array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `length` | `number` | The length of buffer to create. |
+• **length**: `number`
+
+The length of buffer to create.
 
 #### Returns
 

@@ -2,58 +2,54 @@
 
 Model to describe serialized error.
 
-## Implemented by
-
-- [`BaseError`](../classes/BaseError.md)
-
 ## Properties
 
-### inner
+### inner?
 
-• `Optional` **inner**: [`IError`](IError.md)
+> `optional` **inner**: [`IError`](IError.md)
 
 The inner error if there was one.
 
-___
+***
 
 ### message
 
-• **message**: `string`
+> **message**: `string`
 
 The message for the error.
 
-___
+***
 
 ### name
 
-• **name**: `string`
+> **name**: `string`
 
 The name for the error.
 
-___
+***
 
-### properties
+### properties?
 
-• `Optional` **properties**: `Object`
+> `optional` **properties**: `object`
 
 Any additional information for the error.
 
 #### Index signature
 
-▪ [id: `string`]: `unknown`
+ \[`id`: `string`\]: `unknown`
 
-___
+***
 
-### source
+### source?
 
-• `Optional` **source**: `string`
+> `optional` **source**: `string`
 
 The source of the error.
 
-___
+***
 
-### stack
+### stack?
 
-• `Optional` **stack**: `string`
+> `optional` **stack**: `string`
 
 The stack trace for the error.

@@ -4,9 +4,9 @@ Class to help with objects.
 
 ## Constructors
 
-### constructor
+### new ObjectHelper()
 
-• **new ObjectHelper**(): [`ObjectHelper`](ObjectHelper.md)
+> **new ObjectHelper**(): [`ObjectHelper`](ObjectHelper.md)
 
 #### Returns
 
@@ -14,23 +14,21 @@ Class to help with objects.
 
 ## Methods
 
-### clone
+### clone()
 
-▸ **clone**\<`T`\>(`obj`): `T`
+> `static` **clone**\<`T`\>(`obj`): `T`
 
 Make a deep clone of an object.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj` | `T` | The object to clone. |
+• **obj**: `T`
+
+The object to clone.
 
 #### Returns
 
@@ -38,26 +36,27 @@ Make a deep clone of an object.
 
 The objects clone.
 
-___
+***
 
-### equal
+### equal()
 
-▸ **equal**\<`T`\>(`obj1`, `obj2`): `boolean`
+> `static` **equal**\<`T`\>(`obj1`, `obj2`): `boolean`
 
 Does one object equal another.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj1` | `T` | The first object to compare. |
-| `obj2` | `T` | The second object to compare. |
+• **obj1**: `T`
+
+The first object to compare.
+
+• **obj2**: `T`
+
+The second object to compare.
 
 #### Returns
 
@@ -65,25 +64,23 @@ Does one object equal another.
 
 True is the objects are equal.
 
-___
+***
 
-### fromBytes
+### fromBytes()
 
-▸ **fromBytes**\<`T`\>(`bytes`): `T`
+> `static` **fromBytes**\<`T`\>(`bytes`): `T`
 
 Convert a bytes to an object.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bytes` | `undefined` \| ``null`` \| `Uint8Array` | The bytes to convert to an object. |
+• **bytes**: `undefined` \| `null` \| `Uint8Array`
+
+The bytes to convert to an object.
 
 #### Returns
 
@@ -91,30 +88,31 @@ Convert a bytes to an object.
 
 The object.
 
-**`Throws`**
+#### Throws
 
 GeneralError if there was an error parsing the JSON.
 
-___
+***
 
-### pick
+### pick()
 
-▸ **pick**\<`T`\>(`obj`, `keys?`): `Partial`\<`T`\>
+> `static` **pick**\<`T`\>(`obj`, `keys`?): `Partial`\<`T`\>
 
 Pick a subset of properties from an object.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj` | `T` | The object to pick the properties from. |
-| `keys?` | keyof `T`[] | The property keys to pick. |
+• **obj**: `T`
+
+The object to pick the properties from.
+
+• **keys?**: keyof `T`[]
+
+The property keys to pick.
 
 #### Returns
 
@@ -122,20 +120,23 @@ Pick a subset of properties from an object.
 
 The partial object.
 
-___
+***
 
-### propertyGet
+### propertyGet()
 
-▸ **propertyGet**(`obj`, `property`): `unknown`
+> `static` **propertyGet**(`obj`, `property`): `unknown`
 
 Get the property of an unknown object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj` | `unknown` | The object to get the property from. |
-| `property` | `string` | The property to get. |
+• **obj**: `unknown`
+
+The object to get the property from.
+
+• **property**: `string`
+
+The property to get.
 
 #### Returns
 
@@ -143,46 +144,53 @@ Get the property of an unknown object.
 
 The property.
 
-___
+***
 
-### propertySet
+### propertySet()
 
-▸ **propertySet**(`obj`, `property`, `value`): `void`
+> `static` **propertySet**(`obj`, `property`, `value`): `void`
 
 Set the property of an unknown object.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj` | `unknown` | The object to set the property from. |
-| `property` | `string` | The property to set. |
-| `value` | `unknown` | The value to set. |
+• **obj**: `unknown`
+
+The object to set the property from.
+
+• **property**: `string`
+
+The property to set.
+
+• **value**: `unknown`
+
+The value to set.
 
 #### Returns
 
 `void`
 
-___
+***
 
-### toBytes
+### toBytes()
 
-▸ **toBytes**\<`T`\>(`obj`, `format?`): `Uint8Array`
+> `static` **toBytes**\<`T`\>(`obj`, `format`): `Uint8Array`
 
 Convert an object to bytes.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `obj` | `undefined` \| `T` | `undefined` | The object to convert. |
-| `format` | `boolean` | `false` | Format the JSON content. |
+• **obj**: `undefined` \| `T`
+
+The object to convert.
+
+• **format**: `boolean`= `false`
+
+Format the JSON content.
 
 #### Returns
 

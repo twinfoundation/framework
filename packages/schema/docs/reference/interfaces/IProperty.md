@@ -6,22 +6,22 @@ Interface describing a property.
 
 ### key
 
-• **key**: `string`
+> **key**: `string`
 
 The key for the item.
 
-___
+***
 
 ### type
 
-• **type**: `string`
+> **type**: `string`
 
 The type for the item.
 
-___
+***
 
 ### value
 
-• **value**: `unknown`
+> **value**: `unknown`
 
 The value for the item.

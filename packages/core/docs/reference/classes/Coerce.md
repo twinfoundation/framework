@@ -4,9 +4,9 @@ Coerce an object from one type to another.
 
 ## Constructors
 
-### constructor
+### new Coerce()
 
-• **new Coerce**(): [`Coerce`](Coerce.md)
+> **new Coerce**(): [`Coerce`](Coerce.md)
 
 #### Returns
 
@@ -14,17 +14,17 @@ Coerce an object from one type to another.
 
 ## Methods
 
-### bigint
+### bigint()
 
-▸ **bigint**(`value`): `undefined` \| `bigint`
+> `static` **bigint**(`value`): `undefined` \| `bigint`
 
 Coerce the value to a bigint.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to coerce. |
+• **value**: `unknown`
+
+The value to coerce.
 
 #### Returns
 
@@ -32,23 +32,23 @@ Coerce the value to a bigint.
 
 The value if it can be coerced.
 
-**`Throws`**
+#### Throws
 
 TypeError If the value can not be coerced.
 
-___
+***
 
-### boolean
+### boolean()
 
-▸ **boolean**(`value`): `undefined` \| `boolean`
+> `static` **boolean**(`value`): `undefined` \| `boolean`
 
 Coerce the value to a boolean.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to coerce. |
+• **value**: `unknown`
+
+The value to coerce.
 
 #### Returns
 
@@ -56,23 +56,23 @@ Coerce the value to a boolean.
 
 The value if it can be coerced.
 
-**`Throws`**
+#### Throws
 
 TypeError If the value can not be coerced.
 
-___
+***
 
-### date
+### date()
 
-▸ **date**(`value`): `undefined` \| `Date`
+> `static` **date**(`value`): `undefined` \| `Date`
 
 Coerce the value to a date.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to coerce. |
+• **value**: `unknown`
+
+The value to coerce.
 
 #### Returns
 
@@ -80,23 +80,23 @@ Coerce the value to a date.
 
 The value if it can be coerced.
 
-**`Throws`**
+#### Throws
 
 TypeError If the value can not be coerced.
 
-___
+***
 
-### dateTime
+### dateTime()
 
-▸ **dateTime**(`value`): `undefined` \| `Date`
+> `static` **dateTime**(`value`): `undefined` \| `Date`
 
 Coerce the value to a date/time.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to coerce. |
+• **value**: `unknown`
+
+The value to coerce.
 
 #### Returns
 
@@ -104,23 +104,23 @@ Coerce the value to a date/time.
 
 The value if it can be coerced.
 
-**`Throws`**
+#### Throws
 
 TypeError If the value can not be coerced.
 
-___
+***
 
-### number
+### number()
 
-▸ **number**(`value`): `undefined` \| `number`
+> `static` **number**(`value`): `undefined` \| `number`
 
 Coerce the value to a number.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to coerce. |
+• **value**: `unknown`
+
+The value to coerce.
 
 #### Returns
 
@@ -128,23 +128,23 @@ Coerce the value to a number.
 
 The value if it can be coerced.
 
-**`Throws`**
+#### Throws
 
 TypeError If the value can not be coerced.
 
-___
+***
 
-### string
+### string()
 
-▸ **string**(`value`): `undefined` \| `string`
+> `static` **string**(`value`): `undefined` \| `string`
 
 Coerce the value to a string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to coerce. |
+• **value**: `unknown`
+
+The value to coerce.
 
 #### Returns
 
@@ -152,23 +152,23 @@ Coerce the value to a string.
 
 The value if it can be coerced.
 
-**`Throws`**
+#### Throws
 
 TypeError If the value can not be coerced.
 
-___
+***
 
-### time
+### time()
 
-▸ **time**(`value`): `undefined` \| `Date`
+> `static` **time**(`value`): `undefined` \| `Date`
 
 Coerce the value to a time.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to coerce. |
+• **value**: `unknown`
+
+The value to coerce.
 
 #### Returns
 
@@ -176,6 +176,6 @@ Coerce the value to a time.
 
 The value if it can be coerced.
 
-**`Throws`**
+#### Throws
 
 TypeError If the value can not be coerced.

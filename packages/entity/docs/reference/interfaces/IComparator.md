@@ -4,30 +4,28 @@ Interface defining comparator operator.
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `unknown` |
+• **T** = `unknown`
 
 ## Properties
 
 ### operator
 
-• **operator**: [`ComparisonOperator`](../enums/ComparisonOperator.md)
+> **operator**: [`ComparisonOperator`](../enumerations/ComparisonOperator.md)
 
 The check to perform.
 
-___
+***
 
 ### property
 
-• **property**: keyof `T`
+> **property**: keyof `T`
 
 The name of the property in the object to check.
 
-___
+***
 
 ### value
 
-• **value**: `unknown`
+> **value**: `unknown`
 
 The value of the property to check.

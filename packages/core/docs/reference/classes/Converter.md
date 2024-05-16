@@ -4,9 +4,9 @@ Convert arrays to and from different formats.
 
 ## Constructors
 
-### constructor
+### new Converter()
 
-• **new Converter**(): [`Converter`](Converter.md)
+> **new Converter**(): [`Converter`](Converter.md)
 
 #### Returns
 
@@ -14,17 +14,17 @@ Convert arrays to and from different formats.
 
 ## Methods
 
-### base64ToBytes
+### base64ToBytes()
 
-▸ **base64ToBytes**(`base64`): `Uint8Array`
+> `static` **base64ToBytes**(`base64`): `Uint8Array`
 
 Convert a base64 string to bytes.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `base64` | `string` | The base64 string. |
+• **base64**: `string`
+
+The base64 string.
 
 #### Returns
 
@@ -32,19 +32,19 @@ Convert a base64 string to bytes.
 
 The bytes.
 
-___
+***
 
-### base64UrlToBytes
+### base64UrlToBytes()
 
-▸ **base64UrlToBytes**(`base64Url`): `Uint8Array`
+> `static` **base64UrlToBytes**(`base64Url`): `Uint8Array`
 
 Convert a base64 url string to bytes.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `base64Url` | `string` | The base64 url string. |
+• **base64Url**: `string`
+
+The base64 url string.
 
 #### Returns
 
@@ -52,19 +52,19 @@ Convert a base64 url string to bytes.
 
 The bytes.
 
-___
+***
 
-### binaryToBytes
+### binaryToBytes()
 
-▸ **binaryToBytes**(`binary`): `Uint8Array`
+> `static` **binaryToBytes**(`binary`): `Uint8Array`
 
 Convert a binary string to bytes.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `binary` | `string` | The binary string. |
+• **binary**: `string`
+
+The binary string.
 
 #### Returns
 
@@ -72,19 +72,19 @@ Convert a binary string to bytes.
 
 The bytes.
 
-___
+***
 
-### bytesToBase64
+### bytesToBase64()
 
-▸ **bytesToBase64**(`bytes`): `string`
+> `static` **bytesToBase64**(`bytes`): `string`
 
 Convert bytes to base64 string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bytes` | `Uint8Array` | The bytes to convert. |
+• **bytes**: `Uint8Array`
+
+The bytes to convert.
 
 #### Returns
 
@@ -92,19 +92,19 @@ Convert bytes to base64 string.
 
 A base64 string of the bytes.
 
-___
+***
 
-### bytesToBase64Url
+### bytesToBase64Url()
 
-▸ **bytesToBase64Url**(`bytes`): `string`
+> `static` **bytesToBase64Url**(`bytes`): `string`
 
 Convert bytes to base64 url string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bytes` | `Uint8Array` | The bytes to convert. |
+• **bytes**: `Uint8Array`
+
+The bytes to convert.
 
 #### Returns
 
@@ -112,19 +112,19 @@ Convert bytes to base64 url string.
 
 A base64 url string of the bytes.
 
-___
+***
 
-### bytesToBinary
+### bytesToBinary()
 
-▸ **bytesToBinary**(`bytes`): `string`
+> `static` **bytesToBinary**(`bytes`): `string`
 
 Convert bytes to binary string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bytes` | `Uint8Array` | The bytes to convert. |
+• **bytes**: `Uint8Array`
+
+The bytes to convert.
 
 #### Returns
 
@@ -132,23 +132,35 @@ Convert bytes to binary string.
 
 A binary string of the bytes.
 
-___
+***
 
-### bytesToHex
+### bytesToHex()
 
-▸ **bytesToHex**(`array`, `includePrefix?`, `startIndex?`, `length?`, `reverse?`): `string`
+> `static` **bytesToHex**(`array`, `includePrefix`, `startIndex`?, `length`?, `reverse`?): `string`
 
 Encode a raw array to hex string.
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `array` | `ArrayLike`\<`number`\> | `undefined` | The bytes to encode. |
-| `includePrefix` | `boolean` | `false` | Include the 0x prefix on the returned hex. |
-| `startIndex?` | `number` | `undefined` | The index to start in the bytes. |
-| `length?` | `number` | `undefined` | The length of bytes to read. |
-| `reverse?` | `boolean` | `undefined` | Reverse the combine direction. |
+• **array**: `ArrayLike`\<`number`\>
+
+The bytes to encode.
+
+• **includePrefix**: `boolean`= `false`
+
+Include the 0x prefix on the returned hex.
+
+• **startIndex?**: `number`
+
+The index to start in the bytes.
+
+• **length?**: `number`
+
+The length of bytes to read.
+
+• **reverse?**: `boolean`
+
+Reverse the combine direction.
 
 #### Returns
 
@@ -156,21 +168,27 @@ Encode a raw array to hex string.
 
 The array formatted as hex.
 
-___
+***
 
-### bytesToUtf8
+### bytesToUtf8()
 
-▸ **bytesToUtf8**(`array`, `startIndex?`, `length?`): `string`
+> `static` **bytesToUtf8**(`array`, `startIndex`?, `length`?): `string`
 
 Encode a raw array to UTF8 string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `array` | `ArrayLike`\<`number`\> | The bytes to encode. |
-| `startIndex?` | `number` | The index to start in the bytes. |
-| `length?` | `number` | The length of bytes to read. |
+• **array**: `ArrayLike`\<`number`\>
+
+The bytes to encode.
+
+• **startIndex?**: `number`
+
+The index to start in the bytes.
+
+• **length?**: `number`
+
+The length of bytes to read.
 
 #### Returns
 
@@ -178,20 +196,23 @@ Encode a raw array to UTF8 string.
 
 The array formatted as UTF8.
 
-___
+***
 
-### hexToBytes
+### hexToBytes()
 
-▸ **hexToBytes**(`hex`, `reverse?`): `Uint8Array`
+> `static` **hexToBytes**(`hex`, `reverse`?): `Uint8Array`
 
 Decode a hex string to raw array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `hex` | `string` | The hex to decode. |
-| `reverse?` | `boolean` | Store the characters in reverse. |
+• **hex**: `string`
+
+The hex to decode.
+
+• **reverse?**: `boolean`
+
+Store the characters in reverse.
 
 #### Returns
 
@@ -199,19 +220,19 @@ Decode a hex string to raw array.
 
 The array.
 
-___
+***
 
-### hexToUtf8
+### hexToUtf8()
 
-▸ **hexToUtf8**(`hex`): `string`
+> `static` **hexToUtf8**(`hex`): `string`
 
 Convert the hex text to text.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `hex` | `string` | The hex to convert. |
+• **hex**: `string`
+
+The hex to convert.
 
 #### Returns
 
@@ -219,19 +240,19 @@ Convert the hex text to text.
 
 The UTF8 version of the bytes.
 
-___
+***
 
-### utf8ToBytes
+### utf8ToBytes()
 
-▸ **utf8ToBytes**(`utf8`): `Uint8Array`
+> `static` **utf8ToBytes**(`utf8`): `Uint8Array`
 
 Convert a UTF8 string to raw array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `utf8` | `string` | The text to decode. |
+• **utf8**: `string`
+
+The text to decode.
 
 #### Returns
 
@@ -239,20 +260,23 @@ Convert a UTF8 string to raw array.
 
 The array.
 
-___
+***
 
-### utf8ToHex
+### utf8ToHex()
 
-▸ **utf8ToHex**(`utf8`, `includePrefix?`): `string`
+> `static` **utf8ToHex**(`utf8`, `includePrefix`): `string`
 
 Convert the UTF8 to hex.
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `utf8` | `string` | `undefined` | The text to convert. |
-| `includePrefix` | `boolean` | `false` | Include the 0x prefix on the returned hex. |
+• **utf8**: `string`
+
+The text to convert.
+
+• **includePrefix**: `boolean`= `false`
+
+Include the 0x prefix on the returned hex.
 
 #### Returns
 
