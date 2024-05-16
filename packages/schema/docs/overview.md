@@ -1,4 +1,4 @@
-# GTSC / Schema
+# GTSC Schema
 
 The package contains definitions and helpers for using with schemas.
 

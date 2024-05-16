@@ -1,4 +1,4 @@
-# GTSC / Framework
+# GTSC Framework
 
 This mono-repository contains some of the fundamental packages that the rest of the GTSC packages depend on. There are lots of utility functions and helper classes.
 

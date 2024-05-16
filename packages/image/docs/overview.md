@@ -1,4 +1,4 @@
-# GTSC / Image
+# GTSC Image
 
 This package contains classes for processing images.
 

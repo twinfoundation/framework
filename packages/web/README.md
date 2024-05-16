@@ -1,4 +1,4 @@
-# GTSC / Web
+# GTSC Web
 
 Contains classes for use with web operations.
 

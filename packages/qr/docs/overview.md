@@ -1,4 +1,4 @@
-# GTSC / QR
+# GTSC QR
 
 The package contains classes for generating QR codes.
 

@@ -1,4 +1,4 @@
-# GTSC / Services
+# GTSC Services
 
 The package contains definitions and helpers for services.
 
