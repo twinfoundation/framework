@@ -3,7 +3,6 @@
 	"out": "./docs/reference",
 	"hideGenerator": true,
 	"hideBreadcrumbs": true,
-	"hideInPageTOC": true,
 	"githubPages": false,
 	"disableSources": true,
 	"treatWarningsAsErrors": true,

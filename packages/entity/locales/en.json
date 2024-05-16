@@ -1,8 +1,8 @@
 {
 	"error": {
-		"entityPropertyDescriptor": {
-			"noIsPrimary": "Property \"entityDescriptor.properties\" must contain a value with isPrimary set",
-			"multipleIsPrimary": "Property \"entityDescriptor.properties\" contains more than one property with isPrimary set"
+		"entitySchemaHelper": {
+			"noIsPrimary": "Property \"entitySchema.properties\" must contain a value with isPrimary set",
+			"multipleIsPrimary": "Property \"entitySchema.properties\" contains more than one property with isPrimary set"
 		}
 	}
 }

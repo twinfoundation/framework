@@ -1,12 +1,16 @@
+[**@gtsc/web**](../README.md) • **Docs**
+
+***
+
 # Class: FetchHelper
 
 Class to helper with fetch operations.
 
 ## Constructors
 
-### constructor
+### new FetchHelper()
 
-• **new FetchHelper**(): [`FetchHelper`](FetchHelper.md)
+> **new FetchHelper**(): [`FetchHelper`](FetchHelper.md)
 
 #### Returns
 
@@ -14,22 +18,37 @@ Class to helper with fetch operations.
 
 ## Methods
 
-### fetch
+### fetch()
 
-▸ **fetch**(`source`, `endpoint`, `path`, `method`, `body?`, `options?`): `Promise`\<`Response`\>
+> `static` **fetch**(`source`, `endpoint`, `path`, `method`, `body`?, `options`?): `Promise`\<`Response`\>
 
 Perform a fetch request.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source for the request. |
-| `endpoint` | `string` | The base endpoint for the request. |
-| `path` | `string` | The path of the request. |
-| `method` | [`HttpMethods`](../modules.md#httpmethods) | The http method. |
-| `body?` | `string` \| `Uint8Array` | Request to send to the endpoint. |
-| `options?` | [`IFetchOptions`](../interfaces/IFetchOptions.md) | Options for sending the requests. |
+• **source**: `string`
+
+The source for the request.
+
+• **endpoint**: `string`
+
+The base endpoint for the request.
+
+• **path**: `string`
+
+The path of the request.
+
+• **method**: [`HttpMethods`](../type-aliases/HttpMethods.md)
+
+The http method.
+
+• **body?**: `string` \| `Uint8Array`
+
+Request to send to the endpoint.
+
+• **options?**: [`IFetchOptions`](../interfaces/IFetchOptions.md)
+
+Options for sending the requests.
 
 #### Returns
 
@@ -37,30 +56,43 @@ Perform a fetch request.
 
 The response.
 
-___
+***
 
-### fetchBinary
+### fetchBinary()
 
-▸ **fetchBinary**\<`T`\>(`source`, `endpoint`, `path`, `method`, `requestData?`, `options?`): `Promise`\<`Uint8Array` \| `T`\>
+> `static` **fetchBinary**\<`T`\>(`source`, `endpoint`, `path`, `method`, `requestData`?, `options`?): `Promise`\<`Uint8Array` \| `T`\>
 
 Perform a request for binary data.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source for the request. |
-| `endpoint` | `string` | The base endpoint for the request. |
-| `path` | `string` | The path of the request. |
-| `method` | ``"GET"`` \| ``"POST"`` | The http method. |
-| `requestData?` | `Uint8Array` | Request to send to the endpoint. |
-| `options?` | [`IFetchOptions`](../interfaces/IFetchOptions.md) | Options for sending the requests. |
+• **source**: `string`
+
+The source for the request.
+
+• **endpoint**: `string`
+
+The base endpoint for the request.
+
+• **path**: `string`
+
+The path of the request.
+
+• **method**: `"GET"` \| `"POST"`
+
+The http method.
+
+• **requestData?**: `Uint8Array`
+
+Request to send to the endpoint.
+
+• **options?**: [`IFetchOptions`](../interfaces/IFetchOptions.md)
+
+Options for sending the requests.
 
 #### Returns
 
@@ -68,31 +100,45 @@ Perform a request for binary data.
 
 The response.
 
-___
+***
 
-### fetchJson
+### fetchJson()
 
-▸ **fetchJson**\<`T`, `U`\>(`source`, `endpoint`, `path`, `method`, `requestData?`, `options?`): `Promise`\<`U`\>
+> `static` **fetchJson**\<`T`, `U`\>(`source`, `endpoint`, `path`, `method`, `requestData`?, `options`?): `Promise`\<`U`\>
 
 Perform a request in json format.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
-| `U` |
+• **T**
+
+• **U**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source for the request. |
-| `endpoint` | `string` | The base endpoint for the request. |
-| `path` | `string` | The path of the request. |
-| `method` | [`HttpMethods`](../modules.md#httpmethods) | The http method. |
-| `requestData?` | `T` | Request to send to the endpoint. |
-| `options?` | [`IFetchOptions`](../interfaces/IFetchOptions.md) | Options for sending the requests. |
+• **source**: `string`
+
+The source for the request.
+
+• **endpoint**: `string`
+
+The base endpoint for the request.
+
+• **path**: `string`
+
+The path of the request.
+
+• **method**: [`HttpMethods`](../type-aliases/HttpMethods.md)
+
+The http method.
+
+• **requestData?**: `T`
+
+Request to send to the endpoint.
+
+• **options?**: [`IFetchOptions`](../interfaces/IFetchOptions.md)
+
+Options for sending the requests.
 
 #### Returns
 

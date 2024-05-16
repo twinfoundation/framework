@@ -1,3 +1,7 @@
+[**@gtsc/core**](../README.md) • **Docs**
+
+***
+
 # Interface: ILocalesIndex
 
 Model for a locales index.
@@ -6,6 +10,6 @@ Model for a locales index.
 
 ### locales
 
-• **locales**: [`ILocale`](ILocale.md)[]
+> **locales**: [`ILocale`](ILocale.md)[]
 
 The list of locales.

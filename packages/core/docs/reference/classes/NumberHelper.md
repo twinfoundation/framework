@@ -1,12 +1,16 @@
+[**@gtsc/core**](../README.md) • **Docs**
+
+***
+
 # Class: NumberHelper
 
 Class to help with numbers.
 
 ## Constructors
 
-### constructor
+### new NumberHelper()
 
-• **new NumberHelper**(): [`NumberHelper`](NumberHelper.md)
+> **new NumberHelper**(): [`NumberHelper`](NumberHelper.md)
 
 #### Returns
 
@@ -14,17 +18,17 @@ Class to help with numbers.
 
 ## Methods
 
-### strictParseFloat
+### strictParseFloat()
 
-▸ **strictParseFloat**(`value`): `number`
+> `static` **strictParseFloat**(`value`): `number`
 
 Strict parse as float.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to parse. |
+• **value**: `unknown`
+
+The value to parse.
 
 #### Returns
 
@@ -32,19 +36,19 @@ Strict parse as float.
 
 The parsed value.
 
-___
+***
 
-### strictParseInt
+### strictParseInt()
 
-▸ **strictParseInt**(`value`): `number`
+> `static` **strictParseInt**(`value`): `number`
 
 Strict parse as integer.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to parse. |
+• **value**: `unknown`
+
+The value to parse.
 
 #### Returns
 

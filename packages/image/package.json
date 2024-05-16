@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/image",
-	"version": "0.0.3-next.32",
+	"version": "0.0.3-next.33",
 	"description": "Classes for image manipulation",
 	"repository": {
 		"type": "git",
@@ -28,21 +28,21 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.3-next.32",
+		"@gtsc/core": "0.0.3-next.33",
 		"@gtsc/nameof": "^0.0.4"
 	},
 	"devDependencies": {
 		"@gtsc/nameof-transformer": "^0.0.4",
-		"@vitest/coverage-v8": "^1.5.3",
+		"@vitest/coverage-v8": "^1.6.0",
 		"copyfiles": "^2.4.1",
-		"rimraf": "^5.0.5",
+		"rimraf": "^5.0.7",
 		"rollup": "^4.17.2",
 		"rollup-plugin-typescript2": "^0.36.0",
 		"ts-patch": "^3.1.2",
 		"typedoc": "^0.25.13",
-		"typedoc-plugin-markdown": "^3.17.1",
+		"typedoc-plugin-markdown": "^4.0.2",
 		"typescript": "^5.4.5",
-		"vitest": "^1.5.3"
+		"vitest": "^1.6.0"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",

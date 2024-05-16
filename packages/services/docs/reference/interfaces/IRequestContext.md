@@ -1,27 +1,31 @@
+[**@gtsc/services**](../README.md) • **Docs**
+
+***
+
 # Interface: IRequestContext
 
 The context for the request.
 
 ## Properties
 
-### identity
+### identity?
 
-• `Optional` **identity**: `string`
+> `optional` **identity**: `string`
 
 The identity of the requestor if there is an authenticated user.
 
-___
+***
 
-### locale
+### locale?
 
-• `Optional` **locale**: `string`
+> `optional` **locale**: `string`
 
 The locale of the context as a code e.g. es-ES, defaults to en.
 
-___
+***
 
-### tenantId
+### tenantId?
 
-• `Optional` **tenantId**: `string`
+> `optional` **tenantId**: `string`
 
 The tenant id for partitioning data, correlated from the api key making the request.

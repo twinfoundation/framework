@@ -1,12 +1,16 @@
+[**@gtsc/crypto**](../README.md) • **Docs**
+
+***
+
 # Class: PasswordGenerator
 
 Generate random passwords.
 
 ## Constructors
 
-### constructor
+### new PasswordGenerator()
 
-• **new PasswordGenerator**(): [`PasswordGenerator`](PasswordGenerator.md)
+> **new PasswordGenerator**(): [`PasswordGenerator`](PasswordGenerator.md)
 
 #### Returns
 
@@ -14,17 +18,17 @@ Generate random passwords.
 
 ## Methods
 
-### generate
+### generate()
 
-▸ **generate**(`length`): `string`
+> `static` **generate**(`length`): `string`
 
 Generate a password of given length.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `length` | `number` | The length of the password to generate. |
+• **length**: `number`
+
+The length of the password to generate.
 
 #### Returns
 

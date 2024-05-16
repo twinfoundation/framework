@@ -1,3 +1,7 @@
+[**@gtsc/core**](../README.md) • **Docs**
+
+***
+
 # Interface: ILocale
 
 Model for a local.
@@ -6,14 +10,14 @@ Model for a local.
 
 ### code
 
-• **code**: `string`
+> **code**: `string`
 
 The code.
 
-___
+***
 
 ### label
 
-• **label**: `string`
+> **label**: `string`
 
 The label.

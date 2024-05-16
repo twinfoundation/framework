@@ -8,11 +8,13 @@
 		"forceConsistentCasingInFileNames": true,
 		"stripInternal": true,
 		"noEmitHelpers": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
 		"sourceMap": true,
 		"sourceRoot": "./src",
 		"declaration": true,
 		"declarationDir": "dist/types",
-		"types": [],
+		"types": ["@types/json-schema"],
 		"plugins": [{ "transform": "@gtsc/nameof-transformer" }]
 	},
 	"include": ["src/**/*.ts"]

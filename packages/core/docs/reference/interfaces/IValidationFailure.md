@@ -1,31 +1,35 @@
+[**@gtsc/core**](../README.md) • **Docs**
+
+***
+
 # Interface: IValidationFailure
 
 Interface describing the reason a validation failed.
 
 ## Properties
 
-### properties
+### properties?
 
-• `Optional` **properties**: `Object`
+> `optional` **properties**: `object`
 
 Additional properties for the validation failure.
 
 #### Index signature
 
-▪ [id: `string`]: `unknown`
+ \[`id`: `string`\]: `unknown`
 
-___
+***
 
 ### property
 
-• **property**: `string`
+> **property**: `string`
 
 The property that failed validation.
 
-___
+***
 
 ### reason
 
-• **reason**: `string`
+> **reason**: `string`
 
 The reason the validation failed.

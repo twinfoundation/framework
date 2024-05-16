@@ -1,12 +1,16 @@
+[**@gtsc/core**](../README.md) • **Docs**
+
+***
+
 # Class: Compression
 
 A class to handle compression.
 
 ## Constructors
 
-### constructor
+### new Compression()
 
-• **new Compression**(): [`Compression`](Compression.md)
+> **new Compression**(): [`Compression`](Compression.md)
 
 #### Returns
 
@@ -14,18 +18,21 @@ A class to handle compression.
 
 ## Methods
 
-### compress
+### compress()
 
-▸ **compress**(`bytes`, `type`): `Promise`\<`Uint8Array`\>
+> `static` **compress**(`bytes`, `type`): `Promise`\<`Uint8Array`\>
 
 Compress bytes using GZIP.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bytes` | `Uint8Array` | The bytes to compress. |
-| `type` | [`CompressionType`](../modules.md#compressiontype) | The type of compression to use. |
+• **bytes**: `Uint8Array`
+
+The bytes to compress.
+
+• **type**: [`CompressionType`](../type-aliases/CompressionType.md)
+
+The type of compression to use.
 
 #### Returns
 
@@ -33,20 +40,23 @@ Compress bytes using GZIP.
 
 The compressed bytes.
 
-___
+***
 
-### decompress
+### decompress()
 
-▸ **decompress**(`compressedBytes`, `type`): `Promise`\<`Uint8Array`\>
+> `static` **decompress**(`compressedBytes`, `type`): `Promise`\<`Uint8Array`\>
 
 Decompress a gzipped compressed byte array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `compressedBytes` | `Uint8Array` | The compressed bytes. |
-| `type` | [`CompressionType`](../modules.md#compressiontype) | The type of compression to use. |
+• **compressedBytes**: `Uint8Array`
+
+The compressed bytes.
+
+• **type**: [`CompressionType`](../type-aliases/CompressionType.md)
+
+The type of compression to use.
 
 #### Returns
 

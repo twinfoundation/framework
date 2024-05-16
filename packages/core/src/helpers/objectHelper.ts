@@ -57,7 +57,7 @@ export class ObjectHelper {
 		if (Is.undefined(obj)) {
 			return undefined as T;
 		}
-		return JSON.parse(JSON.stringify(obj)) as T;
+		return structuredClone(obj);
 	}
 
 	/**
