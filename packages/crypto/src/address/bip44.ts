@@ -4,12 +4,12 @@
 import { GeneralError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { Bech32 } from "../address/bech32";
+import { Ed25519 } from "../curves/ed25519";
 import { Blake2b } from "../hashes/blake2b";
 import { Bip32Path } from "../keys/bip32Path";
 import { Slip0010 } from "../keys/slip0010";
 import type { IKeyPair } from "../models/IKeyPair";
 import { KeyType } from "../models/keyType";
-import { Ed25519 } from "../signatures/ed25519";
 
 /**
  * Implementation of Bip44 for address generation.
@@ -80,11 +80,11 @@ export class Bip44 {
 		const keys = Slip0010.derivePath(seed, bip44Path);
 
 		if (keyType === KeyType.Ed25519) {
-			const keyPair = Ed25519.keyPairFromSeed(keys.privateKey);
+			const publicKey = Ed25519.publicKeyFromPrivateKey(keys.privateKey);
 			return {
 				type: keyType,
-				privateKey: keyPair.privateKey.slice(0, 32),
-				publicKey: keyPair.publicKey
+				privateKey: keys.privateKey,
+				publicKey
 			};
 		}
 

@@ -26,7 +26,7 @@ Generate a bip44 address from the seed and parts.
 
 The account seed.
 
-• **keyType**: [`Ed25519`](../enumerations/KeyType.md#ed25519)
+• **keyType**: [`KeyType`](../enumerations/KeyType.md)
 
 The key type.
 
@@ -98,7 +98,7 @@ Generate a bip44 key pair from the seed and parts.
 
 The account seed.
 
-• **keyType**: [`Ed25519`](../enumerations/KeyType.md#ed25519)
+• **keyType**: [`KeyType`](../enumerations/KeyType.md)
 
 The key type.
 

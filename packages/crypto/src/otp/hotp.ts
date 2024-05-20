@@ -4,7 +4,7 @@
 
 import { Converter, Guards } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
-import { HmacSha1 } from "../macs/hmacSha1";
+import { HmacSha1 } from "../hashes/hmacSha1";
 
 /**
  * Perform HOTP.

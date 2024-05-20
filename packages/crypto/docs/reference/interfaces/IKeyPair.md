@@ -22,6 +22,6 @@ The public version of the key.
 
 ### type
 
-> **type**: [`Ed25519`](../enumerations/KeyType.md#ed25519)
+> **type**: [`KeyType`](../enumerations/KeyType.md)
 
 The type of the key.

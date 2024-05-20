@@ -11,8 +11,12 @@
 			"checksumMismatch": "The checksum does not match \"{newChecksum}\" != \"${checksumBits}\""
 		},
 		"ed25519": {
-			"seedLength": "The seed length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\"",
-			"privateKeyLength": "The private key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\""
+			"privateKeyLength": "The private key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\"",
+			"publicKeyLength": "The public key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\""
+		},
+		"secp256k1": {
+			"privateKeyLength": "The private key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\"",
+			"publicKeyLength": "The public key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\""
 		},
 		"x25519": {
 			"invalidPublicKey": "Invalid Ed25519 Public Key"
@@ -21,16 +25,17 @@
 			"outputLength64": "The output length should be between 1 and 64, it is \"{outputLength}\"",
 			"keyLength64": "The key length should be between 1 and 64, it is \"{keyLength}\""
 		},
-		"sha1": {
-			"alreadyFinalised": "The hash has already been finalised"
-		},
 		"sha512": {
-			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\"",
-			"alreadyFinalised": "The hash has already been finalised"
+			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\""
 		},
 		"sha256": {
-			"bitSize": "Only 224 or 256 bits are supported, it is \"{bitSize}\"",
-			"alreadyFinalised": "The hash has already been finalised"
+			"bitSize": "Only 224 or 256 bits are supported, it is \"{bitSize}\""
+		},
+		"hmacSha256": {
+			"bitSize": "Only 224 or 256 bits are supported, it is \"{bitSize}\""
+		},
+		"hmacSha512": {
+			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\""
 		},
 		"base32": {
 			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"

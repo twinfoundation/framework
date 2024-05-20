@@ -14,26 +14,6 @@ Implementation of Bip39 for mnemonic generation.
 
 ## Methods
 
-### entropyChecksumBits()
-
-> `static` **entropyChecksumBits**(`entropy`): `string`
-
-Calculate the entropy checksum.
-
-#### Parameters
-
-• **entropy**: `Uint8Array`
-
-The entropy to calculate the checksum for.
-
-#### Returns
-
-`string`
-
-The checksum.
-
-***
-
 ### entropyToMnemonic()
 
 > `static` **entropyToMnemonic**(`entropy`): `string`
@@ -84,7 +64,7 @@ Error if the number of words is not a multiple of 3.
 
 ### mnemonicToSeed()
 
-> `static` **mnemonicToSeed**(`mnemonic`, `password`?, `iterations`?, `keyLength`?): `Uint8Array`
+> `static` **mnemonicToSeed**(`mnemonic`, `password`?): `Uint8Array`
 
 Convert a mnemonic to a seed.
 
@@ -97,14 +77,6 @@ The mnemonic to convert.
 • **password?**: `string`
 
 The password to apply to the seed generation.
-
-• **iterations?**: `number`= `2048`
-
-The number of iterations to perform on the password function, defaults to 2048.
-
-• **keyLength?**: `number`= `64`
-
-The size of the key length to generate, defaults to 64.
 
 #### Returns
 
@@ -135,25 +107,3 @@ The random mnemonic.
 #### Throws
 
 Error if the length is not a multiple of 32.
-
-***
-
-### setWordList()
-
-> `static` **setWordList**(`wordlistData`, `joiningChar`): `void`
-
-Set the wordlist and joining character.
-
-#### Parameters
-
-• **wordlistData**: `string`[]
-
-Array of words.
-
-• **joiningChar**: `string`= `" "`
-
-The character to join the words with.
-
-#### Returns
-
-`void`

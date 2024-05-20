@@ -11,9 +11,7 @@ describe("Bip44", () => {
 		const mnemonic =
 			"agree ill brick grant cement security expire appear unknown law toe keep believe project whale welcome easy twenty deposit hour doctor witness edit mimic";
 		const seed = Bip39.mnemonicToSeed(mnemonic);
-
 		const addressAndKeyPair = Bip44.addressBech32(seed, KeyType.Ed25519, "rms", 4219, 0, false, 0);
-
 		expect(addressAndKeyPair.address).toBe(
 			"rms1qrk2zfuwdmhtw0vc2larmsypvemgsmph25scptnmluyhhxlpkfwx5546u34"
 		);
