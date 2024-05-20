@@ -3,7 +3,7 @@
 
 import { Converter } from "@gtsc/core";
 import testData from "./zip215.json";
-import { Zip215 } from "../../src/signatures/zip215";
+import { Zip215 } from "../../src/curves/zip215";
 
 // https://github.com/hdevalence/ed25519consensus/blob/main/zip215_test.go
 describe("Zip215", () => {

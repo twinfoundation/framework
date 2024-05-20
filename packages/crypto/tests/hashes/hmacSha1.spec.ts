@@ -3,7 +3,7 @@
 
 import { Converter } from "@gtsc/core";
 import testData from "./hmacSha1.json";
-import { HmacSha1 } from "../../src/macs/hmacSha1";
+import { HmacSha1 } from "../../src/hashes/hmacSha1";
 
 describe("HmacSha1", () => {
 	test("Can perform a hmac on short text", () => {

@@ -24,7 +24,7 @@ describe("Slip0010", () => {
 		);
 	});
 
-	test("Can generate a key and chain code from seed and path m/0H", () => {
+	test("Can generate a key and chain code from seed and path m/0", () => {
 		const { privateKey, chainCode } = Slip0010.derivePath(
 			Converter.hexToBytes("000102030405060708090a0b0c0d0e0f"),
 			new Bip32Path("m/0")

@@ -3,9 +3,10 @@
 /* eslint-disable no-bitwise */
 
 import { Converter } from "@gtsc/core";
+import { hmac } from "@noble/hashes/hmac";
+import { sha512 } from "@noble/hashes/sha512";
 import type { Bip32Path } from "./bip32Path";
-import { HmacSha512 } from "../macs/hmacSha512";
-import { Ed25519 } from "../signatures/ed25519";
+import { Ed25519 } from "../curves/ed25519";
 
 /**
  * Class to help with slip0010 key derivation
@@ -21,8 +22,7 @@ export class Slip0010 {
 		privateKey: Uint8Array;
 		chainCode: Uint8Array;
 	} {
-		const hmac = new HmacSha512(Converter.utf8ToBytes("ed25519 seed"));
-		const fullKey = hmac.update(seed).digest();
+		const fullKey = hmac(sha512, Converter.utf8ToBytes("ed25519 seed"), seed);
 		return {
 			privateKey: Uint8Array.from(fullKey.slice(0, 32)),
 			chainCode: Uint8Array.from(fullKey.slice(32))
@@ -57,8 +57,7 @@ export class Slip0010 {
 			data[privateKey.length + 3] = indexValue >>> 8;
 			data[privateKey.length + 4] = indexValue & 0xff;
 
-			// eslint-disable-next-line newline-per-chained-call
-			const fullKey = new HmacSha512(chainCode).update(data).digest();
+			const fullKey = hmac(sha512, chainCode, data);
 
 			privateKey = Uint8Array.from(fullKey.slice(0, 32));
 			chainCode = Uint8Array.from(fullKey.slice(32));
@@ -76,8 +75,7 @@ export class Slip0010 {
 	 * @returns The public key.
 	 */
 	public static getPublicKey(privateKey: Uint8Array, withZeroByte: boolean = true): Uint8Array {
-		const keyPair = Ed25519.keyPairFromSeed(privateKey);
-		const signPk = keyPair.privateKey.slice(32);
+		const signPk = Ed25519.publicKeyFromPrivateKey(privateKey);
 		if (withZeroByte) {
 			const arr = new Uint8Array(1 + signPk.length);
 			arr[0] = 0;

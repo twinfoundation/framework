@@ -1,6 +1,6 @@
 # Class: Sha1
 
-Perform a SHA-1 hash on the data.
+Perform a SHA-1 hash on the block.
 
 ## Constructors
 
@@ -20,27 +20,27 @@ Create a new instance of Sha1.
 
 > **digest**(): `Uint8Array`
 
-Get the digest.
+Get the digest for the hash.
 
 #### Returns
 
 `Uint8Array`
 
-The digest.
+The instance for chaining.
 
 ***
 
 ### update()
 
-> **update**(`message`): [`Sha1`](Sha1.md)
+> **update**(`block`): [`Sha1`](Sha1.md)
 
-Update the hash with the data.
+Update the hash with the block.
 
 #### Parameters
 
-• **message**: `Uint8Array`
+• **block**: `Uint8Array`
 
-The data to update the hash with.
+The block to update the hash with.
 
 #### Returns
 
@@ -48,26 +48,22 @@ The data to update the hash with.
 
 The instance for chaining.
 
-#### Throws
-
-Error if the hash has already been finalized.
-
 ***
 
 ### sum()
 
-> `static` **sum**(`data`): `Uint8Array`
+> `static` **sum**(`block`): `Uint8Array`
 
-Perform Sum on the data.
+Perform Sum on the block.
 
 #### Parameters
 
-• **data**: `Uint8Array`
+• **block**: `Uint8Array`
 
-The data to operate on.
+The block to operate on.
 
 #### Returns
 
 `Uint8Array`
 
-The sum of the data.
+The sum of the block.

@@ -1,20 +1,20 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { Guards } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
+import { hmac } from "@noble/hashes/hmac";
 import { sha1 } from "@noble/hashes/sha1";
 import type { Hash } from "@noble/hashes/utils";
 
 /**
- * Perform a SHA-1 hash on the block.
+ * Class to help with HmacSha1 scheme.
  */
-export class Sha1 {
+export class HmacSha1 {
 	/**
 	 * Runtime name for the class.
 	 * @internal
 	 */
-	private static readonly _CLASS_NAME: string = nameof<Sha1>();
+	private static readonly _CLASS_NAME: string = nameof<HmacSha1>();
 
 	/**
 	 * The instance of the hash.
@@ -24,20 +24,23 @@ export class Sha1 {
 	private readonly _instance: Hash<any>;
 
 	/**
-	 * Create a new instance of Sha1.
+	 * Create a new instance of HmacSha1.
+	 * @param key The key for the hmac.
 	 */
-	constructor() {
-		this._instance = sha1.create();
+	constructor(key: Uint8Array) {
+		this._instance = hmac.create(sha1, key);
 	}
 
 	/**
 	 * Perform Sum on the block.
+	 * @param key The key for the hmac.
 	 * @param block The block to operate on.
 	 * @returns The sum of the block.
 	 */
-	public static sum(block: Uint8Array): Uint8Array {
-		Guards.uint8Array(Sha1._CLASS_NAME, nameof(block), block);
-		return new Sha1().update(block).digest();
+	public static sum(key: Uint8Array, block: Uint8Array): Uint8Array {
+		Guards.uint8Array(HmacSha1._CLASS_NAME, nameof(key), key);
+		Guards.uint8Array(HmacSha1._CLASS_NAME, nameof(block), block);
+		return new HmacSha1(key).update(block).digest();
 	}
 
 	/**
@@ -45,8 +48,8 @@ export class Sha1 {
 	 * @param block The block to update the hash with.
 	 * @returns The instance for chaining.
 	 */
-	public update(block: Uint8Array): Sha1 {
-		Guards.uint8Array(Sha1._CLASS_NAME, nameof(block), block);
+	public update(block: Uint8Array): HmacSha1 {
+		Guards.uint8Array(HmacSha1._CLASS_NAME, nameof(block), block);
 		this._instance.update(block);
 		return this;
 	}

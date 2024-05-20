@@ -90,12 +90,11 @@ describe("Jwt", () => {
 		const mnemonic =
 			"merge skate cycle typical service scrub idea gaze alert lion primary mosquito arrow hover ensure unusual immune length antique shrug earn spatial era pass";
 		const seed = Bip39.mnemonicToSeed(mnemonic);
-		const keyPair = Ed25519.keyPairFromSeed(seed);
 
 		const token = await Jwt.encode(
 			{ alg: "EdDSA" },
 			{ sub: "123456", iat: 100000000 },
-			keyPair.privateKey
+			seed.slice(0, Ed25519.PRIVATE_KEY_SIZE)
 		);
 		expect(token).toEqual(
 			"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.fGmPmgy96AwZ__G_7Y6CDsPQXVPqEQy6x9I1ENKuEAOKJMWS4wZiCZGaGzXxSJbNXXyIfd5m7mUJInyK-KE5CQ"
@@ -116,11 +115,11 @@ describe("Jwt", () => {
 		const mnemonic =
 			"merge skate cycle typical service scrub idea gaze alert lion primary mosquito arrow hover ensure unusual immune length antique shrug earn spatial era pass";
 		const seed = Bip39.mnemonicToSeed(mnemonic);
-		const keyPair = Ed25519.keyPairFromSeed(seed);
+		const publicKey = Ed25519.publicKeyFromPrivateKey(seed.slice(0, Ed25519.PRIVATE_KEY_SIZE));
 
 		const decoded = await Jwt.verify(
 			"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.fGmPmgy96AwZ__G_7Y6CDsPQXVPqEQy6x9I1ENKuEAOKJMWS4wZiCZGaGzXxSJbNXXyIfd5m7mUJInyK-KE5C",
-			keyPair.publicKey
+			publicKey
 		);
 		expect(decoded.verified).toEqual(false);
 		expect(decoded?.header?.alg).toEqual("EdDSA");

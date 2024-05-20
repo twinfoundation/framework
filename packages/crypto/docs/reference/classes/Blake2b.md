@@ -1,25 +1,24 @@
 # Class: Blake2b
 
 Class to help with Blake2B Signature scheme.
-TypeScript conversion from https://github.com/dcposch/blakejs.
 
 ## Constructors
 
 ### new Blake2b()
 
-> **new Blake2b**(`outLen`, `key`?): [`Blake2b`](Blake2b.md)
+> **new Blake2b**(`outputLength`, `key`?): [`Blake2b`](Blake2b.md)
 
 Create a new instance of Blake2b.
 
 #### Parameters
 
-• **outLen**: `number`
+• **outputLength**: `number`
 
-Output length between 1 and 64 bytes.
+The output length.
 
 • **key?**: `Uint8Array`
 
-Optional key.
+Optional key for the hash.
 
 #### Returns
 
@@ -51,75 +50,51 @@ Blake2b 512.
 
 ## Methods
 
-### final()
+### digest()
 
-> **final**(): `Uint8Array`
+> **digest**(): `Uint8Array`
 
-Completes a BLAKE2b streaming hash.
+Get the digest for the hash.
 
 #### Returns
 
 `Uint8Array`
 
-The final data.
-
-***
-
-### init()
-
-> `private` **init**(`outputLength`, `key`?): `void`
-
-Creates a BLAKE2b hashing context.
-
-#### Parameters
-
-• **outputLength**: `number`
-
-Output length between 1 and 64 bytes.
-
-• **key?**: `Uint8Array`
-
-Optional key.
-
-#### Returns
-
-`void`
-
-#### Throws
-
-Error if the output length is not between 1 and 64 bytes.
+The instance for chaining.
 
 ***
 
 ### update()
 
-> **update**(`input`): `void`
+> **update**(`block`): [`Blake2b`](Blake2b.md)
 
-Updates a BLAKE2b streaming hash.
+Update the hash with the block.
 
 #### Parameters
 
-• **input**: `Uint8Array`
+• **block**: `Uint8Array`
 
-The data to hash.
+The block to update the hash with.
 
 #### Returns
 
-`void`
+[`Blake2b`](Blake2b.md)
+
+The instance for chaining.
 
 ***
 
 ### sum160()
 
-> `static` **sum160**(`data`, `key`?): `Uint8Array`
+> `static` **sum160**(`block`, `key`?): `Uint8Array`
 
-Perform Sum 160 on the data.
+Perform Sum 160 on the block.
 
 #### Parameters
 
-• **data**: `Uint8Array`
+• **block**: `Uint8Array`
 
-The data to operate on.
+The block to operate on.
 
 • **key?**: `Uint8Array`
 
@@ -129,21 +104,21 @@ Optional key for the hash.
 
 `Uint8Array`
 
-The sum 160 of the data.
+The sum 160 of the block.
 
 ***
 
 ### sum256()
 
-> `static` **sum256**(`data`, `key`?): `Uint8Array`
+> `static` **sum256**(`block`, `key`?): `Uint8Array`
 
-Perform Sum 256 on the data.
+Perform Sum 256 on the block.
 
 #### Parameters
 
-• **data**: `Uint8Array`
+• **block**: `Uint8Array`
 
-The data to operate on.
+The block to operate on.
 
 • **key?**: `Uint8Array`
 
@@ -153,21 +128,21 @@ Optional key for the hash.
 
 `Uint8Array`
 
-The sum 256 of the data.
+The sum 256 of the block.
 
 ***
 
 ### sum512()
 
-> `static` **sum512**(`data`, `key`?): `Uint8Array`
+> `static` **sum512**(`block`, `key`?): `Uint8Array`
 
-Perform Sum 512 on the data.
+Perform Sum 512 on the block.
 
 #### Parameters
 
-• **data**: `Uint8Array`
+• **block**: `Uint8Array`
 
-The data to operate on.
+The block to operate on.
 
 • **key?**: `Uint8Array`
 
@@ -177,4 +152,4 @@ Optional key for the hash.
 
 `Uint8Array`
 
-The sum 512 of the data.
+The sum 512 of the block.

@@ -3,7 +3,7 @@
 
 import { Converter } from "@gtsc/core";
 import testData from "./x25519.json";
-import { X25519 } from "../../src/signatures/x25519";
+import { X25519 } from "../../src/curves/x25519";
 
 // https://github.com/hdevalence/ed25519consensus/blob/main/zip215_test.go
 describe("X25519", () => {

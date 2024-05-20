@@ -12,24 +12,14 @@ test("ChaCha20Poly1305 encrypt/decrypt test vectors", () => {
 		const nonce = Converter.hexToBytes(testVector.nonce);
 		const plainText = Converter.hexToBytes(testVector.plainText);
 		const aad = Converter.hexToBytes(testVector.aad);
+		const authTag = testVector.authTag;
 
-		const cipher = ChaCha20Poly1305.encryptor(key, nonce);
-		if (aad) {
-			cipher.setAAD(aad);
-		}
-		const cipherData = cipher.update(plainText);
-		expect(Converter.bytesToHex(cipherData)).toEqual(testVector.cipherText);
+		const cipher = new ChaCha20Poly1305(key, nonce, aad);
+		const cipherData = cipher.encrypt(plainText);
+		expect(Converter.bytesToHex(cipherData)).toEqual(testVector.cipherText + authTag);
 
-		cipher.final();
-		const authTag = cipher.getAuthTag();
-		expect(Converter.bytesToHex(authTag)).toEqual(testVector.authTag);
-
-		const decipher = ChaCha20Poly1305.decryptor(key, nonce);
-		decipher.setAuthTag(authTag);
-		if (aad) {
-			decipher.setAAD(aad);
-		}
-		const decipherData = decipher.update(cipherData);
+		const decipher = new ChaCha20Poly1305(key, nonce, aad);
+		const decipherData = decipher.decrypt(cipherData);
 		expect(Converter.bytesToHex(decipherData)).toEqual(Converter.bytesToHex(plainText));
 	}
 });
