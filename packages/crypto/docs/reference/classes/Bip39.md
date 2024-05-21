@@ -16,7 +16,7 @@ Implementation of Bip39 for mnemonic generation.
 
 ### entropyToMnemonic()
 
-> `static` **entropyToMnemonic**(`entropy`): `string`
+> `static` **entropyToMnemonic**(`entropy`, `words`): `string`
 
 Generate a mnemonic from the entropy.
 
@@ -25,6 +25,10 @@ Generate a mnemonic from the entropy.
 • **entropy**: `Uint8Array`
 
 The entropy to generate.
+
+• **words**: `string`[]= `wordlist`
+
+The wordlist to use, defaults to the English wordlist.
 
 #### Returns
 
@@ -40,7 +44,7 @@ Error if the length of the entropy is not a multiple of 4, or is less than 16 or
 
 ### mnemonicToEntropy()
 
-> `static` **mnemonicToEntropy**(`mnemonic`): `Uint8Array`
+> `static` **mnemonicToEntropy**(`mnemonic`, `words`): `Uint8Array`
 
 Convert the mnemonic back to entropy.
 
@@ -49,6 +53,10 @@ Convert the mnemonic back to entropy.
 • **mnemonic**: `string`
 
 The mnemonic to convert.
+
+• **words**: `string`[]= `wordlist`
+
+The wordlist to use, defaults to the English wordlist.
 
 #### Returns
 
@@ -88,15 +96,19 @@ The seed.
 
 ### randomMnemonic()
 
-> `static` **randomMnemonic**(`length`): `string`
+> `static` **randomMnemonic**(`strength`, `words`): `string`
 
 Generate a random mnemonic.
 
 #### Parameters
 
-• **length**: `number`= `256`
+• **strength**: `number`= `256`
 
-The length of the mnemonic to generate, defaults to 256.
+The strength of the mnemonic to generate, defaults to 256.
+
+• **words**: `string`[]= `wordlist`
+
+The wordlist to use, defaults to the English wordlist.
 
 #### Returns
 
