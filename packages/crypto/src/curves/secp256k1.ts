@@ -4,8 +4,6 @@
 import { GeneralError, Guards } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { secp256k1 } from "@noble/curves/secp256k1";
-import type { IKeyPair } from "../models/IKeyPair";
-import { KeyType } from "../models/keyType";
 
 /**
  * Implementation of secp256k1.
@@ -35,29 +33,15 @@ export class Secp256k1 {
 	 */
 	public static publicKeyFromPrivateKey(privateKey: Uint8Array): Uint8Array {
 		Guards.uint8Array(Secp256k1._CLASS_NAME, nameof(privateKey), privateKey);
+
 		if (privateKey.length !== Secp256k1.PRIVATE_KEY_SIZE) {
 			throw new GeneralError(Secp256k1._CLASS_NAME, "privateKeyLength", {
 				requiredSize: Secp256k1.PRIVATE_KEY_SIZE,
 				actualSize: privateKey.length
 			});
 		}
+
 		return secp256k1.getPublicKey(privateKey);
-	}
-
-	/**
-	 * Generate the key pair from the seed.
-	 * @param privateKey The seed to generate the key pair for.
-	 * @returns The key pair.
-	 * @throws Error if the seed is not the correct length.
-	 */
-	public static keyPairFromPrivateKey(privateKey: Uint8Array): IKeyPair {
-		Guards.uint8Array(Secp256k1._CLASS_NAME, nameof(privateKey), privateKey);
-
-		return {
-			type: KeyType.Secp256k1,
-			privateKey,
-			publicKey: Secp256k1.publicKeyFromPrivateKey(privateKey)
-		};
 	}
 
 	/**
@@ -79,7 +63,7 @@ export class Secp256k1 {
 		}
 
 		const res = secp256k1.sign(block, privateKey);
-		return res.toDERRawBytes();
+		return res.toCompactRawBytes();
 	}
 
 	/**

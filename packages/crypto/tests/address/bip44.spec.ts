@@ -15,10 +15,10 @@ describe("Bip44", () => {
 		expect(addressAndKeyPair.address).toBe(
 			"rms1qrk2zfuwdmhtw0vc2larmsypvemgsmph25scptnmluyhhxlpkfwx5546u34"
 		);
-		expect(Converter.bytesToHex(addressAndKeyPair.keyPair.privateKey)).toBe(
+		expect(Converter.bytesToHex(addressAndKeyPair.privateKey)).toBe(
 			"7819681660e891d8b1c4f04e7e9bc77d8b81dc2d25c756da6c1f3b6721ac6831"
 		);
-		expect(Converter.bytesToHex(addressAndKeyPair.keyPair.publicKey)).toBe(
+		expect(Converter.bytesToHex(addressAndKeyPair.publicKey)).toBe(
 			"af8ab4cb01c2107ece426a78430c1eafaf1684f74f2f36cd884ee430863be0c2"
 		);
 	});

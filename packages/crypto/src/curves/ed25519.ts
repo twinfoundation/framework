@@ -33,12 +33,14 @@ export class Ed25519 {
 	 */
 	public static publicKeyFromPrivateKey(privateKey: Uint8Array): Uint8Array {
 		Guards.uint8Array(Ed25519._CLASS_NAME, nameof(privateKey), privateKey);
+
 		if (privateKey.length !== Ed25519.PRIVATE_KEY_SIZE) {
 			throw new GeneralError(Ed25519._CLASS_NAME, "privateKeyLength", {
 				requiredSize: Ed25519.PRIVATE_KEY_SIZE,
 				actualSize: privateKey.length
 			});
 		}
+
 		return ed25519.getPublicKey(privateKey);
 	}
 

@@ -18,7 +18,7 @@ Implementation of Bip44 for address generation.
 
 > `static` **addressBech32**(`seed`, `keyType`, `hrp`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `object`
 
-Generate a bip44 address from the seed and parts.
+Generate a bech32 address from the seed and parts.
 
 #### Parameters
 
@@ -54,15 +54,19 @@ The address index.
 
 `object`
 
-The generated path.
+The generated path and the associated keypair.
 
 ##### address
 
 > **address**: `string`
 
-##### keyPair
+##### privateKey
 
-> **keyPair**: [`IKeyPair`](../interfaces/IKeyPair.md)
+> **privateKey**: `Uint8Array`
+
+##### publicKey
+
+> **publicKey**: `Uint8Array`
 
 ***
 
@@ -88,7 +92,7 @@ The bip44 address base path.
 
 ### keyPair()
 
-> `static` **keyPair**(`seed`, `keyType`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): [`IKeyPair`](../interfaces/IKeyPair.md)
+> `static` **keyPair**(`seed`, `keyType`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `object`
 
 Generate a bip44 key pair from the seed and parts.
 
@@ -120,9 +124,17 @@ The address index.
 
 #### Returns
 
-[`IKeyPair`](../interfaces/IKeyPair.md)
+`object`
 
 The key pair.
+
+##### privateKey
+
+> **privateKey**: `Uint8Array`
+
+##### publicKey
+
+> **publicKey**: `Uint8Array`
 
 #### Throws
 

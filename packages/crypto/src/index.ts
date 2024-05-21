@@ -18,7 +18,6 @@ export * from "./hashes/sha512";
 export * from "./keys/bip32Path";
 export * from "./keys/bip39";
 export * from "./keys/slip0010";
-export * from "./models/IKeyPair";
 export * from "./models/keyType";
 export * from "./otp/hotp";
 export * from "./otp/totp";
