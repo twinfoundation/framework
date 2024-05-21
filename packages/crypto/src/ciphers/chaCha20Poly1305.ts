@@ -27,7 +27,6 @@ export class ChaCha20Poly1305 {
 	 * @param key The key.
 	 * @param nonce The nonce.
 	 * @param aad The additional authenticated data.
-	 * @internal
 	 */
 	constructor(key: Uint8Array, nonce: Uint8Array, aad?: Uint8Array) {
 		Guards.uint8Array(ChaCha20Poly1305._CLASS_NAME, nameof(key), key);
