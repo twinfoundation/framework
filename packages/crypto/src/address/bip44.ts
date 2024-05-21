@@ -5,10 +5,10 @@ import { GeneralError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { Bech32 } from "../address/bech32";
 import { Ed25519 } from "../curves/ed25519";
+import { Secp256k1 } from "../curves/secp256k1";
 import { Blake2b } from "../hashes/blake2b";
 import { Bip32Path } from "../keys/bip32Path";
 import { Slip0010 } from "../keys/slip0010";
-import type { IKeyPair } from "../models/IKeyPair";
 import { KeyType } from "../models/keyType";
 
 /**
@@ -20,42 +20,6 @@ export class Bip44 {
 	 * @internal
 	 */
 	private static readonly _CLASS_NAME: string = nameof<Bip44>();
-
-	/**
-	 * Generate a bip44 address from the seed and parts.
-	 * @param seed The account seed.
-	 * @param keyType The key type.
-	 * @param hrp The human readable part of the address.
-	 * @param coinType The coin type.
-	 * @param accountIndex The account index.
-	 * @param isInternal Is this an internal address.
-	 * @param addressIndex The address index.
-	 * @returns The generated path.
-	 */
-	public static addressBech32(
-		seed: Uint8Array,
-		keyType: KeyType,
-		hrp: string,
-		coinType: number,
-		accountIndex: number,
-		isInternal: boolean,
-		addressIndex: number
-	): {
-		address: string;
-		keyPair: IKeyPair;
-	} {
-		const keyPair = Bip44.keyPair(seed, keyType, coinType, accountIndex, isInternal, addressIndex);
-
-		const addressData = Blake2b.sum256(keyPair.publicKey);
-		const bech32Data = new Uint8Array(1 + addressData.length);
-		bech32Data[0] = keyType;
-		bech32Data.set(addressData, 1);
-
-		return {
-			address: Bech32.encode(hrp, bech32Data),
-			keyPair
-		};
-	}
 
 	/**
 	 * Generate a bip44 key pair from the seed and parts.
@@ -75,14 +39,22 @@ export class Bip44 {
 		accountIndex: number,
 		isInternal: boolean,
 		addressIndex: number
-	): IKeyPair {
+	): {
+		privateKey: Uint8Array;
+		publicKey: Uint8Array;
+	} {
 		const bip44Path = Bip44.path(coinType, accountIndex, isInternal, addressIndex);
 		const keys = Slip0010.derivePath(seed, bip44Path);
 
 		if (keyType === KeyType.Ed25519) {
 			const publicKey = Ed25519.publicKeyFromPrivateKey(keys.privateKey);
 			return {
-				type: keyType,
+				privateKey: keys.privateKey,
+				publicKey
+			};
+		} else if (keyType === KeyType.Secp256k1) {
+			const publicKey = Secp256k1.publicKeyFromPrivateKey(keys.privateKey);
+			return {
 				privateKey: keys.privateKey,
 				publicKey
 			};
@@ -121,5 +93,42 @@ export class Bip44 {
 	 */
 	public static basePath(coinType: number): string {
 		return `m/44'/${coinType}'`;
+	}
+
+	/**
+	 * Generate a bech32 address from the seed and parts.
+	 * @param seed The account seed.
+	 * @param keyType The key type.
+	 * @param hrp The human readable part of the address.
+	 * @param coinType The coin type.
+	 * @param accountIndex The account index.
+	 * @param isInternal Is this an internal address.
+	 * @param addressIndex The address index.
+	 * @returns The generated path and the associated keypair.
+	 */
+	public static addressBech32(
+		seed: Uint8Array,
+		keyType: KeyType,
+		hrp: string,
+		coinType: number,
+		accountIndex: number,
+		isInternal: boolean,
+		addressIndex: number
+	): {
+		address: string;
+		privateKey: Uint8Array;
+		publicKey: Uint8Array;
+	} {
+		const keyPair = Bip44.keyPair(seed, keyType, coinType, accountIndex, isInternal, addressIndex);
+
+		const addressData = Blake2b.sum256(keyPair.publicKey);
+		const bech32Data = new Uint8Array(1 + addressData.length);
+		bech32Data[0] = keyType;
+		bech32Data.set(addressData, 1);
+
+		return {
+			address: Bech32.encode(hrp, bech32Data),
+			...keyPair
+		};
 	}
 }

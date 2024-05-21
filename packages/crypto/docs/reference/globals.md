@@ -28,7 +28,3 @@
 - [Totp](classes/Totp.md)
 - [X25519](classes/X25519.md)
 - [Zip215](classes/Zip215.md)
-
-## Interfaces
-
-- [IKeyPair](interfaces/IKeyPair.md)

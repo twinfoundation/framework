@@ -30,30 +30,6 @@ Public Key Size is the size, in bytes, of public keys as used in this package.
 
 ## Methods
 
-### keyPairFromPrivateKey()
-
-> `static` **keyPairFromPrivateKey**(`privateKey`): [`IKeyPair`](../interfaces/IKeyPair.md)
-
-Generate the key pair from the seed.
-
-#### Parameters
-
-• **privateKey**: `Uint8Array`
-
-The seed to generate the key pair for.
-
-#### Returns
-
-[`IKeyPair`](../interfaces/IKeyPair.md)
-
-The key pair.
-
-#### Throws
-
-Error if the seed is not the correct length.
-
-***
-
 ### publicKeyFromPrivateKey()
 
 > `static` **publicKeyFromPrivateKey**(`privateKey`): `Uint8Array`
