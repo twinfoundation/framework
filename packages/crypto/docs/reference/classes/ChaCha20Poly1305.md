@@ -2,6 +2,32 @@
 
 Implementation of the ChaCha20Poly1305 cipher.
 
+## Constructors
+
+### new ChaCha20Poly1305()
+
+> **new ChaCha20Poly1305**(`key`, `nonce`, `aad`?): [`ChaCha20Poly1305`](ChaCha20Poly1305.md)
+
+Create a new instance of ChaCha20Poly1305.
+
+#### Parameters
+
+• **key**: `Uint8Array`
+
+The key.
+
+• **nonce**: `Uint8Array`
+
+The nonce.
+
+• **aad?**: `Uint8Array`
+
+The additional authenticated data.
+
+#### Returns
+
+[`ChaCha20Poly1305`](ChaCha20Poly1305.md)
+
 ## Methods
 
 ### decrypt()
