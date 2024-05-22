@@ -11,7 +11,7 @@
 		"*.yaml",
 		"package.json",
 		"rollup.config.mjs",
-		"vitest.config.ts",
+		"vitest.config.*",
 		"tsconfig.json",
 		"typedoc.json",
 		".eslintrc.cjs",

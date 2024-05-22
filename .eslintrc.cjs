@@ -15,7 +15,7 @@ module.exports = {
 		'plugin:promise/recommended',
 		'plugin:unicorn/all'
 	],
-	ignorePatterns: ['dist', 'coverage', 'rollup.config.mjs'],
+	ignorePatterns: ['dist', 'coverage', 'rollup.config.mjs', 'vitest.config.ts.timestamp*'],
 	parserOptions: {
 		ecmaVersion: 2020,
 		project: './tsconfig.eslint.json',
