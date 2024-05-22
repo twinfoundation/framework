@@ -35,7 +35,7 @@ export class EntitySchemaHelper {
 	 * @throws If no primary key was found, or more than one.
 	 */
 	public static getPrimaryKey<T>(entitySchema: IEntitySchema<T>): IEntitySchemaProperty<T> {
-		Guards.object(EntitySchemaHelper._CLASS_NAME, nameof(entitySchema), entitySchema);
+		Guards.object<IEntitySchema<T>>(EntitySchemaHelper._CLASS_NAME, nameof(entitySchema), entitySchema);
 
 		const primaryKeys = (entitySchema.properties ?? [])?.filter(p => p.isPrimary);
 		if (primaryKeys.length === 0) {
@@ -53,7 +53,7 @@ export class EntitySchemaHelper {
 	 * @returns The sort keys from the schema or undefined if there are none.
 	 */
 	public static getSortProperties<T>(entitySchema: IEntitySchema<T>): IEntitySort<T>[] | undefined {
-		Guards.object(EntitySchemaHelper._CLASS_NAME, nameof(entitySchema), entitySchema);
+		Guards.object<IEntitySchema<T>>(EntitySchemaHelper._CLASS_NAME, nameof(entitySchema), entitySchema);
 
 		const sortFields = (entitySchema.properties ?? []).filter(p => !Is.undefined(p.sortDirection));
 
