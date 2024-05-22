@@ -8,6 +8,22 @@ The fields in a JSON Web Token payload.
 
 ## Properties
 
+### iss?
+
+> `optional` **iss**: `string`
+
+The issuer of the token.
+
+***
+
+### sub?
+
+> `optional` **sub**: `string`
+
+The subject of the token.
+
+***
+
 ### aud?
 
 > `optional` **aud**: `string`
@@ -24,30 +40,6 @@ The expiration time of the token.
 
 ***
 
-### iat?
-
-> `optional` **iat**: `number`
-
-The issued at time of the token.
-
-***
-
-### iss?
-
-> `optional` **iss**: `string`
-
-The issuer of the token.
-
-***
-
-### jti?
-
-> `optional` **jti**: `string`
-
-The JWT ID.
-
-***
-
 ### nbf?
 
 > `optional` **nbf**: `number`
@@ -56,8 +48,16 @@ The not before time of the token.
 
 ***
 
-### sub?
+### iat?
 
-> `optional` **sub**: `string`
+> `optional` **iat**: `number`
 
-The subject of the token.
+The issued at time of the token.
+
+***
+
+### jti?
+
+> `optional` **jti**: `string`
+
+The JWT ID.

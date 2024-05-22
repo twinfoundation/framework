@@ -14,19 +14,11 @@ Handle all the stock data types.
 
 ## Properties
 
-### TYPE\_PROPERTY
+### TYPE\_URN
 
-> `static` **TYPE\_PROPERTY**: `string` = `"Property"`
+> `static` **TYPE\_URN**: `string` = `"URN"`
 
-Represents a property.
-
-***
-
-### TYPE\_PROPERTY\_LIST
-
-> `static` **TYPE\_PROPERTY\_LIST**: `string` = `"PropertyList"`
-
-Represents a property list.
+Represents a urn.
 
 ***
 
@@ -46,11 +38,19 @@ Represents a timestamp as an integer, seconds since 1 Jan 1970.
 
 ***
 
-### TYPE\_URN
+### TYPE\_PROPERTY
 
-> `static` **TYPE\_URN**: `string` = `"URN"`
+> `static` **TYPE\_PROPERTY**: `string` = `"Property"`
 
-Represents a urn.
+Represents a property.
+
+***
+
+### TYPE\_PROPERTY\_LIST
+
+> `static` **TYPE\_PROPERTY\_LIST**: `string` = `"PropertyList"`
+
+Represents a property list.
 
 ## Methods
 
@@ -63,42 +63,6 @@ Register all the data types.
 #### Returns
 
 `void`
-
-***
-
-### validateIProperty()
-
-> `static` **validateIProperty**(`propertyName`, `value`, `failures`, `container`?, `previousValue`?): `boolean`
-
-Validator for an IProperty.
-
-#### Parameters
-
-• **propertyName**: `string`
-
-The name of the property being validated.
-
-• **value**: [`IProperty`](../interfaces/IProperty.md)
-
-The value to test.
-
-• **failures**: `IValidationFailure`[]
-
-The list of failures to add to.
-
-• **container?**: `unknown`
-
-The object which contains this one.
-
-• **previousValue?**: [`IProperty`](../interfaces/IProperty.md)
-
-The previous value of the object.
-
-#### Returns
-
-`boolean`
-
-True if the value is a valid property.
 
 ***
 
@@ -135,3 +99,39 @@ The previous value of the object.
 `boolean`
 
 True if the value is a valid property list.
+
+***
+
+### validateIProperty()
+
+> `static` **validateIProperty**(`propertyName`, `value`, `failures`, `container`?, `previousValue`?): `boolean`
+
+Validator for an IProperty.
+
+#### Parameters
+
+• **propertyName**: `string`
+
+The name of the property being validated.
+
+• **value**: [`IProperty`](../interfaces/IProperty.md)
+
+The value to test.
+
+• **failures**: `IValidationFailure`[]
+
+The list of failures to add to.
+
+• **container?**: `unknown`
+
+The object which contains this one.
+
+• **previousValue?**: [`IProperty`](../interfaces/IProperty.md)
+
+The previous value of the object.
+
+#### Returns
+
+`boolean`
+
+True if the value is a valid property.

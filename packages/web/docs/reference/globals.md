@@ -3,8 +3,8 @@
 ## Classes
 
 - [FetchError](classes/FetchError.md)
-- [FetchHelper](classes/FetchHelper.md)
 - [HttpStatusCodes](classes/HttpStatusCodes.md)
+- [FetchHelper](classes/FetchHelper.md)
 - [Jwt](classes/Jwt.md)
 
 ## Interfaces

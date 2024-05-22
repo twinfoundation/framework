@@ -14,41 +14,11 @@ Class to handle validation operations.
 
 ## Methods
 
-### appendChildFailures()
+### empty()
 
-> `static` **appendChildFailures**(`failures`, `childFailures`, `childName`?): `void`
+> `static` **empty**(`property`, `value`, `failures`): value is undefined \| null
 
-Append failures to the parent for a child object.
-
-#### Parameters
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The validation failures.
-
-• **childFailures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The validation failures for the child.
-
-• **childName?**: `string`
-
-The name of the child object.
-
-#### Returns
-
-`void`
-
-***
-
-### array()
-
-> `static` **array**\<`T`\>(`property`, `value`, `failures`): `value is T[]`
-
-Is the property an array.
-
-#### Type parameters
-
-• **T**
+Is the property null or undefined.
 
 #### Parameters
 
@@ -66,57 +36,17 @@ The list of failures to add to.
 
 #### Returns
 
-`value is T[]`
+value is undefined \| null
 
-True if the value is an array.
-
-***
-
-### arrayOneOf()
-
-> `static` **arrayOneOf**\<`T`\>(`property`, `value`, `options`, `failures`): `value is T`
-
-Is the property one of a list of items.
-
-#### Type parameters
-
-• **T**
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `T`
-
-The value to test.
-
-• **options**: `T`[]
-
-The options the value must be one of.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-`value is T`
-
-True if the value is one of the items in the options.
+True if the value is a empty.
 
 ***
 
-### arrayValue()
+### notEmpty()
 
-> `static` **arrayValue**\<`T`\>(`property`, `value`, `failures`): `value is T[]`
+> `static` **notEmpty**(`property`, `value`, `failures`): `boolean`
 
-Is the property an array with at least one item.
-
-#### Type parameters
-
-• **T**
+Is the property is not null or undefined.
 
 #### Parameters
 
@@ -134,39 +64,121 @@ The list of failures to add to.
 
 #### Returns
 
-`value is T[]`
+`boolean`
 
-True if the value is an array with at least one element.
+True if the value is a not empty.
 
 ***
 
-### asValidationError()
+### string()
 
-> `static` **asValidationError**(`source`, `objectName`, `failures`): `void`
+> `static` **string**(`property`, `value`, `failures`): `value is string`
 
-Throw the validation failures as a ValidationError.
+Is the property a string.
 
 #### Parameters
 
-• **source**: `string`
+• **property**: `string`
 
-The source of the error.
+The name of the property.
 
-• **objectName**: `string`
+• **value**: `unknown`
 
-The object that was being validated.
+The value to test.
 
 • **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
-The validation failures.
+The list of failures to add to.
 
 #### Returns
 
-`void`
+`value is string`
 
-#### Throws
+True if the value is a string.
 
-ValidationError From the converted failures.
+***
+
+### stringValue()
+
+> `static` **stringValue**(`property`, `value`, `failures`): `value is string`
+
+Is the property a string with a value.
+
+#### Parameters
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
+
+#### Returns
+
+`value is string`
+
+True if the value is a string.
+
+***
+
+### number()
+
+> `static` **number**(`property`, `value`, `failures`): `value is number`
+
+Is the property a number.
+
+#### Parameters
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
+
+#### Returns
+
+`value is number`
+
+True if the value is a number.
+
+***
+
+### integer()
+
+> `static` **integer**(`property`, `value`, `failures`): `value is number`
+
+Is the property an integer.
+
+#### Parameters
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
+
+#### Returns
+
+`value is number`
+
+True if the value is a number.
 
 ***
 
@@ -310,262 +322,6 @@ True if the value is a date/time.
 
 ***
 
-### email()
-
-> `static` **email**(`property`, `value`, `failures`): `value is string`
-
-Is the property a string in e-mail format.
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `unknown`
-
-The value to test.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-`value is string`
-
-True if the value is a valid looking e-mail.
-
-***
-
-### empty()
-
-> `static` **empty**(`property`, `value`, `failures`): value is undefined \| null
-
-Is the property null or undefined.
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `unknown`
-
-The value to test.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-value is undefined \| null
-
-True if the value is a empty.
-
-***
-
-### integer()
-
-> `static` **integer**(`property`, `value`, `failures`): `value is number`
-
-Is the property an integer.
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `unknown`
-
-The value to test.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-`value is number`
-
-True if the value is a number.
-
-***
-
-### json()
-
-> `static` **json**(`property`, `value`, `failures`): `value is string`
-
-Is the property valid JSON.
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `unknown`
-
-The value to test.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-`value is string`
-
-True if the value is valid JSON.
-
-***
-
-### notEmpty()
-
-> `static` **notEmpty**(`property`, `value`, `failures`): `boolean`
-
-Is the property is not null or undefined.
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `unknown`
-
-The value to test.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-`boolean`
-
-True if the value is a not empty.
-
-***
-
-### number()
-
-> `static` **number**(`property`, `value`, `failures`): `value is number`
-
-Is the property a number.
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `unknown`
-
-The value to test.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-`value is number`
-
-True if the value is a number.
-
-***
-
-### object()
-
-> `static` **object**\<`T`\>(`property`, `value`, `failures`): `value is T`
-
-Is the property an object.
-
-#### Type parameters
-
-• **T** = `object`
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `unknown`
-
-The value to test.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-`value is T`
-
-True if the value is a object.
-
-***
-
-### string()
-
-> `static` **string**(`property`, `value`, `failures`): `value is string`
-
-Is the property a string.
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `unknown`
-
-The value to test.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-`value is string`
-
-True if the value is a string.
-
-***
-
-### stringValue()
-
-> `static` **stringValue**(`property`, `value`, `failures`): `value is string`
-
-Is the property a string with a value.
-
-#### Parameters
-
-• **property**: `string`
-
-The name of the property.
-
-• **value**: `unknown`
-
-The value to test.
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The list of failures to add to.
-
-#### Returns
-
-`value is string`
-
-True if the value is a string.
-
-***
-
 ### timeString()
 
 > `static` **timeString**(`property`, `value`, `failures`): `value is string`
@@ -650,23 +406,135 @@ True if the value is a timestamp in seconds.
 
 ***
 
-### toPropertyMap()
+### object()
 
-> `static` **toPropertyMap**(`failures`): `object`
+> `static` **object**\<`T`\>(`property`, `value`, `failures`): `value is T`
 
-Map a list of failures to their properties.
+Is the property an object.
+
+#### Type parameters
+
+• **T** = `object`
 
 #### Parameters
 
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
 • **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
-The validation failures.
+The list of failures to add to.
 
 #### Returns
 
-`object`
+`value is T`
 
-The failures mapped to their properties.
+True if the value is a object.
+
+***
+
+### array()
+
+> `static` **array**\<`T`\>(`property`, `value`, `failures`): `value is T[]`
+
+Is the property an array.
+
+#### Type parameters
+
+• **T**
+
+#### Parameters
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
+
+#### Returns
+
+`value is T[]`
+
+True if the value is an array.
+
+***
+
+### arrayValue()
+
+> `static` **arrayValue**\<`T`\>(`property`, `value`, `failures`): `value is T[]`
+
+Is the property an array with at least one item.
+
+#### Type parameters
+
+• **T**
+
+#### Parameters
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
+
+#### Returns
+
+`value is T[]`
+
+True if the value is an array with at least one element.
+
+***
+
+### arrayOneOf()
+
+> `static` **arrayOneOf**\<`T`\>(`property`, `value`, `options`, `failures`): `value is T`
+
+Is the property one of a list of items.
+
+#### Type parameters
+
+• **T**
+
+#### Parameters
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `T`
+
+The value to test.
+
+• **options**: `T`[]
+
+The options the value must be one of.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
+
+#### Returns
+
+`value is T`
+
+True if the value is one of the items in the options.
 
 ***
 
@@ -695,3 +563,135 @@ The list of failures to add to.
 `value is Uint8Array`
 
 True if the value is a Uint8Array.
+
+***
+
+### json()
+
+> `static` **json**(`property`, `value`, `failures`): `value is string`
+
+Is the property valid JSON.
+
+#### Parameters
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
+
+#### Returns
+
+`value is string`
+
+True if the value is valid JSON.
+
+***
+
+### email()
+
+> `static` **email**(`property`, `value`, `failures`): `value is string`
+
+Is the property a string in e-mail format.
+
+#### Parameters
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
+
+#### Returns
+
+`value is string`
+
+True if the value is a valid looking e-mail.
+
+***
+
+### asValidationError()
+
+> `static` **asValidationError**(`source`, `objectName`, `failures`): `void`
+
+Throw the validation failures as a ValidationError.
+
+#### Parameters
+
+• **source**: `string`
+
+The source of the error.
+
+• **objectName**: `string`
+
+The object that was being validated.
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The validation failures.
+
+#### Returns
+
+`void`
+
+#### Throws
+
+ValidationError From the converted failures.
+
+***
+
+### appendChildFailures()
+
+> `static` **appendChildFailures**(`failures`, `childFailures`, `childName`?): `void`
+
+Append failures to the parent for a child object.
+
+#### Parameters
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The validation failures.
+
+• **childFailures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The validation failures for the child.
+
+• **childName?**: `string`
+
+The name of the child object.
+
+#### Returns
+
+`void`
+
+***
+
+### toPropertyMap()
+
+> `static` **toPropertyMap**(`failures`): `object`
+
+Map a list of failures to their properties.
+
+#### Parameters
+
+• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The validation failures.
+
+#### Returns
+
+`object`
+
+The failures mapped to their properties.

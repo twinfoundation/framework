@@ -14,27 +14,43 @@ Class to help with string.
 
 ## Methods
 
-### camelCase()
+### trimTrailingSlashes()
 
-> `static` **camelCase**(`input`, `stripInterfacePrefix`): `string`
+> `static` **trimTrailingSlashes**(`value`): `string`
 
-Camel case all the words.
+Trim trailing slashes from a string.
 
 #### Parameters
 
-• **input**: `string`
+• **value**: `undefined` \| `string`
 
-The input to convert.
-
-• **stripInterfacePrefix**: `boolean`= `true`
-
-Strip interface prefixes.
+The value to trim.
 
 #### Returns
 
 `string`
 
-The camel case version of the input.
+The trimmed value.
+
+***
+
+### trimLeadingSlashes()
+
+> `static` **trimLeadingSlashes**(`value`): `string`
+
+Trim leading slashes from a string.
+
+#### Parameters
+
+• **value**: `undefined` \| `string`
+
+The value to trim.
+
+#### Returns
+
+`string`
+
+The trimmed value.
 
 ***
 
@@ -62,50 +78,6 @@ The kebab case version of the input.
 
 ***
 
-### pascalCase()
-
-> `static` **pascalCase**(`input`, `stripInterfacePrefix`): `string`
-
-Pascal case all the words.
-
-#### Parameters
-
-• **input**: `string`
-
-The input to convert.
-
-• **stripInterfacePrefix**: `boolean`= `true`
-
-Strip interface prefixes.
-
-#### Returns
-
-`string`
-
-The pascal case version of the input.
-
-***
-
-### stripPrefix()
-
-> `static` **stripPrefix**(`input`): `string`
-
-Strip interface prefix if there is one.
-
-#### Parameters
-
-• **input**: `string`
-
-The input to strip.
-
-#### Returns
-
-`string`
-
-The input with any interface prefix stripped.
-
-***
-
 ### titleCase()
 
 > `static` **titleCase**(`input`, `stripInterfacePrefix`): `string`
@@ -130,43 +102,51 @@ The title case version of the input.
 
 ***
 
-### trimLeadingSlashes()
+### pascalCase()
 
-> `static` **trimLeadingSlashes**(`value`): `string`
+> `static` **pascalCase**(`input`, `stripInterfacePrefix`): `string`
 
-Trim leading slashes from a string.
+Pascal case all the words.
 
 #### Parameters
 
-• **value**: `undefined` \| `string`
+• **input**: `string`
 
-The value to trim.
+The input to convert.
+
+• **stripInterfacePrefix**: `boolean`= `true`
+
+Strip interface prefixes.
 
 #### Returns
 
 `string`
 
-The trimmed value.
+The pascal case version of the input.
 
 ***
 
-### trimTrailingSlashes()
+### camelCase()
 
-> `static` **trimTrailingSlashes**(`value`): `string`
+> `static` **camelCase**(`input`, `stripInterfacePrefix`): `string`
 
-Trim trailing slashes from a string.
+Camel case all the words.
 
 #### Parameters
 
-• **value**: `undefined` \| `string`
+• **input**: `string`
 
-The value to trim.
+The input to convert.
+
+• **stripInterfacePrefix**: `boolean`= `true`
+
+Strip interface prefixes.
 
 #### Returns
 
 `string`
 
-The trimmed value.
+The camel case version of the input.
 
 ***
 
@@ -191,6 +171,26 @@ Strip interface prefixes.
 `string`
 
 The path version of the input.
+
+***
+
+### stripPrefix()
+
+> `static` **stripPrefix**(`input`): `string`
+
+Strip interface prefix if there is one.
+
+#### Parameters
+
+• **input**: `string`
+
+The input to strip.
+
+#### Returns
+
+`string`
+
+The input with any interface prefix stripped.
 
 ***
 

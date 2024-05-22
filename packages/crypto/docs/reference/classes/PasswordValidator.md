@@ -39,13 +39,13 @@ The list of failures to add to.
 
 Options to configure the testing.
 
-• **options.maxLength?**: `number`
-
-The minimum length of the password, defaults to 128.
-
 • **options.minLength?**: `number`
 
 The minimum length of the password, defaults to 8.
+
+• **options.maxLength?**: `number`
+
+The minimum length of the password, defaults to 128.
 
 • **options.minPhraseLength?**: `number`
 

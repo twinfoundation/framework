@@ -8,6 +8,14 @@ Definition for an entity schema.
 
 ## Properties
 
+### type
+
+> **type**: `undefined` \| `string`
+
+The type of the entity.
+
+***
+
 ### options?
 
 > `optional` **options**: [`IEntitySchemaOptions`](IEntitySchemaOptions.md)
@@ -21,11 +29,3 @@ The options for the entity.
 > `optional` **properties**: [`IEntitySchemaProperty`](IEntitySchemaProperty.md)\<`T`\>[]
 
 The properties of the entity.
-
-***
-
-### type
-
-> **type**: `undefined` \| `string`
-
-The type of the entity.

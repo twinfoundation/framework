@@ -22,17 +22,27 @@ The key for the hmac.
 
 ## Methods
 
-### digest()
+### sum()
 
-> **digest**(): `Uint8Array`
+> `static` **sum**(`key`, `block`): `Uint8Array`
 
-Get the digest for the hash.
+Perform Sum on the block.
+
+#### Parameters
+
+• **key**: `Uint8Array`
+
+The key for the hmac.
+
+• **block**: `Uint8Array`
+
+The block to operate on.
 
 #### Returns
 
 `Uint8Array`
 
-The instance for chaining.
+The sum of the block.
 
 ***
 
@@ -56,24 +66,14 @@ The instance for chaining.
 
 ***
 
-### sum()
+### digest()
 
-> `static` **sum**(`key`, `block`): `Uint8Array`
+> **digest**(): `Uint8Array`
 
-Perform Sum on the block.
-
-#### Parameters
-
-• **key**: `Uint8Array`
-
-The key for the hmac.
-
-• **block**: `Uint8Array`
-
-The block to operate on.
+Get the digest for the hash.
 
 #### Returns
 
 `Uint8Array`
 
-The sum of the block.
+The instance for chaining.

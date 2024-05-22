@@ -30,26 +30,6 @@ The additional authenticated data.
 
 ## Methods
 
-### decrypt()
-
-> **decrypt**(`block`): `Uint8Array`
-
-Decrypt the block.
-
-#### Parameters
-
-• **block**: `Uint8Array`
-
-The block to decrypt.
-
-#### Returns
-
-`Uint8Array`
-
-The block decrypted.
-
-***
-
 ### encrypt()
 
 > **encrypt**(`block`): `Uint8Array`
@@ -67,3 +47,23 @@ The block to encrypt.
 `Uint8Array`
 
 The block encrypted.
+
+***
+
+### decrypt()
+
+> **decrypt**(`block`): `Uint8Array`
+
+Decrypt the block.
+
+#### Parameters
+
+• **block**: `Uint8Array`
+
+The block to decrypt.
+
+#### Returns
+
+`Uint8Array`
+
+The block decrypted.

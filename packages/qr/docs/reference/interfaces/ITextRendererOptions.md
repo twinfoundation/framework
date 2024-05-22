@@ -32,16 +32,16 @@ The margin size.
 
 ***
 
-### offChar?
-
-> `optional` **offChar**: `string`
-
-The character to use for off pixels.
-
-***
-
 ### onChar?
 
 > `optional` **onChar**: `string`
 
 The character to use for on pixels.
+
+***
+
+### offChar?
+
+> `optional` **offChar**: `string`
+
+The character to use for off pixels.

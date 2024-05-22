@@ -52,30 +52,6 @@ The inner error if we have wrapped another error.
 
 ***
 
-### inner?
-
-> `optional` **inner**: [`IError`](../interfaces/IError.md)
-
-The inner error if there was one.
-
-#### Inherited from
-
-[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner)
-
-***
-
-### message
-
-> **message**: `string`
-
-The message for the error.
-
-#### Inherited from
-
-[`BaseError`](BaseError.md).[`message`](BaseError.md#message)
-
-***
-
 ### name
 
 > **name**: `string`
@@ -88,31 +64,15 @@ The name for the error.
 
 ***
 
-### properties?
+### message
 
-> `optional` **properties**: `object`
+> **message**: `string`
 
-Any additional information for the error.
-
-#### Index signature
-
- \[`id`: `string`\]: `unknown`
+The message for the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties)
-
-***
-
-### source?
-
-> `optional` **source**: `string`
-
-The source of the error.
-
-#### Inherited from
-
-[`BaseError`](BaseError.md).[`source`](BaseError.md#source)
+[`BaseError`](BaseError.md).[`message`](BaseError.md#message)
 
 ***
 
@@ -134,53 +94,69 @@ The stack trace for the error.
 
 Runtime name for the class.
 
-## Methods
+***
 
-### toJsonObject()
+### source?
 
-> **toJsonObject**(`includeStack`?): [`IError`](../interfaces/IError.md)
+> `optional` **source**: `string`
 
-Serialize the error to the error model.
-
-#### Parameters
-
-• **includeStack?**: `boolean`
-
-Include the stack in the error.
-
-#### Returns
-
-[`IError`](../interfaces/IError.md)
-
-The error model.
+The source of the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`toJsonObject`](BaseError.md#tojsonobject)
+[`BaseError`](BaseError.md).[`source`](BaseError.md#source)
 
 ***
 
-### expand()
+### properties?
 
-> `static` **expand**(`errors`): `undefined` \| [`IError`](../interfaces/IError.md)
+> `optional` **properties**: `object`
 
-Expand an error tree.
+Any additional information for the error.
 
-#### Parameters
+#### Index signature
 
-• **errors**: `undefined` \| [`IError`](../interfaces/IError.md)[]
-
-The list of errors to expand.
-
-#### Returns
-
-`undefined` \| [`IError`](../interfaces/IError.md)
-
-The first level error.
+ \[`id`: `string`\]: `unknown`
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`expand`](BaseError.md#expand)
+[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties)
+
+***
+
+### inner?
+
+> `optional` **inner**: [`IError`](../interfaces/IError.md)
+
+The inner error if there was one.
+
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner)
+
+## Methods
+
+### fromError()
+
+> `static` **fromError**(`err`): [`BaseError`](BaseError.md)
+
+Construct an error from an existing one.
+
+#### Parameters
+
+• **err**: `unknown`
+
+The existing error.
+
+#### Returns
+
+[`BaseError`](BaseError.md)
+
+The new instance.
+
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`fromError`](BaseError.md#fromerror)
 
 ***
 
@@ -208,35 +184,35 @@ The list of all internal errors.
 
 ***
 
-### fromError()
+### expand()
 
-> `static` **fromError**(`err`): [`BaseError`](BaseError.md)
+> `static` **expand**(`errors`): `undefined` \| [`IError`](../interfaces/IError.md)
 
-Construct an error from an existing one.
+Expand an error tree.
 
 #### Parameters
 
-• **err**: `unknown`
+• **errors**: `undefined` \| [`IError`](../interfaces/IError.md)[]
 
-The existing error.
+The list of errors to expand.
 
 #### Returns
 
-[`BaseError`](BaseError.md)
+`undefined` \| [`IError`](../interfaces/IError.md)
 
-The new instance.
+The first level error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`fromError`](BaseError.md#fromerror)
+[`BaseError`](BaseError.md).[`expand`](BaseError.md#expand)
 
 ***
 
-### isErrorCode()
+### isErrorName()
 
-> `static` **isErrorCode**(`error`, `code`): `boolean`
+> `static` **isErrorName**(`error`, `name`): `error is BaseError`
 
-Test to see if the error has the specified error code.
+Test to see if the error has the specified error name.
 
 #### Parameters
 
@@ -244,19 +220,19 @@ Test to see if the error has the specified error code.
 
 The error to test.
 
-• **code**: `string` \| `RegExp`
+• **name**: `string` \| `RegExp`
 
-The code to check for.
+The name to check for.
 
 #### Returns
 
-`boolean`
+`error is BaseError`
 
-True if the error has the code.
+True if the error has the name.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`isErrorCode`](BaseError.md#iserrorcode)
+[`BaseError`](BaseError.md).[`isErrorName`](BaseError.md#iserrorname)
 
 ***
 
@@ -288,11 +264,39 @@ True if the error has the name.
 
 ***
 
-### isErrorName()
+### isErrorCode()
 
-> `static` **isErrorName**(`error`, `name`): `error is BaseError`
+> `static` **isErrorCode**(`error`, `code`): `boolean`
 
-Test to see if the error has the specified error name.
+Test to see if the error has the specified error code.
+
+#### Parameters
+
+• **error**: `unknown`
+
+The error to test.
+
+• **code**: `string` \| `RegExp`
+
+The code to check for.
+
+#### Returns
+
+`boolean`
+
+True if the error has the code.
+
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`isErrorCode`](BaseError.md#iserrorcode)
+
+***
+
+### someErrorName()
+
+> `static` **someErrorName**(`error`, `name`): `error is BaseError`
+
+Test to see if any of the errors or children have the given error name.
 
 #### Parameters
 
@@ -312,7 +316,35 @@ True if the error has the name.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`isErrorName`](BaseError.md#iserrorname)
+[`BaseError`](BaseError.md).[`someErrorName`](BaseError.md#someerrorname)
+
+***
+
+### someErrorMessage()
+
+> `static` **someErrorMessage**(`error`, `message`): `error is BaseError`
+
+Test to see if any of the errors or children have the given error message.
+
+#### Parameters
+
+• **error**: `unknown`
+
+The error to test.
+
+• **message**: `string` \| `RegExp`
+
+The message to check for.
+
+#### Returns
+
+`error is BaseError`
+
+True if the error has the name.
+
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`someErrorMessage`](BaseError.md#someerrormessage)
 
 ***
 
@@ -372,56 +404,24 @@ True if the error has the name.
 
 ***
 
-### someErrorMessage()
+### toJsonObject()
 
-> `static` **someErrorMessage**(`error`, `message`): `error is BaseError`
+> **toJsonObject**(`includeStack`?): [`IError`](../interfaces/IError.md)
 
-Test to see if any of the errors or children have the given error message.
-
-#### Parameters
-
-• **error**: `unknown`
-
-The error to test.
-
-• **message**: `string` \| `RegExp`
-
-The message to check for.
-
-#### Returns
-
-`error is BaseError`
-
-True if the error has the name.
-
-#### Inherited from
-
-[`BaseError`](BaseError.md).[`someErrorMessage`](BaseError.md#someerrormessage)
-
-***
-
-### someErrorName()
-
-> `static` **someErrorName**(`error`, `name`): `error is BaseError`
-
-Test to see if any of the errors or children have the given error name.
+Serialize the error to the error model.
 
 #### Parameters
 
-• **error**: `unknown`
+• **includeStack?**: `boolean`
 
-The error to test.
-
-• **name**: `string` \| `RegExp`
-
-The name to check for.
+Include the stack in the error.
 
 #### Returns
 
-`error is BaseError`
+[`IError`](../interfaces/IError.md)
 
-True if the error has the name.
+The error model.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`someErrorName`](BaseError.md#someerrorname)
+[`BaseError`](BaseError.md).[`toJsonObject`](BaseError.md#tojsonobject)

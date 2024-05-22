@@ -4,11 +4,11 @@ Model to describe the parts of a url.
 
 ## Properties
 
-### hash?
+### schema
 
-> `optional` **hash**: `string`
+> **schema**: `string`
 
-The hash for the url.
+The schema for the url.
 
 ***
 
@@ -20,11 +20,11 @@ The host for the url.
 
 ***
 
-### params?
+### port?
 
-> `optional` **params**: `string`
+> `optional` **port**: `number`
 
-The params for the url.
+The port for the url.
 
 ***
 
@@ -36,16 +36,16 @@ The path for the url.
 
 ***
 
-### port?
+### params?
 
-> `optional` **port**: `number`
+> `optional` **params**: `string`
 
-The port for the url.
+The params for the url.
 
 ***
 
-### schema
+### hash?
 
-> **schema**: `string`
+> `optional` **hash**: `string`
 
-The schema for the url.
+The hash for the url.

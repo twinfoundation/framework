@@ -22,71 +22,23 @@ The url string.
 
 ## Methods
 
-### parts()
+### tryParseExact()
 
-> **parts**(): [`IUrlParts`](../interfaces/IUrlParts.md)
+> `static` **tryParseExact**(`url`): `undefined` \| [`Url`](Url.md)
 
-Get the parts of the url.
-
-#### Returns
-
-[`IUrlParts`](../interfaces/IUrlParts.md)
-
-The parts of the url.
-
-***
-
-### toString()
-
-> **toString**(): `string`
-
-Convert the parts in to a full string.
-
-#### Returns
-
-`string`
-
-The formatted url.
-
-***
-
-### fromParts()
-
-> `static` **fromParts**(`urlParts`): [`Url`](Url.md)
-
-Construct a url from valid parts.
+Try and parse a string into the url parts.
 
 #### Parameters
 
-• **urlParts**: [`IUrlParts`](../interfaces/IUrlParts.md)
+• **url**: `unknown`
 
-The url to create the parts from.
-
-#### Returns
-
-[`Url`](Url.md)
-
-The formatted url.
-
-***
-
-### fromURLToParts()
-
-> `static` **fromURLToParts**(`url`): [`IUrlParts`](../interfaces/IUrlParts.md)
-
-Construct a url from a URL.
-
-#### Parameters
-
-• **url**: `URL`
-
-The url to construct from.
+The url to parse.
 
 #### Returns
 
-[`IUrlParts`](../interfaces/IUrlParts.md)
+`undefined` \| [`Url`](Url.md)
 
-The formatted url.
+The formatted url or undefined if the value is not a url.
 
 ***
 
@@ -120,26 +72,6 @@ GuardError If the value does not match the assertion.
 
 ***
 
-### tryParseExact()
-
-> `static` **tryParseExact**(`url`): `undefined` \| [`Url`](Url.md)
-
-Try and parse a string into the url parts.
-
-#### Parameters
-
-• **url**: `unknown`
-
-The url to parse.
-
-#### Returns
-
-`undefined` \| [`Url`](Url.md)
-
-The formatted url or undefined if the value is not a url.
-
-***
-
 ### validate()
 
 > `static` **validate**(`property`, `value`, `failures`): `value is Url`
@@ -163,5 +95,73 @@ The list of failures to add to.
 #### Returns
 
 `value is Url`
+
+The formatted url.
+
+***
+
+### fromURLToParts()
+
+> `static` **fromURLToParts**(`url`): [`IUrlParts`](../interfaces/IUrlParts.md)
+
+Construct a url from a URL.
+
+#### Parameters
+
+• **url**: `URL`
+
+The url to construct from.
+
+#### Returns
+
+[`IUrlParts`](../interfaces/IUrlParts.md)
+
+The formatted url.
+
+***
+
+### fromParts()
+
+> `static` **fromParts**(`urlParts`): [`Url`](Url.md)
+
+Construct a url from valid parts.
+
+#### Parameters
+
+• **urlParts**: [`IUrlParts`](../interfaces/IUrlParts.md)
+
+The url to create the parts from.
+
+#### Returns
+
+[`Url`](Url.md)
+
+The formatted url.
+
+***
+
+### parts()
+
+> **parts**(): [`IUrlParts`](../interfaces/IUrlParts.md)
+
+Get the parts of the url.
+
+#### Returns
+
+[`IUrlParts`](../interfaces/IUrlParts.md)
+
+The parts of the url.
+
+***
+
+### toString()
+
+> **toString**(): `string`
+
+Convert the parts in to a full string.
+
+#### Returns
+
+`string`
 
 The formatted url.

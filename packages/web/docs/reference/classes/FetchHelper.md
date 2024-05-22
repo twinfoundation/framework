@@ -54,50 +54,6 @@ The response.
 
 ***
 
-### fetchBinary()
-
-> `static` **fetchBinary**\<`T`\>(`source`, `endpoint`, `path`, `method`, `requestData`?, `options`?): `Promise`\<`Uint8Array` \| `T`\>
-
-Perform a request for binary data.
-
-#### Type parameters
-
-• **T**
-
-#### Parameters
-
-• **source**: `string`
-
-The source for the request.
-
-• **endpoint**: `string`
-
-The base endpoint for the request.
-
-• **path**: `string`
-
-The path of the request.
-
-• **method**: `"GET"` \| `"POST"`
-
-The http method.
-
-• **requestData?**: `Uint8Array`
-
-Request to send to the endpoint.
-
-• **options?**: [`IFetchOptions`](../interfaces/IFetchOptions.md)
-
-Options for sending the requests.
-
-#### Returns
-
-`Promise`\<`Uint8Array` \| `T`\>
-
-The response.
-
-***
-
 ### fetchJson()
 
 > `static` **fetchJson**\<`T`, `U`\>(`source`, `endpoint`, `path`, `method`, `requestData`?, `options`?): `Promise`\<`U`\>
@@ -139,5 +95,49 @@ Options for sending the requests.
 #### Returns
 
 `Promise`\<`U`\>
+
+The response.
+
+***
+
+### fetchBinary()
+
+> `static` **fetchBinary**\<`T`\>(`source`, `endpoint`, `path`, `method`, `requestData`?, `options`?): `Promise`\<`Uint8Array` \| `T`\>
+
+Perform a request for binary data.
+
+#### Type parameters
+
+• **T**
+
+#### Parameters
+
+• **source**: `string`
+
+The source for the request.
+
+• **endpoint**: `string`
+
+The base endpoint for the request.
+
+• **path**: `string`
+
+The path of the request.
+
+• **method**: `"GET"` \| `"POST"`
+
+The http method.
+
+• **requestData?**: `Uint8Array`
+
+Request to send to the endpoint.
+
+• **options?**: [`IFetchOptions`](../interfaces/IFetchOptions.md)
+
+Options for sending the requests.
+
+#### Returns
+
+`Promise`\<`Uint8Array` \| `T`\>
 
 The response.

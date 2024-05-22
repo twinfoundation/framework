@@ -8,19 +8,19 @@ Definition for an entity schema property.
 
 ## Properties
 
-### description?
+### property
 
-> `optional` **description**: `string`
+> **property**: keyof `T`
 
-Description of the object.
+The property name from the entity.
 
 ***
 
-### examples?
+### type
 
-> `optional` **examples**: `unknown`[]
+> **type**: [`EntitySchemaPropertyType`](../type-aliases/EntitySchemaPropertyType.md)
 
-Examples of the property values.
+The type of the property.
 
 ***
 
@@ -40,6 +40,22 @@ Is this a secondary index property.
 
 ***
 
+### sortDirection?
+
+> `optional` **sortDirection**: [`SortDirection`](../enumerations/SortDirection.md)
+
+Default sort direction for this field, leave empty if not sortable.
+
+***
+
+### optional?
+
+> `optional` **optional**: `boolean`
+
+Is the property optional.
+
+***
+
 ### itemType?
 
 > `optional` **itemType**: [`EntitySchemaPropertyType`](../type-aliases/EntitySchemaPropertyType.md)
@@ -56,32 +72,16 @@ The type ref of the item (only applies when type is either `array` or `object`).
 
 ***
 
-### optional?
+### description?
 
-> `optional` **optional**: `boolean`
+> `optional` **description**: `string`
 
-Is the property optional.
-
-***
-
-### property
-
-> **property**: keyof `T`
-
-The property name from the entity.
+Description of the object.
 
 ***
 
-### sortDirection?
+### examples?
 
-> `optional` **sortDirection**: [`SortDirection`](../enumerations/SortDirection.md)
+> `optional` **examples**: `unknown`[]
 
-Default sort direction for this field, leave empty if not sortable.
-
-***
-
-### type
-
-> **type**: [`EntitySchemaPropertyType`](../type-aliases/EntitySchemaPropertyType.md)
-
-The type of the property.
+Examples of the property values.

@@ -14,6 +14,34 @@ Implementation of Bip39 for mnemonic generation.
 
 ## Methods
 
+### randomMnemonic()
+
+> `static` **randomMnemonic**(`strength`, `words`): `string`
+
+Generate a random mnemonic.
+
+#### Parameters
+
+• **strength**: `number`= `256`
+
+The strength of the mnemonic to generate, defaults to 256.
+
+• **words**: `string`[]= `wordlist`
+
+The wordlist to use, defaults to the English wordlist.
+
+#### Returns
+
+`string`
+
+The random mnemonic.
+
+#### Throws
+
+Error if the length is not a multiple of 32.
+
+***
+
 ### entropyToMnemonic()
 
 > `static` **entropyToMnemonic**(`entropy`, `words`): `string`
@@ -42,6 +70,30 @@ Error if the length of the entropy is not a multiple of 4, or is less than 16 or
 
 ***
 
+### mnemonicToSeed()
+
+> `static` **mnemonicToSeed**(`mnemonic`, `password`?): `Uint8Array`
+
+Convert a mnemonic to a seed.
+
+#### Parameters
+
+• **mnemonic**: `string`
+
+The mnemonic to convert.
+
+• **password?**: `string`
+
+The password to apply to the seed generation.
+
+#### Returns
+
+`Uint8Array`
+
+The seed.
+
+***
+
 ### mnemonicToEntropy()
 
 > `static` **mnemonicToEntropy**(`mnemonic`, `words`): `Uint8Array`
@@ -67,55 +119,3 @@ The entropy.
 #### Throws
 
 Error if the number of words is not a multiple of 3.
-
-***
-
-### mnemonicToSeed()
-
-> `static` **mnemonicToSeed**(`mnemonic`, `password`?): `Uint8Array`
-
-Convert a mnemonic to a seed.
-
-#### Parameters
-
-• **mnemonic**: `string`
-
-The mnemonic to convert.
-
-• **password?**: `string`
-
-The password to apply to the seed generation.
-
-#### Returns
-
-`Uint8Array`
-
-The seed.
-
-***
-
-### randomMnemonic()
-
-> `static` **randomMnemonic**(`strength`, `words`): `string`
-
-Generate a random mnemonic.
-
-#### Parameters
-
-• **strength**: `number`= `256`
-
-The strength of the mnemonic to generate, defaults to 256.
-
-• **words**: `string`[]= `wordlist`
-
-The wordlist to use, defaults to the English wordlist.
-
-#### Returns
-
-`string`
-
-The random mnemonic.
-
-#### Throws
-
-Error if the length is not a multiple of 32.

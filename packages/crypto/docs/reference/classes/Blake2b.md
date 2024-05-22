@@ -50,40 +50,6 @@ Blake2b 512.
 
 ## Methods
 
-### digest()
-
-> **digest**(): `Uint8Array`
-
-Get the digest for the hash.
-
-#### Returns
-
-`Uint8Array`
-
-The instance for chaining.
-
-***
-
-### update()
-
-> **update**(`block`): [`Blake2b`](Blake2b.md)
-
-Update the hash with the block.
-
-#### Parameters
-
-• **block**: `Uint8Array`
-
-The block to update the hash with.
-
-#### Returns
-
-[`Blake2b`](Blake2b.md)
-
-The instance for chaining.
-
-***
-
 ### sum160()
 
 > `static` **sum160**(`block`, `key`?): `Uint8Array`
@@ -153,3 +119,37 @@ Optional key for the hash.
 `Uint8Array`
 
 The sum 512 of the block.
+
+***
+
+### update()
+
+> **update**(`block`): [`Blake2b`](Blake2b.md)
+
+Update the hash with the block.
+
+#### Parameters
+
+• **block**: `Uint8Array`
+
+The block to update the hash with.
+
+#### Returns
+
+[`Blake2b`](Blake2b.md)
+
+The instance for chaining.
+
+***
+
+### digest()
+
+> **digest**(): `Uint8Array`
+
+Get the digest for the hash.
+
+#### Returns
+
+`Uint8Array`
+
+The instance for chaining.

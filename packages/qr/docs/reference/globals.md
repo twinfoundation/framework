@@ -6,9 +6,9 @@
 
 ## Classes
 
+- [QR](classes/QR.md)
 - [JpegRenderer](classes/JpegRenderer.md)
 - [PngRenderer](classes/PngRenderer.md)
-- [QR](classes/QR.md)
 - [TextRenderer](classes/TextRenderer.md)
 
 ## Interfaces

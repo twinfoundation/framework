@@ -14,6 +14,54 @@ Coerce an object from one type to another.
 
 ## Methods
 
+### string()
+
+> `static` **string**(`value`): `undefined` \| `string`
+
+Coerce the value to a string.
+
+#### Parameters
+
+• **value**: `unknown`
+
+The value to coerce.
+
+#### Returns
+
+`undefined` \| `string`
+
+The value if it can be coerced.
+
+#### Throws
+
+TypeError If the value can not be coerced.
+
+***
+
+### number()
+
+> `static` **number**(`value`): `undefined` \| `number`
+
+Coerce the value to a number.
+
+#### Parameters
+
+• **value**: `unknown`
+
+The value to coerce.
+
+#### Returns
+
+`undefined` \| `number`
+
+The value if it can be coerced.
+
+#### Throws
+
+TypeError If the value can not be coerced.
+
+***
+
 ### bigint()
 
 > `static` **bigint**(`value`): `undefined` \| `bigint`
@@ -101,54 +149,6 @@ The value to coerce.
 #### Returns
 
 `undefined` \| `Date`
-
-The value if it can be coerced.
-
-#### Throws
-
-TypeError If the value can not be coerced.
-
-***
-
-### number()
-
-> `static` **number**(`value`): `undefined` \| `number`
-
-Coerce the value to a number.
-
-#### Parameters
-
-• **value**: `unknown`
-
-The value to coerce.
-
-#### Returns
-
-`undefined` \| `number`
-
-The value if it can be coerced.
-
-#### Throws
-
-TypeError If the value can not be coerced.
-
-***
-
-### string()
-
-> `static` **string**(`value`): `undefined` \| `string`
-
-Coerce the value to a string.
-
-#### Parameters
-
-• **value**: `unknown`
-
-The value to coerce.
-
-#### Returns
-
-`undefined` \| `string`
 
 The value if it can be coerced.
 

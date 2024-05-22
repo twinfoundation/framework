@@ -14,6 +14,62 @@ Class to help with objects.
 
 ## Methods
 
+### toBytes()
+
+> `static` **toBytes**\<`T`\>(`obj`, `format`): `Uint8Array`
+
+Convert an object to bytes.
+
+#### Type parameters
+
+• **T**
+
+#### Parameters
+
+• **obj**: `undefined` \| `T`
+
+The object to convert.
+
+• **format**: `boolean`= `false`
+
+Format the JSON content.
+
+#### Returns
+
+`Uint8Array`
+
+The object as bytes.
+
+***
+
+### fromBytes()
+
+> `static` **fromBytes**\<`T`\>(`bytes`): `T`
+
+Convert a bytes to an object.
+
+#### Type parameters
+
+• **T**
+
+#### Parameters
+
+• **bytes**: `undefined` \| `null` \| `Uint8Array`
+
+The bytes to convert to an object.
+
+#### Returns
+
+`T`
+
+The object.
+
+#### Throws
+
+GeneralError if there was an error parsing the JSON.
+
+***
+
 ### clone()
 
 > `static` **clone**\<`T`\>(`obj`): `T`
@@ -63,62 +119,6 @@ The second object to compare.
 `boolean`
 
 True is the objects are equal.
-
-***
-
-### fromBytes()
-
-> `static` **fromBytes**\<`T`\>(`bytes`): `T`
-
-Convert a bytes to an object.
-
-#### Type parameters
-
-• **T**
-
-#### Parameters
-
-• **bytes**: `undefined` \| `null` \| `Uint8Array`
-
-The bytes to convert to an object.
-
-#### Returns
-
-`T`
-
-The object.
-
-#### Throws
-
-GeneralError if there was an error parsing the JSON.
-
-***
-
-### pick()
-
-> `static` **pick**\<`T`\>(`obj`, `keys`?): `Partial`\<`T`\>
-
-Pick a subset of properties from an object.
-
-#### Type parameters
-
-• **T**
-
-#### Parameters
-
-• **obj**: `T`
-
-The object to pick the properties from.
-
-• **keys?**: keyof `T`[]
-
-The property keys to pick.
-
-#### Returns
-
-`Partial`\<`T`\>
-
-The partial object.
 
 ***
 
@@ -172,11 +172,11 @@ The value to set.
 
 ***
 
-### toBytes()
+### pick()
 
-> `static` **toBytes**\<`T`\>(`obj`, `format`): `Uint8Array`
+> `static` **pick**\<`T`\>(`obj`, `keys`?): `Partial`\<`T`\>
 
-Convert an object to bytes.
+Pick a subset of properties from an object.
 
 #### Type parameters
 
@@ -184,16 +184,16 @@ Convert an object to bytes.
 
 #### Parameters
 
-• **obj**: `undefined` \| `T`
+• **obj**: `T`
 
-The object to convert.
+The object to pick the properties from.
 
-• **format**: `boolean`= `false`
+• **keys?**: keyof `T`[]
 
-Format the JSON content.
+The property keys to pick.
 
 #### Returns
 
-`Uint8Array`
+`Partial`\<`T`\>
 
-The object as bytes.
+The partial object.

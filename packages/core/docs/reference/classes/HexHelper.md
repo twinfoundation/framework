@@ -22,26 +22,6 @@ Const defining the maximum value for a 256 bit int.
 
 ## Methods
 
-### addPrefix()
-
-> `static` **addPrefix**(`hex`): `string`
-
-Add the 0x prefix if it does not exist.
-
-#### Parameters
-
-• **hex**: `string`
-
-The hex value to add the prefix to.
-
-#### Returns
-
-`string`
-
-The hex with the prefix.
-
-***
-
 ### fromBigInt256()
 
 > `static` **fromBigInt256**(`value`): `string`
@@ -59,6 +39,66 @@ The big int value to convert.
 `string`
 
 The hex encoded big int.
+
+***
+
+### toBigInt256()
+
+> `static` **toBigInt256**(`hex`): `bigint`
+
+Convert the hex string to a big int.
+
+#### Parameters
+
+• **hex**: `string`
+
+The hex value to convert.
+
+#### Returns
+
+`bigint`
+
+The big int.
+
+***
+
+### stripPrefix()
+
+> `static` **stripPrefix**(`hex`): `string`
+
+Strip the 0x prefix if it exists.
+
+#### Parameters
+
+• **hex**: `string`
+
+The hex value to strip.
+
+#### Returns
+
+`string`
+
+The stripped hex without the prefix.
+
+***
+
+### addPrefix()
+
+> `static` **addPrefix**(`hex`): `string`
+
+Add the 0x prefix if it does not exist.
+
+#### Parameters
+
+• **hex**: `string`
+
+The hex value to add the prefix to.
+
+#### Returns
+
+`string`
+
+The hex with the prefix.
 
 ***
 
@@ -103,43 +143,3 @@ Allow the hex to have the 0x prefix.
 `boolean`
 
 True if the string is hex.
-
-***
-
-### stripPrefix()
-
-> `static` **stripPrefix**(`hex`): `string`
-
-Strip the 0x prefix if it exists.
-
-#### Parameters
-
-• **hex**: `string`
-
-The hex value to strip.
-
-#### Returns
-
-`string`
-
-The stripped hex without the prefix.
-
-***
-
-### toBigInt256()
-
-> `static` **toBigInt256**(`hex`): `bigint`
-
-Convert the hex string to a big int.
-
-#### Parameters
-
-• **hex**: `string`
-
-The hex value to convert.
-
-#### Returns
-
-`bigint`
-
-The big int.

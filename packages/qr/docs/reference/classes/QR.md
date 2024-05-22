@@ -31,11 +31,11 @@ Error if the typeNumber is invalid.
 
 ## Methods
 
-### addAlphaNumeric()
+### addText()
 
-> **addAlphaNumeric**(`qrData`): `void`
+> **addText**(`qrData`): `void`
 
-Add alpha numeric to the QR Code.
+Add text data to the QR Code.
 
 #### Parameters
 
@@ -67,11 +67,11 @@ The data to add.
 
 ***
 
-### addText()
+### addAlphaNumeric()
 
-> **addText**(`qrData`): `void`
+> **addAlphaNumeric**(`qrData`): `void`
 
-Add text data to the QR Code.
+Add alpha numeric to the QR Code.
 
 #### Parameters
 

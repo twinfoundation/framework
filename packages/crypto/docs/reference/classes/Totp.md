@@ -43,32 +43,41 @@ The one time password.
 
 ***
 
-### generateAuthUrl()
+### verify()
 
-> `static` **generateAuthUrl**(`issuer`, `label`, `secretBase32`): `string`
+> `static` **verify**(`token`, `key`, `window`, `timeStep`, `now`): `undefined` \| `number`
 
-Generate a url for use with authenticator apps.
-See https://github.com/google/google-authenticator/wiki/Key-Uri-Format .
+Check a One Time Password based on a timer.
 
 #### Parameters
 
-• **issuer**: `string`
+• **token**: `string`
 
-The issuer of the totp.
+Passcode to validate.
 
-• **label**: `string`
+• **key**: `Uint8Array`
 
-The label that will show in auth apps.
+Key for the one time password. This should be unique and secret for
+every user as it is the seed used to calculate the HMAC.
 
-• **secretBase32**: `string`
+• **window**: `number`= `2`
 
-The secret as base 32.
+The allowable margin for the counter.
+
+• **timeStep**: `number`= `30`
+
+The time step of the counter.
+
+• **now**: `number`= `undefined`
+
+The timestamp now.
 
 #### Returns
 
-`string`
+`undefined` \| `number`
 
-The url.
+Undefined if failure, delta on success
+delta is the time step difference between the client and the server.
 
 ***
 
@@ -112,38 +121,29 @@ The bytes of the secret.
 
 ***
 
-### verify()
+### generateAuthUrl()
 
-> `static` **verify**(`token`, `key`, `window`, `timeStep`, `now`): `undefined` \| `number`
+> `static` **generateAuthUrl**(`issuer`, `label`, `secretBase32`): `string`
 
-Check a One Time Password based on a timer.
+Generate a url for use with authenticator apps.
+See https://github.com/google/google-authenticator/wiki/Key-Uri-Format .
 
 #### Parameters
 
-• **token**: `string`
+• **issuer**: `string`
 
-Passcode to validate.
+The issuer of the totp.
 
-• **key**: `Uint8Array`
+• **label**: `string`
 
-Key for the one time password. This should be unique and secret for
-every user as it is the seed used to calculate the HMAC.
+The label that will show in auth apps.
 
-• **window**: `number`= `2`
+• **secretBase32**: `string`
 
-The allowable margin for the counter.
-
-• **timeStep**: `number`= `30`
-
-The time step of the counter.
-
-• **now**: `number`= `undefined`
-
-The timestamp now.
+The secret as base 32.
 
 #### Returns
 
-`undefined` \| `number`
+`string`
 
-Undefined if failure, delta on success
-delta is the time step difference between the client and the server.
+The url.

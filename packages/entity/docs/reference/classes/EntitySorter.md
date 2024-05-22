@@ -14,6 +14,34 @@ Class to perform sort operations on entities.
 
 ## Methods
 
+### sort()
+
+> `static` **sort**\<`T`\>(`entities`, `entitySorters`?): `T`[]
+
+Sort a list of entities using multiple keys and direction.
+
+#### Type parameters
+
+• **T**
+
+#### Parameters
+
+• **entities**: `T`[]
+
+The list of entities.
+
+• **entitySorters?**: [`IEntitySort`](../interfaces/IEntitySort.md)\<`T`\>[]
+
+The sort keys to use.
+
+#### Returns
+
+`T`[]
+
+The sorted list.
+
+***
+
 ### compare()
 
 > `static` **compare**\<`T`\>(`entity1`, `entity2`, `prop`, `type`, `direction`): `number`
@@ -51,31 +79,3 @@ The direction of the sort.
 `number`
 
 The result of the comparison.
-
-***
-
-### sort()
-
-> `static` **sort**\<`T`\>(`entities`, `entitySorters`?): `T`[]
-
-Sort a list of entities using multiple keys and direction.
-
-#### Type parameters
-
-• **T**
-
-#### Parameters
-
-• **entities**: `T`[]
-
-The list of entities.
-
-• **entitySorters?**: [`IEntitySort`](../interfaces/IEntitySort.md)\<`T`\>[]
-
-The sort keys to use.
-
-#### Returns
-
-`T`[]
-
-The sorted list.

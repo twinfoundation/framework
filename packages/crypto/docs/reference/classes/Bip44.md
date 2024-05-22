@@ -14,82 +14,6 @@ Implementation of Bip44 for address generation.
 
 ## Methods
 
-### addressBech32()
-
-> `static` **addressBech32**(`seed`, `keyType`, `hrp`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `object`
-
-Generate a bech32 address from the seed and parts.
-
-#### Parameters
-
-• **seed**: `Uint8Array`
-
-The account seed.
-
-• **keyType**: [`KeyType`](../enumerations/KeyType.md)
-
-The key type.
-
-• **hrp**: `string`
-
-The human readable part of the address.
-
-• **coinType**: `number`
-
-The coin type.
-
-• **accountIndex**: `number`
-
-The account index.
-
-• **isInternal**: `boolean`
-
-Is this an internal address.
-
-• **addressIndex**: `number`
-
-The address index.
-
-#### Returns
-
-`object`
-
-The generated path and the associated keypair.
-
-##### address
-
-> **address**: `string`
-
-##### privateKey
-
-> **privateKey**: `Uint8Array`
-
-##### publicKey
-
-> **publicKey**: `Uint8Array`
-
-***
-
-### basePath()
-
-> `static` **basePath**(`coinType`): `string`
-
-Create a bip44 base path for the provided coin type.
-
-#### Parameters
-
-• **coinType**: `number`
-
-The coin type.
-
-#### Returns
-
-`string`
-
-The bip44 address base path.
-
-***
-
 ### keyPair()
 
 > `static` **keyPair**(`seed`, `keyType`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `object`
@@ -171,3 +95,79 @@ The address index.
 [`Bip32Path`](Bip32Path.md)
 
 The generated path.
+
+***
+
+### basePath()
+
+> `static` **basePath**(`coinType`): `string`
+
+Create a bip44 base path for the provided coin type.
+
+#### Parameters
+
+• **coinType**: `number`
+
+The coin type.
+
+#### Returns
+
+`string`
+
+The bip44 address base path.
+
+***
+
+### addressBech32()
+
+> `static` **addressBech32**(`seed`, `keyType`, `hrp`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `object`
+
+Generate a bech32 address from the seed and parts.
+
+#### Parameters
+
+• **seed**: `Uint8Array`
+
+The account seed.
+
+• **keyType**: [`KeyType`](../enumerations/KeyType.md)
+
+The key type.
+
+• **hrp**: `string`
+
+The human readable part of the address.
+
+• **coinType**: `number`
+
+The coin type.
+
+• **accountIndex**: `number`
+
+The account index.
+
+• **isInternal**: `boolean`
+
+Is this an internal address.
+
+• **addressIndex**: `number`
+
+The address index.
+
+#### Returns
+
+`object`
+
+The generated path and the associated keypair.
+
+##### address
+
+> **address**: `string`
+
+##### privateKey
+
+> **privateKey**: `Uint8Array`
+
+##### publicKey
+
+> **publicKey**: `Uint8Array`

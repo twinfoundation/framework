@@ -56,15 +56,13 @@ The inner error if we have wrapped another error.
 
 ***
 
-### inner?
+### name
 
-> `optional` **inner**: `IError`
-
-The inner error if there was one.
+> **name**: `string`
 
 #### Inherited from
 
-`BaseError.inner`
+`BaseError.name`
 
 ***
 
@@ -78,13 +76,25 @@ The inner error if there was one.
 
 ***
 
-### name
+### stack?
 
-> **name**: `string`
+> `optional` **stack**: `string`
 
 #### Inherited from
 
-`BaseError.name`
+`BaseError.stack`
+
+***
+
+### source?
+
+> `optional` **source**: `string`
+
+The source of the error.
+
+#### Inherited from
+
+`BaseError.source`
 
 ***
 
@@ -104,25 +114,15 @@ Any additional information for the error.
 
 ***
 
-### source?
+### inner?
 
-> `optional` **source**: `string`
+> `optional` **inner**: `IError`
 
-The source of the error.
-
-#### Inherited from
-
-`BaseError.source`
-
-***
-
-### stack?
-
-> `optional` **stack**: `string`
+The inner error if there was one.
 
 #### Inherited from
 
-`BaseError.stack`
+`BaseError.inner`
 
 ***
 
@@ -134,51 +134,27 @@ Runtime name for the class.
 
 ## Methods
 
-### toJsonObject()
+### fromError()
 
-> **toJsonObject**(`includeStack`?): `IError`
+> `static` **fromError**(`err`): `BaseError`
 
-Serialize the error to the error model.
-
-#### Parameters
-
-• **includeStack?**: `boolean`
-
-Include the stack in the error.
-
-#### Returns
-
-`IError`
-
-The error model.
-
-#### Inherited from
-
-`BaseError.toJsonObject`
-
-***
-
-### expand()
-
-> `static` **expand**(`errors`): `undefined` \| `IError`
-
-Expand an error tree.
+Construct an error from an existing one.
 
 #### Parameters
 
-• **errors**: `undefined` \| `IError`[]
+• **err**: `unknown`
 
-The list of errors to expand.
+The existing error.
 
 #### Returns
 
-`undefined` \| `IError`
+`BaseError`
 
-The first level error.
+The new instance.
 
 #### Inherited from
 
-`BaseError.expand`
+`BaseError.fromError`
 
 ***
 
@@ -206,35 +182,35 @@ The list of all internal errors.
 
 ***
 
-### fromError()
+### expand()
 
-> `static` **fromError**(`err`): `BaseError`
+> `static` **expand**(`errors`): `undefined` \| `IError`
 
-Construct an error from an existing one.
+Expand an error tree.
 
 #### Parameters
 
-• **err**: `unknown`
+• **errors**: `undefined` \| `IError`[]
 
-The existing error.
+The list of errors to expand.
 
 #### Returns
 
-`BaseError`
+`undefined` \| `IError`
 
-The new instance.
+The first level error.
 
 #### Inherited from
 
-`BaseError.fromError`
+`BaseError.expand`
 
 ***
 
-### isErrorCode()
+### isErrorName()
 
-> `static` **isErrorCode**(`error`, `code`): `boolean`
+> `static` **isErrorName**(`error`, `name`): `error is BaseError`
 
-Test to see if the error has the specified error code.
+Test to see if the error has the specified error name.
 
 #### Parameters
 
@@ -242,19 +218,19 @@ Test to see if the error has the specified error code.
 
 The error to test.
 
-• **code**: `string` \| `RegExp`
+• **name**: `string` \| `RegExp`
 
-The code to check for.
+The name to check for.
 
 #### Returns
 
-`boolean`
+`error is BaseError`
 
-True if the error has the code.
+True if the error has the name.
 
 #### Inherited from
 
-`BaseError.isErrorCode`
+`BaseError.isErrorName`
 
 ***
 
@@ -286,11 +262,39 @@ True if the error has the name.
 
 ***
 
-### isErrorName()
+### isErrorCode()
 
-> `static` **isErrorName**(`error`, `name`): `error is BaseError`
+> `static` **isErrorCode**(`error`, `code`): `boolean`
 
-Test to see if the error has the specified error name.
+Test to see if the error has the specified error code.
+
+#### Parameters
+
+• **error**: `unknown`
+
+The error to test.
+
+• **code**: `string` \| `RegExp`
+
+The code to check for.
+
+#### Returns
+
+`boolean`
+
+True if the error has the code.
+
+#### Inherited from
+
+`BaseError.isErrorCode`
+
+***
+
+### someErrorName()
+
+> `static` **someErrorName**(`error`, `name`): `error is BaseError`
+
+Test to see if any of the errors or children have the given error name.
 
 #### Parameters
 
@@ -310,7 +314,35 @@ True if the error has the name.
 
 #### Inherited from
 
-`BaseError.isErrorName`
+`BaseError.someErrorName`
+
+***
+
+### someErrorMessage()
+
+> `static` **someErrorMessage**(`error`, `message`): `error is BaseError`
+
+Test to see if any of the errors or children have the given error message.
+
+#### Parameters
+
+• **error**: `unknown`
+
+The error to test.
+
+• **message**: `string` \| `RegExp`
+
+The message to check for.
+
+#### Returns
+
+`error is BaseError`
+
+True if the error has the name.
+
+#### Inherited from
+
+`BaseError.someErrorMessage`
 
 ***
 
@@ -370,56 +402,24 @@ True if the error has the name.
 
 ***
 
-### someErrorMessage()
+### toJsonObject()
 
-> `static` **someErrorMessage**(`error`, `message`): `error is BaseError`
+> **toJsonObject**(`includeStack`?): `IError`
 
-Test to see if any of the errors or children have the given error message.
-
-#### Parameters
-
-• **error**: `unknown`
-
-The error to test.
-
-• **message**: `string` \| `RegExp`
-
-The message to check for.
-
-#### Returns
-
-`error is BaseError`
-
-True if the error has the name.
-
-#### Inherited from
-
-`BaseError.someErrorMessage`
-
-***
-
-### someErrorName()
-
-> `static` **someErrorName**(`error`, `name`): `error is BaseError`
-
-Test to see if any of the errors or children have the given error name.
+Serialize the error to the error model.
 
 #### Parameters
 
-• **error**: `unknown`
+• **includeStack?**: `boolean`
 
-The error to test.
-
-• **name**: `string` \| `RegExp`
-
-The name to check for.
+Include the stack in the error.
 
 #### Returns
 
-`error is BaseError`
+`IError`
 
-True if the error has the name.
+The error model.
 
 #### Inherited from
 
-`BaseError.someErrorName`
+`BaseError.toJsonObject`

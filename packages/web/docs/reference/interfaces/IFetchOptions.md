@@ -14,6 +14,14 @@ The headers for the request.
 
 ***
 
+### timeoutMs?
+
+> `optional` **timeoutMs**: `number`
+
+Timeout for requests in milliseconds.
+
+***
+
 ### includeCredentials?
 
 > `optional` **includeCredentials**: `boolean`
@@ -35,11 +43,3 @@ The number of times to retry fetching defaults to no retries.
 > `optional` **retryDelayMs**: `number`
 
 The number of milliseconds we should delay before any retry.
-
-***
-
-### timeoutMs?
-
-> `optional` **timeoutMs**: `number`
-
-Timeout for requests in milliseconds.

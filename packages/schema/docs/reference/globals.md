@@ -2,10 +2,10 @@
 
 ## Classes
 
-- [JsonSchemaValidator](classes/JsonSchemaValidator.md)
-- [PropertyHelper](classes/PropertyHelper.md)
 - [SchemaOrgDataTypes](classes/SchemaOrgDataTypes.md)
 - [StockDataTypes](classes/StockDataTypes.md)
+- [PropertyHelper](classes/PropertyHelper.md)
+- [JsonSchemaValidator](classes/JsonSchemaValidator.md)
 
 ## Interfaces
 

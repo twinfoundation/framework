@@ -5,14 +5,6 @@ Based on https://github.com/kazuhikoarase/qrcode-generator/ .
 
 ## Enumeration Members
 
-### H
-
-> **H**: `2`
-
-30% Error correction.
-
-***
-
 ### L
 
 > **L**: `1`
@@ -34,3 +26,11 @@ Based on https://github.com/kazuhikoarase/qrcode-generator/ .
 > **Q**: `3`
 
 25% Error correction.
+
+***
+
+### H
+
+> **H**: `2`
+
+30% Error correction.

@@ -14,11 +14,43 @@ Handle all the data types for schema.org.
 
 ## Properties
 
+### TYPE\_TEXT
+
+> `static` **TYPE\_TEXT**: `string` = `"https://schema.org/Text"`
+
+Represents text storage.
+
+***
+
+### TYPE\_INTEGER
+
+> `static` **TYPE\_INTEGER**: `string` = `"https://schema.org/Integer"`
+
+Represents integer number values.
+
+***
+
+### TYPE\_FLOAT
+
+> `static` **TYPE\_FLOAT**: `string` = `"https://schema.org/Float"`
+
+Represents floating point numbers.
+
+***
+
 ### TYPE\_BOOLEAN
 
 > `static` **TYPE\_BOOLEAN**: `string` = `"https://schema.org/Boolean"`
 
 Represents a boolean.
+
+***
+
+### TYPE\_URL
+
+> `static` **TYPE\_URL**: `string` = `"https://schema.org/URL"`
+
+Represents a url.
 
 ***
 
@@ -38,19 +70,11 @@ Represents a date time as an ISO format string.
 
 ***
 
-### TYPE\_FLOAT
+### TYPE\_TIME
 
-> `static` **TYPE\_FLOAT**: `string` = `"https://schema.org/Float"`
+> `static` **TYPE\_TIME**: `string` = `"https://schema.org/Time"`
 
-Represents floating point numbers.
-
-***
-
-### TYPE\_GEO\_COORDINATES
-
-> `static` **TYPE\_GEO\_COORDINATES**: `string` = `"https://schema.org/GeoCoordinates"`
-
-Represents a location.
+Represents a time as an ISO format string.
 
 ***
 
@@ -62,11 +86,11 @@ Represents a url which points to an image.
 
 ***
 
-### TYPE\_INTEGER
+### TYPE\_GEO\_COORDINATES
 
-> `static` **TYPE\_INTEGER**: `string` = `"https://schema.org/Integer"`
+> `static` **TYPE\_GEO\_COORDINATES**: `string` = `"https://schema.org/GeoCoordinates"`
 
-Represents integer number values.
+Represents a location.
 
 ***
 
@@ -75,30 +99,6 @@ Represents integer number values.
 > `static` **TYPE\_STRUCTURED\_VALUE**: `string` = `"https://schema.org/StructuredValue"`
 
 Represents a structured value.
-
-***
-
-### TYPE\_TEXT
-
-> `static` **TYPE\_TEXT**: `string` = `"https://schema.org/Text"`
-
-Represents text storage.
-
-***
-
-### TYPE\_TIME
-
-> `static` **TYPE\_TIME**: `string` = `"https://schema.org/Time"`
-
-Represents a time as an ISO format string.
-
-***
-
-### TYPE\_URL
-
-> `static` **TYPE\_URL**: `string` = `"https://schema.org/URL"`
-
-Represents a url.
 
 ## Methods
 

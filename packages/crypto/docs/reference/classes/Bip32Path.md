@@ -22,29 +22,37 @@ Initial path to create.
 
 ## Methods
 
-### numberSegments()
+### fromPath()
 
-> **numberSegments**(): `number`[]
+> `static` **fromPath**(`bip32Path`): [`Bip32Path`](Bip32Path.md)
 
-Get the segments.
+Construct a new path by cloning an existing one.
+
+#### Parameters
+
+• **bip32Path**: [`Bip32Path`](Bip32Path.md)
+
+The path to clone.
 
 #### Returns
 
-`number`[]
+[`Bip32Path`](Bip32Path.md)
 
-The segments as numbers.
+A new instance of Bip32Path.
 
 ***
 
-### pop()
+### toString()
 
-> **pop**(): `void`
+> **toString**(): `string`
 
-Pop an index from the path.
+Converts the path to a string.
 
 #### Returns
 
-`void`
+`string`
+
+The path as a string.
 
 ***
 
@@ -84,34 +92,26 @@ The index to add to the path.
 
 ***
 
-### toString()
+### pop()
 
-> **toString**(): `string`
+> **pop**(): `void`
 
-Converts the path to a string.
+Pop an index from the path.
 
 #### Returns
 
-`string`
-
-The path as a string.
+`void`
 
 ***
 
-### fromPath()
+### numberSegments()
 
-> `static` **fromPath**(`bip32Path`): [`Bip32Path`](Bip32Path.md)
+> **numberSegments**(): `number`[]
 
-Construct a new path by cloning an existing one.
-
-#### Parameters
-
-• **bip32Path**: [`Bip32Path`](Bip32Path.md)
-
-The path to clone.
+Get the segments.
 
 #### Returns
 
-[`Bip32Path`](Bip32Path.md)
+`number`[]
 
-A new instance of Bip32Path.
+The segments as numbers.

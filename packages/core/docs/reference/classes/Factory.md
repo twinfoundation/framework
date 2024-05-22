@@ -34,27 +34,55 @@ Match the name of the instance.
 
 ## Methods
 
-### defaultMatcher()
+### register()
 
-> `private` **defaultMatcher**(`names`, `name`): `undefined` \| `string`
+> **register**\<`U`\>(`name`, `generator`): `void`
 
-Match the requested name to the generator name.
+Register a new generator.
+
+#### Type parameters
+
+• **U**
 
 #### Parameters
 
-• **names**: `string`[]
-
-The list of names for all the generators.
-
 • **name**: `string`
 
-The name to match.
+The name of the generator.
+
+• **generator**
+
+The function to create an instance.
 
 #### Returns
 
-`undefined` \| `string`
+`void`
 
-The matched name or undefined if no match.
+***
+
+### unregister()
+
+> **unregister**(`name`): `void`
+
+Unregister a generator.
+
+#### Parameters
+
+• **name**: `string`
+
+The name of the generator to unregister.
+
+#### Returns
+
+`void`
+
+#### Throws
+
+GuardError if the parameters are invalid.
+
+#### Throws
+
+GeneralError if no generator exists.
 
 ***
 
@@ -114,17 +142,15 @@ An instance of the item or undefined if it does not exist.
 
 ***
 
-### instancesList()
+### reset()
 
-> **instancesList**(): `T`[]
+> **reset**(): `void`
 
-Get all the instances as a list in the order they were registered.
+Reset all the instances.
 
 #### Returns
 
-`T`[]
-
-The instances as a list in the order they were registered.
+`void`
 
 ***
 
@@ -142,6 +168,20 @@ The instances as a map.
 
 ***
 
+### instancesList()
+
+> **instancesList**(): `T`[]
+
+Get all the instances as a list in the order they were registered.
+
+#### Returns
+
+`T`[]
+
+The instances as a list in the order they were registered.
+
+***
+
 ### names()
 
 > **names**(): `string`[]
@@ -156,64 +196,24 @@ The ordered generator names.
 
 ***
 
-### register()
+### defaultMatcher()
 
-> **register**\<`U`\>(`name`, `generator`): `void`
+> `private` **defaultMatcher**(`names`, `name`): `undefined` \| `string`
 
-Register a new generator.
-
-#### Type parameters
-
-• **U**
+Match the requested name to the generator name.
 
 #### Parameters
 
-• **name**: `string`
+• **names**: `string`[]
 
-The name of the generator.
-
-• **generator**
-
-The function to create an instance.
-
-#### Returns
-
-`void`
-
-***
-
-### reset()
-
-> **reset**(): `void`
-
-Reset all the instances.
-
-#### Returns
-
-`void`
-
-***
-
-### unregister()
-
-> **unregister**(`name`): `void`
-
-Unregister a generator.
-
-#### Parameters
+The list of names for all the generators.
 
 • **name**: `string`
 
-The name of the generator to unregister.
+The name to match.
 
 #### Returns
 
-`void`
+`undefined` \| `string`
 
-#### Throws
-
-GuardError if the parameters are invalid.
-
-#### Throws
-
-GeneralError if no generator exists.
+The matched name or undefined if no match.

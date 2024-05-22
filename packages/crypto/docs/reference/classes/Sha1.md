@@ -16,17 +16,23 @@ Create a new instance of Sha1.
 
 ## Methods
 
-### digest()
+### sum()
 
-> **digest**(): `Uint8Array`
+> `static` **sum**(`block`): `Uint8Array`
 
-Get the digest for the hash.
+Perform Sum on the block.
+
+#### Parameters
+
+• **block**: `Uint8Array`
+
+The block to operate on.
 
 #### Returns
 
 `Uint8Array`
 
-The instance for chaining.
+The sum of the block.
 
 ***
 
@@ -50,20 +56,14 @@ The instance for chaining.
 
 ***
 
-### sum()
+### digest()
 
-> `static` **sum**(`block`): `Uint8Array`
+> **digest**(): `Uint8Array`
 
-Perform Sum on the block.
-
-#### Parameters
-
-• **block**: `Uint8Array`
-
-The block to operate on.
+Get the digest for the hash.
 
 #### Returns
 
 `Uint8Array`
 
-The sum of the block.
+The instance for chaining.

@@ -26,55 +26,21 @@ The number of bits.
 
 ## Properties
 
-### SIZE\_224
-
-> `static` `readonly` **SIZE\_224**: `number` = `224`
-
-Sha256 224.
-
-***
-
 ### SIZE\_256
 
 > `static` `readonly` **SIZE\_256**: `number` = `256`
 
 Sha256 256.
 
+***
+
+### SIZE\_224
+
+> `static` `readonly` **SIZE\_224**: `number` = `224`
+
+Sha256 224.
+
 ## Methods
-
-### digest()
-
-> **digest**(): `Uint8Array`
-
-Get the digest for the hash.
-
-#### Returns
-
-`Uint8Array`
-
-The instance for chaining.
-
-***
-
-### update()
-
-> **update**(`block`): [`HmacSha256`](HmacSha256.md)
-
-Update the hash with the block.
-
-#### Parameters
-
-• **block**: `Uint8Array`
-
-The block to update the hash with.
-
-#### Returns
-
-[`HmacSha256`](HmacSha256.md)
-
-The instance for chaining.
-
-***
 
 ### sum224()
 
@@ -121,3 +87,37 @@ The block to operate on.
 `Uint8Array`
 
 The sum 256 of the block.
+
+***
+
+### update()
+
+> **update**(`block`): [`HmacSha256`](HmacSha256.md)
+
+Update the hash with the block.
+
+#### Parameters
+
+• **block**: `Uint8Array`
+
+The block to update the hash with.
+
+#### Returns
+
+[`HmacSha256`](HmacSha256.md)
+
+The instance for chaining.
+
+***
+
+### digest()
+
+> **digest**(): `Uint8Array`
+
+Get the digest for the hash.
+
+#### Returns
+
+`Uint8Array`
+
+The instance for chaining.

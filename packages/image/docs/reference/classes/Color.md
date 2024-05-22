@@ -34,6 +34,50 @@ The blue element of the color.
 
 ## Methods
 
+### fromHex()
+
+> `static` **fromHex**(`hex`): [`Color`](Color.md)
+
+Construct a color from a hex string.
+
+#### Parameters
+
+• **hex**: `string`
+
+The hex string to parse.
+
+#### Returns
+
+[`Color`](Color.md)
+
+The color.
+
+#### Throws
+
+Error if the format is incorrect.
+
+***
+
+### coerce()
+
+> `static` **coerce**(`value`): `undefined` \| [`Color`](Color.md)
+
+Coerce an unknown type to a color.
+
+#### Parameters
+
+• **value**: `unknown`
+
+The value to try and convert.
+
+#### Returns
+
+`undefined` \| [`Color`](Color.md)
+
+The color if one can be created.
+
+***
+
 ### alpha()
 
 > **alpha**(): `number`
@@ -48,17 +92,31 @@ The alpha element.
 
 ***
 
-### argb()
+### red()
 
-> **argb**(): `number`
+> **red**(): `number`
 
-Get color as argb.
+Get the red element.
 
 #### Returns
 
 `number`
 
-The color as argb.
+The red element.
+
+***
+
+### green()
+
+> **green**(): `number`
+
+Get the green element.
+
+#### Returns
+
+`number`
+
+The green element.
 
 ***
 
@@ -76,17 +134,59 @@ The blue element.
 
 ***
 
-### green()
+### argb()
 
-> **green**(): `number`
+> **argb**(): `number`
 
-Get the green element.
+Get color as argb.
 
 #### Returns
 
 `number`
 
-The green element.
+The color as argb.
+
+***
+
+### rgba()
+
+> **rgba**(): `number`
+
+Get color as rgba.
+
+#### Returns
+
+`number`
+
+The color as rgba.
+
+***
+
+### rgbText()
+
+> **rgbText**(): `string`
+
+Get color as rgb text.
+
+#### Returns
+
+`string`
+
+The color as rgb.
+
+***
+
+### rgbaText()
+
+> **rgbaText**(): `string`
+
+Get color as rgba text.
+
+#### Returns
+
+`string`
+
+The color as rgba.
 
 ***
 
@@ -115,103 +215,3 @@ Get color as hex with alpha.
 `string`
 
 The color as hex with with alpha component.
-
-***
-
-### red()
-
-> **red**(): `number`
-
-Get the red element.
-
-#### Returns
-
-`number`
-
-The red element.
-
-***
-
-### rgbText()
-
-> **rgbText**(): `string`
-
-Get color as rgb text.
-
-#### Returns
-
-`string`
-
-The color as rgb.
-
-***
-
-### rgba()
-
-> **rgba**(): `number`
-
-Get color as rgba.
-
-#### Returns
-
-`number`
-
-The color as rgba.
-
-***
-
-### rgbaText()
-
-> **rgbaText**(): `string`
-
-Get color as rgba text.
-
-#### Returns
-
-`string`
-
-The color as rgba.
-
-***
-
-### coerce()
-
-> `static` **coerce**(`value`): `undefined` \| [`Color`](Color.md)
-
-Coerce an unknown type to a color.
-
-#### Parameters
-
-• **value**: `unknown`
-
-The value to try and convert.
-
-#### Returns
-
-`undefined` \| [`Color`](Color.md)
-
-The color if one can be created.
-
-***
-
-### fromHex()
-
-> `static` **fromHex**(`hex`): [`Color`](Color.md)
-
-Construct a color from a hex string.
-
-#### Parameters
-
-• **hex**: `string`
-
-The hex string to parse.
-
-#### Returns
-
-[`Color`](Color.md)
-
-The color.
-
-#### Throws
-
-Error if the format is incorrect.

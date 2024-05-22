@@ -14,50 +14,6 @@ Bech32 encoding and decoding.
 
 ## Methods
 
-### decode()
-
-> `static` **decode**(`bech`): `undefined` \| `object`
-
-Decode a bech32 string.
-
-#### Parameters
-
-• **bech**: `string`
-
-The text to decode.
-
-#### Returns
-
-`undefined` \| `object`
-
-The decoded data or undefined if it could not be decoded.
-
-***
-
-### decodeTo5BitArray()
-
-> `static` **decodeTo5BitArray**(`bech`): `undefined` \| `object`
-
-Decode a bech32 string to 5 bit array.
-
-#### Parameters
-
-• **bech**: `string`
-
-The text to decode.
-
-#### Returns
-
-`undefined` \| `object`
-
-The decoded data or undefined if it could not be decoded.
-
-#### Throws
-
-GeneralError if the bech32 string is invalid.
-
-***
-
 ### encode()
 
 > `static` **encode**(`humanReadablePart`, `data`): `string`
@@ -106,6 +62,70 @@ The encoded data.
 
 ***
 
+### decode()
+
+> `static` **decode**(`bech`): `undefined` \| `object`
+
+Decode a bech32 string.
+
+#### Parameters
+
+• **bech**: `string`
+
+The text to decode.
+
+#### Returns
+
+`undefined` \| `object`
+
+The decoded data or undefined if it could not be decoded.
+
+***
+
+### decodeTo5BitArray()
+
+> `static` **decodeTo5BitArray**(`bech`): `undefined` \| `object`
+
+Decode a bech32 string to 5 bit array.
+
+#### Parameters
+
+• **bech**: `string`
+
+The text to decode.
+
+#### Returns
+
+`undefined` \| `object`
+
+The decoded data or undefined if it could not be decoded.
+
+#### Throws
+
+GeneralError if the bech32 string is invalid.
+
+***
+
+### to5Bit()
+
+> `static` **to5Bit**(`bytes`): `Uint8Array`
+
+Convert the input bytes into 5 bit data.
+
+#### Parameters
+
+• **bytes**: `Uint8Array`
+
+The bytes to convert.
+
+#### Returns
+
+`Uint8Array`
+
+The data in 5 bit form.
+
+***
+
 ### from5Bit()
 
 > `static` **from5Bit**(`fiveBit`): `Uint8Array`
@@ -147,23 +167,3 @@ The text to test.
 `boolean`
 
 True if this is potentially a match.
-
-***
-
-### to5Bit()
-
-> `static` **to5Bit**(`bytes`): `Uint8Array`
-
-Convert the input bytes into 5 bit data.
-
-#### Parameters
-
-• **bytes**: `Uint8Array`
-
-The bytes to convert.
-
-#### Returns
-
-`Uint8Array`
-
-The data in 5 bit form.

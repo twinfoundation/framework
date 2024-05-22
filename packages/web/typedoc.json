@@ -5,6 +5,7 @@
 	"hideBreadcrumbs": true,
 	"githubPages": false,
 	"disableSources": true,
+	"sort": ["source-order"],
 	"treatWarningsAsErrors": true,
 	"entryFileName": "../overview.md",
 	"plugin": ["typedoc-plugin-markdown"]

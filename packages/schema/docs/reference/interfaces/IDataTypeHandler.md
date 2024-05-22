@@ -4,26 +4,6 @@ Interface describing a service which can handle a specific data type.
 
 ## Properties
 
-### childTypes?
-
-> `optional` **childTypes**: `object`
-
-Define the types of any children.
-
-#### Index signature
-
- \[`prop`: `string`\]: `string`
-
-***
-
-### defaultValue
-
-> **defaultValue**: `unknown`
-
-The default value for the item.
-
-***
-
 ### isInternal
 
 > **isInternal**: `boolean`
@@ -37,6 +17,26 @@ Is internal data type.
 > **type**: `string`
 
 The type for the item.
+
+***
+
+### defaultValue
+
+> **defaultValue**: `unknown`
+
+The default value for the item.
+
+***
+
+### childTypes?
+
+> `optional` **childTypes**: `object`
+
+Define the types of any children.
+
+#### Index signature
+
+ \[`prop`: `string`\]: `string`
 
 ## Methods
 

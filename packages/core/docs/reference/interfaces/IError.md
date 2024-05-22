@@ -4,11 +4,11 @@ Model to describe serialized error.
 
 ## Properties
 
-### inner?
+### name
 
-> `optional` **inner**: [`IError`](IError.md)
+> **name**: `string`
 
-The inner error if there was one.
+The name for the error.
 
 ***
 
@@ -20,11 +20,11 @@ The message for the error.
 
 ***
 
-### name
+### source?
 
-> **name**: `string`
+> `optional` **source**: `string`
 
-The name for the error.
+The source of the error.
 
 ***
 
@@ -40,16 +40,16 @@ Any additional information for the error.
 
 ***
 
-### source?
-
-> `optional` **source**: `string`
-
-The source of the error.
-
-***
-
 ### stack?
 
 > `optional` **stack**: `string`
 
 The stack trace for the error.
+
+***
+
+### inner?
+
+> `optional` **inner**: [`IError`](IError.md)
+
+The inner error if there was one.

@@ -16,6 +16,14 @@ Background color.
 
 ***
 
+### foreground?
+
+> `optional` **foreground**: `string` \| `Color`
+
+Foreground color.
+
+***
+
 ### cellSize?
 
 > `optional` **cellSize**: `number`
@@ -25,14 +33,6 @@ The cell size.
 #### Inherited from
 
 [`IRendererOptions`](IRendererOptions.md).[`cellSize`](IRendererOptions.md#cellsize)
-
-***
-
-### foreground?
-
-> `optional` **foreground**: `string` \| `Color`
-
-Foreground color.
 
 ***
 
