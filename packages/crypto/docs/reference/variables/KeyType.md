@@ -2,7 +2,7 @@
 
 > `const` **KeyType**: `object`
 
-The names of the key tyres.
+The names of the key types.
 
 ## Type declaration
 

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 /**
- * The names of the key tyres.
+ * The names of the key types.
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const KeyType = {
