@@ -50,3 +50,7 @@
 ## Type Aliases
 
 - [CompressionType](type-aliases/CompressionType.md)
+
+## Variables
+
+- [CompressionType](variables/CompressionType.md)

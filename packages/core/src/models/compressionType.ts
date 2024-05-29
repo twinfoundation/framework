@@ -4,4 +4,20 @@
 /**
  * Compression types.
  */
-export type CompressionType = "gzip" | "deflate";
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const CompressionType = {
+	/**
+	 * Gzip.
+	 */
+	Gzip: "gzip",
+
+	/**
+	 * deflate.
+	 */
+	Deflate: "deflate"
+} as const;
+
+/**
+ * Compression types.
+ */
+export type CompressionType = (typeof CompressionType)[keyof typeof CompressionType];

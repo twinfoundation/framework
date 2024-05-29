@@ -1,5 +1,5 @@
 # Type alias: EntitySchemaPropertyType
 
-> **EntitySchemaPropertyType**: `"string"` \| `"number"` \| `"integer"` \| `"boolean"` \| `"array"` \| `"object"`
+> **EntitySchemaPropertyType**: *typeof* [`EntitySchemaPropertyType`](../variables/EntitySchemaPropertyType.md)\[keyof *typeof* [`EntitySchemaPropertyType`](../variables/EntitySchemaPropertyType.md)\]
 
 Definition of the entity property types.

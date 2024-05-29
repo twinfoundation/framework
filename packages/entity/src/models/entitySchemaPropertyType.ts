@@ -4,10 +4,41 @@
 /**
  * Definition of the entity property types.
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EntitySchemaPropertyType = {
+	/**
+	 * String.
+	 */
+	String: "string",
+
+	/**
+	 * Number.
+	 */
+	Number: "number",
+
+	/**
+	 * Integer.
+	 */
+	Integer: "integer",
+
+	/**
+	 * Boolean.
+	 */
+	Boolean: "boolean",
+
+	/**
+	 * Array.
+	 */
+	Array: "array",
+
+	/**
+	 * Object.
+	 */
+	Object: "object"
+} as const;
+
+/**
+ * Definition of the entity property types.
+ */
 export type EntitySchemaPropertyType =
-	| "string"
-	| "number"
-	| "integer"
-	| "boolean"
-	| "array"
-	| "object";
+	(typeof EntitySchemaPropertyType)[keyof typeof EntitySchemaPropertyType];
