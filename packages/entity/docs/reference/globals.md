@@ -27,6 +27,7 @@
 ## Variables
 
 - [ComparisonOperator](variables/ComparisonOperator.md)
+- [EntitySchemaPropertyType](variables/EntitySchemaPropertyType.md)
 - [LogicalOperator](variables/LogicalOperator.md)
 - [SortDirection](variables/SortDirection.md)
 

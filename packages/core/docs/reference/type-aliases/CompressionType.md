@@ -1,5 +1,5 @@
 # Type alias: CompressionType
 
-> **CompressionType**: `"gzip"` \| `"deflate"`
+> **CompressionType**: *typeof* [`CompressionType`](../variables/CompressionType.md)\[keyof *typeof* [`CompressionType`](../variables/CompressionType.md)\]
 
 Compression types.
