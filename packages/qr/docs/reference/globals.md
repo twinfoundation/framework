@@ -1,9 +1,5 @@
 # @gtsc/qr
 
-## Enumerations
-
-- [ErrorCorrectLevel](enumerations/ErrorCorrectLevel.md)
-
 ## Classes
 
 - [QR](classes/QR.md)
@@ -19,4 +15,9 @@
 
 ## Type Aliases
 
+- [ErrorCorrectLevel](type-aliases/ErrorCorrectLevel.md)
 - [QRCellData](type-aliases/QRCellData.md)
+
+## Variables
+
+- [ErrorCorrectLevel](variables/ErrorCorrectLevel.md)

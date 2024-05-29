@@ -26,6 +26,6 @@ The value of the property to check.
 
 ### operator
 
-> **operator**: [`ComparisonOperator`](../enumerations/ComparisonOperator.md)
+> **operator**: `string`
 
 The check to perform.

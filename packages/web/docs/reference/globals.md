@@ -19,3 +19,8 @@
 
 - [HttpMethods](type-aliases/HttpMethods.md)
 - [JwtAlgorithms](type-aliases/JwtAlgorithms.md)
+
+## Variables
+
+- [HttpMethods](variables/HttpMethods.md)
+- [JwtAlgorithms](variables/JwtAlgorithms.md)

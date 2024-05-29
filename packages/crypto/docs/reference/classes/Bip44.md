@@ -26,7 +26,7 @@ Generate a bip44 key pair from the seed and parts.
 
 The account seed.
 
-• **keyType**: [`KeyType`](../enumerations/KeyType.md)
+• **keyType**: [`KeyType`](../type-aliases/KeyType.md)
 
 The key type.
 
@@ -130,7 +130,7 @@ Generate a bech32 address from the seed and parts.
 
 The account seed.
 
-• **keyType**: [`KeyType`](../enumerations/KeyType.md)
+• **keyType**: [`KeyType`](../type-aliases/KeyType.md)
 
 The key type.
 

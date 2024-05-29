@@ -70,7 +70,7 @@ The property to compare.
 
 The type of the property.
 
-• **direction**: [`SortDirection`](../enumerations/SortDirection.md)= `SortDirection.Ascending`
+• **direction**: `string`= `SortDirection.Ascending`
 
 The direction of the sort.
 
