@@ -18,7 +18,7 @@ The type of the token.
 
 ### alg
 
-> **alg**: [`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
+> **alg**: `string`
 
 The algorithm used to sign the token.
 

@@ -6,7 +6,7 @@ import { Ed25519, HmacSha256 } from "@gtsc/crypto";
 import { nameof } from "@gtsc/nameof";
 import type { IJwtHeader } from "../models/IJwtHeader";
 import type { IJwtPayload } from "../models/IJwtPayload";
-import type { JwtAlgorithms } from "../models/jwtAlgorithms";
+import { JwtAlgorithms } from "../models/jwtAlgorithms";
 
 /**
  * Class to encode and decode JSON Web Tokens.
@@ -37,10 +37,12 @@ export class Jwt {
 		) => Promise<Uint8Array>
 	): Promise<string> {
 		Guards.object<IJwtHeader>(Jwt._CLASS_NAME, nameof(header), header);
-		Guards.arrayOneOf<JwtAlgorithms>(Jwt._CLASS_NAME, nameof(header.alg), header.alg, [
-			"HS256",
-			"EdDSA"
-		]);
+		Guards.arrayOneOf<JwtAlgorithms>(
+			Jwt._CLASS_NAME,
+			nameof(header.alg),
+			header.alg,
+			Object.values(JwtAlgorithms)
+		);
 
 		Guards.object<IJwtPayload>(Jwt._CLASS_NAME, nameof(payload), payload);
 
@@ -188,7 +190,7 @@ export class Jwt {
 			Is.object<T>(payload) &&
 			Is.uint8Array(signature) &&
 			Is.uint8Array(key) &&
-			Is.arrayOneOf<JwtAlgorithms>(header.alg, ["HS256", "EdDSA"])
+			Is.arrayOneOf<JwtAlgorithms>(header.alg, Object.values(JwtAlgorithms))
 		) {
 			const segments: string[] = [];
 			const headerBytes = Converter.utf8ToBytes(JSON.stringify(header));

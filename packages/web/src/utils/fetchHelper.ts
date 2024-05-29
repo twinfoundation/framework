@@ -3,7 +3,7 @@
 import { Guards, Is, type IError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { FetchError } from "../errors/fetchError";
-import type { HttpMethods } from "../models/httpMethods";
+import { HttpMethods } from "../models/httpMethods";
 import { HttpStatusCodes } from "../models/httpStatusCodes";
 import type { IFetchOptions } from "../models/IFetchOptions";
 import type { IHttpRequestHeaders } from "../models/IHttpRequestHeaders";
@@ -39,17 +39,12 @@ export class FetchHelper {
 		Guards.string(FetchHelper._CLASS_NAME, nameof(source), source);
 		Guards.string(FetchHelper._CLASS_NAME, nameof(endpoint), endpoint);
 		Guards.string(FetchHelper._CLASS_NAME, nameof(path), path);
-		Guards.arrayOneOf<HttpMethods>(FetchHelper._CLASS_NAME, nameof(method), method, [
-			"GET",
-			"POST",
-			"PUT",
-			"PATCH",
-			"DELETE",
-			"OPTIONS",
-			"HEAD",
-			"CONNECT",
-			"TRACE"
-		]);
+		Guards.arrayOneOf<HttpMethods>(
+			FetchHelper._CLASS_NAME,
+			nameof(method),
+			method,
+			Object.values(HttpMethods)
+		);
 		if (!Is.undefined(body) && !Is.uint8Array(body)) {
 			Guards.string(FetchHelper._CLASS_NAME, nameof(body), body);
 		}

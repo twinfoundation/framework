@@ -1,5 +1,5 @@
 # Type alias: HttpMethods
 
-> **HttpMethods**: `"GET"` \| `"POST"` \| `"PUT"` \| `"PATCH"` \| `"DELETE"` \| `"OPTIONS"` \| `"HEAD"` \| `"CONNECT"` \| `"TRACE"`
+> **HttpMethods**: *typeof* [`HttpMethods`](../variables/HttpMethods.md)\[keyof *typeof* [`HttpMethods`](../variables/HttpMethods.md)\]
 
 The HTTP Methods.

@@ -4,14 +4,20 @@
 /**
  * The sort directions.
  */
-export enum SortDirection {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const SortDirection = {
 	/**
 	 * Ascending.
 	 */
-	Ascending = "Ascending",
+	Ascending: "Ascending",
 
 	/**
 	 * Descending.
 	 */
-	Descending = "Descending"
-}
+	Descending: "Descending"
+};
+
+/**
+ * The sort directions.
+ */
+export type SortDirection = (typeof SortDirection)[keyof typeof SortDirection];

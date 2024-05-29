@@ -2,16 +2,22 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 /**
- * Key types.
+ * The names of the key tyres.
  */
-export enum KeyType {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const KeyType = {
 	/**
-	 * The Ed25519 key type.
+	 * Ed25519.
 	 */
-	Ed25519 = 0,
+	Ed25519: 0,
 
 	/**
-	 * The Secp256k1 key type.
+	 * Secp256k1.
 	 */
-	Secp256k1 = 1
-}
+	Secp256k1: 1
+} as const;
+
+/**
+ * Key types.
+ */
+export type KeyType = (typeof KeyType)[keyof typeof KeyType];

@@ -226,12 +226,12 @@ module.exports = {
 					'new Error is disallowed as it is not specific enough, and bypasses the i18n formatting'
 			},
 			{
-				selector: 'ImportDeclaration[source.value=/\\.$/]',
+				selector: String.raw`ImportDeclaration[source.value=/\.$/]`,
 				message:
 					'Importing from paths ending in "." are not allowed, use specific file import instead to avoid circular dependencies'
 			},
 			{
-				selector: 'ImportDeclaration[source.value=/\\..src$/]',
+				selector: String.raw`ImportDeclaration[source.value=/\..src$/]`,
 				message:
 					'Importing from paths ending in "/src" are not allowed, use specific file import instead to avoid circular dependencies'
 			},
@@ -239,6 +239,10 @@ module.exports = {
 				selector: 'PropertyDefinition[value!=null][static=false]',
 				message:
 					'Do not use property initializers inline, perform the initialization in the constructor instead'
+			},
+			{
+				selector: 'TSEnumDeclaration',
+				message: 'Do not use enums, instead use iterable union types'
 			}
 		],
 		'no-return-assign': ['error'],

@@ -26,6 +26,6 @@ The type of the property.
 
 ### sortDirection
 
-> **sortDirection**: [`SortDirection`](../enumerations/SortDirection.md)
+> **sortDirection**: `string`
 
 Default sort direction for this column, leave empty if not sortable.

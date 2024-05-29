@@ -18,6 +18,6 @@ The conditions to join in a group.
 
 ### logicalOperator?
 
-> `optional` **logicalOperator**: [`LogicalOperator`](../enumerations/LogicalOperator.md)
+> `optional` **logicalOperator**: `string`
 
 The logical operator to use.

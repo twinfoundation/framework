@@ -1,9 +1,5 @@
 # @gtsc/crypto
 
-## Enumerations
-
-- [KeyType](enumerations/KeyType.md)
-
 ## Classes
 
 - [Bech32](classes/Bech32.md)
@@ -28,3 +24,11 @@
 - [Totp](classes/Totp.md)
 - [PasswordGenerator](classes/PasswordGenerator.md)
 - [PasswordValidator](classes/PasswordValidator.md)
+
+## Type Aliases
+
+- [KeyType](type-aliases/KeyType.md)
+
+## Variables
+
+- [KeyType](variables/KeyType.md)

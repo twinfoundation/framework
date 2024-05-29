@@ -42,7 +42,7 @@ Is this a secondary index property.
 
 ### sortDirection?
 
-> `optional` **sortDirection**: [`SortDirection`](../enumerations/SortDirection.md)
+> `optional` **sortDirection**: `string`
 
 Default sort direction for this field, leave empty if not sortable.
 

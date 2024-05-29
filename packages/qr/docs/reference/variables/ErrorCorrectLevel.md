@@ -1,36 +1,32 @@
-# Enumeration: ErrorCorrectLevel
+# Variable: ErrorCorrectLevel
+
+> `const` **ErrorCorrectLevel**: `object`
 
 Error correction level to use for the QR Code.
 Based on https://github.com/kazuhikoarase/qrcode-generator/ .
 
-## Enumeration Members
+## Type declaration
 
 ### L
 
-> **L**: `1`
+> **L**: `number` = `1`
 
 7% Error correction.
 
-***
-
 ### M
 
-> **M**: `0`
+> **M**: `number` = `0`
 
 15% Error correction.
 
-***
-
 ### Q
 
-> **Q**: `3`
+> **Q**: `number` = `3`
 
 25% Error correction.
 
-***
-
 ### H
 
-> **H**: `2`
+> **H**: `number` = `2`
 
 30% Error correction.

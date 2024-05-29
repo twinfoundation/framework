@@ -4,19 +4,26 @@
  * The mode for the qr data.
  * Based on https://github.com/kazuhikoarase/qrcode-generator/ .
  */
-export enum QRDataMode {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const QRDataMode = {
 	/**
 	 * Number.
 	 */
-	Number = 1,
+	Number: 1,
 
 	/**
 	 * Alphabet and number.
 	 */
-	AlphaNumeric = 2,
+	AlphaNumeric: 2,
 
 	/**
 	 * 8bit byte.
 	 */
-	Byte8 = 4
-}
+	Byte8: 4
+};
+
+/**
+ * The mode for the qr data.
+ * Based on https://github.com/kazuhikoarase/qrcode-generator/ .
+ */
+export type QRDataMode = (typeof QRDataMode)[keyof typeof QRDataMode];

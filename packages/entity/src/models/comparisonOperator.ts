@@ -2,56 +2,62 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 /**
- * The types of comparison types.
+ * The types of comparisons.
  */
-export enum ComparisonOperator {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ComparisonOperator = {
 	/**
 	 * Equals.
 	 */
-	Equals = "Equals",
+	Equals: "Equals",
 
 	/**
 	 * Not Equals.
 	 */
-	NotEquals = "NotEquals",
+	NotEquals: "NotEquals",
 
 	/**
 	 * Greater Than.
 	 */
-	GreaterThan = "GreaterThan",
+	GreaterThan: "GreaterThan",
 
 	/**
 	 * Greater Than Or Equal.
 	 */
-	GreaterThanOrEqual = "GreaterThanOrEqual",
+	GreaterThanOrEqual: "GreaterThanOrEqual",
 
 	/**
 	 * Less Than.
 	 */
-	LessThan = "LessThan",
+	LessThan: "LessThan",
 
 	/**
 	 * Less Than Or Equal.
 	 */
-	LessThanOrEqual = "LessThanOrEqual",
+	LessThanOrEqual: "LessThanOrEqual",
 
 	/**
 	 * Includes.
 	 */
-	Includes = "Includes",
+	Includes: "Includes",
 
 	/**
 	 * Not Includes.
 	 */
-	NotIncludes = "NotIncludes",
+	NotIncludes: "NotIncludes",
 
 	/**
 	 * In operator.
 	 */
-	In = "In",
+	In: "In",
 
 	/**
 	 * Not In operator.
 	 */
-	NotIn = "NotIn"
-}
+	NotIn: "NotIn"
+};
+
+/**
+ * The types of comparisons.
+ */
+export type ComparisonOperator = (typeof ComparisonOperator)[keyof typeof ComparisonOperator];
