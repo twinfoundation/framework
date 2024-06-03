@@ -4,5 +4,4 @@
  * Configuration model for the CLI.
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ICliConfig {
-}
+export interface ICliConfig {}
