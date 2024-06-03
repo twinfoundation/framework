@@ -42,6 +42,7 @@
 		"packages/core",
 		"packages/entity",
 		"packages/crypto",
+		"packages/crypto-cli",
 		"packages/image",
 		"packages/qr",
 		"packages/services",

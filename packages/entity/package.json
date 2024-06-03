@@ -28,12 +28,12 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/nameof": "^0.0.4",
+		"@gtsc/nameof": "next",
 		"@gtsc/core": "0.0.3-next.41",
 		"reflect-metadata": "^0.2.2"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "^0.0.4",
+		"@gtsc/nameof-transformer": "next",
 		"@vitest/coverage-v8": "^1.6.0",
 		"copyfiles": "^2.4.1",
 		"replace-in-files-cli": "^2.2.0",

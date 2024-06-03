@@ -1,10 +1,10 @@
 {
 	"error": {
 		"guard": {
-			"length32Multiple": "Property \"{property}\" length should be a multiple of 32, it is \"{value}\"",
-			"lengthEntropy": "Property \"{property}\" length should be a multiple of 4, >=16 and <= 32, it is \"{value}\"",
-			"length3Multiple": "Property \"{property}\" length should be a multiple of 3, it is \"{value}\"",
-			"greaterThan0": "Property \"{property}\" must be greater than zero, it is \"{value}\""
+			"length32Multiple": "Property \"{property}\" should be a multiple of 32, it is {value}",
+			"lengthEntropy": "Property \"{property}\" should be a multiple of 4, >=16 and <= 32, it is {value}",
+			"length3Multiple": "Property \"{property}\" should be a multiple of 3, it is {value}",
+			"greaterThan0": "Property \"{property}\" must be greater than zero, it is {value}"
 		},
 		"bip39": {
 			"missingMnemonicWord": "The mnemonic contains a word not in the wordlist, \"{value}\"",

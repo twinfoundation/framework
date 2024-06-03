@@ -1,0 +1,30 @@
+{
+	"commands": {
+		"mnemonic": {
+			"summary": "Create a mnemonic.",
+			"description": "Create a mnemonic, will also generate the equivalent seed in hex and base64 format.",
+			"options": {
+				"strength": {
+					"param": "--strength '<'number'>'",
+					"description": "The number of words in the mnemonic, defaults to 256 which produces 24 words."
+				},
+				"no-console": {
+					"param": "--no-console",
+					"description": "Hides the mnemonic and seed in the console."
+				},
+				"json": {
+					"param": "--json '<'filename'>'",
+					"description": "Will generate a JSON file with the specified containing the mnemonic and seeds."
+				},
+				"env": {
+					"param": "--env '<'filename'>'",
+					"description": "Writes the mnemonic and seed to an env file."
+				}
+			},
+			"progress": {
+				"writingJsonFile": "Writing JSON file",
+				"writingEnvFile": "Writing env file"
+			}
+		}
+	}
+}

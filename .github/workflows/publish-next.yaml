@@ -10,6 +10,7 @@ on:
         options:
           - core
           - crypto
+          - crypto-cli
           - entity
           - image
           - qr

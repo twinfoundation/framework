@@ -29,7 +29,7 @@
 	},
 	"dependencies": {
 		"@gtsc/core": "0.0.3-next.41",
-		"@gtsc/nameof": "^0.0.4",
+		"@gtsc/nameof": "next",
 		"@noble/ciphers": "^0.5.3",
 		"@noble/curves": "^1.4.0",
 		"@noble/hashes": "^1.4.0",
@@ -39,7 +39,7 @@
 		"ed25519-keygen": "^0.6.2"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "^0.0.4",
+		"@gtsc/nameof-transformer": "next",
 		"@vitest/coverage-v8": "^1.6.0",
 		"copyfiles": "^2.4.1",
 		"replace-in-files-cli": "^2.2.0",

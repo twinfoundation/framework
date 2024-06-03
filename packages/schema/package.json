@@ -30,14 +30,14 @@
 	"dependencies": {
 		"@gtsc/core": "0.0.3-next.41",
 		"@gtsc/entity": "0.0.3-next.41",
-		"@gtsc/nameof": "^0.0.4",
+		"@gtsc/nameof": "next",
 		"@gtsc/services": "0.0.3-next.41",
 		"ajv": "^8.13.0",
 		"ajv-formats": "^3.0.1",
 		"schema-dts": "^1.1.2"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "^0.0.4",
+		"@gtsc/nameof-transformer": "next",
 		"@types/json-schema": "^7.0.15",
 		"@vitest/coverage-v8": "^1.6.0",
 		"copyfiles": "^2.4.1",

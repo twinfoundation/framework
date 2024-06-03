@@ -4,6 +4,7 @@ node_modules
 **/dist/esm
 **/dist/cjs
 **/dist/types
+**/dist/locales
 coverage
 *.tgz
 **/.tmp
