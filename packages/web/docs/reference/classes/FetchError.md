@@ -46,6 +46,42 @@ The inner error if we have wrapped another error.
 
 ## Properties
 
+### prepareStackTrace()?
+
+> `static` `optional` **prepareStackTrace**: (`err`, `stackTraces`) => `any`
+
+Optional override for formatting stack traces
+
+#### See
+
+https://v8.dev/stack-trace-api#customizing-stack-traces
+
+#### Parameters
+
+• **err**: `Error`
+
+• **stackTraces**: `CallSite`[]
+
+#### Returns
+
+`any`
+
+#### Inherited from
+
+`BaseError.prepareStackTrace`
+
+***
+
+### stackTraceLimit
+
+> `static` **stackTraceLimit**: `number`
+
+#### Inherited from
+
+`BaseError.stackTraceLimit`
+
+***
+
 ### cause?
 
 > `optional` **cause**: `unknown`
@@ -133,6 +169,28 @@ The inner error if there was one.
 Runtime name for the class.
 
 ## Methods
+
+### captureStackTrace()
+
+> `static` **captureStackTrace**(`targetObject`, `constructorOpt`?): `void`
+
+Create .stack property on a target object
+
+#### Parameters
+
+• **targetObject**: `object`
+
+• **constructorOpt?**: `Function`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+`BaseError.captureStackTrace`
+
+***
 
 ### fromError()
 
