@@ -37,36 +37,3 @@ must be user specific, and be incremented for each request.
 `string`
 
 The one time password.
-
-***
-
-### verify()
-
-> `static` **verify**(`token`, `key`, `window`, `counter`): `undefined` \| `number`
-
-Check a One Time Password based on a counter.
-
-#### Parameters
-
-• **token**: `string`
-
-Passcode to validate.
-
-• **key**: `Uint8Array`
-
-Key for the one time password.
-
-• **window**: `number`= `50`
-
-The allowable margin for the counter.
-
-• **counter**: `number`= `0`
-
-This should be stored by the application.
-
-#### Returns
-
-`undefined` \| `number`
-
-Undefined if failure, delta on success
-delta is the time step difference between the client and the server.

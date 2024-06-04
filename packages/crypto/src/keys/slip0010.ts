@@ -5,7 +5,7 @@
 import { Converter, GeneralError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { HDKey as HDKeySecp256k1 } from "@scure/bip32";
-import { HDKey as HDKeyEd25519 } from "ed25519-keygen/hdkey";
+import { HDKey as HDKeyEd25519 } from "micro-key-producer/slip10.js";
 import type { Bip32Path } from "./bip32Path";
 import { Ed25519 } from "../curves/ed25519";
 import { Secp256k1 } from "../curves/secp256k1";

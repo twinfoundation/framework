@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 import { Base32, RandomHelper } from "@gtsc/core";
-import { Hotp } from "./hotp";
+import * as otp from "micro-key-producer/otp.js";
 
 /**
  * Perform TOTP.
@@ -12,14 +12,16 @@ export class Totp {
 	/**
 	 * Generate a time based One Time Password.
 	 * @param key Key for the one time password.
-	 * @param timeStep The time step of the counter.
-	 * @param now The timestamp now.
+	 * @param interval The time step of the counter.
+	 * @param timestamp The timestamp.
 	 * @returns The one time password.
 	 */
-	public static generate(key: Uint8Array, timeStep: number = 30, now: number = Date.now()): string {
-		const counter = Math.floor(now / 1000 / timeStep);
-
-		return Hotp.generate(key, counter);
+	public static generate(
+		key: Uint8Array,
+		interval: number = 30,
+		timestamp: number = Date.now()
+	): string {
+		return otp.totp({ secret: key, digits: 6, algorithm: "sha1", interval }, timestamp);
 	}
 
 	/**
@@ -28,21 +30,30 @@ export class Totp {
 	 * @param key Key for the one time password. This should be unique and secret for
 	 * every user as it is the seed used to calculate the HMAC.
 	 * @param window The allowable margin for the counter.
-	 * @param timeStep The time step of the counter.
-	 * @param now The timestamp now.
+	 * @param interval The time step of the counter.
+	 * @param timestamp The timestamp now.
 	 * @returns Undefined if failure, delta on success
-	 * delta is the time step difference between the client and the server.
 	 */
 	public static verify(
 		token: string,
 		key: Uint8Array,
 		window: number = 2,
-		timeStep: number = 30,
-		now: number = Date.now()
+		interval: number = 30,
+		timestamp: number = Date.now()
 	): number | undefined {
-		const counter = Math.floor(now / 1000 / timeStep);
+		for (let i = -window; i < window; i++) {
+			const intervalWindow = i * interval * 1000;
+			if (timestamp + intervalWindow > 0) {
+				const gen = this.generate(key, interval, timestamp + intervalWindow);
+				if (gen === token) {
+					// We have found a matching code
+					return i;
+				}
+			}
+		}
 
-		return Hotp.verify(token, key, window, counter);
+		// If we get to here then no codes have matched, return undefined
+		return undefined;
 	}
 
 	/**
@@ -78,6 +89,6 @@ export class Totp {
 		const encodedIssuer = encodeURIComponent(issuer);
 		return `otpauth://totp/${encodedIssuer}%3A${encodeURIComponent(
 			label
-		)}?secret=${secretBase32}&issuer=${encodedIssuer}`;
+		)}?secret=${secretBase32}&issuer=${encodedIssuer}&digits=6&algorithm=SHA1&interval=30`;
 	}
 }
