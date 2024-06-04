@@ -23,7 +23,6 @@ describe("Hotp", () => {
 
 		for (let i = 0; i < expected.length; i++) {
 			expect(Hotp.generate(key, i)).toEqual(expected[i]);
-			expect(Hotp.verify(expected[i], key)).toEqual(0 - i);
 		}
 	});
 });

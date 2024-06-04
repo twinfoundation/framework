@@ -78,4 +78,54 @@ describe("ObjectHelper", () => {
 		expect(result.val1).toEqual(true);
 		expect(result.val2).toBeUndefined();
 	});
+
+	test("can merge undefined objects", () => {
+		const result = ObjectHelper.merge(undefined, undefined);
+		expect(result).toEqual(undefined);
+	});
+
+	test("can merge null objects", () => {
+		const result = ObjectHelper.merge(null, null);
+		expect(result).toEqual(null);
+	});
+
+	test("can merge object with undefined", () => {
+		const result = ObjectHelper.merge({ a: true }, undefined);
+		expect(result).toEqual({ a: true });
+	});
+
+	test("can merge undefined with object", () => {
+		const result = ObjectHelper.merge(undefined, { a: true });
+		expect(result).toEqual({ a: true });
+	});
+
+	test("can merge object with null", () => {
+		const result = ObjectHelper.merge({ a: true }, null);
+		expect(result).toEqual({ a: true });
+	});
+
+	test("can merge null with object", () => {
+		const result = ObjectHelper.merge(null, { a: true });
+		expect(result).toEqual({ a: true });
+	});
+
+	test("can merge object with array and maintain original object", () => {
+		const result = ObjectHelper.merge({ a: true }, [1]);
+		expect(result).toEqual({ a: true });
+	});
+
+	test("can merge array with object and maintain original object", () => {
+		const result = ObjectHelper.merge([1], { a: true });
+		expect(result).toEqual([1]);
+	});
+
+	test("can merge object with object with single layer", () => {
+		const result = ObjectHelper.merge({ a: true }, { b: false });
+		expect(result).toEqual({ a: true, b: false });
+	});
+
+	test("can merge object with object with nested layers", () => {
+		const result = ObjectHelper.merge({ a: true, c: { d: "foo" } }, { b: false, c: { e: "bar" } });
+		expect(result).toEqual({ a: true, b: false, c: { d: "foo", e: "bar" } });
+	});
 });

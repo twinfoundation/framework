@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/web",
-	"version": "0.0.3-next.41",
+	"version": "0.0.3-next.42",
 	"description": "Contains classes for use with web operations",
 	"repository": {
 		"type": "git",
@@ -28,12 +28,13 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.3-next.41",
-		"@gtsc/crypto": "0.0.3-next.41",
-		"@gtsc/nameof": "^0.0.4"
+		"@gtsc/core": "0.0.3-next.42",
+		"@gtsc/crypto": "0.0.3-next.42",
+		"@gtsc/nameof": "next"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "^0.0.4",
+		"@gtsc/nameof-transformer": "next",
+		"@types/node": "^20.12.12",
 		"@vitest/coverage-v8": "^1.6.0",
 		"copyfiles": "^2.4.1",
 		"replace-in-files-cli": "^2.2.0",

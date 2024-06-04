@@ -17,7 +17,7 @@ Implementation of https://datatracker.ietf.org/doc/html/rfc4226 .
 
 ### generate()
 
-> `static` **generate**(`key`, `timeStep`, `now`): `string`
+> `static` **generate**(`key`, `interval`, `timestamp`): `string`
 
 Generate a time based One Time Password.
 
@@ -27,13 +27,13 @@ Generate a time based One Time Password.
 
 Key for the one time password.
 
-• **timeStep**: `number`= `30`
+• **interval**: `number`= `30`
 
 The time step of the counter.
 
-• **now**: `number`= `undefined`
+• **timestamp**: `number`= `undefined`
 
-The timestamp now.
+The timestamp.
 
 #### Returns
 
@@ -45,7 +45,7 @@ The one time password.
 
 ### verify()
 
-> `static` **verify**(`token`, `key`, `window`, `timeStep`, `now`): `undefined` \| `number`
+> `static` **verify**(`token`, `key`, `window`, `interval`, `timestamp`): `undefined` \| `number`
 
 Check a One Time Password based on a timer.
 
@@ -64,11 +64,11 @@ every user as it is the seed used to calculate the HMAC.
 
 The allowable margin for the counter.
 
-• **timeStep**: `number`= `30`
+• **interval**: `number`= `30`
 
 The time step of the counter.
 
-• **now**: `number`= `undefined`
+• **timestamp**: `number`= `undefined`
 
 The timestamp now.
 
@@ -77,7 +77,6 @@ The timestamp now.
 `undefined` \| `number`
 
 Undefined if failure, delta on success
-delta is the time step difference between the client and the server.
 
 ***
 

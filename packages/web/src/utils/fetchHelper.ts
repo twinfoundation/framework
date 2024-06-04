@@ -76,7 +76,7 @@ export class FetchHelper {
 		}
 
 		let controller: AbortController | undefined;
-		let timerId: number | undefined;
+		let timerId: number | NodeJS.Timeout | undefined;
 		const retryCount = options?.retryCount ?? 1;
 		const baseDelayMilliseconds = options?.retryDelayMs ?? 3000;
 

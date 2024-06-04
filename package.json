@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/framework",
-	"version": "0.0.3-next.41",
+	"version": "0.0.3-next.42",
 	"description": "Framework",
 	"repository": {
 		"type": "git",
@@ -42,6 +42,7 @@
 		"packages/core",
 		"packages/entity",
 		"packages/crypto",
+		"packages/crypto-cli",
 		"packages/image",
 		"packages/qr",
 		"packages/services",

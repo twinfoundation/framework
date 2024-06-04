@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/entity",
-	"version": "0.0.3-next.41",
+	"version": "0.0.3-next.42",
 	"description": "Helpers for defining and working with entities",
 	"repository": {
 		"type": "git",
@@ -28,12 +28,12 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/nameof": "^0.0.4",
-		"@gtsc/core": "0.0.3-next.41",
+		"@gtsc/nameof": "next",
+		"@gtsc/core": "0.0.3-next.42",
 		"reflect-metadata": "^0.2.2"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "^0.0.4",
+		"@gtsc/nameof-transformer": "next",
 		"@vitest/coverage-v8": "^1.6.0",
 		"copyfiles": "^2.4.1",
 		"replace-in-files-cli": "^2.2.0",

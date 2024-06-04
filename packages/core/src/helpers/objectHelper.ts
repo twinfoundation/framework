@@ -61,6 +61,36 @@ export class ObjectHelper {
 	}
 
 	/**
+	 * Deep merge objects.
+	 * @param obj1 The first object to merge.
+	 * @param obj2 The second object to merge.
+	 * @returns The combined deep merge of the objects.
+	 */
+	public static merge<T = unknown, U = unknown>(obj1: T, obj2: U): T & U {
+		if (Is.empty(obj1)) {
+			return ObjectHelper.clone(obj2) as T & U;
+		}
+		if (Is.empty(obj2)) {
+			return ObjectHelper.clone(obj1) as T & U;
+		}
+
+		const obj1Clone = ObjectHelper.clone(obj1);
+
+		if (Is.object(obj1Clone) && Is.object(obj2)) {
+			const keys = Object.keys(obj2);
+			for (const key of keys) {
+				if (Is.object(obj1Clone[key]) && Is.object(obj2[key])) {
+					ObjectHelper.propertySet(obj1Clone, key, ObjectHelper.merge(obj1Clone[key], obj2[key]));
+				} else {
+					ObjectHelper.propertySet(obj1Clone, key, obj2[key]);
+				}
+			}
+		}
+
+		return obj1Clone as T & U;
+	}
+
+	/**
 	 * Does one object equal another.
 	 * @param obj1 The first object to compare.
 	 * @param obj2 The second object to compare.
