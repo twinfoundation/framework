@@ -4,8 +4,8 @@ import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import { Converter, I18n, Is } from "@gtsc/core";
 import { Bip39 } from "@gtsc/crypto";
-import { Command } from "commander";
-import { displayBreak, displayDone, displayError, displayTask, displayValue } from "../output";
+import { Command, Option } from "commander";
+import { displayBreak, displayDone, displayError, displayTask, displayValue } from "../display";
 
 /**
  * Build the mnemonic command to be consumed by the CLI.
@@ -21,6 +21,14 @@ export function buildCommandMnemonic(): Command {
 			I18n.formatMessage("commands.mnemonic.options.strength.param"),
 			I18n.formatMessage("commands.mnemonic.options.strength.description"),
 			"256"
+		)
+		.addOption(
+			new Option(
+				I18n.formatMessage("commands.mnemonic.options.seed-format.param"),
+				I18n.formatMessage("commands.mnemonic.options.seed-format.description")
+			)
+				.choices(["hex", "base64"])
+				.default("hex")
 		)
 		.option(
 			I18n.formatMessage("commands.mnemonic.options.no-console.param"),
@@ -43,12 +51,14 @@ export function buildCommandMnemonic(): Command {
  * Action the mnemonic command.
  * @param opts The options for the command.
  * @param opts.strength The mnemonic strength.
+ * @param opts.seedFormat The output format of the seed.
  * @param opts.console Flag to display on the console.
  * @param opts.json Output the mnemonic to a JSON file.
  * @param opts.env Output the mnemonic to an environment file.
  */
 export async function actionCommandMnemonic(opts: {
 	strength: string;
+	seedFormat: "hex" | "base64";
 	console: boolean;
 	json?: string;
 	env?: string;
@@ -59,13 +69,12 @@ export async function actionCommandMnemonic(opts: {
 		const mnemonic = Bip39.randomMnemonic(strength);
 		const seed = Bip39.mnemonicToSeed(mnemonic);
 
-		const seedHex = Converter.bytesToHex(seed, true);
-		const seedBase64 = Converter.bytesToBase64(seed);
+		const seedFormatted =
+			opts.seedFormat === "hex" ? Converter.bytesToHex(seed, true) : Converter.bytesToBase64(seed);
 
 		if (opts.console) {
-			displayValue("Mnemonic", mnemonic);
-			displayValue("Seed Hex", seedHex);
-			displayValue("Seed Base64", seedBase64);
+			displayValue(I18n.formatMessage("commands.mnemonic.labels.mnemonic"), mnemonic);
+			displayValue(I18n.formatMessage("commands.mnemonic.labels.seed"), seedFormatted);
 			displayBreak();
 		}
 
@@ -79,8 +88,7 @@ export async function actionCommandMnemonic(opts: {
 				JSON.stringify(
 					{
 						mnemonic,
-						seedHex,
-						seedBase64
+						seed: seedFormatted
 					},
 					undefined,
 					"\t"
@@ -93,11 +101,7 @@ export async function actionCommandMnemonic(opts: {
 			displayTask(I18n.formatMessage("commands.mnemonic.progress.writingEnvFile"), filename);
 			displayBreak();
 
-			const output = [
-				`GTSC_MNEMONIC="${mnemonic}"`,
-				`GTSC_SEED_HEX="${seedHex}"`,
-				`GTSC_SEED_BASE64="${seedBase64}"`
-			];
+			const output = [`MNEMONIC="${mnemonic}"`, `SEED="${seedFormatted}"`];
 
 			await writeFile(filename, output.join("\n"));
 		}

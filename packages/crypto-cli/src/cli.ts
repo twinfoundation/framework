@@ -1,17 +1,21 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { I18n } from "@gtsc/core";
-import chalk from "chalk";
 import { Command } from "commander";
-import { buildCommandMnemonic as mnemonicCommand } from "./commands/mnemonic";
-import { displayError, displayHeader } from "./output";
+import { buildCommandAddress } from "./commands/address";
+import {
+	addGlobalOptions,
+	handleGlobalOptions,
+	initGlobalOptions,
+	initLocales
+} from "./commands/global";
+import { buildCommandMnemonic } from "./commands/mnemonic";
+import { displayError, displayHeader } from "./display";
 
 const CLI_ICON = "🌍";
 const CLI_TITLE = "GTSC Crypto";
 const CLI_NAME = "gtsc-crypto";
-const CLI_VERSION = "0.0.3-next.41";
+const CLI_VERSION = "0.0.3-next.42";
 
 /**
  * The main entry point for the CLI.
@@ -53,7 +57,8 @@ export class CLI {
 		},
 		argv: string[]
 	): Promise<number> {
-		await this.initLocales(path.dirname(argv[1]));
+		initGlobalOptions(path.dirname(argv[1]));
+		initLocales("en");
 
 		return new Promise<number>(resolve => {
 			try {
@@ -71,7 +76,7 @@ export class CLI {
 					.usage("[command]")
 					.showHelpAfterError()
 					.configureOutput({
-						outputError: (str, write) => write(chalk.red(str))
+						outputError: (str, write) => displayError(str.replace(/^error: /, ""))
 					})
 					.exitOverride(err => {
 						// By default commander still calls process.exit on exit
@@ -83,6 +88,14 @@ export class CLI {
 						// eslint-disable-next-line no-restricted-syntax
 						throw new Error(err.code === "commander.help" ? "0" : err.exitCode.toString());
 					});
+
+				addGlobalOptions(program);
+
+				// We parse the options before building the command
+				// in case the language has been set, then the
+				// help for the options will be in the correct language.
+				program.parseOptions(argv);
+				handleGlobalOptions(program);
 
 				this.buildCommands(program);
 
@@ -106,16 +119,10 @@ export class CLI {
 	 * @internal
 	 */
 	private buildCommands(program: Command): void {
-		program.addCommand(mnemonicCommand());
-	}
+		const commands = [buildCommandMnemonic(), buildCommandAddress()];
 
-	/**
-	 * Initialize the locales for the CLI.
-	 * @param appRootPath The root path of the app.
-	 * @internal
-	 */
-	private async initLocales(appRootPath: string): Promise<void> {
-		const localeContent = await readFile(path.join(appRootPath, "../dist/locales/en.json"), "utf8");
-		I18n.addDictionary("en", JSON.parse(localeContent));
+		for (const command of commands) {
+			program.addCommand(command.copyInheritedSettings(program));
+		}
 	}
 }

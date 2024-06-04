@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 
+import { Converter, GeneralError } from "@gtsc/core";
+import { nameof } from "@gtsc/nameof";
 import { HDKey as HDKeySecp256k1 } from "@scure/bip32";
 import { HDKey as HDKeyEd25519 } from "ed25519-keygen/hdkey";
 import type { Bip32Path } from "./bip32Path";
@@ -15,10 +17,17 @@ import { KeyType } from "../models/keyType";
  */
 export class Slip0010 {
 	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<Slip0010>();
+
+	/**
 	 * Get the master key from the seed.
 	 * @param seed The seed to generate the master key from.
 	 * @param keyType The key type.
 	 * @returns The key and chain code.
+	 * @throws If the seed is invalid.
 	 */
 	public static getMasterKeyFromSeed(
 		seed: Uint8Array,
@@ -27,15 +36,24 @@ export class Slip0010 {
 		privateKey: Uint8Array;
 		chainCode: Uint8Array;
 	} {
-		const masterKey =
-			keyType === KeyType.Ed25519
-				? HDKeyEd25519.fromMasterSeed(seed)
-				: HDKeySecp256k1.fromMasterSeed(seed);
+		try {
+			const masterKey =
+				keyType === KeyType.Ed25519
+					? HDKeyEd25519.fromMasterSeed(seed)
+					: HDKeySecp256k1.fromMasterSeed(seed);
 
-		return {
-			privateKey: masterKey.privateKey ?? new Uint8Array(),
-			chainCode: masterKey.chainCode ?? new Uint8Array()
-		};
+			return {
+				privateKey: masterKey.privateKey ?? new Uint8Array(),
+				chainCode: masterKey.chainCode ?? new Uint8Array()
+			};
+		} catch (error) {
+			throw new GeneralError(
+				Slip0010._CLASS_NAME,
+				"invalidSeed",
+				{ seed: Converter.bytesToUtf8(seed) },
+				error
+			);
+		}
 	}
 
 	/**

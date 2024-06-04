@@ -14,6 +14,10 @@ The options for the command.
 
 The mnemonic strength.
 
+• **opts.seedFormat**: `"base64"` \| `"hex"`
+
+The output format of the seed.
+
 • **opts.console**: `boolean`
 
 Flag to display on the console.

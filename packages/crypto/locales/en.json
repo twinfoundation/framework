@@ -64,6 +64,9 @@
 		},
 		"bip44": {
 			"unsupportedKeyType": "The key type \"{keyType}\" is not supported"
+		},
+		"slip0010": {
+			"invalidSeed": "The seed is invalid \"{seed}\""
 		}
 	}
 }

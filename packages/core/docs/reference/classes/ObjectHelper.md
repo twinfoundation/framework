@@ -94,6 +94,36 @@ The objects clone.
 
 ***
 
+### merge()
+
+> `static` **merge**\<`T`, `U`\>(`obj1`, `obj2`): `T` & `U`
+
+Deep merge objects.
+
+#### Type parameters
+
+• **T** = `unknown`
+
+• **U** = `unknown`
+
+#### Parameters
+
+• **obj1**: `T`
+
+The first object to merge.
+
+• **obj2**: `U`
+
+The second object to merge.
+
+#### Returns
+
+`T` & `U`
+
+The combined deep merge of the objects.
+
+***
+
 ### equal()
 
 > `static` **equal**\<`T`\>(`obj1`, `obj2`): `boolean`
