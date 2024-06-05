@@ -1,11 +1,11 @@
 {
-	"name": "@gtsc/services",
+	"name": "@gtsc/cli-core",
 	"version": "0.0.4-next.17",
-	"description": "Package for base service types",
+	"description": "Core classes for building a CLI",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/gtscio/framework.git",
-		"directory": "packages/services"
+		"directory": "packages/cli-core"
 	},
 	"author": "martyn.janes@iota.org",
 	"license": "Apache-2.0",
@@ -16,6 +16,7 @@
 	"scripts": {
 		"clean": "rimraf dist coverage",
 		"build": "tspc",
+		"merge-locales": "merge-locales",
 		"test": "vitest --run --config ./vitest.config.ts",
 		"coverage": "vitest --run --coverage --config ./vitest.config.ts",
 		"bundle:esm": "rollup --config rollup.config.mjs --environment MODULE:esm",
@@ -25,14 +26,19 @@
 		"docs:generate": "typedoc",
 		"docs:remove-header": "replace-in-files --regex='^.*overview.md.*?\\s\\s.*?\\s\\s' --string='docs/' --replacement='' docs/**/*.md",
 		"docs": "npm run docs:clean && npm run docs:generate && npm run docs:remove-header",
-		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
+		"dist": "npm run clean && npm run build && npm run merge-locales && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
 		"@gtsc/core": "0.0.4-next.17",
-		"@gtsc/nameof": "next"
+		"@gtsc/nameof": "next",
+		"chalk": "^5.3.0",
+		"commander": "^12.1.0",
+		"dotenv": "^16.4.5"
 	},
 	"devDependencies": {
+		"@gtsc/merge-locales": "next",
 		"@gtsc/nameof-transformer": "next",
+		"@types/node": "^20.12.12",
 		"@vitest/coverage-v8": "^1.6.0",
 		"copyfiles": "^2.4.1",
 		"replace-in-files-cli": "^2.2.0",

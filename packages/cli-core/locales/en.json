@@ -1,0 +1,19 @@
+{
+	"cli": {
+		"progress": {
+			"done": "Done.",
+			"error": "Error",
+			"loadingEnvFiles": "Loading env files"
+		},
+		"options": {
+			"lang": {
+				"param": "--lang '<'lang'>'",
+				"description": "The language to display the output in."
+			},
+			"load-env": {
+				"param": "--load-env [env...]",
+				"description": "Load the env files to initialise any environment variables."
+			}
+		}
+	}
+}
