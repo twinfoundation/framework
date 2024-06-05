@@ -10,13 +10,14 @@ on:
         options:
           - core
           - crypto
-          - crypto-cli
           - entity
           - image
           - qr
           - services
           - schema
           - web
+          - cli-core
+          - crypto-cli
 
 jobs:
   publish:

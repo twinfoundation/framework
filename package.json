@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/framework",
-	"version": "0.0.3-next.43",
+	"version": "0.0.4-next.17",
 	"description": "Framework",
 	"repository": {
 		"type": "git",
@@ -42,17 +42,13 @@
 		"packages/core",
 		"packages/entity",
 		"packages/crypto",
-		"packages/crypto-cli",
 		"packages/image",
 		"packages/qr",
 		"packages/services",
 		"packages/schema",
-		"packages/web"
+		"packages/web",
+		"packages/cli-core",
+		"packages/crypto-cli"
 	],
-	"overrides": {
-		"@gtsc/cli-core": {
-			"@gtsc/core": "0.0.3-next.43"
-		}
-	},
 	"type": "module"
 }
