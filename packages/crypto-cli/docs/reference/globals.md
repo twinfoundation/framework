@@ -4,11 +4,9 @@
 
 - [CLI](classes/CLI.md)
 
-## Interfaces
-
-- [ICliConfig](interfaces/ICliConfig.md)
-
 ## Functions
 
+- [buildCommandAddress](functions/buildCommandAddress.md)
+- [actionCommandAddress](functions/actionCommandAddress.md)
 - [buildCommandMnemonic](functions/buildCommandMnemonic.md)
 - [actionCommandMnemonic](functions/actionCommandMnemonic.md)
