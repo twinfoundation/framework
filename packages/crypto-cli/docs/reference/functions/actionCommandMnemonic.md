@@ -14,7 +14,7 @@ The options for the command.
 
 The mnemonic strength.
 
-• **opts.seedFormat**: `"base64"` \| `"hex"`
+• **opts.seedFormat**: `"hex"` \| `"base64"`
 
 The output format of the seed.
 

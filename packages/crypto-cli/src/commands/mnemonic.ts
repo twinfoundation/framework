@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
+import { CLIDisplay } from "@gtsc/cli-core";
 import { Converter, I18n, Is } from "@gtsc/core";
 import { Bip39 } from "@gtsc/crypto";
 import { Command, Option } from "commander";
-import { displayBreak, displayDone, displayError, displayTask, displayValue } from "../display";
 
 /**
  * Build the mnemonic command to be consumed by the CLI.
@@ -73,15 +73,15 @@ export async function actionCommandMnemonic(opts: {
 			opts.seedFormat === "hex" ? Converter.bytesToHex(seed, true) : Converter.bytesToBase64(seed);
 
 		if (opts.console) {
-			displayValue(I18n.formatMessage("commands.mnemonic.labels.mnemonic"), mnemonic);
-			displayValue(I18n.formatMessage("commands.mnemonic.labels.seed"), seedFormatted);
-			displayBreak();
+			CLIDisplay.value(I18n.formatMessage("commands.mnemonic.labels.mnemonic"), mnemonic);
+			CLIDisplay.value(I18n.formatMessage("commands.mnemonic.labels.seed"), seedFormatted);
+			CLIDisplay.break();
 		}
 
 		if (Is.stringValue(opts?.json)) {
 			const filename = path.resolve(opts.json);
-			displayTask(I18n.formatMessage("commands.mnemonic.progress.writingJsonFile"), filename);
-			displayBreak();
+			CLIDisplay.task(I18n.formatMessage("commands.mnemonic.progress.writingJsonFile"), filename);
+			CLIDisplay.break();
 
 			await writeFile(
 				filename,
@@ -98,15 +98,15 @@ export async function actionCommandMnemonic(opts: {
 
 		if (Is.stringValue(opts?.env)) {
 			const filename = path.resolve(opts.env);
-			displayTask(I18n.formatMessage("commands.mnemonic.progress.writingEnvFile"), filename);
-			displayBreak();
+			CLIDisplay.task(I18n.formatMessage("commands.mnemonic.progress.writingEnvFile"), filename);
+			CLIDisplay.break();
 
 			const output = [`MNEMONIC="${mnemonic}"`, `SEED="${seedFormatted}"`];
 
 			await writeFile(filename, output.join("\n"));
 		}
-		displayDone();
+		CLIDisplay.done();
 	} catch (error) {
-		displayError(error);
+		CLIDisplay.error(error);
 	}
 }

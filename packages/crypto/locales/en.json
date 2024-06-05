@@ -8,7 +8,7 @@
 		},
 		"bip39": {
 			"missingMnemonicWord": "The mnemonic contains a word not in the wordlist, \"{value}\"",
-			"checksumMismatch": "The checksum does not match \"{newChecksum}\" != \"${checksumBits}\""
+			"checksumMismatch": "The checksum does not match \"{newChecksum}\" != \"{checksumBits}\""
 		},
 		"ed25519": {
 			"privateKeyLength": "The private key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\"",

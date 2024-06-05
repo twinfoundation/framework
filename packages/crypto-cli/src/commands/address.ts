@@ -2,12 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
+import { CLIDisplay, CLIUtils } from "@gtsc/cli-core";
 import { Converter, GeneralError, HexHelper, I18n, Is, ObjectHelper } from "@gtsc/core";
 import { Bip44, KeyType } from "@gtsc/crypto";
 import { Command, Option } from "commander";
-import * as dotenv from "dotenv";
-import { displayBreak, displayDone, displayError, displayTask, displayValue } from "../display";
-import { readJsonFile, readLinesFile } from "../utils";
 
 /**
  * Build the address command to be consumed by the CLI.
@@ -22,10 +20,6 @@ export function buildCommandAddress(): Command {
 		.requiredOption(
 			I18n.formatMessage("commands.address.options.seed.param"),
 			I18n.formatMessage("commands.address.options.seed.description")
-		)
-		.option(
-			I18n.formatMessage("commands.address.options.load-env.param"),
-			I18n.formatMessage("commands.address.options.load-env.description")
 		)
 		.option(
 			I18n.formatMessage("commands.address.options.start.param"),
@@ -97,7 +91,6 @@ export function buildCommandAddress(): Command {
  * Action the address command.
  * @param opts The options for the command.
  * @param opts.seed The seed for generating the addresses.
- * @param opts.loadEnv Load the specified env file for the seed.
  * @param opts.start The start index for the address generation.
  * @param opts.count The number of addresses to generate.
  * @param opts.account The account index for the address generation.
@@ -113,7 +106,6 @@ export function buildCommandAddress(): Command {
  */
 export async function actionCommandAddress(opts: {
 	seed: string;
-	loadEnv: string;
 	start?: string;
 	count?: string;
 	account?: string;
@@ -130,14 +122,6 @@ export async function actionCommandAddress(opts: {
 	try {
 		let seed: Uint8Array;
 		let displaySeed: string = opts.seed;
-		const loadEnv: string = opts.loadEnv;
-
-		if (Is.stringValue(loadEnv)) {
-			const resolvedEnv = path.resolve(loadEnv);
-			displayTask(I18n.formatMessage("commands.address.progress.loadingEnvFile"), resolvedEnv);
-			displayBreak();
-			dotenv.config({ path: resolvedEnv });
-		}
 
 		if (opts.seed.startsWith("!")) {
 			const envValue = process.env[opts.seed.slice(1)];
@@ -175,18 +159,18 @@ export async function actionCommandAddress(opts: {
 		const keyType = opts.keyType;
 		const keyFormat = opts.keyFormat;
 
-		displayValue(I18n.formatMessage("commands.address.labels.seed"), displaySeed);
-		displayValue(I18n.formatMessage("commands.address.labels.start"), start);
-		displayValue(I18n.formatMessage("commands.address.labels.count"), count);
-		displayValue(I18n.formatMessage("commands.address.labels.account"), account);
-		displayValue(I18n.formatMessage("commands.address.labels.hrp"), hrp);
-		displayValue(I18n.formatMessage("commands.address.labels.coin"), coin);
-		displayValue(I18n.formatMessage("commands.address.labels.key-type"), keyType);
-		displayValue(I18n.formatMessage("commands.address.labels.key-format"), keyFormat);
-		displayBreak();
+		CLIDisplay.value(I18n.formatMessage("commands.address.labels.seed"), displaySeed);
+		CLIDisplay.value(I18n.formatMessage("commands.address.labels.start"), start);
+		CLIDisplay.value(I18n.formatMessage("commands.address.labels.count"), count);
+		CLIDisplay.value(I18n.formatMessage("commands.address.labels.account"), account);
+		CLIDisplay.value(I18n.formatMessage("commands.address.labels.hrp"), hrp);
+		CLIDisplay.value(I18n.formatMessage("commands.address.labels.coin"), coin);
+		CLIDisplay.value(I18n.formatMessage("commands.address.labels.key-type"), keyType);
+		CLIDisplay.value(I18n.formatMessage("commands.address.labels.key-format"), keyFormat);
+		CLIDisplay.break();
 
-		displayTask(I18n.formatMessage("commands.address.progress.generatingAddresses"));
-		displayBreak();
+		CLIDisplay.task(I18n.formatMessage("commands.address.progress.generatingAddresses"));
+		CLIDisplay.break();
 
 		const addressDictionary: {
 			[index: number]: { address: string; privateKey: string; publicKey: string };
@@ -216,20 +200,20 @@ export async function actionCommandAddress(opts: {
 			};
 
 			if (opts.console) {
-				displayValue(I18n.formatMessage("commands.address.labels.index"), i);
-				displayValue(
+				CLIDisplay.value(I18n.formatMessage("commands.address.labels.index"), i);
+				CLIDisplay.value(
 					I18n.formatMessage("commands.address.labels.address"),
 					addressDictionary[i].address
 				);
-				displayValue(
+				CLIDisplay.value(
 					I18n.formatMessage("commands.address.labels.private-key"),
 					addressDictionary[i].privateKey
 				);
-				displayValue(
+				CLIDisplay.value(
 					I18n.formatMessage("commands.address.labels.public-key"),
 					addressDictionary[i].publicKey
 				);
-				displayBreak();
+				CLIDisplay.break();
 			}
 		}
 
@@ -237,11 +221,11 @@ export async function actionCommandAddress(opts: {
 			const filename = path.resolve(opts.json);
 			let currentJson = {};
 			if (opts.appendJson) {
-				displayTask(I18n.formatMessage("commands.address.progress.readingJsonFile"), filename);
-				currentJson = (await readJsonFile(filename)) ?? {};
+				CLIDisplay.task(I18n.formatMessage("commands.address.progress.readingJsonFile"), filename);
+				currentJson = (await CLIUtils.readJsonFile(filename)) ?? {};
 			}
-			displayTask(I18n.formatMessage("commands.address.progress.writingJsonFile"), filename);
-			displayBreak();
+			CLIDisplay.task(I18n.formatMessage("commands.address.progress.writingJsonFile"), filename);
+			CLIDisplay.break();
 
 			await writeFile(
 				filename,
@@ -255,15 +239,15 @@ export async function actionCommandAddress(opts: {
 			const output = [];
 
 			if (opts.appendEnv) {
-				displayTask(I18n.formatMessage("commands.address.progress.readingEnvFile"), filename);
-				const lines = await readLinesFile(filename);
+				CLIDisplay.task(I18n.formatMessage("commands.address.progress.readingEnvFile"), filename);
+				const lines = await CLIUtils.readLinesFile(filename);
 				if (Is.arrayValue(lines)) {
 					output.push(...lines);
 				}
 			}
 
-			displayTask(I18n.formatMessage("commands.address.progress.writingEnvFile"), filename);
-			displayBreak();
+			CLIDisplay.task(I18n.formatMessage("commands.address.progress.writingEnvFile"), filename);
+			CLIDisplay.break();
 
 			for (const addressIndex in addressDictionary) {
 				output.push(`ADDRESS_${addressIndex}_ADDRESS="${addressDictionary[addressIndex].address}"`);
@@ -278,8 +262,8 @@ export async function actionCommandAddress(opts: {
 			await writeFile(filename, output.join("\n"));
 		}
 
-		displayDone();
+		CLIDisplay.done();
 	} catch (error) {
-		displayError(error);
+		CLIDisplay.error(error);
 	}
 }
