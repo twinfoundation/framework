@@ -90,7 +90,7 @@ The icon for the CLI.
 
 ### error()
 
-> `static` **error**(`error`, `lineBreak`): `void`
+> `static` **error**(`error`, `lineBreaks`): `void`
 
 Display an error message.
 
@@ -100,9 +100,9 @@ Display an error message.
 
 The error to display.
 
-• **lineBreak**: `boolean`= `true`
+• **lineBreaks**: `boolean`= `true`
 
-Whether to add a line break.
+Whether to add a line break after the error.
 
 #### Returns
 
