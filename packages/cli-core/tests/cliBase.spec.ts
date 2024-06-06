@@ -42,7 +42,7 @@ describe("CLI", () => {
 		);
 		expect(exitCode).toBe(0);
 		expect(writeBuffer.length).toEqual(11);
-		expect(writeBuffer[0]).toEqual(`🔐 ${chalk.underline.blue("Test App v0.0.1")}`);
+		expect(writeBuffer[0]).toEqual(`🔐 ${chalk.underline.bold.blue("Test App v0.0.1")}`);
 		expect(writeBuffer[1]).toEqual("");
 		expect(writeBuffer[2]).toEqual("");
 		expect(writeBuffer[3]).toEqual("");
@@ -72,7 +72,7 @@ describe("CLI", () => {
 		);
 		expect(exitCode).toBe(0);
 		expect(writeBuffer.length).toEqual(10);
-		expect(writeBuffer[0]).toEqual(`🔐 ${chalk.underline.blue("Test App v0.0.1")}`);
+		expect(writeBuffer[0]).toEqual(`🔐 ${chalk.underline.bold.blue("Test App v0.0.1")}`);
 		expect(writeBuffer[1]).toEqual("");
 		expect(writeBuffer[2]).toEqual("");
 		expect(writeBuffer[3]).toEqual("");
@@ -99,7 +99,7 @@ describe("CLI", () => {
 		);
 		expect(exitCode).toBe(0);
 		expect(writeBuffer.length).toEqual(13);
-		expect(writeBuffer[0]).toEqual(`🔐 ${chalk.underline.blue("Test App v0.0.1")}`);
+		expect(writeBuffer[0]).toEqual(`🔐 ${chalk.underline.bold.blue("Test App v0.0.1")}`);
 		expect(writeBuffer[1]).toEqual("");
 		expect(writeBuffer[2]).toEqual("");
 		expect(writeBuffer[3]).toEqual("");
