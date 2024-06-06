@@ -48,6 +48,18 @@ The message to output.
 
 `void`
 
+***
+
+### clearLine()
+
+> `static` **clearLine**: () => `void`
+
+The default output method for clearing the current line.
+
+#### Returns
+
+`void`
+
 ## Methods
 
 ### header()
@@ -163,6 +175,44 @@ Display a break.
 > `static` **done**(): `void`
 
 Display the processing is done.
+
+#### Returns
+
+`void`
+
+***
+
+### spinnerStart()
+
+> `static` **spinnerStart**(`i18nMessage`, `spinnerCharacters`, `interval`): `void`
+
+Start the spinner.
+
+#### Parameters
+
+• **i18nMessage**: `string`= `"cli.progress.please-wait"`
+
+The message to display with the spinner.
+
+• **spinnerCharacters**: `string`[]= `undefined`
+
+The characters to use in the spinner.
+
+• **interval**: `number`= `100`
+
+The interval for the spinner.
+
+#### Returns
+
+`void`
+
+***
+
+### spinnerStop()
+
+> `static` **spinnerStop**(): `void`
+
+Stop the spinner.
 
 #### Returns
 

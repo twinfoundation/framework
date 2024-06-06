@@ -28,7 +28,7 @@ describe("CLI", () => {
 		const exitCode = await cli.run(["", path.join(__dirname, "crypto-cli")], localesDirectory);
 		expect(exitCode).toBe(0);
 		expect(writeBuffer.length).toEqual(17);
-		expect(writeBuffer[0]).toEqual(`🌍 ${chalk.underline.bold.blue("GTSC Crypto v0.0.4-next.19")}`);
+		expect(writeBuffer[0]).toEqual(`🌍 ${chalk.underline.bold.blue("GTSC Crypto v0.0.4-next.20")}`);
 		expect(writeBuffer[1]).toEqual("");
 		expect(writeBuffer[2]).toEqual("");
 		expect(writeBuffer[3]).toEqual("");

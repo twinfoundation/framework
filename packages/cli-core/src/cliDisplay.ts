@@ -8,6 +8,12 @@ import chalk from "chalk";
  */
 export class CLIDisplay {
 	/**
+	 * The interval ID for the spinner.
+	 * @internal
+	 */
+	private static _spinnerIntervalId: NodeJS.Timeout | number | undefined;
+
+	/**
 	 * The default output method for writing standard messages.
 	 * @param str The message to output.
 	 */
@@ -18,6 +24,14 @@ export class CLIDisplay {
 	 * @param str The message to output.
 	 */
 	public static writeError: (str: string) => void = str => process.stderr.write(str);
+
+	/**
+	 * The default output method for clearing the current line.
+	 */
+	public static clearLine: () => void = () => {
+		process.stdout.clearLine(0);
+		process.stdout.cursorTo(0);
+	};
 
 	/**
 	 * Display the header for the CLI.
@@ -85,8 +99,42 @@ export class CLIDisplay {
 	 * Display the processing is done.
 	 */
 	public static done(): void {
+		CLIDisplay.write("🎉 ");
 		CLIDisplay.write(chalk.greenBright.bold(I18n.formatMessage("cli.progress.done")));
-		CLIDisplay.write(" 🎉");
 		CLIDisplay.write("\n");
+	}
+
+	/**
+	 * Start the spinner.
+	 * @param i18nMessage The message to display with the spinner.
+	 * @param spinnerCharacters The characters to use in the spinner.
+	 * @param interval The interval for the spinner.
+	 */
+	public static spinnerStart(
+		i18nMessage: string = "cli.progress.please-wait",
+		spinnerCharacters: string[] = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"],
+		interval: number = 100
+	): void {
+		let spinnerIndex = 0;
+		if (CLIDisplay._spinnerIntervalId) {
+			clearInterval(CLIDisplay._spinnerIntervalId);
+		}
+		CLIDisplay._spinnerIntervalId = setInterval(() => {
+			CLIDisplay.clearLine();
+			CLIDisplay.write(
+				`${spinnerCharacters[spinnerIndex++ % spinnerCharacters.length]} ${I18n.formatMessage(i18nMessage)}`
+			);
+		}, interval);
+	}
+
+	/**
+	 * Stop the spinner.
+	 */
+	public static spinnerStop(): void {
+		if (CLIDisplay._spinnerIntervalId) {
+			clearInterval(CLIDisplay._spinnerIntervalId);
+			CLIDisplay._spinnerIntervalId = undefined;
+		}
+		CLIDisplay.clearLine();
 	}
 }

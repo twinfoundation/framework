@@ -3,7 +3,8 @@
 		"progress": {
 			"done": "Done.",
 			"error": "Error",
-			"loadingEnvFiles": "Loading env files"
+			"loadingEnvFiles": "Loading env files",
+			"please-wait": "Please wait..."
 		},
 		"options": {
 			"lang": {
