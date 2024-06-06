@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Coerce } from "@gtsc/core";
+import { Coerce, Is } from "@gtsc/core";
 import { Command } from "commander";
 import { CLIDisplay } from "./cliDisplay";
 import {
@@ -48,7 +48,7 @@ export abstract class CLIBase {
 					.configureOutput({
 						writeOut: str => CLIDisplay.write(str),
 						writeErr: str => CLIDisplay.writeError(str),
-						outputError: (str, write) => write(str.replace(/^error: /, ""))
+						outputError: (str, write) => CLIDisplay.error(str.replace(/^error: /, ""), false)
 					})
 					.exitOverride(err => {
 						// By default commander still calls process.exit on exit
@@ -64,14 +64,7 @@ export abstract class CLIBase {
 						try {
 							await this.rootAction(program, opts);
 						} catch (error) {
-							if (error instanceof Error) {
-								// This error is the the exit code we errored with
-								// from the exitOverride so parse and resolve with it
-								resolve(Number.parseInt(error.message, 10));
-							} else {
-								CLIDisplay.error(error);
-								resolve(1);
-							}
+							this.handleError(error, resolve);
 						}
 					});
 
@@ -94,35 +87,12 @@ export abstract class CLIBase {
 					}
 
 					program.parse(argv);
+					resolve(0);
 				} catch (err) {
-					let exitCode;
-					if (err instanceof Error) {
-						// This error could be the exit code we errored with
-						// from the exitOverride so parse and resolve with it
-						exitCode = Coerce.number(err.message);
-					}
-
-					if (exitCode === 0) {
-						resolve(0);
-					} else {
-						CLIDisplay.error(err);
-						resolve(1);
-					}
+					this.handleError(err, resolve);
 				}
 			} catch (error) {
-				let exitCode;
-				if (error instanceof Error) {
-					// This error could be the exit code we errored with
-					// from the exitOverride so parse and resolve with it
-					exitCode = Coerce.number(error.message);
-				}
-
-				if (exitCode === 0) {
-					resolve(0);
-				} else {
-					CLIDisplay.error(error);
-					resolve(1);
-				}
+				this.handleError(error, resolve);
 			}
 		});
 	}
@@ -159,5 +129,27 @@ export abstract class CLIBase {
 		}
 
 		return commands.length;
+	}
+
+	/**
+	 * Handle the error and resolve the exit code.
+	 * @param error The error to handle.
+	 * @param resolve The resolve function to call.
+	 * @internal
+	 */
+	private handleError(error: unknown, resolve: (exitCode: number) => void): void {
+		let exitCode;
+		if (error instanceof Error) {
+			// This error could be the exit code we errored with
+			// from the exitOverride so parse and resolve with it
+			exitCode = Coerce.number(error.message);
+		}
+
+		if (Is.integer(exitCode)) {
+			resolve(exitCode);
+		} else {
+			CLIDisplay.error(error);
+			resolve(1);
+		}
 	}
 }

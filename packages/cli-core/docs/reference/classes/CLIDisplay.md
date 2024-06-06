@@ -78,7 +78,7 @@ The icon for the CLI.
 
 ### error()
 
-> `static` **error**(`error`): `void`
+> `static` **error**(`error`, `lineBreak`): `void`
 
 Display an error message.
 
@@ -87,6 +87,10 @@ Display an error message.
 • **error**: `unknown`
 
 The error to display.
+
+• **lineBreak**: `boolean`= `true`
+
+Whether to add a line break.
 
 #### Returns
 

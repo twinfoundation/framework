@@ -27,17 +27,22 @@ export class CLIDisplay {
 	 */
 	public static header(title: string, version: string, icon: string): void {
 		const titleVersion = `${title} v${version}`;
-		CLIDisplay.write(`${icon} ${chalk.underline.blue(titleVersion)}\n`);
+		CLIDisplay.write(`${icon} ${chalk.underline.bold.blue(titleVersion)}\n`);
 		CLIDisplay.write("\n");
 	}
 
 	/**
 	 * Display an error message.
 	 * @param error The error to display.
+	 * @param lineBreak Whether to add a line break.
 	 */
-	public static error(error: unknown): void {
+	public static error(error: unknown, lineBreak: boolean = true): void {
 		const formatted = I18n.formatErrors(error);
-		CLIDisplay.writeError(chalk.red(`${I18n.formatMessage("cli.progress.error")}: ${formatted}\n`));
+		CLIDisplay.write("❗ ");
+		CLIDisplay.writeError(chalk.red(`${I18n.formatMessage("cli.progress.error")}: ${formatted}`));
+		if (lineBreak) {
+			CLIDisplay.write("\n");
+		}
 	}
 
 	/**
@@ -48,7 +53,7 @@ export class CLIDisplay {
 	 */
 	public static value(label: string, value: unknown, indentLevel: number = 0): void {
 		CLIDisplay.write("\t".repeat(indentLevel));
-		CLIDisplay.write(chalk.green(`${label}: `));
+		CLIDisplay.write(chalk.hex("#FFA500").bold(`${label}: `));
 		CLIDisplay.write(Coerce.string(value) ?? "");
 		CLIDisplay.write("\n");
 	}
@@ -59,6 +64,7 @@ export class CLIDisplay {
 	 * @param task The task to display.
 	 */
 	public static task(label: string, task?: string): void {
+		CLIDisplay.write("➡️  ");
 		if (Is.empty(task)) {
 			CLIDisplay.write(chalk.cyan(label));
 		} else {
@@ -79,7 +85,8 @@ export class CLIDisplay {
 	 * Display the processing is done.
 	 */
 	public static done(): void {
-		CLIDisplay.write(chalk.green(I18n.formatMessage("cli.progress.done")));
+		CLIDisplay.write(chalk.greenBright.bold(I18n.formatMessage("cli.progress.done")));
+		CLIDisplay.write(" 🎉");
 		CLIDisplay.write("\n");
 	}
 }
