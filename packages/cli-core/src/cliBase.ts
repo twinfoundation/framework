@@ -30,71 +30,58 @@ export abstract class CLIBase {
 		initGlobalOptions(localesDirectory);
 		initLocales("en");
 
-		return new Promise<number>(resolve => {
-			try {
-				process.title = options.title;
+		try {
+			process.title = options.title;
 
-				if (!argv.includes("--version") && !argv.includes("-v")) {
-					CLIDisplay.header(options.title, options.version, options.icon);
-				}
-
-				const program = new Command();
-
-				program
-					.name(options.appName)
-					.version(options.version)
-					.usage("[command]")
-					.showHelpAfterError()
-					.configureOutput({
-						writeOut: str => CLIDisplay.write(str),
-						writeErr: str => CLIDisplay.writeError(str),
-						outputError: (str, write) => CLIDisplay.error(str.replace(/^error: /, ""), false)
-					})
-					.exitOverride(err => {
-						// By default commander still calls process.exit on exit
-						// which we don't want as we might have subsequent
-						// processing to handle, so instead we throw the exit code
-						// as a way to skip the process.exit call.
-						// If the error code is commander.help then we return 0 as
-						// we don't want displaying help to be an error.
-						// eslint-disable-next-line no-restricted-syntax
-						throw new Error(err.code === "commander.help" ? "0" : err.exitCode.toString());
-					})
-					.action(async opts => {
-						try {
-							await this.rootAction(program, opts);
-						} catch (error) {
-							this.handleError(error, resolve);
-						}
-					});
-
-				try {
-					addGlobalOptions(
-						program,
-						options.supportsLang ?? true,
-						options.supportsEnvFiles ?? false
-					);
-
-					// We parse the options before building the command
-					// in case the language has been set, then the
-					// help for the options will be in the correct language.
-					program.parseOptions(argv);
-					handleGlobalOptions(program);
-
-					const commandCount = this.buildCommands(program);
-					if (commandCount === 0) {
-						program.usage(" ");
-					}
-
-					program.parse(argv);
-					resolve(0);
-				} catch (err) {
-					this.handleError(err, resolve);
-				}
-			} catch (error) {
-				this.handleError(error, resolve);
+			if (!argv.includes("--version") && !argv.includes("-v")) {
+				CLIDisplay.header(options.title, options.version, options.icon);
 			}
-		});
+
+			const program = new Command();
+
+			program
+				.name(options.appName)
+				.version(options.version)
+				.usage("[command]")
+				.showHelpAfterError()
+				.configureOutput({
+					writeOut: str => CLIDisplay.write(str),
+					writeErr: str => CLIDisplay.writeError(str),
+					outputError: (str, write) => CLIDisplay.error(str.replace(/^error: /, ""), false)
+				})
+				.exitOverride(err => {
+					// By default commander still calls process.exit on exit
+					// which we don't want as we might have subsequent
+					// processing to handle, so instead we throw the exit code
+					// as a way to skip the process.exit call.
+					// If the error code is commander.help then we return 0 as
+					// we don't want displaying help to be an error.
+					// eslint-disable-next-line no-restricted-syntax
+					throw new Error(err.code === "commander.help" ? "0" : err.exitCode.toString());
+				})
+				.action(async opts => {
+					await this.rootAction(program, opts);
+				});
+
+			addGlobalOptions(program, options.supportsLang ?? true, options.supportsEnvFiles ?? false);
+
+			// We parse the options before building the command
+			// in case the language has been set, then the
+			// help for the options will be in the correct language.
+			program.parseOptions(argv);
+			handleGlobalOptions(program);
+
+			const commandCount = this.buildCommands(program);
+			if (commandCount === 0) {
+				program.usage(" ");
+			}
+
+			await program.parseAsync(argv);
+		} catch (error) {
+			return this.handleError(error);
+		}
+
+		return 0;
 	}
 
 	/**
@@ -134,10 +121,9 @@ export abstract class CLIBase {
 	/**
 	 * Handle the error and resolve the exit code.
 	 * @param error The error to handle.
-	 * @param resolve The resolve function to call.
 	 * @internal
 	 */
-	private handleError(error: unknown, resolve: (exitCode: number) => void): void {
+	private handleError(error: unknown): number {
 		let exitCode;
 		if (error instanceof Error) {
 			// This error could be the exit code we errored with
@@ -146,10 +132,9 @@ export abstract class CLIBase {
 		}
 
 		if (Is.integer(exitCode)) {
-			resolve(exitCode);
-		} else {
-			CLIDisplay.error(error);
-			resolve(1);
+			return exitCode;
 		}
+		CLIDisplay.error(error);
+		return 1;
 	}
 }
