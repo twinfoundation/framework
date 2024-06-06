@@ -182,12 +182,21 @@ export class I18n {
 	}
 
 	/**
-	 * Format Errors.
+	 * Format Errors and returns just their messages.
 	 * @param error The error to format.
-	 * @returns The formatted error.
+	 * @returns The error formatted including any inner errors.
 	 */
-	public static formatErrors(error: unknown): string {
-		const formattedErrors = [];
+	public static formatErrors(error: unknown): string[] {
+		return I18n.localizeErrors(error).map(e => e.message);
+	}
+
+	/**
+	 * Localize the content of an error and any inner errors.
+	 * @param error The error to format.
+	 * @returns The localized version of the errors flattened.
+	 */
+	public static localizeErrors(error: unknown): IError[] {
+		const formattedErrors: IError[] = [];
 
 		if (Is.notEmpty(error)) {
 			const errors = BaseError.flatten(error);
@@ -243,7 +252,7 @@ export class I18n {
 			}
 		}
 
-		return formattedErrors[0].message;
+		return formattedErrors;
 	}
 
 	/**

@@ -48,14 +48,19 @@ export class CLIDisplay {
 	/**
 	 * Display an error message.
 	 * @param error The error to display.
-	 * @param lineBreak Whether to add a line break.
+	 * @param lineBreaks Whether to add a line break after the error.
 	 */
-	public static error(error: unknown, lineBreak: boolean = true): void {
+	public static error(error: unknown, lineBreaks: boolean = true): void {
+		CLIDisplay.writeError("❗ ");
+		CLIDisplay.writeError(chalk.red(I18n.formatMessage("cli.progress.error")));
+		if (lineBreaks) {
+			CLIDisplay.writeError("\n");
+		}
+
 		const formatted = I18n.formatErrors(error);
-		CLIDisplay.write("❗ ");
-		CLIDisplay.writeError(chalk.red(`${I18n.formatMessage("cli.progress.error")}: ${formatted}`));
-		if (lineBreak) {
-			CLIDisplay.write("\n");
+		CLIDisplay.writeError(chalk.red(formatted.map(e => `\t${e}`).join("\n")));
+		if (lineBreaks) {
+			CLIDisplay.writeError("\n");
 		}
 	}
 

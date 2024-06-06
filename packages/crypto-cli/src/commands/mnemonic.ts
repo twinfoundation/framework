@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { CLIDisplay } from "@gtsc/cli-core";
 import { Converter, I18n, Is } from "@gtsc/core";
@@ -83,6 +83,7 @@ export async function actionCommandMnemonic(opts: {
 			CLIDisplay.task(I18n.formatMessage("commands.mnemonic.progress.writingJsonFile"), filename);
 			CLIDisplay.break();
 
+			await mkdir(path.dirname(filename), { recursive: true });
 			await writeFile(
 				filename,
 				JSON.stringify(
@@ -103,6 +104,7 @@ export async function actionCommandMnemonic(opts: {
 
 			const output = [`MNEMONIC="${mnemonic}"`, `SEED="${seedFormatted}"`];
 
+			await mkdir(path.dirname(filename), { recursive: true });
 			await writeFile(filename, output.join("\n"));
 		}
 		CLIDisplay.done();
