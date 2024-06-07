@@ -14,12 +14,12 @@ describe("CLI", () => {
 		writeBuffer = [];
 		errorBuffer = [];
 
-		CLIDisplay.write = (str: string): void => {
-			writeBuffer.push(...str.split("\n"));
+		CLIDisplay.write = (str: string | Uint8Array): void => {
+			writeBuffer.push(...str.toString().split("\n"));
 		};
 
-		CLIDisplay.writeError = (str: string): void => {
-			errorBuffer.push(...str.split("\n"));
+		CLIDisplay.writeError = (str: string | Uint8Array): void => {
+			errorBuffer.push(...str.toString().split("\n"));
 		};
 	});
 
@@ -28,7 +28,7 @@ describe("CLI", () => {
 		const exitCode = await cli.run(["", path.join(__dirname, "crypto-cli")], localesDirectory);
 		expect(exitCode).toBe(0);
 		expect(writeBuffer.length).toEqual(17);
-		expect(writeBuffer[0]).toEqual(`🌍 ${chalk.underline.bold.blue("GTSC Crypto v0.0.4-next.25")}`);
+		expect(writeBuffer[0]).toEqual(`🌍 ${chalk.underline.bold.blue("GTSC Crypto v0.0.4-next.26")}`);
 		expect(writeBuffer[1]).toEqual("");
 		expect(writeBuffer[2]).toEqual("");
 		expect(writeBuffer[3]).toEqual("");

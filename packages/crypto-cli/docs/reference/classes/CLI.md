@@ -54,29 +54,25 @@ The exit code.
 
 ***
 
-### rootAction()
+### configureRoot()
 
-> `protected` **rootAction**(`program`, `opts`): `Promise`\<`void`\>
+> `protected` **configureRoot**(`program`): `void`
 
-Root action which can be overridden in derived classes, defaults to showing help.
+Configure any options or actions at the root program level.
 
 #### Parameters
 
 • **program**: `Command`
 
-The main program to handling the commands.
-
-• **opts**: `unknown`
-
-The root options.
+The root program command.
 
 #### Returns
 
-`Promise`\<`void`\>
+`void`
 
 #### Inherited from
 
-`CLIBase.rootAction`
+`CLIBase.configureRoot`
 
 ***
 

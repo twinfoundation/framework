@@ -19,12 +19,12 @@ describe("CLI", () => {
 		writeBuffer = [];
 		errorBuffer = [];
 
-		CLIDisplay.write = (str: string): void => {
-			writeBuffer.push(...str.split("\n"));
+		CLIDisplay.write = (str: string | Uint8Array): void => {
+			writeBuffer.push(...str.toString().split("\n"));
 		};
 
-		CLIDisplay.writeError = (str: string): void => {
-			errorBuffer.push(...str.split("\n"));
+		CLIDisplay.writeError = (str: string | Uint8Array): void => {
+			errorBuffer.push(...str.toString().split("\n"));
 		};
 	});
 
