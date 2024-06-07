@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { CLIDisplay, checkParamInteger } from "@gtsc/cli-core";
+import { CLIDisplay, CLIParam } from "@gtsc/cli-core";
 import { Converter, I18n, Is } from "@gtsc/core";
 import { Bip39 } from "@gtsc/crypto";
 import { Command, Option } from "commander";
@@ -67,7 +67,7 @@ export async function actionCommandMnemonic(opts: {
 	env?: string;
 }): Promise<void> {
 	try {
-		const strength = checkParamInteger("strength", opts.strength, false, 128, 256);
+		const strength = CLIParam.integer("strength", opts.strength, false, 128, 256);
 
 		const mnemonic = Bip39.randomMnemonic(strength);
 		const seed = Bip39.mnemonicToSeed(mnemonic);

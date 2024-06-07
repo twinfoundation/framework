@@ -3,6 +3,8 @@
 		"commands": {
 			"common": {
 				"missingEnv": "The \"{option}\" option is configured as an environment variable, but there is no environment variable with the name \"{value}\" set.",
+				"optionInvalidHex": "The \"{option}\" does not appear to be hex. \"{value}\"",
+				"optionInvalidBase64": "The \"{option}\" does not appear to be base64. \"{value}\"",
 				"optionInvalidHexBase64": "The \"{option}\" does not appear to be hex or base64. \"{value}\"",
 				"optionInvalidBech32": "The \"{option}\" does not appear to be bech32. \"{value}\"",
 				"optionMinValue": "The \"{option}\" option must be greater than or equal to {minValue}, it is {value}.",
