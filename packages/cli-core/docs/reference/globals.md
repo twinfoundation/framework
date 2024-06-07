@@ -12,6 +12,7 @@
 
 ## Functions
 
+- [checkEnvParam](functions/checkEnvParam.md)
 - [checkParamStringValue](functions/checkParamStringValue.md)
 - [checkParamUrl](functions/checkParamUrl.md)
 - [checkParamNumber](functions/checkParamNumber.md)
@@ -19,6 +20,6 @@
 - [checkParamBigInt](functions/checkParamBigInt.md)
 - [checkParamBoolean](functions/checkParamBoolean.md)
 - [checkParamHexBase64](functions/checkParamHexBase64.md)
-- [checkEnvParam](functions/checkEnvParam.md)
+- [checkParamBech32](functions/checkParamBech32.md)
 - [initGlobalOptions](functions/initGlobalOptions.md)
 - [addGlobalOptions](functions/addGlobalOptions.md)

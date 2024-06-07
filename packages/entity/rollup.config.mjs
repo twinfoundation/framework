@@ -40,7 +40,7 @@ export default {
 	external: [/^node:.*/].concat(Object.keys(globs).map(g => new RegExp(`^${g}`))),
 	onwarn: message => {
 		if (!['EMPTY_BUNDLE', 'CIRCULAR_DEPENDENCY'].includes(message.code)) {
-			console.error(message);
+			process.stderr.write(`${err}\n`);
 			// eslint-disable-next-line unicorn/no-process-exit
 			process.exit(1);
 		}
