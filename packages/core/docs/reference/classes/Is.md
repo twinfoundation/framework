@@ -196,7 +196,7 @@ True if the value is a base64 string.
 
 ### stringHex()
 
-> `static` **stringHex**(`value`): `value is string`
+> `static` **stringHex**(`value`, `allowPrefix`): `value is string`
 
 Is the value a hex string.
 
@@ -205,6 +205,10 @@ Is the value a hex string.
 • **value**: `unknown`
 
 The value to test.
+
+• **allowPrefix**: `boolean`= `false`
+
+Allow the hex to have the 0x prefix.
 
 #### Returns
 
@@ -216,7 +220,7 @@ True if the value is a hex string.
 
 ### stringHexLength()
 
-> `static` **stringHexLength**(`value`, `length`): `value is string`
+> `static` **stringHexLength**(`value`, `length`, `allowPrefix`): `value is string`
 
 Is the value a hex string of fixed length.
 
@@ -229,6 +233,10 @@ The value to test.
 • **length**: `number`
 
 The length to test.
+
+• **allowPrefix**: `boolean`= `false`
+
+Allow the hex to have the 0x prefix.
 
 #### Returns
 

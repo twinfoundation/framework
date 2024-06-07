@@ -14,23 +14,23 @@ The options for the command.
 
 The seed for generating the addresses.
 
-• **opts.start?**: `string`
+• **opts.start**: `string`
 
 The start index for the address generation.
 
-• **opts.count?**: `string`
+• **opts.count**: `string`
 
 The number of addresses to generate.
 
-• **opts.account?**: `string`
+• **opts.account**: `string`
 
 The account index for the address generation.
 
-• **opts.hrp?**: `string`
+• **opts.hrp**: `string`
 
 The human readable part for the address.
 
-• **opts.coin?**: `string`
+• **opts.coin**: `string`
 
 The coin type for the address.
 

@@ -136,7 +136,7 @@ GuardError If the value does not match the assertion.
 
 ### stringHex()
 
-> `static` **stringHex**(`source`, `property`, `value`): `asserts value is string`
+> `static` **stringHex**(`source`, `property`, `value`, `allowPrefix`): `asserts value is string`
 
 Is the property a string with a hex value.
 
@@ -154,6 +154,10 @@ The name of the property.
 
 The value to test.
 
+• **allowPrefix**: `boolean`= `false`
+
+Allow the hex to have the 0x prefix.
+
 #### Returns
 
 `asserts value is string`
@@ -166,7 +170,7 @@ GuardError If the value does not match the assertion.
 
 ### stringHexLength()
 
-> `static` **stringHexLength**(`source`, `property`, `value`, `length`): `asserts value is string`
+> `static` **stringHexLength**(`source`, `property`, `value`, `length`, `allowPrefix`): `asserts value is string`
 
 Is the property a string with a hex value with fixed length.
 
@@ -187,6 +191,10 @@ The value to test.
 • **length**: `number`
 
 The length of the string to match.
+
+• **allowPrefix**: `boolean`= `false`
+
+Allow the hex to have the 0x prefix.
 
 #### Returns
 
