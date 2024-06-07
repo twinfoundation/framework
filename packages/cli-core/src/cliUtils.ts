@@ -4,6 +4,7 @@ import { exec, spawn } from "node:child_process";
 import { accessSync, readFileSync, statSync } from "node:fs";
 import { access, readFile, stat } from "node:fs/promises";
 import { Coerce } from "@gtsc/core";
+import { CLIDisplay } from "./cliDisplay";
 
 /**
  * Utilities function for helping in the CLI.
@@ -141,9 +142,16 @@ export class CLIUtils {
 			const osCommand = process.platform.startsWith("win") ? `${app}.cmd` : app;
 
 			const sp = spawn(osCommand, args, {
-				stdio: "inherit",
 				shell: true,
 				cwd
+			});
+
+			sp.stdout?.on("data", data => {
+				CLIDisplay.write(data);
+			});
+
+			sp.stderr?.on("data", data => {
+				CLIDisplay.writeError(data);
 			});
 
 			sp.on("exit", (exitCode, signals) => {

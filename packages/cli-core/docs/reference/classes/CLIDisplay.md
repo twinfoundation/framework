@@ -16,13 +16,13 @@ Display utilities for the CLI.
 
 ### write()
 
-> `static` **write**: (`str`) => `void`
+> `static` **write**: (`buffer`) => `void`
 
 The default output method for writing standard messages.
 
 #### Parameters
 
-• **str**: `string`
+• **buffer**: `string` \| `Uint8Array`
 
 The message to output.
 
@@ -34,13 +34,13 @@ The message to output.
 
 ### writeError()
 
-> `static` **writeError**: (`str`) => `void`
+> `static` **writeError**: (`buffer`) => `void`
 
 The default output method for writing error messages.
 
 #### Parameters
 
-• **str**: `string`
+• **buffer**: `string` \| `Uint8Array`
 
 The message to output.
 
@@ -103,6 +103,24 @@ The error to display.
 • **lineBreaks**: `boolean`= `true`
 
 Whether to add a line break after the error.
+
+#### Returns
+
+`void`
+
+***
+
+### section()
+
+> `static` **section**(`label`): `void`
+
+Display a section.
+
+#### Parameters
+
+• **label**: `string`
+
+The label for the section.
 
 #### Returns
 

@@ -15,15 +15,17 @@ export class CLIDisplay {
 
 	/**
 	 * The default output method for writing standard messages.
-	 * @param str The message to output.
+	 * @param buffer The message to output.
 	 */
-	public static write: (str: string) => void = str => process.stdout.write(str);
+	public static write: (buffer: string | Uint8Array) => void = buffer =>
+		process.stdout.write(buffer);
 
 	/**
 	 * The default output method for writing error messages.
-	 * @param str The message to output.
+	 * @param buffer The message to output.
 	 */
-	public static writeError: (str: string) => void = str => process.stderr.write(str);
+	public static writeError: (buffer: string | Uint8Array) => void = buffer =>
+		process.stderr.write(buffer);
 
 	/**
 	 * The default output method for clearing the current line.
@@ -65,6 +67,15 @@ export class CLIDisplay {
 	}
 
 	/**
+	 * Display a section.
+	 * @param label The label for the section.
+	 */
+	public static section(label: string): void {
+		CLIDisplay.write(chalk.hex("#FFA500").bold.underline(label));
+		CLIDisplay.write("\n\n");
+	}
+
+	/**
 	 * Display a value with a label.
 	 * @param label The label for the value.
 	 * @param value The value to display.
@@ -72,7 +83,9 @@ export class CLIDisplay {
 	 */
 	public static value(label: string, value: unknown, indentLevel: number = 0): void {
 		CLIDisplay.write("\t".repeat(indentLevel));
-		CLIDisplay.write(chalk.hex("#FFA500").bold(`${label}: `));
+		if (Is.stringValue(label)) {
+			CLIDisplay.write(chalk.hex("#FFA500").bold(`${label}: `));
+		}
 		CLIDisplay.write(Coerce.string(value) ?? "");
 		CLIDisplay.write("\n");
 	}
