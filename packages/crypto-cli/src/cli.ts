@@ -22,7 +22,7 @@ export class CLI extends CLIBase {
 			{
 				title: "GTSC Crypto",
 				appName: "gtsc-crypto",
-				version: "0.0.4-next.24",
+				version: "0.0.4-next.25",
 				icon: "🌍",
 				supportsEnvFiles: true
 			},
