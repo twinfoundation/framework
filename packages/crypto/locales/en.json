@@ -44,12 +44,11 @@
 			"length4Multiple": "Invalid length should be a multiple of 4, it is \"{value}\""
 		},
 		"bech32": {
-			"noSeparator": "There is no separator \"{value}\" in the data",
-			"separatorPos": "The separator position is \"{value}\", which is too early in the string",
-			"separatorNoSpace": "The separator position is \"{value}\", which doesn't leave enough space for data",
-			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset",
-			"excessPadding": "The data contains excess padding",
-			"nonZeroPadding": "The data contains non-zero padding"
+			"decodeFailed": "The address contains decoding failed for address \"{bech32}\"",
+			"invalidChecksum": "The address contains an invalid checksum in address, \"{bech32}\"",
+			"separatorMisused": "The separator character '1' should only be used between hrp and data, \"{bech32}\"",
+			"lowerUpper": "The address my use either lowercase or uppercase, \"{bech32}\"",
+			"dataTooShort": "The address does not contain enough data to decode, \"{bech32}\""
 		},
 		"pbkdf2": {
 			"keyTooLong": "The requested key length \"{keyLength}\" is too long, based on the \"{macLength}\""

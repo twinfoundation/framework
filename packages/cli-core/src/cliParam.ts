@@ -1,6 +1,35 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { Coerce, Converter, GeneralError, Guards, Is, Url } from "@gtsc/core";
+import { Bech32 } from "@gtsc/crypto";
+
+/**
+ * Check the option to see if it exists.
+ * @param optionName The name of the option.
+ * @param optionValue The option value.
+ * @param allowEnvVar Allow the option to be read from an env var.
+ * @returns The final option value.
+ * @throws An error if the option is invalid.
+ */
+export function checkEnvParam(
+	optionName: string,
+	optionValue: string | undefined,
+	allowEnvVar: boolean
+): string | undefined {
+	if (allowEnvVar && optionValue?.startsWith("!")) {
+		const envValueName = optionValue.slice(1);
+		const envValue = process.env[envValueName];
+		if (Is.empty(envValue)) {
+			throw new GeneralError("commands", "commands.common.missingEnv", {
+				option: optionName,
+				value: envValueName
+			});
+		} else {
+			optionValue = envValue;
+		}
+	}
+	return optionValue;
+}
 
 /**
  * Check the option to see if it exists.
@@ -204,29 +233,25 @@ export function checkParamHexBase64(
 }
 
 /**
- * Check the option to see if it exists.
+ * Check the option to see if it exists and is bech32.
  * @param optionName The name of the option.
  * @param optionValue The option value.
  * @param allowEnvVar Allow the option to be read from an env var.
  * @returns The final option value.
  * @throws An error if the option is invalid.
  */
-export function checkEnvParam(
+export function checkParamBech32(
 	optionName: string,
 	optionValue: string | undefined,
-	allowEnvVar: boolean
-): string | undefined {
-	if (allowEnvVar && optionValue?.startsWith("!")) {
-		const envValueName = optionValue.slice(1);
-		const envValue = process.env[envValueName];
-		if (Is.empty(envValue)) {
-			throw new GeneralError("commands", "commands.common.missingEnv", {
-				option: optionName,
-				value: envValueName
-			});
-		} else {
-			optionValue = envValue;
-		}
+	allowEnvVar: boolean = true
+): string {
+	optionValue = checkEnvParam(optionName, optionValue, allowEnvVar);
+
+	if (Bech32.isBech32(optionValue)) {
+		return optionValue;
 	}
-	return optionValue;
+	throw new GeneralError("commands", "commands.common.optionInvalidBech32", {
+		option: optionName,
+		value: optionValue
+	});
 }

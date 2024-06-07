@@ -14,17 +14,17 @@ import FastGlob from 'fast-glob';
  * Execute the process.
  */
 async function run() {
-	console.log('Workspaces');
-	console.log('==========');
-	console.log();
-	console.log(`Platform: ${process.platform}`);
+	process.stdout.write('Workspaces\n');
+	process.stdout.write('==========\n');
+	process.stdout.write('\n');
+	process.stdout.write(`Platform: ${process.platform}\n`);
 
 	if (process.argv.length <= 2) {
 		throw new Error('No command specified');
 	}
 
 	const command = process.argv[2];
-	console.log(`Command: ${command}`);
+	process.stdout.write(`Command: ${command}\n`);
 
 	const packageJson = await loadJson('package.json');
 
@@ -61,7 +61,7 @@ async function loadJson(filePath) {
  */
 async function runShellCmd(app, args, cwd) {
 	return new Promise((resolve, reject) => {
-		console.log(`${app} ${args.join(' ')}`);
+		process.stdout.write(`${app} ${args.join(' ')}\n`);
 
 		const osCommand = process.platform.startsWith('win') ? `${app}.cmd` : app;
 
@@ -96,7 +96,7 @@ async function fileExists(filename) {
 }
 
 run().catch(err => {
-	console.error(err);
+	process.stderr.write(`${err}\n`);
 	// eslint-disable-next-line unicorn/no-process-exit
 	process.exit(1);
 });
