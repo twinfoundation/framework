@@ -58,10 +58,9 @@ export abstract class CLIBase {
 					// we don't want displaying help to be an error.
 					// eslint-disable-next-line no-restricted-syntax
 					throw new Error(err.code === "commander.help" ? "0" : err.exitCode.toString());
-				})
-				.action(async opts => {
-					await this.rootAction(program, opts);
 				});
+
+			this.configureRoot(program);
 
 			addGlobalOptions(program, options.supportsLang ?? true, options.supportsEnvFiles ?? false);
 
@@ -85,12 +84,13 @@ export abstract class CLIBase {
 	}
 
 	/**
-	 * Root action which can be overridden in derived classes, defaults to showing help.
-	 * @param program The main program to handling the commands.
-	 * @param opts The root options.
+	 * Configure any options or actions at the root program level.
+	 * @param program The root program command.
 	 */
-	protected async rootAction(program: Command, opts: unknown): Promise<void> {
-		program.help();
+	protected configureRoot(program: Command): void {
+		program.action(() => {
+			program.help();
+		});
 	}
 
 	/**
