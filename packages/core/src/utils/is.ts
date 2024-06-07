@@ -107,20 +107,26 @@ export class Is {
 	/**
 	 * Is the value a hex string.
 	 * @param value The value to test.
+	 * @param allowPrefix Allow the hex to have the 0x prefix.
 	 * @returns True if the value is a hex string.
 	 */
-	public static stringHex(value: unknown): value is string {
-		return Is.string(value) && HexHelper.isHex(value);
+	public static stringHex(value: unknown, allowPrefix: boolean = false): value is string {
+		return Is.string(value) && HexHelper.isHex(value, allowPrefix);
 	}
 
 	/**
 	 * Is the value a hex string of fixed length.
 	 * @param value The value to test.
 	 * @param length The length to test.
+	 * @param allowPrefix Allow the hex to have the 0x prefix.
 	 * @returns True if the value is a hex string of required length.
 	 */
-	public static stringHexLength(value: unknown, length: number): value is string {
-		return Is.stringHex(value) && value.length === length;
+	public static stringHexLength(
+		value: unknown,
+		length: number,
+		allowPrefix: boolean = false
+	): value is string {
+		return Is.stringHex(value, allowPrefix) && value.length === length;
 	}
 
 	/**

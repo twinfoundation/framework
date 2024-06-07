@@ -80,15 +80,17 @@ export class Guards {
 	 * @param source The source of the error.
 	 * @param property The name of the property.
 	 * @param value The value to test.
+	 * @param allowPrefix Allow the hex to have the 0x prefix.
 	 * @throws GuardError If the value does not match the assertion.
 	 */
 	public static stringHex(
 		source: string,
 		property: string,
-		value: unknown
+		value: unknown,
+		allowPrefix: boolean = false
 	): asserts value is string {
 		Guards.stringValue(source, property, value);
-		if (!HexHelper.isHex(value)) {
+		if (!HexHelper.isHex(value, allowPrefix)) {
 			throw new GuardError(source, "guard.stringHex", property, value);
 		}
 	}
@@ -99,16 +101,18 @@ export class Guards {
 	 * @param property The name of the property.
 	 * @param value The value to test.
 	 * @param length The length of the string to match.
+	 * @param allowPrefix Allow the hex to have the 0x prefix.
 	 * @throws GuardError If the value does not match the assertion.
 	 */
 	public static stringHexLength(
 		source: string,
 		property: string,
 		value: unknown,
-		length: number
+		length: number,
+		allowPrefix: boolean = false
 	): asserts value is string {
-		Guards.stringHex(source, property, value);
-		if (value.length !== length) {
+		Guards.stringHex(source, property, value, allowPrefix);
+		if (HexHelper.stripPrefix(value).length !== length) {
 			throw new GuardError(
 				source,
 				"guard.stringHexLength",

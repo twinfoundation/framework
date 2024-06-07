@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { CLIDisplay, CLIUtils } from "@gtsc/cli-core";
-import { Converter, GeneralError, HexHelper, I18n, Is, ObjectHelper } from "@gtsc/core";
+import { CLIDisplay, CLIUtils, checkParamHexBase64, checkParamInteger } from "@gtsc/cli-core";
+import { Converter, I18n, Is, ObjectHelper } from "@gtsc/core";
 import { Bip44, KeyType } from "@gtsc/crypto";
 import { Command, Option } from "commander";
 
@@ -106,11 +106,11 @@ export function buildCommandAddress(): Command {
  */
 export async function actionCommandAddress(opts: {
 	seed: string;
-	start?: string;
-	count?: string;
-	account?: string;
-	hrp?: string;
-	coin?: string;
+	start: string;
+	count: string;
+	account: string;
+	hrp: string;
+	coin: string;
 	keyType: "Ed25519" | "Secp256k1";
 	keyFormat: "hex" | "base64";
 	console: boolean;
@@ -120,46 +120,20 @@ export async function actionCommandAddress(opts: {
 	appendEnv: boolean;
 }): Promise<void> {
 	try {
-		let seed: Uint8Array;
-		let displaySeed: string = opts.seed;
+		const seed: Uint8Array = checkParamHexBase64("seed", opts.seed);
 
-		if (opts.seed.startsWith("!")) {
-			const envValue = process.env[opts.seed.slice(1)];
-			if (!Is.stringValue(envValue)) {
-				throw new GeneralError("commands", "commands.address.seedMissingEnv", {
-					env: opts.seed.slice(1)
-				});
-			} else {
-				displaySeed = envValue;
-				if (Is.stringHex(HexHelper.stripPrefix(envValue))) {
-					seed = Converter.hexToBytes(envValue);
-				} else if (Is.stringBase64(envValue)) {
-					seed = Converter.base64ToBytes(envValue);
-				} else {
-					throw new GeneralError("commands", "commands.address.seedInvalidEnv", { envValue });
-				}
-			}
-		} else if (Is.stringHex(HexHelper.stripPrefix(opts.seed))) {
-			seed = Converter.hexToBytes(opts.seed);
-		} else if (Is.stringBase64(opts.seed)) {
-			seed = Converter.base64ToBytes(opts.seed);
-		} else {
-			throw new GeneralError("commands", "commands.address.seedInvalidFormat", { seed: opts.seed });
-		}
-
-		if (seed.length < 32) {
-			throw new GeneralError("commands", "commands.address.seedInvalidFormat", { seed: opts.seed });
-		}
-
-		const start = Number.parseInt(opts.start ?? "0", 10);
-		const count = Math.min(Number.parseInt(opts.count ?? "10", 10), 100);
-		const account = Number.parseInt(opts.account ?? "0", 10);
-		const hrp = opts.hrp ?? "iota";
-		const coin = Number.parseInt(opts.coin ?? "4218", 10);
+		const start = checkParamInteger("start", opts.start, false, 0);
+		const count = checkParamInteger("count", opts.count, false, 1, 100);
+		const account = checkParamInteger("account", opts.account, false, 0);
+		const hrp = opts.hrp;
+		const coin = checkParamInteger("coin", opts.coin, false, 0);
 		const keyType = opts.keyType;
 		const keyFormat = opts.keyFormat;
 
-		CLIDisplay.value(I18n.formatMessage("commands.address.labels.seed"), displaySeed);
+		CLIDisplay.value(
+			I18n.formatMessage("commands.address.labels.seed"),
+			keyFormat === "hex" ? Converter.bytesToHex(seed, true) : Converter.bytesToBase64(seed)
+		);
 		CLIDisplay.value(I18n.formatMessage("commands.address.labels.start"), start);
 		CLIDisplay.value(I18n.formatMessage("commands.address.labels.count"), count);
 		CLIDisplay.value(I18n.formatMessage("commands.address.labels.account"), account);
@@ -173,7 +147,7 @@ export async function actionCommandAddress(opts: {
 		CLIDisplay.break();
 
 		const addressDictionary: {
-			[index: number]: { address: string; privateKey: string; publicKey: string };
+			[index: number]: { bech32: string; privateKey: string; publicKey: string };
 		} = {};
 
 		for (let i = start; i < start + count; i++) {
@@ -188,7 +162,7 @@ export async function actionCommandAddress(opts: {
 			);
 
 			addressDictionary[i] = {
-				address: addressKeyPair.address,
+				bech32: addressKeyPair.address,
 				privateKey:
 					keyFormat === "hex"
 						? Converter.bytesToHex(addressKeyPair.privateKey, true)
@@ -203,7 +177,7 @@ export async function actionCommandAddress(opts: {
 				CLIDisplay.value(I18n.formatMessage("commands.address.labels.index"), i);
 				CLIDisplay.value(
 					I18n.formatMessage("commands.address.labels.address"),
-					addressDictionary[i].address
+					addressDictionary[i].bech32
 				);
 				CLIDisplay.value(
 					I18n.formatMessage("commands.address.labels.private-key"),
@@ -251,7 +225,7 @@ export async function actionCommandAddress(opts: {
 			CLIDisplay.break();
 
 			for (const addressIndex in addressDictionary) {
-				output.push(`ADDRESS_${addressIndex}_ADDRESS="${addressDictionary[addressIndex].address}"`);
+				output.push(`ADDRESS_${addressIndex}_BECH32="${addressDictionary[addressIndex].bech32}"`);
 				output.push(
 					`ADDRESS_${addressIndex}_PRIVATE_KEY="${addressDictionary[addressIndex].privateKey}"`
 				);
