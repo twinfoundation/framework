@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { CLIDisplay, CLIUtils, checkParamHexBase64, checkParamInteger } from "@gtsc/cli-core";
+import { CLIDisplay, CLIUtils, CLIParam } from "@gtsc/cli-core";
 import { Converter, I18n, Is, ObjectHelper } from "@gtsc/core";
 import { Bip44, KeyType } from "@gtsc/crypto";
 import { Command, Option } from "commander";
@@ -120,13 +120,13 @@ export async function actionCommandAddress(opts: {
 	appendEnv: boolean;
 }): Promise<void> {
 	try {
-		const seed: Uint8Array = checkParamHexBase64("seed", opts.seed);
+		const seed: Uint8Array = CLIParam.hexBase64("seed", opts.seed);
 
-		const start = checkParamInteger("start", opts.start, false, 0);
-		const count = checkParamInteger("count", opts.count, false, 1, 100);
-		const account = checkParamInteger("account", opts.account, false, 0);
+		const start = CLIParam.integer("start", opts.start, false);
+		const count = CLIParam.integer("count", opts.count, false, 1, 100);
+		const account = CLIParam.integer("account", opts.account, false);
 		const hrp = opts.hrp;
-		const coin = checkParamInteger("coin", opts.coin, false, 0);
+		const coin = CLIParam.integer("coin", opts.coin, false);
 		const keyType = opts.keyType;
 		const keyFormat = opts.keyFormat;
 
