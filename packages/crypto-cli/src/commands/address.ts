@@ -119,127 +119,123 @@ export async function actionCommandAddress(opts: {
 	env?: string;
 	appendEnv: boolean;
 }): Promise<void> {
-	try {
-		const seed: Uint8Array = CLIParam.hexBase64("seed", opts.seed);
+	const seed: Uint8Array = CLIParam.hexBase64("seed", opts.seed);
 
-		const start = CLIParam.integer("start", opts.start, false);
-		const count = CLIParam.integer("count", opts.count, false, 1, 100);
-		const account = CLIParam.integer("account", opts.account, false);
-		const hrp = opts.hrp;
-		const coin = CLIParam.integer("coin", opts.coin, false);
-		const keyType = opts.keyType;
-		const keyFormat = opts.keyFormat;
+	const start = CLIParam.integer("start", opts.start, false);
+	const count = CLIParam.integer("count", opts.count, false, 1, 100);
+	const account = CLIParam.integer("account", opts.account, false);
+	const hrp = opts.hrp;
+	const coin = CLIParam.integer("coin", opts.coin, false);
+	const keyType = opts.keyType;
+	const keyFormat = opts.keyFormat;
 
-		CLIDisplay.value(
-			I18n.formatMessage("commands.address.labels.seed"),
-			keyFormat === "hex" ? Converter.bytesToHex(seed, true) : Converter.bytesToBase64(seed)
+	CLIDisplay.value(
+		I18n.formatMessage("commands.address.labels.seed"),
+		keyFormat === "hex" ? Converter.bytesToHex(seed, true) : Converter.bytesToBase64(seed)
+	);
+	CLIDisplay.value(I18n.formatMessage("commands.address.labels.start"), start);
+	CLIDisplay.value(I18n.formatMessage("commands.address.labels.count"), count);
+	CLIDisplay.value(I18n.formatMessage("commands.address.labels.account"), account);
+	CLIDisplay.value(I18n.formatMessage("commands.address.labels.hrp"), hrp);
+	CLIDisplay.value(I18n.formatMessage("commands.address.labels.coin"), coin);
+	CLIDisplay.value(I18n.formatMessage("commands.address.labels.key-type"), keyType);
+	CLIDisplay.value(I18n.formatMessage("commands.address.labels.key-format"), keyFormat);
+	CLIDisplay.break();
+
+	CLIDisplay.task(I18n.formatMessage("commands.address.progress.generatingAddresses"));
+	CLIDisplay.break();
+
+	const addressDictionary: {
+		[index: number]: { bech32: string; privateKey: string; publicKey: string };
+	} = {};
+
+	for (let i = start; i < start + count; i++) {
+		const addressKeyPair = Bip44.addressBech32(
+			seed,
+			keyType === "Ed25519" ? KeyType.Ed25519 : KeyType.Secp256k1,
+			hrp,
+			coin,
+			account,
+			false,
+			i
 		);
-		CLIDisplay.value(I18n.formatMessage("commands.address.labels.start"), start);
-		CLIDisplay.value(I18n.formatMessage("commands.address.labels.count"), count);
-		CLIDisplay.value(I18n.formatMessage("commands.address.labels.account"), account);
-		CLIDisplay.value(I18n.formatMessage("commands.address.labels.hrp"), hrp);
-		CLIDisplay.value(I18n.formatMessage("commands.address.labels.coin"), coin);
-		CLIDisplay.value(I18n.formatMessage("commands.address.labels.key-type"), keyType);
-		CLIDisplay.value(I18n.formatMessage("commands.address.labels.key-format"), keyFormat);
-		CLIDisplay.break();
 
-		CLIDisplay.task(I18n.formatMessage("commands.address.progress.generatingAddresses"));
-		CLIDisplay.break();
+		addressDictionary[i] = {
+			bech32: addressKeyPair.address,
+			privateKey:
+				keyFormat === "hex"
+					? Converter.bytesToHex(addressKeyPair.privateKey, true)
+					: Converter.bytesToBase64(addressKeyPair.privateKey),
+			publicKey:
+				keyFormat === "hex"
+					? Converter.bytesToHex(addressKeyPair.publicKey, true)
+					: Converter.bytesToBase64(addressKeyPair.publicKey)
+		};
 
-		const addressDictionary: {
-			[index: number]: { bech32: string; privateKey: string; publicKey: string };
-		} = {};
-
-		for (let i = start; i < start + count; i++) {
-			const addressKeyPair = Bip44.addressBech32(
-				seed,
-				keyType === "Ed25519" ? KeyType.Ed25519 : KeyType.Secp256k1,
-				hrp,
-				coin,
-				account,
-				false,
-				i
+		if (opts.console) {
+			CLIDisplay.value(I18n.formatMessage("commands.address.labels.index"), i);
+			CLIDisplay.value(
+				I18n.formatMessage("commands.address.labels.address"),
+				addressDictionary[i].bech32
 			);
-
-			addressDictionary[i] = {
-				bech32: addressKeyPair.address,
-				privateKey:
-					keyFormat === "hex"
-						? Converter.bytesToHex(addressKeyPair.privateKey, true)
-						: Converter.bytesToBase64(addressKeyPair.privateKey),
-				publicKey:
-					keyFormat === "hex"
-						? Converter.bytesToHex(addressKeyPair.publicKey, true)
-						: Converter.bytesToBase64(addressKeyPair.publicKey)
-			};
-
-			if (opts.console) {
-				CLIDisplay.value(I18n.formatMessage("commands.address.labels.index"), i);
-				CLIDisplay.value(
-					I18n.formatMessage("commands.address.labels.address"),
-					addressDictionary[i].bech32
-				);
-				CLIDisplay.value(
-					I18n.formatMessage("commands.address.labels.private-key"),
-					addressDictionary[i].privateKey
-				);
-				CLIDisplay.value(
-					I18n.formatMessage("commands.address.labels.public-key"),
-					addressDictionary[i].publicKey
-				);
-				CLIDisplay.break();
-			}
-		}
-
-		if (Is.stringValue(opts?.json)) {
-			const filename = path.resolve(opts.json);
-			let currentJson = {};
-			if (opts.appendJson) {
-				CLIDisplay.task(I18n.formatMessage("commands.address.progress.readingJsonFile"), filename);
-				currentJson = (await CLIUtils.readJsonFile(filename)) ?? {};
-			}
-			CLIDisplay.task(I18n.formatMessage("commands.address.progress.writingJsonFile"), filename);
-			CLIDisplay.break();
-
-			await mkdir(path.dirname(filename), { recursive: true });
-			await writeFile(
-				filename,
-				JSON.stringify(ObjectHelper.merge(currentJson, addressDictionary), undefined, "\t")
+			CLIDisplay.value(
+				I18n.formatMessage("commands.address.labels.private-key"),
+				addressDictionary[i].privateKey
 			);
-		}
-
-		if (Is.stringValue(opts?.env)) {
-			const filename = path.resolve(opts.env);
-
-			const output = [];
-
-			if (opts.appendEnv) {
-				CLIDisplay.task(I18n.formatMessage("commands.address.progress.readingEnvFile"), filename);
-				const lines = await CLIUtils.readLinesFile(filename);
-				if (Is.arrayValue(lines)) {
-					output.push(...lines);
-				}
-			}
-
-			CLIDisplay.task(I18n.formatMessage("commands.address.progress.writingEnvFile"), filename);
+			CLIDisplay.value(
+				I18n.formatMessage("commands.address.labels.public-key"),
+				addressDictionary[i].publicKey
+			);
 			CLIDisplay.break();
-
-			for (const addressIndex in addressDictionary) {
-				output.push(`ADDRESS_${addressIndex}_BECH32="${addressDictionary[addressIndex].bech32}"`);
-				output.push(
-					`ADDRESS_${addressIndex}_PRIVATE_KEY="${addressDictionary[addressIndex].privateKey}"`
-				);
-				output.push(
-					`ADDRESS_${addressIndex}_PUBLIC_KEY="${addressDictionary[addressIndex].publicKey}"`
-				);
-			}
-
-			await mkdir(path.dirname(filename), { recursive: true });
-			await writeFile(filename, output.join("\n"));
 		}
-
-		CLIDisplay.done();
-	} catch (error) {
-		CLIDisplay.error(error);
 	}
+
+	if (Is.stringValue(opts?.json)) {
+		const filename = path.resolve(opts.json);
+		let currentJson = {};
+		if (opts.appendJson) {
+			CLIDisplay.task(I18n.formatMessage("commands.address.progress.readingJsonFile"), filename);
+			currentJson = (await CLIUtils.readJsonFile(filename)) ?? {};
+		}
+		CLIDisplay.task(I18n.formatMessage("commands.address.progress.writingJsonFile"), filename);
+		CLIDisplay.break();
+
+		await mkdir(path.dirname(filename), { recursive: true });
+		await writeFile(
+			filename,
+			JSON.stringify(ObjectHelper.merge(currentJson, addressDictionary), undefined, "\t")
+		);
+	}
+
+	if (Is.stringValue(opts?.env)) {
+		const filename = path.resolve(opts.env);
+
+		const output = [];
+
+		if (opts.appendEnv) {
+			CLIDisplay.task(I18n.formatMessage("commands.address.progress.readingEnvFile"), filename);
+			const lines = await CLIUtils.readLinesFile(filename);
+			if (Is.arrayValue(lines)) {
+				output.push(...lines);
+			}
+		}
+
+		CLIDisplay.task(I18n.formatMessage("commands.address.progress.writingEnvFile"), filename);
+		CLIDisplay.break();
+
+		for (const addressIndex in addressDictionary) {
+			output.push(`ADDRESS_${addressIndex}_BECH32="${addressDictionary[addressIndex].bech32}"`);
+			output.push(
+				`ADDRESS_${addressIndex}_PRIVATE_KEY="${addressDictionary[addressIndex].privateKey}"`
+			);
+			output.push(
+				`ADDRESS_${addressIndex}_PUBLIC_KEY="${addressDictionary[addressIndex].publicKey}"`
+			);
+		}
+
+		await mkdir(path.dirname(filename), { recursive: true });
+		await writeFile(filename, output.join("\n"));
+	}
+
+	CLIDisplay.done();
 }
