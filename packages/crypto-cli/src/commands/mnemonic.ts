@@ -66,52 +66,48 @@ export async function actionCommandMnemonic(opts: {
 	json?: string;
 	env?: string;
 }): Promise<void> {
-	try {
-		const strength = CLIParam.integer("strength", opts.strength, false, 128, 256);
+	const strength = CLIParam.integer("strength", opts.strength, false, 128, 256);
 
-		const mnemonic = Bip39.randomMnemonic(strength);
-		const seed = Bip39.mnemonicToSeed(mnemonic);
+	const mnemonic = Bip39.randomMnemonic(strength);
+	const seed = Bip39.mnemonicToSeed(mnemonic);
 
-		const seedFormatted =
-			opts.seedFormat === "hex" ? Converter.bytesToHex(seed, true) : Converter.bytesToBase64(seed);
+	const seedFormatted =
+		opts.seedFormat === "hex" ? Converter.bytesToHex(seed, true) : Converter.bytesToBase64(seed);
 
-		if (opts.console) {
-			CLIDisplay.value(I18n.formatMessage("commands.mnemonic.labels.mnemonic"), mnemonic);
-			CLIDisplay.value(I18n.formatMessage("commands.mnemonic.labels.seed"), seedFormatted);
-			CLIDisplay.break();
-		}
-
-		if (Is.stringValue(opts?.json)) {
-			const filename = path.resolve(opts.json);
-			CLIDisplay.task(I18n.formatMessage("commands.mnemonic.progress.writingJsonFile"), filename);
-			CLIDisplay.break();
-
-			await mkdir(path.dirname(filename), { recursive: true });
-			await writeFile(
-				filename,
-				JSON.stringify(
-					{
-						mnemonic,
-						seed: seedFormatted
-					},
-					undefined,
-					"\t"
-				)
-			);
-		}
-
-		if (Is.stringValue(opts?.env)) {
-			const filename = path.resolve(opts.env);
-			CLIDisplay.task(I18n.formatMessage("commands.mnemonic.progress.writingEnvFile"), filename);
-			CLIDisplay.break();
-
-			const output = [`MNEMONIC="${mnemonic}"`, `SEED="${seedFormatted}"`];
-
-			await mkdir(path.dirname(filename), { recursive: true });
-			await writeFile(filename, output.join("\n"));
-		}
-		CLIDisplay.done();
-	} catch (error) {
-		CLIDisplay.error(error);
+	if (opts.console) {
+		CLIDisplay.value(I18n.formatMessage("commands.mnemonic.labels.mnemonic"), mnemonic);
+		CLIDisplay.value(I18n.formatMessage("commands.mnemonic.labels.seed"), seedFormatted);
+		CLIDisplay.break();
 	}
+
+	if (Is.stringValue(opts?.json)) {
+		const filename = path.resolve(opts.json);
+		CLIDisplay.task(I18n.formatMessage("commands.mnemonic.progress.writingJsonFile"), filename);
+		CLIDisplay.break();
+
+		await mkdir(path.dirname(filename), { recursive: true });
+		await writeFile(
+			filename,
+			JSON.stringify(
+				{
+					mnemonic,
+					seed: seedFormatted
+				},
+				undefined,
+				"\t"
+			)
+		);
+	}
+
+	if (Is.stringValue(opts?.env)) {
+		const filename = path.resolve(opts.env);
+		CLIDisplay.task(I18n.formatMessage("commands.mnemonic.progress.writingEnvFile"), filename);
+		CLIDisplay.break();
+
+		const output = [`MNEMONIC="${mnemonic}"`, `SEED="${seedFormatted}"`];
+
+		await mkdir(path.dirname(filename), { recursive: true });
+		await writeFile(filename, output.join("\n"));
+	}
+	CLIDisplay.done();
 }
