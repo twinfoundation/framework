@@ -15,6 +15,7 @@ export * from "./errors/unauthorizedError";
 export * from "./errors/validationError";
 export * from "./factories/factory";
 export * from "./helpers/arrayHelper";
+export * from "./helpers/errorHelper";
 export * from "./helpers/filenameHelper";
 export * from "./helpers/hexHelper";
 export * from "./helpers/jsonHelper";

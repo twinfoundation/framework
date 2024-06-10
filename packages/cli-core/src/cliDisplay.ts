@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Coerce, I18n, Is } from "@gtsc/core";
+import { Coerce, ErrorHelper, I18n, Is } from "@gtsc/core";
 import chalk from "chalk";
 
 /**
@@ -59,7 +59,7 @@ export class CLIDisplay {
 			CLIDisplay.writeError("\n");
 		}
 
-		const formatted = I18n.formatErrors(error);
+		const formatted = ErrorHelper.formatErrors(error);
 		CLIDisplay.writeError(chalk.red(formatted.map(e => `\t${e}`).join("\n")));
 		if (lineBreaks) {
 			CLIDisplay.writeError("\n");
