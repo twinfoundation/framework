@@ -1,8 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { mkdir, writeFile } from "node:fs/promises";
-import path from "node:path";
-import { CLIDisplay, CLIParam } from "@gtsc/cli-core";
+import { CLIDisplay, CLIOptions, CLIParam, CLIUtils } from "@gtsc/cli-core";
 import { Converter, I18n, Is } from "@gtsc/core";
 import { Bip39 } from "@gtsc/crypto";
 import { Command, Option } from "commander";
@@ -32,20 +30,17 @@ export function buildCommandMnemonic(): Command {
 			)
 				.choices(["hex", "base64"])
 				.default("hex")
-		)
-		.option(
-			I18n.formatMessage("commands.mnemonic.options.no-console.param"),
-			I18n.formatMessage("commands.mnemonic.options.no-console.description")
-		)
-		.option(
-			I18n.formatMessage("commands.mnemonic.options.json.param"),
-			I18n.formatMessage("commands.mnemonic.options.json.description")
-		)
-		.option(
-			I18n.formatMessage("commands.mnemonic.options.env.param"),
-			I18n.formatMessage("commands.mnemonic.options.env.description")
-		)
-		.action(actionCommandMnemonic);
+		);
+
+	CLIOptions.output(command, {
+		noConsole: true,
+		json: true,
+		env: true,
+		mergeJson: true,
+		mergeEnv: true
+	});
+
+	command.action(actionCommandMnemonic);
 
 	return command;
 }
@@ -56,15 +51,19 @@ export function buildCommandMnemonic(): Command {
  * @param opts.strength The mnemonic strength.
  * @param opts.seedFormat The output format of the seed.
  * @param opts.console Flag to display on the console.
- * @param opts.json Output the mnemonic to a JSON file.
- * @param opts.env Output the mnemonic to an environment file.
+ * @param opts.json Output the data to a JSON file.
+ * @param opts.mergeJson Merge the data to a JSON file.
+ * @param opts.env Output the data to an environment file.
+ * @param opts.mergeEnv Merge the data to an environment file.
  */
 export async function actionCommandMnemonic(opts: {
 	strength: string;
 	seedFormat: "hex" | "base64";
 	console: boolean;
 	json?: string;
+	mergeJson: boolean;
 	env?: string;
+	mergeEnv: boolean;
 }): Promise<void> {
 	const strength = CLIParam.integer("strength", opts.strength, false, 128, 256);
 
@@ -81,33 +80,15 @@ export async function actionCommandMnemonic(opts: {
 	}
 
 	if (Is.stringValue(opts?.json)) {
-		const filename = path.resolve(opts.json);
-		CLIDisplay.task(I18n.formatMessage("commands.mnemonic.progress.writingJsonFile"), filename);
-		CLIDisplay.break();
-
-		await mkdir(path.dirname(filename), { recursive: true });
-		await writeFile(
-			filename,
-			JSON.stringify(
-				{
-					mnemonic,
-					seed: seedFormatted
-				},
-				undefined,
-				"\t"
-			)
+		await CLIUtils.writeJsonFile(opts.json, { mnemonic, seed: seedFormatted }, opts.mergeJson);
+	}
+	if (Is.stringValue(opts?.env)) {
+		await CLIUtils.writeEnvFile(
+			opts.env,
+			[`MNEMONIC="${mnemonic}"`, `SEED="${seedFormatted}"`],
+			opts.mergeEnv
 		);
 	}
 
-	if (Is.stringValue(opts?.env)) {
-		const filename = path.resolve(opts.env);
-		CLIDisplay.task(I18n.formatMessage("commands.mnemonic.progress.writingEnvFile"), filename);
-		CLIDisplay.break();
-
-		const output = [`MNEMONIC="${mnemonic}"`, `SEED="${seedFormatted}"`];
-
-		await mkdir(path.dirname(filename), { recursive: true });
-		await writeFile(filename, output.join("\n"));
-	}
 	CLIDisplay.done();
 }

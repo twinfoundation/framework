@@ -17,7 +17,11 @@
 			"done": "Done.",
 			"error": "Error",
 			"loadingEnvFiles": "Loading env files",
-			"please-wait": "Please wait..."
+			"pleaseWait": "Please wait...",
+			"writingJsonFile": "Writing JSON file",
+			"writingEnvFile": "Writing env file",
+			"readingJsonFile": "Reading JSON file",
+			"readingEnvFile": "Reading env file"
 		},
 		"options": {
 			"lang": {
@@ -27,6 +31,26 @@
 			"load-env": {
 				"param": "--load-env [env...]",
 				"description": "Load the env files to initialise any environment variables."
+			},
+			"no-console": {
+				"param": "--no-console",
+				"description": "Hides the output in the console."
+			},
+			"json": {
+				"param": "--json '<'filename'>'",
+				"description": "Creates a JSON file containing the output."
+			},
+			"env": {
+				"param": "--env '<'filename'>'",
+				"description": "Creates an env file containing the output."
+			},
+			"merge-json": {
+				"param": "--merge-json",
+				"description": "If the JSON file already exists merge the data instead of overwriting."
+			},
+			"merge-env": {
+				"param": "--merge-env",
+				"description": "If the env file already exists merge the data instead of overwriting."
 			}
 		}
 	}

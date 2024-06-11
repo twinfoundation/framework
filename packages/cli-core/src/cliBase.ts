@@ -77,7 +77,20 @@ export abstract class CLIBase {
 
 			await program.parseAsync(argv);
 		} catch (error) {
-			return this.handleError(error);
+			CLIDisplay.spinnerStop();
+
+			let exitCode;
+			if (error instanceof Error) {
+				// This error could be the exit code we errored with
+				// from the exitOverride so parse and resolve with it
+				exitCode = Coerce.number(error.message);
+			}
+
+			if (Is.integer(exitCode)) {
+				return exitCode;
+			}
+			CLIDisplay.error(error);
+			return 1;
 		}
 
 		return 0;
@@ -116,25 +129,5 @@ export abstract class CLIBase {
 		}
 
 		return commands.length;
-	}
-
-	/**
-	 * Handle the error and resolve the exit code.
-	 * @param error The error to handle.
-	 * @internal
-	 */
-	private handleError(error: unknown): number {
-		let exitCode;
-		if (error instanceof Error) {
-			// This error could be the exit code we errored with
-			// from the exitOverride so parse and resolve with it
-			exitCode = Coerce.number(error.message);
-		}
-
-		if (Is.integer(exitCode)) {
-			return exitCode;
-		}
-		CLIDisplay.error(error);
-		return 1;
 	}
 }

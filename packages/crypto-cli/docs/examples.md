@@ -207,9 +207,9 @@ Options:
   --key-format <format>  The format to output the keys. (choices: "hex", "base64", default: "hex")
   --no-console           Hides the addresses and keys in the console.
   --json <filename>      Creates a JSON file containing the addresses and keys.
-  --append-json          If the JSON file already exists append the data instead of overwriting.
+  --merge-json           If the JSON file already exists merge the data instead of overwriting.
   --env <filename>       Creates an env file containing the addresses and keys.
-  --append-env           If the env file already exists append the data instead of overwriting.
+  --merge-env            If the env file already exists merge the data instead of overwriting.
   -h, --help             display help for command
 ```
 
@@ -221,10 +221,10 @@ To read from an env file and load the variable named SEED from the file, and out
 gtsc-crypto address --load-env my.env --seed !SEED --count 2 --key-format base64
 ```
 
-You can use the options to store the results in JSON or env files, and the `append` options allow you to modify existing files should you wish.
+You can use the options to store the results in JSON or env files, and the `merge` options allow you to modify existing files should you wish.
 
 ```shell
-gtsc-crypto address --load-env my.env --seed !SEED --env address.env --append-env --json address.json --append-json
+gtsc-crypto address --load-env my.env --seed !SEED --env address.env --merge-env --json address.json --merge-json
 ```
 
 The output of this command would produce address.env

@@ -78,35 +78,10 @@
 				"key-format": {
 					"param": "--key-format '<'format'>'",
 					"description": "The format to output the keys."
-				},
-				"no-console": {
-					"param": "--no-console",
-					"description": "Hides the addresses and keys in the console."
-				},
-				"json": {
-					"param": "--json '<'filename'>'",
-					"description": "Creates a JSON file containing the addresses and keys."
-				},
-				"env": {
-					"param": "--env '<'filename'>'",
-					"description": "Creates an env file containing the addresses and keys."
-				},
-				"append-json": {
-					"param": "--append-json",
-					"description": "If the JSON file already exists append the data instead of overwriting."
-				},
-				"append-env": {
-					"param": "--append-env",
-					"description": "If the env file already exists append the data instead of overwriting."
 				}
 			},
 			"progress": {
-				"generatingAddresses": "Generating addresses",
-				"loadingEnvFile": "Loading env file",
-				"writingJsonFile": "Writing JSON file",
-				"writingEnvFile": "Writing env file",
-				"readingJsonFile": "Reading JSON file",
-				"readingEnvFile": "Reading env file"
+				"generatingAddresses": "Generating addresses"
 			},
 			"labels": {
 				"seed": "Seed",

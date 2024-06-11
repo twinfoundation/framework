@@ -227,3 +227,59 @@ The working directory to execute the command in.
 `Promise`\<`void`\>
 
 Promise to wait for command execution to complete.
+
+***
+
+### writeJsonFile()
+
+> `static` **writeJsonFile**\<`T`\>(`jsonFilename`, `data`, `append`): `Promise`\<`void`\>
+
+Write a JSON file.
+
+#### Type parameters
+
+• **T** = `unknown`
+
+#### Parameters
+
+• **jsonFilename**: `undefined` \| `string`
+
+The filename to write.
+
+• **data**: `T`
+
+The data to write.
+
+• **append**: `boolean`
+
+Append to the file.
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### writeEnvFile()
+
+> `static` **writeEnvFile**(`envFilename`, `data`, `append`): `Promise`\<`void`\>
+
+Write an env file.
+
+#### Parameters
+
+• **envFilename**: `undefined` \| `string`
+
+The filename to write.
+
+• **data**: `string`[]
+
+The data to write.
+
+• **append**: `boolean`
+
+Append to the file.
+
+#### Returns
+
+`Promise`\<`void`\>
