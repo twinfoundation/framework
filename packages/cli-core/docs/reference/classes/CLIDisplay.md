@@ -208,7 +208,7 @@ Start the spinner.
 
 #### Parameters
 
-• **i18nMessage**: `string`= `"cli.progress.please-wait"`
+• **i18nMessage**: `string`= `"cli.progress.pleaseWait"`
 
 The message to display with the spinner.
 

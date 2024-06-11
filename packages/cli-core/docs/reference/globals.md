@@ -4,6 +4,7 @@
 
 - [CLIBase](classes/CLIBase.md)
 - [CLIDisplay](classes/CLIDisplay.md)
+- [CLIOptions](classes/CLIOptions.md)
 - [CLIParam](classes/CLIParam.md)
 - [CLIUtils](classes/CLIUtils.md)
 

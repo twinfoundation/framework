@@ -24,11 +24,19 @@ Flag to display on the console.
 
 • **opts.json?**: `string`
 
-Output the mnemonic to a JSON file.
+Output the data to a JSON file.
+
+• **opts.mergeJson**: `boolean`
+
+Merge the data to a JSON file.
 
 • **opts.env?**: `string`
 
-Output the mnemonic to an environment file.
+Output the data to an environment file.
+
+• **opts.mergeEnv**: `boolean`
+
+Merge the data to an environment file.
 
 ## Returns
 

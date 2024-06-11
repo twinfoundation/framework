@@ -2,8 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { exec, spawn } from "node:child_process";
 import { accessSync, readFileSync, statSync } from "node:fs";
-import { access, readFile, stat } from "node:fs/promises";
-import { Coerce } from "@gtsc/core";
+import { access, mkdir, readFile, stat, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { Coerce, I18n, Is, ObjectHelper } from "@gtsc/core";
 import { CLIDisplay } from "./cliDisplay";
 
 /**
@@ -163,5 +164,88 @@ export class CLIUtils {
 				}
 			});
 		});
+	}
+
+	/**
+	 * Write a JSON file.
+	 * @param jsonFilename The filename to write.
+	 * @param data The data to write.
+	 * @param append Append to the file.
+	 */
+	public static async writeJsonFile<T = unknown>(
+		jsonFilename: string | undefined,
+		data: T,
+		append: boolean
+	): Promise<void> {
+		if (Is.stringValue(jsonFilename)) {
+			const filename = path.resolve(jsonFilename);
+			let currentJson = {};
+			if (append) {
+				CLIDisplay.task(I18n.formatMessage("cli.progress.readingJsonFile"), filename);
+				currentJson = (await CLIUtils.readJsonFile(filename)) ?? {};
+			}
+			CLIDisplay.task(I18n.formatMessage("cli.progress.writingJsonFile"), filename);
+			CLIDisplay.break();
+
+			await mkdir(path.dirname(filename), { recursive: true });
+			await writeFile(
+				filename,
+				JSON.stringify(ObjectHelper.merge(currentJson, data), undefined, "\t")
+			);
+		}
+	}
+
+	/**
+	 * Write an env file.
+	 * @param envFilename The filename to write.
+	 * @param data The data to write.
+	 * @param append Append to the file.
+	 */
+	public static async writeEnvFile(
+		envFilename: string | undefined,
+		data: string[],
+		append: boolean
+	): Promise<void> {
+		if (Is.stringValue(envFilename)) {
+			const filename = path.resolve(envFilename);
+
+			const outputKeys: string[] = [];
+			const outputDict: { [key: string]: string } = {};
+
+			if (append) {
+				CLIDisplay.task(I18n.formatMessage("cli.progress.readingEnvFile"), filename);
+				const lines = await CLIUtils.readLinesFile(filename);
+				if (Is.arrayValue(lines)) {
+					for (const line of lines) {
+						const parts = line.split("=");
+						outputKeys.push(parts[0]);
+						outputDict[parts[0]] = parts.slice(1).join("=");
+					}
+				}
+			}
+
+			CLIDisplay.task(I18n.formatMessage("cli.progress.writingEnvFile"), filename);
+			CLIDisplay.break();
+
+			if (Is.arrayValue(data)) {
+				for (const line of data) {
+					const parts = line.split("=");
+					const currentIndex = outputKeys.indexOf(parts[0]);
+					if (currentIndex >= 0) {
+						outputKeys.splice(currentIndex, 1);
+					}
+					outputKeys.push(parts[0]);
+					outputDict[parts[0]] = parts.slice(1).join("=");
+				}
+			}
+
+			const output: string[] = [];
+			for (const outputKey of outputKeys) {
+				output.push(`${outputKey}=${outputDict[outputKey]}`);
+			}
+
+			await mkdir(path.dirname(filename), { recursive: true });
+			await writeFile(filename, output.join("\n"));
+		}
 	}
 }

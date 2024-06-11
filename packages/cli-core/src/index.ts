@@ -3,6 +3,7 @@
 export * from "./cliBase";
 export * from "./cliParam";
 export * from "./cliDisplay";
+export * from "./cliOptions";
 export * from "./cliUtils";
 export * from "./commands/global";
 export * from "./models/ICliOptions";

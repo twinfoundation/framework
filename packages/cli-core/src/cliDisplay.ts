@@ -1,5 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
+import { clearLine, cursorTo } from "node:readline";
 import { Coerce, ErrorHelper, I18n, Is } from "@gtsc/core";
 import chalk from "chalk";
 
@@ -31,8 +32,8 @@ export class CLIDisplay {
 	 * The default output method for clearing the current line.
 	 */
 	public static clearLine: () => void = () => {
-		process.stdout.clearLine(0);
-		process.stdout.cursorTo(0);
+		clearLine(process.stdout, 0);
+		cursorTo(process.stdout, 0);
 	};
 
 	/**
@@ -129,7 +130,7 @@ export class CLIDisplay {
 	 * @param interval The interval for the spinner.
 	 */
 	public static spinnerStart(
-		i18nMessage: string = "cli.progress.please-wait",
+		i18nMessage: string = "cli.progress.pleaseWait",
 		spinnerCharacters: string[] = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"],
 		interval: number = 100
 	): void {

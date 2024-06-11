@@ -48,19 +48,19 @@ Flag to display on the console.
 
 • **opts.json?**: `string`
 
-Output the address to a JSON file.
+Output the data to a JSON file.
 
-• **opts.appendJson**: `boolean`
+• **opts.mergeJson**: `boolean`
 
-Append the address to a JSON file.
+Merge the data to a JSON file.
 
 • **opts.env?**: `string`
 
-Output the address to an environment file.
+Output the data to an environment file.
 
-• **opts.appendEnv**: `boolean`
+• **opts.mergeEnv**: `boolean`
 
-Append the address to an environment file.
+Merge the data to an environment file.
 
 ## Returns
 

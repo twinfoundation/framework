@@ -1,9 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { mkdir, writeFile } from "node:fs/promises";
-import path from "node:path";
-import { CLIDisplay, CLIUtils, CLIParam } from "@gtsc/cli-core";
-import { Converter, I18n, Is, ObjectHelper } from "@gtsc/core";
+import { CLIDisplay, CLIOptions, CLIParam, CLIUtils } from "@gtsc/cli-core";
+import { Converter, I18n, Is } from "@gtsc/core";
 import { Bip44, KeyType } from "@gtsc/crypto";
 import { Command, Option } from "commander";
 
@@ -61,28 +59,17 @@ export function buildCommandAddress(): Command {
 			)
 				.choices(["hex", "base64"])
 				.default("hex")
-		)
-		.option(
-			I18n.formatMessage("commands.address.options.no-console.param"),
-			I18n.formatMessage("commands.address.options.no-console.description")
-		)
-		.option(
-			I18n.formatMessage("commands.address.options.json.param"),
-			I18n.formatMessage("commands.address.options.json.description")
-		)
-		.option(
-			I18n.formatMessage("commands.address.options.append-json.param"),
-			I18n.formatMessage("commands.address.options.append-json.description")
-		)
-		.option(
-			I18n.formatMessage("commands.address.options.env.param"),
-			I18n.formatMessage("commands.address.options.env.description")
-		)
-		.option(
-			I18n.formatMessage("commands.address.options.append-env.param"),
-			I18n.formatMessage("commands.address.options.append-env.description")
-		)
-		.action(actionCommandAddress);
+		);
+
+	CLIOptions.output(command, {
+		noConsole: true,
+		json: true,
+		env: true,
+		mergeJson: true,
+		mergeEnv: true
+	});
+
+	command.action(actionCommandAddress);
 
 	return command;
 }
@@ -99,10 +86,10 @@ export function buildCommandAddress(): Command {
  * @param opts.keyType The key type for the address.
  * @param opts.keyFormat The output format of the key.
  * @param opts.console Flag to display on the console.
- * @param opts.json Output the address to a JSON file.
- * @param opts.appendJson Append the address to a JSON file.
- * @param opts.env Output the address to an environment file.
- * @param opts.appendEnv Append the address to an environment file.
+ * @param opts.json Output the data to a JSON file.
+ * @param opts.mergeJson Merge the data to a JSON file.
+ * @param opts.env Output the data to an environment file.
+ * @param opts.mergeEnv Merge the data to an environment file.
  */
 export async function actionCommandAddress(opts: {
 	seed: string;
@@ -115,9 +102,9 @@ export async function actionCommandAddress(opts: {
 	keyFormat: "hex" | "base64";
 	console: boolean;
 	json?: string;
-	appendJson: boolean;
+	mergeJson: boolean;
 	env?: string;
-	appendEnv: boolean;
+	mergeEnv: boolean;
 }): Promise<void> {
 	const seed: Uint8Array = CLIParam.hexBase64("seed", opts.seed);
 
@@ -191,38 +178,10 @@ export async function actionCommandAddress(opts: {
 	}
 
 	if (Is.stringValue(opts?.json)) {
-		const filename = path.resolve(opts.json);
-		let currentJson = {};
-		if (opts.appendJson) {
-			CLIDisplay.task(I18n.formatMessage("commands.address.progress.readingJsonFile"), filename);
-			currentJson = (await CLIUtils.readJsonFile(filename)) ?? {};
-		}
-		CLIDisplay.task(I18n.formatMessage("commands.address.progress.writingJsonFile"), filename);
-		CLIDisplay.break();
-
-		await mkdir(path.dirname(filename), { recursive: true });
-		await writeFile(
-			filename,
-			JSON.stringify(ObjectHelper.merge(currentJson, addressDictionary), undefined, "\t")
-		);
+		await CLIUtils.writeJsonFile(opts.json, addressDictionary, opts.mergeJson);
 	}
-
 	if (Is.stringValue(opts?.env)) {
-		const filename = path.resolve(opts.env);
-
 		const output = [];
-
-		if (opts.appendEnv) {
-			CLIDisplay.task(I18n.formatMessage("commands.address.progress.readingEnvFile"), filename);
-			const lines = await CLIUtils.readLinesFile(filename);
-			if (Is.arrayValue(lines)) {
-				output.push(...lines);
-			}
-		}
-
-		CLIDisplay.task(I18n.formatMessage("commands.address.progress.writingEnvFile"), filename);
-		CLIDisplay.break();
-
 		for (const addressIndex in addressDictionary) {
 			output.push(`ADDRESS_${addressIndex}_BECH32="${addressDictionary[addressIndex].bech32}"`);
 			output.push(
@@ -232,9 +191,7 @@ export async function actionCommandAddress(opts: {
 				`ADDRESS_${addressIndex}_PUBLIC_KEY="${addressDictionary[addressIndex].publicKey}"`
 			);
 		}
-
-		await mkdir(path.dirname(filename), { recursive: true });
-		await writeFile(filename, output.join("\n"));
+		await CLIUtils.writeEnvFile(opts.env, output, opts.mergeEnv);
 	}
 
 	CLIDisplay.done();
