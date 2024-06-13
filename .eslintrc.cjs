@@ -522,6 +522,12 @@ module.exports = {
 			}
 		},
 		{
+			files: ['setupTestEnv.ts', '*.spec.ts'],
+			rules: {
+				'no-console': ['off']
+			}
+		},
+		{
 			extends: [
 				'plugin:@typescript-eslint/recommended',
 				'plugin:@typescript-eslint/recommended-requiring-type-checking',
