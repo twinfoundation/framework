@@ -12,55 +12,7 @@ Helper methods for hex conversions.
 
 [`HexHelper`](HexHelper.md)
 
-## Properties
-
-### BIG\_INT\_MAX\_256\_BIT
-
-> `static` `readonly` **BIG\_INT\_MAX\_256\_BIT**: `bigint`
-
-Const defining the maximum value for a 256 bit int.
-
 ## Methods
-
-### fromBigInt256()
-
-> `static` **fromBigInt256**(`value`): `string`
-
-Convert the big int 256 bit to hex string.
-
-#### Parameters
-
-• **value**: `bigint`
-
-The big int value to convert.
-
-#### Returns
-
-`string`
-
-The hex encoded big int.
-
-***
-
-### toBigInt256()
-
-> `static` **toBigInt256**(`hex`): `bigint`
-
-Convert the hex string to a big int.
-
-#### Parameters
-
-• **hex**: `string`
-
-The hex value to convert.
-
-#### Returns
-
-`bigint`
-
-The big int.
-
-***
 
 ### stripPrefix()
 

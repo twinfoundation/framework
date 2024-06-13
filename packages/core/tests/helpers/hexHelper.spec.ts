@@ -3,55 +3,37 @@
 import { HexHelper } from "../../src/helpers/hexHelper";
 
 describe("HexHelper", () => {
-	test("Can convert a 0 value 256 bit int to hex", () => {
-		const val = BigInt(0);
-		expect(HexHelper.fromBigInt256(val)).toEqual("0x0");
+	test("stripPrefix can remove the 0x prefix", () => {
+		expect(HexHelper.stripPrefix("0x1234")).toEqual("1234");
 	});
 
-	test("Can convert a 0 value hex to 256 bit big int", () => {
-		expect(HexHelper.toBigInt256("0x0") === BigInt(0)).toEqual(true);
+	test("hasPrefix can return true if it has a prefix", () => {
+		expect(HexHelper.hasPrefix("0x1234")).toEqual(true);
 	});
 
-	test("Can convert a 256 bit int to hex", () => {
-		const val = BigInt(10000);
-		expect(HexHelper.fromBigInt256(val)).toEqual("0x2710");
+	test("hasPrefix can return false if it has no prefix", () => {
+		expect(HexHelper.hasPrefix("1234")).toEqual(false);
 	});
 
-	test("Can convert a hex to 256 bit big int", () => {
-		expect(HexHelper.toBigInt256("0x2710") === BigInt(10000)).toEqual(true);
+	test("addPrefix can add the 0x prefix", () => {
+		expect(HexHelper.addPrefix("1234")).toEqual("0x1234");
 	});
 
-	test("Can convert a max 256 bit int to hex", () => {
-		const val = BigInt(
-			"115792089237316195423570985008687907853269984665640564039457584007913129639935"
-		);
-		expect(HexHelper.fromBigInt256(val)).toEqual(
-			"0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-		);
+	test("addPrefix can return the same hex if it already has a prefix", () => {
+		expect(HexHelper.addPrefix("0x1234")).toEqual("0x1234");
 	});
 
-	test("Can convert a max hex to 256 bit big int", () => {
-		expect(
-			HexHelper.toBigInt256(
-				"0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-			) === BigInt("115792089237316195423570985008687907853269984665640564039457584007913129639935")
-		).toEqual(true);
+	test("isHex can return true for valid hex strings", () => {
+		expect(HexHelper.isHex("1234")).toEqual(true);
+		expect(HexHelper.isHex("abcdef")).toEqual(true);
+		expect(HexHelper.isHex("0x1234", true)).toEqual(true);
+		expect(HexHelper.isHex("0xabcdef", true)).toEqual(true);
 	});
 
-	test("Can convert a value exeeding max 256 bit int to hex", () => {
-		const val = BigInt(
-			"115792089237316195423570985008687907853269984665640564039457584007913129639935000"
-		);
-		expect(HexHelper.fromBigInt256(val)).toEqual(
-			"0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-		);
-	});
-
-	test("Can convert a value exceeding max hex to 256 bit big int", () => {
-		expect(
-			HexHelper.toBigInt256(
-				"0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-			) === BigInt("115792089237316195423570985008687907853269984665640564039457584007913129639935")
-		).toEqual(true);
+	test("isHex can return false for invalid hex strings", () => {
+		expect(HexHelper.isHex("123g")).toEqual(false);
+		expect(HexHelper.isHex("abcdeg")).toEqual(false);
+		expect(HexHelper.isHex("0x123g", true)).toEqual(false);
+		expect(HexHelper.isHex("0xabcdeg", true)).toEqual(false);
 	});
 });
