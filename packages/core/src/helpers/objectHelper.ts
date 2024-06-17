@@ -107,7 +107,7 @@ export class ObjectHelper {
 	 * @returns The property.
 	 */
 	public static propertyGet(obj: unknown, property: string): unknown | undefined {
-		return Is.object(obj) && obj[property];
+		return Is.object(obj) ? obj[property] : undefined;
 	}
 
 	/**
@@ -119,6 +119,17 @@ export class ObjectHelper {
 	public static propertySet(obj: unknown, property: string, value: unknown): void {
 		if (Is.object(obj)) {
 			obj[property] = value;
+		}
+	}
+
+	/**
+	 * Delete the property of an unknown object.
+	 * @param obj The object to set the property from.
+	 * @param property The property to set
+	 */
+	public static propertyDelete(obj: unknown, property: string): void {
+		if (Is.object(obj)) {
+			delete obj[property];
 		}
 	}
 

@@ -202,6 +202,28 @@ The value to set.
 
 ***
 
+### propertyDelete()
+
+> `static` **propertyDelete**(`obj`, `property`): `void`
+
+Delete the property of an unknown object.
+
+#### Parameters
+
+• **obj**: `unknown`
+
+The object to set the property from.
+
+• **property**: `string`
+
+The property to set
+
+#### Returns
+
+`void`
+
+***
+
 ### pick()
 
 > `static` **pick**\<`T`\>(`obj`, `keys`?): `Partial`\<`T`\>
