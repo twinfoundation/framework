@@ -154,9 +154,13 @@ True is the objects are equal.
 
 ### propertyGet()
 
-> `static` **propertyGet**(`obj`, `property`): `unknown`
+> `static` **propertyGet**\<`T`\>(`obj`, `property`): `undefined` \| `T`
 
 Get the property of an unknown object.
+
+#### Type parameters
+
+• **T** = `unknown`
 
 #### Parameters
 
@@ -170,7 +174,7 @@ The property to get.
 
 #### Returns
 
-`unknown`
+`undefined` \| `T`
 
 The property.
 

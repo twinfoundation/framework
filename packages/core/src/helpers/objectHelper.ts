@@ -106,8 +106,8 @@ export class ObjectHelper {
 	 * @param property The property to get.
 	 * @returns The property.
 	 */
-	public static propertyGet(obj: unknown, property: string): unknown | undefined {
-		return Is.object(obj) ? obj[property] : undefined;
+	public static propertyGet<T = unknown>(obj: unknown, property: string): T | undefined {
+		return Is.object(obj) ? (obj[property] as T) : undefined;
 	}
 
 	/**
