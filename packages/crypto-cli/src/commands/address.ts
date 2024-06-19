@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { CLIDisplay, CLIOptions, CLIParam, CLIUtils } from "@gtsc/cli-core";
+import { CLIDisplay, CLIOptions, CLIParam, CLIUtils, type CliOutputOptions } from "@gtsc/cli-core";
 import { Converter, I18n, Is } from "@gtsc/core";
 import { Bip44, KeyType } from "@gtsc/crypto";
 import { Command, Option } from "commander";
@@ -85,11 +85,6 @@ export function buildCommandAddress(): Command {
  * @param opts.coin The coin type for the address.
  * @param opts.keyType The key type for the address.
  * @param opts.keyFormat The output format of the key.
- * @param opts.console Flag to display on the console.
- * @param opts.json Output the data to a JSON file.
- * @param opts.mergeJson Merge the data to a JSON file.
- * @param opts.env Output the data to an environment file.
- * @param opts.mergeEnv Merge the data to an environment file.
  */
 export async function actionCommandAddress(opts: {
 	seed: string;
@@ -100,12 +95,7 @@ export async function actionCommandAddress(opts: {
 	coin: string;
 	keyType: "Ed25519" | "Secp256k1";
 	keyFormat: "hex" | "base64";
-	console: boolean;
-	json?: string;
-	mergeJson: boolean;
-	env?: string;
-	mergeEnv: boolean;
-}): Promise<void> {
+} & CliOutputOptions): Promise<void> {
 	const seed: Uint8Array = CLIParam.hexBase64("seed", opts.seed);
 
 	const start = CLIParam.integer("start", opts.start, false);
