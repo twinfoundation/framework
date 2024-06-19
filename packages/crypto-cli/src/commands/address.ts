@@ -86,16 +86,18 @@ export function buildCommandAddress(): Command {
  * @param opts.keyType The key type for the address.
  * @param opts.keyFormat The output format of the key.
  */
-export async function actionCommandAddress(opts: {
-	seed: string;
-	start: string;
-	count: string;
-	account: string;
-	hrp: string;
-	coin: string;
-	keyType: "Ed25519" | "Secp256k1";
-	keyFormat: "hex" | "base64";
-} & CliOutputOptions): Promise<void> {
+export async function actionCommandAddress(
+	opts: {
+		seed: string;
+		start: string;
+		count: string;
+		account: string;
+		hrp: string;
+		coin: string;
+		keyType: "Ed25519" | "Secp256k1";
+		keyFormat: "hex" | "base64";
+	} & CliOutputOptions
+): Promise<void> {
 	const seed: Uint8Array = CLIParam.hexBase64("seed", opts.seed);
 
 	const start = CLIParam.integer("start", opts.start, false);

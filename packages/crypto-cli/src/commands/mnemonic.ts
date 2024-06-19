@@ -51,10 +51,12 @@ export function buildCommandMnemonic(): Command {
  * @param opts.strength The mnemonic strength.
  * @param opts.seedFormat The output format of the seed.
  */
-export async function actionCommandMnemonic(opts: {
-	strength: string;
-	seedFormat: "hex" | "base64";
-} & CliOutputOptions): Promise<void> {
+export async function actionCommandMnemonic(
+	opts: {
+		strength: string;
+		seedFormat: "hex" | "base64";
+	} & CliOutputOptions
+): Promise<void> {
 	const strength = CLIParam.integer("strength", opts.strength, false, 128, 256);
 
 	const mnemonic = Bip39.randomMnemonic(strength);

@@ -8,4 +8,6 @@ import type { ICliOutputOptionsJson } from "./ICliOutputOptionsJson";
 /**
  * Options for the CLI Output.
  */
-export type CliOutputOptions = ICliOutputOptionsConsole & ICliOutputOptionsEnv & ICliOutputOptionsJson;
+export type CliOutputOptions = ICliOutputOptionsConsole &
+	ICliOutputOptionsEnv &
+	ICliOutputOptionsJson;

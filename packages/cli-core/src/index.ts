@@ -11,4 +11,3 @@ export * from "./models/ICliOutputOptionsConsole";
 export * from "./models/ICliOutputOptionsEnv";
 export * from "./models/ICliOutputOptionsJson";
 export * from "./models/cliOutputOptions";
-
