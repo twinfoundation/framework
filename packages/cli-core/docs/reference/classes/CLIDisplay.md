@@ -188,6 +188,24 @@ Display a break.
 
 ***
 
+### json()
+
+> `static` **json**(`obj`): `void`
+
+Display formatted and colorized JSON.
+
+#### Parameters
+
+• **obj**: `unknown`
+
+The object to display.
+
+#### Returns
+
+`void`
+
+***
+
 ### done()
 
 > `static` **done**(): `void`

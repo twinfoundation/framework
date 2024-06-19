@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { CLIDisplay, CLIOptions, CLIParam, CLIUtils } from "@gtsc/cli-core";
+import { CLIDisplay, CLIOptions, CLIParam, CLIUtils, type CliOutputOptions } from "@gtsc/cli-core";
 import { Converter, I18n, Is } from "@gtsc/core";
 import { Bip39 } from "@gtsc/crypto";
 import { Command, Option } from "commander";
@@ -50,21 +50,11 @@ export function buildCommandMnemonic(): Command {
  * @param opts The options for the command.
  * @param opts.strength The mnemonic strength.
  * @param opts.seedFormat The output format of the seed.
- * @param opts.console Flag to display on the console.
- * @param opts.json Output the data to a JSON file.
- * @param opts.mergeJson Merge the data to a JSON file.
- * @param opts.env Output the data to an environment file.
- * @param opts.mergeEnv Merge the data to an environment file.
  */
 export async function actionCommandMnemonic(opts: {
 	strength: string;
 	seedFormat: "hex" | "base64";
-	console: boolean;
-	json?: string;
-	mergeJson: boolean;
-	env?: string;
-	mergeEnv: boolean;
-}): Promise<void> {
+} & CliOutputOptions): Promise<void> {
 	const strength = CLIParam.integer("strength", opts.strength, false, 128, 256);
 
 	const mnemonic = Bip39.randomMnemonic(strength);

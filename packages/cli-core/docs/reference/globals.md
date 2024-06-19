@@ -11,6 +11,13 @@
 ## Interfaces
 
 - [ICliOptions](interfaces/ICliOptions.md)
+- [ICliOutputOptionsConsole](interfaces/ICliOutputOptionsConsole.md)
+- [ICliOutputOptionsEnv](interfaces/ICliOutputOptionsEnv.md)
+- [ICliOutputOptionsJson](interfaces/ICliOutputOptionsJson.md)
+
+## Type Aliases
+
+- [CliOutputOptions](type-aliases/CliOutputOptions.md)
 
 ## Functions
 

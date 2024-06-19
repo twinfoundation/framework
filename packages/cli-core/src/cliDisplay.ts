@@ -1,6 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { clearLine, cursorTo } from "node:readline";
+import { inspect } from "node:util";
 import { Coerce, ErrorHelper, I18n, Is } from "@gtsc/core";
 import chalk from "chalk";
 
@@ -111,6 +112,15 @@ export class CLIDisplay {
 	 * Display a break.
 	 */
 	public static break(): void {
+		CLIDisplay.write("\n");
+	}
+
+	/**
+	 * Display formatted and colorized JSON.
+	 * @param obj The object to display.
+	 */
+	public static json(obj: unknown): void {
+		CLIDisplay.write(inspect(obj, true, undefined, true));
 		CLIDisplay.write("\n");
 	}
 
