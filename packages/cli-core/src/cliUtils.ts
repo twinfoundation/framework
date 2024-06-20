@@ -125,8 +125,9 @@ export class CLIUtils {
 			exec("npm root", { cwd: rootFolder }, (error, stdout, stderr) => {
 				if (error) {
 					reject(error);
+				} else {
+					resolve(stdout.trim());
 				}
-				resolve(stdout.trim());
 			});
 		});
 	}
