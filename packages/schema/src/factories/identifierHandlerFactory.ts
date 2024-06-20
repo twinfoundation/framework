@@ -8,7 +8,7 @@ import type { IIdentifierHandler } from "../models/IIdentifierHandler";
  * Factory for creating handlers for identifiers.
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const IdentifierHandlerFactory = new Factory<IIdentifierHandler>(
+export const IdentifierHandlerFactory = Factory.createFactory<IIdentifierHandler>(
 	"namespace",
 	true,
 	(names: string[], uri: string) => {

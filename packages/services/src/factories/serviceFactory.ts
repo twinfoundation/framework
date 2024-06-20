@@ -8,4 +8,4 @@ import type { IService } from "../models/IService";
  * Factory for creating implementation of service types.
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ServiceFactory = new Factory<IService>("service");
+export const ServiceFactory = Factory.createFactory<IService>("service");

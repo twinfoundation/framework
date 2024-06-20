@@ -8,4 +8,4 @@ import type { IDataTypeHandler } from "../models/IDataTypeHandler";
  * Factory for creating handlers for data types.
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const DataTypeHandlerFactory = new Factory<IDataTypeHandler>("dataType", true);
+export const DataTypeHandlerFactory = Factory.createFactory<IDataTypeHandler>("dataType", true);
