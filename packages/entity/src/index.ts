@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 export * from "./decorators/entityDecorator";
 export * from "./decorators/propertyDecorator";
+export * from "./factories/entitySchemaFactory";
 export * from "./models/IComparator";
 export * from "./models/IComparatorGroup";
 export * from "./models/IEntitySchema";
@@ -17,3 +18,4 @@ export * from "./utils/decoratorHelper";
 export * from "./utils/entityConditions";
 export * from "./utils/entitySchemaHelper";
 export * from "./utils/entitySorter";
+
