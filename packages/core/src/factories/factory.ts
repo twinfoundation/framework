@@ -17,6 +17,11 @@ export class Factory<T> {
 	private static readonly _CLASS_NAME: string = nameof<Factory<unknown>>();
 
 	/**
+	 * Store all the created factories.
+	 */
+	private static readonly _factories: { [typeName: string]: Factory<unknown> } = {};
+
+	/**
 	 * Type name for the instances.
 	 * @internal
 	 */
@@ -58,12 +63,12 @@ export class Factory<T> {
 	private readonly _matcher: (names: string[], name: string) => string | undefined;
 
 	/**
-	 * Create a new instance of Factory.
+	 * Create a new instance of Factory, private use createFactory.
 	 * @param typeName The type name for the instances.
 	 * @param autoInstance Automatically create an instance when registered.
 	 * @param matcher Match the name of the instance.
 	 */
-	constructor(
+	private constructor(
 		typeName: string,
 		autoInstance: boolean = false,
 		matcher?: (names: string[], name: string) => string | undefined
@@ -74,6 +79,24 @@ export class Factory<T> {
 		this._orderCounter = 0;
 		this._autoInstance = autoInstance;
 		this._matcher = matcher ?? this.defaultMatcher.bind(this);
+	}
+
+	/**
+	 * Create a new factory, which is shared throughout all library instances.
+	 * @param typeName The type name for the instances.
+	 * @param autoInstance Automatically create an instance when registered.
+	 * @param matcher Match the name of the instance.
+	 * @returns The factory instance.
+	 */
+	public static createFactory<U>(
+		typeName: string,
+		autoInstance: boolean = false,
+		matcher?: (names: string[], name: string) => string | undefined
+	): Factory<U> {
+		if (Is.undefined(Factory._factories[typeName])) {
+			Factory._factories[typeName] = new Factory<U>(typeName, autoInstance, matcher);
+		}
+		return Factory._factories[typeName] as Factory<U>;
 	}
 
 	/**

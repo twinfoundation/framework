@@ -10,9 +10,9 @@ Factory for creating implementation of generic types.
 
 ### new Factory()
 
-> **new Factory**\<`T`\>(`typeName`, `autoInstance`, `matcher`?): [`Factory`](Factory.md)\<`T`\>
+> `private` **new Factory**\<`T`\>(`typeName`, `autoInstance`, `matcher`?): [`Factory`](Factory.md)\<`T`\>
 
-Create a new instance of Factory.
+Create a new instance of Factory, private use createFactory.
 
 #### Parameters
 
@@ -32,7 +32,51 @@ Match the name of the instance.
 
 [`Factory`](Factory.md)\<`T`\>
 
+## Properties
+
+### \_factories
+
+> `static` `private` `readonly` **\_factories**: `object` = `{}`
+
+Store all the created factories.
+
+#### Index signature
+
+ \[`typeName`: `string`\]: [`Factory`](Factory.md)\<`unknown`\>
+
 ## Methods
+
+### createFactory()
+
+> `static` **createFactory**\<`U`\>(`typeName`, `autoInstance`, `matcher`?): [`Factory`](Factory.md)\<`U`\>
+
+Create a new factory, which is shared throughout all library instances.
+
+#### Type parameters
+
+• **U**
+
+#### Parameters
+
+• **typeName**: `string`
+
+The type name for the instances.
+
+• **autoInstance**: `boolean`= `false`
+
+Automatically create an instance when registered.
+
+• **matcher?**
+
+Match the name of the instance.
+
+#### Returns
+
+[`Factory`](Factory.md)\<`U`\>
+
+The factory instance.
+
+***
 
 ### register()
 
