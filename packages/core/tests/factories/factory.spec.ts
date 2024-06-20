@@ -7,7 +7,7 @@ import { Factory } from "../../src/factories/factory";
 import { I18n } from "../../src/utils/i18n";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const TestFactory = new Factory<IService>("service");
+const TestFactory = Factory.createFactory<IService>("service");
 
 /**
  * Test service for validation.
@@ -148,7 +148,7 @@ describe("Factory", () => {
 	});
 
 	test("can auto register services", () => {
-		const testFactory = new Factory<TestService>("service1", true);
+		const testFactory = Factory.createFactory<TestService>("service1", true);
 		testFactory.register("test1", () => new TestService("test1"));
 		const instanceList = testFactory.instancesList();
 		expect(instanceList.length).toEqual(1);
@@ -156,7 +156,7 @@ describe("Factory", () => {
 	});
 
 	test("can register multiple services and get them as an array ordered by addition order", () => {
-		const testFactory = new Factory<TestService>("service1");
+		const testFactory = Factory.createFactory<TestService>("service1");
 		testFactory.register("test3", () => new TestService("test3"));
 		testFactory.register("test2", () => new TestService("test2"));
 		testFactory.register("test1", () => new TestService("test1"));
@@ -171,7 +171,7 @@ describe("Factory", () => {
 	});
 
 	test("can register multiple services and get them as a map", () => {
-		const testFactory = new Factory<TestService>("service1");
+		const testFactory = Factory.createFactory<TestService>("service1");
 		testFactory.register("test3", () => new TestService("test3"));
 		testFactory.register("test2", () => new TestService("test2"));
 		testFactory.register("test1", () => new TestService("test1"));
@@ -186,7 +186,7 @@ describe("Factory", () => {
 	});
 
 	test("can register multiple services and get their names as an array ordered by addition order", () => {
-		const testFactory = new Factory<TestService>("service1");
+		const testFactory = Factory.createFactory<TestService>("service1");
 		testFactory.register("test3", () => new TestService("test3"));
 		testFactory.register("test2", () => new TestService("test2"));
 		testFactory.register("test1", () => new TestService("test1"));
@@ -198,8 +198,8 @@ describe("Factory", () => {
 	});
 
 	test("can have two factories which don't collide", () => {
-		const testFactory1 = new Factory<IService>("service1");
-		const testFactory2 = new Factory<IService>("service2");
+		const testFactory1 = Factory.createFactory<IService>("service11");
+		const testFactory2 = Factory.createFactory<IService>("service12");
 		testFactory1.register("test1", () => new TestService("test1"));
 		testFactory2.register("test2", () => new TestService("test2"));
 
@@ -213,7 +213,7 @@ describe("Factory", () => {
 	});
 
 	test("can use a different name matching strategy", () => {
-		const testFactory1 = new Factory<IService>("service1", false, (names, name) =>
+		const testFactory1 = Factory.createFactory<IService>("service21", false, (names, name) =>
 			names.find(n => `@${n}` === name)
 		);
 		testFactory1.register("test1", () => new TestService("test1"));
