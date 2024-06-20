@@ -26,6 +26,7 @@
 
 ## Variables
 
+- [EntitySchemaFactory](variables/EntitySchemaFactory.md)
 - [ComparisonOperator](variables/ComparisonOperator.md)
 - [EntitySchemaPropertyType](variables/EntitySchemaPropertyType.md)
 - [LogicalOperator](variables/LogicalOperator.md)
