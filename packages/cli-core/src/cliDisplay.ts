@@ -120,7 +120,7 @@ export class CLIDisplay {
 	 * @param obj The object to display.
 	 */
 	public static json(obj: unknown): void {
-		CLIDisplay.write(inspect(obj, true, undefined, true));
+		CLIDisplay.write(inspect(obj, false, undefined, true));
 		CLIDisplay.write("\n");
 	}
 
