@@ -237,6 +237,7 @@ export class Factory<T> {
 	 * @param names The list of names for all the generators.
 	 * @param name The name to match.
 	 * @returns The matched name or undefined if no match.
+	 * @internal
 	 */
 	private defaultMatcher(names: string[], name: string): string | undefined {
 		return this._generators[name] ? name : undefined;
