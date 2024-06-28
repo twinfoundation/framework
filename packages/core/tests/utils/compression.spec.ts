@@ -40,4 +40,14 @@ describe("Compression", () => {
 			"The quick brown fox jumps over the lazy dog"
 		);
 	});
+
+	test("can hang", async () => {
+		const bytes = new Uint8Array([
+			31, 139, 8, 0, 0, 0, 0, 0, 0, 3, 237, 193, 49, 1, 0, 0, 0, 194, 160, 245, 79, 109, 12, 31,
+			160, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 183, 1, 134, 210, 84, 171, 0, 64, 0, 0
+		]);
+		const decompressed = await Compression.decompress(bytes, "gzip");
+		console.log(decompressed);
+		expect(decompressed.length).toEqual(16384);
+	});
 });
