@@ -3,7 +3,7 @@
 /* eslint-disable no-bitwise */
 import { nameof } from "@gtsc/nameof";
 import { Guards } from "./guards";
-import type { CompressionType } from "../models/compressionType";
+import { CompressionType } from "../models/compressionType";
 
 /**
  * A class to handle compression.
@@ -23,27 +23,23 @@ export class Compression {
 	 */
 	public static async compress(bytes: Uint8Array, type: CompressionType): Promise<Uint8Array> {
 		Guards.uint8Array(Compression._CLASS_NAME, nameof(bytes), bytes);
+		Guards.arrayOneOf(Compression._CLASS_NAME, nameof(type), type, Object.values(CompressionType));
 
-		const cs = new CompressionStream(type);
-		const writer = cs.writable.getWriter();
-		await writer.write(bytes);
-		await writer.close();
-
-		const compressedData = [];
-		const reader = cs.readable.getReader();
-		let result;
-		while (!(result = await reader.read()).done) {
-			compressedData.push(...result.value);
-		}
+		const blob = new Blob([bytes]);
+		const ds = new CompressionStream(type);
+		const compressedStream = blob.stream().pipeThrough(ds);
+		const compressedBlob = await new Response(compressedStream).blob();
+		const ab = await compressedBlob.arrayBuffer();
+		const compressedBytes = new Uint8Array(ab);
 
 		// GZIP header contains a byte which specifies the OS the
 		// compression was performed on. We set this to 3 (Unix) to ensure
 		// that we produce consistent results.
-		if (type === "gzip" && compressedData.length >= 10) {
-			compressedData[9] = 3;
+		if (type === "gzip" && compressedBytes.length >= 10) {
+			compressedBytes[9] = 3;
 		}
 
-		return new Uint8Array(compressedData);
+		return compressedBytes;
 	}
 
 	/**
@@ -57,19 +53,13 @@ export class Compression {
 		type: CompressionType
 	): Promise<Uint8Array> {
 		Guards.uint8Array(Compression._CLASS_NAME, nameof(compressedBytes), compressedBytes);
+		Guards.arrayOneOf(Compression._CLASS_NAME, nameof(type), type, Object.values(CompressionType));
 
-		const cs = new DecompressionStream(type);
-		const writer = cs.writable.getWriter();
-		await writer.write(compressedBytes);
-		await writer.close();
-
-		const decompressedData = [];
-		const reader = cs.readable.getReader();
-		let result;
-		while (!(result = await reader.read()).done) {
-			decompressedData.push(...result.value);
-		}
-
-		return new Uint8Array(decompressedData);
+		const blob = new Blob([compressedBytes]);
+		const ds = new DecompressionStream(type);
+		const decompressedStream = blob.stream().pipeThrough(ds);
+		const decompressedBlob = await new Response(decompressedStream).blob();
+		const ab = await decompressedBlob.arrayBuffer();
+		return new Uint8Array(ab);
 	}
 }
