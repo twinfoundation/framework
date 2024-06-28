@@ -40,7 +40,7 @@ export class Compression {
 		// compression was performed on. We set this to 3 (Unix) to ensure
 		// that we produce consistent results.
 		if (type === "gzip" && compressedData.length >= 10) {
-			compressedData[9] = 3;
+			compressedData[9] = 0;
 		}
 
 		return new Uint8Array(compressedData);
