@@ -237,27 +237,3 @@ Get all the generator names in the order they were registered.
 `string`[]
 
 The ordered generator names.
-
-***
-
-### defaultMatcher()
-
-> `private` **defaultMatcher**(`names`, `name`): `undefined` \| `string`
-
-Match the requested name to the generator name.
-
-#### Parameters
-
-• **names**: `string`[]
-
-The list of names for all the generators.
-
-• **name**: `string`
-
-The name to match.
-
-#### Returns
-
-`undefined` \| `string`
-
-The matched name or undefined if no match.
