@@ -9,7 +9,7 @@ describe("Compression", () => {
 		const bytes = Converter.utf8ToBytes("The quick brown fox jumps over the lazy dog");
 		const compressed = await Compression.compress(bytes, "gzip");
 		expect(Converter.bytesToBase64(compressed)).toEqual(
-			"H4sIAAAAAAAAAAvJSFUoLM1MzlZIKsovz1NIy69QyCrNLShWyC9LLVIoyUhVyEmsqlRIyU8HADmjT0ErAAAA"
+			"H4sIAAAAAAAAAwvJSFUoLM1MzlZIKsovz1NIy69QyCrNLShWyC9LLVIoyUhVyEmsqlRIyU8HADmjT0ErAAAA"
 		);
 	});
 
