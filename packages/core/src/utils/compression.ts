@@ -58,18 +58,25 @@ export class Compression {
 	): Promise<Uint8Array> {
 		Guards.uint8Array(Compression._CLASS_NAME, nameof(compressedBytes), compressedBytes);
 
-		const cs = new DecompressionStream(type);
-		const writer = cs.writable.getWriter();
-		await writer.write(compressedBytes);
-		await writer.close();
+		const blob = new Blob([compressedBytes]);
+		const ds = new DecompressionStream(type);
+		const decompressedStream = blob.stream().pipeThrough(ds);
+		const decompressedBlob = await new Response(decompressedStream).blob();
+		const ab = await decompressedBlob.arrayBuffer();
+		return new Uint8Array(ab);
 
-		const decompressedData = [];
-		const reader = cs.readable.getReader();
-		let result;
-		while (!(result = await reader.read()).done) {
-			decompressedData.push(...result.value);
-		}
+		// const cs = new DecompressionStream(type);
+		// const writer = cs.writable.getWriter();
+		// await writer.write(compressedBytes);
+		// await writer.close();
 
-		return new Uint8Array(decompressedData);
+		// const decompressedData = [];
+		// const reader = cs.readable.getReader();
+		// let result;
+		// while (!(result = await reader.read()).done) {
+		// 	decompressedData.push(...result.value);
+		// }
+
+		// return new Uint8Array(decompressedData);
 	}
 }
