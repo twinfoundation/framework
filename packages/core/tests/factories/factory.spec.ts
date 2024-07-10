@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable max-classes-per-file */
 
+import { nameof } from "@gtsc/nameof";
 import type { IService } from "../../../services/src/models/IService";
 import { Factory } from "../../src/factories/factory";
 import { I18n } from "../../src/utils/i18n";
@@ -13,6 +14,11 @@ const TestFactory = Factory.createFactory<IService>("service");
  * Test service for validation.
  */
 class TestService implements IService {
+	/**
+	 * The name of the service.
+	 */
+	public readonly CLASS_NAME: string;
+
 	/**
 	 * The name of the service.
 	 */
@@ -28,6 +34,7 @@ class TestService implements IService {
 	 * @param name The name of the service.
 	 */
 	constructor(name: string) {
+		this.CLASS_NAME = nameof<TestService>();
 		this.name = name;
 		this.foo = 1;
 	}

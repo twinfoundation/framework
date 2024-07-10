@@ -7,6 +7,11 @@ import type { IRequestContext } from "./IRequestContext";
  */
 export interface IService {
 	/**
+	 * The name of the service.
+	 */
+	readonly CLASS_NAME: string;
+
+	/**
 	 * Bootstrap the service by creating and initializing any resources it needs.
 	 * @param requestContext The request context for bootstrapping.
 	 * @returns Nothing.
