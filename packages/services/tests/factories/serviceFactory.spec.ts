@@ -1,6 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 
+import { nameof } from "@gtsc/nameof";
 import { ServiceFactory } from "../../src/factories/serviceFactory";
 import type { IService } from "../../src/models/IService";
 
@@ -8,6 +9,11 @@ import type { IService } from "../../src/models/IService";
  * Test service for validation.
  */
 class TestService implements IService {
+	/**
+	 * The name of the service.
+	 */
+	public readonly CLASS_NAME: string;
+
 	/**
 	 * Validation property.
 	 */
@@ -17,6 +23,7 @@ class TestService implements IService {
 	 * Create a new instance of TestService.
 	 */
 	constructor() {
+		this.CLASS_NAME = nameof<TestService>();
 		this.foo = 1;
 	}
 
