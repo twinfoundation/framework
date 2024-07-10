@@ -236,7 +236,7 @@ module.exports = {
 					'Importing from paths ending in "/src" are not allowed, use specific file import instead to avoid circular dependencies'
 			},
 			{
-				selector: 'PropertyDefinition[value!=null][static=false]',
+				selector: 'PropertyDefinition[value!=null][static=false][key.name!=CLASS_NAME]',
 				message:
 					'Do not use property initializers inline, perform the initialization in the constructor instead'
 			},
