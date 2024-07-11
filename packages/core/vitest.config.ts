@@ -9,7 +9,8 @@ export default defineConfig({
 	plugins: [
 		typescript({
 			tsconfig: "./tests/tsconfig.json",
-			typescript: tspc
+			typescript: tspc,
+			clean: true
 		})
 	],
 	test: {

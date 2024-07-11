@@ -16,8 +16,8 @@
 	"scripts": {
 		"clean": "rimraf dist coverage docs/reference",
 		"build": "tspc",
-		"test": "vitest --run --config ./vitest.config.ts",
-		"coverage": "vitest --run --coverage --config ./vitest.config.ts",
+		"test": "vitest --run --config ./vitest.config.ts --no-cache",
+		"coverage": "vitest --run --coverage --config ./vitest.config.ts --no-cache",
 		"bundle:esm": "rollup --config rollup.config.mjs --environment MODULE:esm",
 		"bundle:cjs": "rollup --config rollup.config.mjs --environment MODULE:cjs",
 		"bundle": "npm run bundle:esm && npm run bundle:cjs",
