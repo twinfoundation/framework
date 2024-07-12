@@ -179,3 +179,31 @@ The value if it can be coerced.
 #### Throws
 
 TypeError If the value can not be coerced.
+
+***
+
+### object()
+
+> `static` **object**\<`T`\>(`value`): `undefined` \| `T`
+
+Coerce the value to an object.
+
+#### Type parameters
+
+• **T** = `unknown`
+
+#### Parameters
+
+• **value**: `unknown`
+
+The value to coerce.
+
+#### Returns
+
+`undefined` \| `T`
+
+The value if it can be coerced.
+
+#### Throws
+
+TypeError If the value can not be coerced.

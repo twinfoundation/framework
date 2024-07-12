@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import Ajv, { type AnySchema } from "ajv";
 import addFormats from "ajv-formats";
 import type { ISchemaValidationError } from "../models/ISchemaValidationError";

@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 export * from "./models/errorCorrectLevel";
 export * from "./models/IBitmapRendererOptions";
 export * from "./models/IRendererOptions";

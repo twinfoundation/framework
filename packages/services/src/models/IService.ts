@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { IRequestContext } from "./IRequestContext";
+import type { IBaseRequestContext } from "./IBaseRequestContext";
 
 /**
  * Interface describing a service.
@@ -16,7 +16,7 @@ export interface IService {
 	 * @param requestContext The request context for bootstrapping.
 	 * @returns Nothing.
 	 */
-	bootstrap?(requestContext: IRequestContext): Promise<void>;
+	bootstrap?(requestContext: IBaseRequestContext): Promise<void>;
 
 	/**
 	 * The service needs to be started when the application is initialized.

@@ -20,7 +20,7 @@ Bootstrap the service by creating and initializing any resources it needs.
 
 #### Parameters
 
-• **requestContext**: [`IRequestContext`](IRequestContext.md)
+• **requestContext**: [`IBaseRequestContext`](IBaseRequestContext.md)
 
 The request context for bootstrapping.
 

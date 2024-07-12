@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { Converter } from "@gtsc/core";
 import testData from "./ed25519.json";
 import { Ed25519 } from "../../src/curves/ed25519";

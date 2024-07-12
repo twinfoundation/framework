@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { nameof } from "@gtsc/nameof";
 import { ServiceFactory } from "../../src/factories/serviceFactory";
 import type { IService } from "../../src/models/IService";

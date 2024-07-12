@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { Guards } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { chacha20poly1305 } from "@noble/ciphers/chacha";

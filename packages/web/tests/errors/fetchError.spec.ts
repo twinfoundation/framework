@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { FetchError } from "../../src/errors/fetchError";
 
 describe("FetchError", () => {

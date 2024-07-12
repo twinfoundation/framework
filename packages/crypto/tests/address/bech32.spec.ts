@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { Converter, I18n } from "@gtsc/core";
 import { Bech32 } from "../../src/address/bech32";
 

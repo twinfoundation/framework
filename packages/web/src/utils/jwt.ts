@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { ArrayHelper, Converter, GeneralError, Guards, Is } from "@gtsc/core";
 import { Ed25519, HmacSha256 } from "@gtsc/crypto";
 import { nameof } from "@gtsc/nameof";

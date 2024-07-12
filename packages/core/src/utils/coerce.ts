@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { Is } from "./is";
 
 /**
@@ -202,6 +201,26 @@ export class Coerce {
 				);
 				return new Date(utc);
 			}
+		}
+	}
+
+	/**
+	 * Coerce the value to an object.
+	 * @param value The value to coerce.
+	 * @throws TypeError If the value can not be coerced.
+	 * @returns The value if it can be coerced.
+	 */
+	public static object<T = unknown>(value: unknown): T | undefined {
+		if (Is.undefined(value)) {
+			return value;
+		}
+		if (Is.object<T>(value)) {
+			return value;
+		}
+		if (Is.stringValue(value)) {
+			try {
+				return JSON.parse(value) as T;
+			} catch {}
 		}
 	}
 }

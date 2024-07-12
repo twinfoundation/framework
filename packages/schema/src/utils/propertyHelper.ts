@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { Coerce, Guards, Is, ObjectHelper, Urn } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { SchemaOrgDataTypes } from "../dataTypes/schemaOrgDataTypes";

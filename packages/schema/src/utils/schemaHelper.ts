@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { Is, StringHelper } from "@gtsc/core";
 import type { IEntitySchema } from "@gtsc/entity";
 import type { JSONSchema7, JSONSchema7Definition } from "json-schema";

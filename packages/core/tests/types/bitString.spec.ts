@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { BitString } from "../../src/types/bitString";
 import { I18n } from "../../src/utils/i18n";
 
