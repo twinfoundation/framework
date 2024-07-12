@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/crypto-cli",
-	"version": "0.0.4-next.41",
+	"version": "0.0.4-next.42",
 	"description": "A command line interface for interacting with the crypto tools",
 	"repository": {
 		"type": "git",
@@ -29,9 +29,9 @@
 		"dist": "npm run clean && npm run build && npm run merge-locales && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/cli-core": "0.0.4-next.41",
-		"@gtsc/core": "0.0.4-next.41",
-		"@gtsc/crypto": "0.0.4-next.41",
+		"@gtsc/cli-core": "0.0.4-next.42",
+		"@gtsc/core": "0.0.4-next.42",
+		"@gtsc/crypto": "0.0.4-next.42",
 		"@gtsc/nameof": "next",
 		"commander": "12.1.0"
 	},

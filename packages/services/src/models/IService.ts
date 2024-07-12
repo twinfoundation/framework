@@ -16,7 +16,7 @@ export interface IService {
 	 * @param requestContext The request context for bootstrapping.
 	 * @returns Nothing.
 	 */
-	bootstrap?(requestContext: IServiceRequestContext): Promise<void>;
+	bootstrap?(requestContext?: IServiceRequestContext): Promise<void>;
 
 	/**
 	 * The service needs to be started when the application is initialized.
