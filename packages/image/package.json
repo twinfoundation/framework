@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/image",
-	"version": "0.0.4-next.40",
+	"version": "0.0.4-next.41",
 	"description": "Classes for image manipulation",
 	"repository": {
 		"type": "git",
@@ -28,7 +28,7 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.4-next.40",
+		"@gtsc/core": "0.0.4-next.41",
 		"@gtsc/nameof": "next"
 	},
 	"devDependencies": {

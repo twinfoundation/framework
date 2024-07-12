@@ -14,9 +14,15 @@ The name of the service.
 
 ### bootstrap()?
 
-> `optional` **bootstrap**(): `Promise`\<`void`\>
+> `optional` **bootstrap**(`requestContext`): `Promise`\<`void`\>
 
 Bootstrap the service by creating and initializing any resources it needs.
+
+#### Parameters
+
+• **requestContext**: [`IServiceRequestContext`](IServiceRequestContext.md)
+
+The request context for bootstrapping.
 
 #### Returns
 
