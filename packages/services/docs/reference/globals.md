@@ -2,7 +2,6 @@
 
 ## Interfaces
 
-- [IBaseRequestContext](interfaces/IBaseRequestContext.md)
 - [IService](interfaces/IService.md)
 - [IServiceRequestContext](interfaces/IServiceRequestContext.md)
 
