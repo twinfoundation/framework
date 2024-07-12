@@ -27,6 +27,7 @@
 			"failedObject": "Validation of \"{objectName}\" failed"
 		},
 		"guard": {
+			"undefined": "Property \"{property}\" must be defined, it is \"{value}\"",
 			"string": "Property \"{property}\" must be a string, it is \"{value}\"",
 			"stringEmpty": "Property \"{property}\" must have a value, it is empty",
 			"stringBase64": "Property \"{property}\" must be a base64 encoded string, it is \"{value}\"",

@@ -14,6 +14,36 @@ Class to handle guard operations for parameters.
 
 ## Methods
 
+### defined()
+
+> `static` **defined**(`source`, `property`, `value`): `asserts value`
+
+Is the property defined.
+
+#### Parameters
+
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+#### Returns
+
+`asserts value`
+
+#### Throws
+
+GuardError If the value does not match the assertion.
+
+***
+
 ### string()
 
 > `static` **string**(`source`, `property`, `value`): `asserts value is string`

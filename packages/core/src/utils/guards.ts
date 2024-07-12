@@ -9,6 +9,19 @@ import { HexHelper } from "../helpers/hexHelper";
  */
 export class Guards {
 	/**
+	 * Is the property defined.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static defined(source: string, property: string, value: unknown): asserts value {
+		if (Is.undefined(value)) {
+			throw new GuardError(source, "guard.undefined", property, value);
+		}
+	}
+
+	/**
 	 * Is the property a string.
 	 * @param source The source of the error.
 	 * @param property The name of the property.
