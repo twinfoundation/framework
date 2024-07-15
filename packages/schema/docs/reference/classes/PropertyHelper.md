@@ -78,7 +78,7 @@ The type of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -166,7 +166,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -228,7 +228,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -290,7 +290,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -352,7 +352,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -414,7 +414,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -476,7 +476,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -538,7 +538,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -600,7 +600,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -662,7 +662,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 
@@ -724,7 +724,7 @@ The key of the item to add.
 
 The value of the item to add.
 
-• **additionalProperties?**
+• **additionalProperties?**: \{ \[key in string \| number \| symbol\]?: unknown \}
 
 Additional properties to add to the item.
 

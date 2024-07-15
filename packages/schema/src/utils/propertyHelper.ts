@@ -45,7 +45,7 @@ export class PropertyHelper {
 		key: string,
 		type: string,
 		value: T | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		Guards.array(nameof<PropertyHelper>(), nameof(properties), properties);
 		Guards.stringValue(nameof<PropertyHelper>(), nameof(key), key);
@@ -117,7 +117,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: string | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.string(nameof<PropertyHelper>(), nameof(value), value);
@@ -155,7 +155,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: string | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Urn.guard(nameof<PropertyHelper>(), "value", value);
@@ -193,7 +193,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: number | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.integer(nameof<PropertyHelper>(), nameof(value), value);
@@ -231,7 +231,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: number | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.number(nameof<PropertyHelper>(), nameof(value), value);
@@ -269,7 +269,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: boolean | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.boolean(nameof<PropertyHelper>(), nameof(value), value);
@@ -309,7 +309,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: Date | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.date(nameof<PropertyHelper>(), nameof(value), value);
@@ -349,7 +349,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: Date | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.date(nameof<PropertyHelper>(), nameof(value), value);
@@ -398,7 +398,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: Date | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.date(nameof<PropertyHelper>(), nameof(value), value);
@@ -451,7 +451,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: number | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.timestampMilliseconds(nameof<PropertyHelper>(), nameof(value), value);
@@ -493,7 +493,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string,
 		value: number | undefined,
-		additionalProperties?: { [key: string]: unknown }
+		additionalProperties?: { [key in Exclude<keyof U, "key" | "type" | "value">]?: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.timestampSeconds(nameof<PropertyHelper>(), nameof(value), value);
