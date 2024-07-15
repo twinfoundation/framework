@@ -660,22 +660,26 @@ The filtered list.
 
 ### merge()
 
-> `static` **merge**(`properties1`?, `properties2`?): [`IProperty`](../interfaces/IProperty.md)[]
+> `static` **merge**\<`T`\>(`properties1`?, `properties2`?): `T`[]
 
 Merge two property lists.
 
+#### Type parameters
+
+• **T** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties1?**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties1?**: `T`[]
 
 The current profile properties.
 
-• **properties2?**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties2?**: `T`[]
 
 The new properties to merge in to the first list.
 
 #### Returns
 
-[`IProperty`](../interfaces/IProperty.md)[]
+`T`[]
 
 The merged list.

@@ -395,12 +395,23 @@ export class PropertyHelper {
 	 * @param properties2 The new properties to merge in to the first list.
 	 * @returns The merged list.
 	 */
-	public static merge(properties1?: IProperty[], properties2?: IProperty[]): IProperty[] {
-		const listMerged = ObjectHelper.clone<IProperty[]>(properties1 ?? []);
+	public static merge<T extends IProperty = IProperty>(properties1?: T[], properties2?: T[]): T[] {
+		const listMerged = ObjectHelper.clone<T[]>(properties1 ?? []);
 
 		if (Is.arrayValue(properties2)) {
 			for (const prop of properties2) {
-				PropertyHelper.setValue(listMerged, prop.key, prop.type, prop.value);
+				const isEmpty = Is.empty(prop.value);
+
+				const existingIndex = listMerged.findIndex(m => m.key === prop.key);
+				if (existingIndex >= 0) {
+					if (isEmpty) {
+						listMerged.splice(existingIndex, 1);
+					} else {
+						listMerged[existingIndex].value = prop.value;
+					}
+				} else if (!isEmpty) {
+					listMerged.push(ObjectHelper.clone<T>(prop));
+				}
 			}
 		}
 
