@@ -26,6 +26,6 @@ The type of the property.
 
 ### sortDirection
 
-> **sortDirection**: `string`
+> **sortDirection**: [`SortDirection`](../type-aliases/SortDirection.md)
 
 Default sort direction for this column, leave empty if not sortable.

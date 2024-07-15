@@ -8,12 +8,12 @@ The sort directions.
 
 ### Ascending
 
-> **Ascending**: `string` = `"Ascending"`
+> `readonly` **Ascending**: `"Ascending"` = `"Ascending"`
 
 Ascending.
 
 ### Descending
 
-> **Descending**: `string` = `"Descending"`
+> `readonly` **Descending**: `"Descending"` = `"Descending"`
 
 Descending.

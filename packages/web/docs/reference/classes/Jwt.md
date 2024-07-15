@@ -190,7 +190,7 @@ The default signer for the JWT.
 
 #### Parameters
 
-• **alg**: `string`
+• **alg**: [`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
 
 The algorithm to use.
 
@@ -218,7 +218,7 @@ The default verifier for the JWT.
 
 #### Parameters
 
-• **alg**: `string`
+• **alg**: [`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
 
 The algorithm to use.
 

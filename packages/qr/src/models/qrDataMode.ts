@@ -20,7 +20,7 @@ export const QRDataMode = {
 	 * 8bit byte.
 	 */
 	Byte8: 4
-};
+} as const;
 
 /**
  * The mode for the qr data.

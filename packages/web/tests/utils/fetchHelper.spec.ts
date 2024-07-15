@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { HttpMethods } from "../../src/models/httpMethods";
-import { HttpStatusCodes } from "../../src/models/httpStatusCodes";
+import type { HttpMethod } from "../../src/models/httpMethod";
+import { HttpStatusCode } from "../../src/models/httpStatusCode";
 import type { IFetchOptions } from "../../src/models/IFetchOptions";
 import type { IHttpRequestHeaders } from "../../src/models/IHttpRequestHeaders";
 import { FetchHelper } from "../../src/utils/fetchHelper";
@@ -71,7 +71,7 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response from a fetch with no path", async () => {
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", undefined as unknown as HttpMethods)
+			FetchHelper.fetch("source", "endpoint", "path", undefined as unknown as HttpMethod)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.arrayOneOf",
@@ -209,7 +209,7 @@ describe("FetchHelper", () => {
 			name: "FetchError",
 			message: "fetchHelper.timeout",
 			properties: {
-				httpStatus: HttpStatusCodes.REQUEST_TIMEOUT,
+				httpStatus: HttpStatusCode.requestTimeout,
 				path: "path"
 			}
 		});
@@ -223,7 +223,7 @@ describe("FetchHelper", () => {
 			name: "FetchError",
 			message: "fetchHelper.general",
 			properties: {
-				httpStatus: HttpStatusCodes.INTERNAL_SERVER_ERROR,
+				httpStatus: HttpStatusCode.internalServerError,
 				path: "path"
 			}
 		});
@@ -256,14 +256,14 @@ describe("FetchHelper", () => {
 	test("can fail to get a response from a fetchJson when JSON is invalid", async () => {
 		fetchMock.mockResolvedValue({
 			ok: true,
-			status: HttpStatusCodes.OK,
+			status: HttpStatusCode.ok,
 			json: async () => new Promise(resolve => resolve(JSON.parse("!")))
 		});
 		await expect(FetchHelper.fetchJson("source", "endpoint", "path", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			message: "fetchHelper.decodingJSON",
 			properties: {
-				httpStatus: HttpStatusCodes.BAD_REQUEST,
+				httpStatus: HttpStatusCode.badRequest,
 				path: "path"
 			}
 		});
@@ -275,7 +275,7 @@ describe("FetchHelper", () => {
 		await expect(FetchHelper.fetch("source", "endpoint", "path", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
-				httpStatus: HttpStatusCodes.SERVICE_UNAVAILABLE,
+				httpStatus: HttpStatusCode.serviceUnavailable,
 				path: "path"
 			}
 		});
@@ -283,11 +283,11 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response with a custom status code", async () => {
 		// eslint-disable-next-line no-restricted-syntax
-		fetchMock.mockRejectedValue({ httpStatus: HttpStatusCodes.BAD_GATEWAY });
+		fetchMock.mockRejectedValue({ httpStatus: HttpStatusCode.badGateway });
 		await expect(FetchHelper.fetch("source", "endpoint", "path", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
-				httpStatus: HttpStatusCodes.BAD_GATEWAY,
+				httpStatus: HttpStatusCode.badGateway,
 				path: "path"
 			}
 		});
@@ -299,7 +299,7 @@ describe("FetchHelper", () => {
 		await expect(FetchHelper.fetch("source", "endpoint", "path", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
-				httpStatus: HttpStatusCodes.INTERNAL_SERVER_ERROR,
+				httpStatus: HttpStatusCode.internalServerError,
 				path: "path"
 			}
 		});
@@ -308,14 +308,14 @@ describe("FetchHelper", () => {
 	test("can fail to get a response from a fetchJson when response is not ok", async () => {
 		fetchMock.mockResolvedValue({
 			ok: false,
-			status: HttpStatusCodes.UNAUTHORIZED,
+			status: HttpStatusCode.unauthorized,
 			statusText: "Unauthorized",
 			json: async () => new Promise(resolve => resolve("Unauthorized"))
 		});
 		await expect(FetchHelper.fetchJson("source", "endpoint", "path", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
-				httpStatus: HttpStatusCodes.UNAUTHORIZED,
+				httpStatus: HttpStatusCode.unauthorized,
 				path: "path"
 			}
 		});
@@ -324,7 +324,7 @@ describe("FetchHelper", () => {
 	test("can get a response from a fetchJson with POST and payload", async () => {
 		fetchMock.mockResolvedValue({
 			ok: true,
-			status: HttpStatusCodes.NO_CONTENT
+			status: HttpStatusCode.noContent
 		});
 
 		const response = await FetchHelper.fetchJson<{ foo: string }, { foo: string }>(
@@ -340,7 +340,7 @@ describe("FetchHelper", () => {
 	test("can get an empty response from a fetchJson", async () => {
 		fetchMock.mockResolvedValue({
 			ok: true,
-			status: HttpStatusCodes.NO_CONTENT
+			status: HttpStatusCode.noContent
 		});
 
 		const response = await FetchHelper.fetchJson<never, { foo: string }>(
@@ -355,7 +355,7 @@ describe("FetchHelper", () => {
 	test("can get a response from a fetchJson", async () => {
 		fetchMock.mockResolvedValue({
 			ok: true,
-			status: HttpStatusCodes.OK,
+			status: HttpStatusCode.ok,
 			json: async () => new Promise(resolve => resolve({ foo: "bar" }))
 		});
 
@@ -372,17 +372,17 @@ describe("FetchHelper", () => {
 		fetchMock
 			.mockResolvedValueOnce({
 				ok: false,
-				status: HttpStatusCodes.UNAUTHORIZED,
+				status: HttpStatusCode.unauthorized,
 				statusText: "Unauthorized1"
 			})
 			.mockResolvedValueOnce({
 				ok: false,
-				status: HttpStatusCodes.UNAUTHORIZED,
+				status: HttpStatusCode.unauthorized,
 				statusText: "Unauthorized2"
 			})
 			.mockResolvedValueOnce({
 				ok: false,
-				status: HttpStatusCodes.UNAUTHORIZED,
+				status: HttpStatusCode.unauthorized,
 				statusText: "Unauthorized3"
 			});
 
@@ -396,7 +396,7 @@ describe("FetchHelper", () => {
 			message: "fetchHelper.retryLimitExceeded",
 			source: "source",
 			properties: {
-				httpStatus: HttpStatusCodes.INTERNAL_SERVER_ERROR,
+				httpStatus: HttpStatusCode.internalServerError,
 				path: "path"
 			},
 			inner: {
@@ -404,7 +404,7 @@ describe("FetchHelper", () => {
 				source: "source",
 				message: "fetchHelper.general",
 				properties: {
-					httpStatus: HttpStatusCodes.UNAUTHORIZED,
+					httpStatus: HttpStatusCode.unauthorized,
 					path: "path",
 					statusText: "Unauthorized2"
 				}
@@ -437,7 +437,7 @@ describe("FetchHelper", () => {
 			message: "fetchHelper.retryLimitExceeded",
 			source: "source",
 			properties: {
-				httpStatus: HttpStatusCodes.INTERNAL_SERVER_ERROR,
+				httpStatus: HttpStatusCode.internalServerError,
 				path: "path"
 			},
 			inner: {
@@ -445,7 +445,7 @@ describe("FetchHelper", () => {
 				source: "source",
 				message: "fetchHelper.general",
 				properties: {
-					httpStatus: HttpStatusCodes.INTERNAL_SERVER_ERROR,
+					httpStatus: HttpStatusCode.internalServerError,
 					path: "path",
 					statusText: "Unauthorized2"
 				}
@@ -456,7 +456,7 @@ describe("FetchHelper", () => {
 	test("can fail to get a response from a fetchJson with json response object", async () => {
 		fetchMock.mockImplementation(() => ({
 			ok: false,
-			status: HttpStatusCodes.OK,
+			status: HttpStatusCode.ok,
 			statusText: "Custom",
 			json: async (): Promise<{ foo: string }> => new Promise(resolve => resolve({ foo: "bar" }))
 		}));
@@ -466,7 +466,7 @@ describe("FetchHelper", () => {
 			source: "source",
 			message: "fetchHelper.failureStatusText",
 			properties: {
-				httpStatus: HttpStatusCodes.OK,
+				httpStatus: HttpStatusCode.ok,
 				path: "path",
 				statusText: "Custom"
 			}
@@ -476,7 +476,7 @@ describe("FetchHelper", () => {
 	test("can fail to post a response from a fetchBinary when JSON is invalid", async () => {
 		fetchMock.mockResolvedValue({
 			ok: true,
-			status: HttpStatusCodes.OK,
+			status: HttpStatusCode.ok,
 			json: async () => new Promise(resolve => resolve(JSON.parse("!")))
 		});
 		await expect(
@@ -485,7 +485,7 @@ describe("FetchHelper", () => {
 			name: "FetchError",
 			message: "fetchHelper.decodingJSON",
 			properties: {
-				httpStatus: HttpStatusCodes.BAD_REQUEST,
+				httpStatus: HttpStatusCode.badRequest,
 				path: "path"
 			}
 		});
@@ -494,7 +494,7 @@ describe("FetchHelper", () => {
 	test("can fail to get a response from a fetchBinary when response is not ok", async () => {
 		fetchMock.mockResolvedValue({
 			ok: false,
-			status: HttpStatusCodes.UNAUTHORIZED,
+			status: HttpStatusCode.unauthorized,
 			statusText: "Unauthorized",
 			json: async () => new Promise(resolve => resolve("Unauthorized"))
 		});
@@ -503,7 +503,7 @@ describe("FetchHelper", () => {
 		).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
-				httpStatus: HttpStatusCodes.UNAUTHORIZED,
+				httpStatus: HttpStatusCode.unauthorized,
 				path: "path"
 			}
 		});
@@ -512,7 +512,7 @@ describe("FetchHelper", () => {
 	test("can get an empty response from a fetchBinary with JSON request payload", async () => {
 		fetchMock.mockResolvedValue({
 			ok: true,
-			status: HttpStatusCodes.NO_CONTENT,
+			status: HttpStatusCode.noContent,
 			json: async () => new Promise(resolve => resolve({ foo: "bar" }))
 		});
 
@@ -528,7 +528,7 @@ describe("FetchHelper", () => {
 	test("can get an empty response from a fetchBinary", async () => {
 		fetchMock.mockResolvedValue({
 			ok: true,
-			status: HttpStatusCodes.NO_CONTENT
+			status: HttpStatusCode.noContent
 		});
 
 		const response: Uint8Array = await FetchHelper.fetchBinary("source", "endpoint", "path", "GET");
@@ -538,7 +538,7 @@ describe("FetchHelper", () => {
 	test("can get a response from a fetchBinary", async () => {
 		fetchMock.mockResolvedValue({
 			ok: true,
-			status: HttpStatusCodes.OK,
+			status: HttpStatusCode.ok,
 			arrayBuffer: async () => new Promise(resolve => resolve(new Uint8Array([1, 2, 3])))
 		});
 

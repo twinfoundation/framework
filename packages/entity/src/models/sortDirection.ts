@@ -15,7 +15,7 @@ export const SortDirection = {
 	 * Descending.
 	 */
 	Descending: "Descending"
-};
+} as const;
 
 /**
  * The sort directions.

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { BaseError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
-import type { HttpStatusCodes } from "../models/httpStatusCodes";
+import type { HttpStatusCode } from "../models/httpStatusCode";
 
 /**
  * Class to represent errors from fetch.
@@ -24,7 +24,7 @@ export class FetchError extends BaseError {
 	constructor(
 		source: string,
 		message: string,
-		httpStatus: HttpStatusCodes,
+		httpStatus: HttpStatusCode,
 		properties?: {
 			[id: string]: unknown;
 		},

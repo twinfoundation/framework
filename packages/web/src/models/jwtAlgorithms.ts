@@ -15,7 +15,7 @@ export const JwtAlgorithms = {
 	 * EdDSA using Ed25519.
 	 */
 	EdDSA: "EdDSA"
-};
+} as const;
 
 /**
  * The cryptographic algorithms supported for JSON Web Tokens and JSON Web Keys.

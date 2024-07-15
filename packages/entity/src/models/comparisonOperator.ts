@@ -55,7 +55,7 @@ export const ComparisonOperator = {
 	 * Not In operator.
 	 */
 	NotIn: "NotIn"
-};
+} as const;
 
 /**
  * The types of comparisons.

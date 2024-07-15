@@ -34,7 +34,7 @@ The base endpoint for the request.
 
 The path of the request.
 
-• **method**: [`HttpMethods`](../type-aliases/HttpMethods.md)
+• **method**: [`HttpMethod`](../type-aliases/HttpMethod.md)
 
 The http method.
 
@@ -80,7 +80,7 @@ The base endpoint for the request.
 
 The path of the request.
 
-• **method**: [`HttpMethods`](../type-aliases/HttpMethods.md)
+• **method**: [`HttpMethod`](../type-aliases/HttpMethod.md)
 
 The http method.
 

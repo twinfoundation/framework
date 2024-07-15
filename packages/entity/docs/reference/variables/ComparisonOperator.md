@@ -8,60 +8,60 @@ The types of comparisons.
 
 ### Equals
 
-> **Equals**: `string` = `"Equals"`
+> `readonly` **Equals**: `"Equals"` = `"Equals"`
 
 Equals.
 
 ### NotEquals
 
-> **NotEquals**: `string` = `"NotEquals"`
+> `readonly` **NotEquals**: `"NotEquals"` = `"NotEquals"`
 
 Not Equals.
 
 ### GreaterThan
 
-> **GreaterThan**: `string` = `"GreaterThan"`
+> `readonly` **GreaterThan**: `"GreaterThan"` = `"GreaterThan"`
 
 Greater Than.
 
 ### GreaterThanOrEqual
 
-> **GreaterThanOrEqual**: `string` = `"GreaterThanOrEqual"`
+> `readonly` **GreaterThanOrEqual**: `"GreaterThanOrEqual"` = `"GreaterThanOrEqual"`
 
 Greater Than Or Equal.
 
 ### LessThan
 
-> **LessThan**: `string` = `"LessThan"`
+> `readonly` **LessThan**: `"LessThan"` = `"LessThan"`
 
 Less Than.
 
 ### LessThanOrEqual
 
-> **LessThanOrEqual**: `string` = `"LessThanOrEqual"`
+> `readonly` **LessThanOrEqual**: `"LessThanOrEqual"` = `"LessThanOrEqual"`
 
 Less Than Or Equal.
 
 ### Includes
 
-> **Includes**: `string` = `"Includes"`
+> `readonly` **Includes**: `"Includes"` = `"Includes"`
 
 Includes.
 
 ### NotIncludes
 
-> **NotIncludes**: `string` = `"NotIncludes"`
+> `readonly` **NotIncludes**: `"NotIncludes"` = `"NotIncludes"`
 
 Not Includes.
 
 ### In
 
-> **In**: `string` = `"In"`
+> `readonly` **In**: `"In"` = `"In"`
 
 In operator.
 
 ### NotIn
 
-> **NotIn**: `string` = `"NotIn"`
+> `readonly` **NotIn**: `"NotIn"` = `"NotIn"`
 
 Not In operator.

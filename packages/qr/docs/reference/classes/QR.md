@@ -17,7 +17,7 @@ Create a new instance of QR.
 
 0 to 40, 0 means autodetect.
 
-• **errorCorrectLevel**: `number`= `ErrorCorrectLevel.L`
+• **errorCorrectLevel**: [`ErrorCorrectLevel`](../type-aliases/ErrorCorrectLevel.md)= `ErrorCorrectLevel.L`
 
 'L','M','Q','H'.
 

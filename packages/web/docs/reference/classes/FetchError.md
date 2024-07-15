@@ -24,7 +24,7 @@ The source of the error.
 
 The message as a code.
 
-• **httpStatus**: [`HttpStatusCodes`](HttpStatusCodes.md)
+• **httpStatus**: [`HttpStatusCode`](../type-aliases/HttpStatusCode.md)
 
 The http status code.
 

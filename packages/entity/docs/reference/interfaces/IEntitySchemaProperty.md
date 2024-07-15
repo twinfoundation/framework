@@ -42,7 +42,7 @@ Is this a secondary index property.
 
 ### sortDirection?
 
-> `optional` **sortDirection**: `string`
+> `optional` **sortDirection**: [`SortDirection`](../type-aliases/SortDirection.md)
 
 Default sort direction for this field, leave empty if not sortable.
 

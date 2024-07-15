@@ -25,7 +25,7 @@ export const ErrorCorrectLevel = {
 	 * 30% Error correction.
 	 */
 	H: 2
-};
+} as const;
 
 /**
  * Error correction level to use for the QR Code.

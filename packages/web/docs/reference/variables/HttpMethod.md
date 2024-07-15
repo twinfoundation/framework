@@ -1,6 +1,6 @@
-# Variable: HttpMethods
+# Variable: HttpMethod
 
-> `const` **HttpMethods**: `object`
+> `const` **HttpMethod**: `object`
 
 The names of the HTTP Methods.
 

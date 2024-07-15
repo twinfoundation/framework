@@ -8,12 +8,12 @@ The logical operators for condition combining.
 
 ### And
 
-> **And**: `string` = `"And"`
+> `readonly` **And**: `"And"` = `"And"`
 
 Logical operator AND.
 
 ### Or
 
-> **Or**: `string` = `"Or"`
+> `readonly` **Or**: `"Or"` = `"Or"`
 
 Logical operator OR.

@@ -10,7 +10,7 @@ The fields in a JSON Web Key.
 
 ### alg?
 
-> `optional` **alg**: `string`
+> `optional` **alg**: [`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
 
 The cryptographic algorithm for the key.
 

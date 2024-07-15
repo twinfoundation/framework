@@ -26,6 +26,6 @@ The value of the property to check.
 
 ### operator
 
-> **operator**: `string`
+> **operator**: [`ComparisonOperator`](../type-aliases/ComparisonOperator.md)
 
 The check to perform.

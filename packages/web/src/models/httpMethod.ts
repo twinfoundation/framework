@@ -5,7 +5,7 @@
  * The names of the HTTP Methods.
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const HttpMethods = {
+export const HttpMethod = {
 	GET: "GET",
 	POST: "POST",
 	PUT: "PUT",
@@ -20,4 +20,4 @@ export const HttpMethods = {
 /**
  * The HTTP Methods.
  */
-export type HttpMethods = (typeof HttpMethods)[keyof typeof HttpMethods];
+export type HttpMethod = (typeof HttpMethod)[keyof typeof HttpMethod];

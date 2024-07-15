@@ -46,7 +46,7 @@ export const MaskPattern = {
 	 * Mask pattern 111.
 	 */
 	PATTERN111: 0b111
-};
+} as const;
 
 /**
  * Mask patterns for QR codes.

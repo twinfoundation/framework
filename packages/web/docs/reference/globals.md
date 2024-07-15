@@ -3,7 +3,6 @@
 ## Classes
 
 - [FetchError](classes/FetchError.md)
-- [HttpStatusCodes](classes/HttpStatusCodes.md)
 - [FetchHelper](classes/FetchHelper.md)
 - [Jwt](classes/Jwt.md)
 
@@ -17,10 +16,12 @@
 
 ## Type Aliases
 
-- [HttpMethods](type-aliases/HttpMethods.md)
+- [HttpMethod](type-aliases/HttpMethod.md)
+- [HttpStatusCode](type-aliases/HttpStatusCode.md)
 - [JwtAlgorithms](type-aliases/JwtAlgorithms.md)
 
 ## Variables
 
-- [HttpMethods](variables/HttpMethods.md)
+- [HttpMethod](variables/HttpMethod.md)
+- [HttpStatusCode](variables/HttpStatusCode.md)
 - [JwtAlgorithms](variables/JwtAlgorithms.md)

@@ -15,7 +15,7 @@ export const LogicalOperator = {
 	 * Logical operator OR.
 	 */
 	Or: "Or"
-};
+} as const;
 
 /**
  * The logical operators for condition combining.

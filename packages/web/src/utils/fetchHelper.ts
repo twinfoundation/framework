@@ -3,8 +3,8 @@
 import { Guards, Is, type IError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { FetchError } from "../errors/fetchError";
-import { HttpMethods } from "../models/httpMethods";
-import { HttpStatusCodes } from "../models/httpStatusCodes";
+import { HttpMethod } from "../models/httpMethod";
+import { HttpStatusCode } from "../models/httpStatusCode";
 import type { IFetchOptions } from "../models/IFetchOptions";
 import type { IHttpRequestHeaders } from "../models/IHttpRequestHeaders";
 
@@ -32,18 +32,18 @@ export class FetchHelper {
 		source: string,
 		endpoint: string,
 		path: string,
-		method: HttpMethods,
+		method: HttpMethod,
 		body?: string | Uint8Array,
 		options?: IFetchOptions
 	): Promise<Response> {
 		Guards.string(FetchHelper._CLASS_NAME, nameof(source), source);
 		Guards.string(FetchHelper._CLASS_NAME, nameof(endpoint), endpoint);
 		Guards.string(FetchHelper._CLASS_NAME, nameof(path), path);
-		Guards.arrayOneOf<HttpMethods>(
+		Guards.arrayOneOf<HttpMethod>(
 			FetchHelper._CLASS_NAME,
 			nameof(method),
 			method,
-			Object.values(HttpMethods)
+			Object.values(HttpMethod)
 		);
 		if (!Is.undefined(body) && !Is.uint8Array(body)) {
 			Guards.string(FetchHelper._CLASS_NAME, nameof(body), body);
@@ -114,7 +114,7 @@ export class FetchHelper {
 					lastError = new FetchError(
 						source,
 						"fetchHelper.general",
-						response.status ?? HttpStatusCodes.INTERNAL_SERVER_ERROR,
+						(response.status as HttpStatusCode) ?? HttpStatusCode.internalServerError,
 						{
 							path,
 							statusText: response.statusText
@@ -129,7 +129,7 @@ export class FetchHelper {
 					lastError = new FetchError(
 						source,
 						"fetchHelper.connectivity",
-						HttpStatusCodes.SERVICE_UNAVAILABLE,
+						HttpStatusCode.serviceUnavailable,
 						{
 							path
 						}
@@ -137,11 +137,11 @@ export class FetchHelper {
 				} else {
 					const isAbort = isErr && err.name === "AbortError";
 					const props: { [id: string]: unknown } = { path };
-					let httpStatus: HttpStatusCodes = HttpStatusCodes.INTERNAL_SERVER_ERROR;
+					let httpStatus: HttpStatusCode = HttpStatusCode.internalServerError;
 					if (isAbort) {
-						httpStatus = HttpStatusCodes.REQUEST_TIMEOUT;
+						httpStatus = HttpStatusCode.requestTimeout;
 					} else if (isErr && "httpStatus" in err) {
-						httpStatus = err.httpStatus as HttpStatusCodes;
+						httpStatus = err.httpStatus as HttpStatusCode;
 					}
 					if (isErr && "statusText" in err) {
 						props.statusText = err.statusText;
@@ -166,7 +166,7 @@ export class FetchHelper {
 			throw new FetchError(
 				source,
 				"fetchHelper.retryLimitExceeded",
-				HttpStatusCodes.INTERNAL_SERVER_ERROR,
+				HttpStatusCode.internalServerError,
 				{ path },
 				lastError
 			);
@@ -189,7 +189,7 @@ export class FetchHelper {
 		source: string,
 		endpoint: string,
 		path: string,
-		method: HttpMethods,
+		method: HttpMethod,
 		requestData?: T,
 		options?: IFetchOptions
 	): Promise<U> {
@@ -207,7 +207,7 @@ export class FetchHelper {
 		);
 
 		if (response.ok) {
-			if (response.status === HttpStatusCodes.NO_CONTENT) {
+			if (response.status === HttpStatusCode.noContent) {
 				return {} as U;
 			}
 			try {
@@ -218,7 +218,7 @@ export class FetchHelper {
 				throw new FetchError(
 					source,
 					"fetchHelper.decodingJSON",
-					HttpStatusCodes.BAD_REQUEST,
+					HttpStatusCode.badRequest,
 					{ path },
 					err
 				);
@@ -232,7 +232,7 @@ export class FetchHelper {
 		throw new FetchError(
 			source,
 			"fetchHelper.failureStatusText",
-			response.status,
+			response.status as HttpStatusCode,
 			{
 				statusText: response.statusText,
 				path
@@ -255,7 +255,7 @@ export class FetchHelper {
 		source: string,
 		endpoint: string,
 		path: string,
-		method: Extract<HttpMethods, "GET" | "POST">,
+		method: Extract<HttpMethod, "GET" | "POST">,
 		requestData?: Uint8Array,
 		options?: IFetchOptions
 	): Promise<Uint8Array | T> {
@@ -267,7 +267,7 @@ export class FetchHelper {
 
 		if (response.ok) {
 			if (method === "GET") {
-				if (response.status === HttpStatusCodes.NO_CONTENT) {
+				if (response.status === HttpStatusCode.noContent) {
 					return new Uint8Array();
 				}
 				return new Uint8Array(await response.arrayBuffer());
@@ -280,7 +280,7 @@ export class FetchHelper {
 				throw new FetchError(
 					source,
 					"fetchHelper.decodingJSON",
-					HttpStatusCodes.BAD_REQUEST,
+					HttpStatusCode.badRequest,
 					{ path },
 					err
 				);
@@ -294,7 +294,7 @@ export class FetchHelper {
 		throw new FetchError(
 			source,
 			"fetchHelper.failureStatusText",
-			response.status,
+			response.status as HttpStatusCode,
 			{
 				statusText: response.statusText,
 				path
