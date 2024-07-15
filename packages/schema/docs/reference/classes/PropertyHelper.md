@@ -16,7 +16,7 @@ Class to help with properties.
 
 ### getValue()
 
-> `static` **getValue**\<`T`\>(`properties`, `key`, `type`?): `undefined` \| `T`
+> `static` **getValue**\<`T`, `U`\>(`properties`, `key`, `type`?): `undefined` \| `T`
 
 Get property with the specific key.
 
@@ -24,9 +24,11 @@ Get property with the specific key.
 
 • **T**
 
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to look in.
 
@@ -48,7 +50,7 @@ The item if it was found.
 
 ### setValue()
 
-> `static` **setValue**\<`T`\>(`properties`, `key`, `type`, `value`): `void`
+> `static` **setValue**\<`T`, `U`\>(`properties`, `key`, `type`, `value`, `additionalProperties`?): `void`
 
 Set a property in to the list.
 
@@ -56,9 +58,11 @@ Set a property in to the list.
 
 • **T**
 
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -74,6 +78,10 @@ The type of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -82,13 +90,17 @@ The value of the item to add.
 
 ### removeValue()
 
-> `static` **removeValue**(`properties`, `key`): `void`
+> `static` **removeValue**\<`U`\>(`properties`, `key`): `void`
 
 Remove property with the specific key.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to look in.
 
@@ -104,13 +116,17 @@ The key of the item to remove.
 
 ### getText()
 
-> `static` **getText**(`properties`, `key`): `undefined` \| `string`
+> `static` **getText**\<`U`\>(`properties`, `key`): `undefined` \| `string`
 
 Get some text from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -128,13 +144,17 @@ The value if found.
 
 ### setText()
 
-> `static` **setText**(`properties`, `key`, `value`): `void`
+> `static` **setText**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set some text in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -146,6 +166,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -154,13 +178,17 @@ The value of the item to add.
 
 ### getUrn()
 
-> `static` **getUrn**(`properties`, `key`): `undefined` \| `string`
+> `static` **getUrn**\<`U`\>(`properties`, `key`): `undefined` \| `string`
 
 Get a urn from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -178,13 +206,17 @@ The value if found.
 
 ### setUrn()
 
-> `static` **setUrn**(`properties`, `key`, `value`): `void`
+> `static` **setUrn**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set a urn in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -196,6 +228,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -204,13 +240,17 @@ The value of the item to add.
 
 ### getInteger()
 
-> `static` **getInteger**(`properties`, `key`): `undefined` \| `number`
+> `static` **getInteger**\<`U`\>(`properties`, `key`): `undefined` \| `number`
 
 Get an integer from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -228,13 +268,17 @@ The value if found.
 
 ### setInteger()
 
-> `static` **setInteger**(`properties`, `key`, `value`): `void`
+> `static` **setInteger**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set an integer in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -246,6 +290,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -254,13 +302,17 @@ The value of the item to add.
 
 ### getFloat()
 
-> `static` **getFloat**(`properties`, `key`): `undefined` \| `number`
+> `static` **getFloat**\<`U`\>(`properties`, `key`): `undefined` \| `number`
 
 Get a float from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -278,13 +330,17 @@ The value if found.
 
 ### setFloat()
 
-> `static` **setFloat**(`properties`, `key`, `value`): `void`
+> `static` **setFloat**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set a float in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -296,6 +352,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -304,13 +364,17 @@ The value of the item to add.
 
 ### getBoolean()
 
-> `static` **getBoolean**(`properties`, `key`): `undefined` \| `boolean`
+> `static` **getBoolean**\<`U`\>(`properties`, `key`): `undefined` \| `boolean`
 
 Get a boolean from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -328,13 +392,17 @@ The value if found.
 
 ### setBoolean()
 
-> `static` **setBoolean**(`properties`, `key`, `value`): `void`
+> `static` **setBoolean**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set a boolean in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -346,6 +414,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -354,13 +426,17 @@ The value of the item to add.
 
 ### getDateTime()
 
-> `static` **getDateTime**(`properties`, `key`): `undefined` \| `Date`
+> `static` **getDateTime**\<`U`\>(`properties`, `key`): `undefined` \| `Date`
 
 Get a date time from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -378,13 +454,17 @@ The value if found.
 
 ### setDateTime()
 
-> `static` **setDateTime**(`properties`, `key`, `value`): `void`
+> `static` **setDateTime**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set a date time in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -396,6 +476,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -404,13 +488,17 @@ The value of the item to add.
 
 ### getDate()
 
-> `static` **getDate**(`properties`, `key`): `undefined` \| `Date`
+> `static` **getDate**\<`U`\>(`properties`, `key`): `undefined` \| `Date`
 
 Get a date from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -428,13 +516,17 @@ The value if found.
 
 ### setDate()
 
-> `static` **setDate**(`properties`, `key`, `value`): `void`
+> `static` **setDate**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set a date in ISO format in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -446,6 +538,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -454,13 +550,17 @@ The value of the item to add.
 
 ### getTime()
 
-> `static` **getTime**(`properties`, `key`): `undefined` \| `Date`
+> `static` **getTime**\<`U`\>(`properties`, `key`): `undefined` \| `Date`
 
 Get a time from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -478,13 +578,17 @@ The value if found.
 
 ### setTime()
 
-> `static` **setTime**(`properties`, `key`, `value`): `void`
+> `static` **setTime**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set a time in standard format in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -496,6 +600,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -504,13 +612,17 @@ The value of the item to add.
 
 ### getTimestampMilliseconds()
 
-> `static` **getTimestampMilliseconds**(`properties`, `key`): `undefined` \| `number`
+> `static` **getTimestampMilliseconds**\<`U`\>(`properties`, `key`): `undefined` \| `number`
 
 Get a timestamp in milliseconds from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -528,13 +640,17 @@ The value if found.
 
 ### setTimestampMilliseconds()
 
-> `static` **setTimestampMilliseconds**(`properties`, `key`, `value`): `void`
+> `static` **setTimestampMilliseconds**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set a timestamp in milliseconds in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -546,6 +662,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -554,13 +674,17 @@ The value of the item to add.
 
 ### getTimestampSeconds()
 
-> `static` **getTimestampSeconds**(`properties`, `key`): `undefined` \| `number`
+> `static` **getTimestampSeconds**\<`U`\>(`properties`, `key`): `undefined` \| `number`
 
 Get a timestamp in seconds from the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to get from.
 
@@ -578,13 +702,17 @@ The value if found.
 
 ### setTimestampSeconds()
 
-> `static` **setTimestampSeconds**(`properties`, `key`, `value`): `void`
+> `static` **setTimestampSeconds**\<`U`\>(`properties`, `key`, `value`, `additionalProperties`?): `void`
 
 Set a timestamp in seconds in to the list.
 
+#### Type parameters
+
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties**: `undefined` \| `U`[]
 
 The properties list to add to.
 
@@ -596,6 +724,10 @@ The key of the item to add.
 
 The value of the item to add.
 
+• **additionalProperties?**
+
+Additional properties to add to the item.
+
 #### Returns
 
 `void`
@@ -604,17 +736,17 @@ The value of the item to add.
 
 ### filterInclude()
 
-> `static` **filterInclude**\<`T`\>(`properties`?, `includeKeys`?): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+> `static` **filterInclude**\<`U`\>(`properties`?, `includeKeys`?): `undefined` \| `U`[]
 
 Reduce the keys in the property list.
 
 #### Type parameters
 
-• **T** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
 
 #### Parameters
 
-• **properties?**: `T`[]
+• **properties?**: `U`[]
 
 The properties list to filter.
 
@@ -624,7 +756,7 @@ The keys to include.
 
 #### Returns
 
-`undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+`undefined` \| `U`[]
 
 The filtered list.
 
@@ -632,17 +764,17 @@ The filtered list.
 
 ### filterExclude()
 
-> `static` **filterExclude**\<`T`\>(`properties`?, `excludeKeys`?): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+> `static` **filterExclude**\<`U`\>(`properties`?, `excludeKeys`?): `undefined` \| `U`[]
 
 Filter the keys from the properties.
 
 #### Type parameters
 
-• **T** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
 
 #### Parameters
 
-• **properties?**: `T`[]
+• **properties?**: `U`[]
 
 The properties list to filter.
 
@@ -652,7 +784,7 @@ The keys to filter.
 
 #### Returns
 
-`undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+`undefined` \| `U`[]
 
 The filtered list.
 
@@ -660,26 +792,26 @@ The filtered list.
 
 ### merge()
 
-> `static` **merge**\<`T`\>(`properties1`?, `properties2`?): `T`[]
+> `static` **merge**\<`U`\>(`properties1`?, `properties2`?): `U`[]
 
 Merge two property lists.
 
 #### Type parameters
 
-• **T** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+• **U** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
 
 #### Parameters
 
-• **properties1?**: `T`[]
+• **properties1?**: `U`[]
 
 The current profile properties.
 
-• **properties2?**: `T`[]
+• **properties2?**: `U`[]
 
 The new properties to merge in to the first list.
 
 #### Returns
 
-`T`[]
+`U`[]
 
 The merged list.

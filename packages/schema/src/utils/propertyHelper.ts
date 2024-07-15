@@ -17,8 +17,8 @@ export class PropertyHelper {
 	 * @param type Will only return the value if the type matches or is undefined.
 	 * @returns The item if it was found.
 	 */
-	public static getValue<T>(
-		properties: IProperty[] | undefined,
+	public static getValue<T, U extends IProperty = IProperty>(
+		properties: U[] | undefined,
 		key: string,
 		type?: string
 	): T | undefined {
@@ -38,12 +38,14 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @param type The type of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setValue<T>(
-		properties: IProperty[],
+	public static setValue<T, U extends IProperty = IProperty>(
+		properties: U[] | undefined,
 		key: string,
 		type: string,
-		value: T | undefined
+		value: T | undefined,
+		additionalProperties?: { [key: string]: unknown }
 	): void {
 		Guards.array(nameof<PropertyHelper>(), nameof(properties), properties);
 		Guards.stringValue(nameof<PropertyHelper>(), nameof(key), key);
@@ -57,13 +59,18 @@ export class PropertyHelper {
 				properties.splice(existingIndex, 1);
 			} else {
 				properties[existingIndex].value = value;
+
+				if (Is.objectValue(additionalProperties)) {
+					Object.assign(properties[existingIndex], additionalProperties);
+				}
 			}
 		} else if (!isEmpty) {
 			properties.push({
 				key,
 				type,
-				value
-			});
+				value,
+				...additionalProperties
+			} as U);
 		}
 	}
 
@@ -72,7 +79,10 @@ export class PropertyHelper {
 	 * @param properties The properties list to look in.
 	 * @param key The key of the item to remove.
 	 */
-	public static removeValue(properties: IProperty[] | undefined, key: string): void {
+	public static removeValue<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string
+	): void {
 		Guards.stringValue(nameof<PropertyHelper>(), nameof(key), key);
 		if (Is.arrayValue(properties)) {
 			const item = properties.findIndex(p => p.key === key);
@@ -89,7 +99,10 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getText(properties: IProperty[] | undefined, key: string): string | undefined {
+	public static getText<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string
+	): string | undefined {
 		return PropertyHelper.getValue<string>(properties, key, SchemaOrgDataTypes.TYPE_TEXT);
 	}
 
@@ -98,12 +111,24 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setText(properties: IProperty[], key: string, value: string | undefined): void {
+	public static setText<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string,
+		value: string | undefined,
+		additionalProperties?: { [key: string]: unknown }
+	): void {
 		if (!Is.empty(value)) {
 			Guards.string(nameof<PropertyHelper>(), nameof(value), value);
 		}
-		PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_TEXT, value);
+		PropertyHelper.setValue<string, U>(
+			properties,
+			key,
+			SchemaOrgDataTypes.TYPE_TEXT,
+			value,
+			additionalProperties
+		);
 	}
 
 	/**
@@ -112,8 +137,11 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getUrn(properties: IProperty[] | undefined, key: string): string | undefined {
-		return PropertyHelper.getValue<string>(properties, key, StockDataTypes.TYPE_URN);
+	public static getUrn<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string
+	): string | undefined {
+		return PropertyHelper.getValue<string, U>(properties, key, StockDataTypes.TYPE_URN);
 	}
 
 	/**
@@ -121,12 +149,24 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setUrn(properties: IProperty[], key: string, value: string | undefined): void {
+	public static setUrn<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string,
+		value: string | undefined,
+		additionalProperties?: { [key: string]: unknown }
+	): void {
 		if (!Is.empty(value)) {
 			Urn.guard(nameof<PropertyHelper>(), "value", value);
 		}
-		PropertyHelper.setValue(properties, key, StockDataTypes.TYPE_URN, value);
+		PropertyHelper.setValue<string, U>(
+			properties,
+			key,
+			StockDataTypes.TYPE_URN,
+			value,
+			additionalProperties
+		);
 	}
 
 	/**
@@ -135,8 +175,11 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getInteger(properties: IProperty[] | undefined, key: string): number | undefined {
-		return PropertyHelper.getValue<number>(properties, key, SchemaOrgDataTypes.TYPE_INTEGER);
+	public static getInteger<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string
+	): number | undefined {
+		return PropertyHelper.getValue<number, U>(properties, key, SchemaOrgDataTypes.TYPE_INTEGER);
 	}
 
 	/**
@@ -144,12 +187,24 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setInteger(properties: IProperty[], key: string, value: number | undefined): void {
+	public static setInteger<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string,
+		value: number | undefined,
+		additionalProperties?: { [key: string]: unknown }
+	): void {
 		if (!Is.empty(value)) {
 			Guards.integer(nameof<PropertyHelper>(), nameof(value), value);
 		}
-		PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_INTEGER, value);
+		PropertyHelper.setValue<number, U>(
+			properties,
+			key,
+			SchemaOrgDataTypes.TYPE_INTEGER,
+			value,
+			additionalProperties
+		);
 	}
 
 	/**
@@ -158,8 +213,11 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getFloat(properties: IProperty[] | undefined, key: string): number | undefined {
-		return PropertyHelper.getValue<number>(properties, key, SchemaOrgDataTypes.TYPE_FLOAT);
+	public static getFloat<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string
+	): number | undefined {
+		return PropertyHelper.getValue<number, U>(properties, key, SchemaOrgDataTypes.TYPE_FLOAT);
 	}
 
 	/**
@@ -167,12 +225,24 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setFloat(properties: IProperty[], key: string, value: number | undefined): void {
+	public static setFloat<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string,
+		value: number | undefined,
+		additionalProperties?: { [key: string]: unknown }
+	): void {
 		if (!Is.empty(value)) {
 			Guards.number(nameof<PropertyHelper>(), nameof(value), value);
 		}
-		PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_FLOAT, value);
+		PropertyHelper.setValue<number, U>(
+			properties,
+			key,
+			SchemaOrgDataTypes.TYPE_FLOAT,
+			value,
+			additionalProperties
+		);
 	}
 
 	/**
@@ -181,8 +251,11 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getBoolean(properties: IProperty[] | undefined, key: string): boolean | undefined {
-		return PropertyHelper.getValue<boolean>(properties, key, SchemaOrgDataTypes.TYPE_BOOLEAN);
+	public static getBoolean<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string
+	): boolean | undefined {
+		return PropertyHelper.getValue<boolean, U>(properties, key, SchemaOrgDataTypes.TYPE_BOOLEAN);
 	}
 
 	/**
@@ -190,12 +263,24 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setBoolean(properties: IProperty[], key: string, value: boolean | undefined): void {
+	public static setBoolean<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string,
+		value: boolean | undefined,
+		additionalProperties?: { [key: string]: unknown }
+	): void {
 		if (!Is.empty(value)) {
 			Guards.boolean(nameof<PropertyHelper>(), nameof(value), value);
 		}
-		PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_BOOLEAN, value);
+		PropertyHelper.setValue<boolean, U>(
+			properties,
+			key,
+			SchemaOrgDataTypes.TYPE_BOOLEAN,
+			value,
+			additionalProperties
+		);
 	}
 
 	/**
@@ -204,9 +289,12 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getDateTime(properties: IProperty[] | undefined, key: string): Date | undefined {
+	public static getDateTime<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string
+	): Date | undefined {
 		return Coerce.dateTime(
-			PropertyHelper.getValue<string>(properties, key, SchemaOrgDataTypes.TYPE_DATE_TIME)
+			PropertyHelper.getValue<Date, U>(properties, key, SchemaOrgDataTypes.TYPE_DATE_TIME)
 		);
 	}
 
@@ -215,16 +303,23 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setDateTime(properties: IProperty[], key: string, value: Date | undefined): void {
+	public static setDateTime<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string,
+		value: Date | undefined,
+		additionalProperties?: { [key: string]: unknown }
+	): void {
 		if (!Is.empty(value)) {
 			Guards.date(nameof<PropertyHelper>(), nameof(value), value);
 		}
-		PropertyHelper.setValue(
+		PropertyHelper.setValue<string, U>(
 			properties,
 			key,
 			SchemaOrgDataTypes.TYPE_DATE_TIME,
-			value?.toISOString()
+			value?.toISOString(),
+			additionalProperties
 		);
 	}
 
@@ -234,9 +329,12 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getDate(properties: IProperty[] | undefined, key: string): Date | undefined {
+	public static getDate<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string
+	): Date | undefined {
 		return Coerce.date(
-			PropertyHelper.getValue<string>(properties, key, SchemaOrgDataTypes.TYPE_DATE)
+			PropertyHelper.getValue<string, U>(properties, key, SchemaOrgDataTypes.TYPE_DATE)
 		);
 	}
 
@@ -245,15 +343,33 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setDate(properties: IProperty[], key: string, value: Date | undefined): void {
+	public static setDate<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string,
+		value: Date | undefined,
+		additionalProperties?: { [key: string]: unknown }
+	): void {
 		if (!Is.empty(value)) {
 			Guards.date(nameof<PropertyHelper>(), nameof(value), value);
 			const dt = value.toISOString();
 			const idx = dt.indexOf("T");
-			PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_DATE, dt.slice(0, idx));
+			PropertyHelper.setValue<string, U>(
+				properties,
+				key,
+				SchemaOrgDataTypes.TYPE_DATE,
+				dt.slice(0, idx),
+				additionalProperties
+			);
 		} else {
-			PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_DATE, value);
+			PropertyHelper.setValue<string, U>(
+				properties,
+				key,
+				SchemaOrgDataTypes.TYPE_DATE,
+				value,
+				additionalProperties
+			);
 		}
 	}
 
@@ -263,8 +379,11 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getTime(properties: IProperty[] | undefined, key: string): Date | undefined {
-		const time = PropertyHelper.getValue<string>(properties, key, SchemaOrgDataTypes.TYPE_TIME);
+	public static getTime<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string
+	): Date | undefined {
+		const time = PropertyHelper.getValue<string, U>(properties, key, SchemaOrgDataTypes.TYPE_TIME);
 		return Coerce.time(`1970-01-01T${time}Z`);
 	}
 
@@ -273,21 +392,34 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setTime(properties: IProperty[], key: string, value: Date | undefined): void {
+	public static setTime<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
+		key: string,
+		value: Date | undefined,
+		additionalProperties?: { [key: string]: unknown }
+	): void {
 		if (!Is.empty(value)) {
 			Guards.date(nameof<PropertyHelper>(), nameof(value), value);
 			const dt = value.toISOString();
 			const idx = dt.indexOf("T");
 			const idx2 = dt.indexOf("Z");
-			PropertyHelper.setValue(
+			PropertyHelper.setValue<string, U>(
 				properties,
 				key,
 				SchemaOrgDataTypes.TYPE_TIME,
-				dt.slice(idx + 1, idx2)
+				dt.slice(idx + 1, idx2),
+				additionalProperties
 			);
 		} else {
-			PropertyHelper.setValue(properties, key, SchemaOrgDataTypes.TYPE_TIME, value);
+			PropertyHelper.setValue<string, U>(
+				properties,
+				key,
+				SchemaOrgDataTypes.TYPE_TIME,
+				value,
+				additionalProperties
+			);
 		}
 	}
 
@@ -297,11 +429,11 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getTimestampMilliseconds(
-		properties: IProperty[] | undefined,
+	public static getTimestampMilliseconds<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
 		key: string
 	): number | undefined {
-		return PropertyHelper.getValue<number>(
+		return PropertyHelper.getValue<number, U>(
 			properties,
 			key,
 			StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS
@@ -313,16 +445,24 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setTimestampMilliseconds(
-		properties: IProperty[],
+	public static setTimestampMilliseconds<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
 		key: string,
-		value: number | undefined
+		value: number | undefined,
+		additionalProperties?: { [key: string]: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.timestampMilliseconds(nameof<PropertyHelper>(), nameof(value), value);
 		}
-		PropertyHelper.setValue(properties, key, StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS, value);
+		PropertyHelper.setValue<number, U>(
+			properties,
+			key,
+			StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS,
+			value,
+			additionalProperties
+		);
 	}
 
 	/**
@@ -331,11 +471,15 @@ export class PropertyHelper {
 	 * @param key The key of the item to add.
 	 * @returns The value if found.
 	 */
-	public static getTimestampSeconds(
-		properties: IProperty[] | undefined,
+	public static getTimestampSeconds<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
 		key: string
 	): number | undefined {
-		return PropertyHelper.getValue<number>(properties, key, StockDataTypes.TYPE_TIMESTAMP_SECONDS);
+		return PropertyHelper.getValue<number, U>(
+			properties,
+			key,
+			StockDataTypes.TYPE_TIMESTAMP_SECONDS
+		);
 	}
 
 	/**
@@ -343,16 +487,24 @@ export class PropertyHelper {
 	 * @param properties The properties list to add to.
 	 * @param key The key of the item to add.
 	 * @param value The value of the item to add.
+	 * @param additionalProperties Additional properties to add to the item.
 	 */
-	public static setTimestampSeconds(
-		properties: IProperty[],
+	public static setTimestampSeconds<U extends IProperty = IProperty>(
+		properties: U[] | undefined,
 		key: string,
-		value: number | undefined
+		value: number | undefined,
+		additionalProperties?: { [key: string]: unknown }
 	): void {
 		if (!Is.empty(value)) {
 			Guards.timestampSeconds(nameof<PropertyHelper>(), nameof(value), value);
 		}
-		PropertyHelper.setValue(properties, key, StockDataTypes.TYPE_TIMESTAMP_SECONDS, value);
+		PropertyHelper.setValue<number, U>(
+			properties,
+			key,
+			StockDataTypes.TYPE_TIMESTAMP_SECONDS,
+			value,
+			additionalProperties
+		);
 	}
 
 	/**
@@ -361,10 +513,10 @@ export class PropertyHelper {
 	 * @param includeKeys The keys to include.
 	 * @returns The filtered list.
 	 */
-	public static filterInclude<T extends IProperty = IProperty>(
-		properties?: T[],
+	public static filterInclude<U extends IProperty = IProperty>(
+		properties?: U[],
 		includeKeys?: string[]
-	): IProperty[] | undefined {
+	): U[] | undefined {
 		if (Is.arrayValue(properties)) {
 			return Is.array(includeKeys)
 				? properties.filter(p => includeKeys.includes(p.key))
@@ -378,10 +530,10 @@ export class PropertyHelper {
 	 * @param excludeKeys The keys to filter.
 	 * @returns The filtered list.
 	 */
-	public static filterExclude<T extends IProperty = IProperty>(
-		properties?: T[],
+	public static filterExclude<U extends IProperty = IProperty>(
+		properties?: U[],
 		excludeKeys?: string[]
-	): IProperty[] | undefined {
+	): U[] | undefined {
 		if (Is.arrayValue(properties)) {
 			return Is.array(excludeKeys)
 				? properties.filter(p => !excludeKeys.includes(p.key))
@@ -395,23 +547,13 @@ export class PropertyHelper {
 	 * @param properties2 The new properties to merge in to the first list.
 	 * @returns The merged list.
 	 */
-	public static merge<T extends IProperty = IProperty>(properties1?: T[], properties2?: T[]): T[] {
-		const listMerged = ObjectHelper.clone<T[]>(properties1 ?? []);
+	public static merge<U extends IProperty = IProperty>(properties1?: U[], properties2?: U[]): U[] {
+		const listMerged = ObjectHelper.clone<U[]>(properties1 ?? []);
 
 		if (Is.arrayValue(properties2)) {
 			for (const prop of properties2) {
-				const isEmpty = Is.empty(prop.value);
-
-				const existingIndex = listMerged.findIndex(m => m.key === prop.key);
-				if (existingIndex >= 0) {
-					if (isEmpty) {
-						listMerged.splice(existingIndex, 1);
-					} else {
-						listMerged[existingIndex].value = prop.value;
-					}
-				} else if (!isEmpty) {
-					listMerged.push(ObjectHelper.clone<T>(prop));
-				}
+				const { key, type, value, ...additionalProperties } = prop;
+				PropertyHelper.setValue(listMerged, key, type, value, additionalProperties);
 			}
 		}
 

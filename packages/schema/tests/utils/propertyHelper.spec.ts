@@ -507,4 +507,30 @@ describe("PropertyHelper", () => {
 		expect(merged?.[1].key).toEqual("c");
 		expect(merged?.[2].key).toEqual("g");
 	});
+
+	test("Can create a custom type list", () => {
+		/**
+		 * Custom type.
+		 */
+		type CustomType = IProperty & { custom: string };
+
+		const properties1: CustomType[] = [];
+		PropertyHelper.setText<CustomType>(properties1, "a", "b", { custom: "custom1" });
+		PropertyHelper.setText<CustomType>(properties1, "c", "d", { custom: "custom2" });
+
+		const properties2: CustomType[] = [];
+		PropertyHelper.setText(properties2, "a", "d", { custom: "custom3" });
+		PropertyHelper.setText(properties2, "g", "h", { custom: "custom4" });
+
+		const merged = PropertyHelper.merge(properties1, properties2);
+
+		expect(merged?.length).toEqual(3);
+		expect(merged?.[0].key).toEqual("a");
+		expect(merged?.[0].value).toEqual("d");
+		expect(merged?.[0].custom).toEqual("custom3");
+		expect(merged?.[1].key).toEqual("c");
+		expect(merged?.[1].custom).toEqual("custom2");
+		expect(merged?.[2].key).toEqual("g");
+		expect(merged?.[2].custom).toEqual("custom4");
+	});
 });
