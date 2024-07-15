@@ -361,8 +361,8 @@ export class PropertyHelper {
 	 * @param includeKeys The keys to include.
 	 * @returns The filtered list.
 	 */
-	public static filterInclude(
-		properties?: IProperty[],
+	public static filterInclude<T extends IProperty = IProperty>(
+		properties?: T[],
 		includeKeys?: string[]
 	): IProperty[] | undefined {
 		if (Is.arrayValue(properties)) {
@@ -378,8 +378,8 @@ export class PropertyHelper {
 	 * @param excludeKeys The keys to filter.
 	 * @returns The filtered list.
 	 */
-	public static filterExclude(
-		properties?: IProperty[],
+	public static filterExclude<T extends IProperty = IProperty>(
+		properties?: T[],
 		excludeKeys?: string[]
 	): IProperty[] | undefined {
 		if (Is.arrayValue(properties)) {

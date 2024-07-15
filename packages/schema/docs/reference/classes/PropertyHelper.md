@@ -604,13 +604,17 @@ The value of the item to add.
 
 ### filterInclude()
 
-> `static` **filterInclude**(`properties`?, `includeKeys`?): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+> `static` **filterInclude**\<`T`\>(`properties`?, `includeKeys`?): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
 
 Reduce the keys in the property list.
 
+#### Type parameters
+
+• **T** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties?**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties?**: `T`[]
 
 The properties list to filter.
 
@@ -628,13 +632,17 @@ The filtered list.
 
 ### filterExclude()
 
-> `static` **filterExclude**(`properties`?, `excludeKeys`?): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
+> `static` **filterExclude**\<`T`\>(`properties`?, `excludeKeys`?): `undefined` \| [`IProperty`](../interfaces/IProperty.md)[]
 
 Filter the keys from the properties.
 
+#### Type parameters
+
+• **T** *extends* [`IProperty`](../interfaces/IProperty.md) = [`IProperty`](../interfaces/IProperty.md)
+
 #### Parameters
 
-• **properties?**: [`IProperty`](../interfaces/IProperty.md)[]
+• **properties?**: `T`[]
 
 The properties list to filter.
 
