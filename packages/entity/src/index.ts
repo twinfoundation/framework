@@ -5,6 +5,7 @@ export * from "./decorators/propertyDecorator";
 export * from "./factories/entitySchemaFactory";
 export * from "./models/IComparator";
 export * from "./models/IComparatorGroup";
+export * from "./models/IComparatorProperty";
 export * from "./models/IEntitySchema";
 export * from "./models/IEntitySchemaOptions";
 export * from "./models/IEntitySchemaProperty";

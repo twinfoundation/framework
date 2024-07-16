@@ -31,6 +31,23 @@ export class EntityConditions {
 			return results.some(Boolean);
 		}
 
+		if ("condition" in condition) {
+			// It's a child property comparison, so evaluate the child property
+			// and then compare it to the conditions
+			const child = entity[condition.property];
+			// If the child is an array then check each item
+			if (Is.array(child)) {
+				for (const c of child) {
+					const check = EntityConditions.check(c, condition.condition);
+					if (check) {
+						return true;
+					}
+				}
+				return false;
+			}
+			return EntityConditions.check(child, condition.condition);
+		}
+
 		// It's a single value so just check the condition
 		return EntityConditions.compare(entity, condition);
 	}

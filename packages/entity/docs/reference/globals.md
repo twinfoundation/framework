@@ -11,6 +11,7 @@
 
 - [IComparator](interfaces/IComparator.md)
 - [IComparatorGroup](interfaces/IComparatorGroup.md)
+- [IComparatorProperty](interfaces/IComparatorProperty.md)
 - [IEntitySchema](interfaces/IEntitySchema.md)
 - [IEntitySchemaOptions](interfaces/IEntitySchemaOptions.md)
 - [IEntitySchemaProperty](interfaces/IEntitySchemaProperty.md)

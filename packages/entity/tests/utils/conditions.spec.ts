@@ -1,6 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { ComparisonOperator } from "../../src/models/comparisonOperator";
+import type { IComparatorProperty } from "../../src/models/IComparatorProperty";
 import { LogicalOperator } from "../../src/models/logicalOperator";
 import { EntityConditions } from "../../src/utils/entityConditions";
 
@@ -984,6 +985,321 @@ describe("Conditions", () => {
 					}
 				],
 				logicalOperator: LogicalOperator.Or
+			}
+		);
+
+		expect(results).toEqual(true);
+	});
+
+	test("can fail a child condition", async () => {
+		const results = EntityConditions.check(
+			{
+				foo: {
+					a: 1
+				}
+			},
+			{
+				property: "foo",
+				condition: {
+					conditions: [
+						{
+							property: "a",
+							value: 2,
+							operator: ComparisonOperator.Equals
+						}
+					],
+					logicalOperator: LogicalOperator.And
+				}
+			}
+		);
+
+		expect(results).toEqual(false);
+	});
+
+	test("can check a child condition", async () => {
+		const results = EntityConditions.check(
+			{
+				foo: {
+					a: 1
+				}
+			},
+			{
+				property: "foo",
+				condition: {
+					conditions: [
+						{
+							property: "a",
+							value: 1,
+							operator: ComparisonOperator.Equals
+						}
+					],
+					logicalOperator: LogicalOperator.And
+				}
+			}
+		);
+
+		expect(results).toEqual(true);
+	});
+
+	test("can fail to check a child condition for an array value", async () => {
+		const results = EntityConditions.check(
+			{
+				foo: [
+					{
+						a: 1
+					}
+				]
+			},
+			{
+				property: "foo",
+				condition: {
+					conditions: [
+						{
+							property: "a",
+							value: 2,
+							operator: ComparisonOperator.Equals
+						}
+					],
+					logicalOperator: LogicalOperator.And
+				}
+			}
+		);
+
+		expect(results).toEqual(false);
+	});
+
+	test("can check a child condition for an array value", async () => {
+		const results = EntityConditions.check(
+			{
+				foo: [
+					{
+						a: 1
+					}
+				]
+			},
+			{
+				property: "foo",
+				condition: {
+					conditions: [
+						{
+							property: "a",
+							value: 1,
+							operator: ComparisonOperator.Equals
+						}
+					],
+					logicalOperator: LogicalOperator.And
+				}
+			}
+		);
+
+		expect(results).toEqual(true);
+	});
+
+	test("can fail to check a child condition for an array value nested", async () => {
+		const results = EntityConditions.check(
+			{
+				foo: [
+					{
+						a: [
+							{
+								b: 1
+							}
+						]
+					}
+				]
+			},
+			{
+				property: "foo",
+				condition: {
+					property: "a",
+					condition: {
+						conditions: [
+							{
+								property: "b",
+								value: 3,
+								operator: ComparisonOperator.Equals
+							}
+						]
+					}
+				}
+			}
+		);
+
+		expect(results).toEqual(false);
+	});
+
+	test("can check a child condition for an array value nested", async () => {
+		const results = EntityConditions.check(
+			{
+				foo: [
+					{
+						a: [
+							{
+								b: 3
+							}
+						]
+					}
+				]
+			},
+			{
+				property: "foo",
+				condition: {
+					property: "a",
+					condition: {
+						conditions: [
+							{
+								property: "b",
+								value: 3,
+								operator: ComparisonOperator.Equals
+							}
+						]
+					}
+				}
+			}
+		);
+
+		expect(results).toEqual(true);
+	});
+
+	test("can check a child condition for an array value nested with multiple properties", async () => {
+		const results = EntityConditions.check(
+			{
+				foo: [
+					{
+						a: [
+							{
+								b: 3,
+								c: 4
+							},
+							{
+								b: 5,
+								c: 6
+							}
+						]
+					}
+				]
+			},
+			{
+				property: "foo",
+				condition: {
+					property: "a",
+					condition: {
+						conditions: [
+							{
+								property: "b",
+								value: 3,
+								operator: ComparisonOperator.Equals
+							},
+							{
+								property: "c",
+								value: 4,
+								operator: ComparisonOperator.Equals
+							}
+						]
+					}
+				}
+			}
+		);
+
+		expect(results).toEqual(true);
+	});
+
+	test("can fail to check a child condition for an array value nested with multiple properties", async () => {
+		const results = EntityConditions.check(
+			{
+				foo: [
+					{
+						a: [
+							{
+								b: 3,
+								c: 4
+							},
+							{
+								b: 5,
+								c: 6
+							}
+						]
+					}
+				]
+			},
+			{
+				property: "foo",
+				condition: {
+					property: "a",
+					condition: {
+						conditions: [
+							{
+								property: "b",
+								value: 4,
+								operator: ComparisonOperator.Equals
+							},
+							{
+								property: "c",
+								value: 4,
+								operator: ComparisonOperator.Equals
+							}
+						]
+					}
+				}
+			}
+		);
+
+		expect(results).toEqual(false);
+	});
+
+	test("can check a child condition with strict typing", async () => {
+		/**
+		 * Test type.
+		 */
+		interface TestType {
+			/**
+			 * Foo property
+			 */
+			foo: {
+				a: {
+					b: number;
+					c: number;
+				}[];
+			}[];
+		}
+
+		const propComparator: IComparatorProperty<TestType["foo"][0], TestType["foo"][0]["a"][0]> = {
+			property: "a",
+			condition: {
+				conditions: [
+					{
+						property: "b",
+						value: 3,
+						operator: ComparisonOperator.Equals
+					},
+					{
+						property: "c",
+						value: 4,
+						operator: ComparisonOperator.Equals
+					}
+				]
+			}
+		};
+		const results = EntityConditions.check<TestType>(
+			{
+				foo: [
+					{
+						a: [
+							{
+								b: 3,
+								c: 4
+							},
+							{
+								b: 5,
+								c: 6
+							}
+						]
+					}
+				]
+			},
+			{
+				property: "foo",
+				condition: propComparator
 			}
 		);
 
