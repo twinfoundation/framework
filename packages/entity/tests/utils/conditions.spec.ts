@@ -1305,4 +1305,68 @@ describe("Conditions", () => {
 
 		expect(results).toEqual(true);
 	});
+
+	test("can check a child condition with object properties", async () => {
+		const results = EntityConditions.check(
+			{
+				properties: [
+					{
+						key: "role",
+						value: "user"
+					}
+				]
+			},
+			{
+				property: "properties",
+				condition: {
+					conditions: [
+						{
+							property: "key",
+							value: "role",
+							operator: ComparisonOperator.Equals
+						},
+						{
+							property: "value",
+							value: "user",
+							operator: ComparisonOperator.Equals
+						}
+					]
+				}
+			}
+		);
+
+		expect(results).toEqual(true);
+	});
+
+	test("can fail to check a child condition with object properties", async () => {
+		const results = EntityConditions.check(
+			{
+				properties: [
+					{
+						key: "role",
+						value: "node"
+					}
+				]
+			},
+			{
+				property: "properties",
+				condition: {
+					conditions: [
+						{
+							property: "key",
+							value: "role",
+							operator: ComparisonOperator.Equals
+						},
+						{
+							property: "value",
+							value: "user",
+							operator: ComparisonOperator.Equals
+						}
+					]
+				}
+			}
+		);
+
+		expect(results).toEqual(false);
+	});
 });
