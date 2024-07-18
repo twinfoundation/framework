@@ -227,10 +227,9 @@ export class BaseError extends Error implements IError {
 
 	/**
 	 * Serialize the error to the error model.
-	 * @param includeStack Include the stack in the error.
 	 * @returns The error model.
 	 */
-	public toJsonObject(includeStack?: boolean): IError {
+	public toJsonObject(): IError {
 		const err: Partial<IError> = {};
 		if (Is.stringValue(this.name)) {
 			err.name = this.name;
@@ -244,11 +243,11 @@ export class BaseError extends Error implements IError {
 		if (Is.object(this.properties)) {
 			err.properties = this.properties;
 		}
-		if (Is.stringValue(this.stack) && includeStack) {
+		if (Is.stringValue(this.stack)) {
 			err.stack = this.stack;
 		}
 		if (Is.notEmpty(this.inner)) {
-			err.inner = BaseError.fromError(this.inner).toJsonObject(includeStack);
+			err.inner = BaseError.fromError(this.inner).toJsonObject();
 		}
 		return err as IError;
 	}

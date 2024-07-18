@@ -406,15 +406,9 @@ True if the error has the name.
 
 ### toJsonObject()
 
-> **toJsonObject**(`includeStack`?): [`IError`](../interfaces/IError.md)
+> **toJsonObject**(): [`IError`](../interfaces/IError.md)
 
 Serialize the error to the error model.
-
-#### Parameters
-
-• **includeStack?**: `boolean`
-
-Include the stack in the error.
 
 #### Returns
 
