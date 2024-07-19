@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { IServiceRequestContext } from "./IServiceRequestContext";
 
 /**
  * Interface describing a service.
@@ -13,20 +12,22 @@ export interface IService {
 
 	/**
 	 * Bootstrap the service by creating and initializing any resources it needs.
-	 * @param requestContext The request context for bootstrapping.
+	 * @param systemPartitionId The system partition id.
 	 * @returns Nothing.
 	 */
-	bootstrap?(requestContext?: IServiceRequestContext): Promise<void>;
+	bootstrap?(systemPartitionId: string): Promise<void>;
 
 	/**
 	 * The service needs to be started when the application is initialized.
+	 * @param systemPartitionId The system partition id.
 	 * @returns Nothing.
 	 */
-	start?(): Promise<void>;
+	start?(systemPartitionId: string): Promise<void>;
 
 	/**
 	 * The service needs to be stopped when the application is closed.
+	 * @param systemPartitionId The system partition id.
 	 * @returns Nothing.
 	 */
-	stop?(): Promise<void>;
+	stop?(systemPartitionId: string): Promise<void>;
 }
