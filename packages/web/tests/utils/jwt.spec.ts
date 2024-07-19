@@ -9,7 +9,11 @@ import { Jwt } from "../../src/utils/jwt";
 describe("Jwt", () => {
 	test("can fail to encode with missing header", async () => {
 		await expect(
-			Jwt.encode(undefined as unknown as IJwtHeader, undefined as unknown as IJwtPayload)
+			Jwt.encode(
+				undefined as unknown as IJwtHeader,
+				undefined as unknown as IJwtPayload,
+				undefined as unknown as Uint8Array
+			)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.objectUndefined",
@@ -26,7 +30,8 @@ describe("Jwt", () => {
 				{
 					alg: "EdDSA"
 				},
-				undefined as unknown as IJwtPayload
+				undefined as unknown as IJwtPayload,
+				undefined as unknown as Uint8Array
 			)
 		).rejects.toMatchObject({
 			name: "GuardError",
@@ -44,11 +49,16 @@ describe("Jwt", () => {
 				{
 					alg: "EdDSA"
 				},
-				{}
+				{},
+				undefined as unknown as Uint8Array
 			)
 		).rejects.toMatchObject({
-			name: "GeneralError",
-			message: "jwt.noKeyOrSigner"
+			name: "GuardError",
+			message: "guard.uint8Array",
+			properties: {
+				property: "key",
+				value: "undefined"
+			}
 		});
 	});
 
@@ -64,10 +74,9 @@ describe("Jwt", () => {
 	test("can encode a jwt with a custom signer", async () => {
 		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key"));
 
-		const token = await Jwt.encode(
+		const token = await Jwt.encodeWithSigner(
 			{ alg: "HS256" },
 			{ sub: "123456", iat: 100000000 },
-			key,
 			async () => key
 		);
 		expect(token).toEqual(
@@ -196,11 +205,8 @@ describe("Jwt", () => {
 	});
 
 	test("can verify a jwt with a custom verifier", async () => {
-		const key = Blake2b.sum256(Converter.utf8ToBytes("my-key2"));
-
-		const decoded = await Jwt.verify(
+		const decoded = await Jwt.verifyWithVerifier(
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc",
-			key,
 			async () => true
 		);
 		expect(decoded?.header?.alg).toEqual("HS256");

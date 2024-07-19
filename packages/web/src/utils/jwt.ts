@@ -22,14 +22,38 @@ export class Jwt {
 	 * @param header The header to encode.
 	 * @param payload The payload to encode.
 	 * @param key The key for signing the token, can be omitted if a signer is provided.
-	 * @param signer Custom signer method.
 	 * @returns The encoded token.
 	 */
 	public static async encode<U extends IJwtHeader, T extends IJwtPayload>(
 		header: U,
 		payload: T,
-		key?: Uint8Array,
-		signer?: (
+		key: Uint8Array
+	): Promise<string> {
+		Guards.object<IJwtHeader>(Jwt._CLASS_NAME, nameof(header), header);
+		Guards.arrayOneOf<JwtAlgorithms>(
+			Jwt._CLASS_NAME,
+			nameof(header.alg),
+			header.alg,
+			Object.values(JwtAlgorithms)
+		);
+
+		Guards.object<IJwtPayload>(Jwt._CLASS_NAME, nameof(payload), payload);
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(key), key);
+
+		return Jwt.internalEncode<U, T>(header, payload, key);
+	}
+
+	/**
+	 * Encode a token.
+	 * @param header The header to encode.
+	 * @param payload The payload to encode.
+	 * @param signer Custom signer method.
+	 * @returns The encoded token.
+	 */
+	public static async encodeWithSigner<U extends IJwtHeader, T extends IJwtPayload>(
+		header: U,
+		payload: T,
+		signer: (
 			alg: JwtAlgorithms,
 			key: Uint8Array | undefined,
 			payload: Uint8Array
@@ -44,37 +68,9 @@ export class Jwt {
 		);
 
 		Guards.object<IJwtPayload>(Jwt._CLASS_NAME, nameof(payload), payload);
+		Guards.function(Jwt._CLASS_NAME, nameof(signer), signer);
 
-		const hasKey = Is.notEmpty(key);
-		const hasSigner = Is.notEmpty(signer);
-		if (!hasKey && !hasSigner) {
-			throw new GeneralError(Jwt._CLASS_NAME, "noKeyOrSigner");
-		}
-
-		if (hasKey) {
-			Guards.uint8Array(Jwt._CLASS_NAME, nameof(key), key);
-		}
-
-		signer ??= async (alg, k, p): Promise<Uint8Array> => Jwt.defaultSigner(alg, k as Uint8Array, p);
-
-		if (Is.undefined(header.typ)) {
-			header.typ = "JWT";
-		}
-
-		const segments: string[] = [];
-		const headerBytes = Converter.utf8ToBytes(JSON.stringify(header));
-		segments.push(Converter.bytesToBase64Url(headerBytes));
-
-		const payloadBytes = Converter.utf8ToBytes(JSON.stringify(payload));
-		segments.push(Converter.bytesToBase64Url(payloadBytes));
-
-		const jwtHeaderAndPayload = Converter.utf8ToBytes(segments.join("."));
-
-		const sigBytes = await signer(header.alg, key, jwtHeaderAndPayload);
-
-		segments.push(Converter.bytesToBase64Url(sigBytes));
-
-		return segments.join(".");
+		return Jwt.internalEncode<U, T>(header, payload, undefined, signer);
 	}
 
 	/**
@@ -125,18 +121,11 @@ export class Jwt {
 	 * Verify a token.
 	 * @param token The token to verify.
 	 * @param key The key for verifying the token
-	 * @param verifier Custom verification method.
 	 * @returns The decoded payload.
 	 */
 	public static async verify<U extends IJwtHeader, T extends IJwtPayload>(
 		token: string,
-		key: Uint8Array | undefined,
-		verifier?: (
-			alg: JwtAlgorithms,
-			key: Uint8Array | undefined,
-			payload: Uint8Array,
-			signature: Uint8Array
-		) => Promise<boolean>
+		key: Uint8Array
 	): Promise<{
 		verified: boolean;
 		header?: U;
@@ -151,7 +140,46 @@ export class Jwt {
 			decoded.header,
 			decoded.payload,
 			decoded.signature,
-			key,
+			key
+		);
+
+		return {
+			verified,
+			...decoded
+		};
+	}
+
+	/**
+	 * Verify a token.
+	 * @param token The token to verify.
+	 * @param verifier Custom verification method.
+	 * @returns The decoded payload.
+	 */
+	public static async verifyWithVerifier<U extends IJwtHeader, T extends IJwtPayload>(
+		token: string,
+		verifier: (
+			alg: JwtAlgorithms,
+			key: Uint8Array | undefined,
+			payload: Uint8Array,
+			signature: Uint8Array
+		) => Promise<boolean>
+	): Promise<{
+		verified: boolean;
+		header?: U;
+		payload?: T;
+		signature?: Uint8Array;
+	}> {
+		Guards.stringValue(Jwt._CLASS_NAME, nameof(token), token);
+		Guards.function(Jwt._CLASS_NAME, nameof(verifier), verifier);
+
+		Guards.stringValue(Jwt._CLASS_NAME, nameof(token), token);
+
+		const decoded = await Jwt.decode<U, T>(token);
+		const verified = await Jwt.verifySignature<U, T>(
+			decoded.header,
+			decoded.payload,
+			decoded.signature,
+			undefined,
 			verifier
 		);
 
@@ -182,13 +210,18 @@ export class Jwt {
 			signature: Uint8Array
 		) => Promise<boolean>
 	): Promise<boolean> {
+		const hasKey = Is.notEmpty(key);
+		const hasVerifier = Is.notEmpty(verifier);
+		if (!hasKey && !hasVerifier) {
+			throw new GeneralError(Jwt._CLASS_NAME, "noKeyOrVerifier");
+		}
+
 		let verified = false;
 
 		if (
 			Is.object<U>(header) &&
 			Is.object<T>(payload) &&
 			Is.uint8Array(signature) &&
-			Is.uint8Array(key) &&
 			Is.arrayOneOf<JwtAlgorithms>(header.alg, Object.values(JwtAlgorithms))
 		) {
 			const segments: string[] = [];
@@ -200,8 +233,7 @@ export class Jwt {
 
 			const jwtHeaderAndPayload = Converter.utf8ToBytes(segments.join("."));
 
-			verifier ??= async (alg, k, p, s): Promise<boolean> =>
-				Jwt.defaultVerifier(alg, k as Uint8Array, p, s);
+			verifier ??= async (alg, k, p, s): Promise<boolean> => Jwt.defaultVerifier(alg, k, p, s);
 
 			verified = await verifier(header.alg, key, jwtHeaderAndPayload, signature);
 		}
@@ -218,9 +250,12 @@ export class Jwt {
 	 */
 	public static async defaultSigner(
 		alg: JwtAlgorithms,
-		key: Uint8Array,
+		key: Uint8Array | undefined,
 		payload: Uint8Array
 	): Promise<Uint8Array> {
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(key), key);
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(payload), payload);
+
 		if (alg === "HS256") {
 			const algo = new HmacSha256(key);
 			return algo.update(payload).digest();
@@ -238,15 +273,65 @@ export class Jwt {
 	 */
 	public static async defaultVerifier(
 		alg: JwtAlgorithms,
-		key: Uint8Array,
+		key: Uint8Array | undefined,
 		payload: Uint8Array,
 		signature: Uint8Array
 	): Promise<boolean> {
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(key), key);
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(payload), payload);
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(signature), signature);
+
 		if (alg === "HS256") {
 			const algo = new HmacSha256(key);
 			const sigBytes = algo.update(payload).digest();
 			return ArrayHelper.matches(sigBytes, signature);
 		}
 		return Ed25519.verify(key, payload, signature);
+	}
+
+	/**
+	 * Encode a token.
+	 * @param header The header to encode.
+	 * @param payload The payload to encode.
+	 * @param key The key for signing the token, can be omitted if a signer is provided.
+	 * @param signer Custom signer method.
+	 * @returns The encoded token.
+	 */
+	private static async internalEncode<U extends IJwtHeader, T extends IJwtPayload>(
+		header: U,
+		payload: T,
+		key?: Uint8Array,
+		signer?: (
+			alg: JwtAlgorithms,
+			key: Uint8Array | undefined,
+			payload: Uint8Array
+		) => Promise<Uint8Array>
+	): Promise<string> {
+		const hasKey = Is.notEmpty(key);
+		const hasSigner = Is.notEmpty(signer);
+		if (!hasKey && !hasSigner) {
+			throw new GeneralError(Jwt._CLASS_NAME, "noKeyOrSigner");
+		}
+
+		signer ??= async (alg, k, p): Promise<Uint8Array> => Jwt.defaultSigner(alg, k, p);
+
+		if (Is.undefined(header.typ)) {
+			header.typ = "JWT";
+		}
+
+		const segments: string[] = [];
+		const headerBytes = Converter.utf8ToBytes(JSON.stringify(header));
+		segments.push(Converter.bytesToBase64Url(headerBytes));
+
+		const payloadBytes = Converter.utf8ToBytes(JSON.stringify(payload));
+		segments.push(Converter.bytesToBase64Url(payloadBytes));
+
+		const jwtHeaderAndPayload = Converter.utf8ToBytes(segments.join("."));
+
+		const sigBytes = await signer(header.alg, key, jwtHeaderAndPayload);
+
+		segments.push(Converter.bytesToBase64Url(sigBytes));
+
+		return segments.join(".");
 	}
 }

@@ -8,7 +8,8 @@
 			"general": "A general failure occurred during the request"
 		},
 		"jwt": {
-			"noKeyOrSigner": "No key or signer was provided for JWT creation"
+			"noKeyOrSigner": "No key or signer was provided for JWT creation",
+			"noKeyOrVerifier": "No key or verifier was provided for JWT creation"
 		}
 	},
 	"errorMessages": {

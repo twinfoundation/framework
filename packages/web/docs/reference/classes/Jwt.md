@@ -16,7 +16,7 @@ Class to encode and decode JSON Web Tokens.
 
 ### encode()
 
-> `static` **encode**\<`U`, `T`\>(`header`, `payload`, `key`?, `signer`?): `Promise`\<`string`\>
+> `static` **encode**\<`U`, `T`\>(`header`, `payload`, `key`): `Promise`\<`string`\>
 
 Encode a token.
 
@@ -36,11 +36,41 @@ The header to encode.
 
 The payload to encode.
 
-• **key?**: `Uint8Array`
+• **key**: `Uint8Array`
 
 The key for signing the token, can be omitted if a signer is provided.
 
-• **signer?**
+#### Returns
+
+`Promise`\<`string`\>
+
+The encoded token.
+
+***
+
+### encodeWithSigner()
+
+> `static` **encodeWithSigner**\<`U`, `T`\>(`header`, `payload`, `signer`): `Promise`\<`string`\>
+
+Encode a token.
+
+#### Type parameters
+
+• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+
+#### Parameters
+
+• **header**: `U`
+
+The header to encode.
+
+• **payload**: `T`
+
+The payload to encode.
+
+• **signer**
 
 Custom signer method.
 
@@ -92,7 +122,7 @@ The decoded payload.
 
 ### verify()
 
-> `static` **verify**\<`U`, `T`\>(`token`, `key`, `verifier`?): `Promise`\<`object`\>
+> `static` **verify**\<`U`, `T`\>(`token`, `key`): `Promise`\<`object`\>
 
 Verify a token.
 
@@ -108,11 +138,53 @@ Verify a token.
 
 The token to verify.
 
-• **key**: `undefined` \| `Uint8Array`
+• **key**: `Uint8Array`
 
 The key for verifying the token
 
-• **verifier?**
+#### Returns
+
+`Promise`\<`object`\>
+
+The decoded payload.
+
+##### verified
+
+> **verified**: `boolean`
+
+##### header?
+
+> `optional` **header**: `U`
+
+##### payload?
+
+> `optional` **payload**: `T`
+
+##### signature?
+
+> `optional` **signature**: `Uint8Array`
+
+***
+
+### verifyWithVerifier()
+
+> `static` **verifyWithVerifier**\<`U`, `T`\>(`token`, `verifier`): `Promise`\<`object`\>
+
+Verify a token.
+
+#### Type parameters
+
+• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+
+#### Parameters
+
+• **token**: `string`
+
+The token to verify.
+
+• **verifier**
 
 Custom verification method.
 
@@ -194,7 +266,7 @@ The default signer for the JWT.
 
 The algorithm to use.
 
-• **key**: `Uint8Array`
+• **key**: `undefined` \| `Uint8Array`
 
 The key to sign with.
 
@@ -222,7 +294,7 @@ The default verifier for the JWT.
 
 The algorithm to use.
 
-• **key**: `Uint8Array`
+• **key**: `undefined` \| `Uint8Array`
 
 The key to verify with.
 
@@ -239,3 +311,41 @@ The signature to verify.
 `Promise`\<`boolean`\>
 
 True if the signature was verified.
+
+***
+
+### internalEncode()
+
+> `static` `private` **internalEncode**\<`U`, `T`\>(`header`, `payload`, `key`?, `signer`?): `Promise`\<`string`\>
+
+Encode a token.
+
+#### Type parameters
+
+• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+
+#### Parameters
+
+• **header**: `U`
+
+The header to encode.
+
+• **payload**: `T`
+
+The payload to encode.
+
+• **key?**: `Uint8Array`
+
+The key for signing the token, can be omitted if a signer is provided.
+
+• **signer?**
+
+Custom signer method.
+
+#### Returns
+
+`Promise`\<`string`\>
+
+The encoded token.
