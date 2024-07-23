@@ -14,21 +14,33 @@ export interface IService {
 	/**
 	 * Bootstrap the service by creating and initializing any resources it needs.
 	 * @param systemRequestContext The system request context.
+	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
 	 * @returns Nothing.
 	 */
-	bootstrap?(systemRequestContext: IServiceRequestContext): Promise<void>;
+	bootstrap?(
+		systemRequestContext: IServiceRequestContext,
+		systemLoggingConnectorType?: string
+	): Promise<void>;
 
 	/**
 	 * The service needs to be started when the application is initialized.
 	 * @param systemRequestContext The system request context.
+	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
 	 * @returns Nothing.
 	 */
-	start?(systemRequestContext: IServiceRequestContext): Promise<void>;
+	start?(
+		systemRequestContext: IServiceRequestContext,
+		systemLoggingConnectorType?: string
+	): Promise<void>;
 
 	/**
 	 * The service needs to be stopped when the application is closed.
 	 * @param systemRequestContext The system request context.
+	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
 	 * @returns Nothing.
 	 */
-	stop?(systemRequestContext: IServiceRequestContext): Promise<void>;
+	stop?(
+		systemRequestContext: IServiceRequestContext,
+		systemLoggingConnectorType?: string
+	): Promise<void>;
 }

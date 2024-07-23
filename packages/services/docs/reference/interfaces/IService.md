@@ -14,7 +14,7 @@ The name of the service.
 
 ### bootstrap()?
 
-> `optional` **bootstrap**(`systemRequestContext`): `Promise`\<`void`\>
+> `optional` **bootstrap**(`systemRequestContext`, `systemLoggingConnectorType`?): `Promise`\<`void`\>
 
 Bootstrap the service by creating and initializing any resources it needs.
 
@@ -23,6 +23,10 @@ Bootstrap the service by creating and initializing any resources it needs.
 • **systemRequestContext**: [`IServiceRequestContext`](IServiceRequestContext.md)
 
 The system request context.
+
+• **systemLoggingConnectorType?**: `string`
+
+The system logging connector type, defaults to "system-logging".
 
 #### Returns
 
@@ -34,7 +38,7 @@ Nothing.
 
 ### start()?
 
-> `optional` **start**(`systemRequestContext`): `Promise`\<`void`\>
+> `optional` **start**(`systemRequestContext`, `systemLoggingConnectorType`?): `Promise`\<`void`\>
 
 The service needs to be started when the application is initialized.
 
@@ -43,6 +47,10 @@ The service needs to be started when the application is initialized.
 • **systemRequestContext**: [`IServiceRequestContext`](IServiceRequestContext.md)
 
 The system request context.
+
+• **systemLoggingConnectorType?**: `string`
+
+The system logging connector type, defaults to "system-logging".
 
 #### Returns
 
@@ -54,7 +62,7 @@ Nothing.
 
 ### stop()?
 
-> `optional` **stop**(`systemRequestContext`): `Promise`\<`void`\>
+> `optional` **stop**(`systemRequestContext`, `systemLoggingConnectorType`?): `Promise`\<`void`\>
 
 The service needs to be stopped when the application is closed.
 
@@ -63,6 +71,10 @@ The service needs to be stopped when the application is closed.
 • **systemRequestContext**: [`IServiceRequestContext`](IServiceRequestContext.md)
 
 The system request context.
+
+• **systemLoggingConnectorType?**: `string`
+
+The system logging connector type, defaults to "system-logging".
 
 #### Returns
 
