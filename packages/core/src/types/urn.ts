@@ -204,6 +204,14 @@ export class Urn {
 	}
 
 	/**
+	 * Get the namespace method, the first element after the identifier.
+	 * @returns The namespace method.
+	 */
+	public namespaceMethod(): string {
+		return this._namespaceSpecific.split(":")[0];
+	}
+
+	/**
 	 * Get the individual parts of the urn.
 	 * @param omitPrefix Omit the urn: prefix from the string.
 	 * @returns The parts of the urn.

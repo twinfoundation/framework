@@ -216,6 +216,20 @@ The namespace specific.
 
 ***
 
+### namespaceMethod()
+
+> **namespaceMethod**(): `string`
+
+Get the namespace method, the first element after the identifier.
+
+#### Returns
+
+`string`
+
+The namespace method.
+
+***
+
 ### parts()
 
 > **parts**(`omitPrefix`?): `string`[]
