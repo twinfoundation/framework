@@ -28,19 +28,26 @@ export class Urn {
 	 * The specific part of the namespace.
 	 * @internal
 	 */
-	private readonly _namespaceSpecific: string;
+	private readonly _namespaceSpecific: string[];
 
 	/**
 	 * Create a new instance of Urn.
 	 * @param namespaceIdentifier The identifier for the namespace.
 	 * @param namespaceSpecific The specific part of the namespace.
 	 */
-	constructor(namespaceIdentifier: string, namespaceSpecific: string) {
+	constructor(namespaceIdentifier: string, namespaceSpecific: string | string[]) {
 		Guards.stringValue(Urn._CLASS_NAME, nameof(namespaceIdentifier), namespaceIdentifier);
-		Guards.stringValue(Urn._CLASS_NAME, nameof(namespaceSpecific), namespaceSpecific);
+
 		// Strip leading and trailing colons
 		this._namespaceIdentifier = this.stripColons(namespaceIdentifier);
-		this._namespaceSpecific = this.stripColons(namespaceSpecific);
+
+		if (Is.array(namespaceSpecific)) {
+			Guards.arrayValue(Urn._CLASS_NAME, nameof(namespaceSpecific), namespaceSpecific);
+			this._namespaceSpecific = namespaceSpecific;
+		 } else {
+			Guards.stringValue(Urn._CLASS_NAME, nameof(namespaceSpecific), namespaceSpecific);
+			this._namespaceSpecific = this.stripColons(namespaceSpecific).split(":");
+		 }
 	}
 
 	/**
@@ -103,7 +110,7 @@ export class Urn {
 			}
 		}
 
-		return new Urn(parts[0], parts.slice(1).join(":"));
+		return new Urn(parts[0], parts.slice(1));
 	}
 
 	/**
@@ -118,7 +125,7 @@ export class Urn {
 			parts.shift();
 		}
 
-		return new Urn(parts[0], parts.slice(1).join(":"));
+		return new Urn(parts[0], parts.slice(1));
 	}
 
 	/**
@@ -199,25 +206,8 @@ export class Urn {
 	 * Get the namespace specific.
 	 * @returns The namespace specific.
 	 */
-	public namespaceSpecific(): string {
+	public namespaceSpecific(): string[] {
 		return this._namespaceSpecific;
-	}
-
-	/**
-	 * Get the namespace method, the first element after the identifier.
-	 * @returns The namespace method.
-	 */
-	public namespaceMethod(): string {
-		return this._namespaceSpecific.split(":")[0];
-	}
-
-	/**
-	 * Get the individual parts of the urn.
-	 * @param omitPrefix Omit the urn: prefix from the string.
-	 * @returns The parts of the urn.
-	 */
-	public parts(omitPrefix?: boolean): string[] {
-		return this.toString(omitPrefix).split(":");
 	}
 
 	/**
@@ -227,8 +217,8 @@ export class Urn {
 	 */
 	public toString(omitPrefix?: boolean): string {
 		return omitPrefix
-			? `${this._namespaceIdentifier}:${this._namespaceSpecific}`
-			: `urn:${this._namespaceIdentifier}:${this._namespaceSpecific}`;
+			? `${this._namespaceIdentifier}:${this._namespaceSpecific.join(":")}`
+			: `urn:${this._namespaceIdentifier}:${this._namespaceSpecific.join(":")}`;
 	}
 
 	/**

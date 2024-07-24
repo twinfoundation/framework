@@ -71,8 +71,8 @@ describe("Urn", () => {
 		expect(() => Urn.fromValidString("aaa")).toThrow(
 			expect.objectContaining({
 				name: "GuardError",
-				message: "guard.stringEmpty",
-				properties: { property: "namespaceSpecific", value: "" }
+				message: "guard.arrayValue",
+				properties: { property: "namespaceSpecific", value: [] }
 			})
 		);
 	});

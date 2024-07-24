@@ -16,7 +16,7 @@ Create a new instance of Urn.
 
 The identifier for the namespace.
 
-• **namespaceSpecific**: `string`
+• **namespaceSpecific**: `string` \| `string`[]
 
 The specific part of the namespace.
 
@@ -204,49 +204,15 @@ The namespace identifier.
 
 ### namespaceSpecific()
 
-> **namespaceSpecific**(): `string`
+> **namespaceSpecific**(): `string`[]
 
 Get the namespace specific.
 
 #### Returns
 
-`string`
-
-The namespace specific.
-
-***
-
-### namespaceMethod()
-
-> **namespaceMethod**(): `string`
-
-Get the namespace method, the first element after the identifier.
-
-#### Returns
-
-`string`
-
-The namespace method.
-
-***
-
-### parts()
-
-> **parts**(`omitPrefix`?): `string`[]
-
-Get the individual parts of the urn.
-
-#### Parameters
-
-• **omitPrefix?**: `boolean`
-
-Omit the urn: prefix from the string.
-
-#### Returns
-
 `string`[]
 
-The parts of the urn.
+The namespace specific.
 
 ***
 
