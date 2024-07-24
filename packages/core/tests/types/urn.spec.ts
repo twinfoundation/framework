@@ -127,17 +127,11 @@ describe("Urn", () => {
 	});
 
 	test("can success to guard a valid urn", () => {
-		Urn.guard("source", "foo", "urn:aaa:bbb");
+		Urn.guard("source", "foo", "aaa:bbb");
 	});
 
 	test("can fail to tryParseExact an empty urn", () => {
 		const urn = Urn.tryParseExact("");
-
-		expect(urn).toBeUndefined();
-	});
-
-	test("can fail to tryParseExact a string not starting urn:", () => {
-		const urn = Urn.tryParseExact("rn:aaa:bbb");
 
 		expect(urn).toBeUndefined();
 	});

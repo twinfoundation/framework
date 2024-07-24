@@ -74,7 +74,7 @@ export class Urn {
 	}
 
 	/**
-	 * Try and parse a string into the urn parts it must start with urn:.
+	 * Try and parse a string into the urn parts.
 	 * @param urn The urn to parse.
 	 * @returns The formatted urn or undefined if the value is not a urn.
 	 */
@@ -85,25 +85,25 @@ export class Urn {
 
 		const parts = urn.split(":");
 
-		if (parts.length < 3) {
+		if (parts[0] === "urn") {
+			parts.shift();
+		}
+
+		if (parts.length < 2) {
 			return;
 		}
 
-		if (parts[0] !== "urn") {
+		if (!/[\da-z][\da-z-]{0,31}/.test(parts[0])) {
 			return;
 		}
 
-		if (!/[\da-z][\da-z-]{0,31}/.test(parts[1])) {
-			return;
-		}
-
-		for (let i = 2; i < parts.length; i++) {
+		for (let i = 1; i < parts.length; i++) {
 			if (!/[\d!#$%'()*+,./:;=?@_a-z-]+/.test(parts[i])) {
 				return;
 			}
 		}
 
-		return new Urn(parts[1], parts.slice(2).join(":"));
+		return new Urn(parts[0], parts.slice(1).join(":"));
 	}
 
 	/**
@@ -112,11 +112,11 @@ export class Urn {
 	 * @returns The formatted urn.
 	 */
 	public static fromValidString(urn: string): Urn {
-		if (urn.startsWith("urn:")) {
-			urn = urn.slice(4);
-		}
-
 		const parts = urn.split(":");
+
+		if (parts[0] === "urn") {
+			parts.shift();
+		}
 
 		return new Urn(parts[0], parts.slice(1).join(":"));
 	}

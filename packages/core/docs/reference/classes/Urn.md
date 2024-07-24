@@ -74,7 +74,7 @@ True if the namespace matches.
 
 > `static` **tryParseExact**(`urn`): `undefined` \| [`Urn`](Urn.md)
 
-Try and parse a string into the urn parts it must start with urn:.
+Try and parse a string into the urn parts.
 
 #### Parameters
 
