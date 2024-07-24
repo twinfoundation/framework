@@ -44,10 +44,10 @@ export class Urn {
 		if (Is.array(namespaceSpecific)) {
 			Guards.arrayValue(Urn._CLASS_NAME, nameof(namespaceSpecific), namespaceSpecific);
 			this._namespaceSpecific = namespaceSpecific;
-		 } else {
+		} else {
 			Guards.stringValue(Urn._CLASS_NAME, nameof(namespaceSpecific), namespaceSpecific);
 			this._namespaceSpecific = this.stripColons(namespaceSpecific).split(":");
-		 }
+		}
 	}
 
 	/**
@@ -200,6 +200,14 @@ export class Urn {
 	 */
 	public namespaceIdentifier(): string {
 		return this._namespaceIdentifier;
+	}
+
+	/**
+	 * Get the namespace method, the first component after the identifier.
+	 * @returns The namespace method.
+	 */
+	public namespaceMethod(): string {
+		return this._namespaceSpecific.length > 0 ? this._namespaceSpecific[0] : "";
 	}
 
 	/**

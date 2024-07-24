@@ -12,9 +12,10 @@ export const IdentifierHandlerFactory = Factory.createFactory<IIdentifierHandler
 	"namespace",
 	true,
 	(names: string[], uri: string) => {
-		Urn.guard(nameof(IdentifierHandlerFactory), nameof(uri), Urn.addPrefix(uri));
+		Urn.guard(nameof(IdentifierHandlerFactory), nameof(uri), uri);
 
-		const urnParts = Urn.fromValidString(uri).parts(true);
+		const urn = Urn.fromValidString(uri);
+		const urnParts = [urn.namespaceIdentifier(), ...urn.namespaceSpecific()];
 
 		for (let i = urnParts.length - 1; i >= 0; i--) {
 			const wholeNamespace = urnParts.slice(i).join(":");

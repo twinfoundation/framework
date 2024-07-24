@@ -202,6 +202,20 @@ The namespace identifier.
 
 ***
 
+### namespaceMethod()
+
+> **namespaceMethod**(): `string`
+
+Get the namespace method, the first component after the identifier.
+
+#### Returns
+
+`string`
+
+The namespace method.
+
+***
+
 ### namespaceSpecific()
 
 > **namespaceSpecific**(): `string`[]
