@@ -188,6 +188,26 @@ The formatted urn.
 
 ***
 
+### parts()
+
+> **parts**(`startIndex`): `string`[]
+
+Get the parts.
+
+#### Parameters
+
+• **startIndex**: `number`= `0`
+
+The index to start from, defaults to 0.
+
+#### Returns
+
+`string`[]
+
+The parts.
+
+***
+
 ### namespaceIdentifier()
 
 > **namespaceIdentifier**(): `string`
@@ -216,15 +236,41 @@ The namespace method.
 
 ***
 
-### namespaceSpecific()
+### namespaceSpecificParts()
 
-> **namespaceSpecific**(): `string`[]
+> **namespaceSpecificParts**(`startIndex`): `string`[]
 
-Get the namespace specific.
+Get the namespace specific parts.
+
+#### Parameters
+
+• **startIndex**: `number`= `0`
+
+The index to start from, defaults to 0.
 
 #### Returns
 
 `string`[]
+
+The namespace specific parts.
+
+***
+
+### namespaceSpecific()
+
+> **namespaceSpecific**(`startIndex`): `string`
+
+Get the namespace specific.
+
+#### Parameters
+
+• **startIndex**: `number`= `0`
+
+The index to start from, defaults to 0.
+
+#### Returns
+
+`string`
 
 The namespace specific.
 
@@ -232,13 +278,13 @@ The namespace specific.
 
 ### toString()
 
-> **toString**(`omitPrefix`?): `string`
+> **toString**(`omitPrefix`): `string`
 
 Convert the parts in to a full string.
 
 #### Parameters
 
-• **omitPrefix?**: `boolean`
+• **omitPrefix**: `boolean`= `true`
 
 Omit the urn: prefix from the string.
 

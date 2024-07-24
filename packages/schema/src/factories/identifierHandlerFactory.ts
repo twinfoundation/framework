@@ -15,7 +15,7 @@ export const IdentifierHandlerFactory = Factory.createFactory<IIdentifierHandler
 		Urn.guard(nameof(IdentifierHandlerFactory), nameof(uri), uri);
 
 		const urn = Urn.fromValidString(uri);
-		const urnParts = [urn.namespaceIdentifier(), ...urn.namespaceSpecific()];
+		const urnParts = urn.parts();
 
 		for (let i = urnParts.length - 1; i >= 0; i--) {
 			const wholeNamespace = urnParts.slice(i).join(":");
