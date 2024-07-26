@@ -1,3 +1,7 @@
+[**@gtsc/entity**](../overview.md) • **Docs**
+
+***
+
 # Class: DecoratorHelper
 
 Class to help with decorators.

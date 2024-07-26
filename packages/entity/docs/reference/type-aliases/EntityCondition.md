@@ -1,3 +1,7 @@
+[**@gtsc/entity**](../overview.md) • **Docs**
+
+***
+
 # Type alias: EntityCondition\<T\>
 
 > **EntityCondition**\<`T`\>: [`IComparator`](../interfaces/IComparator.md)\<`T`\> \| [`IComparatorGroup`](../interfaces/IComparatorGroup.md)\<`T`\> \| [`IComparatorProperty`](../interfaces/IComparatorProperty.md)\<`T`\>

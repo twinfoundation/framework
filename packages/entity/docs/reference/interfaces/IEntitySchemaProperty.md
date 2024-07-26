@@ -1,3 +1,7 @@
+[**@gtsc/entity**](../overview.md) • **Docs**
+
+***
+
 # Interface: IEntitySchemaProperty\<T\>
 
 Definition for an entity schema property.
@@ -21,6 +25,14 @@ The property name from the entity.
 > **type**: [`EntitySchemaPropertyType`](../type-aliases/EntitySchemaPropertyType.md)
 
 The type of the property.
+
+***
+
+### format?
+
+> `optional` **format**: [`EntitySchemaPropertyFormat`](../type-aliases/EntitySchemaPropertyFormat.md)
+
+The format of the property.
 
 ***
 

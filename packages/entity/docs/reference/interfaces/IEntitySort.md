@@ -1,3 +1,7 @@
+[**@gtsc/entity**](../overview.md) • **Docs**
+
+***
+
 # Interface: IEntitySort\<T\>
 
 Definition of an entity property sort details.

@@ -1,3 +1,7 @@
+[**@gtsc/entity**](entity/overview.md) • **Docs**
+
+***
+
 # GTSC Framework Entity
 
 This package contains helper methods and classes for working with entities.
@@ -14,12 +18,12 @@ npm install @gtsc/entity
 
 ## Examples
 
-Usage of the APIs is shown in the examples [examples.md](examples.md)
+Usage of the APIs is shown in the examples [docs/examples.md](docs/examples.md)
 
 ## Reference
 
-Detailed reference documentation for the API can be found in [reference/globals.md](reference/globals.md)
+Detailed reference documentation for the API can be found in [docs/reference/globals.md](docs/reference/globals.md)
 
 ## Changelog
 
-The changes between each version can be found in [changelog.md](changelog.md)
+The changes between each version can be found in [docs/changelog.md](docs/changelog.md)

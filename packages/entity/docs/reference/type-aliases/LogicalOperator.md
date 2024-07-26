@@ -1,3 +1,7 @@
+[**@gtsc/entity**](../overview.md) • **Docs**
+
+***
+
 # Type alias: LogicalOperator
 
 > **LogicalOperator**: *typeof* [`LogicalOperator`](../variables/LogicalOperator.md)\[keyof *typeof* [`LogicalOperator`](../variables/LogicalOperator.md)\]

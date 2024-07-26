@@ -35,6 +35,7 @@ export const EntitySchemaPropertyType = {
 	 * Object.
 	 */
 	Object: "object"
+
 } as const;
 
 /**

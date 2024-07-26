@@ -1,3 +1,7 @@
+[**@gtsc/entity**](../overview.md) • **Docs**
+
+***
+
 # Interface: IEntitySchema\<T\>
 
 Definition for an entity schema.
