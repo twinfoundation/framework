@@ -12,8 +12,16 @@ The id for partitioning data, usually correlated from the api key making the req
 
 ***
 
-### identity?
+### systemIdentity?
 
-> `optional` **identity**: `string`
+> `optional` **systemIdentity**: `string`
+
+The identity of the system the request is being performed on.
+
+***
+
+### userIdentity?
+
+> `optional` **userIdentity**: `string`
 
 The identity of the requestor if there is an authenticated user.

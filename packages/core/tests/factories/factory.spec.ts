@@ -38,12 +38,6 @@ class TestService implements IService {
 		this.name = name;
 		this.foo = 1;
 	}
-
-	/**
-	 * Bootstrap the service by creating and initializing any resources it needs.
-	 * @returns The nothing.
-	 */
-	public async bootstrap(): Promise<void> {}
 }
 
 describe("Factory", () => {

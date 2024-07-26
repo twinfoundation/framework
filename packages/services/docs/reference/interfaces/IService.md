@@ -14,15 +14,11 @@ The name of the service.
 
 ### bootstrap()?
 
-> `optional` **bootstrap**(`systemRequestContext`, `systemLoggingConnectorType`?): `Promise`\<`void`\>
+> `optional` **bootstrap**(`systemLoggingConnectorType`?): `Promise`\<`void`\>
 
 Bootstrap the service by creating and initializing any resources it needs.
 
 #### Parameters
-
-• **systemRequestContext**: [`IServiceRequestContext`](IServiceRequestContext.md)
-
-The system request context.
 
 • **systemLoggingConnectorType?**: `string`
 

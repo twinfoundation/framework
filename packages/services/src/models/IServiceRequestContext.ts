@@ -11,7 +11,12 @@ export interface IServiceRequestContext {
 	partitionId?: string;
 
 	/**
+	 * The identity of the system the request is being performed on.
+	 */
+	systemIdentity?: string;
+
+	/**
 	 * The identity of the requestor if there is an authenticated user.
 	 */
-	identity?: string;
+	userIdentity?: string;
 }
