@@ -90,6 +90,12 @@ uint64.
 
 date.
 
+### Time
+
+> `readonly` **Time**: `"time"` = `"time"`
+
+time.
+
 ### DateTime
 
 > `readonly` **DateTime**: `"date-time"` = `"date-time"`

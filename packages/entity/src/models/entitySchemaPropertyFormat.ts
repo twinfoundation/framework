@@ -77,6 +77,11 @@ export const EntitySchemaPropertyFormat = {
 	Date: "date",
 
 	/**
+	 * time.
+	 */
+	Time: "time",
+
+	/**
 	 * date-time.
 	 */
 	DateTime: "date-time"
