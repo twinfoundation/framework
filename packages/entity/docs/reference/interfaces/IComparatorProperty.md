@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../overview.md) • **Docs**
-
-***
-
 # Interface: IComparatorProperty\<T, C\>
 
 Interface defining comparator which works on a child property.

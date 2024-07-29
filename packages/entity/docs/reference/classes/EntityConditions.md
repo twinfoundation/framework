@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../overview.md) • **Docs**
-
-***
-
 # Class: EntityConditions
 
 Class to perform condition checks.

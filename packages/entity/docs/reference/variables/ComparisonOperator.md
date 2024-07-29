@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../overview.md) • **Docs**
-
-***
-
 # Variable: ComparisonOperator
 
 > `const` **ComparisonOperator**: `object`

@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../overview.md) • **Docs**
-
-***
-
 # Class: EntitySchemaHelper
 
 Class to help with entity schema operations.

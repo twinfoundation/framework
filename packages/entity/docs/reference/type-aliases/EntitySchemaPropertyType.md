@@ -1,7 +1,3 @@
-[**@gtsc/entity**](../overview.md) • **Docs**
-
-***
-
 # Type alias: EntitySchemaPropertyType
 
 > **EntitySchemaPropertyType**: *typeof* [`EntitySchemaPropertyType`](../variables/EntitySchemaPropertyType.md)\[keyof *typeof* [`EntitySchemaPropertyType`](../variables/EntitySchemaPropertyType.md)\]
