@@ -80,7 +80,6 @@ export const EntitySchemaPropertyFormat = {
 	 * date-time.
 	 */
 	DateTime: "date-time"
-
 } as const;
 
 /**
