@@ -21,6 +21,7 @@
 
 - [ComparisonOperator](type-aliases/ComparisonOperator.md)
 - [EntityCondition](type-aliases/EntityCondition.md)
+- [EntitySchemaPropertyFormat](type-aliases/EntitySchemaPropertyFormat.md)
 - [EntitySchemaPropertyType](type-aliases/EntitySchemaPropertyType.md)
 - [LogicalOperator](type-aliases/LogicalOperator.md)
 - [SortDirection](type-aliases/SortDirection.md)
@@ -29,6 +30,7 @@
 
 - [EntitySchemaFactory](variables/EntitySchemaFactory.md)
 - [ComparisonOperator](variables/ComparisonOperator.md)
+- [EntitySchemaPropertyFormat](variables/EntitySchemaPropertyFormat.md)
 - [EntitySchemaPropertyType](variables/EntitySchemaPropertyType.md)
 - [LogicalOperator](variables/LogicalOperator.md)
 - [SortDirection](variables/SortDirection.md)

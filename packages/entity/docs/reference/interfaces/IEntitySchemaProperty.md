@@ -24,6 +24,14 @@ The type of the property.
 
 ***
 
+### format?
+
+> `optional` **format**: [`EntitySchemaPropertyFormat`](../type-aliases/EntitySchemaPropertyFormat.md)
+
+The format of the property.
+
+***
+
 ### isPrimary?
 
 > `optional` **isPrimary**: `boolean`

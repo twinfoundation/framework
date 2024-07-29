@@ -13,6 +13,7 @@ export * from "./models/IEntitySort";
 export * from "./models/comparisonOperator";
 export * from "./models/entityCondition";
 export * from "./models/entitySchemaPropertyType";
+export * from "./models/entitySchemaPropertyFormat";
 export * from "./models/logicalOperator";
 export * from "./models/sortDirection";
 export * from "./utils/decoratorHelper";

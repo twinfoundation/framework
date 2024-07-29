@@ -1,5 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
+import type { EntitySchemaPropertyFormat } from "./entitySchemaPropertyFormat";
 import type { EntitySchemaPropertyType } from "./entitySchemaPropertyType";
 import type { SortDirection } from "./sortDirection";
 
@@ -16,6 +17,11 @@ export interface IEntitySchemaProperty<T = unknown> {
 	 * The type of the property.
 	 */
 	type: EntitySchemaPropertyType;
+
+	/**
+	 * The format of the property.
+	 */
+	format?: EntitySchemaPropertyFormat;
 
 	/**
 	 * Is this the primary index property.
