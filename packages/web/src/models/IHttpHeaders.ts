@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 /**
- * Model used for Http request header parameters.
+ * Model used for Http headers parameter.
  */
-export interface IHttpRequestHeaders {
+export interface IHttpHeaders {
 	[key: string]: string | string[];
 }

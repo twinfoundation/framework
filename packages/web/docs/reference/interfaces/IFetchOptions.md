@@ -6,7 +6,7 @@ Options for call to the fetch helper.
 
 ### headers?
 
-> `optional` **headers**: [`IHttpRequestHeaders`](IHttpRequestHeaders.md)
+> `optional` **headers**: [`IHttpHeaders`](IHttpHeaders.md)
 
 #### Param
 

@@ -4,7 +4,7 @@ export * from "./errors/fetchError";
 export * from "./models/httpMethod";
 export * from "./models/httpStatusCode";
 export * from "./models/IFetchOptions";
-export * from "./models/IHttpRequestHeaders";
+export * from "./models/IHttpHeaders";
 export * from "./models/IJwk";
 export * from "./models/IJwtHeader";
 export * from "./models/IJwtPayload";

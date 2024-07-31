@@ -3,7 +3,7 @@
 import type { HttpMethod } from "../../src/models/httpMethod";
 import { HttpStatusCode } from "../../src/models/httpStatusCode";
 import type { IFetchOptions } from "../../src/models/IFetchOptions";
-import type { IHttpRequestHeaders } from "../../src/models/IHttpRequestHeaders";
+import type { IHttpHeaders } from "../../src/models/IHttpHeaders";
 import { FetchHelper } from "../../src/utils/fetchHelper";
 
 const fetchMock = vi.fn();
@@ -119,7 +119,7 @@ describe("FetchHelper", () => {
 		await expect(
 			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
 				headers: ""
-			} as unknown as IHttpRequestHeaders)
+			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.object",
@@ -134,7 +134,7 @@ describe("FetchHelper", () => {
 		await expect(
 			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
 				timeoutMs: ""
-			} as unknown as IHttpRequestHeaders)
+			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.integer",
@@ -149,7 +149,7 @@ describe("FetchHelper", () => {
 		await expect(
 			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
 				includeCredentials: ""
-			} as unknown as IHttpRequestHeaders)
+			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.boolean",
@@ -164,7 +164,7 @@ describe("FetchHelper", () => {
 		await expect(
 			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
 				retryCount: ""
-			} as unknown as IHttpRequestHeaders)
+			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.integer",
@@ -179,7 +179,7 @@ describe("FetchHelper", () => {
 		await expect(
 			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
 				retryDelayMs: ""
-			} as unknown as IHttpRequestHeaders)
+			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.integer",

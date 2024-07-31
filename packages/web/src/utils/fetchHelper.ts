@@ -6,7 +6,7 @@ import { FetchError } from "../errors/fetchError";
 import { HttpMethod } from "../models/httpMethod";
 import { HttpStatusCode } from "../models/httpStatusCode";
 import type { IFetchOptions } from "../models/IFetchOptions";
-import type { IHttpRequestHeaders } from "../models/IHttpRequestHeaders";
+import type { IHttpHeaders } from "../models/IHttpHeaders";
 
 /**
  * Class to helper with fetch operations.
@@ -51,7 +51,7 @@ export class FetchHelper {
 		if (!Is.undefined(options)) {
 			Guards.object<IFetchOptions>(FetchHelper._CLASS_NAME, nameof(options), options);
 			if (!Is.undefined(options.headers)) {
-				Guards.object<IHttpRequestHeaders>(
+				Guards.object<IHttpHeaders>(
 					FetchHelper._CLASS_NAME,
 					nameof(options.headers),
 					options.headers

@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { IHttpRequestHeaders } from "./IHttpRequestHeaders";
+import type { IHttpHeaders } from "./IHttpHeaders";
 
 /**
  * Options for call to the fetch helper.
@@ -9,7 +9,7 @@ export interface IFetchOptions {
 	/**
 	 * @param headers The headers for the request.
 	 */
-	headers?: IHttpRequestHeaders;
+	headers?: IHttpHeaders;
 
 	/**
 	 * Timeout for requests in milliseconds.

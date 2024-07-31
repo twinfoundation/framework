@@ -9,7 +9,7 @@
 ## Interfaces
 
 - [IFetchOptions](interfaces/IFetchOptions.md)
-- [IHttpRequestHeaders](interfaces/IHttpRequestHeaders.md)
+- [IHttpHeaders](interfaces/IHttpHeaders.md)
 - [IJwk](interfaces/IJwk.md)
 - [IJwtHeader](interfaces/IJwtHeader.md)
 - [IJwtPayload](interfaces/IJwtPayload.md)
