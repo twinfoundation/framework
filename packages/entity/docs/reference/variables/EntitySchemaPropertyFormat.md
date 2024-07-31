@@ -101,3 +101,9 @@ time.
 > `readonly` **DateTime**: `"date-time"` = `"date-time"`
 
 date-time.
+
+### Json
+
+> `readonly` **Json**: `"json"` = `"json"`
+
+JSON.

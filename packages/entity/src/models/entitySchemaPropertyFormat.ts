@@ -84,7 +84,12 @@ export const EntitySchemaPropertyFormat = {
 	/**
 	 * date-time.
 	 */
-	DateTime: "date-time"
+	DateTime: "date-time",
+
+	/**
+	 * JSON.
+	 */
+	Json: "json"
 } as const;
 
 /**
