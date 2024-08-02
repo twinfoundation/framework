@@ -6,11 +6,6 @@
  */
 export interface IServiceRequestContext {
 	/**
-	 * The id for partitioning data, usually correlated from the api key making the request.
-	 */
-	partitionId?: string;
-
-	/**
 	 * The identity of the system the request is being performed on.
 	 */
 	systemIdentity?: string;

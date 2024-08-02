@@ -4,14 +4,6 @@ The context for the request used by a service.
 
 ## Properties
 
-### partitionId?
-
-> `optional` **partitionId**: `string`
-
-The id for partitioning data, usually correlated from the api key making the request.
-
-***
-
 ### systemIdentity?
 
 > `optional` **systemIdentity**: `string`
