@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import type { IServiceRequestContext } from "./IServiceRequestContext";
 
 /**
  * Interface describing a service.
@@ -24,10 +23,7 @@ export interface IService {
 	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
 	 * @returns Nothing.
 	 */
-	start?(
-		systemIdentity: string,
-		systemLoggingConnectorType?: string
-	): Promise<void>;
+	start?(systemIdentity: string, systemLoggingConnectorType?: string): Promise<void>;
 
 	/**
 	 * The service needs to be stopped when the application is closed.
@@ -35,8 +31,5 @@ export interface IService {
 	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
 	 * @returns Nothing.
 	 */
-	stop?(
-		systemIdentity: string,
-		systemLoggingConnectorType?: string
-	): Promise<void>;
+	stop?(systemIdentity: string, systemLoggingConnectorType?: string): Promise<void>;
 }
