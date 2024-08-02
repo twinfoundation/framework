@@ -20,23 +20,23 @@ export interface IService {
 
 	/**
 	 * The service needs to be started when the application is initialized.
-	 * @param systemRequestContext The system request context.
+	 * @param systemIdentity The identity of the system.
 	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
 	 * @returns Nothing.
 	 */
 	start?(
-		systemRequestContext: IServiceRequestContext,
+		systemIdentity: string,
 		systemLoggingConnectorType?: string
 	): Promise<void>;
 
 	/**
 	 * The service needs to be stopped when the application is closed.
-	 * @param systemRequestContext The system request context.
+	 * @param systemIdentity The identity of the system.
 	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
 	 * @returns Nothing.
 	 */
 	stop?(
-		systemRequestContext: IServiceRequestContext,
+		systemIdentity: string,
 		systemLoggingConnectorType?: string
 	): Promise<void>;
 }
