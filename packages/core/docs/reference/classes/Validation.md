@@ -16,7 +16,7 @@ Class to handle validation operations.
 
 ### empty()
 
-> `static` **empty**(`property`, `value`, `failures`): value is undefined \| null
+> `static` **empty**(`property`, `value`, `failures`, `fieldNameResource`?): value is undefined \| null
 
 Is the property null or undefined.
 
@@ -34,6 +34,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 value is undefined \| null
@@ -44,7 +48,7 @@ True if the value is a empty.
 
 ### notEmpty()
 
-> `static` **notEmpty**(`property`, `value`, `failures`): `boolean`
+> `static` **notEmpty**(`property`, `value`, `failures`, `fieldNameResource`?): `boolean`
 
 Is the property is not null or undefined.
 
@@ -62,6 +66,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `boolean`
@@ -72,7 +80,7 @@ True if the value is a not empty.
 
 ### string()
 
-> `static` **string**(`property`, `value`, `failures`): `value is string`
+> `static` **string**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is string`
 
 Is the property a string.
 
@@ -90,17 +98,33 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
+• **options?**
+
+Additional options for the validation.
+
+• **options.minLength?**: `number`
+
+The minimum length of the string.
+
+• **options.maxLength?**: `number`
+
+The maximum length of the string.
+
 #### Returns
 
 `value is string`
 
-True if the value is a string.
+True if the value is a valid string.
 
 ***
 
 ### stringValue()
 
-> `static` **stringValue**(`property`, `value`, `failures`): `value is string`
+> `static` **stringValue**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is string`
 
 Is the property a string with a value.
 
@@ -118,17 +142,33 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
+• **options?**
+
+Additional options for the validation.
+
+• **options.minLength?**: `number`
+
+The minimum length of the string.
+
+• **options.maxLength?**: `number`
+
+The maximum length of the string.
+
 #### Returns
 
 `value is string`
 
-True if the value is a string.
+True if the value is a valid string.
 
 ***
 
 ### number()
 
-> `static` **number**(`property`, `value`, `failures`): `value is number`
+> `static` **number**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is number`
 
 Is the property a number.
 
@@ -146,17 +186,33 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
+• **options?**
+
+Additional options for the validation.
+
+• **options.minValue?**: `number`
+
+The minimum value of the number.
+
+• **options.maxValue?**: `number`
+
+The maximum value of the number.
+
 #### Returns
 
 `value is number`
 
-True if the value is a number.
+True if the value is a valid number.
 
 ***
 
 ### integer()
 
-> `static` **integer**(`property`, `value`, `failures`): `value is number`
+> `static` **integer**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is number`
 
 Is the property an integer.
 
@@ -174,17 +230,33 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
+• **options?**
+
+Additional options for the validation.
+
+• **options.minValue?**: `number`
+
+The minimum value of the integer.
+
+• **options.maxValue?**: `number`
+
+The maximum value of the integer.
+
 #### Returns
 
 `value is number`
 
-True if the value is a number.
+True if the value is a valid integer.
 
 ***
 
 ### bigint()
 
-> `static` **bigint**(`property`, `value`, `failures`): `value is bigint`
+> `static` **bigint**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is bigint`
 
 Is the property a bigint.
 
@@ -202,17 +274,33 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
+• **options?**
+
+Additional options for the validation.
+
+• **options.minValue?**: `bigint`
+
+The minimum value of the bigint.
+
+• **options.maxValue?**: `bigint`
+
+The maximum value of the bigint.
+
 #### Returns
 
 `value is bigint`
 
-True if the value is a bigint.
+True if the value is a valid bigint.
 
 ***
 
 ### boolean()
 
-> `static` **boolean**(`property`, `value`, `failures`): `value is boolean`
+> `static` **boolean**(`property`, `value`, `failures`, `fieldNameResource`?): `value is boolean`
 
 Is the property a boolean.
 
@@ -230,6 +318,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is boolean`
@@ -240,7 +332,7 @@ True if the value is a boolean.
 
 ### date()
 
-> `static` **date**(`property`, `value`, `failures`): `value is Date`
+> `static` **date**(`property`, `value`, `failures`, `fieldNameResource`?): `value is Date`
 
 Is the property a date.
 
@@ -258,6 +350,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is Date`
@@ -268,7 +364,7 @@ True if the value is a date.
 
 ### dateString()
 
-> `static` **dateString**(`property`, `value`, `failures`): `value is string`
+> `static` **dateString**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
 
 Is the property a date in ISO 8601 format.
 
@@ -286,6 +382,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is string`
@@ -296,7 +396,7 @@ True if the value is a date.
 
 ### dateTimeString()
 
-> `static` **dateTimeString**(`property`, `value`, `failures`): `value is string`
+> `static` **dateTimeString**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
 
 Is the property a date/time in ISO 8601 format.
 
@@ -314,6 +414,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is string`
@@ -324,7 +428,7 @@ True if the value is a date/time.
 
 ### timeString()
 
-> `static` **timeString**(`property`, `value`, `failures`): `value is string`
+> `static` **timeString**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
 
 Is the property a time in ISO 8601 format.
 
@@ -342,6 +446,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is string`
@@ -352,7 +460,7 @@ True if the value is a time.
 
 ### timestampMilliseconds()
 
-> `static` **timestampMilliseconds**(`property`, `value`, `failures`): `value is number`
+> `static` **timestampMilliseconds**(`property`, `value`, `failures`, `fieldNameResource`?): `value is number`
 
 Is the property a timestamp in milliseconds.
 
@@ -370,6 +478,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is number`
@@ -380,7 +492,7 @@ True if the value is a timestamp in milliseconds.
 
 ### timestampSeconds()
 
-> `static` **timestampSeconds**(`property`, `value`, `failures`): `value is number`
+> `static` **timestampSeconds**(`property`, `value`, `failures`, `fieldNameResource`?): `value is number`
 
 Is the property a timestamp in seconds.
 
@@ -398,6 +510,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is number`
@@ -408,7 +524,7 @@ True if the value is a timestamp in seconds.
 
 ### object()
 
-> `static` **object**\<`T`\>(`property`, `value`, `failures`): `value is T`
+> `static` **object**\<`T`\>(`property`, `value`, `failures`, `fieldNameResource`?): `value is T`
 
 Is the property an object.
 
@@ -430,6 +546,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is T`
@@ -440,7 +560,7 @@ True if the value is a object.
 
 ### array()
 
-> `static` **array**\<`T`\>(`property`, `value`, `failures`): `value is T[]`
+> `static` **array**\<`T`\>(`property`, `value`, `failures`, `fieldNameResource`?): `value is T[]`
 
 Is the property an array.
 
@@ -462,6 +582,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is T[]`
@@ -472,7 +596,7 @@ True if the value is an array.
 
 ### arrayValue()
 
-> `static` **arrayValue**\<`T`\>(`property`, `value`, `failures`): `value is T[]`
+> `static` **arrayValue**\<`T`\>(`property`, `value`, `failures`, `fieldNameResource`?): `value is T[]`
 
 Is the property an array with at least one item.
 
@@ -494,6 +618,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is T[]`
@@ -504,7 +632,7 @@ True if the value is an array with at least one element.
 
 ### arrayOneOf()
 
-> `static` **arrayOneOf**\<`T`\>(`property`, `value`, `options`, `failures`): `value is T`
+> `static` **arrayOneOf**\<`T`\>(`property`, `value`, `options`, `failures`, `fieldNameResource`?): `value is T`
 
 Is the property one of a list of items.
 
@@ -530,6 +658,10 @@ The options the value must be one of.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is T`
@@ -540,7 +672,7 @@ True if the value is one of the items in the options.
 
 ### uint8Array()
 
-> `static` **uint8Array**(`property`, `value`, `failures`): `value is Uint8Array`
+> `static` **uint8Array**(`property`, `value`, `failures`, `fieldNameResource`?): `value is Uint8Array`
 
 Is the property a Uint8Array.
 
@@ -558,6 +690,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is Uint8Array`
@@ -568,7 +704,7 @@ True if the value is a Uint8Array.
 
 ### json()
 
-> `static` **json**(`property`, `value`, `failures`): `value is string`
+> `static` **json**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
 
 Is the property valid JSON.
 
@@ -586,6 +722,10 @@ The value to test.
 
 The list of failures to add to.
 
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
+
 #### Returns
 
 `value is string`
@@ -596,7 +736,7 @@ True if the value is valid JSON.
 
 ### email()
 
-> `static` **email**(`property`, `value`, `failures`): `value is string`
+> `static` **email**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
 
 Is the property a string in e-mail format.
 
@@ -613,6 +753,10 @@ The value to test.
 • **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
+
+• **fieldNameResource?**: `string`
+
+Optional i18n resource of the field name to display in the message.
 
 #### Returns
 
@@ -652,46 +796,26 @@ ValidationError From the converted failures.
 
 ***
 
-### appendChildFailures()
+### toPropertyMap()
 
-> `static` **appendChildFailures**(`failures`, `childFailures`, `childName`?): `void`
+> `static` **toPropertyMap**(`failures`, `propertyMap`, `clearMap`): `void`
 
-Append failures to the parent for a child object.
+Map a list of failures to their properties in a map.
 
 #### Parameters
 
 • **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
-The validation failures.
+The validation failures to combine into the map for the properties.
 
-• **childFailures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+• **propertyMap**
 
-The validation failures for the child.
+The map to add the failures to.
 
-• **childName?**: `string`
+• **clearMap**: `boolean`= `true`
 
-The name of the child object.
+Should the map be cleared before adding the failures.
 
 #### Returns
 
 `void`
-
-***
-
-### toPropertyMap()
-
-> `static` **toPropertyMap**(`failures`): `object`
-
-Map a list of failures to their properties.
-
-#### Parameters
-
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
-
-The validation failures.
-
-#### Returns
-
-`object`
-
-The failures mapped to their properties.

@@ -16,7 +16,15 @@ The property that failed validation.
 
 > **reason**: `string`
 
-The reason the validation failed.
+The reason the validation failed as an i18 resource error.
+
+***
+
+### fieldName?
+
+> `optional` **fieldName**: `string`
+
+The optional human readable name for the field as an i18 resource.
 
 ***
 

@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/entity",
-	"version": "0.0.5-next.3",
+	"version": "0.0.5-next.4",
 	"description": "Helpers for defining and working with entities",
 	"repository": {
 		"type": "git",
@@ -29,7 +29,7 @@
 	},
 	"dependencies": {
 		"@gtsc/nameof": "next",
-		"@gtsc/core": "0.0.5-next.3",
+		"@gtsc/core": "0.0.5-next.4",
 		"reflect-metadata": "0.2.2"
 	},
 	"devDependencies": {

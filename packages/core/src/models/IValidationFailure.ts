@@ -10,9 +10,14 @@ export interface IValidationFailure {
 	property: string;
 
 	/**
-	 * The reason the validation failed.
+	 * The reason the validation failed as an i18 resource error.
 	 */
 	reason: string;
+
+	/**
+	 * The optional human readable name for the field as an i18 resource.
+	 */
+	fieldName?: string;
 
 	/**
 	 * Additional properties for the validation failure.

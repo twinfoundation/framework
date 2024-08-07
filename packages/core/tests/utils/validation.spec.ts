@@ -48,10 +48,84 @@ describe("Validation", () => {
 		expect(I18n.hasMessage("error.validation.beText")).toEqual(true);
 	});
 
+	test("can fail if string is not number below min length", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.string("val", "hello", failures, undefined, { minLength: 10 })).toEqual(
+			false
+		);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextMin");
+		expect(I18n.hasMessage("error.validation.beTextMin")).toEqual(true);
+	});
+
+	test("can fail if value is not string above max length", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.string("val", "hello", failures, undefined, { maxLength: 3 })).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextMax");
+		expect(I18n.hasMessage("error.validation.beTextMax")).toEqual(true);
+	});
+
+	test("can fail if not string between min length and max length", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.string("val", "aa", failures, undefined, { minLength: 3, maxLength: 6 })
+		).toEqual(false);
+		expect(
+			Validation.string("val", "aaaaaaa", failures, undefined, { minLength: 3, maxLength: 6 })
+		).toEqual(false);
+		expect(failures.length).toEqual(2);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextMinMax");
+		expect(failures[1].property).toEqual("val");
+		expect(failures[1].reason).toEqual("validation.beTextMinMax");
+		expect(I18n.hasMessage("error.validation.beTextMinMax")).toEqual(true);
+	});
+
 	test("can succeed if value is a string", () => {
 		const failures: IValidationFailure[] = [];
 		expect(Validation.string("val", "", failures)).toEqual(true);
 		expect(failures.length).toEqual(0);
+	});
+
+	test("can fail if string is not number below min length", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.stringValue("val", "hello", failures, undefined, { minLength: 10 })).toEqual(
+			false
+		);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextMin");
+		expect(I18n.hasMessage("error.validation.beTextMin")).toEqual(true);
+	});
+
+	test("can fail if value is not string above max length", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.stringValue("val", "hello", failures, undefined, { maxLength: 3 })).toEqual(
+			false
+		);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextMax");
+		expect(I18n.hasMessage("error.validation.beTextMax")).toEqual(true);
+	});
+
+	test("can fail if not string between min length and max length", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.stringValue("val", "aa", failures, undefined, { minLength: 3, maxLength: 6 })
+		).toEqual(false);
+		expect(
+			Validation.stringValue("val", "aaaaaaa", failures, undefined, { minLength: 3, maxLength: 6 })
+		).toEqual(false);
+		expect(failures.length).toEqual(2);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextMinMax");
+		expect(failures[1].property).toEqual("val");
+		expect(failures[1].reason).toEqual("validation.beTextMinMax");
+		expect(I18n.hasMessage("error.validation.beTextMinMax")).toEqual(true);
 	});
 
 	test("can fail if value is not a string value", () => {
@@ -78,6 +152,40 @@ describe("Validation", () => {
 		expect(I18n.hasMessage("error.validation.beNumber")).toEqual(true);
 	});
 
+	test("can fail if value is not number below min", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.number("val", 9, failures, undefined, { minValue: 10 })).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beNumberMin");
+		expect(I18n.hasMessage("error.validation.beNumberMin")).toEqual(true);
+	});
+
+	test("can fail if value is not number above max", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.number("val", 11, failures, undefined, { maxValue: 10 })).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beNumberMax");
+		expect(I18n.hasMessage("error.validation.beNumberMax")).toEqual(true);
+	});
+
+	test("can fail if not number between min and max", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.number("val", 9, failures, undefined, { minValue: 10, maxValue: 15 })
+		).toEqual(false);
+		expect(
+			Validation.number("val", 16, failures, undefined, { minValue: 10, maxValue: 15 })
+		).toEqual(false);
+		expect(failures.length).toEqual(2);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beNumberMinMax");
+		expect(failures[1].property).toEqual("val");
+		expect(failures[1].reason).toEqual("validation.beNumberMinMax");
+		expect(I18n.hasMessage("error.validation.beNumberMinMax")).toEqual(true);
+	});
+
 	test("can succeed if value is a number", () => {
 		const failures: IValidationFailure[] = [];
 		expect(Validation.number("val", 1, failures)).toEqual(true);
@@ -93,6 +201,40 @@ describe("Validation", () => {
 		expect(I18n.hasMessage("error.validation.beWholeNumber")).toEqual(true);
 	});
 
+	test("can fail if value is not integer below min", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.integer("val", 9, failures, undefined, { minValue: 10 })).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beWholeNumberMin");
+		expect(I18n.hasMessage("error.validation.beWholeNumberMin")).toEqual(true);
+	});
+
+	test("can fail if value is not integer above max", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.integer("val", 11, failures, undefined, { maxValue: 10 })).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beWholeNumberMax");
+		expect(I18n.hasMessage("error.validation.beWholeNumberMax")).toEqual(true);
+	});
+
+	test("can fail if not integer between min and max", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.integer("val", 9, failures, undefined, { minValue: 10, maxValue: 15 })
+		).toEqual(false);
+		expect(
+			Validation.integer("val", 16, failures, undefined, { minValue: 10, maxValue: 15 })
+		).toEqual(false);
+		expect(failures.length).toEqual(2);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beWholeNumberMinMax");
+		expect(failures[1].property).toEqual("val");
+		expect(failures[1].reason).toEqual("validation.beWholeNumberMinMax");
+		expect(I18n.hasMessage("error.validation.beWholeNumberMinMax")).toEqual(true);
+	});
+
 	test("can succeed if value is an integer", () => {
 		const failures: IValidationFailure[] = [];
 		expect(Validation.integer("val", 1, failures)).toEqual(true);
@@ -106,6 +248,40 @@ describe("Validation", () => {
 		expect(failures[0].property).toEqual("val");
 		expect(failures[0].reason).toEqual("validation.beBigInteger");
 		expect(I18n.hasMessage("error.validation.beBigInteger")).toEqual(true);
+	});
+
+	test("can fail if value is not bigint below min", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.bigint("val", 9n, failures, undefined, { minValue: 10n })).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beBigIntegerMin");
+		expect(I18n.hasMessage("error.validation.beBigIntegerMin")).toEqual(true);
+	});
+
+	test("can fail if value is not bigint above max", () => {
+		const failures: IValidationFailure[] = [];
+		expect(Validation.bigint("val", 11n, failures, undefined, { maxValue: 10n })).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beBigIntegerMax");
+		expect(I18n.hasMessage("error.validation.beBigIntegerMax")).toEqual(true);
+	});
+
+	test("can fail if not bigint between min and max", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.bigint("val", 9n, failures, undefined, { minValue: 10n, maxValue: 15n })
+		).toEqual(false);
+		expect(
+			Validation.bigint("val", 16n, failures, undefined, { minValue: 10n, maxValue: 15n })
+		).toEqual(false);
+		expect(failures.length).toEqual(2);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beBigIntegerMinMax");
+		expect(failures[1].property).toEqual("val");
+		expect(failures[1].reason).toEqual("validation.beBigIntegerMinMax");
+		expect(I18n.hasMessage("error.validation.beBigIntegerMinMax")).toEqual(true);
 	});
 
 	test("can succeed if value is a big integer", () => {

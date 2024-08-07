@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/services",
-	"version": "0.0.5-next.3",
+	"version": "0.0.5-next.4",
 	"description": "Package for base service types",
 	"repository": {
 		"type": "git",
@@ -28,7 +28,7 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.5-next.3",
+		"@gtsc/core": "0.0.5-next.4",
 		"@gtsc/nameof": "next"
 	},
 	"devDependencies": {
