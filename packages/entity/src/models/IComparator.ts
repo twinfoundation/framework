@@ -5,11 +5,11 @@ import type { ComparisonOperator } from "./comparisonOperator";
 /**
  * Interface defining comparator operator.
  */
-export interface IComparator<T = unknown> {
+export interface IComparator {
 	/**
 	 * The name of the property in the object to check.
 	 */
-	property: keyof T;
+	property: string;
 
 	/**
 	 * The value of the property to check.

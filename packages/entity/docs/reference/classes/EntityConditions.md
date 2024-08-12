@@ -58,7 +58,7 @@ See if the entity matches the conditions.
 
 The entity to test.
 
-• **comparator**: [`IComparator`](../interfaces/IComparator.md)\<`T`\>
+• **comparator**: [`IComparator`](../interfaces/IComparator.md)
 
 The condition to test.
 

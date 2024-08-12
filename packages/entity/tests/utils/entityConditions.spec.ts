@@ -1,11 +1,10 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { ComparisonOperator } from "../../src/models/comparisonOperator";
-import type { IComparatorProperty } from "../../src/models/IComparatorProperty";
 import { LogicalOperator } from "../../src/models/logicalOperator";
 import { EntityConditions } from "../../src/utils/entityConditions";
 
-describe("Conditions", () => {
+describe("EntityConditions", () => {
 	test("can match if conditions are undefined", async () => {
 		expect(EntityConditions.check({}, undefined)).toEqual(true);
 	});
@@ -268,6 +267,58 @@ describe("Conditions", () => {
 				{
 					property: "foo",
 					value: "bab",
+					operator: ComparisonOperator.NotIncludes
+				}
+			)
+		).toEqual(true);
+	});
+
+	test("can match if array condition contains", async () => {
+		expect(
+			EntityConditions.check(
+				{ a: [{ foo: "bebar" }] },
+				{
+					property: "a",
+					value: { foo: "bebar" },
+					operator: ComparisonOperator.Includes
+				}
+			)
+		).toEqual(true);
+	});
+
+	test("can match if array condition not contains", async () => {
+		expect(
+			EntityConditions.check(
+				{ a: [{ foo: "bebar" }] },
+				{
+					property: "a",
+					value: { foo: "bebar2" },
+					operator: ComparisonOperator.Includes
+				}
+			)
+		).toEqual(false);
+	});
+
+	test("can match if array condition notcontains", async () => {
+		expect(
+			EntityConditions.check(
+				{ a: [{ foo: "bebar" }] },
+				{
+					property: "a",
+					value: { foo: "bebar" },
+					operator: ComparisonOperator.NotIncludes
+				}
+			)
+		).toEqual(false);
+	});
+
+	test("can match if array condition notcontains", async () => {
+		expect(
+			EntityConditions.check(
+				{ a: [{ foo: "bebar" }] },
+				{
+					property: "a",
+					value: { foo: "bebar2" },
 					operator: ComparisonOperator.NotIncludes
 				}
 			)
@@ -716,27 +767,27 @@ describe("Conditions", () => {
 		).toEqual(true);
 	});
 
-	test("can not match if array condition does notin", async () => {
+	test("can not match if array condition does not in", async () => {
 		expect(
 			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 4,
-					operator: ComparisonOperator.NotIn
+					operator: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(true);
 	});
 
-	test("can not match if array condition does not notin", async () => {
+	test("can not match if array condition does not not in", async () => {
 		expect(
 			EntityConditions.check(
 				{ foo: [1, 2, 3] },
 				{
 					property: "foo",
 					value: 3,
-					operator: ComparisonOperator.NotIn
+					operator: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(false);
@@ -749,7 +800,7 @@ describe("Conditions", () => {
 				{
 					property: "foo",
 					value: new Date(),
-					operator: ComparisonOperator.NotIn
+					operator: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -999,17 +1050,13 @@ describe("Conditions", () => {
 				}
 			},
 			{
-				property: "foo",
-				condition: {
-					conditions: [
-						{
-							property: "a",
-							value: 2,
-							operator: ComparisonOperator.Equals
-						}
-					],
-					logicalOperator: LogicalOperator.And
-				}
+				conditions: [
+					{
+						property: "foo.a",
+						value: 2,
+						operator: ComparisonOperator.Equals
+					}
+				]
 			}
 		);
 
@@ -1024,17 +1071,13 @@ describe("Conditions", () => {
 				}
 			},
 			{
-				property: "foo",
-				condition: {
-					conditions: [
-						{
-							property: "a",
-							value: 1,
-							operator: ComparisonOperator.Equals
-						}
-					],
-					logicalOperator: LogicalOperator.And
-				}
+				conditions: [
+					{
+						property: "foo.a",
+						value: 1,
+						operator: ComparisonOperator.Equals
+					}
+				]
 			}
 		);
 
@@ -1051,17 +1094,13 @@ describe("Conditions", () => {
 				]
 			},
 			{
-				property: "foo",
-				condition: {
-					conditions: [
-						{
-							property: "a",
-							value: 2,
-							operator: ComparisonOperator.Equals
-						}
-					],
-					logicalOperator: LogicalOperator.And
-				}
+				conditions: [
+					{
+						property: "foo.a",
+						value: 2,
+						operator: ComparisonOperator.Equals
+					}
+				]
 			}
 		);
 
@@ -1078,17 +1117,13 @@ describe("Conditions", () => {
 				]
 			},
 			{
-				property: "foo",
-				condition: {
-					conditions: [
-						{
-							property: "a",
-							value: 1,
-							operator: ComparisonOperator.Equals
-						}
-					],
-					logicalOperator: LogicalOperator.And
-				}
+				conditions: [
+					{
+						property: "foo.a",
+						value: 1,
+						operator: ComparisonOperator.Equals
+					}
+				]
 			}
 		);
 
@@ -1109,19 +1144,13 @@ describe("Conditions", () => {
 				]
 			},
 			{
-				property: "foo",
-				condition: {
-					property: "a",
-					condition: {
-						conditions: [
-							{
-								property: "b",
-								value: 3,
-								operator: ComparisonOperator.Equals
-							}
-						]
+				conditions: [
+					{
+						property: "foo.a.b",
+						value: 3,
+						operator: ComparisonOperator.Equals
 					}
-				}
+				]
 			}
 		);
 
@@ -1142,19 +1171,13 @@ describe("Conditions", () => {
 				]
 			},
 			{
-				property: "foo",
-				condition: {
-					property: "a",
-					condition: {
-						conditions: [
-							{
-								property: "b",
-								value: 3,
-								operator: ComparisonOperator.Equals
-							}
-						]
+				conditions: [
+					{
+						property: "foo.a.b",
+						value: 3,
+						operator: ComparisonOperator.Equals
 					}
-				}
+				]
 			}
 		);
 
@@ -1180,24 +1203,18 @@ describe("Conditions", () => {
 				]
 			},
 			{
-				property: "foo",
-				condition: {
-					property: "a",
-					condition: {
-						conditions: [
-							{
-								property: "b",
-								value: 3,
-								operator: ComparisonOperator.Equals
-							},
-							{
-								property: "c",
-								value: 4,
-								operator: ComparisonOperator.Equals
-							}
-						]
+				conditions: [
+					{
+						property: "foo.a.b",
+						value: 3,
+						operator: ComparisonOperator.Equals
+					},
+					{
+						property: "foo.a.c",
+						value: 4,
+						operator: ComparisonOperator.Equals
 					}
-				}
+				]
 			}
 		);
 
@@ -1223,87 +1240,22 @@ describe("Conditions", () => {
 				]
 			},
 			{
-				property: "foo",
-				condition: {
-					property: "a",
-					condition: {
-						conditions: [
-							{
-								property: "b",
-								value: 4,
-								operator: ComparisonOperator.Equals
-							},
-							{
-								property: "c",
-								value: 4,
-								operator: ComparisonOperator.Equals
-							}
-						]
-					}
-				}
-			}
-		);
-
-		expect(results).toEqual(false);
-	});
-
-	test("can check a child condition with strict typing", async () => {
-		/**
-		 * Test type.
-		 */
-		interface TestType {
-			/**
-			 * Foo property
-			 */
-			foo: {
-				a: {
-					b: number;
-					c: number;
-				}[];
-			}[];
-		}
-
-		const propComparator: IComparatorProperty<TestType["foo"][0], TestType["foo"][0]["a"][0]> = {
-			property: "a",
-			condition: {
 				conditions: [
 					{
-						property: "b",
-						value: 3,
+						property: "foo.a.b",
+						value: 4,
 						operator: ComparisonOperator.Equals
 					},
 					{
-						property: "c",
+						property: "foo.a.c",
 						value: 4,
 						operator: ComparisonOperator.Equals
 					}
 				]
 			}
-		};
-		const results = EntityConditions.check<TestType>(
-			{
-				foo: [
-					{
-						a: [
-							{
-								b: 3,
-								c: 4
-							},
-							{
-								b: 5,
-								c: 6
-							}
-						]
-					}
-				]
-			},
-			{
-				property: "foo",
-				condition: propComparator
-			}
 		);
 
-		expect(results).toEqual(true);
+		expect(results).toEqual(false);
 	});
 
 	test("can check a child condition with object properties", async () => {
@@ -1317,21 +1269,18 @@ describe("Conditions", () => {
 				]
 			},
 			{
-				property: "properties",
-				condition: {
-					conditions: [
-						{
-							property: "key",
-							value: "role",
-							operator: ComparisonOperator.Equals
-						},
-						{
-							property: "value",
-							value: "user",
-							operator: ComparisonOperator.Equals
-						}
-					]
-				}
+				conditions: [
+					{
+						property: "properties.key",
+						value: "role",
+						operator: ComparisonOperator.Equals
+					},
+					{
+						property: "properties.value",
+						value: "user",
+						operator: ComparisonOperator.Equals
+					}
+				]
 			}
 		);
 
@@ -1349,21 +1298,18 @@ describe("Conditions", () => {
 				]
 			},
 			{
-				property: "properties",
-				condition: {
-					conditions: [
-						{
-							property: "key",
-							value: "role",
-							operator: ComparisonOperator.Equals
-						},
-						{
-							property: "value",
-							value: "user",
-							operator: ComparisonOperator.Equals
-						}
-					]
-				}
+				conditions: [
+					{
+						property: "properties.key",
+						value: "role",
+						operator: ComparisonOperator.Equals
+					},
+					{
+						property: "properties.value",
+						value: "user",
+						operator: ComparisonOperator.Equals
+					}
+				]
 			}
 		);
 

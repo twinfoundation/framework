@@ -47,21 +47,22 @@ Less Than Or Equal.
 > `readonly` **Includes**: `"Includes"` = `"Includes"`
 
 Includes.
+A string in a substring.
+A set contains an element.
+A list contains an element.
 
 ### NotIncludes
 
 > `readonly` **NotIncludes**: `"NotIncludes"` = `"NotIncludes"`
 
 Not Includes.
+A string not in a substring.
+A set does not contain an element.
+A list does not contain an element.
 
 ### In
 
 > `readonly` **In**: `"In"` = `"In"`
 
-In operator.
-
-### NotIn
-
-> `readonly` **NotIn**: `"NotIn"` = `"NotIn"`
-
-Not In operator.
+In.
+A element is in a set.

@@ -38,23 +38,25 @@ export const ComparisonOperator = {
 
 	/**
 	 * Includes.
+	 * A string in a substring.
+	 * A set contains an element.
+	 * A list contains an element.
 	 */
 	Includes: "Includes",
 
 	/**
 	 * Not Includes.
+	 * A string not in a substring.
+	 * A set does not contain an element.
+	 * A list does not contain an element.
 	 */
 	NotIncludes: "NotIncludes",
 
 	/**
-	 * In operator.
+	 * In.
+	 * A element is in a set.
 	 */
-	In: "In",
-
-	/**
-	 * Not In operator.
-	 */
-	NotIn: "NotIn"
+	In: "In"
 } as const;
 
 /**

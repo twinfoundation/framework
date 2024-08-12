@@ -1,16 +1,12 @@
-# Interface: IComparator\<T\>
+# Interface: IComparator
 
 Interface defining comparator operator.
-
-## Type parameters
-
-• **T** = `unknown`
 
 ## Properties
 
 ### property
 
-> **property**: keyof `T`
+> **property**: `string`
 
 The name of the property in the object to check.
 

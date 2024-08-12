@@ -1,6 +1,6 @@
 # Type alias: EntityCondition\<T\>
 
-> **EntityCondition**\<`T`\>: [`IComparator`](../interfaces/IComparator.md)\<`T`\> \| [`IComparatorGroup`](../interfaces/IComparatorGroup.md)\<`T`\> \| [`IComparatorProperty`](../interfaces/IComparatorProperty.md)\<`T`\>
+> **EntityCondition**\<`T`\>: [`IComparator`](../interfaces/IComparator.md) \| [`IComparatorGroup`](../interfaces/IComparatorGroup.md)\<`T`\>
 
 Type defining condition for entities filtering.
 

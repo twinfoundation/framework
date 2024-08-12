@@ -128,4 +128,28 @@ describe("ObjectHelper", () => {
 		const result = ObjectHelper.merge({ a: true, c: { d: "foo" } }, { b: false, c: { e: "bar" } });
 		expect(result).toEqual({ a: true, b: false, c: { d: "foo", e: "bar" } });
 	});
+
+	test("can get the property from an object", () => {
+		const obj = { a: true };
+		const result = ObjectHelper.propertyGet(obj, "a");
+		expect(result).toEqual(true);
+	});
+
+	test("can not get the property from an object", () => {
+		const obj = { a: true };
+		const result = ObjectHelper.propertyGet(obj, "b");
+		expect(result).toEqual(undefined);
+	});
+
+	test("can get the property from a nested object", () => {
+		const obj = { a: true, b: { c: { d: 123 } } };
+		const result = ObjectHelper.propertyGet(obj, "b.c.d");
+		expect(result).toEqual(123);
+	});
+
+	test("can not get the property from a nested object", () => {
+		const obj = { a: true, b: { c: { d: 123 } } };
+		const result = ObjectHelper.propertyGet(obj, "b.d.d");
+		expect(result).toEqual(undefined);
+	});
 });

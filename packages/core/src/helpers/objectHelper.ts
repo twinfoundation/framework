@@ -103,10 +103,24 @@ export class ObjectHelper {
 	/**
 	 * Get the property of an unknown object.
 	 * @param obj The object to get the property from.
-	 * @param property The property to get.
+	 * @param property The property to get, can be separated by dots for nested path.
 	 * @returns The property.
 	 */
 	public static propertyGet<T = unknown>(obj: unknown, property: string): T | undefined {
+		if (property.includes(".")) {
+			const parts = property.split(".");
+
+			let value: unknown = obj;
+			for (const part of parts) {
+				if (Is.object(value)) {
+					value = value[part];
+				} else {
+					return undefined;
+				}
+			}
+			return value as T;
+		}
+
 		return Is.object(obj) ? (obj[property] as T) : undefined;
 	}
 

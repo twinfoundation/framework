@@ -78,6 +78,30 @@ The kebab case version of the input.
 
 ***
 
+### snakeCase()
+
+> `static` **snakeCase**(`input`, `stripInterfacePrefix`): `string`
+
+Convert the input string to snake case.
+
+#### Parameters
+
+• **input**: `string`
+
+The input to convert.
+
+• **stripInterfacePrefix**: `boolean`= `true`
+
+Strip interface prefixes.
+
+#### Returns
+
+`string`
+
+The snake case version of the input.
+
+***
+
 ### titleCase()
 
 > `static` **titleCase**(`input`, `stripInterfacePrefix`): `string`

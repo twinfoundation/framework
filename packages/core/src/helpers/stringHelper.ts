@@ -50,6 +50,23 @@ export class StringHelper {
 	}
 
 	/**
+	 * Convert the input string to snake case.
+	 * @param input The input to convert.
+	 * @param stripInterfacePrefix Strip interface prefixes.
+	 * @returns The snake case version of the input.
+	 */
+	public static snakeCase(input: string, stripInterfacePrefix: boolean = true): string {
+		if (Is.stringValue(input)) {
+			let output = input;
+			if (stripInterfacePrefix && /I[A-Z]/.test(output)) {
+				output = output.slice(1);
+			}
+			return StringHelper.words(output).join("_").toLowerCase();
+		}
+		return "";
+	}
+
+	/**
 	 * Title case all the words.
 	 * @param input The input to convert.
 	 * @param stripInterfacePrefix Strip interface prefixes.

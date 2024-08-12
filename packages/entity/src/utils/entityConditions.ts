@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { ArrayHelper, Is } from "@gtsc/core";
+import { ArrayHelper, Is, ObjectHelper } from "@gtsc/core";
 import { ComparisonOperator } from "../models/comparisonOperator";
 import type { EntityCondition } from "../models/entityCondition";
 import type { IComparator } from "../models/IComparator";
@@ -31,21 +31,26 @@ export class EntityConditions {
 			return results.some(Boolean);
 		}
 
-		if ("condition" in condition) {
+		if (condition.property.includes(".")) {
 			// It's a child property comparison, so evaluate the child property
 			// and then compare it to the conditions
-			const child = entity[condition.property];
+			const path = condition.property.split(".");
+
+			const child = ObjectHelper.propertyGet(entity, path[0]);
+
 			// If the child is an array then check each item
 			if (Is.array(child)) {
 				for (const c of child) {
-					const check = EntityConditions.check(c, condition.condition);
+					const check = EntityConditions.check(c, {
+						...condition,
+						property: path.slice(1).join(".")
+					});
 					if (check) {
 						return true;
 					}
 				}
 				return false;
 			}
-			return EntityConditions.check(child, condition.condition);
 		}
 
 		// It's a single value so just check the condition
@@ -58,8 +63,8 @@ export class EntityConditions {
 	 * @param comparator The condition to test.
 	 * @returns True if the entity matches.
 	 */
-	public static compare<T>(entity: T, comparator: IComparator<T>): boolean {
-		const val = entity[comparator.property];
+	public static compare<T>(entity: T, comparator: IComparator): boolean {
+		const val = ObjectHelper.propertyGet(entity, comparator.property);
 		const conditionValue = comparator.value;
 
 		if (Is.undefined(conditionValue)) {
@@ -89,6 +94,11 @@ export class EntityConditions {
 					return false;
 				}
 				return true;
+			} else if (Is.array(conditionValue)) {
+				if (!(comparator.operator === ComparisonOperator.In && conditionValue.includes(val))) {
+					return false;
+				}
+				return true;
 			}
 			return false;
 		} else if (Is.number(val)) {
@@ -104,6 +114,11 @@ export class EntityConditions {
 						(comparator.operator === ComparisonOperator.LessThanOrEqual && val <= conditionValue)
 					)
 				) {
+					return false;
+				}
+				return true;
+			} else if (Is.array(conditionValue)) {
+				if (!(comparator.operator === ComparisonOperator.In && conditionValue.includes(val))) {
 					return false;
 				}
 				return true;
@@ -144,16 +159,14 @@ export class EntityConditions {
 				if (
 					comparator.operator === ComparisonOperator.Includes ||
 					comparator.operator === ComparisonOperator.NotIncludes ||
-					comparator.operator === ComparisonOperator.In ||
-					comparator.operator === ComparisonOperator.NotIn
+					comparator.operator === ComparisonOperator.In
 				) {
 					const includes = val.includes(conditionValue);
 					if (
 						!(
 							(comparator.operator === ComparisonOperator.Includes && includes) ||
 							(comparator.operator === ComparisonOperator.NotIncludes && !includes) ||
-							(comparator.operator === ComparisonOperator.In && includes) ||
-							(comparator.operator === ComparisonOperator.NotIn && !includes)
+							(comparator.operator === ComparisonOperator.In && includes)
 						)
 					) {
 						return false;
@@ -161,6 +174,20 @@ export class EntityConditions {
 					return true;
 				}
 				return false;
+			} else if (Is.object(conditionValue)) {
+				if (comparator.operator === ComparisonOperator.Includes) {
+					for (const v of val) {
+						if (ObjectHelper.equal(v, conditionValue)) {
+							return true;
+						}
+					}
+				} else if (comparator.operator === ComparisonOperator.NotIncludes) {
+					for (const v of val) {
+						if (!ObjectHelper.equal(v, conditionValue)) {
+							return true;
+						}
+					}
+				}
 			}
 			return false;
 		}

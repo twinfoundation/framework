@@ -71,6 +71,30 @@ describe("StringHelper", () => {
 		expect(StringHelper.kebabCase("IThisIsATest")).toEqual("this-is-a-test");
 	});
 
+	test("can convert name to snake case from Pascal case", () => {
+		expect(StringHelper.snakeCase("ThisIsATest")).toEqual("this_is_a_test");
+	});
+
+	test("can convert name to snake case from camel case", () => {
+		expect(StringHelper.snakeCase("thisIsATest")).toEqual("this_is_a_test");
+	});
+
+	test("can convert name to snake case from snake case", () => {
+		expect(StringHelper.snakeCase("this_is_a_test")).toEqual("this_is_a_test");
+	});
+
+	test("can convert name to snake case from title case", () => {
+		expect(StringHelper.snakeCase("This Is A Test")).toEqual("this_is_a_test");
+	});
+
+	test("can convert interface name to snake case from Pascal case", () => {
+		expect(StringHelper.snakeCase("IThisIsATest")).toEqual("this_is_a_test");
+	});
+
+	test("can convert interface name to snake case from camel case", () => {
+		expect(StringHelper.snakeCase("IThisIsATest")).toEqual("this_is_a_test");
+	});
+
 	test("can convert name to camel case from Pascal case", () => {
 		expect(StringHelper.camelCase("ThisIsATest")).toEqual("thisIsATest");
 	});

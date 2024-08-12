@@ -170,7 +170,7 @@ The object to get the property from.
 
 • **property**: `string`
 
-The property to get.
+The property to get, can be separated by dots for nested path.
 
 #### Returns
 
