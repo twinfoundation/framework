@@ -13,9 +13,9 @@ export interface IService {
 	/**
 	 * Bootstrap the service by creating and initializing any resources it needs.
 	 * @param nodeLoggingConnectorType The node logging connector type, defaults to "node-logging".
-	 * @returns Nothing.
+	 * @returns True if the bootstrapping process was successful.
 	 */
-	bootstrap?(nodeLoggingConnectorType?: string): Promise<void>;
+	bootstrap?(nodeLoggingConnectorType?: string): Promise<boolean>;
 
 	/**
 	 * The service needs to be started when the node is initialized.
