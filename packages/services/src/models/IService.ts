@@ -12,24 +12,24 @@ export interface IService {
 
 	/**
 	 * Bootstrap the service by creating and initializing any resources it needs.
-	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
+	 * @param nodeLoggingConnectorType The node logging connector type, defaults to "node-logging".
 	 * @returns Nothing.
 	 */
-	bootstrap?(systemLoggingConnectorType?: string): Promise<void>;
+	bootstrap?(nodeLoggingConnectorType?: string): Promise<void>;
 
 	/**
-	 * The service needs to be started when the application is initialized.
-	 * @param systemIdentity The identity of the system.
-	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
+	 * The service needs to be started when the node is initialized.
+	 * @param nodeIdentity The identity of the node starting the service.
+	 * @param nodeLoggingConnectorType The node logging connector type, defaults to "node-logging".
 	 * @returns Nothing.
 	 */
-	start?(systemIdentity: string, systemLoggingConnectorType?: string): Promise<void>;
+	start?(nodeIdentity: string, nodeLoggingConnectorType?: string): Promise<void>;
 
 	/**
-	 * The service needs to be stopped when the application is closed.
-	 * @param systemIdentity The identity of the system.
-	 * @param systemLoggingConnectorType The system logging connector type, defaults to "system-logging".
+	 * The service needs to be stopped when the node is closed.
+	 * @param nodeIdentity The identity of the node stopping the service.
+	 * @param nodeLoggingConnectorType The node logging connector type, defaults to "node-logging".
 	 * @returns Nothing.
 	 */
-	stop?(systemIdentity: string, systemLoggingConnectorType?: string): Promise<void>;
+	stop?(nodeIdentity: string, nodeLoggingConnectorType?: string): Promise<void>;
 }

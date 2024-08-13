@@ -14,15 +14,15 @@ The name of the service.
 
 ### bootstrap()?
 
-> `optional` **bootstrap**(`systemLoggingConnectorType`?): `Promise`\<`void`\>
+> `optional` **bootstrap**(`nodeLoggingConnectorType`?): `Promise`\<`void`\>
 
 Bootstrap the service by creating and initializing any resources it needs.
 
 #### Parameters
 
-• **systemLoggingConnectorType?**: `string`
+• **nodeLoggingConnectorType?**: `string`
 
-The system logging connector type, defaults to "system-logging".
+The node logging connector type, defaults to "node-logging".
 
 #### Returns
 
@@ -34,19 +34,19 @@ Nothing.
 
 ### start()?
 
-> `optional` **start**(`systemIdentity`, `systemLoggingConnectorType`?): `Promise`\<`void`\>
+> `optional` **start**(`nodeIdentity`, `nodeLoggingConnectorType`?): `Promise`\<`void`\>
 
-The service needs to be started when the application is initialized.
+The service needs to be started when the node is initialized.
 
 #### Parameters
 
-• **systemIdentity**: `string`
+• **nodeIdentity**: `string`
 
-The identity of the system.
+The identity of the node starting the service.
 
-• **systemLoggingConnectorType?**: `string`
+• **nodeLoggingConnectorType?**: `string`
 
-The system logging connector type, defaults to "system-logging".
+The node logging connector type, defaults to "node-logging".
 
 #### Returns
 
@@ -58,19 +58,19 @@ Nothing.
 
 ### stop()?
 
-> `optional` **stop**(`systemIdentity`, `systemLoggingConnectorType`?): `Promise`\<`void`\>
+> `optional` **stop**(`nodeIdentity`, `nodeLoggingConnectorType`?): `Promise`\<`void`\>
 
-The service needs to be stopped when the application is closed.
+The service needs to be stopped when the node is closed.
 
 #### Parameters
 
-• **systemIdentity**: `string`
+• **nodeIdentity**: `string`
 
-The identity of the system.
+The identity of the node stopping the service.
 
-• **systemLoggingConnectorType?**: `string`
+• **nodeLoggingConnectorType?**: `string`
 
-The system logging connector type, defaults to "system-logging".
+The node logging connector type, defaults to "node-logging".
 
 #### Returns
 
