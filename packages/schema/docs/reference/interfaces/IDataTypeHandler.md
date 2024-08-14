@@ -1,6 +1,6 @@
 # Interface: IDataTypeHandler
 
-Interface describing a service which can handle a specific data type.
+Interface describing a type which can handle a specific data type.
 
 ## Properties
 

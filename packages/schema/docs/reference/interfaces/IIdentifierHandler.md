@@ -1,6 +1,6 @@
 # Interface: IIdentifierHandler
 
-Interface describing a service which can handle a specific urn namespace.
+Interface describing a type which can handle a specific urn namespace.
 
 ## Properties
 

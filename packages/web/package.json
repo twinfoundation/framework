@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/web",
-	"version": "0.0.5-next.7",
+	"version": "0.0.5-next.8",
 	"description": "Contains classes for use with web operations",
 	"repository": {
 		"type": "git",
@@ -28,8 +28,8 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.5-next.7",
-		"@gtsc/crypto": "0.0.5-next.7",
+		"@gtsc/core": "0.0.5-next.8",
+		"@gtsc/crypto": "0.0.5-next.8",
 		"@gtsc/nameof": "next"
 	},
 	"devDependencies": {

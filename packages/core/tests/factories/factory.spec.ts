@@ -3,24 +3,24 @@
 /* eslint-disable max-classes-per-file */
 
 import { nameof } from "@gtsc/nameof";
-import type { IService } from "../../../services/src/models/IService";
 import { Factory } from "../../src/factories/factory";
+import type { IComponent } from "../../src/models/IComponent";
 import { I18n } from "../../src/utils/i18n";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const TestFactory = Factory.createFactory<IService>("service");
+const TestFactory = Factory.createFactory<IComponent>("component");
 
 /**
- * Test service for validation.
+ * Test component for validation.
  */
-class TestService implements IService {
+class TestComponent implements IComponent {
 	/**
-	 * The name of the service.
+	 * The name of the component.
 	 */
 	public readonly CLASS_NAME: string;
 
 	/**
-	 * The name of the service.
+	 * The name of the component.
 	 */
 	public readonly name: string;
 
@@ -30,11 +30,11 @@ class TestService implements IService {
 	public foo: number;
 
 	/**
-	 * Create a new instance of TestService.
-	 * @param name The name of the service.
+	 * Create a new instance of TestComponent.
+	 * @param name The name of the component.
 	 */
 	constructor(name: string) {
-		this.CLASS_NAME = nameof<TestService>();
+		this.CLASS_NAME = nameof<TestComponent>();
 		this.name = name;
 		this.foo = 1;
 	}
@@ -54,7 +54,7 @@ describe("Factory", () => {
 		);
 	});
 
-	test("register can fail if service is undefined", () => {
+	test("register can fail if component is undefined", () => {
 		expect(() => TestFactory.register("test", undefined as never)).toThrow(
 			expect.objectContaining({
 				name: "GuardError",
@@ -83,8 +83,8 @@ describe("Factory", () => {
 	});
 
 	test("register and get can succeed", () => {
-		TestFactory.register("test", () => new TestService("test"));
-		const t = TestFactory.get<TestService>("test");
+		TestFactory.register("test", () => new TestComponent("test"));
+		const t = TestFactory.get<TestComponent>("test");
 		expect(t).toBeDefined();
 		if (t) {
 			expect(t.foo).toEqual(1);
@@ -92,23 +92,23 @@ describe("Factory", () => {
 	});
 
 	test("register and get can succeed and return same instance", () => {
-		const testService = new TestService("test2");
-		TestFactory.register("test2", () => testService);
-		const t2 = TestFactory.get<TestService>("test2");
+		const testComponent = new TestComponent("test2");
+		TestFactory.register("test2", () => testComponent);
+		const t2 = TestFactory.get<TestComponent>("test2");
 		if (t2) {
 			expect(t2).toBeDefined();
 			expect(t2.foo).toEqual(1);
 		}
-		testService.foo = 2;
-		const t2b = TestFactory.get<TestService>("test2");
+		testComponent.foo = 2;
+		const t2b = TestFactory.get<TestComponent>("test2");
 		if (t2b) {
 			expect(t2b.foo).toEqual(2);
 		}
 	});
 
 	test("unregister can succeed", () => {
-		TestFactory.register("test3", () => new TestService("test3"));
-		const t3 = TestFactory.get<TestService>("test3");
+		TestFactory.register("test3", () => new TestComponent("test3"));
+		const t3 = TestFactory.get<TestComponent>("test3");
 		if (t3) {
 			expect(t3.foo).toEqual(1);
 		}
@@ -141,26 +141,26 @@ describe("Factory", () => {
 	});
 
 	test("can reset the factory", () => {
-		TestFactory.register("test3", () => new TestService("test3"));
-		expect(TestFactory.get<TestService>("test3").foo).toEqual(1);
-		TestFactory.get<TestService>("test3").foo = 2;
+		TestFactory.register("test3", () => new TestComponent("test3"));
+		expect(TestFactory.get<TestComponent>("test3").foo).toEqual(1);
+		TestFactory.get<TestComponent>("test3").foo = 2;
 		TestFactory.reset();
-		expect(TestFactory.get<TestService>("test3").foo).toEqual(1);
+		expect(TestFactory.get<TestComponent>("test3").foo).toEqual(1);
 	});
 
-	test("can auto register services", () => {
-		const testFactory = Factory.createFactory<TestService>("service1", true);
-		testFactory.register("test1", () => new TestService("test1"));
+	test("can auto register components", () => {
+		const testFactory = Factory.createFactory<TestComponent>("component1", true);
+		testFactory.register("test1", () => new TestComponent("test1"));
 		const instanceList = testFactory.instancesList();
 		expect(instanceList.length).toEqual(1);
 		expect(instanceList[0].name).toEqual("test1");
 	});
 
-	test("can register multiple services and get them as an array ordered by addition order", () => {
-		const testFactory = Factory.createFactory<TestService>("service1");
-		testFactory.register("test3", () => new TestService("test3"));
-		testFactory.register("test2", () => new TestService("test2"));
-		testFactory.register("test1", () => new TestService("test1"));
+	test("can register multiple components and get them as an array ordered by addition order", () => {
+		const testFactory = Factory.createFactory<TestComponent>("component1");
+		testFactory.register("test3", () => new TestComponent("test3"));
+		testFactory.register("test2", () => new TestComponent("test2"));
+		testFactory.register("test1", () => new TestComponent("test1"));
 		testFactory.get("test1");
 		testFactory.get("test2");
 		testFactory.get("test3");
@@ -171,11 +171,11 @@ describe("Factory", () => {
 		expect(instanceList[2].name).toEqual("test1");
 	});
 
-	test("can register multiple services and get them as a map", () => {
-		const testFactory = Factory.createFactory<TestService>("service1");
-		testFactory.register("test3", () => new TestService("test3"));
-		testFactory.register("test2", () => new TestService("test2"));
-		testFactory.register("test1", () => new TestService("test1"));
+	test("can register multiple components and get them as a map", () => {
+		const testFactory = Factory.createFactory<TestComponent>("component1");
+		testFactory.register("test3", () => new TestComponent("test3"));
+		testFactory.register("test2", () => new TestComponent("test2"));
+		testFactory.register("test1", () => new TestComponent("test1"));
 		testFactory.get("test1");
 		testFactory.get("test2");
 		testFactory.get("test3");
@@ -186,11 +186,11 @@ describe("Factory", () => {
 		expect(instanceMap.test1.name).toEqual("test1");
 	});
 
-	test("can register multiple services and get their names as an array ordered by addition order", () => {
-		const testFactory = Factory.createFactory<TestService>("service1");
-		testFactory.register("test3", () => new TestService("test3"));
-		testFactory.register("test2", () => new TestService("test2"));
-		testFactory.register("test1", () => new TestService("test1"));
+	test("can register multiple components and get their names as an array ordered by addition order", () => {
+		const testFactory = Factory.createFactory<TestComponent>("component1");
+		testFactory.register("test3", () => new TestComponent("test3"));
+		testFactory.register("test2", () => new TestComponent("test2"));
+		testFactory.register("test1", () => new TestComponent("test1"));
 		const names = testFactory.names();
 		expect(names.length).toEqual(3);
 		expect(names[0]).toEqual("test3");
@@ -199,10 +199,10 @@ describe("Factory", () => {
 	});
 
 	test("can have two factories which don't collide", () => {
-		const testFactory1 = Factory.createFactory<IService>("service11");
-		const testFactory2 = Factory.createFactory<IService>("service12");
-		testFactory1.register("test1", () => new TestService("test1"));
-		testFactory2.register("test2", () => new TestService("test2"));
+		const testFactory1 = Factory.createFactory<IComponent>("component11");
+		const testFactory2 = Factory.createFactory<IComponent>("component12");
+		testFactory1.register("test1", () => new TestComponent("test1"));
+		testFactory2.register("test2", () => new TestComponent("test2"));
 
 		const names1 = testFactory1.names();
 		expect(names1.length).toEqual(1);
@@ -214,10 +214,10 @@ describe("Factory", () => {
 	});
 
 	test("can use a different name matching strategy", () => {
-		const testFactory1 = Factory.createFactory<IService>("service21", false, (names, name) =>
+		const testFactory1 = Factory.createFactory<IComponent>("component21", false, (names, name) =>
 			names.find(n => `@${n}` === name)
 		);
-		testFactory1.register("test1", () => new TestService("test1"));
+		testFactory1.register("test1", () => new TestComponent("test1"));
 
 		const instance = testFactory1.get("@test1");
 		expect(instance).toBeDefined();

@@ -1,6 +1,6 @@
-# Interface: IService
+# Interface: IComponent
 
-Interface describing a service.
+Interface describing a component which can be bootstrapped, started and stopped.
 
 ## Properties
 
@@ -8,7 +8,7 @@ Interface describing a service.
 
 > `readonly` **CLASS\_NAME**: `string`
 
-The name of the service.
+The name of the component.
 
 ## Methods
 
@@ -16,7 +16,7 @@ The name of the service.
 
 > `optional` **bootstrap**(`nodeLoggingConnectorType`?): `Promise`\<`boolean`\>
 
-Bootstrap the service by creating and initializing any resources it needs.
+Bootstrap the component by creating and initializing any resources it needs.
 
 #### Parameters
 
@@ -36,13 +36,13 @@ True if the bootstrapping process was successful.
 
 > `optional` **start**(`nodeIdentity`, `nodeLoggingConnectorType`?): `Promise`\<`void`\>
 
-The service needs to be started when the node is initialized.
+The component needs to be started when the node is initialized.
 
 #### Parameters
 
 • **nodeIdentity**: `string`
 
-The identity of the node starting the service.
+The identity of the node starting the component.
 
 • **nodeLoggingConnectorType?**: `string`
 
@@ -60,13 +60,13 @@ Nothing.
 
 > `optional` **stop**(`nodeIdentity`, `nodeLoggingConnectorType`?): `Promise`\<`void`\>
 
-The service needs to be stopped when the node is closed.
+The component needs to be stopped when the node is closed.
 
 #### Parameters
 
 • **nodeIdentity**: `string`
 
-The identity of the node stopping the service.
+The identity of the node stopping the component.
 
 • **nodeLoggingConnectorType?**: `string`
 

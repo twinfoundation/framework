@@ -3,7 +3,7 @@
 import type { IValidationFailure } from "@gtsc/core";
 
 /**
- * Interface describing a service which can handle a specific data type.
+ * Interface describing a type which can handle a specific data type.
  */
 export interface IDataTypeHandler {
 	/**

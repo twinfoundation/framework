@@ -38,6 +38,7 @@
 
 ## Interfaces
 
+- [IComponent](interfaces/IComponent.md)
 - [IError](interfaces/IError.md)
 - [IKeyValue](interfaces/IKeyValue.md)
 - [ILabelledValue](interfaces/ILabelledValue.md)
@@ -53,4 +54,5 @@
 
 ## Variables
 
+- [ComponentFactory](variables/ComponentFactory.md)
 - [CompressionType](variables/CompressionType.md)

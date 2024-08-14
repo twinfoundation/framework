@@ -13,7 +13,6 @@ on:
           - entity
           - image
           - qr
-          - services
           - schema
           - web
           - cli-core
