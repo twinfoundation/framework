@@ -4,7 +4,7 @@
 	"description": "Framework",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/gtscio/framework.git"
+		"url": "git+https://github.com/gtscio/framework.git"
 	},
 	"author": "martyn.janes@iota.org",
 	"license": "Apache-2.0",

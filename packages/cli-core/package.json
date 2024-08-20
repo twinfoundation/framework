@@ -4,7 +4,7 @@
 	"description": "Core classes for building a CLI",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/gtscio/framework.git",
+		"url": "git+https://github.com/gtscio/framework.git",
 		"directory": "packages/cli-core"
 	},
 	"author": "martyn.janes@iota.org",

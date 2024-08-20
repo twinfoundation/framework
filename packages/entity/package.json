@@ -4,7 +4,7 @@
 	"description": "Helpers for defining and working with entities",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/gtscio/framework.git",
+		"url": "git+https://github.com/gtscio/framework.git",
 		"directory": "packages/entity"
 	},
 	"author": "martyn.janes@iota.org",

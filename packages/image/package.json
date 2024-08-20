@@ -4,7 +4,7 @@
 	"description": "Classes for image manipulation",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/gtscio/framework.git",
+		"url": "git+https://github.com/gtscio/framework.git",
 		"directory": "packages/image"
 	},
 	"author": "martyn.janes@iota.org",
