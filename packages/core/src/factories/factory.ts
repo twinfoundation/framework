@@ -17,6 +17,7 @@ export class Factory<T> {
 
 	/**
 	 * Store all the created factories.
+	 * @internal
 	 */
 	private static readonly _factories: { [typeName: string]: Factory<unknown> } = {};
 
