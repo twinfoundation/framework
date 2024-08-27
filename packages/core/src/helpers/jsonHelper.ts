@@ -11,7 +11,7 @@ export class JsonHelper {
 	 * @param object The object to be serialized.
 	 * @returns The serialized object.
 	 */
-	public static canonicalize(object: unknown): string {
+	public static canonicalize<T = unknown>(object: T): string {
 		const buffer: string[] = [];
 
 		if (

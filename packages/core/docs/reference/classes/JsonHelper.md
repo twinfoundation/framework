@@ -17,13 +17,17 @@ Based on https://www.rfc-editor.org/rfc/rfc8785
 
 ### canonicalize()
 
-> `static` **canonicalize**(`object`): `string`
+> `static` **canonicalize**\<`T`\>(`object`): `string`
 
 Serializes in canonical format.
 
+#### Type parameters
+
+• **T** = `unknown`
+
 #### Parameters
 
-• **object**: `unknown`
+• **object**: `T`
 
 The object to be serialized.
 

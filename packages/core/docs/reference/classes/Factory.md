@@ -32,18 +32,6 @@ Match the name of the instance.
 
 [`Factory`](Factory.md)\<`T`\>
 
-## Properties
-
-### \_factories
-
-> `static` `private` `readonly` **\_factories**: `object` = `{}`
-
-Store all the created factories.
-
-#### Index signature
-
- \[`typeName`: `string`\]: [`Factory`](Factory.md)\<`unknown`\>
-
 ## Methods
 
 ### createFactory()
