@@ -9,32 +9,32 @@ export const ComparisonOperator = {
 	/**
 	 * Equals.
 	 */
-	Equals: "Equals",
+	Equals: "equals",
 
 	/**
 	 * Not Equals.
 	 */
-	NotEquals: "NotEquals",
+	NotEquals: "not-equals",
 
 	/**
 	 * Greater Than.
 	 */
-	GreaterThan: "GreaterThan",
+	GreaterThan: "greater-than",
 
 	/**
 	 * Greater Than Or Equal.
 	 */
-	GreaterThanOrEqual: "GreaterThanOrEqual",
+	GreaterThanOrEqual: "greater-than-or-equal",
 
 	/**
 	 * Less Than.
 	 */
-	LessThan: "LessThan",
+	LessThan: "less-than",
 
 	/**
 	 * Less Than Or Equal.
 	 */
-	LessThanOrEqual: "LessThanOrEqual",
+	LessThanOrEqual: "less-than-or-equal",
 
 	/**
 	 * Includes.
@@ -42,7 +42,7 @@ export const ComparisonOperator = {
 	 * A set contains an element.
 	 * A list contains an element.
 	 */
-	Includes: "Includes",
+	Includes: "includes",
 
 	/**
 	 * Not Includes.
@@ -50,13 +50,13 @@ export const ComparisonOperator = {
 	 * A set does not contain an element.
 	 * A list does not contain an element.
 	 */
-	NotIncludes: "NotIncludes",
+	NotIncludes: "not-includes",
 
 	/**
 	 * In.
 	 * A element is in a set.
 	 */
-	In: "In"
+	In: "in"
 } as const;
 
 /**

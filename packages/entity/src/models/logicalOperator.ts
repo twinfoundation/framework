@@ -9,12 +9,12 @@ export const LogicalOperator = {
 	/**
 	 * Logical operator AND.
 	 */
-	And: "And",
+	And: "and",
 
 	/**
 	 * Logical operator OR.
 	 */
-	Or: "Or"
+	Or: "or"
 } as const;
 
 /**

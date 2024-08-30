@@ -17,7 +17,7 @@ export interface IComparator {
 	value: unknown;
 
 	/**
-	 * The check to perform.
+	 * The comparison to perform.
 	 */
-	operator: ComparisonOperator;
+	comparison: ComparisonOperator;
 }

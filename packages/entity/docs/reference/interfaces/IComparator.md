@@ -20,8 +20,8 @@ The value of the property to check.
 
 ***
 
-### operator
+### comparison
 
-> **operator**: [`ComparisonOperator`](../type-aliases/ComparisonOperator.md)
+> **comparison**: [`ComparisonOperator`](../type-aliases/ComparisonOperator.md)
 
-The check to perform.
+The comparison to perform.

@@ -6,7 +6,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-       id-token: write
+      id-token: write
 
     if: github.ref == 'refs/heads/main'
 
@@ -57,6 +57,6 @@ jobs:
       - name: Publish
         run: |
           cd packages/${{ matrix.package }}
-          npm publish --provenance --access public 
+          npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

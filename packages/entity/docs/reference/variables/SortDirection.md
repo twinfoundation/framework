@@ -8,12 +8,12 @@ The sort directions.
 
 ### Ascending
 
-> `readonly` **Ascending**: `"Ascending"` = `"Ascending"`
+> `readonly` **Ascending**: `"asc"` = `"asc"`
 
 Ascending.
 
 ### Descending
 
-> `readonly` **Descending**: `"Descending"` = `"Descending"`
+> `readonly` **Descending**: `"desc"` = `"desc"`
 
 Descending.

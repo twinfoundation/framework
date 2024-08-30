@@ -69,9 +69,9 @@ export class EntityConditions {
 
 		if (Is.undefined(conditionValue)) {
 			const valUndefined = Is.undefined(val);
-			if (valUndefined && comparator.operator === ComparisonOperator.Equals) {
+			if (valUndefined && comparator.comparison === ComparisonOperator.Equals) {
 				return true;
-			} else if (!valUndefined && comparator.operator === ComparisonOperator.NotEquals) {
+			} else if (!valUndefined && comparator.comparison === ComparisonOperator.NotEquals) {
 				return true;
 			}
 			return false;
@@ -79,15 +79,17 @@ export class EntityConditions {
 			if (Is.string(conditionValue)) {
 				if (
 					!(
-						(comparator.operator === ComparisonOperator.Equals && val === conditionValue) ||
-						(comparator.operator === ComparisonOperator.NotEquals && val !== conditionValue) ||
-						(comparator.operator === ComparisonOperator.GreaterThan && val > conditionValue) ||
-						(comparator.operator === ComparisonOperator.LessThan && val < conditionValue) ||
-						(comparator.operator === ComparisonOperator.GreaterThanOrEqual &&
+						(comparator.comparison === ComparisonOperator.Equals && val === conditionValue) ||
+						(comparator.comparison === ComparisonOperator.NotEquals && val !== conditionValue) ||
+						(comparator.comparison === ComparisonOperator.GreaterThan && val > conditionValue) ||
+						(comparator.comparison === ComparisonOperator.LessThan && val < conditionValue) ||
+						(comparator.comparison === ComparisonOperator.GreaterThanOrEqual &&
 							val >= conditionValue) ||
-						(comparator.operator === ComparisonOperator.LessThanOrEqual && val <= conditionValue) ||
-						(comparator.operator === ComparisonOperator.Includes && val.includes(conditionValue)) ||
-						(comparator.operator === ComparisonOperator.NotIncludes &&
+						(comparator.comparison === ComparisonOperator.LessThanOrEqual &&
+							val <= conditionValue) ||
+						(comparator.comparison === ComparisonOperator.Includes &&
+							val.includes(conditionValue)) ||
+						(comparator.comparison === ComparisonOperator.NotIncludes &&
 							!val.includes(conditionValue))
 					)
 				) {
@@ -95,7 +97,7 @@ export class EntityConditions {
 				}
 				return true;
 			} else if (Is.array(conditionValue)) {
-				if (!(comparator.operator === ComparisonOperator.In && conditionValue.includes(val))) {
+				if (!(comparator.comparison === ComparisonOperator.In && conditionValue.includes(val))) {
 					return false;
 				}
 				return true;
@@ -105,20 +107,20 @@ export class EntityConditions {
 			if (Is.number(conditionValue)) {
 				if (
 					!(
-						(comparator.operator === ComparisonOperator.Equals && val === conditionValue) ||
-						(comparator.operator === ComparisonOperator.NotEquals && val !== conditionValue) ||
-						(comparator.operator === ComparisonOperator.GreaterThan && val > conditionValue) ||
-						(comparator.operator === ComparisonOperator.LessThan && val < conditionValue) ||
-						(comparator.operator === ComparisonOperator.GreaterThanOrEqual &&
+						(comparator.comparison === ComparisonOperator.Equals && val === conditionValue) ||
+						(comparator.comparison === ComparisonOperator.NotEquals && val !== conditionValue) ||
+						(comparator.comparison === ComparisonOperator.GreaterThan && val > conditionValue) ||
+						(comparator.comparison === ComparisonOperator.LessThan && val < conditionValue) ||
+						(comparator.comparison === ComparisonOperator.GreaterThanOrEqual &&
 							val >= conditionValue) ||
-						(comparator.operator === ComparisonOperator.LessThanOrEqual && val <= conditionValue)
+						(comparator.comparison === ComparisonOperator.LessThanOrEqual && val <= conditionValue)
 					)
 				) {
 					return false;
 				}
 				return true;
 			} else if (Is.array(conditionValue)) {
-				if (!(comparator.operator === ComparisonOperator.In && conditionValue.includes(val))) {
+				if (!(comparator.comparison === ComparisonOperator.In && conditionValue.includes(val))) {
 					return false;
 				}
 				return true;
@@ -128,8 +130,8 @@ export class EntityConditions {
 			if (Is.boolean(conditionValue)) {
 				if (
 					!(
-						(comparator.operator === ComparisonOperator.Equals && val === conditionValue) ||
-						(comparator.operator === ComparisonOperator.NotEquals && val !== conditionValue)
+						(comparator.comparison === ComparisonOperator.Equals && val === conditionValue) ||
+						(comparator.comparison === ComparisonOperator.NotEquals && val !== conditionValue)
 					)
 				) {
 					return false;
@@ -140,14 +142,14 @@ export class EntityConditions {
 		} else if (Is.array(val)) {
 			if (Is.array(conditionValue)) {
 				if (
-					comparator.operator === ComparisonOperator.Equals ||
-					comparator.operator === ComparisonOperator.NotEquals
+					comparator.comparison === ComparisonOperator.Equals ||
+					comparator.comparison === ComparisonOperator.NotEquals
 				) {
 					const matches = ArrayHelper.matches(val, conditionValue);
 					if (
 						!(
-							(comparator.operator === ComparisonOperator.Equals && matches) ||
-							(comparator.operator === ComparisonOperator.NotEquals && !matches)
+							(comparator.comparison === ComparisonOperator.Equals && matches) ||
+							(comparator.comparison === ComparisonOperator.NotEquals && !matches)
 						)
 					) {
 						return false;
@@ -157,16 +159,16 @@ export class EntityConditions {
 				return false;
 			} else if (Is.number(conditionValue) || Is.string(conditionValue)) {
 				if (
-					comparator.operator === ComparisonOperator.Includes ||
-					comparator.operator === ComparisonOperator.NotIncludes ||
-					comparator.operator === ComparisonOperator.In
+					comparator.comparison === ComparisonOperator.Includes ||
+					comparator.comparison === ComparisonOperator.NotIncludes ||
+					comparator.comparison === ComparisonOperator.In
 				) {
 					const includes = val.includes(conditionValue);
 					if (
 						!(
-							(comparator.operator === ComparisonOperator.Includes && includes) ||
-							(comparator.operator === ComparisonOperator.NotIncludes && !includes) ||
-							(comparator.operator === ComparisonOperator.In && includes)
+							(comparator.comparison === ComparisonOperator.Includes && includes) ||
+							(comparator.comparison === ComparisonOperator.NotIncludes && !includes) ||
+							(comparator.comparison === ComparisonOperator.In && includes)
 						)
 					) {
 						return false;
@@ -175,13 +177,13 @@ export class EntityConditions {
 				}
 				return false;
 			} else if (Is.object(conditionValue)) {
-				if (comparator.operator === ComparisonOperator.Includes) {
+				if (comparator.comparison === ComparisonOperator.Includes) {
 					for (const v of val) {
 						if (ObjectHelper.equal(v, conditionValue)) {
 							return true;
 						}
 					}
-				} else if (comparator.operator === ComparisonOperator.NotIncludes) {
+				} else if (comparator.comparison === ComparisonOperator.NotIncludes) {
 					for (const v of val) {
 						if (!ObjectHelper.equal(v, conditionValue)) {
 							return true;

@@ -8,43 +8,43 @@ The types of comparisons.
 
 ### Equals
 
-> `readonly` **Equals**: `"Equals"` = `"Equals"`
+> `readonly` **Equals**: `"equals"` = `"equals"`
 
 Equals.
 
 ### NotEquals
 
-> `readonly` **NotEquals**: `"NotEquals"` = `"NotEquals"`
+> `readonly` **NotEquals**: `"not-equals"` = `"not-equals"`
 
 Not Equals.
 
 ### GreaterThan
 
-> `readonly` **GreaterThan**: `"GreaterThan"` = `"GreaterThan"`
+> `readonly` **GreaterThan**: `"greater-than"` = `"greater-than"`
 
 Greater Than.
 
 ### GreaterThanOrEqual
 
-> `readonly` **GreaterThanOrEqual**: `"GreaterThanOrEqual"` = `"GreaterThanOrEqual"`
+> `readonly` **GreaterThanOrEqual**: `"greater-than-or-equal"` = `"greater-than-or-equal"`
 
 Greater Than Or Equal.
 
 ### LessThan
 
-> `readonly` **LessThan**: `"LessThan"` = `"LessThan"`
+> `readonly` **LessThan**: `"less-than"` = `"less-than"`
 
 Less Than.
 
 ### LessThanOrEqual
 
-> `readonly` **LessThanOrEqual**: `"LessThanOrEqual"` = `"LessThanOrEqual"`
+> `readonly` **LessThanOrEqual**: `"less-than-or-equal"` = `"less-than-or-equal"`
 
 Less Than Or Equal.
 
 ### Includes
 
-> `readonly` **Includes**: `"Includes"` = `"Includes"`
+> `readonly` **Includes**: `"includes"` = `"includes"`
 
 Includes.
 A string in a substring.
@@ -53,7 +53,7 @@ A list contains an element.
 
 ### NotIncludes
 
-> `readonly` **NotIncludes**: `"NotIncludes"` = `"NotIncludes"`
+> `readonly` **NotIncludes**: `"not-includes"` = `"not-includes"`
 
 Not Includes.
 A string not in a substring.
@@ -62,7 +62,7 @@ A list does not contain an element.
 
 ### In
 
-> `readonly` **In**: `"In"` = `"In"`
+> `readonly` **In**: `"in"` = `"in"`
 
 In.
 A element is in a set.

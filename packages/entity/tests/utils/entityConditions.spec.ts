@@ -20,7 +20,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: undefined,
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -33,7 +33,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: undefined,
-					operator: ComparisonOperator.NotEquals
+					comparison: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -46,7 +46,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: undefined,
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -59,7 +59,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 1,
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -72,7 +72,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bar",
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -85,7 +85,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bar",
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -98,7 +98,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bar",
-					operator: ComparisonOperator.NotEquals
+					comparison: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -111,7 +111,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bar",
-					operator: ComparisonOperator.NotEquals
+					comparison: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(false);
@@ -124,7 +124,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "b",
-					operator: ComparisonOperator.LessThan
+					comparison: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(true);
@@ -137,7 +137,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "a",
-					operator: ComparisonOperator.LessThan
+					comparison: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(false);
@@ -150,7 +150,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "a",
-					operator: ComparisonOperator.LessThanOrEqual
+					comparison: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -163,7 +163,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "aa",
-					operator: ComparisonOperator.LessThanOrEqual
+					comparison: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -176,7 +176,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "a",
-					operator: ComparisonOperator.GreaterThan
+					comparison: ComparisonOperator.GreaterThan
 				}
 			)
 		).toEqual(true);
@@ -189,7 +189,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "a",
-					operator: ComparisonOperator.GreaterThan
+					comparison: ComparisonOperator.GreaterThan
 				}
 			)
 		).toEqual(false);
@@ -202,7 +202,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "a",
-					operator: ComparisonOperator.GreaterThanOrEqual
+					comparison: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -215,7 +215,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "a",
-					operator: ComparisonOperator.GreaterThanOrEqual
+					comparison: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -228,7 +228,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bar",
-					operator: ComparisonOperator.Includes
+					comparison: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(true);
@@ -241,7 +241,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bab",
-					operator: ComparisonOperator.Includes
+					comparison: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -254,7 +254,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bar",
-					operator: ComparisonOperator.NotIncludes
+					comparison: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(false);
@@ -267,7 +267,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bab",
-					operator: ComparisonOperator.NotIncludes
+					comparison: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(true);
@@ -280,7 +280,7 @@ describe("EntityConditions", () => {
 				{
 					property: "a",
 					value: { foo: "bebar" },
-					operator: ComparisonOperator.Includes
+					comparison: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(true);
@@ -293,7 +293,7 @@ describe("EntityConditions", () => {
 				{
 					property: "a",
 					value: { foo: "bebar2" },
-					operator: ComparisonOperator.Includes
+					comparison: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -306,7 +306,7 @@ describe("EntityConditions", () => {
 				{
 					property: "a",
 					value: { foo: "bebar" },
-					operator: ComparisonOperator.NotIncludes
+					comparison: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(false);
@@ -319,7 +319,7 @@ describe("EntityConditions", () => {
 				{
 					property: "a",
 					value: { foo: "bebar2" },
-					operator: ComparisonOperator.NotIncludes
+					comparison: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(true);
@@ -332,7 +332,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bar",
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -345,7 +345,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 1,
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -358,7 +358,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 2,
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -371,7 +371,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 2,
-					operator: ComparisonOperator.NotEquals
+					comparison: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -384,7 +384,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 1,
-					operator: ComparisonOperator.NotEquals
+					comparison: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(false);
@@ -397,7 +397,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 2,
-					operator: ComparisonOperator.GreaterThan
+					comparison: ComparisonOperator.GreaterThan
 				}
 			)
 		).toEqual(false);
@@ -410,7 +410,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 1,
-					operator: ComparisonOperator.GreaterThan
+					comparison: ComparisonOperator.GreaterThan
 				}
 			)
 		).toEqual(true);
@@ -423,7 +423,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 2,
-					operator: ComparisonOperator.GreaterThanOrEqual
+					comparison: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(false);
@@ -436,7 +436,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 1,
-					operator: ComparisonOperator.GreaterThanOrEqual
+					comparison: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -449,7 +449,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 2,
-					operator: ComparisonOperator.GreaterThanOrEqual
+					comparison: ComparisonOperator.GreaterThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -462,7 +462,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 1,
-					operator: ComparisonOperator.LessThan
+					comparison: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(false);
@@ -475,7 +475,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 2,
-					operator: ComparisonOperator.LessThan
+					comparison: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(true);
@@ -488,7 +488,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 1,
-					operator: ComparisonOperator.LessThanOrEqual
+					comparison: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(false);
@@ -501,7 +501,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 2,
-					operator: ComparisonOperator.LessThanOrEqual
+					comparison: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -514,7 +514,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 1,
-					operator: ComparisonOperator.LessThanOrEqual
+					comparison: ComparisonOperator.LessThanOrEqual
 				}
 			)
 		).toEqual(true);
@@ -527,7 +527,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 1,
-					operator: ComparisonOperator.Includes
+					comparison: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -540,7 +540,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bar",
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -553,7 +553,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: false,
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -566,7 +566,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: true,
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -579,7 +579,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: true,
-					operator: ComparisonOperator.NotEquals
+					comparison: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -592,7 +592,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: false,
-					operator: ComparisonOperator.NotEquals
+					comparison: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(false);
@@ -605,7 +605,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: false,
-					operator: ComparisonOperator.Includes
+					comparison: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -618,7 +618,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: "bar",
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -631,7 +631,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: [1],
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -644,7 +644,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: [1],
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(true);
@@ -657,7 +657,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: [2],
-					operator: ComparisonOperator.NotEquals
+					comparison: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(true);
@@ -670,7 +670,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: [],
-					operator: ComparisonOperator.NotEquals
+					comparison: ComparisonOperator.NotEquals
 				}
 			)
 		).toEqual(false);
@@ -683,7 +683,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: [],
-					operator: ComparisonOperator.LessThan
+					comparison: ComparisonOperator.LessThan
 				}
 			)
 		).toEqual(false);
@@ -696,7 +696,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 4,
-					operator: ComparisonOperator.Includes
+					comparison: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -709,7 +709,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 3,
-					operator: ComparisonOperator.Includes
+					comparison: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(true);
@@ -722,7 +722,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 4,
-					operator: ComparisonOperator.NotIncludes
+					comparison: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(true);
@@ -735,7 +735,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 3,
-					operator: ComparisonOperator.NotIncludes
+					comparison: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(false);
@@ -748,7 +748,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 4,
-					operator: ComparisonOperator.In
+					comparison: ComparisonOperator.In
 				}
 			)
 		).toEqual(false);
@@ -761,7 +761,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 3,
-					operator: ComparisonOperator.In
+					comparison: ComparisonOperator.In
 				}
 			)
 		).toEqual(true);
@@ -774,7 +774,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 4,
-					operator: ComparisonOperator.NotIncludes
+					comparison: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(true);
@@ -787,7 +787,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 3,
-					operator: ComparisonOperator.NotIncludes
+					comparison: ComparisonOperator.NotIncludes
 				}
 			)
 		).toEqual(false);
@@ -800,7 +800,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: new Date(),
-					operator: ComparisonOperator.Includes
+					comparison: ComparisonOperator.Includes
 				}
 			)
 		).toEqual(false);
@@ -813,7 +813,7 @@ describe("EntityConditions", () => {
 				{
 					property: "foo",
 					value: 3,
-					operator: ComparisonOperator.Equals
+					comparison: ComparisonOperator.Equals
 				}
 			)
 		).toEqual(false);
@@ -828,12 +828,12 @@ describe("EntityConditions", () => {
 						{
 							property: "foo",
 							value: "a",
-							operator: ComparisonOperator.Equals
+							comparison: ComparisonOperator.Equals
 						},
 						{
 							property: "val",
 							value: 2,
-							operator: ComparisonOperator.Equals
+							comparison: ComparisonOperator.Equals
 						}
 					]
 				}
@@ -850,12 +850,12 @@ describe("EntityConditions", () => {
 						{
 							property: "foo",
 							value: "a",
-							operator: ComparisonOperator.Equals
+							comparison: ComparisonOperator.Equals
 						},
 						{
 							property: "val",
 							value: 2,
-							operator: ComparisonOperator.Equals
+							comparison: ComparisonOperator.Equals
 						}
 					],
 					logicalOperator: LogicalOperator.And
@@ -872,12 +872,12 @@ describe("EntityConditions", () => {
 					{
 						property: "foo",
 						value: "a",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						property: "val",
 						value: 2,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				],
 				logicalOperator: LogicalOperator.And
@@ -895,12 +895,12 @@ describe("EntityConditions", () => {
 					{
 						property: "foo",
 						value: "a",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						property: "val",
 						value: 3,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				],
 				logicalOperator: LogicalOperator.Or
@@ -918,19 +918,19 @@ describe("EntityConditions", () => {
 					{
 						property: "foo",
 						value: "b",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						conditions: [
 							{
 								property: "val",
 								value: 2,
-								operator: ComparisonOperator.Equals
+								comparison: ComparisonOperator.Equals
 							},
 							{
 								property: "age",
 								value: 9,
-								operator: ComparisonOperator.Equals
+								comparison: ComparisonOperator.Equals
 							}
 						],
 						logicalOperator: LogicalOperator.And
@@ -951,19 +951,19 @@ describe("EntityConditions", () => {
 					{
 						property: "foo",
 						value: "b",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						conditions: [
 							{
 								property: "val",
 								value: 2,
-								operator: ComparisonOperator.Equals
+								comparison: ComparisonOperator.Equals
 							},
 							{
 								property: "age",
 								value: 9,
-								operator: ComparisonOperator.Equals
+								comparison: ComparisonOperator.Equals
 							}
 						],
 						logicalOperator: LogicalOperator.Or
@@ -984,19 +984,19 @@ describe("EntityConditions", () => {
 					{
 						property: "foo",
 						value: "b",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						conditions: [
 							{
 								property: "val",
 								value: 2,
-								operator: ComparisonOperator.Equals
+								comparison: ComparisonOperator.Equals
 							},
 							{
 								property: "age",
 								value: 9,
-								operator: ComparisonOperator.Equals
+								comparison: ComparisonOperator.Equals
 							}
 						],
 						logicalOperator: LogicalOperator.And
@@ -1017,19 +1017,19 @@ describe("EntityConditions", () => {
 					{
 						property: "foo",
 						value: "b",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						conditions: [
 							{
 								property: "val",
 								value: 2,
-								operator: ComparisonOperator.Equals
+								comparison: ComparisonOperator.Equals
 							},
 							{
 								property: "age",
 								value: 9,
-								operator: ComparisonOperator.Equals
+								comparison: ComparisonOperator.Equals
 							}
 						],
 						logicalOperator: LogicalOperator.And
@@ -1054,7 +1054,7 @@ describe("EntityConditions", () => {
 					{
 						property: "foo.a",
 						value: 2,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}
@@ -1075,7 +1075,7 @@ describe("EntityConditions", () => {
 					{
 						property: "foo.a",
 						value: 1,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}
@@ -1098,7 +1098,7 @@ describe("EntityConditions", () => {
 					{
 						property: "foo.a",
 						value: 2,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}
@@ -1121,7 +1121,7 @@ describe("EntityConditions", () => {
 					{
 						property: "foo.a",
 						value: 1,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}
@@ -1148,7 +1148,7 @@ describe("EntityConditions", () => {
 					{
 						property: "foo.a.b",
 						value: 3,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}
@@ -1175,7 +1175,7 @@ describe("EntityConditions", () => {
 					{
 						property: "foo.a.b",
 						value: 3,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}
@@ -1207,12 +1207,12 @@ describe("EntityConditions", () => {
 					{
 						property: "foo.a.b",
 						value: 3,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						property: "foo.a.c",
 						value: 4,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}
@@ -1244,12 +1244,12 @@ describe("EntityConditions", () => {
 					{
 						property: "foo.a.b",
 						value: 4,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						property: "foo.a.c",
 						value: 4,
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}
@@ -1273,12 +1273,12 @@ describe("EntityConditions", () => {
 					{
 						property: "properties.key",
 						value: "role",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						property: "properties.value",
 						value: "user",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}
@@ -1302,12 +1302,12 @@ describe("EntityConditions", () => {
 					{
 						property: "properties.key",
 						value: "role",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					},
 					{
 						property: "properties.value",
 						value: "user",
-						operator: ComparisonOperator.Equals
+						comparison: ComparisonOperator.Equals
 					}
 				]
 			}

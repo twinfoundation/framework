@@ -9,12 +9,12 @@ export const SortDirection = {
 	/**
 	 * Ascending.
 	 */
-	Ascending: "Ascending",
+	Ascending: "asc",
 
 	/**
 	 * Descending.
 	 */
-	Descending: "Descending"
+	Descending: "desc"
 } as const;
 
 /**
