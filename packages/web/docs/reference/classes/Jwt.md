@@ -313,39 +313,3 @@ The signature to verify.
 True if the signature was verified.
 
 ***
-
-### internalEncode()
-
-> `static` `private` **internalEncode**\<`U`, `T`\>(`header`, `payload`, `key`?, `signer`?): `Promise`\<`string`\>
-
-Encode a token.
-
-#### Type parameters
-
-• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
-
-• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
-
-#### Parameters
-
-• **header**: `U`
-
-The header to encode.
-
-• **payload**: `T`
-
-The payload to encode.
-
-• **key?**: `Uint8Array`
-
-The key for signing the token, can be omitted if a signer is provided.
-
-• **signer?**
-
-Custom signer method.
-
-#### Returns
-
-`Promise`\<`string`\>
-
-The encoded token.
