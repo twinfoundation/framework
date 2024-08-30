@@ -296,6 +296,7 @@ export class Jwt {
 	 * @param key The key for signing the token, can be omitted if a signer is provided.
 	 * @param signer Custom signer method.
 	 * @returns The encoded token.
+	 * @internal
 	 */
 	private static async internalEncode<U extends IJwtHeader, T extends IJwtPayload>(
 		header: U,

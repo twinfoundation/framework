@@ -67,6 +67,7 @@ export class Factory<T> {
 	 * @param typeName The type name for the instances.
 	 * @param autoInstance Automatically create an instance when registered.
 	 * @param matcher Match the name of the instance.
+	 * @internal
 	 */
 	private constructor(
 		typeName: string,
