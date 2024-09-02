@@ -311,5 +311,3 @@ The signature to verify.
 `Promise`\<`boolean`\>
 
 True if the signature was verified.
-
-***

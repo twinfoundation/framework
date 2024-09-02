@@ -32,6 +32,7 @@ export * from "./models/ILabelledValue";
 export * from "./models/ILocale";
 export * from "./models/ILocaleDictionary";
 export * from "./models/ILocalesIndex";
+export * from "./models/IPatchOperation";
 export * from "./models/IUrlParts";
 export * from "./models/IValidationFailure";
 export * from "./types/bitString";

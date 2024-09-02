@@ -126,7 +126,7 @@ The combined deep merge of the objects.
 
 ### equal()
 
-> `static` **equal**\<`T`\>(`obj1`, `obj2`): `boolean`
+> `static` **equal**\<`T`\>(`obj1`, `obj2`, `strictPropertyOrder`?): `boolean`
 
 Does one object equal another.
 
@@ -143,6 +143,10 @@ The first object to compare.
 • **obj2**: `T`
 
 The second object to compare.
+
+• **strictPropertyOrder?**: `boolean`
+
+Should the properties be in the same order, defaults to true.
 
 #### Returns
 

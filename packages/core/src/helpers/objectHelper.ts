@@ -1,6 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { nameof } from "@gtsc/nameof";
+import { JsonHelper } from "./jsonHelper";
 import { GeneralError } from "../errors/generalError";
 import { Converter } from "../utils/converter";
 import { Is } from "../utils/is";
@@ -94,10 +95,14 @@ export class ObjectHelper {
 	 * Does one object equal another.
 	 * @param obj1 The first object to compare.
 	 * @param obj2 The second object to compare.
+	 * @param strictPropertyOrder Should the properties be in the same order, defaults to true.
 	 * @returns True is the objects are equal.
 	 */
-	public static equal<T>(obj1: T, obj2: T): boolean {
-		return JSON.stringify(obj1) === JSON.stringify(obj2);
+	public static equal<T>(obj1: T, obj2: T, strictPropertyOrder?: boolean): boolean {
+		if (strictPropertyOrder ?? true) {
+			return JSON.stringify(obj1) === JSON.stringify(obj2);
+		}
+		return JsonHelper.canonicalize(obj1) === JsonHelper.canonicalize(obj2);
 	}
 
 	/**

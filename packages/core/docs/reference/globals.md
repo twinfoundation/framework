@@ -45,6 +45,7 @@
 - [ILocale](interfaces/ILocale.md)
 - [ILocaleDictionary](interfaces/ILocaleDictionary.md)
 - [ILocalesIndex](interfaces/ILocalesIndex.md)
+- [IPatchOperation](interfaces/IPatchOperation.md)
 - [IUrlParts](interfaces/IUrlParts.md)
 - [IValidationFailure](interfaces/IValidationFailure.md)
 
