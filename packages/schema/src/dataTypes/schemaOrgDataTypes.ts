@@ -69,82 +69,72 @@ export class SchemaOrgDataTypes {
 	 */
 	public static registerTypes(): void {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_TEXT, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_TEXT,
 			defaultValue: "",
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				Validation.string(propertyName, value, failures)
 		}));
 
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_INTEGER, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_INTEGER,
 			defaultValue: 0,
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				Validation.integer(propertyName, value, failures)
 		}));
 
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_FLOAT, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_FLOAT,
 			defaultValue: 0,
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				Validation.number(propertyName, value, failures)
 		}));
 
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_BOOLEAN, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_BOOLEAN,
 			defaultValue: true,
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				Validation.boolean(propertyName, value, failures)
 		}));
 
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_URL, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_URL,
 			defaultValue: "",
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				Url.validate(propertyName, value, failures)
 		}));
 
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_DATE, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_DATE,
 			defaultValue: new Date(),
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				Validation.dateString(propertyName, value, failures)
 		}));
 
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_DATE_TIME, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_DATE_TIME,
 			defaultValue: new Date(),
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				Validation.dateTimeString(propertyName, value, failures)
 		}));
 
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_TIME, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_TIME,
 			defaultValue: new Date(),
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				Validation.timeString(propertyName, value, failures)
 		}));
 
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_IMAGE, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_IMAGE,
 			defaultValue: "",
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				Url.validate(propertyName, value, failures)
 		}));
 
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_GEO_COORDINATES, () => ({
-			isInternal: false,
 			type: SchemaOrgDataTypes.TYPE_GEO_COORDINATES,
 			defaultValue: { longitude: 0, latitude: 0 },
-			validate: (propertyName, value, failures, container, previousValue): boolean =>
+			validate: (propertyName, value, failures, container): boolean =>
 				SchemaOrgDataTypes.validateGeoCoordinates(propertyName, value, failures)
 		}));
 	}

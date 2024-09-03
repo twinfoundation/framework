@@ -1,16 +1,16 @@
-# Class: StockDataTypes
+# Class: FrameworkDataTypes
 
-Handle all the stock data types.
+Handle all the framework data types.
 
 ## Constructors
 
-### new StockDataTypes()
+### new FrameworkDataTypes()
 
-> **new StockDataTypes**(): [`StockDataTypes`](StockDataTypes.md)
+> **new FrameworkDataTypes**(): [`FrameworkDataTypes`](FrameworkDataTypes.md)
 
 #### Returns
 
-[`StockDataTypes`](StockDataTypes.md)
+[`FrameworkDataTypes`](FrameworkDataTypes.md)
 
 ## Properties
 
@@ -68,7 +68,7 @@ Register all the data types.
 
 ### validateIPropertyList()
 
-> `static` **validateIPropertyList**(`propertyName`, `value`, `failures`, `container`?, `previousValue`?): `boolean`
+> `static` **validateIPropertyList**(`propertyName`, `value`, `failures`, `container`?): `boolean`
 
 Validator for an IProperty list.
 
@@ -90,10 +90,6 @@ The list of failures to add to.
 
 The object which contains this one.
 
-• **previousValue?**: [`IProperty`](../interfaces/IProperty.md)[]
-
-The previous value of the object.
-
 #### Returns
 
 `boolean`
@@ -104,7 +100,7 @@ True if the value is a valid property list.
 
 ### validateIProperty()
 
-> `static` **validateIProperty**(`propertyName`, `value`, `failures`, `container`?, `previousValue`?): `boolean`
+> `static` **validateIProperty**(`propertyName`, `value`, `failures`, `container`?): `boolean`
 
 Validator for an IProperty.
 
@@ -125,10 +121,6 @@ The list of failures to add to.
 • **container?**: `unknown`
 
 The object which contains this one.
-
-• **previousValue?**: [`IProperty`](../interfaces/IProperty.md)
-
-The previous value of the object.
 
 #### Returns
 

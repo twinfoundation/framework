@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { Coerce, Guards, Is, ObjectHelper, Urn } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
+import { FrameworkDataTypes } from "../dataTypes/frameworkDataTypes";
 import { SchemaOrgDataTypes } from "../dataTypes/schemaOrgDataTypes";
-import { StockDataTypes } from "../dataTypes/stockDataTypes";
 import type { IProperty } from "../models/IProperty";
 
 /**
@@ -141,7 +141,7 @@ export class PropertyHelper {
 		properties: U[] | undefined,
 		key: string
 	): string | undefined {
-		return PropertyHelper.getValue<string, U>(properties, key, StockDataTypes.TYPE_URN);
+		return PropertyHelper.getValue<string, U>(properties, key, FrameworkDataTypes.TYPE_URN);
 	}
 
 	/**
@@ -163,7 +163,7 @@ export class PropertyHelper {
 		PropertyHelper.setValue<string, U>(
 			properties,
 			key,
-			StockDataTypes.TYPE_URN,
+			FrameworkDataTypes.TYPE_URN,
 			value,
 			additionalProperties
 		);
@@ -436,7 +436,7 @@ export class PropertyHelper {
 		return PropertyHelper.getValue<number, U>(
 			properties,
 			key,
-			StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS
+			FrameworkDataTypes.TYPE_TIMESTAMP_MILLISECONDS
 		);
 	}
 
@@ -459,7 +459,7 @@ export class PropertyHelper {
 		PropertyHelper.setValue<number, U>(
 			properties,
 			key,
-			StockDataTypes.TYPE_TIMESTAMP_MILLISECONDS,
+			FrameworkDataTypes.TYPE_TIMESTAMP_MILLISECONDS,
 			value,
 			additionalProperties
 		);
@@ -478,7 +478,7 @@ export class PropertyHelper {
 		return PropertyHelper.getValue<number, U>(
 			properties,
 			key,
-			StockDataTypes.TYPE_TIMESTAMP_SECONDS
+			FrameworkDataTypes.TYPE_TIMESTAMP_SECONDS
 		);
 	}
 
@@ -501,7 +501,7 @@ export class PropertyHelper {
 		PropertyHelper.setValue<number, U>(
 			properties,
 			key,
-			StockDataTypes.TYPE_TIMESTAMP_SECONDS,
+			FrameworkDataTypes.TYPE_TIMESTAMP_SECONDS,
 			value,
 			additionalProperties
 		);

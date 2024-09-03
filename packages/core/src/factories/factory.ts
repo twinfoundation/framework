@@ -225,6 +225,16 @@ export class Factory<T> {
 	}
 
 	/**
+	 * Does the factory contain the name.
+	 * @param name The name of the instance to find.
+	 * @returns True if the factory has a matching name.
+	 */
+	public hasName(name: string): boolean {
+		Guards.stringValue(Factory._CLASS_NAME, nameof(name), name);
+		return Is.stringValue(this._matcher(Object.keys(this._generators), name));
+	}
+
+	/**
 	 * Remove any instances of the given name.
 	 * @param name The name of the instances to remove.
 	 * @internal

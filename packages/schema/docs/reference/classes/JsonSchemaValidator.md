@@ -2,23 +2,11 @@
 
 A validator for JSON schemas.
 
-## Implements
-
-- [`ISchemaValidator`](../interfaces/ISchemaValidator.md)
-
 ## Constructors
 
 ### new JsonSchemaValidator()
 
-> **new JsonSchemaValidator**(`schemas`): [`JsonSchemaValidator`](JsonSchemaValidator.md)
-
-The constructor.
-
-#### Parameters
-
-• **schemas**
-
-The schemas to be loaded.
+> **new JsonSchemaValidator**(): [`JsonSchemaValidator`](JsonSchemaValidator.md)
 
 #### Returns
 
@@ -28,17 +16,21 @@ The schemas to be loaded.
 
 ### validate()
 
-> **validate**(`schemaName`, `data`): `Promise`\<[`ISchemaValidationResult`](../interfaces/ISchemaValidationResult.md)\>
+> `static` **validate**\<`T`\>(`schema`, `data`): `Promise`\<[`ISchemaValidationResult`](../interfaces/ISchemaValidationResult.md)\>
 
-Validates data against the Schema passed as parameter.
+Validates data against the schema.
+
+#### Type parameters
+
+• **T** = `unknown`
 
 #### Parameters
 
-• **schemaName**: `string`
+• **schema**: `JSONSchema7`
 
-The name of the Schema.
+The schema to validate the data with.
 
-• **data**: `unknown`
+• **data**: `T`
 
 The data to be validated.
 
@@ -46,8 +38,4 @@ The data to be validated.
 
 `Promise`\<[`ISchemaValidationResult`](../interfaces/ISchemaValidationResult.md)\>
 
-True if validated false otherwise.
-
-#### Implementation of
-
-[`ISchemaValidator`](../interfaces/ISchemaValidator.md).[`validate`](../interfaces/ISchemaValidator.md#validate)
+Result containing errors if there are any.
