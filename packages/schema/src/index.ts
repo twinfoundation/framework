@@ -11,4 +11,3 @@ export * from "./models/ISchemaValidationError";
 export * from "./models/ISchemaValidationResult";
 export * from "./utils/propertyHelper";
 export * from "./validators/jsonSchemaValidator";
-

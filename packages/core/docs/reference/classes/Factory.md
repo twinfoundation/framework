@@ -199,3 +199,23 @@ Get all the generator names in the order they were registered.
 `string`[]
 
 The ordered generator names.
+
+***
+
+### hasName()
+
+> **hasName**(`name`): `boolean`
+
+Does the factory contain the name.
+
+#### Parameters
+
+• **name**: `string`
+
+The name of the instance to find.
+
+#### Returns
+
+`boolean`
+
+True if the factory has a matching name.

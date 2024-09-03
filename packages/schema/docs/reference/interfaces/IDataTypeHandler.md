@@ -12,11 +12,23 @@ The type for the item.
 
 ***
 
-### defaultValue
+### defaultValue?
 
-> **defaultValue**: `unknown`
+> `optional` **defaultValue**: `unknown`
 
 The default value for the item.
+
+***
+
+### childTypes?
+
+> `optional` **childTypes**: `object`
+
+If the data type has child types for its properties we can include them.
+
+#### Index signature
+
+ \[`prop`: `string`\]: `string`
 
 ## Methods
 

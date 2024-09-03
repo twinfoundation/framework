@@ -14,7 +14,12 @@ export interface IDataTypeHandler {
 	/**
 	 * The default value for the item.
 	 */
-	defaultValue: unknown;
+	defaultValue?: unknown;
+
+	/**
+	 * If the data type has child types for its properties we can include them.
+	 */
+	childTypes?: { [prop: string]: string };
 
 	/**
 	 * A method for validating the data type.
