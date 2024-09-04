@@ -16,7 +16,7 @@ Handle all the framework data types.
 
 ### TYPE\_URN
 
-> `static` **TYPE\_URN**: `string` = `"URN"`
+> `static` **TYPE\_URN**: `string` = `"https://schema.gtsc.io/URN"`
 
 Represents a urn.
 
@@ -24,7 +24,7 @@ Represents a urn.
 
 ### TYPE\_TIMESTAMP\_MILLISECONDS
 
-> `static` **TYPE\_TIMESTAMP\_MILLISECONDS**: `string` = `"TimestampMilliseconds"`
+> `static` **TYPE\_TIMESTAMP\_MILLISECONDS**: `string` = `"https://schema.gtsc.io/TimestampMilliseconds"`
 
 Represents a timestamp as an integer, milliseconds since 1 Jan 1970.
 
@@ -32,7 +32,7 @@ Represents a timestamp as an integer, milliseconds since 1 Jan 1970.
 
 ### TYPE\_TIMESTAMP\_SECONDS
 
-> `static` **TYPE\_TIMESTAMP\_SECONDS**: `string` = `"TimestampSeconds"`
+> `static` **TYPE\_TIMESTAMP\_SECONDS**: `string` = `"https://schema.gtsc.io/TimestampSeconds"`
 
 Represents a timestamp as an integer, seconds since 1 Jan 1970.
 
@@ -40,7 +40,7 @@ Represents a timestamp as an integer, seconds since 1 Jan 1970.
 
 ### TYPE\_PROPERTY
 
-> `static` **TYPE\_PROPERTY**: `string` = `"Property"`
+> `static` **TYPE\_PROPERTY**: `string` = `"https://schema.gtsc.io/Property"`
 
 Represents a property.
 
@@ -48,7 +48,7 @@ Represents a property.
 
 ### TYPE\_PROPERTY\_LIST
 
-> `static` **TYPE\_PROPERTY\_LIST**: `string` = `"PropertyList"`
+> `static` **TYPE\_PROPERTY\_LIST**: `string` = `"https://schema.gtsc.io/PropertyList"`
 
 Represents a property list.
 

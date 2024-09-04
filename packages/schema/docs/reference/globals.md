@@ -4,8 +4,9 @@
 
 - [FrameworkDataTypes](classes/FrameworkDataTypes.md)
 - [SchemaOrgDataTypes](classes/SchemaOrgDataTypes.md)
+- [DataTypeHelper](classes/DataTypeHelper.md)
+- [JsonSchemaHelper](classes/JsonSchemaHelper.md)
 - [PropertyHelper](classes/PropertyHelper.md)
-- [JsonSchemaValidator](classes/JsonSchemaValidator.md)
 
 ## Interfaces
 

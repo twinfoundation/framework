@@ -1,6 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import type { IValidationFailure } from "@gtsc/core";
+import type { JSONSchema7 } from "json-schema";
 
 /**
  * Interface describing a type which can handle a specific data type.
@@ -17,9 +18,9 @@ export interface IDataTypeHandler {
 	defaultValue?: unknown;
 
 	/**
-	 * If the data type has child types for its properties we can include them.
+	 * The JSON schema for the data type.
 	 */
-	childTypes?: { [prop: string]: string };
+	schema?: JSONSchema7;
 
 	/**
 	 * A method for validating the data type.

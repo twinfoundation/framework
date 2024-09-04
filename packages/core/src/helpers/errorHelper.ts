@@ -84,11 +84,16 @@ export class ErrorHelper {
 		) {
 			const validationErrors = [];
 			for (const validationFailure of error.properties.validationFailures) {
-				let v = `${validationFailure.property}: ${I18n.formatMessage(
-					`error.${validationFailure.reason}`,
-					validationFailure.properties
-				)}`;
-				if (Is.object<{ value: unknown }>(validationFailure.properties)) {
+				const errorI18n = `error.${validationFailure.reason}`;
+				const errorMessage = I18n.hasMessage(errorI18n)
+					? I18n.formatMessage(errorI18n, validationFailure.properties)
+					: errorI18n;
+
+				let v = `${validationFailure.property}: ${errorMessage}`;
+				if (
+					Is.object<{ value: unknown }>(validationFailure.properties) &&
+					Is.notEmpty(validationFailure.properties.value)
+				) {
 					v += ` = ${JSON.stringify(validationFailure.properties.value)}`;
 				}
 				validationErrors.push(v);

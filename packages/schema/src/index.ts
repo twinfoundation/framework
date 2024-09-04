@@ -9,5 +9,6 @@ export * from "./models/IIdentifierHandler";
 export * from "./models/IProperty";
 export * from "./models/ISchemaValidationError";
 export * from "./models/ISchemaValidationResult";
+export * from "./utils/dataTypeHelper";
+export * from "./utils/jsonSchemaHelper";
 export * from "./utils/propertyHelper";
-export * from "./validators/jsonSchemaValidator";

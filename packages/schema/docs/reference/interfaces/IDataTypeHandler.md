@@ -20,15 +20,11 @@ The default value for the item.
 
 ***
 
-### childTypes?
+### schema?
 
-> `optional` **childTypes**: `object`
+> `optional` **schema**: `JSONSchema7`
 
-If the data type has child types for its properties we can include them.
-
-#### Index signature
-
- \[`prop`: `string`\]: `string`
+The JSON schema for the data type.
 
 ## Methods
 

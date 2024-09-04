@@ -71,6 +71,9 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_TEXT, () => ({
 			type: SchemaOrgDataTypes.TYPE_TEXT,
 			defaultValue: "",
+			schema: {
+				type: "string"
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				Validation.string(propertyName, value, failures)
 		}));
@@ -78,6 +81,9 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_INTEGER, () => ({
 			type: SchemaOrgDataTypes.TYPE_INTEGER,
 			defaultValue: 0,
+			schema: {
+				type: "integer"
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				Validation.integer(propertyName, value, failures)
 		}));
@@ -85,6 +91,9 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_FLOAT, () => ({
 			type: SchemaOrgDataTypes.TYPE_FLOAT,
 			defaultValue: 0,
+			schema: {
+				type: "number"
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				Validation.number(propertyName, value, failures)
 		}));
@@ -92,6 +101,9 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_BOOLEAN, () => ({
 			type: SchemaOrgDataTypes.TYPE_BOOLEAN,
 			defaultValue: true,
+			schema: {
+				type: "boolean"
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				Validation.boolean(propertyName, value, failures)
 		}));
@@ -99,6 +111,10 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_URL, () => ({
 			type: SchemaOrgDataTypes.TYPE_URL,
 			defaultValue: "",
+			schema: {
+				type: "string",
+				format: "uri"
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				Url.validate(propertyName, value, failures)
 		}));
@@ -106,6 +122,10 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_DATE, () => ({
 			type: SchemaOrgDataTypes.TYPE_DATE,
 			defaultValue: new Date(),
+			schema: {
+				type: "string",
+				format: "date"
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				Validation.dateString(propertyName, value, failures)
 		}));
@@ -113,6 +133,10 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_DATE_TIME, () => ({
 			type: SchemaOrgDataTypes.TYPE_DATE_TIME,
 			defaultValue: new Date(),
+			schema: {
+				type: "string",
+				format: "date-time"
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				Validation.dateTimeString(propertyName, value, failures)
 		}));
@@ -120,6 +144,10 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_TIME, () => ({
 			type: SchemaOrgDataTypes.TYPE_TIME,
 			defaultValue: new Date(),
+			schema: {
+				type: "string",
+				format: "time"
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				Validation.timeString(propertyName, value, failures)
 		}));
@@ -127,6 +155,10 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_IMAGE, () => ({
 			type: SchemaOrgDataTypes.TYPE_IMAGE,
 			defaultValue: "",
+			schema: {
+				type: "string",
+				format: "uri"
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				Url.validate(propertyName, value, failures)
 		}));
@@ -134,6 +166,22 @@ export class SchemaOrgDataTypes {
 		DataTypeHandlerFactory.register(SchemaOrgDataTypes.TYPE_GEO_COORDINATES, () => ({
 			type: SchemaOrgDataTypes.TYPE_GEO_COORDINATES,
 			defaultValue: { longitude: 0, latitude: 0 },
+			schema: {
+				type: "object",
+				required: ["latitude", "longitude"],
+				properties: {
+					latitude: {
+						type: ["number", "string"],
+						minimum: -90,
+						maximum: 90
+					},
+					longitude: {
+						type: ["number", "string"],
+						minimum: -180,
+						maximum: 180
+					}
+				}
+			},
 			validate: (propertyName, value, failures, container): boolean =>
 				SchemaOrgDataTypes.validateGeoCoordinates(propertyName, value, failures)
 		}));
@@ -151,7 +199,7 @@ export class SchemaOrgDataTypes {
 		value: unknown,
 		failures: IValidationFailure[]
 	): value is GeoCoordinates {
-		const is = Is.object<GeoCoordinates>(value);
+		const is = Validation.object<GeoCoordinates>(propertyName, value, failures);
 
 		if (is) {
 			// This is only a partial validation at the moment we should also support
