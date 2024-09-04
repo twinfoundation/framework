@@ -9,7 +9,6 @@ This mono-repository contains some of the fundamental packages that the rest of 
 - [crypto](packages/crypto/README.md) - Helpers which implement cryptographic functions.
 - [image](packages/image/README.md) - Package contains classes for processing images.
 - [qr](packages/qr/README.md) - Package contains classes for generating QR codes.
-- [schema](packages/schema/README.md) - Package contains definitions and helpers for schemas.
 - [web](packages/web/README.md) - Contains classes for use with web operations.
 - [cli-core](packages/cli-core/README.md) - Provides core classes and methods to be used when building a CLI.
 - [crypto-cli](packages/crypto-cli/README.md) - A command line interface for interacting with the crypto tools.
