@@ -20,7 +20,7 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response from a fetch with no source", async () => {
 		await expect(
-			FetchHelper.fetch(undefined as unknown as string, "endpoint", "path", "GET")
+			FetchHelper.fetch(undefined as unknown as string, "url", "GET")
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.string",
@@ -31,48 +31,22 @@ describe("FetchHelper", () => {
 		});
 	});
 
-	test("can fail to get a response from a fetch with no endpoint", async () => {
+	test("can fail to get a response from a fetch with no url", async () => {
 		await expect(
-			FetchHelper.fetch("source", undefined as unknown as string, "path", "GET")
+			FetchHelper.fetch("source", undefined as unknown as string, "GET")
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.string",
 			properties: {
-				property: "endpoint",
+				property: "url",
 				value: "undefined"
 			}
 		});
 	});
 
-	test("can fail to get a response from a fetch with no endpoint", async () => {
+	test("can fail to get a response from a fetch with no method", async () => {
 		await expect(
-			FetchHelper.fetch("source", undefined as unknown as string, "path", "GET")
-		).rejects.toMatchObject({
-			name: "GuardError",
-			message: "guard.string",
-			properties: {
-				property: "endpoint",
-				value: "undefined"
-			}
-		});
-	});
-
-	test("can fail to get a response from a fetch with no path", async () => {
-		await expect(
-			FetchHelper.fetch("source", "endpoint", undefined as unknown as string, "GET")
-		).rejects.toMatchObject({
-			name: "GuardError",
-			message: "guard.string",
-			properties: {
-				property: "path",
-				value: "undefined"
-			}
-		});
-	});
-
-	test("can fail to get a response from a fetch with no path", async () => {
-		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", undefined as unknown as HttpMethod)
+			FetchHelper.fetch("source", "url", undefined as unknown as HttpMethod)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.arrayOneOf",
@@ -85,7 +59,7 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response from a fetch with invalid body", async () => {
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", "POST", 1 as unknown as string)
+			FetchHelper.fetch("source", "url", "POST", 1 as unknown as string)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.string",
@@ -98,14 +72,7 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response from a fetch with invalid options", async () => {
 		await expect(
-			FetchHelper.fetch(
-				"source",
-				"endpoint",
-				"path",
-				"GET",
-				undefined,
-				"" as unknown as IFetchOptions
-			)
+			FetchHelper.fetch("source", "url", "GET", undefined, "" as unknown as IFetchOptions)
 		).rejects.toMatchObject({
 			name: "GuardError",
 			message: "guard.object",
@@ -118,7 +85,7 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response from a fetch with invalid option headers", async () => {
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
+			FetchHelper.fetch("source", "url", "GET", undefined, {
 				headers: ""
 			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
@@ -133,7 +100,7 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response from a fetch with invalid option timeout", async () => {
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
+			FetchHelper.fetch("source", "url", "GET", undefined, {
 				timeoutMs: ""
 			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
@@ -148,7 +115,7 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response from a fetch with invalid option include credentials", async () => {
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
+			FetchHelper.fetch("source", "url", "GET", undefined, {
 				includeCredentials: ""
 			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
@@ -163,7 +130,7 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response from a fetch with invalid option retry count", async () => {
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
+			FetchHelper.fetch("source", "url", "GET", undefined, {
 				retryCount: ""
 			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
@@ -178,7 +145,7 @@ describe("FetchHelper", () => {
 
 	test("can fail to get a response from a fetch with invalid option retry delay ms", async () => {
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
+			FetchHelper.fetch("source", "url", "GET", undefined, {
 				retryDelayMs: ""
 			} as unknown as IHttpHeaders)
 		).rejects.toMatchObject({
@@ -205,13 +172,13 @@ describe("FetchHelper", () => {
 			return new Promise(resolve => globalThis.setTimeout(resolve, 5000));
 		});
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, { timeoutMs: 1 })
+			FetchHelper.fetch("source", "url", "GET", undefined, { timeoutMs: 1 })
 		).rejects.toMatchObject({
 			name: "FetchError",
 			message: "fetchHelper.timeout",
 			properties: {
 				httpStatus: HttpStatusCode.requestTimeout,
-				path: "path"
+				url: "url"
 			}
 		});
 	});
@@ -220,12 +187,12 @@ describe("FetchHelper", () => {
 		fetchMock.mockRejectedValue({
 			ok: false
 		});
-		await expect(FetchHelper.fetch("source", "endpoint", "path", "GET")).rejects.toMatchObject({
+		await expect(FetchHelper.fetch("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			message: "fetchHelper.general",
 			properties: {
 				httpStatus: HttpStatusCode.internalServerError,
-				path: "path"
+				url: "url"
 			}
 		});
 	});
@@ -236,7 +203,7 @@ describe("FetchHelper", () => {
 			json: async () => new Promise(resolve => resolve({ foo: "bar" }))
 		});
 
-		const response = await FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
+		const response = await FetchHelper.fetch("source", "url", "GET", undefined, {
 			includeCredentials: true
 		});
 		const json = await response.json();
@@ -249,7 +216,7 @@ describe("FetchHelper", () => {
 			json: async () => new Promise(resolve => resolve({ foo: "bar" }))
 		});
 
-		const response = await FetchHelper.fetch("source", "endpoint", "path", "GET");
+		const response = await FetchHelper.fetch("source", "url", "GET");
 		const json = await response.json();
 		expect(json.foo).toEqual("bar");
 	});
@@ -260,12 +227,12 @@ describe("FetchHelper", () => {
 			status: HttpStatusCode.ok,
 			json: async () => new Promise(resolve => resolve(JSON.parse("!")))
 		});
-		await expect(FetchHelper.fetchJson("source", "endpoint", "path", "GET")).rejects.toMatchObject({
+		await expect(FetchHelper.fetchJson("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			message: "fetchHelper.decodingJSON",
 			properties: {
 				httpStatus: HttpStatusCode.badRequest,
-				path: "path"
+				url: "url"
 			}
 		});
 	});
@@ -273,11 +240,11 @@ describe("FetchHelper", () => {
 	test("can fail to get a response from a fetchwith failed connectivity", async () => {
 		// eslint-disable-next-line no-restricted-syntax
 		fetchMock.mockRejectedValue(new Error("Failed to fetch"));
-		await expect(FetchHelper.fetch("source", "endpoint", "path", "GET")).rejects.toMatchObject({
+		await expect(FetchHelper.fetch("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
 				httpStatus: HttpStatusCode.serviceUnavailable,
-				path: "path"
+				url: "url"
 			}
 		});
 	});
@@ -285,11 +252,11 @@ describe("FetchHelper", () => {
 	test("can fail to get a response with a custom status code", async () => {
 		// eslint-disable-next-line no-restricted-syntax
 		fetchMock.mockRejectedValue({ httpStatus: HttpStatusCode.badGateway });
-		await expect(FetchHelper.fetch("source", "endpoint", "path", "GET")).rejects.toMatchObject({
+		await expect(FetchHelper.fetch("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
 				httpStatus: HttpStatusCode.badGateway,
-				path: "path"
+				url: "url"
 			}
 		});
 	});
@@ -297,11 +264,11 @@ describe("FetchHelper", () => {
 	test("can fail to get a response with a custom status text", async () => {
 		// eslint-disable-next-line no-restricted-syntax
 		fetchMock.mockRejectedValue({ statusText: "foo" });
-		await expect(FetchHelper.fetch("source", "endpoint", "path", "GET")).rejects.toMatchObject({
+		await expect(FetchHelper.fetch("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
 				httpStatus: HttpStatusCode.internalServerError,
-				path: "path"
+				url: "url"
 			}
 		});
 	});
@@ -313,11 +280,11 @@ describe("FetchHelper", () => {
 			statusText: "Unauthorized",
 			json: async () => new Promise(resolve => resolve("Unauthorized"))
 		});
-		await expect(FetchHelper.fetchJson("source", "endpoint", "path", "GET")).rejects.toMatchObject({
+		await expect(FetchHelper.fetchJson("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
 				httpStatus: HttpStatusCode.unauthorized,
-				path: "path"
+				url: "url"
 			}
 		});
 	});
@@ -330,8 +297,7 @@ describe("FetchHelper", () => {
 
 		const response = await FetchHelper.fetchJson<{ foo: string }, { foo: string }>(
 			"source",
-			"endpoint",
-			"path",
+			"url",
 			"POST",
 			{ foo: "bar" }
 		);
@@ -344,12 +310,7 @@ describe("FetchHelper", () => {
 			status: HttpStatusCode.noContent
 		});
 
-		const response = await FetchHelper.fetchJson<never, { foo: string }>(
-			"source",
-			"endpoint",
-			"path",
-			"GET"
-		);
+		const response = await FetchHelper.fetchJson<never, { foo: string }>("source", "url", "GET");
 		expect(response).toEqual({});
 	});
 
@@ -360,12 +321,7 @@ describe("FetchHelper", () => {
 			json: async () => new Promise(resolve => resolve({ foo: "bar" }))
 		});
 
-		const response = await FetchHelper.fetchJson<never, { foo: string }>(
-			"source",
-			"endpoint",
-			"path",
-			"GET"
-		);
+		const response = await FetchHelper.fetchJson<never, { foo: string }>("source", "url", "GET");
 		expect(response.foo).toEqual("bar");
 	});
 
@@ -388,7 +344,7 @@ describe("FetchHelper", () => {
 			});
 
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
+			FetchHelper.fetch("source", "url", "GET", undefined, {
 				retryCount: 2,
 				retryDelayMs: 100
 			})
@@ -398,7 +354,7 @@ describe("FetchHelper", () => {
 			source: "source",
 			properties: {
 				httpStatus: HttpStatusCode.internalServerError,
-				path: "path"
+				url: "url"
 			},
 			inner: {
 				name: "FetchError",
@@ -406,7 +362,7 @@ describe("FetchHelper", () => {
 				message: "fetchHelper.general",
 				properties: {
 					httpStatus: HttpStatusCode.unauthorized,
-					path: "path",
+					url: "url",
 					statusText: "Unauthorized2"
 				}
 			}
@@ -429,7 +385,7 @@ describe("FetchHelper", () => {
 			});
 
 		await expect(
-			FetchHelper.fetch("source", "endpoint", "path", "GET", undefined, {
+			FetchHelper.fetch("source", "url", "GET", undefined, {
 				retryCount: 2,
 				retryDelayMs: 100
 			})
@@ -439,7 +395,7 @@ describe("FetchHelper", () => {
 			source: "source",
 			properties: {
 				httpStatus: HttpStatusCode.internalServerError,
-				path: "path"
+				url: "url"
 			},
 			inner: {
 				name: "FetchError",
@@ -447,7 +403,7 @@ describe("FetchHelper", () => {
 				message: "fetchHelper.general",
 				properties: {
 					httpStatus: HttpStatusCode.internalServerError,
-					path: "path",
+					url: "url",
 					statusText: "Unauthorized2"
 				}
 			}
@@ -462,13 +418,13 @@ describe("FetchHelper", () => {
 			json: async (): Promise<{ foo: string }> => new Promise(resolve => resolve({ foo: "bar" }))
 		}));
 
-		await expect(FetchHelper.fetchJson("source", "endpoint", "path", "GET")).rejects.toMatchObject({
+		await expect(FetchHelper.fetchJson("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			source: "source",
 			message: "fetchHelper.failureStatusText",
 			properties: {
 				httpStatus: HttpStatusCode.ok,
-				path: "path",
+				url: "url",
 				statusText: "Custom"
 			}
 		});
@@ -480,14 +436,12 @@ describe("FetchHelper", () => {
 			status: HttpStatusCode.ok,
 			json: async () => new Promise(resolve => resolve(JSON.parse("!")))
 		});
-		await expect(
-			FetchHelper.fetchBinary("source", "endpoint", "path", "POST")
-		).rejects.toMatchObject({
+		await expect(FetchHelper.fetchBinary("source", "url", "POST")).rejects.toMatchObject({
 			name: "FetchError",
 			message: "fetchHelper.decodingJSON",
 			properties: {
 				httpStatus: HttpStatusCode.badRequest,
-				path: "path"
+				url: "url"
 			}
 		});
 	});
@@ -499,13 +453,11 @@ describe("FetchHelper", () => {
 			statusText: "Unauthorized",
 			json: async () => new Promise(resolve => resolve("Unauthorized"))
 		});
-		await expect(
-			FetchHelper.fetchBinary("source", "endpoint", "path", "GET")
-		).rejects.toMatchObject({
+		await expect(FetchHelper.fetchBinary("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",
 			properties: {
 				httpStatus: HttpStatusCode.unauthorized,
-				path: "path"
+				url: "url"
 			}
 		});
 	});
@@ -517,12 +469,7 @@ describe("FetchHelper", () => {
 			json: async () => new Promise(resolve => resolve({ foo: "bar" }))
 		});
 
-		const response = await FetchHelper.fetchBinary<{ foo: string }>(
-			"source",
-			"endpoint",
-			"path",
-			"POST"
-		);
+		const response = await FetchHelper.fetchBinary<{ foo: string }>("source", "url", "POST");
 		expect(response).toBeDefined();
 	});
 
@@ -532,7 +479,7 @@ describe("FetchHelper", () => {
 			status: HttpStatusCode.noContent
 		});
 
-		const response: Uint8Array = await FetchHelper.fetchBinary("source", "endpoint", "path", "GET");
+		const response: Uint8Array = await FetchHelper.fetchBinary("source", "url", "GET");
 		expect(response.length).toEqual(0);
 	});
 
@@ -543,7 +490,7 @@ describe("FetchHelper", () => {
 			arrayBuffer: async () => new Promise(resolve => resolve(new Uint8Array([1, 2, 3])))
 		});
 
-		const response: Uint8Array = await FetchHelper.fetchBinary("source", "endpoint", "path", "GET");
+		const response: Uint8Array = await FetchHelper.fetchBinary("source", "url", "GET");
 		expect(response[0]).toEqual(1);
 		expect(response[1]).toEqual(2);
 		expect(response[2]).toEqual(3);
@@ -558,8 +505,7 @@ describe("FetchHelper", () => {
 
 		const response = await FetchHelper.fetchJson<never, { foo: number }>(
 			"source",
-			"endpoint",
-			"path",
+			"url",
 			"GET",
 			undefined,
 			{
@@ -570,8 +516,7 @@ describe("FetchHelper", () => {
 
 		const response2 = await FetchHelper.fetchJson<never, { foo: number }>(
 			"source",
-			"endpoint",
-			"path",
+			"url",
 			"GET",
 			undefined,
 			{
@@ -585,8 +530,7 @@ describe("FetchHelper", () => {
 
 		const response3 = await FetchHelper.fetchJson<never, { foo: number }>(
 			"source",
-			"endpoint",
-			"path",
+			"url",
 			"GET",
 			undefined,
 			{
@@ -605,8 +549,7 @@ describe("FetchHelper", () => {
 
 		const response = await FetchHelper.fetchJson<never, { foo: number }>(
 			"source",
-			"endpoint",
-			"path",
+			"url",
 			"GET",
 			undefined,
 			{
@@ -615,12 +558,11 @@ describe("FetchHelper", () => {
 		);
 		expect(response.foo).toEqual(0);
 
-		FetchHelper.removeCacheEntry("endpoint", "path");
+		FetchHelper.removeCacheEntry("url");
 
 		const response2 = await FetchHelper.fetchJson<never, { foo: number }>(
 			"source",
-			"endpoint",
-			"path",
+			"url",
 			"GET",
 			undefined,
 			{
@@ -639,8 +581,7 @@ describe("FetchHelper", () => {
 
 		const response = await FetchHelper.fetchJson<never, { foo: number }>(
 			"source",
-			"endpoint",
-			"path",
+			"url",
 			"GET",
 			undefined,
 			{
@@ -653,8 +594,7 @@ describe("FetchHelper", () => {
 
 		const response2 = await FetchHelper.fetchJson<never, { foo: number }>(
 			"source",
-			"endpoint",
-			"path",
+			"url",
 			"GET",
 			undefined,
 			{

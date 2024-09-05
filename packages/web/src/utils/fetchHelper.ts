@@ -34,8 +34,7 @@ export class FetchHelper {
 	/**
 	 * Perform a fetch request.
 	 * @param source The source for the request.
-	 * @param endpoint The base endpoint for the request.
-	 * @param path The path of the request.
+	 * @param url The url for the request.
 	 * @param method The http method.
 	 * @param body Request to send to the endpoint.
 	 * @param options Options for sending the requests.
@@ -43,15 +42,13 @@ export class FetchHelper {
 	 */
 	public static async fetch(
 		source: string,
-		endpoint: string,
-		path: string,
+		url: string,
 		method: HttpMethod,
 		body?: string | Uint8Array,
 		options?: Omit<IFetchOptions, "cacheTtlSeconds">
 	): Promise<Response> {
 		Guards.string(FetchHelper._CLASS_NAME, nameof(source), source);
-		Guards.string(FetchHelper._CLASS_NAME, nameof(endpoint), endpoint);
-		Guards.string(FetchHelper._CLASS_NAME, nameof(path), path);
+		Guards.string(FetchHelper._CLASS_NAME, nameof(url), url);
 		Guards.arrayOneOf<HttpMethod>(
 			FetchHelper._CLASS_NAME,
 			nameof(method),
@@ -121,7 +118,7 @@ export class FetchHelper {
 					requestOptions.credentials = "include";
 				}
 
-				const response = await fetch(`${endpoint}${path}`, requestOptions);
+				const response = await fetch(url, requestOptions);
 
 				if (!response.ok && retryCount > 1) {
 					lastError = new FetchError(
@@ -129,7 +126,7 @@ export class FetchHelper {
 						`${FetchHelper._CLASS_NAME_CAMEL_CASE}.general`,
 						(response.status as HttpStatusCode) ?? HttpStatusCode.internalServerError,
 						{
-							path,
+							url,
 							statusText: response.statusText
 						}
 					);
@@ -144,12 +141,12 @@ export class FetchHelper {
 						`${FetchHelper._CLASS_NAME_CAMEL_CASE}.connectivity`,
 						HttpStatusCode.serviceUnavailable,
 						{
-							path
+							url
 						}
 					);
 				} else {
 					const isAbort = isErr && err.name === "AbortError";
-					const props: { [id: string]: unknown } = { path };
+					const props: { [id: string]: unknown } = { url };
 					let httpStatus: HttpStatusCode = HttpStatusCode.internalServerError;
 					if (isAbort) {
 						httpStatus = HttpStatusCode.requestTimeout;
@@ -180,7 +177,7 @@ export class FetchHelper {
 				source,
 				`${FetchHelper._CLASS_NAME_CAMEL_CASE}.retryLimitExceeded`,
 				HttpStatusCode.internalServerError,
-				{ path },
+				{ url },
 				lastError
 			);
 		}
@@ -191,8 +188,7 @@ export class FetchHelper {
 	/**
 	 * Perform a request in json format.
 	 * @param source The source for the request.
-	 * @param endpoint The base endpoint for the request.
-	 * @param path The path of the request.
+	 * @param url The url for the request.
 	 * @param method The http method.
 	 * @param requestData Request to send to the endpoint.
 	 * @param options Options for sending the requests.
@@ -200,8 +196,7 @@ export class FetchHelper {
 	 */
 	public static async fetchJson<T, U>(
 		source: string,
-		endpoint: string,
-		path: string,
+		url: string,
 		method: HttpMethod,
 		requestData?: T,
 		options?: IFetchOptions
@@ -210,13 +205,12 @@ export class FetchHelper {
 			// The cache option is set, so call the same method again but without
 			// the cache option to get the result and cache it.
 			const cacheResponse = AsyncCache.exec(
-				`${FetchHelper._CACHE_PREFIX}${endpoint}${path}`,
+				`${FetchHelper._CACHE_PREFIX}${url}`,
 				options.cacheTtlMs,
 				async () =>
 					FetchHelper.fetchJson<T, U>(
 						source,
-						endpoint,
-						path,
+						url,
 						method,
 						requestData,
 						ObjectHelper.omit(options, ["cacheTtlMs"])
@@ -233,14 +227,16 @@ export class FetchHelper {
 		options ??= {};
 		options.headers ??= {};
 
-		if (Is.undefined(options.headers.Accept)) {
-			options.headers.Accept = "application/json";
+		if (
+			Is.undefined(options.headers["Content-Type"]) &&
+			(method === HttpMethod.POST || method === HttpMethod.PUT || method === HttpMethod.PATCH)
+		) {
+			options.headers["Content-Type"] = "application/json";
 		}
 
 		const response = await FetchHelper.fetch(
 			source,
-			endpoint,
-			path,
+			url,
 			method,
 			requestData ? JSON.stringify(requestData) : undefined,
 			options
@@ -259,7 +255,7 @@ export class FetchHelper {
 					source,
 					`${FetchHelper._CLASS_NAME_CAMEL_CASE}.decodingJSON`,
 					HttpStatusCode.badRequest,
-					{ path },
+					{ url },
 					err
 				);
 			}
@@ -275,7 +271,7 @@ export class FetchHelper {
 			response.status as HttpStatusCode,
 			{
 				statusText: response.statusText,
-				path
+				url
 			},
 			errorResponseData
 		);
@@ -284,8 +280,7 @@ export class FetchHelper {
 	/**
 	 * Perform a request for binary data.
 	 * @param source The source for the request.
-	 * @param endpoint The base endpoint for the request.
-	 * @param path The path of the request.
+	 * @param url The url for the request.
 	 * @param method The http method.
 	 * @param requestData Request to send to the endpoint.
 	 * @param options Options for sending the requests.
@@ -293,8 +288,7 @@ export class FetchHelper {
 	 */
 	public static async fetchBinary<T>(
 		source: string,
-		endpoint: string,
-		path: string,
+		url: string,
 		method: Extract<HttpMethod, "GET" | "POST">,
 		requestData?: Uint8Array,
 		options?: IFetchOptions
@@ -303,13 +297,12 @@ export class FetchHelper {
 			// The cache option is set, so call the same method again but without
 			// the cache option to get the result and cache it.
 			const cacheResponse = AsyncCache.exec(
-				`${FetchHelper._CACHE_PREFIX}${endpoint}${path}`,
+				`${FetchHelper._CACHE_PREFIX}${url}`,
 				options.cacheTtlMs * 1000,
 				async () =>
 					FetchHelper.fetchBinary<T>(
 						source,
-						endpoint,
-						path,
+						url,
 						method,
 						requestData,
 						ObjectHelper.omit(options, ["cacheTtlMs"])
@@ -325,9 +318,12 @@ export class FetchHelper {
 
 		options ??= {};
 		options.headers ??= {};
-		options.headers["Content-Type"] = "application/octet-stream";
 
-		const response = await this.fetch(source, endpoint, path, method, requestData, options);
+		if (Is.undefined(options.headers["Content-Type"])) {
+			options.headers["Content-Type"] = "application/octet-stream";
+		}
+
+		const response = await this.fetch(source, url, method, requestData, options);
 
 		if (response.ok) {
 			if (method === "GET") {
@@ -345,7 +341,7 @@ export class FetchHelper {
 					source,
 					`${FetchHelper._CLASS_NAME_CAMEL_CASE}.decodingJSON`,
 					HttpStatusCode.badRequest,
-					{ path },
+					{ url },
 					err
 				);
 			}
@@ -361,7 +357,7 @@ export class FetchHelper {
 			response.status as HttpStatusCode,
 			{
 				statusText: response.statusText,
-				path
+				url
 			},
 			errorResponseData
 		);
@@ -376,10 +372,9 @@ export class FetchHelper {
 
 	/**
 	 * Remove a cache entry.
-	 * @param endpoint The base endpoint for the request.
-	 * @param path The path of the request.
+	 * @param url The base endpoint for the request.
 	 */
-	public static removeCacheEntry(endpoint: string, path: string): void {
-		AsyncCache.remove(`${FetchHelper._CACHE_PREFIX}${endpoint}${path}`);
+	public static removeCacheEntry(url: string): void {
+		AsyncCache.remove(`${FetchHelper._CACHE_PREFIX}${url}`);
 	}
 }
