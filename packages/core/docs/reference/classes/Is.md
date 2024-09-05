@@ -667,3 +667,27 @@ The value to test.
 `value is string`
 
 True if the value is a string.
+
+***
+
+### promise()
+
+> `static` **promise**\<`T`\>(`value`): `value is Promise<T>`
+
+Is the value a promise.
+
+#### Type parameters
+
+• **T** = `unknown`
+
+#### Parameters
+
+• **value**: `unknown`
+
+The value to test.
+
+#### Returns
+
+`value is Promise<T>`
+
+True if the value is a promise.

@@ -11,6 +11,7 @@ const fetchMock = vi.fn();
 describe("FetchHelper", () => {
 	beforeEach(() => {
 		globalThis.fetch = fetchMock;
+		FetchHelper.clearCache();
 	});
 
 	afterEach(() => {
@@ -546,5 +547,120 @@ describe("FetchHelper", () => {
 		expect(response[0]).toEqual(1);
 		expect(response[1]).toEqual(2);
 		expect(response[2]).toEqual(3);
+	});
+
+	test("can cache a response from a fetch", async () => {
+		let counter = 0;
+		fetchMock.mockResolvedValue({
+			ok: true,
+			json: async () => new Promise(resolve => resolve({ foo: counter++ }))
+		});
+
+		const response = await FetchHelper.fetchJson<never, { foo: number }>(
+			"source",
+			"endpoint",
+			"path",
+			"GET",
+			undefined,
+			{
+				cacheTtlMs: 100
+			}
+		);
+		expect(response.foo).toEqual(0);
+
+		const response2 = await FetchHelper.fetchJson<never, { foo: number }>(
+			"source",
+			"endpoint",
+			"path",
+			"GET",
+			undefined,
+			{
+				cacheTtlMs: 1
+			}
+		);
+		expect(response2.foo).toEqual(0);
+
+		// Let the cache expire and the next request should get a new value
+		await new Promise<void>(resolve => setTimeout(resolve, 200));
+
+		const response3 = await FetchHelper.fetchJson<never, { foo: number }>(
+			"source",
+			"endpoint",
+			"path",
+			"GET",
+			undefined,
+			{
+				cacheTtlMs: 1
+			}
+		);
+		expect(response3.foo).toEqual(1);
+	});
+
+	test("can remove a cached response from a fetch", async () => {
+		let counter = 0;
+		fetchMock.mockResolvedValue({
+			ok: true,
+			json: async () => new Promise(resolve => resolve({ foo: counter++ }))
+		});
+
+		const response = await FetchHelper.fetchJson<never, { foo: number }>(
+			"source",
+			"endpoint",
+			"path",
+			"GET",
+			undefined,
+			{
+				cacheTtlMs: 100000
+			}
+		);
+		expect(response.foo).toEqual(0);
+
+		FetchHelper.removeCacheEntry("endpoint", "path");
+
+		const response2 = await FetchHelper.fetchJson<never, { foo: number }>(
+			"source",
+			"endpoint",
+			"path",
+			"GET",
+			undefined,
+			{
+				cacheTtlMs: 1
+			}
+		);
+		expect(response2.foo).toEqual(1);
+	});
+
+	test("can clear a cached response from a fetch", async () => {
+		let counter = 0;
+		fetchMock.mockResolvedValue({
+			ok: true,
+			json: async () => new Promise(resolve => resolve({ foo: counter++ }))
+		});
+
+		const response = await FetchHelper.fetchJson<never, { foo: number }>(
+			"source",
+			"endpoint",
+			"path",
+			"GET",
+			undefined,
+			{
+				cacheTtlMs: 100000
+			}
+		);
+		expect(response.foo).toEqual(0);
+
+		FetchHelper.clearCache();
+
+		const response2 = await FetchHelper.fetchJson<never, { foo: number }>(
+			"source",
+			"endpoint",
+			"path",
+			"GET",
+			undefined,
+			{
+				cacheTtlMs: 1
+			}
+		);
+		expect(response2.foo).toEqual(1);
 	});
 });

@@ -28,6 +28,7 @@
 - [BitString](classes/BitString.md)
 - [Url](classes/Url.md)
 - [Urn](classes/Urn.md)
+- [AsyncCache](classes/AsyncCache.md)
 - [Coerce](classes/Coerce.md)
 - [Compression](classes/Compression.md)
 - [Converter](classes/Converter.md)

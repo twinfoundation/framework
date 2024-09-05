@@ -356,4 +356,13 @@ export class Is {
 			)
 		);
 	}
+
+	/**
+	 * Is the value a promise.
+	 * @param value The value to test.
+	 * @returns True if the value is a promise.
+	 */
+	public static promise<T = unknown>(value: unknown): value is Promise<T> {
+		return value instanceof Promise;
+	}
 }

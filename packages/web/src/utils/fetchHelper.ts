@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Guards, Is, StringHelper, type IError } from "@gtsc/core";
+import { AsyncCache, Guards, Is, ObjectHelper, StringHelper, type IError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { FetchError } from "../errors/fetchError";
 import { HttpMethod } from "../models/httpMethod";
@@ -17,6 +17,12 @@ export class FetchHelper {
 	 * @internal
 	 */
 	private static readonly _CLASS_NAME: string = nameof<FetchHelper>();
+
+	/**
+	 * Prefix to use for cache entries.
+	 * @internal
+	 */
+	private static readonly _CACHE_PREFIX: string = "fetch_";
 
 	/**
 	 * Runtime name for the class.
@@ -41,7 +47,7 @@ export class FetchHelper {
 		path: string,
 		method: HttpMethod,
 		body?: string | Uint8Array,
-		options?: IFetchOptions
+		options?: Omit<IFetchOptions, "cacheTtlSeconds">
 	): Promise<Response> {
 		Guards.string(FetchHelper._CLASS_NAME, nameof(source), source);
 		Guards.string(FetchHelper._CLASS_NAME, nameof(endpoint), endpoint);
@@ -200,9 +206,36 @@ export class FetchHelper {
 		requestData?: T,
 		options?: IFetchOptions
 	): Promise<U> {
+		if (Is.integer(options?.cacheTtlMs) && options.cacheTtlMs >= 0) {
+			// The cache option is set, so call the same method again but without
+			// the cache option to get the result and cache it.
+			const cacheResponse = AsyncCache.exec(
+				`${FetchHelper._CACHE_PREFIX}${endpoint}${path}`,
+				options.cacheTtlMs,
+				async () =>
+					FetchHelper.fetchJson<T, U>(
+						source,
+						endpoint,
+						path,
+						method,
+						requestData,
+						ObjectHelper.omit(options, ["cacheTtlMs"])
+					)
+			);
+
+			// If the return value is a promise return it, otherwise continue
+			// with the regular processing.
+			if (Is.promise(cacheResponse)) {
+				return cacheResponse;
+			}
+		}
+
 		options ??= {};
 		options.headers ??= {};
-		options.headers.Accept = "application/json, application/ld+json";
+
+		if (Is.undefined(options.headers.Accept)) {
+			options.headers.Accept = "application/json";
+		}
 
 		const response = await FetchHelper.fetch(
 			source,
@@ -266,6 +299,30 @@ export class FetchHelper {
 		requestData?: Uint8Array,
 		options?: IFetchOptions
 	): Promise<Uint8Array | T> {
+		if (Is.integer(options?.cacheTtlMs) && options.cacheTtlMs >= 0) {
+			// The cache option is set, so call the same method again but without
+			// the cache option to get the result and cache it.
+			const cacheResponse = AsyncCache.exec(
+				`${FetchHelper._CACHE_PREFIX}${endpoint}${path}`,
+				options.cacheTtlMs * 1000,
+				async () =>
+					FetchHelper.fetchBinary<T>(
+						source,
+						endpoint,
+						path,
+						method,
+						requestData,
+						ObjectHelper.omit(options, ["cacheTtlMs"])
+					)
+			);
+
+			// If the return value is a promise return it, otherwise continue
+			// with the regular processing.
+			if (Is.promise(cacheResponse)) {
+				return cacheResponse;
+			}
+		}
+
 		options ??= {};
 		options.headers ??= {};
 		options.headers["Content-Type"] = "application/octet-stream";
@@ -308,5 +365,21 @@ export class FetchHelper {
 			},
 			errorResponseData
 		);
+	}
+
+	/**
+	 * Clears the cache.
+	 */
+	public static clearCache(): void {
+		AsyncCache.clearCache(FetchHelper._CACHE_PREFIX);
+	}
+
+	/**
+	 * Remove a cache entry.
+	 * @param endpoint The base endpoint for the request.
+	 * @param path The path of the request.
+	 */
+	public static removeCacheEntry(endpoint: string, path: string): void {
+		AsyncCache.remove(`${FetchHelper._CACHE_PREFIX}${endpoint}${path}`);
 	}
 }

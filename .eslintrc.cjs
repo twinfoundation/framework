@@ -570,7 +570,7 @@ module.exports = {
 				'@typescript-eslint/object-curly-spacing': ['off'],
 				'@typescript-eslint/default-param-last': ['error'],
 				'@typescript-eslint/dot-notation': ['error'],
-				'@typescript-eslint/explicit-function-return-type': ['error'],
+				'@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
 				'@typescript-eslint/explicit-member-accessibility': [
 					'error',
 					{

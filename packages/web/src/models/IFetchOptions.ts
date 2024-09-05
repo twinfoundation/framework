@@ -30,4 +30,9 @@ export interface IFetchOptions {
 	 * The number of milliseconds we should delay before any retry.
 	 */
 	retryDelayMs?: number;
+
+	/**
+	 * The number of milliseconds to cache the response for, leave undefined for no cache, 0 means infinite.
+	 */
+	cacheTtlMs?: number;
 }

@@ -42,7 +42,7 @@ The http method.
 
 Request to send to the endpoint.
 
-• **options?**: [`IFetchOptions`](../interfaces/IFetchOptions.md)
+• **options?**: `Omit`\<[`IFetchOptions`](../interfaces/IFetchOptions.md), `"cacheTtlSeconds"`\>
 
 Options for sending the requests.
 
@@ -141,3 +141,37 @@ Options for sending the requests.
 `Promise`\<`Uint8Array` \| `T`\>
 
 The response.
+
+***
+
+### clearCache()
+
+> `static` **clearCache**(): `void`
+
+Clears the cache.
+
+#### Returns
+
+`void`
+
+***
+
+### removeCacheEntry()
+
+> `static` **removeCacheEntry**(`endpoint`, `path`): `void`
+
+Remove a cache entry.
+
+#### Parameters
+
+• **endpoint**: `string`
+
+The base endpoint for the request.
+
+• **path**: `string`
+
+The path of the request.
+
+#### Returns
+
+`void`

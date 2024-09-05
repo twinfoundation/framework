@@ -43,3 +43,11 @@ The number of times to retry fetching defaults to no retries.
 > `optional` **retryDelayMs**: `number`
 
 The number of milliseconds we should delay before any retry.
+
+***
+
+### cacheTtlMs?
+
+> `optional` **cacheTtlMs**: `number`
+
+The number of milliseconds to cache the response for, leave undefined for no cache, 0 means infinite.

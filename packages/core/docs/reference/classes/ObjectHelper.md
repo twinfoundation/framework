@@ -244,13 +244,41 @@ Pick a subset of properties from an object.
 
 #### Parameters
 
-• **obj**: `T`
+• **obj**: `undefined` \| `T`
 
 The object to pick the properties from.
 
 • **keys?**: keyof `T`[]
 
 The property keys to pick.
+
+#### Returns
+
+`Partial`\<`T`\>
+
+The partial object.
+
+***
+
+### omit()
+
+> `static` **omit**\<`T`\>(`obj`, `keys`?): `Partial`\<`T`\>
+
+Omit a subset of properties from an object.
+
+#### Type parameters
+
+• **T**
+
+#### Parameters
+
+• **obj**: `undefined` \| `T`
+
+The object to omit the properties from.
+
+• **keys?**: keyof `T`[]
+
+The property keys to omit.
 
 #### Returns
 

@@ -38,6 +38,7 @@ export * from "./models/IValidationFailure";
 export * from "./types/bitString";
 export * from "./types/url";
 export * from "./types/urn";
+export * from "./utils/asyncCache";
 export * from "./utils/coerce";
 export * from "./utils/compression";
 export * from "./utils/converter";
