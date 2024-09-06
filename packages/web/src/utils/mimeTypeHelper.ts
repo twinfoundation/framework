@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { StringHelper } from "./stringHelper";
-import { Converter } from "../utils/converter";
-import { Is } from "../utils/is";
+
+import { Converter, Is, StringHelper } from "@gtsc/core";
+import { MimeTypes } from "../models/mimeTypes";
 
 /**
  * Class to help with mime types.
@@ -20,46 +20,53 @@ export class MimeTypeHelper {
 
 		// Image
 		if (MimeTypeHelper.checkBytes(data, [0x47, 0x49, 0x46])) {
-			return "image/gif";
+			return MimeTypes.Gif;
 		}
 
 		if (MimeTypeHelper.checkBytes(data, [0x42, 0x4d])) {
-			return "image/bmp";
+			return MimeTypes.Bmp;
 		}
 		if (MimeTypeHelper.checkBytes(data, [0xff, 0xd8, 0xff])) {
-			return "image/jpeg";
+			return MimeTypes.Jpeg;
 		}
 
 		if (MimeTypeHelper.checkBytes(data, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) {
-			return "image/png";
+			return MimeTypes.Png;
+		}
+
+		if (
+			MimeTypeHelper.checkBytes(data, [0x49, 0x49, 0x2a, 0x00]) ||
+			MimeTypeHelper.checkBytes(data, [0x4d, 0x4d, 0x00, 0x2a])
+		) {
+			return MimeTypes.Tiff;
 		}
 
 		// Compression
 		if (MimeTypeHelper.checkBytes(data, [0x1f, 0x8b, 0x8])) {
-			return "application/gzip";
+			return MimeTypes.Gzip;
 		}
 
 		if (MimeTypeHelper.checkBytes(data, [0x42, 0x5a, 0x68])) {
-			return "application/x-bzip2";
+			return MimeTypes.Bzip2;
 		}
 
 		if (MimeTypeHelper.checkBytes(data, [0x50, 0x4b, 0x3, 0x4])) {
-			return "application/zip";
+			return MimeTypes.Zip;
 		}
 
 		// Documents
 		if (MimeTypeHelper.checkText(data, ["%PDF"])) {
-			return "application/pdf";
+			return MimeTypes.Pdf;
 		}
 
 		// Lookup svg before xml, as svg are xml files as well
 		const asText = Converter.bytesToUtf8(data);
 		if (asText.includes("<svg")) {
-			return "image/svg+xml";
+			return MimeTypes.Svg;
 		}
 
 		if (MimeTypeHelper.checkText(data, ["<?xml ", "<message"])) {
-			return "application/xml";
+			return MimeTypes.Xml;
 		}
 
 		if (
@@ -67,15 +74,15 @@ export class MimeTypeHelper {
 			MimeTypeHelper.checkText(data, ["<?xml "], 3)
 		) {
 			// UTF-8-BOM
-			return "application/xml";
+			return MimeTypes.Xml;
 		}
 
 		if (StringHelper.isUtf8(data)) {
 			try {
 				JSON.parse(new TextDecoder().decode(data));
-				return "application/json";
+				return MimeTypes.Json;
 			} catch {
-				return "text/plain";
+				return MimeTypes.PlainText;
 			}
 		}
 	}
@@ -91,18 +98,27 @@ export class MimeTypeHelper {
 		}
 
 		const lookup: { [mimeType: string]: string } = {
-			"image/gif": "gif",
-			"image/bmp": "bmp",
-			"image/jpeg": "jpg",
-			"image/png": "png",
-			"application/gzip": "gz",
-			"application/x-bzip2": "bz2",
-			"application/zip": "zip",
-			"application/pdf": "pdf",
-			"image/svg+xml": "svg",
-			"application/xml": "xml",
-			"text/plain": "txt",
-			"application/json": "json"
+			[MimeTypes.PlainText]: "txt",
+			[MimeTypes.Html]: "html",
+			[MimeTypes.Javascript]: "js",
+			[MimeTypes.Json]: "json",
+			[MimeTypes.JsonLd]: "jsonld",
+			[MimeTypes.Xml]: "xml",
+			[MimeTypes.OctetStream]: "bin",
+			[MimeTypes.Gzip]: "gzip",
+			[MimeTypes.Bzip2]: "bz2",
+			[MimeTypes.Zip]: "zip",
+			[MimeTypes.Pdf]: "pfd",
+			[MimeTypes.Gif]: "gif",
+			[MimeTypes.Bmp]: "bmp",
+			[MimeTypes.Jpeg]: "jpeg",
+			[MimeTypes.Png]: "png",
+			[MimeTypes.Tiff]: "tif",
+			[MimeTypes.Svg]: "svg",
+			[MimeTypes.WebP]: "webp",
+			[MimeTypes.Mp4]: "mp4",
+			[MimeTypes.Mpeg]: "mpg",
+			[MimeTypes.Webm]: "webm"
 		};
 
 		return lookup[mimeType];

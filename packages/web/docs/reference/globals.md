@@ -5,6 +5,7 @@
 - [FetchError](classes/FetchError.md)
 - [FetchHelper](classes/FetchHelper.md)
 - [Jwt](classes/Jwt.md)
+- [MimeTypeHelper](classes/MimeTypeHelper.md)
 
 ## Interfaces
 
@@ -19,9 +20,11 @@
 - [HttpMethod](type-aliases/HttpMethod.md)
 - [HttpStatusCode](type-aliases/HttpStatusCode.md)
 - [JwtAlgorithms](type-aliases/JwtAlgorithms.md)
+- [MimeTypes](type-aliases/MimeTypes.md)
 
 ## Variables
 
 - [HttpMethod](variables/HttpMethod.md)
 - [HttpStatusCode](variables/HttpStatusCode.md)
 - [JwtAlgorithms](variables/JwtAlgorithms.md)
+- [MimeTypes](variables/MimeTypes.md)

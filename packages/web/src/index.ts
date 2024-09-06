@@ -9,5 +9,7 @@ export * from "./models/IJwk";
 export * from "./models/IJwtHeader";
 export * from "./models/IJwtPayload";
 export * from "./models/jwtAlgorithms";
+export * from "./models/mimeTypes";
 export * from "./utils/fetchHelper";
 export * from "./utils/jwt";
+export * from "./utils/mimeTypeHelper";

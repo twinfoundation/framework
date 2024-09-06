@@ -21,7 +21,6 @@
 - [FilenameHelper](classes/FilenameHelper.md)
 - [HexHelper](classes/HexHelper.md)
 - [JsonHelper](classes/JsonHelper.md)
-- [MimeTypeHelper](classes/MimeTypeHelper.md)
 - [ObjectHelper](classes/ObjectHelper.md)
 - [RandomHelper](classes/RandomHelper.md)
 - [StringHelper](classes/StringHelper.md)

@@ -27,6 +27,7 @@
 		"GTSC",
 		"Hmac",
 		"Hotp",
+		"jsonld",
 		"Karatsuba",
 		"Mult",
 		"nameof",

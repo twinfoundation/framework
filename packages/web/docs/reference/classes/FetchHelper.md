@@ -144,6 +144,30 @@ Clears the cache.
 
 ***
 
+### getCacheEntry()
+
+> `static` **getCacheEntry**\<`T`\>(`url`): `Promise`\<`undefined` \| `T`\>
+
+Get a cache entry.
+
+#### Type parameters
+
+• **T**
+
+#### Parameters
+
+• **url**: `string`
+
+The url for the request.
+
+#### Returns
+
+`Promise`\<`undefined` \| `T`\>
+
+The cache entry if it exists.
+
+***
+
 ### removeCacheEntry()
 
 > `static` **removeCacheEntry**(`url`): `void`
@@ -154,7 +178,7 @@ Remove a cache entry.
 
 • **url**: `string`
 
-The base endpoint for the request.
+The url for the request.
 
 #### Returns
 

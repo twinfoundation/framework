@@ -42,6 +42,15 @@ export class AsyncCache {
 	}
 
 	/**
+	 * Get an entry from the cache.
+	 * @param key The key to get from the cache.
+	 * @returns The item from the cache if it exists.
+	 */
+	public static async get<T = unknown>(key: string): Promise<T | undefined> {
+		return AsyncCache._cache[key]?.response as T;
+	}
+
+	/**
 	 * Remove an entry from the cache.
 	 * @param key The key to remove from the cache.
 	 */

@@ -7,6 +7,7 @@ import { HttpMethod } from "../models/httpMethod";
 import { HttpStatusCode } from "../models/httpStatusCode";
 import type { IFetchOptions } from "../models/IFetchOptions";
 import type { IHttpHeaders } from "../models/IHttpHeaders";
+import { MimeTypes } from "../models/mimeTypes";
 
 /**
  * Class to helper with fetch operations.
@@ -231,7 +232,7 @@ export class FetchHelper {
 			Is.undefined(options.headers["Content-Type"]) &&
 			(method === HttpMethod.POST || method === HttpMethod.PUT || method === HttpMethod.PATCH)
 		) {
-			options.headers["Content-Type"] = "application/json";
+			options.headers["Content-Type"] = MimeTypes.Json;
 		}
 
 		const response = await FetchHelper.fetch(
@@ -320,7 +321,7 @@ export class FetchHelper {
 		options.headers ??= {};
 
 		if (Is.undefined(options.headers["Content-Type"])) {
-			options.headers["Content-Type"] = "application/octet-stream";
+			options.headers["Content-Type"] = MimeTypes.OctetStream;
 		}
 
 		const response = await this.fetch(source, url, method, requestData, options);
@@ -371,8 +372,17 @@ export class FetchHelper {
 	}
 
 	/**
+	 * Get a cache entry.
+	 * @param url The url for the request.
+	 * @returns The cache entry if it exists.
+	 */
+	public static async getCacheEntry<T>(url: string): Promise<T | undefined> {
+		return AsyncCache.get<T>(`${FetchHelper._CACHE_PREFIX}${url}`);
+	}
+
+	/**
 	 * Remove a cache entry.
-	 * @param url The base endpoint for the request.
+	 * @param url The url for the request.
 	 */
 	public static removeCacheEntry(url: string): void {
 		AsyncCache.remove(`${FetchHelper._CACHE_PREFIX}${url}`);

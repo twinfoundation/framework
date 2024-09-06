@@ -46,6 +46,30 @@ The response.
 
 ***
 
+### get()
+
+> `static` **get**\<`T`\>(`key`): `Promise`\<`undefined` \| `T`\>
+
+Get an entry from the cache.
+
+#### Type parameters
+
+• **T** = `unknown`
+
+#### Parameters
+
+• **key**: `string`
+
+The key to get from the cache.
+
+#### Returns
+
+`Promise`\<`undefined` \| `T`\>
+
+The item from the cache if it exists.
+
+***
+
 ### remove()
 
 > `static` **remove**(`key`): `void`
