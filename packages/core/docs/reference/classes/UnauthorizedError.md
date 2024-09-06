@@ -38,52 +38,6 @@ The inner error if we have wrapped another error.
 
 ## Properties
 
-### cause?
-
-> `optional` **cause**: `unknown`
-
-#### Inherited from
-
-[`BaseError`](BaseError.md).[`cause`](BaseError.md#cause)
-
-***
-
-### name
-
-> **name**: `string`
-
-The name for the error.
-
-#### Inherited from
-
-[`BaseError`](BaseError.md).[`name`](BaseError.md#name)
-
-***
-
-### message
-
-> **message**: `string`
-
-The message for the error.
-
-#### Inherited from
-
-[`BaseError`](BaseError.md).[`message`](BaseError.md#message)
-
-***
-
-### stack?
-
-> `optional` **stack**: `string`
-
-The stack trace for the error.
-
-#### Inherited from
-
-[`BaseError`](BaseError.md).[`stack`](BaseError.md#stack)
-
-***
-
 ### source?
 
 > `optional` **source**: `string`

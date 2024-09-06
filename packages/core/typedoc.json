@@ -3,6 +3,7 @@
 	"out": "./docs/reference",
 	"hideGenerator": true,
 	"hideBreadcrumbs": true,
+	"excludeExternals": true,
 	"githubPages": false,
 	"disableSources": true,
 	"sort": ["source-order"],

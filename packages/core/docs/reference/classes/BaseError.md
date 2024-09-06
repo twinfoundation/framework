@@ -62,64 +62,6 @@ The inner error if we have wrapped another error.
 
 ## Properties
 
-### cause?
-
-> `optional` **cause**: `unknown`
-
-#### Inherited from
-
-`Error.cause`
-
-***
-
-### name
-
-> **name**: `string`
-
-The name for the error.
-
-#### Implementation of
-
-[`IError`](../interfaces/IError.md).[`name`](../interfaces/IError.md#name)
-
-#### Inherited from
-
-`Error.name`
-
-***
-
-### message
-
-> **message**: `string`
-
-The message for the error.
-
-#### Implementation of
-
-[`IError`](../interfaces/IError.md).[`message`](../interfaces/IError.md#message)
-
-#### Inherited from
-
-`Error.message`
-
-***
-
-### stack?
-
-> `optional` **stack**: `string`
-
-The stack trace for the error.
-
-#### Implementation of
-
-[`IError`](../interfaces/IError.md).[`stack`](../interfaces/IError.md#stack)
-
-#### Inherited from
-
-`Error.stack`
-
-***
-
 ### source?
 
 > `optional` **source**: `string`
