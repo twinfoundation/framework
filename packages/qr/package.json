@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/qr",
-	"version": "0.0.5-next.17",
+	"version": "0.0.5-next.18",
 	"description": "Package for creating QR codes",
 	"repository": {
 		"type": "git",
@@ -28,8 +28,8 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.5-next.17",
-		"@gtsc/image": "0.0.5-next.17",
+		"@gtsc/core": "0.0.5-next.18",
+		"@gtsc/image": "0.0.5-next.18",
 		"@gtsc/nameof": "next"
 	},
 	"devDependencies": {

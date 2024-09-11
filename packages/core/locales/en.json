@@ -89,7 +89,8 @@
 		"notSupportedError": "Not Supported",
 		"alreadyExistsError": "Already Exists",
 		"notImplementedError": "Not Implemented",
-		"validationError": "Validation"
+		"validationError": "Validation",
+		"unprocessableError": "Unprocessable"
 	},
 	"validation": {
 		"defaultFieldName": "The field"

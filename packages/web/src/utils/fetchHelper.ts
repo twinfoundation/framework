@@ -3,6 +3,7 @@
 import { AsyncCache, Guards, Is, ObjectHelper, StringHelper, type IError } from "@gtsc/core";
 import { nameof } from "@gtsc/nameof";
 import { FetchError } from "../errors/fetchError";
+import { HeaderTypes } from "../models/headerTypes";
 import { HttpMethod } from "../models/httpMethod";
 import { HttpStatusCode } from "../models/httpStatusCode";
 import type { IFetchOptions } from "../models/IFetchOptions";
@@ -112,7 +113,7 @@ export class FetchHelper {
 				const requestOptions: RequestInit = {
 					method,
 					headers: options?.headers as HeadersInit,
-					body: method === "POST" || method === "PUT" ? body : undefined,
+					body: method === HttpMethod.POST || method === HttpMethod.PUT ? body : undefined,
 					signal: controller ? controller.signal : undefined
 				};
 				if (Is.boolean(options?.includeCredentials)) {
@@ -229,10 +230,10 @@ export class FetchHelper {
 		options.headers ??= {};
 
 		if (
-			Is.undefined(options.headers["Content-Type"]) &&
+			Is.undefined(options.headers[HeaderTypes.ContentType]) &&
 			(method === HttpMethod.POST || method === HttpMethod.PUT || method === HttpMethod.PATCH)
 		) {
-			options.headers["Content-Type"] = MimeTypes.Json;
+			options.headers[HeaderTypes.ContentType] = MimeTypes.Json;
 		}
 
 		const response = await FetchHelper.fetch(
@@ -320,14 +321,14 @@ export class FetchHelper {
 		options ??= {};
 		options.headers ??= {};
 
-		if (Is.undefined(options.headers["Content-Type"])) {
-			options.headers["Content-Type"] = MimeTypes.OctetStream;
+		if (Is.undefined(options.headers[HeaderTypes.ContentType])) {
+			options.headers[HeaderTypes.ContentType] = MimeTypes.OctetStream;
 		}
 
 		const response = await this.fetch(source, url, method, requestData, options);
 
 		if (response.ok) {
-			if (method === "GET") {
+			if (method === HttpMethod.GET) {
 				if (response.status === HttpStatusCode.noContent) {
 					return new Uint8Array();
 				}

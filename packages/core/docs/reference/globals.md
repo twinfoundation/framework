@@ -14,6 +14,7 @@
 - [NotImplementedError](classes/NotImplementedError.md)
 - [NotSupportedError](classes/NotSupportedError.md)
 - [UnauthorizedError](classes/UnauthorizedError.md)
+- [UnprocessableError](classes/UnprocessableError.md)
 - [ValidationError](classes/ValidationError.md)
 - [Factory](classes/Factory.md)
 - [ArrayHelper](classes/ArrayHelper.md)

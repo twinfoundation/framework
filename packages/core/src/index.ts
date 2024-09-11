@@ -12,6 +12,7 @@ export * from "./errors/notFoundError";
 export * from "./errors/notImplementedError";
 export * from "./errors/notSupportedError";
 export * from "./errors/unauthorizedError";
+export * from "./errors/unprocessableError";
 export * from "./errors/validationError";
 export * from "./factories/componentFactory";
 export * from "./factories/factory";

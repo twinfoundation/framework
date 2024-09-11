@@ -17,6 +17,7 @@
 
 ## Type Aliases
 
+- [HeaderTypes](type-aliases/HeaderTypes.md)
 - [HttpMethod](type-aliases/HttpMethod.md)
 - [HttpStatusCode](type-aliases/HttpStatusCode.md)
 - [JwtAlgorithms](type-aliases/JwtAlgorithms.md)
@@ -24,6 +25,7 @@
 
 ## Variables
 
+- [HeaderTypes](variables/HeaderTypes.md)
 - [HttpMethod](variables/HttpMethod.md)
 - [HttpStatusCode](variables/HttpStatusCode.md)
 - [JwtAlgorithms](variables/JwtAlgorithms.md)

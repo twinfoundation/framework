@@ -1,41 +1,20 @@
-# Class: BaseError
+# Class: UnprocessableError
 
-Class to handle errors.
+Class to handle errors when some data can not be processed.
 
 ## Extends
 
-- `Error`
-
-## Extended by
-
-- [`AlreadyExistsError`](AlreadyExistsError.md)
-- [`ConflictError`](ConflictError.md)
-- [`GeneralError`](GeneralError.md)
-- [`GuardError`](GuardError.md)
-- [`NotFoundError`](NotFoundError.md)
-- [`NotImplementedError`](NotImplementedError.md)
-- [`NotSupportedError`](NotSupportedError.md)
-- [`UnauthorizedError`](UnauthorizedError.md)
-- [`UnprocessableError`](UnprocessableError.md)
-- [`ValidationError`](ValidationError.md)
-
-## Implements
-
-- [`IError`](../interfaces/IError.md)
+- [`BaseError`](BaseError.md)
 
 ## Constructors
 
-### new BaseError()
+### new UnprocessableError()
 
-> **new BaseError**(`name`, `source`, `message`, `properties`?, `inner`?): [`BaseError`](BaseError.md)
+> **new UnprocessableError**(`source`, `message`, `properties`?, `inner`?): [`UnprocessableError`](UnprocessableError.md)
 
-Create a new instance of BaseError.
+Create a new instance of UnprocessableError.
 
 #### Parameters
-
-• **name**: `string`
-
-The name of the error.
 
 • **source**: `string`
 
@@ -55,11 +34,11 @@ The inner error if we have wrapped another error.
 
 #### Returns
 
-[`BaseError`](BaseError.md)
+[`UnprocessableError`](UnprocessableError.md)
 
 #### Overrides
 
-`Error.constructor`
+[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructors)
 
 ## Properties
 
@@ -69,9 +48,9 @@ The inner error if we have wrapped another error.
 
 The source of the error.
 
-#### Implementation of
+#### Inherited from
 
-[`IError`](../interfaces/IError.md).[`source`](../interfaces/IError.md#source)
+[`BaseError`](BaseError.md).[`source`](BaseError.md#source)
 
 ***
 
@@ -85,9 +64,9 @@ Any additional information for the error.
 
  \[`id`: `string`\]: `unknown`
 
-#### Implementation of
+#### Inherited from
 
-[`IError`](../interfaces/IError.md).[`properties`](../interfaces/IError.md#properties)
+[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties)
 
 ***
 
@@ -97,9 +76,17 @@ Any additional information for the error.
 
 The inner error if there was one.
 
-#### Implementation of
+#### Inherited from
 
-[`IError`](../interfaces/IError.md).[`inner`](../interfaces/IError.md#inner)
+[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner)
+
+***
+
+### CLASS\_NAME
+
+> `static` `readonly` **CLASS\_NAME**: `string`
+
+Runtime name for the class.
 
 ## Methods
 
@@ -121,6 +108,10 @@ The existing error.
 
 The new instance.
 
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`fromError`](BaseError.md#fromerror)
+
 ***
 
 ### flatten()
@@ -141,6 +132,10 @@ The starting error.
 
 The list of all internal errors.
 
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`flatten`](BaseError.md#flatten)
+
 ***
 
 ### expand()
@@ -160,6 +155,10 @@ The list of errors to expand.
 `undefined` \| [`IError`](../interfaces/IError.md)
 
 The first level error.
+
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`expand`](BaseError.md#expand)
 
 ***
 
@@ -185,6 +184,10 @@ The name to check for.
 
 True if the error has the name.
 
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`isErrorName`](BaseError.md#iserrorname)
+
 ***
 
 ### isErrorMessage()
@@ -208,6 +211,10 @@ The message to check for.
 `error is BaseError`
 
 True if the error has the name.
+
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`isErrorMessage`](BaseError.md#iserrormessage)
 
 ***
 
@@ -233,6 +240,10 @@ The code to check for.
 
 True if the error has the code.
 
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`isErrorCode`](BaseError.md#iserrorcode)
+
 ***
 
 ### someErrorName()
@@ -256,6 +267,10 @@ The name to check for.
 `error is BaseError`
 
 True if the error has the name.
+
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`someErrorName`](BaseError.md#someerrorname)
 
 ***
 
@@ -281,6 +296,10 @@ The message to check for.
 
 True if the error has the name.
 
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`someErrorMessage`](BaseError.md#someerrormessage)
+
 ***
 
 ### someErrorClass()
@@ -304,6 +323,10 @@ The class to check for.
 `error is BaseError`
 
 True if the error has the specific class.
+
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`someErrorClass`](BaseError.md#someerrorclass)
 
 ***
 
@@ -329,6 +352,10 @@ The code to check for.
 
 True if the error has the name.
 
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`someErrorCode`](BaseError.md#someerrorcode)
+
 ***
 
 ### toJsonObject()
@@ -342,3 +369,7 @@ Serialize the error to the error model.
 [`IError`](../interfaces/IError.md)
 
 The error model.
+
+#### Inherited from
+
+[`BaseError`](BaseError.md).[`toJsonObject`](BaseError.md#tojsonobject)

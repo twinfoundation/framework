@@ -1,6 +1,6 @@
 {
 	"name": "@gtsc/crypto",
-	"version": "0.0.5-next.17",
+	"version": "0.0.5-next.18",
 	"description": "Contains helper methods and classes which implement cryptographic functions",
 	"repository": {
 		"type": "git",
@@ -28,7 +28,7 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.5-next.17",
+		"@gtsc/core": "0.0.5-next.18",
 		"@gtsc/nameof": "next",
 		"@noble/ciphers": "0.5.3",
 		"@noble/curves": "1.4.0",
