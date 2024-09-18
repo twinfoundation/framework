@@ -3,7 +3,7 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable no-mixed-operators */
 
-import { nameof } from "@gtsc/nameof";
+import { nameof } from "@twin.org/nameof";
 import { GeneralError } from "../errors/generalError";
 
 /**

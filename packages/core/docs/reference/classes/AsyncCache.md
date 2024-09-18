@@ -20,7 +20,7 @@ Cache the results from asynchronous requests.
 
 Execute an async request and cache the result.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 
@@ -52,7 +52,7 @@ The response.
 
 Get an entry from the cache.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 

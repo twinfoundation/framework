@@ -27,11 +27,11 @@ Generate a time based One Time Password.
 
 Key for the one time password.
 
-• **interval**: `number`= `30`
+• **interval**: `number` = `30`
 
 The time step of the counter.
 
-• **timestamp**: `number`= `undefined`
+• **timestamp**: `number` = `...`
 
 The timestamp.
 
@@ -60,15 +60,15 @@ Passcode to validate.
 Key for the one time password. This should be unique and secret for
 every user as it is the seed used to calculate the HMAC.
 
-• **window**: `number`= `2`
+• **window**: `number` = `2`
 
 The allowable margin for the counter.
 
-• **interval**: `number`= `30`
+• **interval**: `number` = `30`
 
 The time step of the counter.
 
-• **timestamp**: `number`= `undefined`
+• **timestamp**: `number` = `...`
 
 The timestamp now.
 

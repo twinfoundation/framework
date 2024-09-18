@@ -4,9 +4,9 @@
 /**
  * This is a TypeScript port of https://github.com/katzenpost/core/blob/master/crypto/extra25519/extra25519.go.
  */
-import { Guards } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
 import { edwardsToMontgomeryPriv, edwardsToMontgomeryPub } from "@noble/curves/ed25519";
+import { Guards } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 
 /**
  * Implementation of X25519.

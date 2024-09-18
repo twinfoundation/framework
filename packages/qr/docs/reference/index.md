@@ -1,4 +1,4 @@
-# @gtsc/qr
+# @twin.org/qr
 
 ## Classes
 

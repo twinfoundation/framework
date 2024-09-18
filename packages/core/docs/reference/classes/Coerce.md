@@ -188,7 +188,7 @@ TypeError If the value can not be coerced.
 
 Coerce the value to an object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 

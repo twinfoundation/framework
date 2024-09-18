@@ -98,7 +98,7 @@ describe("CLI", () => {
 			["", path.join(__dirname, "test-app")]
 		);
 		expect(exitCode).toBe(0);
-		expect(writeBuffer.length).toEqual(13);
+		expect(writeBuffer.length).toEqual(12);
 		expect(writeBuffer[0]).toEqual(`🔐 ${chalk.underline.bold.blue("Test App v0.0.1")}`);
 		expect(writeBuffer[1]).toEqual("");
 		expect(writeBuffer[2]).toEqual("");
@@ -111,11 +111,10 @@ describe("CLI", () => {
 			'  --lang <lang>        The language to display the output in. (default: "en")'
 		);
 		expect(writeBuffer[9]).toEqual(
-			"  --load-env [env...]  Load the env files to initialise any environment"
+			"  --load-env [env...]  Load the env files to initialise any environment variables."
 		);
-		expect(writeBuffer[10]).toEqual("                       variables.");
-		expect(writeBuffer[11]).toEqual("  -h, --help           display help for command");
-		expect(writeBuffer[12]).toEqual("");
+		expect(writeBuffer[10]).toEqual("  -h, --help           display help for command");
+		expect(writeBuffer[11]).toEqual("");
 	});
 
 	test("Can execute with version command line option", async () => {

@@ -1,4 +1,4 @@
-# Type alias: HttpMethod
+# Type Alias: HttpMethod
 
 > **HttpMethod**: *typeof* [`HttpMethod`](../variables/HttpMethod.md)\[keyof *typeof* [`HttpMethod`](../variables/HttpMethod.md)\]
 

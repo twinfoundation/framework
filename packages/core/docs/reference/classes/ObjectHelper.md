@@ -20,7 +20,7 @@ Class to help with objects.
 
 Convert an object to bytes.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -30,7 +30,7 @@ Convert an object to bytes.
 
 The object to convert.
 
-• **format**: `boolean`= `false`
+• **format**: `boolean` = `false`
 
 Format the JSON content.
 
@@ -48,7 +48,7 @@ The object as bytes.
 
 Convert a bytes to an object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -76,7 +76,7 @@ GeneralError if there was an error parsing the JSON.
 
 Make a deep clone of an object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -100,7 +100,7 @@ The objects clone.
 
 Deep merge objects.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 
@@ -130,7 +130,7 @@ The combined deep merge of the objects.
 
 Does one object equal another.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -162,7 +162,7 @@ True is the objects are equal.
 
 Get the property of an unknown object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 
@@ -238,7 +238,7 @@ The property to set
 
 Pick a subset of properties from an object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -266,7 +266,7 @@ The partial object.
 
 Omit a subset of properties from an object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 

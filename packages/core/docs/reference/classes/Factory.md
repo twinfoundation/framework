@@ -2,7 +2,7 @@
 
 Factory for creating implementation of generic types.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
@@ -14,7 +14,7 @@ Factory for creating implementation of generic types.
 
 Create a new factory, which is shared throughout all library instances.
 
-#### Type parameters
+#### Type Parameters
 
 • **U**
 
@@ -24,7 +24,7 @@ Create a new factory, which is shared throughout all library instances.
 
 The type name for the instances.
 
-• **autoInstance**: `boolean`= `false`
+• **autoInstance**: `boolean` = `false`
 
 Automatically create an instance when registered.
 
@@ -46,7 +46,7 @@ The factory instance.
 
 Register a new generator.
 
-#### Type parameters
+#### Type Parameters
 
 • **U**
 
@@ -98,7 +98,7 @@ GeneralError if no generator exists.
 
 Get a generator instance.
 
-#### Type parameters
+#### Type Parameters
 
 • **U**
 
@@ -130,7 +130,7 @@ GeneralError if no item exists to get.
 
 Get a generator instance with no exceptions.
 
-#### Type parameters
+#### Type Parameters
 
 • **U**
 

@@ -4,7 +4,7 @@
 /* eslint-disable no-mixed-operators */
 /* eslint-disable no-continue */
 /* eslint-disable unicorn/prefer-math-trunc */
-import { Compression } from "@gtsc/core";
+import { Compression } from "@twin.org/core";
 import type { Frame } from "./png/frame";
 import type { ImageData } from "./png/imageData";
 import type { Leaf } from "./png/leaf";

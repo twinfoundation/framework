@@ -1,4 +1,4 @@
-# Type alias: QRCellData
+# Type Alias: QRCellData
 
 > **QRCellData**: (`boolean` \| `null`)[][]
 

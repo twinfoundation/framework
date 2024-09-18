@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { ArrayHelper, Converter, GeneralError, Guards, Is } from "@gtsc/core";
-import { Ed25519, HmacSha256 } from "@gtsc/crypto";
-import { nameof } from "@gtsc/nameof";
+import { ArrayHelper, Converter, GeneralError, Guards, Is } from "@twin.org/core";
+import { Ed25519, HmacSha256 } from "@twin.org/crypto";
+import { nameof } from "@twin.org/nameof";
 import type { IJwtHeader } from "../models/IJwtHeader";
 import type { IJwtPayload } from "../models/IJwtPayload";
 import { JwtAlgorithms } from "../models/jwtAlgorithms";

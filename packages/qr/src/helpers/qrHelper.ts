@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 /* eslint-disable unicorn/prefer-math-trunc */
-import { GeneralError } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
+import { GeneralError } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 import { MathHelper } from "./mathHelper";
 import { Polynomial } from "./polynomial";
 import { ErrorCorrectLevel } from "../models/errorCorrectLevel";

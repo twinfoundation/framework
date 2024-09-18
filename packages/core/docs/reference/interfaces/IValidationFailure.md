@@ -34,6 +34,6 @@ The optional human readable name for the field as an i18 resource.
 
 Additional properties for the validation failure.
 
-#### Index signature
+#### Index Signature
 
  \[`id`: `string`\]: `unknown`

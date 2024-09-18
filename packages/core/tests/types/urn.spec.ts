@@ -10,12 +10,12 @@ describe("Urn", () => {
 	});
 
 	test("can generate an internal id", () => {
-		const id = Urn.generateRandom("gtsc-ilt");
+		const id = Urn.generateRandom("twin-ilt");
 
 		const urn = id.toString(false).split(":");
 
 		expect(urn[0]).toEqual("urn");
-		expect(urn[1]).toEqual("gtsc-ilt");
+		expect(urn[1]).toEqual("twin-ilt");
 		expect(urn[2].length).toEqual(64);
 	});
 

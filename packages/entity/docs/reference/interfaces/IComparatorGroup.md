@@ -2,7 +2,7 @@
 
 Interface defining condition group operator.
 
-## Type parameters
+## Type Parameters
 
 • **T** = `unknown`
 

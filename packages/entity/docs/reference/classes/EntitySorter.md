@@ -20,7 +20,7 @@ Class to perform sort operations on entities.
 
 Sort a list of entities using multiple keys and direction.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -48,7 +48,7 @@ The sorted list.
 
 Compare two properties.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -70,7 +70,7 @@ The property to compare.
 
 The type of the property.
 
-• **direction**: [`SortDirection`](../type-aliases/SortDirection.md)= `SortDirection.Ascending`
+• **direction**: [`SortDirection`](../type-aliases/SortDirection.md) = `SortDirection.Ascending`
 
 The direction of the sort.
 

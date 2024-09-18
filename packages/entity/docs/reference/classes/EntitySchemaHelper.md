@@ -20,7 +20,7 @@ Class to help with entity schema operations.
 
 Get the schema for the specified object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 
@@ -44,7 +44,7 @@ The schema for the object if it can be found.
 
 Get the primary key from the entity schema.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -72,7 +72,7 @@ If no primary key was found, or more than one.
 
 Get the sort properties from the schema.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -96,7 +96,7 @@ The sort keys from the schema or undefined if there are none.
 
 Build sort properties from the schema and override if necessary.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 

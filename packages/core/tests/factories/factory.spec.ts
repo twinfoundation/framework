@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable max-classes-per-file */
 
-import { nameof } from "@gtsc/nameof";
+import { nameof } from "@twin.org/nameof";
 import { Factory } from "../../src/factories/factory";
 import type { IComponent } from "../../src/models/IComponent";
 import { I18n } from "../../src/utils/i18n";

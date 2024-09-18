@@ -62,7 +62,7 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -94,7 +94,7 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -126,11 +126,11 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 
-• **minValue**: `number`= `0`
+• **minValue**: `number` = `0`
 
 The minimum value.
 
@@ -166,11 +166,11 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 
-• **minValue**: `number`= `0`
+• **minValue**: `number` = `0`
 
 The minimum value.
 
@@ -206,11 +206,11 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 
-• **minValue**: `bigint`= `undefined`
+• **minValue**: `bigint` = `...`
 
 The minimum value.
 
@@ -246,7 +246,7 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -278,7 +278,7 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -310,7 +310,7 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -342,7 +342,7 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -374,7 +374,7 @@ The name of the option.
 
 The option value.
 
-• **allowEnvVar**: `boolean`= `true`
+• **allowEnvVar**: `boolean` = `true`
 
 Allow the option to be read from an env var.
 

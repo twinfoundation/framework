@@ -206,7 +206,7 @@ Is the value a hex string.
 
 The value to test.
 
-• **allowPrefix**: `boolean`= `false`
+• **allowPrefix**: `boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 
@@ -234,7 +234,7 @@ The value to test.
 
 The length to test.
 
-• **allowPrefix**: `boolean`= `false`
+• **allowPrefix**: `boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 
@@ -472,7 +472,7 @@ True if the value is a date.
 
 Is the value an object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `object`
 
@@ -496,7 +496,7 @@ True if the value is a object.
 
 Is the value an object with at least one property.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `object`
 
@@ -520,7 +520,7 @@ True if the value is a object.
 
 Is the value an array.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -544,7 +544,7 @@ True if the value is an array.
 
 Is the value an array with at least one element.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -568,7 +568,7 @@ True if the value is an array with at least one element.
 
 Is the value an array with at least one element.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -676,7 +676,7 @@ True if the value is a string.
 
 Is the value a promise.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 

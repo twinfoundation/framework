@@ -3,11 +3,13 @@
 	"out": "./docs/reference",
 	"hideGenerator": true,
 	"hideBreadcrumbs": true,
+	"hidePageHeader": true,
 	"excludeExternals": true,
 	"githubPages": false,
 	"disableSources": true,
 	"sort": ["source-order"],
 	"treatWarningsAsErrors": true,
-	"entryFileName": "../overview.md",
+	"readme": "none",
+	"entryFileName": "index",
 	"plugin": ["typedoc-plugin-markdown"]
 }

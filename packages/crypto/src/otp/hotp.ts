@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 
-import { Guards } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
+import { Guards } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 import * as otp from "micro-key-producer/otp.js";
 
 /**

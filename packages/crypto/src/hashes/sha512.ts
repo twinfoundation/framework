@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable camelcase */
 
-import { GeneralError, Guards } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
 import { sha512_224, sha512_256, sha384, sha512 } from "@noble/hashes/sha512";
 import type { Hash } from "@noble/hashes/utils";
+import { GeneralError, Guards } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 
 /**
  * Perform a SHA-512 hash on the block.

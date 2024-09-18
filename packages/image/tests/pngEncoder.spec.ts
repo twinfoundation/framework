@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Converter } from "@gtsc/core";
+import { Converter } from "@twin.org/core";
 import { PngEncoder } from "../src/encoders/pngEncoder";
 
 describe("PngEncoder", () => {

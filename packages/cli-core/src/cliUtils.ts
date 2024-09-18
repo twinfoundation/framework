@@ -4,7 +4,7 @@ import { exec, spawn } from "node:child_process";
 import { accessSync, readFileSync, statSync } from "node:fs";
 import { access, mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { Coerce, I18n, Is, ObjectHelper } from "@gtsc/core";
+import { Coerce, I18n, Is, ObjectHelper } from "@twin.org/core";
 import { CLIDisplay } from "./cliDisplay";
 
 /**

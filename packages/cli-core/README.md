@@ -1,11 +1,11 @@
-# GTSC CLI Core
+# TWIN CLI Core
 
 Core classes for building a CLI.
 
 ## Installation
 
 ```shell
-npm install @gtsc/cli-core
+npm install @twin.org/cli-core
 ```
 
 ## Examples
@@ -14,7 +14,7 @@ Usage of the tool is shown in the examples [docs/examples.md](docs/examples.md)
 
 ## Reference
 
-Detailed reference documentation for the API can be found in [docs/reference/globals.md](docs/reference/globals.md)
+Detailed reference documentation for the API can be found in [docs/reference/index.md](docs/reference/index.md)
 
 ## Changelog
 

@@ -1,4 +1,4 @@
-# Type alias: ErrorCorrectLevel
+# Type Alias: ErrorCorrectLevel
 
 > **ErrorCorrectLevel**: *typeof* [`ErrorCorrectLevel`](../variables/ErrorCorrectLevel.md)\[keyof *typeof* [`ErrorCorrectLevel`](../variables/ErrorCorrectLevel.md)\]
 

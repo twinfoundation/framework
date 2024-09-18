@@ -74,7 +74,7 @@ Encode a raw array to hex string.
 
 The bytes to encode.
 
-• **includePrefix**: `boolean`= `false`
+• **includePrefix**: `boolean` = `false`
 
 Include the 0x prefix on the returned hex.
 
@@ -134,7 +134,7 @@ Convert the UTF8 to hex.
 
 The text to convert.
 
-• **includePrefix**: `boolean`= `false`
+• **includePrefix**: `boolean` = `false`
 
 Include the 0x prefix on the returned hex.
 

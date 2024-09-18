@@ -1,4 +1,4 @@
-# @gtsc/cli-core
+# @twin.org/cli-core
 
 ## Classes
 

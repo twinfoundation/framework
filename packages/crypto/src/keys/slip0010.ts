@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 
-import { Converter, GeneralError } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
 import { HDKey as HDKeySecp256k1 } from "@scure/bip32";
+import { Converter, GeneralError } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 import { HDKey as HDKeyEd25519 } from "micro-key-producer/slip10.js";
 import type { Bip32Path } from "./bip32Path";
 import { Ed25519 } from "../curves/ed25519";

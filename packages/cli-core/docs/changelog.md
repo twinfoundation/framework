@@ -1,5 +1,5 @@
-# @gtsc/cli-core - Changelog
+# @twin.org/cli-core - Changelog
 
-## v0.0.4
+## 0.0.1-next.2
 
 - Initial Release

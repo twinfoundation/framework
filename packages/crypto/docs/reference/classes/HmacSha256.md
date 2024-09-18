@@ -16,7 +16,7 @@ Create a new instance of HmacSha256.
 
 The key for the hmac.
 
-• **bits**: `number`= `HmacSha256.SIZE_256`
+• **bits**: `number` = `HmacSha256.SIZE_256`
 
 The number of bits.
 
@@ -28,7 +28,7 @@ The number of bits.
 
 ### SIZE\_256
 
-> `static` `readonly` **SIZE\_256**: `number` = `256`
+> `readonly` `static` **SIZE\_256**: `number` = `256`
 
 Sha256 256.
 
@@ -36,7 +36,7 @@ Sha256 256.
 
 ### SIZE\_224
 
-> `static` `readonly` **SIZE\_224**: `number` = `224`
+> `readonly` `static` **SIZE\_224**: `number` = `224`
 
 Sha256 224.
 

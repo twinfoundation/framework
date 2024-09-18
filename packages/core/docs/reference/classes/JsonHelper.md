@@ -42,7 +42,7 @@ The serialized object.
 Creates a RFC 6902 diff set.
 Based on https://www.rfc-editor.org/rfc/rfc6902.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 
@@ -71,7 +71,7 @@ The list of patches.
 Applies a RFC 6902 diff set to an object.
 Based on https://www.rfc-editor.org/rfc/rfc6902.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 

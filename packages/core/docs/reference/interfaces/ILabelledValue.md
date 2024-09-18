@@ -2,7 +2,7 @@
 
 Interface describing a label/value pair.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 

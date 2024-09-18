@@ -528,7 +528,7 @@ True if the value is a timestamp in seconds.
 
 Is the property an object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `object`
 
@@ -564,7 +564,7 @@ True if the value is a object.
 
 Is the property an array.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -600,7 +600,7 @@ True if the value is an array.
 
 Is the property an array with at least one item.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -636,7 +636,7 @@ True if the value is an array with at least one element.
 
 Is the property one of a list of items.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -812,7 +812,7 @@ The validation failures to combine into the map for the properties.
 
 The map to add the failures to.
 
-• **clearMap**: `boolean`= `true`
+• **clearMap**: `boolean` = `true`
 
 Should the map be cleared before adding the failures.
 

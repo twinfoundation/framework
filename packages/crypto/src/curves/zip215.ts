@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Guards } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
 import { ed25519 } from "@noble/curves/ed25519";
+import { Guards } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 import { Ed25519 } from "./ed25519";
 
 /**

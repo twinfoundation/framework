@@ -20,7 +20,7 @@ Class to help with decorators.
 
 Get the schema from the reflection metadata.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 
@@ -44,7 +44,7 @@ The schema from the metadata if it can be found.
 
 Set the schema from the reflection metadata.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 

@@ -1,5 +1,5 @@
-# @gtsc/entity - Changelog
+# @twin.org/entity - Changelog
 
-## v0.0.3
+## 0.0.1-next.2
 
 - Initial Release

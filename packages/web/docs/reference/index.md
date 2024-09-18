@@ -1,4 +1,4 @@
-# @gtsc/web
+# @twin.org/web
 
 ## Classes
 

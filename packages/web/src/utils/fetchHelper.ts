@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { AsyncCache, Guards, Is, ObjectHelper, StringHelper, type IError } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
+import { AsyncCache, Guards, Is, ObjectHelper, StringHelper, type IError } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 import { FetchError } from "../errors/fetchError";
 import { HeaderTypes } from "../models/headerTypes";
 import { HttpMethod } from "../models/httpMethod";

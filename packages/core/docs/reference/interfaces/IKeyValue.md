@@ -2,7 +2,7 @@
 
 Interface describing a key/value pair.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 

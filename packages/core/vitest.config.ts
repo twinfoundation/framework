@@ -26,7 +26,7 @@ export default defineConfig({
 		},
 		server: {
 			deps: {
-				external: ["@gtsc/core"]
+				external: ["@twin.org/core"]
 			}
 		}
 	}

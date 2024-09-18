@@ -16,7 +16,7 @@ Create a new instance of HmacSha512.
 
 The key for the hmac.
 
-• **bits**: `number`= `HmacSha512.SIZE_512`
+• **bits**: `number` = `HmacSha512.SIZE_512`
 
 The number of bits.
 
