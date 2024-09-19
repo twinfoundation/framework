@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Coerce, Converter, GeneralError, Guards, Is, Url } from "@gtsc/core";
-import { Bech32 } from "@gtsc/crypto";
+import { Coerce, Converter, GeneralError, Guards, Is, Url } from "@twin.org/core";
+import { Bech32 } from "@twin.org/crypto";
 
 /**
  * Parameter utilities for the CLI.

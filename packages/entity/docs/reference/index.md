@@ -1,4 +1,4 @@
-# @gtsc/entity
+# @twin.org/entity
 
 ## Classes
 

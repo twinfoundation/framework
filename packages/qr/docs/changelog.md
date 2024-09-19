@@ -1,5 +1,5 @@
-# @gtsc/qr - Changelog
+# @twin.org/qr - Changelog
 
-## v0.0.3
+## 0.0.1-next.3
 
 - Initial Release

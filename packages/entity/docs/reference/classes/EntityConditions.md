@@ -20,7 +20,7 @@ Class to perform condition checks.
 
 See if the entity matches the conditions.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -48,7 +48,7 @@ True if the entity matches.
 
 See if the entity matches the conditions.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 

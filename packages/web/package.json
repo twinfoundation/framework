@@ -1,10 +1,10 @@
 {
-	"name": "@gtsc/web",
-	"version": "0.0.5-next.18",
+	"name": "@twin.org/web",
+	"version": "0.0.1-next.3",
 	"description": "Contains classes for use with web operations",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/gtscio/framework.git",
+		"url": "git+https://github.com/twinfoundation/framework.git",
 		"directory": "packages/web"
 	},
 	"author": "martyn.janes@iota.org",
@@ -23,29 +23,27 @@
 		"bundle": "npm run bundle:esm && npm run bundle:cjs",
 		"docs:clean": "rimraf docs/reference",
 		"docs:generate": "typedoc",
-		"docs:remove-header": "replace-in-files --regex='^.*overview.md.*?\\s\\s.*?\\s\\s' --string='docs/' --replacement='' \"docs/**/*.md\"",
-		"docs": "npm run docs:clean && npm run docs:generate && npm run docs:remove-header",
+		"docs": "npm run docs:clean && npm run docs:generate",
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@gtsc/core": "0.0.5-next.18",
-		"@gtsc/crypto": "0.0.5-next.18",
-		"@gtsc/nameof": "next"
+		"@twin.org/core": "0.0.1-next.3",
+		"@twin.org/crypto": "0.0.1-next.3",
+		"@twin.org/nameof": "next"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "next",
-		"@types/node": "20.14.6",
-		"@vitest/coverage-v8": "1.6.0",
+		"@twin.org/nameof-transformer": "next",
+		"@types/node": "22.5.5",
+		"@vitest/coverage-v8": "2.1.1",
 		"copyfiles": "2.4.1",
-		"replace-in-files-cli": "2.2.0",
-		"rimraf": "5.0.7",
-		"rollup": "4.18.0",
+		"rimraf": "6.0.1",
+		"rollup": "4.21.3",
 		"rollup-plugin-typescript2": "0.36.0",
-		"ts-patch": "3.2.0",
-		"typedoc": "0.25.13",
-		"typedoc-plugin-markdown": "4.0.3",
-		"typescript": "5.4.5",
-		"vitest": "1.6.0"
+		"ts-patch": "3.2.1",
+		"typedoc": "0.26.7",
+		"typedoc-plugin-markdown": "4.2.7",
+		"typescript": "5.6.2",
+		"vitest": "2.1.1"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",

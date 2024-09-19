@@ -184,7 +184,7 @@ The name of the property.
 
 The value to test.
 
-• **allowPrefix**: `boolean`= `false`
+• **allowPrefix**: `boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 
@@ -222,7 +222,7 @@ The value to test.
 
 The length of the string to match.
 
-• **allowPrefix**: `boolean`= `false`
+• **allowPrefix**: `boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 
@@ -452,7 +452,7 @@ GuardError If the value does not match the assertion.
 
 Is the property an object.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `object`
 
@@ -486,7 +486,7 @@ GuardError If the value does not match the assertion.
 
 Is the property is an object with at least one property.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `object`
 
@@ -520,7 +520,7 @@ GuardError If the value does not match the assertion.
 
 Is the property is an array.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -554,7 +554,7 @@ GuardError If the value does not match the assertion.
 
 Is the property is an array with at least one item.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -588,7 +588,7 @@ GuardError If the value does not match the assertion.
 
 Is the property one of a list of items.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 

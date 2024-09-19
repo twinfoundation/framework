@@ -100,7 +100,7 @@ Display an error message.
 
 The error to display.
 
-• **lineBreaks**: `boolean`= `true`
+• **lineBreaks**: `boolean` = `true`
 
 Whether to add a line break after the error.
 
@@ -144,7 +144,7 @@ The label for the value.
 
 The value to display.
 
-• **indentLevel**: `number`= `0`
+• **indentLevel**: `number` = `0`
 
 The level of indentation.
 
@@ -226,15 +226,15 @@ Start the spinner.
 
 #### Parameters
 
-• **i18nMessage**: `string`= `"cli.progress.pleaseWait"`
+• **i18nMessage**: `string` = `"cli.progress.pleaseWait"`
 
 The message to display with the spinner.
 
-• **spinnerCharacters**: `string`[]= `undefined`
+• **spinnerCharacters**: `string`[] = `...`
 
 The characters to use in the spinner.
 
-• **interval**: `number`= `100`
+• **interval**: `number` = `100`
 
 The interval for the spinner.
 

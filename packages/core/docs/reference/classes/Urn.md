@@ -196,7 +196,7 @@ Get the parts.
 
 #### Parameters
 
-• **startIndex**: `number`= `0`
+• **startIndex**: `number` = `0`
 
 The index to start from, defaults to 0.
 
@@ -244,7 +244,7 @@ Get the namespace specific parts.
 
 #### Parameters
 
-• **startIndex**: `number`= `0`
+• **startIndex**: `number` = `0`
 
 The index to start from, defaults to 0.
 
@@ -264,7 +264,7 @@ Get the namespace specific.
 
 #### Parameters
 
-• **startIndex**: `number`= `0`
+• **startIndex**: `number` = `0`
 
 The index to start from, defaults to 0.
 
@@ -284,7 +284,7 @@ Convert the parts in to a full string.
 
 #### Parameters
 
-• **omitPrefix**: `boolean`= `true`
+• **omitPrefix**: `boolean` = `true`
 
 Omit the urn: prefix from the string.
 

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { CLIBase } from "@gtsc/cli-core";
+import { CLIBase } from "@twin.org/cli-core";
 import type { Command } from "commander";
 import { buildCommandAddress } from "./commands/address";
 import { buildCommandMnemonic } from "./commands/mnemonic";
@@ -20,9 +20,9 @@ export class CLI extends CLIBase {
 	public async run(argv: string[], localesDirectory?: string): Promise<number> {
 		return this.execute(
 			{
-				title: "GTSC Crypto",
-				appName: "gtsc-crypto",
-				version: "0.0.4-next.35",
+				title: "TWIN Crypto",
+				appName: "twin-crypto",
+				version: "0.0.1-next.3",
 				icon: "🌍",
 				supportsEnvFiles: true
 			},

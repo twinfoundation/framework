@@ -1,4 +1,4 @@
-# @gtsc/crypto-cli
+# @twin.org/crypto-cli
 
 ## Classes
 

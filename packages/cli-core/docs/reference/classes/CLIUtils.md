@@ -100,7 +100,7 @@ True if the dir exists.
 
 Read a JSON file and parse it.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 
@@ -124,7 +124,7 @@ The parsed JSON.
 
 Read a JSON file and parse it, synchronously.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 
@@ -236,7 +236,7 @@ Promise to wait for command execution to complete.
 
 Write a JSON file.
 
-#### Type parameters
+#### Type Parameters
 
 • **T** = `unknown`
 

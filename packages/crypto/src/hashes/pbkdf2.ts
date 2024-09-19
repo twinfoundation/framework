@@ -1,10 +1,10 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Guards } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
 import { pbkdf2 } from "@noble/hashes/pbkdf2";
 import { sha256 } from "@noble/hashes/sha256";
 import { sha512 } from "@noble/hashes/sha512";
+import { Guards } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 
 /**
  * Implementation of the password based key derivation function 2.

@@ -56,7 +56,7 @@ The source of the error.
 
 Any additional information for the error.
 
-#### Index signature
+#### Index Signature
 
  \[`id`: `string`\]: `unknown`
 
@@ -80,7 +80,7 @@ The inner error if there was one.
 
 ### CLASS\_NAME
 
-> `static` `readonly` **CLASS\_NAME**: `string`
+> `readonly` `static` **CLASS\_NAME**: `string`
 
 Runtime name for the class.s
 

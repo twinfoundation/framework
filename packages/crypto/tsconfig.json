@@ -15,7 +15,7 @@
 		"declaration": true,
 		"declarationDir": "dist/types",
 		"types": [],
-		"plugins": [{ "transform": "@gtsc/nameof-transformer" }]
+		"plugins": [{ "transform": "@twin.org/nameof-transformer" }]
 	},
 	"include": ["src/**/*.ts"]
 }

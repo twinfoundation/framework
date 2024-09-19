@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 
-import { GeneralError } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
+import { GeneralError } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 
 /**
  * Class to helper with math.

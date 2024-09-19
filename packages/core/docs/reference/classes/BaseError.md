@@ -81,7 +81,7 @@ The source of the error.
 
 Any additional information for the error.
 
-#### Index signature
+#### Index Signature
 
  \[`id`: `string`\]: `unknown`
 

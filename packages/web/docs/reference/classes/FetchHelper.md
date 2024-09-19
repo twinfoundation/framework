@@ -56,7 +56,7 @@ The response.
 
 Perform a request in json format.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -98,7 +98,7 @@ The response.
 
 Perform a request for binary data.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 
@@ -150,7 +150,7 @@ Clears the cache.
 
 Get a cache entry.
 
-#### Type parameters
+#### Type Parameters
 
 • **T**
 

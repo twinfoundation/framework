@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { RandomHelper } from "@gtsc/core";
+import { RandomHelper } from "@twin.org/core";
 
 /**
  * Generate random passwords.

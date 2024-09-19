@@ -22,11 +22,11 @@ Generate a random mnemonic.
 
 #### Parameters
 
-• **strength**: `number`= `256`
+• **strength**: `number` = `256`
 
 The strength of the mnemonic to generate, defaults to 256.
 
-• **words**: `string`[]= `wordlist`
+• **words**: `string`[] = `wordlist`
 
 The wordlist to use, defaults to the English wordlist.
 
@@ -54,7 +54,7 @@ Generate a mnemonic from the entropy.
 
 The entropy to generate.
 
-• **words**: `string`[]= `wordlist`
+• **words**: `string`[] = `wordlist`
 
 The wordlist to use, defaults to the English wordlist.
 
@@ -106,7 +106,7 @@ Convert the mnemonic back to entropy.
 
 The mnemonic to convert.
 
-• **words**: `string`[]= `wordlist`
+• **words**: `string`[] = `wordlist`
 
 The wordlist to use, defaults to the English wordlist.
 

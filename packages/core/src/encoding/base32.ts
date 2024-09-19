@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 
-import { nameof } from "@gtsc/nameof";
+import { nameof } from "@twin.org/nameof";
 import { GeneralError } from "../errors/generalError";
 
 /**

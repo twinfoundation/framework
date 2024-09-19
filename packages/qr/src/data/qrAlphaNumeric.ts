@@ -1,8 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-mixed-operators */
-import { GeneralError } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
+import { GeneralError } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 import type { BitBuffer } from "../helpers/bitBuffer";
 import { QRDataBase } from "../models/qrDataBase";
 import { QRDataMode } from "../models/qrDataMode";

@@ -1,1 +1,1 @@
-# @gtsc/core - Examples
+# @twin.org/core - Examples

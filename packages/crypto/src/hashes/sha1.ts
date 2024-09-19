@@ -1,9 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Guards } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
 import { sha1 } from "@noble/hashes/sha1";
 import type { Hash } from "@noble/hashes/utils";
+import { Guards } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 
 /**
  * Perform a SHA-1 hash on the block.

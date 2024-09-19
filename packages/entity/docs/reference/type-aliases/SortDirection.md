@@ -1,4 +1,4 @@
-# Type alias: SortDirection
+# Type Alias: SortDirection
 
 > **SortDirection**: *typeof* [`SortDirection`](../variables/SortDirection.md)\[keyof *typeof* [`SortDirection`](../variables/SortDirection.md)\]
 

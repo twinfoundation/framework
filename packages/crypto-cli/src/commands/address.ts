@@ -1,8 +1,14 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { CLIDisplay, CLIOptions, CLIParam, CLIUtils, type CliOutputOptions } from "@gtsc/cli-core";
-import { Converter, I18n, Is } from "@gtsc/core";
-import { Bip44, KeyType } from "@gtsc/crypto";
+import {
+	CLIDisplay,
+	CLIOptions,
+	CLIParam,
+	CLIUtils,
+	type CliOutputOptions
+} from "@twin.org/cli-core";
+import { Converter, I18n, Is } from "@twin.org/core";
+import { Bip44, KeyType } from "@twin.org/crypto";
 import { Command, Option } from "commander";
 
 /**

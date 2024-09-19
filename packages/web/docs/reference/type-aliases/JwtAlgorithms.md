@@ -1,4 +1,4 @@
-# Type alias: JwtAlgorithms
+# Type Alias: JwtAlgorithms
 
 > **JwtAlgorithms**: *typeof* [`JwtAlgorithms`](../variables/JwtAlgorithms.md)\[keyof *typeof* [`JwtAlgorithms`](../variables/JwtAlgorithms.md)\]
 

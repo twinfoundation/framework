@@ -1,4 +1,4 @@
-# Type alias: LogicalOperator
+# Type Alias: LogicalOperator
 
 > **LogicalOperator**: *typeof* [`LogicalOperator`](../variables/LogicalOperator.md)\[keyof *typeof* [`LogicalOperator`](../variables/LogicalOperator.md)\]
 

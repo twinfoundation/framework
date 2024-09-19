@@ -1,11 +1,11 @@
-# @gtsc/crypto-cli - Examples
+# @twin.org/crypto-cli - Examples
 
 ## Command Line Tool
 
 First install the tool with the following script.
 
 ```shell
-npm install @gtsc/crypto-cli
+npm install @twin.org/crypto-cli
 ```
 
 ## Running
@@ -13,15 +13,15 @@ npm install @gtsc/crypto-cli
 If you run the tool with no command line options:
 
 ```shell
-gtsc-crypto
+twin-crypto
 ```
 
 You should see output similar to the following
 
 ```shell
-🌍 GTSC Crypto v1.0.0
+🌍 TWIN Crypto v1.0.0
 
-Usage: gtsc-crypto [command]
+Usage: twin-crypto [command]
 
 Options:
   -V, --version       output the version number
@@ -41,13 +41,13 @@ Commands:
 The mnemonic command can be used to generate a new mnemonic for use in the other crypto functions.
 
 ```shell
-gtsc-crypto mnemonic
+twin-crypto mnemonic
 ```
 
 Output
 
 ```shell
-🌍 GTSC Crypto v1.0.0
+🌍 TWIN Crypto v1.0.0
 
 Mnemonic: cricket pumpkin clump warrior accident appear trophy exchange width ginger thank common must tiny inform feed orient ritual tackle tortoise few survey client object
 Seed: 0x01fb73209537a33a2f03e419caed0eba48005b093b9a8ce35a93f5e3a1ad66ceaccb1afd4cd23ccaef3f0210e377a5118c90c7a5f1800be49a42d1c3dc0bb3fc
@@ -58,15 +58,15 @@ Done.
 There are additional options you can specify for this command, to get the detail on these options issue the following command to get help.
 
 ```shell
-gtsc-crypto mnemonic --help
+twin-crypto mnemonic --help
 ```
 
 Output
 
 ```shell
-🌍 GTSC Crypto v1.0.0
+🌍 TWIN Crypto v1.0.0
 
-Usage: gtsc-crypto mnemonic [options]
+Usage: twin-crypto mnemonic [options]
 
 Create a mnemonic, will also generate the equivalent seed in hex and base64 format.
 
@@ -84,7 +84,7 @@ Options:
 To output generate mnemonic and base64 formatted seed, store them in a JSON and env file but not display them to the console you would enter the following.
 
 ```shell
-gtsc-crypto mnemonic --seed-format base64 --no-console --json my.json --env my.env
+twin-crypto mnemonic --seed-format base64 --no-console --json my.json --env my.env
 ```
 
 The env file would look like:
@@ -108,13 +108,13 @@ and the JSON file would be:
 The address command can be used to generate addresses and key pairs based on the specified seed. The seed can be provided from the command line of read from an environment variable or .env file. By default 10 addresses will be generated starting at address index 0, for account 0.
 
 ```shell
-gtsc-crypto address --seed 0x01fb73209537a33a2f03e419caed0eba48005b093b9a8ce35a93f5e3a1ad66ceaccb1afd4cd23ccaef3f0210e377a5118c90c7a5f1800be49a42d1c3dc0bb3fc
+twin-crypto address --seed 0x01fb73209537a33a2f03e419caed0eba48005b093b9a8ce35a93f5e3a1ad66ceaccb1afd4cd23ccaef3f0210e377a5118c90c7a5f1800be49a42d1c3dc0bb3fc
 ```
 
 Output
 
 ```shell
-🌍 GTSC Crypto v1.0.0
+🌍 TWIN Crypto v1.0.0
 
 Seed: 0x01fb73209537a33a2f03e419caed0eba48005b093b9a8ce35a93f5e3a1ad66ceaccb1afd4cd23ccaef3f0210e377a5118c90c7a5f1800be49a42d1c3dc0bb3fc
 Start: 0
@@ -183,15 +183,15 @@ Done.
 There are additional options you can specify for this command, to get the detail on these options issue the following command to get help.
 
 ```shell
-gtsc-crypto address --help
+twin-crypto address --help
 ```
 
 Output
 
 ```shell
-🌍 GTSC Crypto v1.0.0
+🌍 TWIN Crypto v1.0.0
 
-sage: gtsc-crypto address [options]
+sage: twin-crypto address [options]
 
 Create a number of bech32 addresses and their associated key pairs from the seed.
 
@@ -218,13 +218,13 @@ Options:
 To read from an env file and load the variable named SEED from the file, and output only 2 addresses, outputting the keys in base64 format.
 
 ```shell
-gtsc-crypto address --load-env my.env --seed !SEED --count 2 --key-format base64
+twin-crypto address --load-env my.env --seed !SEED --count 2 --key-format base64
 ```
 
 You can use the options to store the results in JSON or env files, and the `merge` options allow you to modify existing files should you wish.
 
 ```shell
-gtsc-crypto address --load-env my.env --seed !SEED --env address.env --merge-env --json address.json --merge-json
+twin-crypto address --load-env my.env --seed !SEED --env address.env --merge-env --json address.json --merge-json
 ```
 
 The output of this command would produce address.env

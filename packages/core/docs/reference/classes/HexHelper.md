@@ -86,7 +86,7 @@ Is the data hex format.
 
 The value to test.
 
-• **allowPrefix**: `boolean`= `false`
+• **allowPrefix**: `boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 

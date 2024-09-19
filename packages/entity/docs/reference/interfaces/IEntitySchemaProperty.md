@@ -2,7 +2,7 @@
 
 Definition for an entity schema property.
 
-## Type parameters
+## Type Parameters
 
 • **T** = `unknown`
 

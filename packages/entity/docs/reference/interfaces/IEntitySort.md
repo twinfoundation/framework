@@ -2,7 +2,7 @@
 
 Definition of an entity property sort details.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 

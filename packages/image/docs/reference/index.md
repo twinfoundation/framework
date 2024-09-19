@@ -1,4 +1,4 @@
-# @gtsc/image
+# @twin.org/image
 
 ## Classes
 

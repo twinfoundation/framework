@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { clearLine, cursorTo } from "node:readline";
 import { inspect } from "node:util";
-import { Coerce, ErrorHelper, I18n, Is } from "@gtsc/core";
+import { Coerce, ErrorHelper, I18n, Is } from "@twin.org/core";
 import chalk from "chalk";
 
 /**

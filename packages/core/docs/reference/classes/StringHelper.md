@@ -66,7 +66,7 @@ Convert the input string to kebab case.
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean`= `true`
+• **stripInterfacePrefix**: `boolean` = `true`
 
 Strip interface prefixes.
 
@@ -90,7 +90,7 @@ Convert the input string to snake case.
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean`= `true`
+• **stripInterfacePrefix**: `boolean` = `true`
 
 Strip interface prefixes.
 
@@ -114,7 +114,7 @@ Title case all the words.
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean`= `true`
+• **stripInterfacePrefix**: `boolean` = `true`
 
 Strip interface prefixes.
 
@@ -138,7 +138,7 @@ Pascal case all the words.
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean`= `true`
+• **stripInterfacePrefix**: `boolean` = `true`
 
 Strip interface prefixes.
 
@@ -162,7 +162,7 @@ Camel case all the words.
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean`= `true`
+• **stripInterfacePrefix**: `boolean` = `true`
 
 Strip interface prefixes.
 
@@ -186,7 +186,7 @@ Convert the words to a path.
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean`= `true`
+• **stripInterfacePrefix**: `boolean` = `true`
 
 Strip interface prefixes.
 

@@ -1,9 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { GuardError, Guards } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
 import * as bip39 from "@scure/bip39";
 import { wordlist } from "@scure/bip39/wordlists/english";
+import { GuardError, Guards } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 
 /**
  * Implementation of Bip39 for mnemonic generation.

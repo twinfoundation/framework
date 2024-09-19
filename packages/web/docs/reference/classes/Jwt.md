@@ -20,7 +20,7 @@ Class to encode and decode JSON Web Tokens.
 
 Encode a token.
 
-#### Type parameters
+#### Type Parameters
 
 • **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
@@ -54,7 +54,7 @@ The encoded token.
 
 Encode a token.
 
-#### Type parameters
+#### Type Parameters
 
 • **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
@@ -88,7 +88,7 @@ The encoded token.
 
 Decode a token.
 
-#### Type parameters
+#### Type Parameters
 
 • **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
@@ -126,7 +126,7 @@ The decoded payload.
 
 Verify a token.
 
-#### Type parameters
+#### Type Parameters
 
 • **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
@@ -172,7 +172,7 @@ The decoded payload.
 
 Verify a token.
 
-#### Type parameters
+#### Type Parameters
 
 • **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
@@ -218,7 +218,7 @@ The decoded payload.
 
 Verify a token by parts.
 
-#### Type parameters
+#### Type Parameters
 
 • **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 

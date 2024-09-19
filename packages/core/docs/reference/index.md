@@ -1,4 +1,4 @@
-# @gtsc/core
+# @twin.org/core
 
 ## Classes
 
