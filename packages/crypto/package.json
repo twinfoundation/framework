@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/crypto",
-	"version": "0.0.1-next.2",
+	"version": "0.0.1-next.3",
 	"description": "Contains helper methods and classes which implement cryptographic functions",
 	"repository": {
 		"type": "git",
@@ -27,7 +27,7 @@
 		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.2",
+		"@twin.org/core": "0.0.1-next.3",
 		"@twin.org/nameof": "next",
 		"@noble/ciphers": "1.0.0",
 		"@noble/curves": "1.6.0",
