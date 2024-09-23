@@ -92,7 +92,8 @@ describe("CLI", () => {
 				appName: "test-app",
 				version: "0.0.1",
 				icon: "🔐",
-				supportsEnvFiles: true
+				supportsEnvFiles: true,
+				overrideOutputWidth: 1000
 			},
 			localesDir,
 			["", path.join(__dirname, "test-app")]

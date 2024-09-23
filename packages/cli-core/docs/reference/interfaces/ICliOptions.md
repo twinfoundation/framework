@@ -49,3 +49,11 @@ Supports different languages.
 > `optional` **supportsEnvFiles**: `boolean`
 
 Supports the loading of env files.
+
+***
+
+### overrideOutputWidth?
+
+> `optional` **overrideOutputWidth**: `number`
+
+Override the default output width.

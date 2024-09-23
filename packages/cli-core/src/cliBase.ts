@@ -39,6 +39,13 @@ export abstract class CLIBase {
 
 			const program = new Command();
 
+			let outputWidth = options.overrideOutputWidth;
+			let outputErrWidth = options.overrideOutputWidth;
+			if (Is.undefined(outputWidth) && process.stdout.isTTY) {
+				outputWidth = process.stdout.columns;
+				outputErrWidth = process.stderr.columns;
+			}
+
 			program
 				.name(options.appName)
 				.version(options.version)
@@ -47,6 +54,8 @@ export abstract class CLIBase {
 				.configureOutput({
 					writeOut: str => CLIDisplay.write(str),
 					writeErr: str => CLIDisplay.writeError(str),
+					getOutHelpWidth: () => outputWidth as number,
+					getErrHelpWidth: () => outputErrWidth as number,
 					outputError: (str, write) => CLIDisplay.error(str.replace(/^error: /, ""), false)
 				})
 				.exitOverride(err => {

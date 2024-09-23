@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/crypto-cli",
-	"version": "0.0.1-next.5",
+	"version": "0.0.1-next.6",
 	"description": "A command line interface for interacting with the crypto tools",
 	"repository": {
 		"type": "git",
@@ -28,9 +28,9 @@
 		"dist": "npm run clean && npm run build && npm run merge-locales && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@twin.org/cli-core": "0.0.1-next.5",
-		"@twin.org/core": "0.0.1-next.5",
-		"@twin.org/crypto": "0.0.1-next.5",
+		"@twin.org/cli-core": "0.0.1-next.6",
+		"@twin.org/core": "0.0.1-next.6",
+		"@twin.org/crypto": "0.0.1-next.6",
 		"@twin.org/nameof": "next",
 		"commander": "12.1.0"
 	},
