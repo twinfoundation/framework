@@ -40,11 +40,7 @@
 	},
 	"workspaces": [
 		"packages/core",
-		"packages/entity",
 		"packages/crypto",
-		"packages/image",
-		"packages/qr",
-		"packages/web",
 		"packages/cli-core",
 		"app/crypto-cli"
 	],
