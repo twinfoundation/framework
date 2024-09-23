@@ -27,7 +27,7 @@ describe("CLI", () => {
 		const exitCode = await cli.run(["", path.join(__dirname, "crypto-cli")], localesDirectory);
 		expect(exitCode).toBe(0);
 		expect(writeBuffer.length).toEqual(16);
-		expect(writeBuffer[0].includes("0.0.1-next.4")).toEqual(true);
+		expect(writeBuffer[0].includes("0.0.1-next.5")).toEqual(true);
 		expect(writeBuffer[1]).toEqual("");
 		expect(writeBuffer[2]).toEqual("");
 		expect(writeBuffer[3]).toEqual("");

@@ -1,19 +1,18 @@
 # @twin.org/crypto-cli - Examples
 
-## Command Line Tool
-
-First install the tool with the following script.
-
-```shell
-npm install @twin.org/crypto-cli
-```
-
 ## Running
 
-If you run the tool with no command line options:
+To install and run the CLI locally use the following commands:
 
 ```shell
+npm install @twin.org/crypto-cli -g
 twin-crypto
+```
+
+or run directly using NPX:
+
+```shell
+npx "@twin.org/crypto-cli"
 ```
 
 You should see output similar to the following

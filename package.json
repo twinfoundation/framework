@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/framework",
-	"version": "0.0.1-next.4",
+	"version": "0.0.1-next.5",
 	"description": "Framework",
 	"repository": {
 		"type": "git",
@@ -46,7 +46,7 @@
 		"packages/qr",
 		"packages/web",
 		"packages/cli-core",
-		"packages/crypto-cli"
+		"app/crypto-cli"
 	],
 	"type": "module"
 }

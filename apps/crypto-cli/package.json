@@ -1,11 +1,11 @@
 {
 	"name": "@twin.org/crypto-cli",
-	"version": "0.0.1-next.4",
+	"version": "0.0.1-next.5",
 	"description": "A command line interface for interacting with the crypto tools",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/twinfoundation/framework.git",
-		"directory": "packages/crypto-cli"
+		"directory": "apps/crypto-cli"
 	},
 	"author": "martyn.janes@iota.org",
 	"license": "Apache-2.0",
@@ -28,9 +28,9 @@
 		"dist": "npm run clean && npm run build && npm run merge-locales && npm run test && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@twin.org/cli-core": "0.0.1-next.4",
-		"@twin.org/core": "0.0.1-next.4",
-		"@twin.org/crypto": "0.0.1-next.4",
+		"@twin.org/cli-core": "0.0.1-next.5",
+		"@twin.org/core": "0.0.1-next.5",
+		"@twin.org/crypto": "0.0.1-next.5",
 		"@twin.org/nameof": "next",
 		"commander": "12.1.0"
 	},
