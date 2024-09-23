@@ -99,8 +99,6 @@ describe("CLI", () => {
 			["", path.join(__dirname, "test-app")]
 		);
 		expect(exitCode).toBe(0);
-		console.log(writeBuffer);
-		console.log(process.stdout.columns, process.stderr.columns);
 		expect(writeBuffer.length).toEqual(12);
 		expect(writeBuffer[0]).toEqual(`🔐 ${chalk.underline.bold.blue("Test App v0.0.1")}`);
 		expect(writeBuffer[1]).toEqual("");
