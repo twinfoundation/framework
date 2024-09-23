@@ -32,6 +32,10 @@
 				"env": {
 					"param": "--env '<'filename'>'",
 					"description": "Creates an env file containing the mnemonic and seed."
+				},
+				"env-prefix": {
+					"param": "--env-prefix '<'prefix'>'",
+					"description": "Prefixes the env variables with the value."
 				}
 			},
 			"progress": {
@@ -40,7 +44,8 @@
 			},
 			"labels": {
 				"mnemonic": "Mnemonic",
-				"seed": "Seed"
+				"seed": "Seed",
+				"envPrefix": "Env Prefix"
 			}
 		},
 		"address": {

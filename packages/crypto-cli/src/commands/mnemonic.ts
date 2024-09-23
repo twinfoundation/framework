@@ -36,6 +36,12 @@ export function buildCommandMnemonic(): Command {
 			)
 				.choices(["hex", "base64"])
 				.default("hex")
+		)
+		.addOption(
+			new Option(
+				I18n.formatMessage("commands.mnemonic.options.env-prefix.param"),
+				I18n.formatMessage("commands.mnemonic.options.env-prefix.description")
+			)
 		);
 
 	CLIOptions.output(command, {
@@ -61,12 +67,14 @@ export async function actionCommandMnemonic(
 	opts: {
 		strength: string;
 		seedFormat: "hex" | "base64";
+		envPrefix?: string;
 	} & CliOutputOptions
 ): Promise<void> {
 	const strength = CLIParam.integer("strength", opts.strength, false, 128, 256);
 
 	const mnemonic = Bip39.randomMnemonic(strength);
 	const seed = Bip39.mnemonicToSeed(mnemonic);
+	const envPrefix = Is.stringValue(opts.envPrefix) ? opts.envPrefix : "";
 
 	const seedFormatted =
 		opts.seedFormat === "hex" ? Converter.bytesToHex(seed, true) : Converter.bytesToBase64(seed);
@@ -74,6 +82,9 @@ export async function actionCommandMnemonic(
 	if (opts.console) {
 		CLIDisplay.value(I18n.formatMessage("commands.mnemonic.labels.mnemonic"), mnemonic);
 		CLIDisplay.value(I18n.formatMessage("commands.mnemonic.labels.seed"), seedFormatted);
+		if (Is.stringValue(opts.envPrefix)) {
+			CLIDisplay.value(I18n.formatMessage("commands.mnemonic.labels.envPrefix"), envPrefix);
+		}
 		CLIDisplay.break();
 	}
 
@@ -83,7 +94,7 @@ export async function actionCommandMnemonic(
 	if (Is.stringValue(opts?.env)) {
 		await CLIUtils.writeEnvFile(
 			opts.env,
-			[`MNEMONIC="${mnemonic}"`, `SEED="${seedFormatted}"`],
+			[`${envPrefix}MNEMONIC="${mnemonic}"`, `${envPrefix}SEED="${seedFormatted}"`],
 			opts.mergeEnv
 		);
 	}
