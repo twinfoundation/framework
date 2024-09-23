@@ -24,7 +24,9 @@ describe("CLI", () => {
 
 	test("Can execute with no command line options and receive help", async () => {
 		const cli = new CLI();
-		const exitCode = await cli.run(["", path.join(__dirname, "crypto-cli")], localesDirectory);
+		const exitCode = await cli.run(["", path.join(__dirname, "crypto-cli")], localesDirectory, {
+			overrideOutputWidth: 1000
+		});
 		expect(exitCode).toBe(0);
 		expect(writeBuffer.length).toEqual(16);
 		expect(writeBuffer[0].includes("0.0.1-next.6")).toEqual(true);
