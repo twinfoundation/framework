@@ -15,7 +15,7 @@ or run directly using NPX:
 npx "@twin.org/crypto-cli"
 ```
 
-You should see output similar to the following
+You should see output similar to the following:
 
 ```shell
 🌍 TWIN Crypto v1.0.0
