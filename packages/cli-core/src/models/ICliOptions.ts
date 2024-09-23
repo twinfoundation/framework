@@ -33,4 +33,9 @@ export interface ICliOptions {
 	 * Supports the loading of env files.
 	 */
 	supportsEnvFiles?: boolean;
+
+	/**
+	 * Override the default output width.
+	 */
+	overrideOutputWidth?: number;
 }
