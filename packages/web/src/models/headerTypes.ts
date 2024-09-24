@@ -9,42 +9,42 @@ export const HeaderTypes = {
 	/**
 	 * Content Type.
 	 */
-	ContentType: "Content-Type",
+	ContentType: "content-type",
 
 	/**
 	 * Content Length.
 	 */
-	ContentLength: "Content-Length",
+	ContentLength: "content-length",
 
 	/**
 	 * Content Disposition.
 	 */
-	ContentDisposition: "Content-Disposition",
+	ContentDisposition: "content-disposition",
 
 	/**
 	 * Accept.
 	 */
-	Accept: "Accept",
+	Accept: "accept",
 
 	/**
 	 * Authorization.
 	 */
-	Authorization: "Authorization",
+	Authorization: "authorization",
 
 	/**
 	 * Cookie.
 	 */
-	Cookie: "Cookie",
+	Cookie: "cookie",
 
 	/**
 	 * Set Cookie.
 	 */
-	SetCookie: "Set-Cookie",
+	SetCookie: "set-cookie",
 
 	/**
 	 * Location
 	 */
-	Location: "Location"
+	Location: "location"
 } as const;
 
 /**

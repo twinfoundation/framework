@@ -8,48 +8,48 @@ Common http header types.
 
 ### ContentType
 
-> `readonly` **ContentType**: `"Content-Type"` = `"Content-Type"`
+> `readonly` **ContentType**: `"content-type"` = `"content-type"`
 
 Content Type.
 
 ### ContentLength
 
-> `readonly` **ContentLength**: `"Content-Length"` = `"Content-Length"`
+> `readonly` **ContentLength**: `"content-length"` = `"content-length"`
 
 Content Length.
 
 ### ContentDisposition
 
-> `readonly` **ContentDisposition**: `"Content-Disposition"` = `"Content-Disposition"`
+> `readonly` **ContentDisposition**: `"content-disposition"` = `"content-disposition"`
 
 Content Disposition.
 
 ### Accept
 
-> `readonly` **Accept**: `"Accept"` = `"Accept"`
+> `readonly` **Accept**: `"accept"` = `"accept"`
 
 Accept.
 
 ### Authorization
 
-> `readonly` **Authorization**: `"Authorization"` = `"Authorization"`
+> `readonly` **Authorization**: `"authorization"` = `"authorization"`
 
 Authorization.
 
 ### Cookie
 
-> `readonly` **Cookie**: `"Cookie"` = `"Cookie"`
+> `readonly` **Cookie**: `"cookie"` = `"cookie"`
 
 Cookie.
 
 ### SetCookie
 
-> `readonly` **SetCookie**: `"Set-Cookie"` = `"Set-Cookie"`
+> `readonly` **SetCookie**: `"set-cookie"` = `"set-cookie"`
 
 Set Cookie.
 
 ### Location
 
-> `readonly` **Location**: `"Location"` = `"Location"`
+> `readonly` **Location**: `"location"` = `"location"`
 
 Location
