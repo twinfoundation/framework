@@ -15,7 +15,8 @@
 	},
 	"scripts": {
 		"clean": "rimraf dist coverage",
-		"build": "tspc",
+		"build": "tsc",
+		"build:watch": "tsc-watch --onSuccess \"npm run bundle:esm\"",
 		"test": "vitest --run --config ./vitest.config.ts --no-cache",
 		"coverage": "vitest --run --coverage --config ./vitest.config.ts --no-cache",
 		"bundle:esm": "rollup --config rollup.config.mjs --environment MODULE:esm",
@@ -24,7 +25,8 @@
 		"docs:clean": "rimraf docs/reference",
 		"docs:generate": "typedoc",
 		"docs": "npm run docs:clean && npm run docs:generate",
-		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
+		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs",
+		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
 		"@twin.org/core": "0.0.1-next.7",
@@ -38,6 +40,7 @@
 		"rollup": "4.22.4",
 		"rollup-plugin-typescript2": "0.36.0",
 		"ts-patch": "3.2.1",
+		"tsc-watch": "6.2.0",
 		"typedoc": "0.26.7",
 		"typedoc-plugin-markdown": "4.2.8",
 		"typescript": "5.6.2",
