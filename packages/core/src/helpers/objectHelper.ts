@@ -153,6 +153,34 @@ export class ObjectHelper {
 	}
 
 	/**
+	 * Extract a property from the object, providing alternative names.
+	 * @param obj The object to extract from.
+	 * @param propertyNames The possible names for the property.
+	 * @param removeProperties Remove the properties from the object, defaults to true.
+	 * @returns The property if available.
+	 */
+	public static extractProperty<T>(
+		obj: unknown,
+		propertyNames: string | string[],
+		removeProperties: boolean = true
+	): T | undefined {
+		let retVal: T | undefined;
+
+		if (Is.object(obj)) {
+			const names = Is.string(propertyNames) ? [propertyNames] : propertyNames;
+
+			for (const prop of names) {
+				retVal ??= ObjectHelper.propertyGet<T>(obj, prop);
+				if (removeProperties) {
+					ObjectHelper.propertyDelete(obj, prop);
+				}
+			}
+		}
+
+		return retVal;
+	}
+
+	/**
 	 * Pick a subset of properties from an object.
 	 * @param obj The object to pick the properties from.
 	 * @param keys The property keys to pick.

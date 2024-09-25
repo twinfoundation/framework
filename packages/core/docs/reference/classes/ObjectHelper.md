@@ -232,6 +232,38 @@ The property to set
 
 ***
 
+### extractProperty()
+
+> `static` **extractProperty**\<`T`\>(`obj`, `propertyNames`, `removeProperties`): `undefined` \| `T`
+
+Extract a property from the object, providing alternative names.
+
+#### Type Parameters
+
+• **T**
+
+#### Parameters
+
+• **obj**: `unknown`
+
+The object to extract from.
+
+• **propertyNames**: `string` \| `string`[]
+
+The possible names for the property.
+
+• **removeProperties**: `boolean` = `true`
+
+Remove the properties from the object, defaults to true.
+
+#### Returns
+
+`undefined` \| `T`
+
+The property if available.
+
+***
+
 ### pick()
 
 > `static` **pick**\<`T`\>(`obj`, `keys`?): `Partial`\<`T`\>
