@@ -28,7 +28,7 @@ export class CLI extends CLIBase {
 			{
 				title: "TWIN Crypto",
 				appName: "twin-crypto",
-				version: "0.0.1-next.8",
+				version: "0.0.1-next.9",
 				icon: "🌍",
 				supportsEnvFiles: true,
 				overrideOutputWidth: options?.overrideOutputWidth

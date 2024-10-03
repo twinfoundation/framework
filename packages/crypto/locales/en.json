@@ -31,17 +31,14 @@
 		"sha256": {
 			"bitSize": "Only 224 or 256 bits are supported, it is \"{bitSize}\""
 		},
+		"sha3": {
+			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\""
+		},
 		"hmacSha256": {
 			"bitSize": "Only 224 or 256 bits are supported, it is \"{bitSize}\""
 		},
 		"hmacSha512": {
 			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\""
-		},
-		"base32": {
-			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"
-		},
-		"base64": {
-			"length4Multiple": "Invalid length should be a multiple of 4, it is \"{value}\""
 		},
 		"bech32": {
 			"decodeFailed": "The address contains decoding failed for address \"{bech32}\"",

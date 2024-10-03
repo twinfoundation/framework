@@ -3,6 +3,7 @@
 ## Classes
 
 - [Base32](classes/Base32.md)
+- [Base58](classes/Base58.md)
 - [Base64](classes/Base64.md)
 - [Base64Url](classes/Base64Url.md)
 - [AlreadyExistsError](classes/AlreadyExistsError.md)

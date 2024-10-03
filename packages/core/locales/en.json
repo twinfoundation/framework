@@ -78,6 +78,15 @@
 		},
 		"bitString": {
 			"outOfRange": "The index should be >= 0 and less than the length of the bit string"
+		},
+		"base32": {
+			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"
+		},
+		"base64": {
+			"length4Multiple": "Invalid length should be a multiple of 4, it is \"{value}\""
+		},
+		"base58": {
+			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"
 		}
 	},
 	"errorNames": {

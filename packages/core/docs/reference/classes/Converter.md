@@ -283,3 +283,43 @@ The base64 url string.
 `Uint8Array`
 
 The bytes.
+
+***
+
+### bytesToBase58()
+
+> `static` **bytesToBase58**(`bytes`): `string`
+
+Convert bytes to base58 string.
+
+#### Parameters
+
+• **bytes**: `Uint8Array`
+
+The bytes to convert.
+
+#### Returns
+
+`string`
+
+A base58 string of the bytes.
+
+***
+
+### base58ToBytes()
+
+> `static` **base58ToBytes**(`base58`): `Uint8Array`
+
+Convert a base58 string to bytes.
+
+#### Parameters
+
+• **base58**: `string`
+
+The base58 string.
+
+#### Returns
+
+`Uint8Array`
+
+The bytes.
