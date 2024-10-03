@@ -378,4 +378,25 @@ describe("Is", () => {
 	test("email can succeed if value is a valid email format with domain", () => {
 		expect(Is.email("a@example.com")).toEqual(true);
 	});
+
+	test("promise can fail if the value is not a valid promise", () => {
+		expect(Is.promise(() => {})).toEqual(false);
+	});
+
+	test("promise can succeed if value is a valid promise", () => {
+		expect(Is.promise(new Promise(() => {}))).toEqual(true);
+	});
+
+	test("regexp can fail if the value is not a valid regexp", () => {
+		expect(Is.regexp("//aaa")).toEqual(false);
+	});
+
+	test("regexp can succeed if value is a valid regexp string", () => {
+		expect(Is.regexp(/a/g)).toEqual(true);
+	});
+
+	test("regexp can succeed if value is a valid regexp", () => {
+		// eslint-disable-next-line prefer-regex-literals
+		expect(Is.regexp(new RegExp(""))).toEqual(true);
+	});
 });

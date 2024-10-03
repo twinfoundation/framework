@@ -106,6 +106,10 @@ Optional i18n resource of the field name to display in the message.
 
 Additional options for the validation.
 
+• **options.format?**: `RegExp` \| `"base64"` \| `"base58"` \| `"hex"`
+
+Specific format to check.
+
 • **options.minLength?**: `number`
 
 The minimum length of the string.

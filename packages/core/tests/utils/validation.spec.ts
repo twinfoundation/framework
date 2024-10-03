@@ -48,6 +48,110 @@ describe("Validation", () => {
 		expect(I18n.hasMessage("error.validation.beText")).toEqual(true);
 	});
 
+	test("can fail if value is not a string matching base64", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.string("val", "!", failures, undefined, {
+				format: "base64"
+			})
+		).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextBase64");
+		expect(I18n.hasMessage("error.validation.beTextBase64")).toEqual(true);
+	});
+
+	test("can succeed if value is a string matching base64", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.string(
+				"val",
+				"VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZw==",
+				failures,
+				undefined,
+				{
+					format: "base64"
+				}
+			)
+		).toEqual(true);
+		expect(failures.length).toEqual(0);
+	});
+
+	test("can fail if value is not a string matching base58", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.string("val", "!", failures, undefined, {
+				format: "base58"
+			})
+		).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextBase58");
+		expect(I18n.hasMessage("error.validation.beTextBase58")).toEqual(true);
+	});
+
+	test("can succeed if value is a string matching base58", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.string(
+				"val",
+				"7DdiPPYtxLjCD3wA1po2rvZHTDYjkZYiEtazrfiwJcwnKCizhGFhBGHeRdx",
+				failures,
+				undefined,
+				{
+					format: "base58"
+				}
+			)
+		).toEqual(true);
+		expect(failures.length).toEqual(0);
+	});
+
+	test("can fail if value is not a string matching hex", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.string("val", "!", failures, undefined, {
+				format: "hex"
+			})
+		).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextHex");
+		expect(I18n.hasMessage("error.validation.beTextHex")).toEqual(true);
+	});
+
+	test("can succeed if value is a string matching hex", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.string("val", "aabb", failures, undefined, {
+				format: "hex"
+			})
+		).toEqual(true);
+		expect(failures.length).toEqual(0);
+	});
+
+	test("can fail if value is not a string matching regex", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.string("val", "!", failures, undefined, {
+				format: /a/
+			})
+		).toEqual(false);
+		expect(failures.length).toEqual(1);
+		expect(failures[0].property).toEqual("val");
+		expect(failures[0].reason).toEqual("validation.beTextRegExp");
+		expect(I18n.hasMessage("error.validation.beTextRegExp")).toEqual(true);
+	});
+
+	test("can succeed if value is a string matching regex", () => {
+		const failures: IValidationFailure[] = [];
+		expect(
+			Validation.string("val", "abbb", failures, undefined, {
+				format: /a*/
+			})
+		).toEqual(true);
+		expect(failures.length).toEqual(0);
+	});
+
 	test("can fail if string is not number below min length", () => {
 		const failures: IValidationFailure[] = [];
 		expect(Validation.string("val", "hello", failures, undefined, { minLength: 10 })).toEqual(

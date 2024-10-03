@@ -105,6 +105,19 @@ export class Is {
 	}
 
 	/**
+	 * Is the value a base58 string.
+	 * @param value The value to test.
+	 * @returns True if the value is a base58 string.
+	 */
+	public static stringBase58(value: unknown): value is string {
+		return (
+			Is.stringValue(value) &&
+			// eslint-disable-next-line unicorn/better-regex
+			/^[A-HJ-NP-Za-km-z1-9]*$/.test(value)
+		);
+	}
+
+	/**
 	 * Is the value a hex string.
 	 * @param value The value to test.
 	 * @param allowPrefix Allow the hex to have the 0x prefix.
@@ -364,5 +377,14 @@ export class Is {
 	 */
 	public static promise<T = unknown>(value: unknown): value is Promise<T> {
 		return value instanceof Promise;
+	}
+
+	/**
+	 * Is the value a regexp.
+	 * @param value The value to test.
+	 * @returns True if the value is a regexp.
+	 */
+	public static regexp(value: unknown): value is RegExp {
+		return value instanceof RegExp;
 	}
 }

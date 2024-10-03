@@ -89,6 +89,23 @@ export class Guards {
 	}
 
 	/**
+	 * Is the property a base58 string.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static stringBase58(
+		source: string,
+		property: string,
+		value: unknown
+	): asserts value is string {
+		if (!Is.stringBase58(value)) {
+			throw new GuardError(source, "guard.base58", property, value);
+		}
+	}
+
+	/**
 	 * Is the property a string with a hex value.
 	 * @param source The source of the error.
 	 * @param property The name of the property.

@@ -68,6 +68,7 @@ export class Validation {
 	 * @param options Additional options for the validation.
 	 * @param options.minLength The minimum length of the string.
 	 * @param options.maxLength The maximum length of the string.
+	 * @param options.format Specific format to check.
 	 * @returns True if the value is a valid string.
 	 */
 	public static string(
@@ -76,6 +77,7 @@ export class Validation {
 		failures: IValidationFailure[],
 		fieldNameResource?: string,
 		options?: {
+			format?: "base64" | "base58" | "hex" | RegExp;
 			minLength?: number;
 			maxLength?: number;
 		}
@@ -94,6 +96,45 @@ export class Validation {
 			const maxLimitDefined = Is.integer(maxLength);
 			const belowMin = minLimitDefined && value.length < minLength;
 			const aboveMax = maxLimitDefined && value.length > maxLength;
+
+			if (options?.format === "base58" && !Is.stringBase58(value)) {
+				failures.push({
+					property,
+					reason: "validation.beTextBase58",
+					properties: {
+						fieldName: fieldNameResource ?? "validation.defaultFieldName",
+						value
+					}
+				});
+			} else if (options?.format === "base64" && !Is.stringBase64(value)) {
+				failures.push({
+					property,
+					reason: "validation.beTextBase64",
+					properties: {
+						fieldName: fieldNameResource ?? "validation.defaultFieldName",
+						value
+					}
+				});
+			} else if (options?.format === "hex" && !Is.stringHex(value)) {
+				failures.push({
+					property,
+					reason: "validation.beTextHex",
+					properties: {
+						fieldName: fieldNameResource ?? "validation.defaultFieldName",
+						value
+					}
+				});
+			} else if (Is.regexp(options?.format) && !options.format.test(value)) {
+				failures.push({
+					property,
+					reason: "validation.beTextRegExp",
+					properties: {
+						fieldName: fieldNameResource ?? "validation.defaultFieldName",
+						value,
+						format: options?.format
+					}
+				});
+			}
 
 			if (minLimitDefined && maxLimitDefined && (belowMin || aboveMax)) {
 				failures.push({

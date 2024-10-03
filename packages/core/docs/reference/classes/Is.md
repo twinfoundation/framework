@@ -194,6 +194,26 @@ True if the value is a base64 string.
 
 ***
 
+### stringBase58()
+
+> `static` **stringBase58**(`value`): `value is string`
+
+Is the value a base58 string.
+
+#### Parameters
+
+• **value**: `unknown`
+
+The value to test.
+
+#### Returns
+
+`value is string`
+
+True if the value is a base58 string.
+
+***
+
 ### stringHex()
 
 > `static` **stringHex**(`value`, `allowPrefix`): `value is string`
@@ -691,3 +711,23 @@ The value to test.
 `value is Promise<T>`
 
 True if the value is a promise.
+
+***
+
+### regexp()
+
+> `static` **regexp**(`value`): `value is RegExp`
+
+Is the value a regexp.
+
+#### Parameters
+
+• **value**: `unknown`
+
+The value to test.
+
+#### Returns
+
+`value is RegExp`
+
+True if the value is a regexp.

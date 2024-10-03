@@ -164,6 +164,36 @@ GuardError If the value does not match the assertion.
 
 ***
 
+### stringBase58()
+
+> `static` **stringBase58**(`source`, `property`, `value`): `asserts value is string`
+
+Is the property a base58 string.
+
+#### Parameters
+
+• **source**: `string`
+
+The source of the error.
+
+• **property**: `string`
+
+The name of the property.
+
+• **value**: `unknown`
+
+The value to test.
+
+#### Returns
+
+`asserts value is string`
+
+#### Throws
+
+GuardError If the value does not match the assertion.
+
+***
+
 ### stringHex()
 
 > `static` **stringHex**(`source`, `property`, `value`, `allowPrefix`): `asserts value is string`
