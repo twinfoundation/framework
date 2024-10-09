@@ -108,7 +108,7 @@ export class MimeTypeHelper {
 			[MimeTypes.Gzip]: "gzip",
 			[MimeTypes.Bzip2]: "bz2",
 			[MimeTypes.Zip]: "zip",
-			[MimeTypes.Pdf]: "pfd",
+			[MimeTypes.Pdf]: "pdf",
 			[MimeTypes.Gif]: "gif",
 			[MimeTypes.Bmp]: "bmp",
 			[MimeTypes.Jpeg]: "jpeg",
