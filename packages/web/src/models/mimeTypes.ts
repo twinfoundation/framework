@@ -32,6 +32,11 @@ export const MimeTypes = {
 	JsonLd: "application/ld+json",
 
 	/**
+	 * JWT - application/jwt
+	 */
+	Jwt: "application/jwt",
+
+	/**
 	 * XML - application/xml
 	 */
 	Xml: "application/xml",

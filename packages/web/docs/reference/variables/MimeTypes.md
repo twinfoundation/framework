@@ -36,6 +36,12 @@ JSON - application/json
 
 JSON-LD - application/ld+json
 
+### Jwt
+
+> `readonly` **Jwt**: `"application/jwt"` = `"application/jwt"`
+
+JWT - application/jwt
+
 ### Xml
 
 > `readonly` **Xml**: `"application/xml"` = `"application/xml"`

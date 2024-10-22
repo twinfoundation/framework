@@ -103,6 +103,7 @@ export class MimeTypeHelper {
 			[MimeTypes.Javascript]: "js",
 			[MimeTypes.Json]: "json",
 			[MimeTypes.JsonLd]: "jsonld",
+			[MimeTypes.Jwt]: "jwt",
 			[MimeTypes.Xml]: "xml",
 			[MimeTypes.OctetStream]: "bin",
 			[MimeTypes.Gzip]: "gzip",
