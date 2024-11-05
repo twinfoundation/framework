@@ -1,5 +1,5 @@
 # @twin.org/core - Changelog
 
-## 0.0.1-next.11
+## 0.0.1-next.12
 
 - Initial Release

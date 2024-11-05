@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/qr",
-	"version": "0.0.1-next.11",
+	"version": "0.0.1-next.12",
 	"description": "Package for creating QR codes",
 	"repository": {
 		"type": "git",
@@ -29,8 +29,8 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.11",
-		"@twin.org/image": "0.0.1-next.11",
+		"@twin.org/core": "0.0.1-next.12",
+		"@twin.org/image": "0.0.1-next.12",
 		"@twin.org/nameof": "next"
 	},
 	"devDependencies": {

@@ -54,7 +54,10 @@ export class EntitySorter {
 		direction: SortDirection = SortDirection.Ascending
 	): number {
 		let res = 0;
-		if (!Is.empty(entity1[prop]) && !Is.empty(entity2[prop])) {
+		const hasProp1 = !Is.empty(entity1[prop]);
+		const hasProp2 = !Is.empty(entity2[prop]);
+
+		if (hasProp1 && hasProp2) {
 			if (type === "number" || type === "integer") {
 				res = (entity1[prop] as unknown as number) - (entity2[prop] as unknown as number);
 			} else if (type === "boolean") {
@@ -72,6 +75,10 @@ export class EntitySorter {
 					entity2[prop] as unknown as string
 				);
 			}
+		} else if (hasProp1) {
+			res = -1;
+		} else {
+			res = 1;
 		}
 
 		return direction === SortDirection.Ascending ? res : res * -1;

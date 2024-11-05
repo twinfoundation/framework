@@ -207,4 +207,78 @@ describe("Sorter", () => {
 		expect(result[1].id).toEqual("1");
 		expect(result[2].id).toEqual("3");
 	});
+
+	test("can sort and remove string undefined items to end", async () => {
+		const result = EntitySorter.sort<{ id: string; value1?: string }>(
+			[
+				{ id: "1", value1: "aaa" },
+				{ id: "2", value1: undefined }
+			],
+			[{ property: "value1", type: "string", sortDirection: SortDirection.Ascending }]
+		);
+
+		expect(result.length).toEqual(2);
+		expect(result[0].id).toEqual("1");
+		expect(result[1].id).toEqual("2");
+	});
+
+	test("can sort and remove string undefined items to end when already in order", async () => {
+		const result = EntitySorter.sort<{ id: string; value1?: string }>(
+			[
+				{ id: "2", value1: "aaa" },
+				{ id: "1", value1: undefined }
+			],
+			[{ property: "value1", type: "string", sortDirection: SortDirection.Ascending }]
+		);
+
+		expect(result.length).toEqual(2);
+		expect(result[0].id).toEqual("2");
+		expect(result[1].id).toEqual("1");
+	});
+
+	test("can sort and remove string multiple undefined items to end", async () => {
+		const result = EntitySorter.sort<{ id: string; value1?: string }>(
+			[
+				{ id: "1", value1: "aaa" },
+				{ id: "2", value1: undefined },
+				{ id: "3", value1: undefined },
+				{ id: "4", value1: "bbb" }
+			],
+			[{ property: "value1", type: "string", sortDirection: SortDirection.Ascending }]
+		);
+
+		expect(result.length).toEqual(4);
+		expect(result[0].id).toEqual("1");
+		expect(result[1].id).toEqual("4");
+		expect(result[2].id).toEqual("2");
+		expect(result[3].id).toEqual("3");
+	});
+
+	test("can sort and remove number undefined items to end", async () => {
+		const result = EntitySorter.sort<{ id: string; value1?: number }>(
+			[
+				{ id: "1", value1: 0 },
+				{ id: "2", value1: undefined }
+			],
+			[{ property: "value1", type: "number", sortDirection: SortDirection.Ascending }]
+		);
+
+		expect(result.length).toEqual(2);
+		expect(result[0].id).toEqual("1");
+		expect(result[1].id).toEqual("2");
+	});
+
+	test("can sort and remove number undefined items to end when already in order", async () => {
+		const result = EntitySorter.sort<{ id: string; value1?: number }>(
+			[
+				{ id: "2", value1: 0 },
+				{ id: "1", value1: undefined }
+			],
+			[{ property: "value1", type: "number", sortDirection: SortDirection.Ascending }]
+		);
+
+		expect(result.length).toEqual(2);
+		expect(result[0].id).toEqual("2");
+		expect(result[1].id).toEqual("1");
+	});
 });
