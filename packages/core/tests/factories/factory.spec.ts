@@ -148,6 +148,13 @@ describe("Factory", () => {
 		expect(TestFactory.get<TestComponent>("test3").foo).toEqual(1);
 	});
 
+	test("can clear the factory", () => {
+		TestFactory.register("test3", () => new TestComponent("test3"));
+		expect(TestFactory.get<TestComponent>("test3").foo).toEqual(1);
+		TestFactory.clear();
+		expect(TestFactory.names()).toEqual([]);
+	});
+
 	test("can auto register components", () => {
 		const testFactory = Factory.createFactory<TestComponent>("component1", true);
 		testFactory.register("test1", () => new TestComponent("test1"));

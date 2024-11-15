@@ -12,7 +12,7 @@ export const CompressionType = {
 	Gzip: "gzip",
 
 	/**
-	 * deflate.
+	 * Deflate.
 	 */
 	Deflate: "deflate"
 } as const;

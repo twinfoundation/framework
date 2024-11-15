@@ -152,7 +152,19 @@ An instance of the item or undefined if it does not exist.
 
 > **reset**(): `void`
 
-Reset all the instances.
+Remove all the instances and leave the generators intact.
+
+#### Returns
+
+`void`
+
+***
+
+### clear()
+
+> **clear**(): `void`
+
+Remove all the instances and the generators.
 
 #### Returns
 

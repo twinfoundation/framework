@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/core",
-	"version": "0.0.1-next.12",
+	"version": "0.0.1-next.13",
 	"description": "Helper methods/classes for data type checking/validation/guarding/error handling",
 	"repository": {
 		"type": "git",
@@ -56,7 +56,7 @@
 			"import": "./dist/esm/index.mjs",
 			"types": "./dist/types/index.d.ts"
 		},
-		"./locales": "./locales"
+		"./locales/*.json": "./locales/*.json"
 	},
 	"files": [
 		"dist/cjs",

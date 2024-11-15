@@ -16,4 +16,4 @@ Gzip.
 
 > `readonly` **Deflate**: `"deflate"` = `"deflate"`
 
-deflate.
+Deflate.

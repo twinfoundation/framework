@@ -31,7 +31,7 @@ export class Factory<T> {
 	 * Store the generators.
 	 * @internal
 	 */
-	private readonly _generators: {
+	private _generators: {
 		[name: string]: {
 			generator: () => T;
 			order: number;
@@ -177,13 +177,22 @@ export class Factory<T> {
 	}
 
 	/**
-	 * Reset all the instances.
+	 * Remove all the instances and leave the generators intact.
 	 */
 	public reset(): void {
 		for (const name in this._generators) {
 			this.removeInstance(name);
 		}
 		this._instances = {};
+	}
+
+	/**
+	 * Remove all the instances and the generators.
+	 */
+	public clear(): void {
+		this._instances = {};
+		this._generators = {};
+		this._orderCounter = 0;
 	}
 
 	/**
