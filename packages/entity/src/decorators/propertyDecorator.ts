@@ -15,7 +15,7 @@ export function property(options: Omit<IEntitySchemaProperty, "property">): any 
 		const entitySchema = DecoratorHelper.getSchema<any>(target);
 		entitySchema.properties ??= [];
 		const idx = entitySchema.properties.findIndex(p => p.property === propertyKey);
-		if (idx >= 0) {
+		if (idx !== -1) {
 			entitySchema.properties[idx] = {
 				...options,
 				property: propertyKey

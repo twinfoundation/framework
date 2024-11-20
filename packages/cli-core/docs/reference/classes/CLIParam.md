@@ -210,7 +210,7 @@ The option value.
 
 Allow the option to be read from an env var.
 
-• **minValue**: `bigint` = `...`
+• **minValue**: `bigint` = `0n`
 
 The minimum value.
 

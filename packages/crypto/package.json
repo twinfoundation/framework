@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/crypto",
-	"version": "0.0.1-next.13",
+	"version": "0.0.1-next.14",
 	"description": "Contains helper methods and classes which implement cryptographic functions",
 	"repository": {
 		"type": "git",
@@ -29,7 +29,7 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.13",
+		"@twin.org/core": "0.0.1-next.14",
 		"@twin.org/nameof": "next",
 		"@noble/ciphers": "1.0.0",
 		"@noble/curves": "1.6.0",
@@ -37,21 +37,22 @@
 		"@scure/base": "1.1.9",
 		"@scure/bip32": "1.5.0",
 		"@scure/bip39": "1.4.0",
-		"micro-key-producer": "0.7.0"
+		"micro-key-producer": "0.7.1"
 	},
 	"devDependencies": {
 		"@twin.org/nameof-transformer": "next",
-		"@vitest/coverage-v8": "2.1.1",
+		"@twin.org/nameof-vitest-plugin": "next",
+		"@vitest/coverage-v8": "2.1.5",
 		"copyfiles": "2.4.1",
 		"rimraf": "6.0.1",
-		"rollup": "4.22.4",
+		"rollup": "4.27.3",
 		"rollup-plugin-typescript2": "0.36.0",
 		"ts-patch": "3.2.1",
-		"tsc-watch": "6.2.0",
-		"typedoc": "0.26.7",
-		"typedoc-plugin-markdown": "4.2.8",
-		"typescript": "5.6.2",
-		"vitest": "2.1.1"
+		"tsc-watch": "6.2.1",
+		"typedoc": "0.26.11",
+		"typedoc-plugin-markdown": "4.2.10",
+		"typescript": "5.6.3",
+		"vitest": "2.1.5"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",

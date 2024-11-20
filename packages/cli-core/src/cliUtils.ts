@@ -232,7 +232,7 @@ export class CLIUtils {
 				for (const line of data) {
 					const parts = line.split("=");
 					const currentIndex = outputKeys.indexOf(parts[0]);
-					if (currentIndex >= 0) {
+					if (currentIndex !== -1) {
 						outputKeys.splice(currentIndex, 1);
 					}
 					outputKeys.push(parts[0]);
