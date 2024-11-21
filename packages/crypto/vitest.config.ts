@@ -12,7 +12,7 @@ export default defineConfig({
 		hookTimeout: 300000,
 		bail: 1,
 		coverage: {
-			reporter: ["text", "html"],
+			reporter: ["text", "lcov"],
 			include: ["src/**/*.ts"],
 			exclude: ["**/index.ts", "**/models/**/*.ts"]
 		},
