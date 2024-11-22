@@ -19,6 +19,7 @@
 - [ValidationError](classes/ValidationError.md)
 - [Factory](classes/Factory.md)
 - [ArrayHelper](classes/ArrayHelper.md)
+- [EnvHelper](classes/EnvHelper.md)
 - [ErrorHelper](classes/ErrorHelper.md)
 - [FilenameHelper](classes/FilenameHelper.md)
 - [HexHelper](classes/HexHelper.md)

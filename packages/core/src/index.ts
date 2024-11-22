@@ -18,6 +18,7 @@ export * from "./errors/validationError";
 export * from "./factories/componentFactory";
 export * from "./factories/factory";
 export * from "./helpers/arrayHelper";
+export * from "./helpers/envHelper";
 export * from "./helpers/errorHelper";
 export * from "./helpers/filenameHelper";
 export * from "./helpers/hexHelper";
