@@ -92,6 +92,9 @@
 		},
 		"base58": {
 			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"
+		},
+		"moduleHelper": {
+			"getModuleEntry": "Failed to load entry \"{entry}\" from module \"{module}\""
 		}
 	},
 	"errorNames": {
