@@ -33,6 +33,7 @@
 		"@twin.org/nameof": "next"
 	},
 	"devDependencies": {
+		"@types/node": "22.9.3",
 		"@twin.org/nameof-transformer": "next",
 		"@twin.org/nameof-vitest-plugin": "next",
 		"@vitest/coverage-v8": "2.1.5",
