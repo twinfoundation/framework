@@ -14,6 +14,7 @@ on:
           - 'packages/image'
           - 'packages/qr'
           - 'packages/web'
+          - 'packages/modules'
           - 'packages/cli-core'
           - 'apps/crypto-cli'
 

@@ -10,6 +10,7 @@ This mono-repository contains some of the fundamental packages that the rest of 
 - [image](packages/image/README.md) - Package contains classes for processing images.
 - [qr](packages/qr/README.md) - Package contains classes for generating QR codes.
 - [web](packages/web/README.md) - Contains classes for use with web operations.
+- [modules](packages/modules/README.md) - Helper classes for loading and executing from modules.
 - [cli-core](packages/cli-core/README.md) - Provides core classes and methods to be used when building a CLI.
 
 ## Apps

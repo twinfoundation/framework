@@ -1,11 +1,11 @@
 {
-	"name": "@twin.org/qr",
+	"name": "@twin.org/modules",
 	"version": "0.0.1-next.16",
-	"description": "Package for creating QR codes",
+	"description": "Helper classes for loading and executing from modules",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/twinfoundation/framework.git",
-		"directory": "packages/qr"
+		"directory": "packages/modules"
 	},
 	"author": "martyn.janes@iota.org",
 	"license": "Apache-2.0",
@@ -14,7 +14,7 @@
 		"node": ">=20.0.0"
 	},
 	"scripts": {
-		"clean": "rimraf dist coverage",
+		"clean": "rimraf dist coverage docs/reference",
 		"build": "tsc",
 		"build:watch": "tsc-watch --onSuccess \"npm run bundle:esm\"",
 		"test": "vitest --run --config ./vitest.config.ts --no-cache",
@@ -29,8 +29,7 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.16",
-		"@twin.org/image": "0.0.1-next.16",
+		"@twin.org/core": "next",
 		"@twin.org/nameof": "next"
 	},
 	"devDependencies": {
@@ -55,7 +54,8 @@
 			"require": "./dist/cjs/index.cjs",
 			"import": "./dist/esm/index.mjs",
 			"types": "./dist/types/index.d.ts"
-		}
+		},
+		"./locales/*.json": "./locales/*.json"
 	},
 	"files": [
 		"dist/cjs",

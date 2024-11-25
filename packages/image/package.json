@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/image",
-	"version": "0.0.1-next.15",
+	"version": "0.0.1-next.16",
 	"description": "Classes for image manipulation",
 	"repository": {
 		"type": "git",
@@ -29,7 +29,7 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.15",
+		"@twin.org/core": "0.0.1-next.16",
 		"@twin.org/nameof": "next"
 	},
 	"devDependencies": {

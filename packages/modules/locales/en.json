@@ -1,0 +1,11 @@
+{
+	"error": {
+		"moduleHelper": {
+			"moduleNotFound": "Failed to load module \"{module}\"",
+			"entryNotFound": "Failed to load entry \"{entry}\" from module \"{module}\"",
+			"notFunction": "The entry \"{entry}\" in module \"{module}\" is not a function",
+			"workerFailed": "The thread worker failed for \"{entry}\" in module \"{module}\" with exit code \"{exitCode}\"",
+			"workerException": "The thread worker failed with an exception \"{entry}\" in module \"{module}\""
+		}
+	}
+}

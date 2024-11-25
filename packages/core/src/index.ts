@@ -23,7 +23,6 @@ export * from "./helpers/errorHelper";
 export * from "./helpers/filenameHelper";
 export * from "./helpers/hexHelper";
 export * from "./helpers/jsonHelper";
-export * from "./helpers/moduleHelper";
 export * from "./helpers/objectHelper";
 export * from "./helpers/randomHelper";
 export * from "./helpers/stringHelper";
