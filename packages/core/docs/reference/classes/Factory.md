@@ -40,6 +40,44 @@ The factory instance.
 
 ***
 
+### getFactories()
+
+> `static` **getFactories**(): `object`
+
+Get all the factories.
+
+#### Returns
+
+`object`
+
+All the factories.
+
+***
+
+### resetFactories()
+
+> `static` **resetFactories**(): `void`
+
+Reset all the factories, which removes any created instances, but not the registrations.
+
+#### Returns
+
+`void`
+
+***
+
+### clearFactories()
+
+> `static` **clearFactories**(): `void`
+
+Clear all the factories, which removes anything registered with the factories.
+
+#### Returns
+
+`void`
+
+***
+
 ### register()
 
 > **register**\<`U`\>(`name`, `generator`): `void`

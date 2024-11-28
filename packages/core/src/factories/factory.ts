@@ -101,6 +101,32 @@ export class Factory<T> {
 	}
 
 	/**
+	 * Get all the factories.
+	 * @returns All the factories.
+	 */
+	public static getFactories(): { [typeName: string]: Factory<unknown> } {
+		return Factory._factories;
+	}
+
+	/**
+	 * Reset all the factories, which removes any created instances, but not the registrations.
+	 */
+	public static resetFactories(): void {
+		for (const typeName in Factory._factories) {
+			Factory._factories[typeName].reset();
+		}
+	}
+
+	/**
+	 * Clear all the factories, which removes anything registered with the factories.
+	 */
+	public static clearFactories(): void {
+		for (const typeName in Factory._factories) {
+			Factory._factories[typeName].clear();
+		}
+	}
+
+	/**
 	 * Register a new generator.
 	 * @param name The name of the generator.
 	 * @param generator The function to create an instance.
