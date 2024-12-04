@@ -13,23 +13,37 @@ export interface IComponent {
 	/**
 	 * Bootstrap the component by creating and initializing any resources it needs.
 	 * @param nodeLoggingConnectorType The node logging connector type, defaults to "node-logging".
+	 * @param componentState A persistent state which can be modified by bootstrap.
 	 * @returns True if the bootstrapping process was successful.
 	 */
-	bootstrap?(nodeLoggingConnectorType?: string): Promise<boolean>;
+	bootstrap?(
+		nodeLoggingConnectorType: string | undefined,
+		componentState?: { [id: string]: unknown }
+	): Promise<boolean>;
 
 	/**
 	 * The component needs to be started when the node is initialized.
 	 * @param nodeIdentity The identity of the node starting the component.
 	 * @param nodeLoggingConnectorType The node logging connector type, defaults to "node-logging".
+	 * @param componentState A persistent state which can be modified by bootstrap.
 	 * @returns Nothing.
 	 */
-	start?(nodeIdentity: string, nodeLoggingConnectorType?: string): Promise<void>;
+	start?(
+		nodeIdentity: string,
+		nodeLoggingConnectorType: string | undefined,
+		componentState?: { [id: string]: unknown }
+	): Promise<void>;
 
 	/**
 	 * The component needs to be stopped when the node is closed.
 	 * @param nodeIdentity The identity of the node stopping the component.
 	 * @param nodeLoggingConnectorType The node logging connector type, defaults to "node-logging".
+	 * @param componentState A persistent state which can be modified by bootstrap.
 	 * @returns Nothing.
 	 */
-	stop?(nodeIdentity: string, nodeLoggingConnectorType?: string): Promise<void>;
+	stop?(
+		nodeIdentity: string,
+		nodeLoggingConnectorType: string | undefined,
+		componentState?: { [id: string]: unknown }
+	): Promise<void>;
 }

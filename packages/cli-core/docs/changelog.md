@@ -1,5 +1,5 @@
 # @twin.org/cli-core - Changelog
 
-## 0.0.1-next.17
+## 0.0.1-next.18
 
 - Initial Release
