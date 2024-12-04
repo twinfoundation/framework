@@ -26,7 +26,7 @@ The node logging connector type, defaults to "node-logging".
 
 • **componentState?**
 
-A persistent state which can be modified by bootstrap.
+A persistent state which can be modified by the method.
 
 #### Returns
 
@@ -54,7 +54,7 @@ The node logging connector type, defaults to "node-logging".
 
 • **componentState?**
 
-A persistent state which can be modified by bootstrap.
+A persistent state which can be modified by the method.
 
 #### Returns
 
@@ -82,7 +82,7 @@ The node logging connector type, defaults to "node-logging".
 
 • **componentState?**
 
-A persistent state which can be modified by bootstrap.
+A persistent state which can be modified by the method.
 
 #### Returns
 
