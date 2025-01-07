@@ -36,4 +36,4 @@ Additional properties for the validation failure.
 
 #### Index Signature
 
- \[`id`: `string`\]: `unknown`
+\[`id`: `string`\]: `unknown`

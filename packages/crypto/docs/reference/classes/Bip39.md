@@ -22,11 +22,15 @@ Generate a random mnemonic.
 
 #### Parameters
 
-• **strength**: `number` = `256`
+##### strength
+
+`number` = `256`
 
 The strength of the mnemonic to generate, defaults to 256.
 
-• **words**: `string`[] = `wordlist`
+##### words
+
+`string`[] = `wordlist`
 
 The wordlist to use, defaults to the English wordlist.
 
@@ -50,11 +54,15 @@ Generate a mnemonic from the entropy.
 
 #### Parameters
 
-• **entropy**: `Uint8Array`
+##### entropy
+
+`Uint8Array`
 
 The entropy to generate.
 
-• **words**: `string`[] = `wordlist`
+##### words
+
+`string`[] = `wordlist`
 
 The wordlist to use, defaults to the English wordlist.
 
@@ -78,11 +86,15 @@ Convert a mnemonic to a seed.
 
 #### Parameters
 
-• **mnemonic**: `string`
+##### mnemonic
+
+`string`
 
 The mnemonic to convert.
 
-• **password?**: `string`
+##### password?
+
+`string`
 
 The password to apply to the seed generation.
 
@@ -102,11 +114,15 @@ Convert the mnemonic back to entropy.
 
 #### Parameters
 
-• **mnemonic**: `string`
+##### mnemonic
+
+`string`
 
 The mnemonic to convert.
 
-• **words**: `string`[] = `wordlist`
+##### words
+
+`string`[] = `wordlist`
 
 The wordlist to use, defaults to the English wordlist.
 

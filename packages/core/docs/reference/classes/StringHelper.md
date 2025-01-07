@@ -22,9 +22,11 @@ Trim trailing slashes from a string.
 
 #### Parameters
 
-• **value**: `undefined` \| `string`
+##### value
 
 The value to trim.
+
+`undefined` | `string`
 
 #### Returns
 
@@ -42,9 +44,11 @@ Trim leading slashes from a string.
 
 #### Parameters
 
-• **value**: `undefined` \| `string`
+##### value
 
 The value to trim.
+
+`undefined` | `string`
 
 #### Returns
 
@@ -62,11 +66,15 @@ Convert the input string to kebab case.
 
 #### Parameters
 
-• **input**: `string`
+##### input
+
+`string`
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean` = `true`
+##### stripInterfacePrefix
+
+`boolean` = `true`
 
 Strip interface prefixes.
 
@@ -86,11 +94,15 @@ Convert the input string to snake case.
 
 #### Parameters
 
-• **input**: `string`
+##### input
+
+`string`
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean` = `true`
+##### stripInterfacePrefix
+
+`boolean` = `true`
 
 Strip interface prefixes.
 
@@ -110,11 +122,15 @@ Title case all the words.
 
 #### Parameters
 
-• **input**: `string`
+##### input
+
+`string`
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean` = `true`
+##### stripInterfacePrefix
+
+`boolean` = `true`
 
 Strip interface prefixes.
 
@@ -134,11 +150,15 @@ Pascal case all the words.
 
 #### Parameters
 
-• **input**: `string`
+##### input
+
+`string`
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean` = `true`
+##### stripInterfacePrefix
+
+`boolean` = `true`
 
 Strip interface prefixes.
 
@@ -158,11 +178,15 @@ Camel case all the words.
 
 #### Parameters
 
-• **input**: `string`
+##### input
+
+`string`
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean` = `true`
+##### stripInterfacePrefix
+
+`boolean` = `true`
 
 Strip interface prefixes.
 
@@ -182,11 +206,15 @@ Convert the words to a path.
 
 #### Parameters
 
-• **input**: `string`
+##### input
+
+`string`
 
 The input to convert.
 
-• **stripInterfacePrefix**: `boolean` = `true`
+##### stripInterfacePrefix
+
+`boolean` = `true`
 
 Strip interface prefixes.
 
@@ -206,7 +234,9 @@ Strip interface prefix if there is one.
 
 #### Parameters
 
-• **input**: `string`
+##### input
+
+`string`
 
 The input to strip.
 
@@ -226,7 +256,9 @@ Split a string into words.
 
 #### Parameters
 
-• **input**: `string`
+##### input
+
+`string`
 
 The input to split.
 
@@ -259,7 +291,9 @@ UTF8-tail = %x80-BF.
 
 #### Parameters
 
-• **data**: `Uint8Array`
+##### data
+
+`Uint8Array`
 
 The data to check.
 

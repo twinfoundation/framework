@@ -22,11 +22,15 @@ Encode the buffer.
 
 #### Parameters
 
-• **humanReadablePart**: `string`
+##### humanReadablePart
+
+`string`
 
 The header.
 
-• **data**: `Uint8Array`
+##### data
+
+`Uint8Array`
 
 The data to encode.
 
@@ -46,7 +50,9 @@ Decode a bech32 string.
 
 #### Parameters
 
-• **bech**: `string`
+##### bech
+
+`string`
 
 The text to decode.
 
@@ -78,7 +84,9 @@ Is the input a bech 32 address.
 
 #### Parameters
 
-• **bech**: `unknown`
+##### bech
+
+`unknown`
 
 The value to test.
 

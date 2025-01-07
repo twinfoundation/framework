@@ -26,11 +26,15 @@ Convert an object to bytes.
 
 #### Parameters
 
-• **obj**: `undefined` \| `T`
+##### obj
 
 The object to convert.
 
-• **format**: `boolean` = `false`
+`undefined` | `T`
+
+##### format
+
+`boolean` = `false`
 
 Format the JSON content.
 
@@ -54,9 +58,11 @@ Convert a bytes to an object.
 
 #### Parameters
 
-• **bytes**: `undefined` \| `null` \| `Uint8Array`
+##### bytes
 
 The bytes to convert to an object.
+
+`undefined` | `null` | `Uint8Array`
 
 #### Returns
 
@@ -82,7 +88,9 @@ Make a deep clone of an object.
 
 #### Parameters
 
-• **obj**: `T`
+##### obj
+
+`T`
 
 The object to clone.
 
@@ -108,11 +116,15 @@ Deep merge objects.
 
 #### Parameters
 
-• **obj1**: `T`
+##### obj1
+
+`T`
 
 The first object to merge.
 
-• **obj2**: `U`
+##### obj2
+
+`U`
 
 The second object to merge.
 
@@ -136,15 +148,21 @@ Does one object equal another.
 
 #### Parameters
 
-• **obj1**: `T`
+##### obj1
+
+`T`
 
 The first object to compare.
 
-• **obj2**: `T`
+##### obj2
+
+`T`
 
 The second object to compare.
 
-• **strictPropertyOrder?**: `boolean`
+##### strictPropertyOrder?
+
+`boolean`
 
 Should the properties be in the same order, defaults to true.
 
@@ -168,11 +186,15 @@ Get the property of an unknown object.
 
 #### Parameters
 
-• **obj**: `unknown`
+##### obj
+
+`unknown`
 
 The object to get the property from.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The property to get, can be separated by dots for nested path.
 
@@ -192,15 +214,21 @@ Set the property of an unknown object.
 
 #### Parameters
 
-• **obj**: `unknown`
+##### obj
+
+`unknown`
 
 The object to set the property from.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The property to set.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to set.
 
@@ -218,11 +246,15 @@ Delete the property of an unknown object.
 
 #### Parameters
 
-• **obj**: `unknown`
+##### obj
+
+`unknown`
 
 The object to set the property from.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The property to set
 
@@ -244,15 +276,21 @@ Extract a property from the object, providing alternative names.
 
 #### Parameters
 
-• **obj**: `unknown`
+##### obj
+
+`unknown`
 
 The object to extract from.
 
-• **propertyNames**: `string` \| `string`[]
+##### propertyNames
 
 The possible names for the property.
 
-• **removeProperties**: `boolean` = `true`
+`string` | `string`[]
+
+##### removeProperties
+
+`boolean` = `true`
 
 Remove the properties from the object, defaults to true.
 
@@ -276,11 +314,15 @@ Pick a subset of properties from an object.
 
 #### Parameters
 
-• **obj**: `undefined` \| `T`
+##### obj
 
 The object to pick the properties from.
 
-• **keys?**: keyof `T`[]
+`undefined` | `T`
+
+##### keys?
+
+keyof `T`[]
 
 The property keys to pick.
 
@@ -304,11 +346,15 @@ Omit a subset of properties from an object.
 
 #### Parameters
 
-• **obj**: `undefined` \| `T`
+##### obj
 
 The object to omit the properties from.
 
-• **keys?**: keyof `T`[]
+`undefined` | `T`
+
+##### keys?
+
+keyof `T`[]
 
 The property keys to omit.
 

@@ -38,7 +38,9 @@ Public returns the PublicKey corresponding to private.
 
 #### Parameters
 
-• **privateKey**: `Uint8Array`
+##### privateKey
+
+`Uint8Array`
 
 The private key to get the corresponding public key.
 
@@ -62,11 +64,15 @@ Sign the block with privateKey and returns a signature.
 
 #### Parameters
 
-• **privateKey**: `Uint8Array`
+##### privateKey
+
+`Uint8Array`
 
 The private key.
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to sign.
 
@@ -90,15 +96,21 @@ Verify reports whether sig is a valid signature of block by publicKey.
 
 #### Parameters
 
-• **publicKey**: `Uint8Array`
+##### publicKey
+
+`Uint8Array`
 
 The public key to verify the signature.
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block for the signature.
 
-• **signature**: `Uint8Array`
+##### signature
+
+`Uint8Array`
 
 The signature.
 

@@ -22,19 +22,27 @@ Derive a key from the parameters using Sha256.
 
 #### Parameters
 
-• **password**: `Uint8Array`
+##### password
+
+`Uint8Array`
 
 The password to derive the key from.
 
-• **salt**: `Uint8Array`
+##### salt
+
+`Uint8Array`
 
 The salt for the derivation.
 
-• **iterations**: `number`
+##### iterations
+
+`number`
 
 Number of iterations to perform.
 
-• **keyLength**: `number`
+##### keyLength
+
+`number`
 
 The length of the key to derive.
 
@@ -54,19 +62,27 @@ Derive a key from the parameters using Sha512.
 
 #### Parameters
 
-• **password**: `Uint8Array`
+##### password
+
+`Uint8Array`
 
 The password to derive the key from.
 
-• **salt**: `Uint8Array`
+##### salt
+
+`Uint8Array`
 
 The salt for the derivation.
 
-• **iterations**: `number`
+##### iterations
+
+`number`
 
 Number of iterations to perform.
 
-• **keyLength**: `number`
+##### keyLength
+
+`number`
 
 The length of the key to derive.
 

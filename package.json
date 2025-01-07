@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/framework",
-	"version": "0.0.1-next.18",
+	"version": "0.0.1-next.19",
 	"description": "Framework",
 	"repository": {
 		"type": "git",
@@ -23,20 +23,20 @@
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "7.13.1",
-		"cspell": "8.16.0",
+		"cspell": "8.17.1",
 		"eslint": "8.57.0",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-header": "3.1.1",
 		"eslint-plugin-import": "2.31.0",
-		"eslint-plugin-jsdoc": "50.5.0",
+		"eslint-plugin-jsdoc": "50.6.1",
 		"eslint-plugin-prettier": "5.2.1",
-		"eslint-plugin-promise": "7.1.0",
+		"eslint-plugin-promise": "7.2.1",
 		"eslint-plugin-simple-import-sort": "12.1.1",
 		"eslint-plugin-unicorn": "56.0.1",
 		"eslint-plugin-unused-imports": "3.2.0",
-		"fast-glob": "3.3.2",
-		"markdownlint-cli": "0.42.0",
-		"prettier": "3.3.3"
+		"fast-glob": "3.3.3",
+		"markdownlint-cli": "0.43.0",
+		"prettier": "3.4.2"
 	},
 	"workspaces": [
 		"packages/core",

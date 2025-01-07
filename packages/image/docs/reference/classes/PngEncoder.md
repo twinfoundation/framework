@@ -23,15 +23,21 @@ Encode the image frames to png.
 
 #### Parameters
 
-• **buffers**: `ArrayBuffer`[]
+##### buffers
+
+`ArrayBuffer`[]
 
 The frame buffers to encode.
 
-• **w**: `number`
+##### w
+
+`number`
 
 The image width.
 
-• **h**: `number`
+##### h
+
+`number`
 
 The image height.
 

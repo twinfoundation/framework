@@ -26,15 +26,21 @@ Execute an async request and cache the result.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 The key for the entry in the cache.
 
-• **ttlMs**: `undefined` \| `number`
+##### ttlMs
 
 The TTL of the entry in the cache.
 
-• **requestMethod**
+`undefined` | `number`
+
+##### requestMethod
+
+() => `Promise`\<`T`\>
 
 The method to call if not cached.
 
@@ -58,7 +64,9 @@ Get an entry from the cache.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 The key to get from the cache.
 
@@ -78,7 +86,9 @@ Remove an entry from the cache.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 The key to remove from the cache.
 
@@ -96,7 +106,9 @@ Clear the cache.
 
 #### Parameters
 
-• **prefix?**: `string`
+##### prefix?
+
+`string`
 
 Optional prefix to clear only entries with that prefix.
 

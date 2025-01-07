@@ -22,7 +22,9 @@ Generate a new random array.
 
 #### Parameters
 
-• **length**: `number`
+##### length
+
+`number`
 
 The length of buffer to create.
 

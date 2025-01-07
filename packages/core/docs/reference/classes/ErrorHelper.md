@@ -22,7 +22,9 @@ Format Errors and returns just their messages.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to format.
 
@@ -42,7 +44,9 @@ Localize the content of an error and any inner errors.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to format.
 
@@ -62,7 +66,9 @@ Localize the content of an error and any inner errors.
 
 #### Parameters
 
-• **error**: [`IError`](../interfaces/IError.md)
+##### error
+
+[`IError`](../interfaces/IError.md)
 
 The error to format.
 

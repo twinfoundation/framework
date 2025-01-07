@@ -23,7 +23,9 @@ Convert the base 64 string to a byte array.
 
 #### Parameters
 
-• **base64Url**: `string`
+##### base64Url
+
+`string`
 
 The base64 url string to convert.
 
@@ -43,7 +45,9 @@ Convert a byte array to base 64 url.
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+##### bytes
+
+`Uint8Array`
 
 The byte array to convert.
 

@@ -4,7 +4,7 @@ The fields in a JSON Web Key.
 
 ## Indexable
 
- \[`key`: `string`\]: `unknown`
+\[`key`: `string`\]: `unknown`
 
 ## Properties
 

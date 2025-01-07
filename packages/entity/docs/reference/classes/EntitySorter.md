@@ -26,11 +26,15 @@ Sort a list of entities using multiple keys and direction.
 
 #### Parameters
 
-• **entities**: `T`[]
+##### entities
+
+`T`[]
 
 The list of entities.
 
-• **entitySorters?**: [`IEntitySort`](../interfaces/IEntitySort.md)\<`T`\>[]
+##### entitySorters?
+
+[`IEntitySort`](../interfaces/IEntitySort.md)\<`T`\>[]
 
 The sort keys to use.
 
@@ -54,23 +58,33 @@ Compare two properties.
 
 #### Parameters
 
-• **entity1**: `T`
+##### entity1
+
+`T`
 
 The first entity.
 
-• **entity2**: `T`
+##### entity2
+
+`T`
 
 The second entity.
 
-• **prop**: keyof `T`
+##### prop
+
+keyof `T`
 
 The property to compare.
 
-• **type**: [`EntitySchemaPropertyType`](../type-aliases/EntitySchemaPropertyType.md)
+##### type
+
+[`EntitySchemaPropertyType`](../type-aliases/EntitySchemaPropertyType.md)
 
 The type of the property.
 
-• **direction**: [`SortDirection`](../type-aliases/SortDirection.md) = `SortDirection.Ascending`
+##### direction
+
+[`SortDirection`](../type-aliases/SortDirection.md) = `SortDirection.Ascending`
 
 The direction of the sort.
 

@@ -23,7 +23,9 @@ Get the byte length of the data.
 
 #### Parameters
 
-• **base64**: `string`
+##### base64
+
+`string`
 
 The base64 string.
 
@@ -43,7 +45,9 @@ Convert the base 64 string to a byte array.
 
 #### Parameters
 
-• **base64**: `string`
+##### base64
+
+`string`
 
 The base64 string to convert.
 
@@ -63,7 +67,9 @@ Convert a byte array to base 64.
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+##### bytes
+
+`Uint8Array`
 
 The byte array to convert.
 

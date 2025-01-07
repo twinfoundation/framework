@@ -12,15 +12,21 @@ Create a new instance of ChaCha20Poly1305.
 
 #### Parameters
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 The key.
 
-• **nonce**: `Uint8Array`
+##### nonce
+
+`Uint8Array`
 
 The nonce.
 
-• **aad?**: `Uint8Array`
+##### aad?
+
+`Uint8Array`
 
 The additional authenticated data.
 
@@ -38,7 +44,9 @@ Encrypt the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to encrypt.
 
@@ -58,7 +66,9 @@ Decrypt the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to decrypt.
 

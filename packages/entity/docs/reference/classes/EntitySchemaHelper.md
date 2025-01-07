@@ -26,7 +26,9 @@ Get the schema for the specified object.
 
 #### Parameters
 
-• **target**: `any`
+##### target
+
+`any`
 
 The object to get the schema data for.
 
@@ -50,7 +52,9 @@ Get the primary key from the entity schema.
 
 #### Parameters
 
-• **entitySchema**: [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
+##### entitySchema
+
+[`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
 
 The entity schema to find the primary key from.
 
@@ -78,7 +82,9 @@ Get the sort properties from the schema.
 
 #### Parameters
 
-• **entitySchema**: [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
+##### entitySchema
+
+[`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
 
 The entity schema to find the primary key from.
 
@@ -102,11 +108,15 @@ Build sort properties from the schema and override if necessary.
 
 #### Parameters
 
-• **entitySchema**: [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
+##### entitySchema
+
+[`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
 
 The entity schema to retrieve the default sort keys.
 
-• **overrideSortKeys?**: `object`[]
+##### overrideSortKeys?
+
+`object`[]
 
 The override sort keys.
 

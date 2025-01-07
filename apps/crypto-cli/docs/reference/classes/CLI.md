@@ -30,19 +30,25 @@ Run the app.
 
 #### Parameters
 
-• **argv**: `string`[]
+##### argv
+
+`string`[]
 
 The process arguments.
 
-• **localesDirectory?**: `string`
+##### localesDirectory?
+
+`string`
 
 The directory for the locales, default to relative to the script.
 
-• **options?**
+##### options?
 
 Additional options.
 
-• **options.overrideOutputWidth?**: `number`
+###### overrideOutputWidth
+
+`number`
 
 Override the output width.
 
@@ -62,15 +68,21 @@ Execute the command line processing.
 
 #### Parameters
 
-• **options**: `ICliOptions`
+##### options
+
+`ICliOptions`
 
 The options for the CLI.
 
-• **localesDirectory**: `string`
+##### localesDirectory
+
+`string`
 
 The path to load the locales from.
 
-• **argv**: `string`[]
+##### argv
+
+`string`[]
 
 The process arguments.
 
@@ -94,7 +106,9 @@ Configure any options or actions at the root program level.
 
 #### Parameters
 
-• **program**: `Command`
+##### program
+
+`Command`
 
 The root program command.
 

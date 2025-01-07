@@ -20,15 +20,21 @@ Create a new factory, which is shared throughout all library instances.
 
 #### Parameters
 
-• **typeName**: `string`
+##### typeName
+
+`string`
 
 The type name for the instances.
 
-• **autoInstance**: `boolean` = `false`
+##### autoInstance
+
+`boolean` = `false`
 
 Automatically create an instance when registered.
 
-• **matcher?**
+##### matcher?
+
+(`names`, `name`) => `undefined` \| `string`
 
 Match the name of the instance.
 
@@ -90,11 +96,15 @@ Register a new generator.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 The name of the generator.
 
-• **generator**
+##### generator
+
+() => `U`
 
 The function to create an instance.
 
@@ -112,7 +122,9 @@ Unregister a generator.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 The name of the generator to unregister.
 
@@ -142,7 +154,9 @@ Get a generator instance.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 The name of the instance to generate.
 
@@ -174,7 +188,9 @@ Get a generator instance with no exceptions.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 The name of the instance to generate.
 
@@ -260,7 +276,9 @@ Does the factory contain the name.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 The name of the instance to find.
 

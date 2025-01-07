@@ -22,7 +22,9 @@ Generate a password of given length.
 
 #### Parameters
 
-• **length**: `number`
+##### length
+
+`number`
 
 The length of the password to generate.
 

@@ -22,15 +22,21 @@ Encode a raw array to UTF8 string.
 
 #### Parameters
 
-• **array**: `ArrayLike`\<`number`\>
+##### array
+
+`ArrayLike`\<`number`\>
 
 The bytes to encode.
 
-• **startIndex?**: `number`
+##### startIndex?
+
+`number`
 
 The index to start in the bytes.
 
-• **length?**: `number`
+##### length?
+
+`number`
 
 The length of bytes to read.
 
@@ -50,7 +56,9 @@ Convert a UTF8 string to raw array.
 
 #### Parameters
 
-• **utf8**: `string`
+##### utf8
+
+`string`
 
 The text to decode.
 
@@ -70,23 +78,33 @@ Encode a raw array to hex string.
 
 #### Parameters
 
-• **array**: `ArrayLike`\<`number`\>
+##### array
+
+`ArrayLike`\<`number`\>
 
 The bytes to encode.
 
-• **includePrefix**: `boolean` = `false`
+##### includePrefix
+
+`boolean` = `false`
 
 Include the 0x prefix on the returned hex.
 
-• **startIndex?**: `number`
+##### startIndex?
+
+`number`
 
 The index to start in the bytes.
 
-• **length?**: `number`
+##### length?
+
+`number`
 
 The length of bytes to read.
 
-• **reverse?**: `boolean`
+##### reverse?
+
+`boolean`
 
 Reverse the combine direction.
 
@@ -106,11 +124,15 @@ Decode a hex string to raw array.
 
 #### Parameters
 
-• **hex**: `string`
+##### hex
+
+`string`
 
 The hex to decode.
 
-• **reverse?**: `boolean`
+##### reverse?
+
+`boolean`
 
 Store the characters in reverse.
 
@@ -130,11 +152,15 @@ Convert the UTF8 to hex.
 
 #### Parameters
 
-• **utf8**: `string`
+##### utf8
+
+`string`
 
 The text to convert.
 
-• **includePrefix**: `boolean` = `false`
+##### includePrefix
+
+`boolean` = `false`
 
 Include the 0x prefix on the returned hex.
 
@@ -154,7 +180,9 @@ Convert the hex text to text.
 
 #### Parameters
 
-• **hex**: `string`
+##### hex
+
+`string`
 
 The hex to convert.
 
@@ -174,7 +202,9 @@ Convert bytes to binary string.
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+##### bytes
+
+`Uint8Array`
 
 The bytes to convert.
 
@@ -194,7 +224,9 @@ Convert a binary string to bytes.
 
 #### Parameters
 
-• **binary**: `string`
+##### binary
+
+`string`
 
 The binary string.
 
@@ -214,7 +246,9 @@ Convert bytes to base64 string.
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+##### bytes
+
+`Uint8Array`
 
 The bytes to convert.
 
@@ -234,7 +268,9 @@ Convert a base64 string to bytes.
 
 #### Parameters
 
-• **base64**: `string`
+##### base64
+
+`string`
 
 The base64 string.
 
@@ -254,7 +290,9 @@ Convert bytes to base64 url string.
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+##### bytes
+
+`Uint8Array`
 
 The bytes to convert.
 
@@ -274,7 +312,9 @@ Convert a base64 url string to bytes.
 
 #### Parameters
 
-• **base64Url**: `string`
+##### base64Url
+
+`string`
 
 The base64 url string.
 
@@ -294,7 +334,9 @@ Convert bytes to base58 string.
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+##### bytes
+
+`Uint8Array`
 
 The bytes to convert.
 
@@ -314,7 +356,9 @@ Convert a base58 string to bytes.
 
 #### Parameters
 
-• **base58**: `string`
+##### base58
+
+`string`
 
 The base58 string.
 

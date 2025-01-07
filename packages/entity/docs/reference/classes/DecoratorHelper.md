@@ -26,7 +26,9 @@ Get the schema from the reflection metadata.
 
 #### Parameters
 
-• **target**: `any`
+##### target
+
+`any`
 
 The object to get the schema data from.
 
@@ -50,11 +52,15 @@ Set the schema from the reflection metadata.
 
 #### Parameters
 
-• **target**: `any`
+##### target
+
+`any`
 
 The object to get the schema data from.
 
-• **entitySchema**: [`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
+##### entitySchema
+
+[`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
 
 The schema to set.
 

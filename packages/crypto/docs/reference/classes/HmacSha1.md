@@ -12,7 +12,9 @@ Create a new instance of HmacSha1.
 
 #### Parameters
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 The key for the hmac.
 
@@ -30,11 +32,15 @@ Perform Sum on the block.
 
 #### Parameters
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 The key for the hmac.
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to operate on.
 
@@ -54,7 +60,9 @@ Update the hash with the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to update the hash with.
 

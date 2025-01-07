@@ -34,11 +34,15 @@ Get the module entry.
 
 #### Parameters
 
-• **module**: `string`
+##### module
+
+`string`
 
 The module.
 
-• **entry**: `string`
+##### entry
+
+`string`
 
 The entry to get from the module.
 
@@ -66,11 +70,15 @@ Get the method from a module.
 
 #### Parameters
 
-• **module**: `string`
+##### module
+
+`string`
 
 The module.
 
-• **method**: `string`
+##### method
+
+`string`
 
 The method to execute from the module, use dot notation to get a static class method.
 
@@ -98,15 +106,21 @@ Execute the method in the module.
 
 #### Parameters
 
-• **module**: `string`
+##### module
+
+`string`
 
 The module.
 
-• **method**: `string`
+##### method
+
+`string`
 
 The method to execute from the module.
 
-• **args?**: `unknown`[]
+##### args?
+
+`unknown`[]
 
 The arguments to pass to the method.
 
@@ -134,15 +148,21 @@ Execute the method in the module in a thread.
 
 #### Parameters
 
-• **module**: `string`
+##### module
+
+`string`
 
 The module.
 
-• **method**: `string`
+##### method
+
+`string`
 
 The method to execute from the module.
 
-• **args?**: `unknown`[]
+##### args?
+
+`unknown`[]
 
 The arguments to pass to the method.
 

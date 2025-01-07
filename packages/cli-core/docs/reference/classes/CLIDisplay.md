@@ -22,9 +22,11 @@ The default output method for writing standard messages.
 
 #### Parameters
 
-• **buffer**: `string` \| `Uint8Array`
+##### buffer
 
 The message to output.
+
+`string` | `Uint8Array`
 
 #### Returns
 
@@ -40,9 +42,11 @@ The default output method for writing error messages.
 
 #### Parameters
 
-• **buffer**: `string` \| `Uint8Array`
+##### buffer
 
 The message to output.
+
+`string` | `Uint8Array`
 
 #### Returns
 
@@ -70,15 +74,21 @@ Display the header for the CLI.
 
 #### Parameters
 
-• **title**: `string`
+##### title
+
+`string`
 
 The title of the CLI.
 
-• **version**: `string`
+##### version
+
+`string`
 
 The version of the CLI.
 
-• **icon**: `string`
+##### icon
+
+`string`
 
 The icon for the CLI.
 
@@ -96,11 +106,15 @@ Display an error message.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to display.
 
-• **lineBreaks**: `boolean` = `true`
+##### lineBreaks
+
+`boolean` = `true`
 
 Whether to add a line break after the error.
 
@@ -118,7 +132,9 @@ Display a section.
 
 #### Parameters
 
-• **label**: `string`
+##### label
+
+`string`
 
 The label for the section.
 
@@ -136,15 +152,21 @@ Display a value with a label.
 
 #### Parameters
 
-• **label**: `string`
+##### label
+
+`string`
 
 The label for the value.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to display.
 
-• **indentLevel**: `number` = `0`
+##### indentLevel
+
+`number` = `0`
 
 The level of indentation.
 
@@ -162,11 +184,15 @@ Display a task with a label.
 
 #### Parameters
 
-• **label**: `string`
+##### label
+
+`string`
 
 The label for the value.
 
-• **task?**: `string`
+##### task?
+
+`string`
 
 The task to display.
 
@@ -196,7 +222,9 @@ Display formatted and colorized JSON.
 
 #### Parameters
 
-• **obj**: `unknown`
+##### obj
+
+`unknown`
 
 The object to display.
 
@@ -226,15 +254,21 @@ Start the spinner.
 
 #### Parameters
 
-• **i18nMessage**: `string` = `"cli.progress.pleaseWait"`
+##### i18nMessage
+
+`string` = `"cli.progress.pleaseWait"`
 
 The message to display with the spinner.
 
-• **spinnerCharacters**: `string`[] = `...`
+##### spinnerCharacters
+
+`string`[] = `...`
 
 The characters to use in the spinner.
 
-• **interval**: `number` = `100`
+##### interval
+
+`number` = `100`
 
 The interval for the spinner.
 

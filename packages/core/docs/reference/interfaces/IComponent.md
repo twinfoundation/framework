@@ -20,11 +20,13 @@ Bootstrap the component by creating and initializing any resources it needs.
 
 #### Parameters
 
-• **nodeLoggingConnectorType**: `undefined` \| `string`
+##### nodeLoggingConnectorType
 
 The node logging connector type, defaults to "node-logging".
 
-• **componentState?**
+`undefined` | `string`
+
+##### componentState?
 
 A persistent state which can be modified by the method.
 
@@ -44,15 +46,19 @@ The component needs to be started when the node is initialized.
 
 #### Parameters
 
-• **nodeIdentity**: `string`
+##### nodeIdentity
+
+`string`
 
 The identity of the node starting the component.
 
-• **nodeLoggingConnectorType**: `undefined` \| `string`
+##### nodeLoggingConnectorType
 
 The node logging connector type, defaults to "node-logging".
 
-• **componentState?**
+`undefined` | `string`
+
+##### componentState?
 
 A persistent state which can be modified by the method.
 
@@ -72,15 +78,19 @@ The component needs to be stopped when the node is closed.
 
 #### Parameters
 
-• **nodeIdentity**: `string`
+##### nodeIdentity
+
+`string`
 
 The identity of the node stopping the component.
 
-• **nodeLoggingConnectorType**: `undefined` \| `string`
+##### nodeLoggingConnectorType
 
 The node logging connector type, defaults to "node-logging".
 
-• **componentState?**
+`undefined` | `string`
+
+##### componentState?
 
 A persistent state which can be modified by the method.
 

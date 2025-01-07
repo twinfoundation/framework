@@ -28,15 +28,21 @@ Encode a token.
 
 #### Parameters
 
-• **header**: `U`
+##### header
+
+`U`
 
 The header to encode.
 
-• **payload**: `T`
+##### payload
+
+`T`
 
 The payload to encode.
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 The key for signing the token, can be omitted if a signer is provided.
 
@@ -62,15 +68,21 @@ Encode a token.
 
 #### Parameters
 
-• **header**: `U`
+##### header
+
+`U`
 
 The header to encode.
 
-• **payload**: `T`
+##### payload
+
+`T`
 
 The payload to encode.
 
-• **signer**
+##### signer
+
+(`alg`, `key`, `payload`) => `Promise`\<`Uint8Array`\>
 
 Custom signer method.
 
@@ -84,7 +96,7 @@ The encoded token.
 
 ### decode()
 
-> `static` **decode**\<`U`, `T`\>(`token`): `Promise`\<`object`\>
+> `static` **decode**\<`U`, `T`\>(`token`): `Promise`\<\{ `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
 
 Decode a token.
 
@@ -96,33 +108,23 @@ Decode a token.
 
 #### Parameters
 
-• **token**: `string`
+##### token
+
+`string`
 
 The token to decode.
 
 #### Returns
 
-`Promise`\<`object`\>
+`Promise`\<\{ `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
 
 The decoded payload.
-
-##### header?
-
-> `optional` **header**: `U`
-
-##### payload?
-
-> `optional` **payload**: `T`
-
-##### signature?
-
-> `optional` **signature**: `Uint8Array`
 
 ***
 
 ### verify()
 
-> `static` **verify**\<`U`, `T`\>(`token`, `key`): `Promise`\<`object`\>
+> `static` **verify**\<`U`, `T`\>(`token`, `key`): `Promise`\<\{ `verified`: `boolean`; `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
 
 Verify a token.
 
@@ -134,41 +136,29 @@ Verify a token.
 
 #### Parameters
 
-• **token**: `string`
+##### token
+
+`string`
 
 The token to verify.
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 The key for verifying the token
 
 #### Returns
 
-`Promise`\<`object`\>
+`Promise`\<\{ `verified`: `boolean`; `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
 
 The decoded payload.
-
-##### verified
-
-> **verified**: `boolean`
-
-##### header?
-
-> `optional` **header**: `U`
-
-##### payload?
-
-> `optional` **payload**: `T`
-
-##### signature?
-
-> `optional` **signature**: `Uint8Array`
 
 ***
 
 ### verifyWithVerifier()
 
-> `static` **verifyWithVerifier**\<`U`, `T`\>(`token`, `verifier`): `Promise`\<`object`\>
+> `static` **verifyWithVerifier**\<`U`, `T`\>(`token`, `verifier`): `Promise`\<\{ `verified`: `boolean`; `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
 
 Verify a token.
 
@@ -180,35 +170,23 @@ Verify a token.
 
 #### Parameters
 
-• **token**: `string`
+##### token
+
+`string`
 
 The token to verify.
 
-• **verifier**
+##### verifier
+
+(`alg`, `key`, `payload`, `signature`) => `Promise`\<`boolean`\>
 
 Custom verification method.
 
 #### Returns
 
-`Promise`\<`object`\>
+`Promise`\<\{ `verified`: `boolean`; `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
 
 The decoded payload.
-
-##### verified
-
-> **verified**: `boolean`
-
-##### header?
-
-> `optional` **header**: `U`
-
-##### payload?
-
-> `optional` **payload**: `T`
-
-##### signature?
-
-> `optional` **signature**: `Uint8Array`
 
 ***
 
@@ -226,23 +204,33 @@ Verify a token by parts.
 
 #### Parameters
 
-• **header?**: `U`
+##### header?
+
+`U`
 
 The header to verify.
 
-• **payload?**: `T`
+##### payload?
+
+`T`
 
 The payload to verify.
 
-• **signature?**: `Uint8Array`
+##### signature?
+
+`Uint8Array`
 
 The signature to verify.
 
-• **key?**: `Uint8Array`
+##### key?
+
+`Uint8Array`
 
 The key for verifying the token, if not provided no verification occurs.
 
-• **verifier?**
+##### verifier?
+
+(`alg`, `key`, `payload`, `signature`) => `Promise`\<`boolean`\>
 
 Custom verification method.
 
@@ -262,15 +250,21 @@ The default signer for the JWT.
 
 #### Parameters
 
-• **alg**: [`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
+##### alg
+
+[`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
 
 The algorithm to use.
 
-• **key**: `undefined` \| `Uint8Array`
+##### key
 
 The key to sign with.
 
-• **payload**: `Uint8Array`
+`undefined` | `Uint8Array`
+
+##### payload
+
+`Uint8Array`
 
 The payload to sign.
 
@@ -290,19 +284,27 @@ The default verifier for the JWT.
 
 #### Parameters
 
-• **alg**: [`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
+##### alg
+
+[`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
 
 The algorithm to use.
 
-• **key**: `undefined` \| `Uint8Array`
+##### key
 
 The key to verify with.
 
-• **payload**: `Uint8Array`
+`undefined` | `Uint8Array`
+
+##### payload
+
+`Uint8Array`
 
 The payload to verify.
 
-• **signature**: `Uint8Array`
+##### signature
+
+`Uint8Array`
 
 The signature to verify.
 

@@ -4,4 +4,4 @@ Model used for Http headers parameter.
 
 ## Indexable
 
- \[`key`: `string`\]: `string` \| `string`[]
+\[`key`: `string`\]: `string` \| `string`[]

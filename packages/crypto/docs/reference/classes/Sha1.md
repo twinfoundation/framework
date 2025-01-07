@@ -24,7 +24,9 @@ Perform Sum on the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to operate on.
 
@@ -44,7 +46,9 @@ Update the hash with the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to update the hash with.
 

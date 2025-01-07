@@ -22,15 +22,21 @@ Is the property defined.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -52,15 +58,21 @@ Is the property a string.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -82,15 +94,21 @@ Is the property a string with a value.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -112,15 +130,21 @@ Is the property a base64 string.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -142,15 +166,21 @@ Is the property a base64 url string.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -172,15 +202,21 @@ Is the property a base58 string.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -202,19 +238,27 @@ Is the property a string with a hex value.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **allowPrefix**: `boolean` = `false`
+##### allowPrefix
+
+`boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 
@@ -236,23 +280,33 @@ Is the property a string with a hex value with fixed length.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **length**: `number`
+##### length
+
+`number`
 
 The length of the string to match.
 
-• **allowPrefix**: `boolean` = `false`
+##### allowPrefix
+
+`boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 
@@ -274,15 +328,21 @@ Is the property a number.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -304,15 +364,21 @@ Is the property an integer.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -334,15 +400,21 @@ Is the property a bigint.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -364,15 +436,21 @@ Is the property a boolean.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -394,15 +472,21 @@ Is the property a date.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -424,15 +508,21 @@ Is the property a timestamp in milliseconds.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -454,15 +544,21 @@ Is the property a timestamp in seconds.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -484,19 +580,25 @@ Is the property an object.
 
 #### Type Parameters
 
-• **T** = `object`
+• **T** = \{\}
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -518,19 +620,25 @@ Is the property is an object with at least one property.
 
 #### Type Parameters
 
-• **T** = `object`
+• **T** = \{\}
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -556,15 +664,21 @@ Is the property is an array.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -590,15 +704,21 @@ Is the property is an array with at least one item.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -624,19 +744,27 @@ Is the property one of a list of items.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `T`
+##### value
+
+`T`
 
 The value to test.
 
-• **options**: `T`[]
+##### options
+
+`T`[]
 
 The options the value must be one of.
 
@@ -658,15 +786,21 @@ Is the property a Uint8Array.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -688,15 +822,21 @@ Is the property a function.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -720,15 +860,21 @@ Is the property a string formatted as an email address.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 

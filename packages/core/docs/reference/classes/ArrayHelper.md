@@ -22,11 +22,15 @@ Do the two arrays match.
 
 #### Parameters
 
-• **arr1**: `unknown`
+##### arr1
+
+`unknown`
 
 The first array.
 
-• **arr2**: `unknown`
+##### arr2
+
+`unknown`
 
 The second array.
 

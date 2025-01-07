@@ -22,11 +22,15 @@ Render the QR code data as text.
 
 #### Parameters
 
-• **cellData**: [`QRCellData`](../type-aliases/QRCellData.md)
+##### cellData
+
+[`QRCellData`](../type-aliases/QRCellData.md)
 
 The cell data for the QR code.
 
-• **options?**: [`ITextRendererOptions`](../interfaces/ITextRendererOptions.md)
+##### options?
+
+[`ITextRendererOptions`](../interfaces/ITextRendererOptions.md)
 
 The options for rendering.
 

@@ -23,15 +23,21 @@ Generate a time based One Time Password.
 
 #### Parameters
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 Key for the one time password.
 
-• **interval**: `number` = `30`
+##### interval
+
+`number` = `30`
 
 The time step of the counter.
 
-• **timestamp**: `number` = `...`
+##### timestamp
+
+`number` = `...`
 
 The timestamp.
 
@@ -51,24 +57,34 @@ Check a One Time Password based on a timer.
 
 #### Parameters
 
-• **token**: `string`
+##### token
+
+`string`
 
 Passcode to validate.
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 Key for the one time password. This should be unique and secret for
 every user as it is the seed used to calculate the HMAC.
 
-• **window**: `number` = `2`
+##### window
+
+`number` = `2`
 
 The allowable margin for the counter.
 
-• **interval**: `number` = `30`
+##### interval
+
+`number` = `30`
 
 The time step of the counter.
 
-• **timestamp**: `number` = `...`
+##### timestamp
+
+`number` = `...`
 
 The timestamp now.
 
@@ -88,7 +104,9 @@ Generate a secret.
 
 #### Parameters
 
-• **length**: `number`
+##### length
+
+`number`
 
 The length of the secret to generate.
 
@@ -108,7 +126,9 @@ Convert the secret back to bytes.
 
 #### Parameters
 
-• **secretBase32**: `string`
+##### secretBase32
+
+`string`
 
 The secret encoded as base32.
 
@@ -129,15 +149,21 @@ See https://github.com/google/google-authenticator/wiki/Key-Uri-Format .
 
 #### Parameters
 
-• **issuer**: `string`
+##### issuer
+
+`string`
 
 The issuer of the totp.
 
-• **label**: `string`
+##### label
+
+`string`
 
 The label that will show in auth apps.
 
-• **secretBase32**: `string`
+##### secretBase32
+
+`string`
 
 The secret as base 32.
 

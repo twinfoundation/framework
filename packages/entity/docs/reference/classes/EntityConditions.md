@@ -26,11 +26,15 @@ See if the entity matches the conditions.
 
 #### Parameters
 
-• **entity**: `T`
+##### entity
+
+`T`
 
 The entity to test.
 
-• **condition?**: [`EntityCondition`](../type-aliases/EntityCondition.md)\<`T`\>
+##### condition?
+
+[`EntityCondition`](../type-aliases/EntityCondition.md)\<`T`\>
 
 The conditions to test.
 
@@ -54,11 +58,15 @@ See if the entity matches the conditions.
 
 #### Parameters
 
-• **entity**: `T`
+##### entity
+
+`T`
 
 The entity to test.
 
-• **comparator**: [`IComparator`](../interfaces/IComparator.md)
+##### comparator
+
+[`IComparator`](../interfaces/IComparator.md)
 
 The condition to test.
 

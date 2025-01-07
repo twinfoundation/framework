@@ -36,7 +36,7 @@ Any additional information for the error.
 
 #### Index Signature
 
- \[`id`: `string`\]: `unknown`
+\[`id`: `string`\]: `unknown`
 
 ***
 

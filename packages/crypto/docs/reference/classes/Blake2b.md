@@ -12,11 +12,15 @@ Create a new instance of Blake2b.
 
 #### Parameters
 
-• **outputLength**: `number`
+##### outputLength
+
+`number`
 
 The output length.
 
-• **key?**: `Uint8Array`
+##### key?
+
+`Uint8Array`
 
 Optional key for the hash.
 
@@ -58,11 +62,15 @@ Perform Sum 160 on the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to operate on.
 
-• **key?**: `Uint8Array`
+##### key?
+
+`Uint8Array`
 
 Optional key for the hash.
 
@@ -82,11 +90,15 @@ Perform Sum 256 on the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to operate on.
 
-• **key?**: `Uint8Array`
+##### key?
+
+`Uint8Array`
 
 Optional key for the hash.
 
@@ -106,11 +118,15 @@ Perform Sum 512 on the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to operate on.
 
-• **key?**: `Uint8Array`
+##### key?
+
+`Uint8Array`
 
 Optional key for the hash.
 
@@ -130,7 +146,9 @@ Update the hash with the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to update the hash with.
 

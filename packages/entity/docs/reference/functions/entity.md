@@ -6,7 +6,9 @@ Decorator to produce schema data for entity.
 
 ## Parameters
 
-• **options?**: [`IEntitySchemaOptions`](../interfaces/IEntitySchemaOptions.md)
+### options?
+
+[`IEntitySchemaOptions`](../interfaces/IEntitySchemaOptions.md)
 
 The options for the entity.
 

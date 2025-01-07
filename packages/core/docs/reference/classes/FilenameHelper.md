@@ -22,7 +22,9 @@ Replaces any unsafe characters in the filename.
 
 #### Parameters
 
-• **filename**: `unknown`
+##### filename
+
+`unknown`
 
 The filename to make safe.
 

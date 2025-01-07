@@ -12,13 +12,17 @@ Create a new instance of Urn.
 
 #### Parameters
 
-• **namespaceIdentifier**: `string`
+##### namespaceIdentifier
+
+`string`
 
 The identifier for the namespace.
 
-• **namespaceSpecific**: `string` \| `string`[]
+##### namespaceSpecific
 
 The specific part of the namespace.
+
+`string` | `string`[]
 
 #### Returns
 
@@ -34,7 +38,9 @@ Generate a random identifier with 32 byte id.
 
 #### Parameters
 
-• **namespace**: `string`
+##### namespace
+
+`string`
 
 The prefix for the urn.
 
@@ -54,11 +60,15 @@ Does the provided urn match the namespace.
 
 #### Parameters
 
-• **urn**: `string`
+##### urn
+
+`string`
 
 The urn to check.
 
-• **namespace**: `string`
+##### namespace
+
+`string`
 
 The namespace to match.
 
@@ -78,7 +88,9 @@ Try and parse a string into the urn parts.
 
 #### Parameters
 
-• **urn**: `unknown`
+##### urn
+
+`unknown`
 
 The urn to parse.
 
@@ -98,7 +110,9 @@ Construct a urn from a string that has already been validated.
 
 #### Parameters
 
-• **urn**: `string`
+##### urn
+
+`string`
 
 The urn to parse.
 
@@ -118,7 +132,9 @@ Add a urn: prefix if there isn't one already.
 
 #### Parameters
 
-• **urn**: `unknown`
+##### urn
+
+`unknown`
 
 The urn string to add a prefix to.
 
@@ -138,15 +154,21 @@ Parse a string into the urn parts.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The urn to parse.
 
@@ -168,15 +190,21 @@ Validate a string as a Urn.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 Throw an exception if the urn property is invalid.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The urn to parse.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
@@ -196,7 +224,9 @@ Get the parts.
 
 #### Parameters
 
-• **startIndex**: `number` = `0`
+##### startIndex
+
+`number` = `0`
 
 The index to start from, defaults to 0.
 
@@ -244,7 +274,9 @@ Get the namespace specific parts.
 
 #### Parameters
 
-• **startIndex**: `number` = `0`
+##### startIndex
+
+`number` = `0`
 
 The index to start from, defaults to 0.
 
@@ -264,7 +296,9 @@ Get the namespace specific.
 
 #### Parameters
 
-• **startIndex**: `number` = `0`
+##### startIndex
+
+`number` = `0`
 
 The index to start from, defaults to 0.
 
@@ -284,7 +318,9 @@ Convert the parts in to a full string.
 
 #### Parameters
 
-• **omitPrefix**: `boolean` = `true`
+##### omitPrefix
+
+`boolean` = `true`
 
 Omit the urn: prefix from the string.
 

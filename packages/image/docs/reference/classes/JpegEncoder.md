@@ -25,19 +25,27 @@ Encode the image with the given quality.
 
 #### Parameters
 
-• **width**: `number`
+##### width
+
+`number`
 
 The width of the image to encode.
 
-• **height**: `number`
+##### height
+
+`number`
 
 The height of the image to encode.
 
-• **imageData**: `Uint8Array`
+##### imageData
+
+`Uint8Array`
 
 The data for the image.
 
-• **quality**: `number`
+##### quality
+
+`number`
 
 The quality to encode the image at.
 

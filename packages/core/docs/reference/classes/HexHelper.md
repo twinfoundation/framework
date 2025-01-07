@@ -22,7 +22,9 @@ Strip the 0x prefix if it exists.
 
 #### Parameters
 
-• **hex**: `string`
+##### hex
+
+`string`
 
 The hex value to strip.
 
@@ -42,7 +44,9 @@ Add the 0x prefix if it does not exist.
 
 #### Parameters
 
-• **hex**: `string`
+##### hex
+
+`string`
 
 The hex value to add the prefix to.
 
@@ -62,7 +66,9 @@ Does the hex string have the prefix.
 
 #### Parameters
 
-• **hex**: `string`
+##### hex
+
+`string`
 
 The hex value to check for the prefix.
 
@@ -82,11 +88,15 @@ Is the data hex format.
 
 #### Parameters
 
-• **value**: `string`
+##### value
+
+`string`
 
 The value to test.
 
-• **allowPrefix**: `boolean` = `false`
+##### allowPrefix
+
+`boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 

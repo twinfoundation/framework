@@ -22,7 +22,9 @@ Does the specified file exist.
 
 #### Parameters
 
-• **filename**: `string`
+##### filename
+
+`string`
 
 The filename to check for existence.
 
@@ -42,7 +44,9 @@ Does the specified file exist, synchronously.
 
 #### Parameters
 
-• **filename**: `string`
+##### filename
+
+`string`
 
 The filename to check for existence.
 
@@ -62,7 +66,9 @@ Check if the dir exists.
 
 #### Parameters
 
-• **dir**: `string`
+##### dir
+
+`string`
 
 The directory to check.
 
@@ -82,7 +88,9 @@ Check if the dir exists, synchronously.
 
 #### Parameters
 
-• **dir**: `string`
+##### dir
+
+`string`
 
 The directory to check.
 
@@ -106,7 +114,9 @@ Read a JSON file and parse it.
 
 #### Parameters
 
-• **filename**: `string`
+##### filename
+
+`string`
 
 The filename to read.
 
@@ -130,7 +140,9 @@ Read a JSON file and parse it, synchronously.
 
 #### Parameters
 
-• **filename**: `string`
+##### filename
+
+`string`
 
 The filename to read.
 
@@ -150,7 +162,9 @@ Read a file as lines.
 
 #### Parameters
 
-• **filename**: `string`
+##### filename
+
+`string`
 
 The filename to read.
 
@@ -170,7 +184,9 @@ Read a file as lines, synchronously.
 
 #### Parameters
 
-• **filename**: `string`
+##### filename
+
+`string`
 
 The filename to read.
 
@@ -190,7 +206,9 @@ Find the NPM root based on a package.json path.
 
 #### Parameters
 
-• **rootFolder**: `string`
+##### rootFolder
+
+`string`
 
 The path to the package.json.
 
@@ -210,15 +228,21 @@ Run a shell app.
 
 #### Parameters
 
-• **app**: `string`
+##### app
+
+`string`
 
 The app to run in the shell.
 
-• **args**: `string`[]
+##### args
+
+`string`[]
 
 The args for the app.
 
-• **cwd**: `string`
+##### cwd
+
+`string`
 
 The working directory to execute the command in.
 
@@ -242,15 +266,21 @@ Write a JSON file.
 
 #### Parameters
 
-• **jsonFilename**: `undefined` \| `string`
+##### jsonFilename
 
 The filename to write.
 
-• **data**: `T`
+`undefined` | `string`
+
+##### data
+
+`T`
 
 The data to write.
 
-• **append**: `boolean`
+##### append
+
+`boolean`
 
 Append to the file.
 
@@ -268,15 +298,21 @@ Write an env file.
 
 #### Parameters
 
-• **envFilename**: `undefined` \| `string`
+##### envFilename
 
 The filename to write.
 
-• **data**: `string`[]
+`undefined` | `string`
+
+##### data
+
+`string`[]
 
 The data to write.
 
-• **append**: `boolean`
+##### append
+
+`boolean`
 
 Append to the file.
 

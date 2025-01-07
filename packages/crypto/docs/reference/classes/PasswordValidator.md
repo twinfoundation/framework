@@ -23,31 +23,43 @@ Test the strength of the password.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **password**: `string`
+##### password
+
+`string`
 
 The password to test.
 
-• **failures**: `IValidationFailure`[]
+##### failures
+
+`IValidationFailure`[]
 
 The list of failures to add to.
 
-• **options?**
+##### options?
 
 Options to configure the testing.
 
-• **options.minLength?**: `number`
+###### minLength
+
+`number`
 
 The minimum length of the password, defaults to 8.
 
-• **options.maxLength?**: `number`
+###### maxLength
+
+`number`
 
 The minimum length of the password, defaults to 128.
 
-• **options.minPhraseLength?**: `number`
+###### minPhraseLength
+
+`number`
 
 The minimum length of the password for it to be considered a pass phrase.
 

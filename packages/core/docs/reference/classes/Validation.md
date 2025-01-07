@@ -22,19 +22,27 @@ Is the property null or undefined.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -54,19 +62,27 @@ Is the property is not null or undefined.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -86,35 +102,49 @@ Is the property a string.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
-• **options?**
+##### options?
 
 Additional options for the validation.
 
-• **options.format?**: `RegExp` \| `"base64"` \| `"base58"` \| `"hex"`
+###### format
+
+`RegExp` \| `"base64"` \| `"base58"` \| `"hex"`
 
 Specific format to check.
 
-• **options.minLength?**: `number`
+###### minLength
+
+`number`
 
 The minimum length of the string.
 
-• **options.maxLength?**: `number`
+###### maxLength
+
+`number`
 
 The maximum length of the string.
 
@@ -134,31 +164,43 @@ Is the property a string with a value.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
-• **options?**
+##### options?
 
 Additional options for the validation.
 
-• **options.minLength?**: `number`
+###### minLength
+
+`number`
 
 The minimum length of the string.
 
-• **options.maxLength?**: `number`
+###### maxLength
+
+`number`
 
 The maximum length of the string.
 
@@ -178,31 +220,43 @@ Is the property a number.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
-• **options?**
+##### options?
 
 Additional options for the validation.
 
-• **options.minValue?**: `number`
+###### minValue
+
+`number`
 
 The minimum value of the number.
 
-• **options.maxValue?**: `number`
+###### maxValue
+
+`number`
 
 The maximum value of the number.
 
@@ -222,31 +276,43 @@ Is the property an integer.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
-• **options?**
+##### options?
 
 Additional options for the validation.
 
-• **options.minValue?**: `number`
+###### minValue
+
+`number`
 
 The minimum value of the integer.
 
-• **options.maxValue?**: `number`
+###### maxValue
+
+`number`
 
 The maximum value of the integer.
 
@@ -266,31 +332,43 @@ Is the property a bigint.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
-• **options?**
+##### options?
 
 Additional options for the validation.
 
-• **options.minValue?**: `bigint`
+###### minValue
+
+`bigint`
 
 The minimum value of the bigint.
 
-• **options.maxValue?**: `bigint`
+###### maxValue
+
+`bigint`
 
 The maximum value of the bigint.
 
@@ -310,19 +388,27 @@ Is the property a boolean.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -342,19 +428,27 @@ Is the property a date.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -374,19 +468,27 @@ Is the property a date in ISO 8601 format.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -406,19 +508,27 @@ Is the property a date/time in ISO 8601 format.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -438,19 +548,27 @@ Is the property a time in ISO 8601 format.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -470,19 +588,27 @@ Is the property a timestamp in milliseconds.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -502,19 +628,27 @@ Is the property a timestamp in seconds.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -534,23 +668,31 @@ Is the property an object.
 
 #### Type Parameters
 
-• **T** = `object`
+• **T** = \{\}
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -574,19 +716,27 @@ Is the property an array.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -610,19 +760,27 @@ Is the property an array with at least one item.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -646,23 +804,33 @@ Is the property one of a list of items.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `T`
+##### value
+
+`T`
 
 The value to test.
 
-• **options**: `T`[]
+##### options
+
+`T`[]
 
 The options the value must be one of.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -682,19 +850,27 @@ Is the property a Uint8Array.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -714,19 +890,27 @@ Is the property valid JSON.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -746,19 +930,27 @@ Is the property a string in e-mail format.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
-• **fieldNameResource?**: `string`
+##### fieldNameResource?
+
+`string`
 
 Optional i18n resource of the field name to display in the message.
 
@@ -778,15 +970,21 @@ Throw the validation failures as a ValidationError.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **objectName**: `string`
+##### objectName
+
+`string`
 
 The object that was being validated.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The validation failures.
 
@@ -808,15 +1006,19 @@ Map a list of failures to their properties in a map.
 
 #### Parameters
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The validation failures to combine into the map for the properties.
 
-• **propertyMap**
+##### propertyMap
 
 The map to add the failures to.
 
-• **clearMap**: `boolean` = `true`
+##### clearMap
+
+`boolean` = `true`
 
 Should the map be cleared before adding the failures.
 

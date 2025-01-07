@@ -12,7 +12,9 @@ Create a new instance of Url.
 
 #### Parameters
 
-• **url**: `string`
+##### url
+
+`string`
 
 The url string.
 
@@ -30,7 +32,9 @@ Try and parse a string into the url parts.
 
 #### Parameters
 
-• **url**: `unknown`
+##### url
+
+`unknown`
 
 The url to parse.
 
@@ -50,15 +54,21 @@ Parse a string into the url parts.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **property**: `string`
+##### property
+
+`string`
 
 The name of the property.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The url to parse.
 
@@ -80,15 +90,21 @@ Validate a string as a Url.
 
 #### Parameters
 
-• **property**: `string`
+##### property
+
+`string`
 
 Throw an exception if the url property is invalid.
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The url to parse.
 
-• **failures**: [`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
 
 The list of failures to add to.
 
@@ -108,7 +124,9 @@ Construct a url from a URL.
 
 #### Parameters
 
-• **url**: `URL`
+##### url
+
+`URL`
 
 The url to construct from.
 
@@ -128,7 +146,9 @@ Construct a url from valid parts.
 
 #### Parameters
 
-• **urlParts**: [`IUrlParts`](../interfaces/IUrlParts.md)
+##### urlParts
+
+[`IUrlParts`](../interfaces/IUrlParts.md)
 
 The url to create the parts from.
 

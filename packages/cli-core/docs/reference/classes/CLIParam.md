@@ -22,15 +22,21 @@ Check the option to see if it exists.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean`
 
 Allow the option to be read from an env var.
 
@@ -54,15 +60,21 @@ Check the option to see if it exists.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -86,15 +98,21 @@ Check the option to see if it a url.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -118,23 +136,33 @@ Check the option to see if it exists and is a number.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 
-• **minValue**: `number` = `0`
+##### minValue
+
+`number` = `0`
 
 The minimum value.
 
-• **maxValue?**: `number`
+##### maxValue?
+
+`number`
 
 The maximum value.
 
@@ -158,23 +186,33 @@ Check the option to see if it exists and is an integer.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 
-• **minValue**: `number` = `0`
+##### minValue
+
+`number` = `0`
 
 The minimum value.
 
-• **maxValue?**: `number`
+##### maxValue?
+
+`number`
 
 The maximum value.
 
@@ -198,23 +236,33 @@ Check the option to see if it exists and is a big number.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 
-• **minValue**: `bigint` = `0n`
+##### minValue
+
+`bigint` = `0n`
 
 The minimum value.
 
-• **maxValue?**: `bigint`
+##### maxValue?
+
+`bigint`
 
 The maximum value.
 
@@ -238,15 +286,21 @@ Check the option to see if it exists and is a boolean.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -270,15 +324,21 @@ Check the option to see if it exists and is hex.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -302,15 +362,21 @@ Check the option to see if it exists and is base64.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -334,15 +400,21 @@ Check the option to see if it exists and is hex or base64.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 
@@ -366,15 +438,21 @@ Check the option to see if it exists and is bech32.
 
 #### Parameters
 
-• **optionName**: `string`
+##### optionName
+
+`string`
 
 The name of the option.
 
-• **optionValue**: `undefined` \| `string`
+##### optionValue
 
 The option value.
 
-• **allowEnvVar**: `boolean` = `true`
+`undefined` | `string`
+
+##### allowEnvVar
+
+`boolean` = `true`
 
 Allow the option to be read from an env var.
 

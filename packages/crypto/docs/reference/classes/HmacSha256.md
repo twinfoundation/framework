@@ -12,11 +12,15 @@ Create a new instance of HmacSha256.
 
 #### Parameters
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 The key for the hmac.
 
-• **bits**: `number` = `HmacSha256.SIZE_256`
+##### bits
+
+`number` = `HmacSha256.SIZE_256`
 
 The number of bits.
 
@@ -50,11 +54,15 @@ Perform Sum 224 on the block.
 
 #### Parameters
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 The key for the hmac.
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to operate on.
 
@@ -74,11 +82,15 @@ Perform Sum 256 on the block.
 
 #### Parameters
 
-• **key**: `Uint8Array`
+##### key
+
+`Uint8Array`
 
 The key for the hmac.
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to operate on.
 
@@ -98,7 +110,9 @@ Update the hash with the block.
 
 #### Parameters
 
-• **block**: `Uint8Array`
+##### block
+
+`Uint8Array`
 
 The block to update the hash with.
 

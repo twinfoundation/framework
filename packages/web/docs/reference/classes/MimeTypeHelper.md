@@ -22,7 +22,9 @@ Detect the mime type from a byte array.
 
 #### Parameters
 
-• **data**: `Uint8Array`
+##### data
+
+`Uint8Array`
 
 The data to test.
 
@@ -42,9 +44,11 @@ Return the default extension for a mime type.
 
 #### Parameters
 
-• **mimeType**: `undefined` \| `string`
+##### mimeType
 
 The mimetype to get the extension for.
+
+`undefined` | `string`
 
 #### Returns
 

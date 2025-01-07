@@ -22,11 +22,15 @@ Render the QR code data as a bitmap.
 
 #### Parameters
 
-• **cellData**: [`QRCellData`](../type-aliases/QRCellData.md)
+##### cellData
+
+[`QRCellData`](../type-aliases/QRCellData.md)
 
 The cell data for the QR code.
 
-• **options?**: [`IBitmapRendererOptions`](../interfaces/IBitmapRendererOptions.md)
+##### options?
+
+[`IBitmapRendererOptions`](../interfaces/IBitmapRendererOptions.md)
 
 The options for rendering.
 

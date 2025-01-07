@@ -12,19 +12,27 @@ Create a new instance of color.
 
 #### Parameters
 
-• **alpha**: `number`
+##### alpha
+
+`number`
 
 The alpha element of the color.
 
-• **red**: `number`
+##### red
+
+`number`
 
 The red element of the color.
 
-• **green**: `number`
+##### green
+
+`number`
 
 The green element of the color.
 
-• **blue**: `number`
+##### blue
+
+`number`
 
 The blue element of the color.
 
@@ -42,7 +50,9 @@ Construct a color from a hex string.
 
 #### Parameters
 
-• **hex**: `string`
+##### hex
+
+`string`
 
 The hex string to parse.
 
@@ -66,7 +76,9 @@ Coerce an unknown type to a color.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to try and convert.
 

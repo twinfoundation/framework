@@ -22,15 +22,21 @@ Execute the command line processing.
 
 #### Parameters
 
-• **options**: [`ICliOptions`](../interfaces/ICliOptions.md)
+##### options
+
+[`ICliOptions`](../interfaces/ICliOptions.md)
 
 The options for the CLI.
 
-• **localesDirectory**: `string`
+##### localesDirectory
+
+`string`
 
 The path to load the locales from.
 
-• **argv**: `string`[]
+##### argv
+
+`string`[]
 
 The process arguments.
 
@@ -50,7 +56,9 @@ Configure any options or actions at the root program level.
 
 #### Parameters
 
-• **program**: `Command`
+##### program
+
+`Command`
 
 The root program command.
 
@@ -68,7 +76,9 @@ Get the commands for the CLI, override in derived class to supply your own.
 
 #### Parameters
 
-• **program**: `Command`
+##### program
+
+`Command`
 
 The main program that the commands will be added to.
 

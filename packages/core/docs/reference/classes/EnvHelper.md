@@ -22,15 +22,17 @@ Get the environment variable as an object with camel cased names.
 
 #### Type Parameters
 
-• **T** = `object`
+• **T** = \{\}
 
 #### Parameters
 
-• **envVars**
+##### envVars
 
 The environment variables.
 
-• **prefix?**: `string`
+##### prefix?
+
+`string`
 
 The prefix of the environment variables, if not provided gets all.
 

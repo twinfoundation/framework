@@ -22,7 +22,9 @@ Convert the base 32 string to a byte array.
 
 #### Parameters
 
-• **base32**: `string`
+##### base32
+
+`string`
 
 The base32 string to convert.
 
@@ -46,7 +48,9 @@ Convert a byte array to base 32.
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+##### bytes
+
+`Uint8Array`
 
 The byte array to convert.
 

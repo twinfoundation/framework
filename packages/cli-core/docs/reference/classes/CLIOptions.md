@@ -22,31 +22,43 @@ Get the options for output.
 
 #### Parameters
 
-• **command**: `Command`
+##### command
+
+`Command`
 
 The command to add the options to.
 
-• **opts**
+##### opts
 
 The options of what to include.
 
-• **opts.noConsole**: `boolean`
+###### noConsole
+
+`boolean`
 
 Do not output to the console.
 
-• **opts.json**: `boolean`
+###### json
+
+`boolean`
 
 Output to a JSON file.
 
-• **opts.env**: `boolean`
+###### env
+
+`boolean`
 
 Output to an environment file.
 
-• **opts.mergeJson**: `boolean`
+###### mergeJson
+
+`boolean`
 
 Merge existing JSON file.
 
-• **opts.mergeEnv**: `boolean`
+###### mergeEnv
+
+`boolean`
 
 Merge existing environment file.
 

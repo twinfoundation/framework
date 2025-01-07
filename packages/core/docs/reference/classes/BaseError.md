@@ -33,23 +33,31 @@ Create a new instance of BaseError.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 The name of the error.
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source of the error.
 
-• **message**: `string`
+##### message
+
+`string`
 
 The message as a code.
 
-• **properties?**
+##### properties?
 
 Any additional information for the error.
 
-• **inner?**: `unknown`
+##### inner?
+
+`unknown`
 
 The inner error if we have wrapped another error.
 
@@ -83,7 +91,7 @@ Any additional information for the error.
 
 #### Index Signature
 
- \[`id`: `string`\]: `unknown`
+\[`id`: `string`\]: `unknown`
 
 #### Implementation of
 
@@ -111,7 +119,9 @@ Construct an error from an existing one.
 
 #### Parameters
 
-• **err**: `unknown`
+##### err
+
+`unknown`
 
 The existing error.
 
@@ -131,7 +141,9 @@ Flatten an error tree.
 
 #### Parameters
 
-• **err**: `unknown`
+##### err
+
+`unknown`
 
 The starting error.
 
@@ -151,9 +163,11 @@ Expand an error tree.
 
 #### Parameters
 
-• **errors**: `undefined` \| [`IError`](../interfaces/IError.md)[]
+##### errors
 
 The list of errors to expand.
+
+`undefined` | [`IError`](../interfaces/IError.md)[]
 
 #### Returns
 
@@ -171,13 +185,17 @@ Test to see if the error has the specified error name.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to test.
 
-• **name**: `string` \| `RegExp`
+##### name
 
 The name to check for.
+
+`string` | `RegExp`
 
 #### Returns
 
@@ -195,13 +213,17 @@ Test to see if the error has the specified error message.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to test.
 
-• **message**: `string` \| `RegExp`
+##### message
 
 The message to check for.
+
+`string` | `RegExp`
 
 #### Returns
 
@@ -219,13 +241,17 @@ Test to see if the error has the specified error code.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to test.
 
-• **code**: `string` \| `RegExp`
+##### code
 
 The code to check for.
+
+`string` | `RegExp`
 
 #### Returns
 
@@ -243,13 +269,17 @@ Test to see if any of the errors or children have the given error name.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to test.
 
-• **name**: `string` \| `RegExp`
+##### name
 
 The name to check for.
+
+`string` | `RegExp`
 
 #### Returns
 
@@ -267,13 +297,17 @@ Test to see if any of the errors or children have the given error message.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to test.
 
-• **message**: `string` \| `RegExp`
+##### message
 
 The message to check for.
+
+`string` | `RegExp`
 
 #### Returns
 
@@ -291,11 +325,15 @@ Test to see if any of the errors or children are from a specific class.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to test.
 
-• **cls**: `string`
+##### cls
+
+`string`
 
 The class to check for.
 
@@ -315,13 +353,17 @@ Test to see if any of the errors or children have the given error code.
 
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 The error to test.
 
-• **code**: `string` \| `RegExp`
+##### code
 
 The code to check for.
+
+`string` | `RegExp`
 
 #### Returns
 

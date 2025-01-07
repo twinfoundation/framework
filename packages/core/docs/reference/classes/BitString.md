@@ -12,7 +12,9 @@ Create a new instance of BitString.
 
 #### Parameters
 
-• **numberBits**: `number`
+##### numberBits
+
+`number`
 
 The length of the bit string.
 
@@ -30,11 +32,15 @@ Create a new instance of BitString from a bit array.
 
 #### Parameters
 
-• **bits**: `Uint8Array`
+##### bits
+
+`Uint8Array`
 
 The bits to create the bit string from.
 
-• **numberBits**: `number`
+##### numberBits
+
+`number`
 
 The number of bits in the bit string.
 
@@ -54,7 +60,9 @@ Get the bit at the given index.
 
 #### Parameters
 
-• **index**: `number`
+##### index
+
+`number`
 
 The index to get the bit for.
 
@@ -78,11 +86,15 @@ Set the bit at the given index.
 
 #### Parameters
 
-• **index**: `number`
+##### index
+
+`number`
 
 The index to set the bit for.
 
-• **value**: `boolean`
+##### value
+
+`boolean`
 
 The value to set the bit to.
 

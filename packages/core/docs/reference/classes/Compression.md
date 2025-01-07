@@ -22,11 +22,15 @@ Compress bytes using GZIP.
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+##### bytes
+
+`Uint8Array`
 
 The bytes to compress.
 
-• **type**: [`CompressionType`](../type-aliases/CompressionType.md)
+##### type
+
+[`CompressionType`](../type-aliases/CompressionType.md)
 
 The type of compression to use.
 
@@ -46,11 +50,15 @@ Decompress a gzipped compressed byte array.
 
 #### Parameters
 
-• **compressedBytes**: `Uint8Array`
+##### compressedBytes
+
+`Uint8Array`
 
 The compressed bytes.
 
-• **type**: [`CompressionType`](../type-aliases/CompressionType.md)
+##### type
+
+[`CompressionType`](../type-aliases/CompressionType.md)
 
 The type of compression to use.
 

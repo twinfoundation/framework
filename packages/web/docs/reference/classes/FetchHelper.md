@@ -22,23 +22,33 @@ Perform a fetch request.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source for the request.
 
-• **url**: `string`
+##### url
+
+`string`
 
 The url for the request.
 
-• **method**: [`HttpMethod`](../type-aliases/HttpMethod.md)
+##### method
+
+[`HttpMethod`](../type-aliases/HttpMethod.md)
 
 The http method.
 
-• **body?**: `string` \| `Uint8Array`
+##### body?
 
 Request to send to the endpoint.
 
-• **options?**: `Omit`\<[`IFetchOptions`](../interfaces/IFetchOptions.md), `"cacheTtlSeconds"`\>
+`string` | `Uint8Array`
+
+##### options?
+
+`Omit`\<[`IFetchOptions`](../interfaces/IFetchOptions.md), `"cacheTtlSeconds"`\>
 
 Options for sending the requests.
 
@@ -64,23 +74,33 @@ Perform a request in json format.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source for the request.
 
-• **url**: `string`
+##### url
+
+`string`
 
 The url for the request.
 
-• **method**: [`HttpMethod`](../type-aliases/HttpMethod.md)
+##### method
+
+[`HttpMethod`](../type-aliases/HttpMethod.md)
 
 The http method.
 
-• **requestData?**: `T`
+##### requestData?
+
+`T`
 
 Request to send to the endpoint.
 
-• **options?**: [`IFetchOptions`](../interfaces/IFetchOptions.md)
+##### options?
+
+[`IFetchOptions`](../interfaces/IFetchOptions.md)
 
 Options for sending the requests.
 
@@ -104,23 +124,33 @@ Perform a request for binary data.
 
 #### Parameters
 
-• **source**: `string`
+##### source
+
+`string`
 
 The source for the request.
 
-• **url**: `string`
+##### url
+
+`string`
 
 The url for the request.
 
-• **method**: `"GET"` \| `"POST"`
+##### method
 
 The http method.
 
-• **requestData?**: `Uint8Array`
+`"GET"` | `"POST"`
+
+##### requestData?
+
+`Uint8Array`
 
 Request to send to the endpoint.
 
-• **options?**: [`IFetchOptions`](../interfaces/IFetchOptions.md)
+##### options?
+
+[`IFetchOptions`](../interfaces/IFetchOptions.md)
 
 Options for sending the requests.
 
@@ -156,7 +186,9 @@ Get a cache entry.
 
 #### Parameters
 
-• **url**: `string`
+##### url
+
+`string`
 
 The url for the request.
 
@@ -176,7 +208,9 @@ Remove a cache entry.
 
 #### Parameters
 
-• **url**: `string`
+##### url
+
+`string`
 
 The url for the request.
 

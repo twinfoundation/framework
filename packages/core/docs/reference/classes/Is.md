@@ -22,7 +22,9 @@ Is the property undefined.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -42,7 +44,9 @@ Is the property null.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -62,7 +66,9 @@ Is the property null or undefined.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -82,7 +88,9 @@ Is the property is not null or undefined.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -102,7 +110,9 @@ Is the value a string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -122,7 +132,9 @@ Is the value a string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -142,7 +154,9 @@ Is the value a JSON string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -162,7 +176,9 @@ Is the value a base64 string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -182,7 +198,9 @@ Is the value a base64 url string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -202,7 +220,9 @@ Is the value a base58 string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -222,11 +242,15 @@ Is the value a hex string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **allowPrefix**: `boolean` = `false`
+##### allowPrefix
+
+`boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 
@@ -246,15 +270,21 @@ Is the value a hex string of fixed length.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
-• **length**: `number`
+##### length
+
+`number`
 
 The length to test.
 
-• **allowPrefix**: `boolean` = `false`
+##### allowPrefix
+
+`boolean` = `false`
 
 Allow the hex to have the 0x prefix.
 
@@ -274,7 +304,9 @@ Is the value a number.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -294,7 +326,9 @@ Is the value an integer.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -314,7 +348,9 @@ Is the value a big integer.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -334,7 +370,9 @@ Is the value a boolean.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -354,7 +392,9 @@ Is the value a date.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -374,7 +414,9 @@ Is the value an empty date.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -394,7 +436,9 @@ Is the value a date string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -414,7 +458,9 @@ Is the value a date string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -434,7 +480,9 @@ Is the value a time string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -454,7 +502,9 @@ Is the value a timestamp in seconds.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -474,7 +524,9 @@ Is the value a timestamp in milliseconds.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -494,11 +546,13 @@ Is the value an object.
 
 #### Type Parameters
 
-• **T** = `object`
+• **T** = \{\}
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -518,11 +572,13 @@ Is the value an object with at least one property.
 
 #### Type Parameters
 
-• **T** = `object`
+• **T** = \{\}
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -546,7 +602,9 @@ Is the value an array.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -570,7 +628,9 @@ Is the value an array with at least one element.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -594,11 +654,15 @@ Is the value an array with at least one element.
 
 #### Parameters
 
-• **value**: `T`
+##### value
+
+`T`
 
 The value to test.
 
-• **options**: `T`[]
+##### options
+
+`T`[]
 
 The options the value must be one of.
 
@@ -618,7 +682,9 @@ Is the value a Uint8Array.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -638,7 +704,9 @@ Is the value a TypedArray.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -652,19 +720,21 @@ True if the value is a TypedArray.
 
 ### function()
 
-> `static` **function**(`value`): `value is Function`
+> `static` **function**(`value`): `value is (args: unknown[]) => unknown`
 
 Is the property a function.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
 #### Returns
 
-`value is Function`
+`value is (args: unknown[]) => unknown`
 
 True if the value is a function.
 
@@ -678,7 +748,9 @@ Is the value a string formatted as an email address.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -702,7 +774,9 @@ Is the value a promise.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 
@@ -722,7 +796,9 @@ Is the value a regexp.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to test.
 

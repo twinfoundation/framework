@@ -23,7 +23,9 @@ Based on https://www.rfc-editor.org/rfc/rfc8785.
 
 #### Parameters
 
-• **object**: `unknown`
+##### object
+
+`unknown`
 
 The object to be serialized.
 
@@ -48,11 +50,15 @@ Based on https://www.rfc-editor.org/rfc/rfc6902.
 
 #### Parameters
 
-• **object1**: `T`
+##### object1
+
+`T`
 
 The first object.
 
-• **object2**: `T`
+##### object2
+
+`T`
 
 The second object.
 
@@ -77,11 +83,15 @@ Based on https://www.rfc-editor.org/rfc/rfc6902.
 
 #### Parameters
 
-• **object**: `T`
+##### object
+
+`T`
 
 The object to patch.
 
-• **patches**: [`IPatchOperation`](../interfaces/IPatchOperation.md)[]
+##### patches
+
+[`IPatchOperation`](../interfaces/IPatchOperation.md)[]
 
 The second object.
 

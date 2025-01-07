@@ -6,15 +6,21 @@ Add the global options.
 
 ## Parameters
 
-• **program**: `Command`
+### program
+
+`Command`
 
 The program to add the options to.
 
-• **supportsLang**: `boolean`
+### supportsLang
+
+`boolean`
 
 Whether the CLI supports different languages.
 
-• **supportsEnvFiles**: `boolean`
+### supportsEnvFiles
+
+`boolean`
 
 Whether the CLI supports loading env files
 

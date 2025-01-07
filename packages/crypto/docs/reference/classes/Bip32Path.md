@@ -12,7 +12,9 @@ Create a new instance of Bip32Path.
 
 #### Parameters
 
-• **initialPath?**: `string`
+##### initialPath?
+
+`string`
 
 Initial path to create.
 
@@ -30,7 +32,9 @@ Construct a new path by cloning an existing one.
 
 #### Parameters
 
-• **bip32Path**: [`Bip32Path`](Bip32Path.md)
+##### bip32Path
+
+[`Bip32Path`](Bip32Path.md)
 
 The path to clone.
 
@@ -64,7 +68,9 @@ Push a new index on to the path.
 
 #### Parameters
 
-• **index**: `number`
+##### index
+
+`number`
 
 The index to add to the path.
 
@@ -82,7 +88,9 @@ Push a new hardened index on to the path.
 
 #### Parameters
 
-• **index**: `number`
+##### index
+
+`number`
 
 The index to add to the path.
 

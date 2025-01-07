@@ -22,7 +22,9 @@ Coerce the value to a string.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to coerce.
 
@@ -46,7 +48,9 @@ Coerce the value to a number.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to coerce.
 
@@ -70,7 +74,9 @@ Coerce the value to a bigint.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to coerce.
 
@@ -94,7 +100,9 @@ Coerce the value to a boolean.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to coerce.
 
@@ -118,7 +126,9 @@ Coerce the value to a date.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to coerce.
 
@@ -142,7 +152,9 @@ Coerce the value to a date/time.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to coerce.
 
@@ -166,7 +178,9 @@ Coerce the value to a time.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to coerce.
 
@@ -194,7 +208,9 @@ Coerce the value to an object.
 
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 The value to coerce.
 

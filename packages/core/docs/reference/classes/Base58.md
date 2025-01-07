@@ -22,7 +22,9 @@ Convert the base 58 string to a byte array.
 
 #### Parameters
 
-• **base58**: `string`
+##### base58
+
+`string`
 
 The base58 string to convert.
 
@@ -46,7 +48,9 @@ Convert a byte array to base 58.
 
 #### Parameters
 
-• **bytes**: `Uint8Array`
+##### bytes
+
+`Uint8Array`
 
 The byte array to encode.
 
