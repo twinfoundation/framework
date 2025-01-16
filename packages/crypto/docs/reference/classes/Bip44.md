@@ -140,6 +140,70 @@ The bip44 address base path.
 
 ***
 
+### address()
+
+> `static` **address**(`seed`, `keyType`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `object`
+
+Generate an address from the seed and parts.
+
+#### Parameters
+
+##### seed
+
+`Uint8Array`
+
+The account seed.
+
+##### keyType
+
+[`KeyType`](../type-aliases/KeyType.md)
+
+The key type.
+
+##### coinType
+
+`number`
+
+The coin type.
+
+##### accountIndex
+
+`number`
+
+The account index.
+
+##### isInternal
+
+`boolean`
+
+Is this an internal address.
+
+##### addressIndex
+
+`number`
+
+The address index.
+
+#### Returns
+
+`object`
+
+The generated path and the associated keypair.
+
+##### address
+
+> **address**: `string`
+
+##### privateKey
+
+> **privateKey**: `Uint8Array`
+
+##### publicKey
+
+> **publicKey**: `Uint8Array`
+
+***
+
 ### addressBech32()
 
 > `static` **addressBech32**(`seed`, `keyType`, `hrp`, `coinType`, `accountIndex`, `isInternal`, `addressIndex`): `object`

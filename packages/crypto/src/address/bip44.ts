@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { GeneralError } from "@twin.org/core";
+import { Converter, GeneralError } from "@twin.org/core";
 import { nameof } from "@twin.org/nameof";
 import { Bech32 } from "../address/bech32";
 import { Ed25519 } from "../curves/ed25519";
@@ -92,6 +92,38 @@ export class Bip44 {
 	 */
 	public static basePath(coinType: number): string {
 		return `m/44'/${coinType}'`;
+	}
+
+	/**
+	 * Generate an address from the seed and parts.
+	 * @param seed The account seed.
+	 * @param keyType The key type.
+	 * @param coinType The coin type.
+	 * @param accountIndex The account index.
+	 * @param isInternal Is this an internal address.
+	 * @param addressIndex The address index.
+	 * @returns The generated path and the associated keypair.
+	 */
+	public static address(
+		seed: Uint8Array,
+		keyType: KeyType,
+		coinType: number,
+		accountIndex: number,
+		isInternal: boolean,
+		addressIndex: number
+	): {
+		address: string;
+		privateKey: Uint8Array;
+		publicKey: Uint8Array;
+	} {
+		const keyPair = Bip44.keyPair(seed, keyType, coinType, accountIndex, isInternal, addressIndex);
+
+		const addressData = Blake2b.sum256(keyPair.publicKey);
+
+		return {
+			address: Converter.bytesToHex(addressData, true),
+			...keyPair
+		};
 	}
 
 	/**

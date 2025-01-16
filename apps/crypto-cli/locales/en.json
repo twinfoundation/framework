@@ -49,8 +49,8 @@
 			}
 		},
 		"address": {
-			"summary": "Create bech32 addresses and keys from the seed.",
-			"description": "Create a number of bech32 addresses and their associated key pairs from the seed.",
+			"summary": "Create addresses and keys from the seed.",
+			"description": "Create a number of addresses and their associated key pairs from the seed.",
 			"options": {
 				"seed": {
 					"param": "--seed '<'seed'>'",
@@ -66,15 +66,15 @@
 				},
 				"account": {
 					"param": "--account '<'number'>'",
-					"description": "The account used to generate the bech32 addresses."
+					"description": "The account used to generate the addresses."
 				},
 				"hrp": {
 					"param": "--hrp '<'hrp'>'",
-					"description": "The human readable part of the bech32 addresses."
+					"description": "The human readable part for the addresses if generating bech32 format."
 				},
 				"coin": {
 					"param": "--coin '<'coin'>'",
-					"description": "The coin type used to generate the bech32 addresses."
+					"description": "The coin type used to generate the addresses."
 				},
 				"key-type": {
 					"param": "--key-type '<'type'>'",

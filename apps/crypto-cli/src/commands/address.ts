@@ -42,8 +42,7 @@ export function buildCommandAddress(): Command {
 		)
 		.option(
 			I18n.formatMessage("commands.address.options.hrp.param"),
-			I18n.formatMessage("commands.address.options.hrp.description"),
-			"iota"
+			I18n.formatMessage("commands.address.options.hrp.description")
 		)
 		.option(
 			I18n.formatMessage("commands.address.options.coin.param"),
@@ -87,7 +86,7 @@ export function buildCommandAddress(): Command {
  * @param opts.start The start index for the address generation.
  * @param opts.count The number of addresses to generate.
  * @param opts.account The account index for the address generation.
- * @param opts.hrp The human readable part for the address.
+ * @param opts.hrp The human readable part for the addresses if generating bech32 format.
  * @param opts.coin The coin type for the address.
  * @param opts.keyType The key type for the address.
  * @param opts.keyFormat The output format of the key.
@@ -98,7 +97,7 @@ export async function actionCommandAddress(
 		start: string;
 		count: string;
 		account: string;
-		hrp: string;
+		hrp?: string;
 		coin: string;
 		keyType: "Ed25519" | "Secp256k1";
 		keyFormat: "hex" | "base64";
@@ -121,7 +120,9 @@ export async function actionCommandAddress(
 	CLIDisplay.value(I18n.formatMessage("commands.address.labels.start"), start);
 	CLIDisplay.value(I18n.formatMessage("commands.address.labels.count"), count);
 	CLIDisplay.value(I18n.formatMessage("commands.address.labels.account"), account);
-	CLIDisplay.value(I18n.formatMessage("commands.address.labels.hrp"), hrp);
+	if (Is.stringValue(hrp)) {
+		CLIDisplay.value(I18n.formatMessage("commands.address.labels.hrp"), hrp);
+	}
 	CLIDisplay.value(I18n.formatMessage("commands.address.labels.coin"), coin);
 	CLIDisplay.value(I18n.formatMessage("commands.address.labels.key-type"), keyType);
 	CLIDisplay.value(I18n.formatMessage("commands.address.labels.key-format"), keyFormat);
@@ -131,22 +132,34 @@ export async function actionCommandAddress(
 	CLIDisplay.break();
 
 	const addressDictionary: {
-		[index: number]: { bech32: string; privateKey: string; publicKey: string };
+		[index: number]: { address: string; privateKey: string; publicKey: string };
 	} = {};
 
 	for (let i = start; i < start + count; i++) {
-		const addressKeyPair = Bip44.addressBech32(
-			seed,
-			keyType === "Ed25519" ? KeyType.Ed25519 : KeyType.Secp256k1,
-			hrp,
-			coin,
-			account,
-			false,
-			i
-		);
+		let addressKeyPair;
+		if (Is.stringValue(hrp)) {
+			addressKeyPair = Bip44.addressBech32(
+				seed,
+				keyType === "Ed25519" ? KeyType.Ed25519 : KeyType.Secp256k1,
+				hrp,
+				coin,
+				account,
+				false,
+				i
+			);
+		} else {
+			addressKeyPair = Bip44.address(
+				seed,
+				keyType === "Ed25519" ? KeyType.Ed25519 : KeyType.Secp256k1,
+				coin,
+				account,
+				false,
+				i
+			);
+		}
 
 		addressDictionary[i] = {
-			bech32: addressKeyPair.address,
+			address: addressKeyPair.address,
 			privateKey:
 				keyFormat === "hex"
 					? Converter.bytesToHex(addressKeyPair.privateKey, true)
@@ -161,7 +174,7 @@ export async function actionCommandAddress(
 			CLIDisplay.value(I18n.formatMessage("commands.address.labels.index"), i);
 			CLIDisplay.value(
 				I18n.formatMessage("commands.address.labels.address"),
-				addressDictionary[i].bech32
+				addressDictionary[i].address
 			);
 			CLIDisplay.value(
 				I18n.formatMessage("commands.address.labels.private-key"),
@@ -181,7 +194,7 @@ export async function actionCommandAddress(
 	if (Is.stringValue(opts?.env)) {
 		const output = [];
 		for (const addressIndex in addressDictionary) {
-			output.push(`ADDRESS_${addressIndex}_BECH32="${addressDictionary[addressIndex].bech32}"`);
+			output.push(`ADDRESS_${addressIndex}="${addressDictionary[addressIndex].address}"`);
 			output.push(
 				`ADDRESS_${addressIndex}_PRIVATE_KEY="${addressDictionary[addressIndex].privateKey}"`
 			);

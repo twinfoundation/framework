@@ -229,10 +229,10 @@ twin-crypto address --load-env my.env --seed !SEED --env address.env --merge-env
 The output of this command would produce address.env
 
 ```shell
-ADDRESS_0_BECH32="iota1qqcpqyrnqtzteu7k26dgjvjp3x76tts526prtwrjq99v50pyv6l9xysdcg8"
+ADDRESS_0="iota1qqcpqyrnqtzteu7k26dgjvjp3x76tts526prtwrjq99v50pyv6l9xysdcg8"
 ADDRESS_0_PRIVATE_KEY="0x3b2863db878ce156a46d2142c72baa7807a40a990684604ff86456821228d978"
 ADDRESS_0_PUBLIC_KEY="0x6b6eb9e54b44bfbc65c4a02c6489609fbc9588e640ca44bfdfdb1af4e5874905"
-ADDRESS_1_BECH32="iota1qrqyyyuhfzgrp7ducjapg8pta3w877nu0u5jpe50cxx39qjs08kczw7uj4v"
+ADDRESS_1="iota1qrqyyyuhfzgrp7ducjapg8pta3w877nu0u5jpe50cxx39qjs08kczw7uj4v"
 ADDRESS_1_PRIVATE_KEY="0xc5038b4c0b1dc46769687e77555a7be176e22de4262cf5aabf11290ab7c8d856"
 ADDRESS_1_PUBLIC_KEY="0x603d9b2d25341d142524867536e3ee94d3e02a45fe498ec4c3473b0449446d77"
 ....

@@ -29,7 +29,7 @@ describe("CLI", () => {
 		});
 		expect(exitCode).toBe(0);
 		expect(writeBuffer.length).toEqual(16);
-		expect(writeBuffer[0].includes("0.0.1-next.20")).toEqual(true);
+		expect(writeBuffer[0].includes("0.0.1-next.21")).toEqual(true);
 		expect(writeBuffer[1]).toEqual("");
 		expect(writeBuffer[2]).toEqual("");
 		expect(writeBuffer[3]).toEqual("");
@@ -48,7 +48,7 @@ describe("CLI", () => {
 		expect(writeBuffer[12]).toEqual("Commands:");
 		expect(writeBuffer[13]).toEqual("  mnemonic [options]   Create a mnemonic.");
 		expect(writeBuffer[14]).toEqual(
-			"  address [options]    Create bech32 addresses and keys from the seed."
+			"  address [options]    Create addresses and keys from the seed."
 		);
 		expect(writeBuffer[15]).toEqual("");
 	});
