@@ -133,17 +133,28 @@ export class CLIUtils {
 	}
 
 	/**
+	 * Run a shell command.
+	 * @param command The app to run in the shell.
+	 * @param args The args for the app.
+	 * @param cwd The working directory to execute the command in.
+	 * @returns Promise to wait for command execution to complete.
+	 */
+	public static async runShellCmd(command: string, args: string[], cwd: string): Promise<void> {
+		const osCommand = process.platform.startsWith("win") ? `${command}.cmd` : command;
+
+		return CLIUtils.runShellApp(osCommand, args, cwd);
+	}
+
+	/**
 	 * Run a shell app.
 	 * @param app The app to run in the shell.
 	 * @param args The args for the app.
 	 * @param cwd The working directory to execute the command in.
 	 * @returns Promise to wait for command execution to complete.
 	 */
-	public static async runShellCmd(app: string, args: string[], cwd: string): Promise<void> {
+	public static async runShellApp(app: string, args: string[], cwd: string): Promise<void> {
 		return new Promise((resolve, reject) => {
-			const osCommand = process.platform.startsWith("win") ? `${app}.cmd` : app;
-
-			const sp = spawn(osCommand, args, {
+			const sp = spawn(app, args, {
 				shell: true,
 				cwd
 			});

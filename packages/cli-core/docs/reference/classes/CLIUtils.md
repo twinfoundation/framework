@@ -222,7 +222,41 @@ The root path.
 
 ### runShellCmd()
 
-> `static` **runShellCmd**(`app`, `args`, `cwd`): `Promise`\<`void`\>
+> `static` **runShellCmd**(`command`, `args`, `cwd`): `Promise`\<`void`\>
+
+Run a shell command.
+
+#### Parameters
+
+##### command
+
+`string`
+
+The app to run in the shell.
+
+##### args
+
+`string`[]
+
+The args for the app.
+
+##### cwd
+
+`string`
+
+The working directory to execute the command in.
+
+#### Returns
+
+`Promise`\<`void`\>
+
+Promise to wait for command execution to complete.
+
+***
+
+### runShellApp()
+
+> `static` **runShellApp**(`app`, `args`, `cwd`): `Promise`\<`void`\>
 
 Run a shell app.
 
