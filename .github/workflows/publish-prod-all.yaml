@@ -13,7 +13,17 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        package: [core, crypto, entity, image, qr, web, modules, cli-core, crypto-cli]
+        package: [
+          'packages/core', 
+          'packages/crypto', 
+          'packages/entity', 
+          'packages/image', 
+          'packages/qr', 
+          'packages/web', 
+          'packages/modules', 
+          'packages/cli-core', 
+          'apps/crypto-cli'
+        ]
 
     steps:
       - name: Checkout
