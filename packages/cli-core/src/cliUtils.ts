@@ -202,7 +202,7 @@ export class CLIUtils {
 			await mkdir(path.dirname(filename), { recursive: true });
 			await writeFile(
 				filename,
-				JSON.stringify(ObjectHelper.merge(currentJson, data), undefined, "\t")
+				`${JSON.stringify(ObjectHelper.merge(currentJson, data), undefined, "\t")}\n`
 			);
 		}
 	}
