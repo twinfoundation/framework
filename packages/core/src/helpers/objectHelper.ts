@@ -117,7 +117,7 @@ export class ObjectHelper {
 		let pathValue: unknown = obj;
 		for (const pathPart of pathParts) {
 			// Is the path part numeric i.e. an array index.
-			const arrayMatch = /(\d+)/.exec(pathPart);
+			const arrayMatch = /^(\d+)$/.exec(pathPart);
 
 			if (arrayMatch) {
 				const arrayIndex = Number.parseInt(arrayMatch[1], 10);
@@ -156,7 +156,7 @@ export class ObjectHelper {
 			const pathPart = pathParts[i];
 
 			// Is the path part numeric i.e. an array index.
-			const arrayMatch = /(\d+)/.exec(pathPart);
+			const arrayMatch = /^(\d+)$/.exec(pathPart);
 			const arrayIndex = arrayMatch ? Number.parseInt(arrayMatch[1], 10) : -1;
 
 			if (i === pathParts.length - 1) {
@@ -184,7 +184,7 @@ export class ObjectHelper {
 				}
 
 				if (Is.empty(pathValue)) {
-					const nextArrayMatch = /(\d+)/.exec(pathParts[i + 1]);
+					const nextArrayMatch = /^(\d+)$/.exec(pathParts[i + 1]);
 					const nextArrayIndex = nextArrayMatch ? Number.parseInt(nextArrayMatch[1], 10) : -1;
 
 					if (nextArrayIndex >= 0) {
