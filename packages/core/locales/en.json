@@ -51,6 +51,7 @@
 			"stringBase58": "Property \"{property}\" must be a base58 encoded string, it is \"{value}\"",
 			"stringHex": "Property \"{property}\" must be a hex string, it is \"{value}\"",
 			"stringHexLength": "Property \"{property}\" must be a hex string of length \"{options}\", it is \"{value}\"",
+			"stringJson": "Property \"{property}\" must be a JSON string",
 			"number": "Property \"{property}\" must be a number, it is \"{value}\"",
 			"integer": "Property \"{property}\" must be an integer, it is \"{value}\"",
 			"bigint": "Property \"{property}\" must be a bigint, it is \"{value}\"",
@@ -71,7 +72,9 @@
 			"email": "Property \"{property}\" must be string in e-mail format, it is \"{value}\""
 		},
 		"objectHelper": {
-			"failedBytesToJSON": "Failed converting bytes to JSON"
+			"failedBytesToJSON": "Failed converting bytes to JSON",
+			"cannotSetArrayIndex": "Cannot set property \"{property}\" using index \"{index}\" as it is not an array",
+			"cannotSetProperty": "Cannot set property \"{property}\" when the target is not an object"
 		},
 		"common": {
 			"notImplementedMethod": "The method \"{method}\" has not been implemented",

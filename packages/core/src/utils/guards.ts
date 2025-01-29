@@ -55,6 +55,19 @@ export class Guards {
 	}
 
 	/**
+	 * Is the property a JSON value.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static json(source: string, property: string, value: unknown): asserts value is string {
+		if (!Is.json(value)) {
+			throw new GuardError(source, "guard.stringJson", property, value);
+		}
+	}
+
+	/**
 	 * Is the property a base64 string.
 	 * @param source The source of the error.
 	 * @param property The name of the property.

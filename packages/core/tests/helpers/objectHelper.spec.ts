@@ -175,6 +175,97 @@ describe("ObjectHelper", () => {
 		expect(result).toEqual(undefined);
 	});
 
+	test("can get the property using a the first array index", () => {
+		const obj = { a: true, b: [0, 1, 2] };
+		const result = ObjectHelper.propertyGet(obj, "b.0");
+		expect(result).toEqual(0);
+	});
+
+	test("can get the property using a the last array index", () => {
+		const obj = { a: true, b: [0, 1, 2] };
+		const result = ObjectHelper.propertyGet(obj, "b.2");
+		expect(result).toEqual(2);
+	});
+
+	test("can not get the property with empty array", () => {
+		const obj = { a: true, b: [] };
+		const result = ObjectHelper.propertyGet(obj, "b.0");
+		expect(result).toEqual(undefined);
+	});
+
+	test("can not get the property with out of bounds array", () => {
+		const obj = { a: true, b: [0, 1, 2] };
+		const result = ObjectHelper.propertyGet(obj, "b.3");
+		expect(result).toEqual(undefined);
+	});
+
+	test("can get the property using a array object", () => {
+		const obj = { a: true, baa: [{ c: true }, 1, 2] };
+		const result = ObjectHelper.propertyGet(obj, "baa.0.c");
+		expect(result).toEqual(true);
+	});
+
+	test("can get the property using a sub array", () => {
+		const obj = { a: true, b: [[0], 1, 2] };
+		const result = ObjectHelper.propertyGet(obj, "b.0.0");
+		expect(result).toEqual(0);
+	});
+
+	test("can set the property in an object that exists", () => {
+		const obj = { a: true };
+		ObjectHelper.propertySet(obj, "a", false);
+		expect(obj.a).toEqual(false);
+	});
+
+	test("can set the property in an object that doesn't exist", () => {
+		const obj: { a: boolean; b?: boolean } = { a: true };
+		ObjectHelper.propertySet(obj, "b", false);
+		expect(obj.b).toEqual(false);
+	});
+
+	test("can set the dotted property in an object that exists", () => {
+		const obj: { a: boolean; b: { c?: number } } = { a: true, b: {} };
+		ObjectHelper.propertySet(obj, "b.c", 123);
+		expect(obj.b.c).toEqual(123);
+	});
+
+	test("can set the dotted property in an object that doesn't exist", () => {
+		const obj: { a: boolean; b?: { c?: number } } = { a: true };
+		ObjectHelper.propertySet(obj, "b.c", 123);
+		expect(obj.b?.c).toEqual(123);
+	});
+
+	test("can set the dotted property in an array that exists", () => {
+		const obj: { a: boolean; b: { c: number[] } } = { a: true, b: { c: [] } };
+		ObjectHelper.propertySet(obj, "b.c.1", 123);
+		expect(obj.b.c[1]).toEqual(123);
+	});
+
+	test("can set the dotted property in an array that doesn't exist", () => {
+		const obj: { a: boolean; b?: { c?: number[] } } = { a: true };
+		ObjectHelper.propertySet(obj, "b.c.1", 123);
+		expect(obj.b?.c?.[1]).toEqual(123);
+	});
+
+	test("can set the dotted property in an array that exists on a subarray", () => {
+		const obj: { a: boolean; b: number[][] } = { a: true, b: [[]] };
+		ObjectHelper.propertySet(obj, "b.0.1", 123);
+		expect(obj.b[0][1]).toEqual(123);
+	});
+
+	test("can set the dotted property in an array that doesn't exist", () => {
+		const obj: { a: boolean; b?: number[][] } = { a: true };
+		ObjectHelper.propertySet(obj, "b.0.1", 123);
+		expect(obj.b?.[0][1]).toEqual(123);
+	});
+
+	test("can fail to set the dotted property on it's not an object", () => {
+		const obj = { a: true, b: "" };
+		expect(() => ObjectHelper.propertySet(obj, "b.c", 123)).toThrow(
+			expect.objectContaining({ name: "GeneralError", message: "objectHelper.cannotSetProperty" })
+		);
+	});
+
 	test("Can extract a property from a document and don't remove it", async () => {
 		const doc = {
 			"@context": "http://schema.org/",

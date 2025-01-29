@@ -91,8 +91,28 @@ describe("Is", () => {
 		expect(Is.json("!")).toEqual(false);
 	});
 
-	test("json can succeed with valid JSON", () => {
+	test("json can succeed with valid JSON object", () => {
 		expect(Is.json("{}")).toEqual(true);
+	});
+
+	test("json can succeed with valid JSON array", () => {
+		expect(Is.json("[]")).toEqual(true);
+	});
+
+	test("json can succeed with valid JSON string", () => {
+		expect(Is.json('""')).toEqual(true);
+	});
+
+	test("json can succeed with valid JSON boolean", () => {
+		expect(Is.json("false")).toEqual(true);
+	});
+
+	test("json can succeed with valid JSON number", () => {
+		expect(Is.json("1")).toEqual(true);
+	});
+
+	test("json can succeed with valid JSON null", () => {
+		expect(Is.json("null")).toEqual(true);
 	});
 
 	test("stringBase64 can fail if value is an empty string", () => {

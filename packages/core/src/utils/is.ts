@@ -72,7 +72,14 @@ export class Is {
 
 		try {
 			const json = JSON.parse(value);
-			return typeof json === "object";
+			return (
+				Is.object(json) ||
+				Is.array(json) ||
+				Is.string(json) ||
+				Is.number(json) ||
+				Is.boolean(json) ||
+				Is.null(json)
+			);
 		} catch {
 			return false;
 		}

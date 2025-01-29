@@ -122,6 +122,42 @@ GuardError If the value does not match the assertion.
 
 ***
 
+### json()
+
+> `static` **json**(`source`, `property`, `value`): `asserts value is string`
+
+Is the property a JSON value.
+
+#### Parameters
+
+##### source
+
+`string`
+
+The source of the error.
+
+##### property
+
+`string`
+
+The name of the property.
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`asserts value is string`
+
+#### Throws
+
+GuardError If the value does not match the assertion.
+
+***
+
 ### stringBase64()
 
 > `static` **stringBase64**(`source`, `property`, `value`): `asserts value is string`

@@ -236,6 +236,10 @@ The value to set.
 
 `void`
 
+#### Throws
+
+GeneralError if the property target is not an object.
+
 ***
 
 ### propertyDelete()

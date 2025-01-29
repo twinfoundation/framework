@@ -112,21 +112,32 @@ export class ObjectHelper {
 	 * @returns The property.
 	 */
 	public static propertyGet<T = unknown>(obj: unknown, property: string): T | undefined {
-		if (property.includes(".")) {
-			const parts = property.split(".");
+		const pathParts = property.split(".");
 
-			let value: unknown = obj;
-			for (const part of parts) {
-				if (Is.object(value)) {
-					value = value[part];
+		let pathValue: unknown = obj;
+		for (const pathPart of pathParts) {
+			// Is the path part numeric i.e. an array index.
+			const arrayMatch = /(\d+)/.exec(pathPart);
+
+			if (arrayMatch) {
+				const arrayIndex = Number.parseInt(arrayMatch[1], 10);
+
+				if (Is.arrayValue(pathValue) && arrayIndex < pathValue.length) {
+					// There is no prop name so this is a direct array index on the current object
+					pathValue = pathValue[arrayIndex];
 				} else {
+					// Array index for non array object so return
 					return undefined;
 				}
+			} else if (Is.object(pathValue)) {
+				// No array part in path so assume object sub property
+				pathValue = pathValue[pathPart];
+			} else {
+				return undefined;
 			}
-			return value as T;
 		}
 
-		return Is.object(obj) ? (obj[property] as T) : undefined;
+		return pathValue as T;
 	}
 
 	/**
@@ -134,10 +145,61 @@ export class ObjectHelper {
 	 * @param obj The object to set the property from.
 	 * @param property The property to set.
 	 * @param value The value to set.
+	 * @throws GeneralError if the property target is not an object.
 	 */
 	public static propertySet(obj: unknown, property: string, value: unknown): void {
-		if (Is.object(obj)) {
-			obj[property] = value;
+		const pathParts = property.split(".");
+
+		let pathValue: unknown = obj;
+		let parentObj: unknown;
+		for (let i = 0; i < pathParts.length; i++) {
+			const pathPart = pathParts[i];
+
+			// Is the path part numeric i.e. an array index.
+			const arrayMatch = /(\d+)/.exec(pathPart);
+			const arrayIndex = arrayMatch ? Number.parseInt(arrayMatch[1], 10) : -1;
+
+			if (i === pathParts.length - 1) {
+				// Last part of path so set the value
+				if (arrayIndex >= 0) {
+					if (Is.array(pathValue)) {
+						pathValue[arrayIndex] = value;
+					} else {
+						throw new GeneralError(ObjectHelper._CLASS_NAME, "cannotSetArrayIndex", {
+							property,
+							index: arrayIndex
+						});
+					}
+				} else if (Is.object(pathValue)) {
+					pathValue[pathPart] = value;
+				} else {
+					throw new GeneralError(ObjectHelper._CLASS_NAME, "cannotSetProperty", { property });
+				}
+			} else {
+				parentObj = pathValue;
+				if (Is.object(pathValue)) {
+					pathValue = pathValue[pathPart];
+				} else if (Is.array(pathValue)) {
+					pathValue = pathValue[arrayIndex];
+				}
+
+				if (Is.empty(pathValue)) {
+					const nextArrayMatch = /(\d+)/.exec(pathParts[i + 1]);
+					const nextArrayIndex = nextArrayMatch ? Number.parseInt(nextArrayMatch[1], 10) : -1;
+
+					if (nextArrayIndex >= 0) {
+						pathValue = [];
+					} else {
+						pathValue = {};
+					}
+
+					if (Is.object(parentObj)) {
+						parentObj[pathPart] = pathValue;
+					} else if (Is.array(parentObj)) {
+						parentObj[arrayIndex] = pathValue;
+					}
+				}
+			}
 		}
 	}
 

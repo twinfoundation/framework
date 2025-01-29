@@ -79,6 +79,25 @@ describe("Guards", () => {
 		expect(Guards.stringValue("source", "propName", "a")).toBeUndefined();
 	});
 
+	test("json can fail if value is an empty string", () => {
+		expect(() => Guards.json("source", "propName", "")).toThrow(
+			expect.objectContaining({ name: "GuardError", message: "guard.stringJson" })
+		);
+		expect(I18n.hasMessage("error.guard.stringJson")).toEqual(true);
+	});
+
+	test("json can succeed if value is a json string", () => {
+		expect(Guards.json("source", "propName", '"aaa"')).toBeUndefined();
+	});
+
+	test("json can succeed if value is a json object", () => {
+		expect(Guards.json("source", "propName", "{}")).toBeUndefined();
+	});
+
+	test("json can succeed if value is a json object", () => {
+		expect(Guards.json("source", "propName", "{}")).toBeUndefined();
+	});
+
 	test("number can fail if value is not a number", () => {
 		expect(() => Guards.number("source", "propName", undefined)).toThrow(
 			expect.objectContaining({ name: "GuardError", message: "guard.number" })
