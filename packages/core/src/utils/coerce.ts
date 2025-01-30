@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { Converter } from "./converter";
 import { Is } from "./is";
+import { CoerceType } from "../models/coerceType";
 
 /**
  * Coerce an object from one type to another.
@@ -255,6 +256,39 @@ export class Coerce {
 			if (Is.stringBase64(value)) {
 				return Converter.base64ToBytes(value);
 			}
+		}
+	}
+
+	/**
+	 * Coerces a value based on the coercion type.
+	 * @param value The value to coerce.
+	 * @param type The coercion type to perform.
+	 * @returns The coerced value.
+	 */
+	public static byType(value: unknown, type?: CoerceType): unknown {
+		switch (type) {
+			case CoerceType.String:
+				return Coerce.string(value);
+			case CoerceType.Number:
+				return Coerce.number(value);
+			case CoerceType.Integer:
+				return Coerce.integer(value);
+			case CoerceType.BigInt:
+				return Coerce.bigint(value);
+			case CoerceType.Boolean:
+				return Coerce.boolean(value);
+			case CoerceType.Date:
+				return Coerce.date(value);
+			case CoerceType.DateTime:
+				return Coerce.dateTime(value);
+			case CoerceType.Time:
+				return Coerce.time(value);
+			case CoerceType.Object:
+				return Coerce.object(value);
+			case CoerceType.Uint8Array:
+				return Coerce.uint8Array(value);
+			default:
+				return value;
 		}
 	}
 }

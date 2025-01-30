@@ -275,3 +275,31 @@ The value if it can be coerced.
 #### Throws
 
 TypeError If the value can not be coerced.
+
+***
+
+### byType()
+
+> `static` **byType**(`value`, `type`?): `unknown`
+
+Coerces a value based on the coercion type.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to coerce.
+
+##### type?
+
+[`CoerceType`](../type-aliases/CoerceType.md)
+
+The coercion type to perform.
+
+#### Returns
+
+`unknown`
+
+The coerced value.

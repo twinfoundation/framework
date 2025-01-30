@@ -26,6 +26,7 @@ export * from "./helpers/jsonHelper";
 export * from "./helpers/objectHelper";
 export * from "./helpers/randomHelper";
 export * from "./helpers/stringHelper";
+export * from "./models/coerceType";
 export * from "./models/compressionType";
 export * from "./models/IComponent";
 export * from "./models/IError";
@@ -48,3 +49,4 @@ export * from "./utils/guards";
 export * from "./utils/i18n";
 export * from "./utils/is";
 export * from "./utils/validation";
+

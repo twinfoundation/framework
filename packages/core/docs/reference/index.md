@@ -54,9 +54,11 @@
 
 ## Type Aliases
 
+- [CoerceType](type-aliases/CoerceType.md)
 - [CompressionType](type-aliases/CompressionType.md)
 
 ## Variables
 
 - [ComponentFactory](variables/ComponentFactory.md)
+- [CoerceType](variables/CoerceType.md)
 - [CompressionType](variables/CompressionType.md)
