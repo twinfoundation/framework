@@ -63,6 +63,22 @@ describe("Coerce", () => {
 		expect(Coerce.number({})).toEqual(undefined);
 	});
 
+	test("integer can coerce if value is undefined", () => {
+		expect(Coerce.integer(undefined)).toEqual(undefined);
+	});
+
+	test("integer can coerce if value is a string", () => {
+		expect(Coerce.integer("123.45")).toEqual(123);
+	});
+
+	test("integer can fail if value is an invalid string", () => {
+		expect(Coerce.integer("foo")).toEqual(undefined);
+	});
+
+	test("integer can coerce if value is a number", () => {
+		expect(Coerce.integer(123.45)).toEqual(123);
+	});
+
 	test("bigint can coerce if value is undefined", () => {
 		expect(Coerce.bigint(undefined)).toEqual(undefined);
 	});
@@ -153,5 +169,21 @@ describe("Coerce", () => {
 
 	test("date can fail if value is an object", () => {
 		expect(Coerce.date({})).toEqual(undefined);
+	});
+
+	test("uint8array can coerce if value is undefined", () => {
+		expect(Coerce.uint8Array(undefined)).toEqual(undefined);
+	});
+
+	test("uint8array can coerce if value is base64", () => {
+		expect(Coerce.uint8Array("MTIz")).toEqual(new Uint8Array([49, 50, 51]));
+	});
+
+	test("uint8array can coerce if value is hex", () => {
+		expect(Coerce.uint8Array("0x000102")).toEqual(new Uint8Array([0, 1, 2]));
+	});
+
+	test("uint8array can coerce if value is hex upper", () => {
+		expect(Coerce.uint8Array("0x0A0B0C")).toEqual(new Uint8Array([10, 11, 12]));
 	});
 });

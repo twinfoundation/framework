@@ -66,6 +66,32 @@ TypeError If the value can not be coerced.
 
 ***
 
+### integer()
+
+> `static` **integer**(`value`): `undefined` \| `number`
+
+Coerce the value to an integer.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to coerce.
+
+#### Returns
+
+`undefined` \| `number`
+
+The value if it can be coerced.
+
+#### Throws
+
+TypeError If the value can not be coerced.
+
+***
+
 ### bigint()
 
 > `static` **bigint**(`value`): `undefined` \| `bigint`
@@ -217,6 +243,32 @@ The value to coerce.
 #### Returns
 
 `undefined` \| `T`
+
+The value if it can be coerced.
+
+#### Throws
+
+TypeError If the value can not be coerced.
+
+***
+
+### uint8Array()
+
+> `static` **uint8Array**(`value`): `undefined` \| `Uint8Array`
+
+Coerce the value to a Uint8Array.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to coerce.
+
+#### Returns
+
+`undefined` \| `Uint8Array`
 
 The value if it can be coerced.
 

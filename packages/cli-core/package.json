@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/cli-core",
-	"version": "0.0.1-next.26",
+	"version": "0.0.1-next.27",
 	"description": "Core classes for building a CLI",
 	"repository": {
 		"type": "git",
@@ -30,8 +30,8 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.26",
-		"@twin.org/crypto": "0.0.1-next.26",
+		"@twin.org/core": "0.0.1-next.27",
+		"@twin.org/crypto": "0.0.1-next.27",
 		"@twin.org/nameof": "next",
 		"chalk": "5.4.1",
 		"commander": "13.1.0",

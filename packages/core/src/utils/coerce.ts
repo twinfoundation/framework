@@ -1,5 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
+import { Converter } from "./converter";
 import { Is } from "./is";
 
 /**
@@ -54,6 +55,19 @@ export class Coerce {
 		}
 		if (Is.date(value)) {
 			return value.getTime();
+		}
+	}
+
+	/**
+	 * Coerce the value to an integer.
+	 * @param value The value to coerce.
+	 * @throws TypeError If the value can not be coerced.
+	 * @returns The value if it can be coerced.
+	 */
+	public static integer(value: unknown): number | undefined {
+		const num = Coerce.number(value);
+		if (!Is.undefined(num)) {
+			return Math.trunc(num);
 		}
 	}
 
@@ -221,6 +235,26 @@ export class Coerce {
 			try {
 				return JSON.parse(value) as T;
 			} catch {}
+		}
+	}
+
+	/**
+	 * Coerce the value to a Uint8Array.
+	 * @param value The value to coerce.
+	 * @throws TypeError If the value can not be coerced.
+	 * @returns The value if it can be coerced.
+	 */
+	public static uint8Array(value: unknown): Uint8Array | undefined {
+		if (Is.undefined(value)) {
+			return value;
+		}
+		if (Is.string(value)) {
+			if (Is.stringHex(value.toLowerCase(), true)) {
+				return Converter.hexToBytes(value.toLowerCase());
+			}
+			if (Is.stringBase64(value)) {
+				return Converter.base64ToBytes(value);
+			}
 		}
 	}
 }
