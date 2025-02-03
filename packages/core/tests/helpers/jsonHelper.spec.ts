@@ -57,4 +57,38 @@ describe("JsonHelper", () => {
 			'{"arr":[1,2,3,{"a":"foo","b":123},null],"dt":"1974-08-16T09:10:11.123Z","n":43,"t":"foo"}'
 		);
 	});
+
+	test("can stringify an object with extended types", () => {
+		expect(
+			JsonHelper.stringifyEx({
+				str: "foo",
+				num: 123,
+				bool: true,
+				array: [1, 2, 3],
+				object: { foo: "bar" },
+				dt: new Date(Date.UTC(1974, 7, 16, 9, 10, 11, 123)),
+				bigint: BigInt(123),
+				uint8: new Uint8Array([1, 2, 3])
+			})
+		).toEqual(
+			'{"str":"foo","num":123,"bool":true,"array":[1,2,3],"object":{"foo":"bar"},"dt":{"@ext":"date","value":145876211123},"bigint":{"@ext":"bigint","value":"123"},"uint8":{"@ext":"uint8array","value":"AQID"}}'
+		);
+	});
+
+	test("can parse JSON with extended types", () => {
+		expect(
+			JsonHelper.parseEx(
+				'{"str":"foo","num":123,"bool":true,"array":[1,2,3],"object":{"foo":"bar"},"dt":{"@ext":"date","value":145876211123},"bigint":{"@ext":"bigint","value":"123"},"uint8":{"@ext":"uint8array","value":"AQID"}}'
+			)
+		).toEqual({
+			str: "foo",
+			num: 123,
+			bool: true,
+			array: [1, 2, 3],
+			object: { foo: "bar" },
+			dt: new Date(Date.UTC(1974, 7, 16, 9, 10, 11, 123)),
+			bigint: BigInt(123),
+			uint8: new Uint8Array([1, 2, 3])
+		});
+	});
 });

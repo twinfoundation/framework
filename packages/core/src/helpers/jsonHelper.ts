@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { applyPatch, createPatch, type Operation } from "rfc6902";
 import type { IPatchOperation } from "../models/IPatchOperation";
+import { Converter } from "../utils/converter";
+import { Is } from "../utils/is";
 
 /**
  * Helpers methods for JSON objects.
@@ -71,5 +73,80 @@ export class JsonHelper {
 	 */
 	public static patch<T = unknown>(object: T, patches: IPatchOperation[]): T {
 		return applyPatch(object, patches as Operation[]) as T;
+	}
+
+	/**
+	 * Stringify the JSON with support for extended data types date/bigint/uint8array.
+	 * @param object The object to stringify.
+	 * @param space Adds indentation, white space, and line break characters to the return-value JSON text to make it easier to read.
+	 * @returns The stringified object.
+	 */
+	public static stringifyEx(object: unknown, space?: string | number): string {
+		// We want to keep the 'this' intact for the replacer
+		// eslint-disable-next-line @typescript-eslint/unbound-method
+		return JSON.stringify(object, JsonHelper.stringifyExReplacer, space);
+	}
+
+	/**
+	 * Parse the JSON string with support for extended data types date/bigint/uint8array.
+	 * @param json The object to pause.
+	 * @returns The object.
+	 */
+	public static parseEx(json: string): unknown {
+		// We want to keep the 'this' intact for the reviver
+		// eslint-disable-next-line @typescript-eslint/unbound-method
+		return JSON.parse(json, JsonHelper.parseExReviver);
+	}
+
+	/**
+	 * Replacer function to handle extended data types.
+	 * @param this The object.
+	 * @param key The key.
+	 * @param value The value.
+	 * @returns The value.
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public static stringifyExReplacer(this: any, key: string, value: unknown): unknown {
+		const rawValue = this[key];
+
+		if (Is.bigint(rawValue)) {
+			return {
+				"@ext": "bigint",
+				value: rawValue.toString()
+			};
+		} else if (Is.date(rawValue)) {
+			return {
+				"@ext": "date",
+				value: rawValue.getTime()
+			};
+		} else if (Is.uint8Array(rawValue)) {
+			return {
+				"@ext": "uint8array",
+				value: Converter.bytesToBase64(rawValue)
+			};
+		}
+		return value;
+	}
+
+	/**
+	 * Reviver function to handle extended data types.
+	 * @param this The object.
+	 * @param key The key.
+	 * @param value The value.
+	 * @returns The value.
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public static parseExReviver(this: any, key: string, value: unknown): unknown {
+		if (Is.object<{ "@ext": string; value: string }>(value)) {
+			if (value["@ext"] === "bigint") {
+				return BigInt(value.value);
+			} else if (value["@ext"] === "date") {
+				return new Date(value.value);
+			} else if (value["@ext"] === "uint8array") {
+				return Converter.base64ToBytes(value.value);
+			}
+		}
+
+		return value;
 	}
 }

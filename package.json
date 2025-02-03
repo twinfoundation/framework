@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/framework",
-	"version": "0.0.1-next.28",
+	"version": "0.0.1-next.29",
 	"description": "Framework",
 	"repository": {
 		"type": "git",
@@ -23,7 +23,7 @@
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "7.13.1",
-		"cspell": "8.17.2",
+		"cspell": "8.17.3",
 		"eslint": "8.57.0",
 		"eslint-config-prettier": "10.0.1",
 		"eslint-plugin-header": "3.1.1",

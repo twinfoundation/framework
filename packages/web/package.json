@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/web",
-	"version": "0.0.1-next.28",
+	"version": "0.0.1-next.29",
 	"description": "Contains classes for use with web operations",
 	"repository": {
 		"type": "git",
@@ -29,18 +29,18 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.28",
-		"@twin.org/crypto": "0.0.1-next.28",
+		"@twin.org/core": "0.0.1-next.29",
+		"@twin.org/crypto": "0.0.1-next.29",
 		"@twin.org/nameof": "next"
 	},
 	"devDependencies": {
 		"@twin.org/nameof-transformer": "next",
 		"@twin.org/nameof-vitest-plugin": "next",
-		"@types/node": "22.12.0",
+		"@types/node": "22.13.0",
 		"@vitest/coverage-v8": "3.0.4",
 		"copyfiles": "2.4.1",
 		"rimraf": "6.0.1",
-		"rollup": "4.32.1",
+		"rollup": "4.34.1",
 		"ts-patch": "3.3.0",
 		"tsc-watch": "6.2.1",
 		"typedoc": "0.27.6",
