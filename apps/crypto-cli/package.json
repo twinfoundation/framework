@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/crypto-cli",
-	"version": "0.0.1-next.31",
+	"version": "0.0.1-next.32",
 	"description": "A command line interface for interacting with the crypto tools",
 	"repository": {
 		"type": "git",
@@ -30,9 +30,9 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/cli-core": "0.0.1-next.31",
-		"@twin.org/core": "0.0.1-next.31",
-		"@twin.org/crypto": "0.0.1-next.31",
+		"@twin.org/cli-core": "0.0.1-next.32",
+		"@twin.org/core": "0.0.1-next.32",
+		"@twin.org/crypto": "0.0.1-next.32",
 		"@twin.org/nameof": "next",
 		"commander": "13.1.0"
 	},
@@ -40,17 +40,17 @@
 		"@twin.org/merge-locales": "next",
 		"@twin.org/nameof-transformer": "next",
 		"@twin.org/nameof-vitest-plugin": "next",
-		"@types/node": "22.13.0",
-		"@vitest/coverage-v8": "3.0.4",
+		"@types/node": "22.13.1",
+		"@vitest/coverage-v8": "3.0.5",
 		"copyfiles": "2.4.1",
 		"rimraf": "6.0.1",
-		"rollup": "4.34.1",
+		"rollup": "4.33.0",
 		"ts-patch": "3.3.0",
 		"tsc-watch": "6.2.1",
 		"typedoc": "0.27.6",
 		"typedoc-plugin-markdown": "4.4.1",
 		"typescript": "5.7.3",
-		"vitest": "3.0.4"
+		"vitest": "3.0.5"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",
