@@ -14,7 +14,7 @@ export class MimeTypeHelper {
 	 * @returns The mime type if detected.
 	 */
 	public static async detect(data: Uint8Array): Promise<string | undefined> {
-		if (!Is.uint8Array(data)) {
+		if (!Is.uint8Array(data) || data.length === 0) {
 			return undefined;
 		}
 
