@@ -367,3 +367,47 @@ The property keys to omit.
 `Partial`\<`T`\>
 
 The partial object.
+
+***
+
+### toExtended()
+
+> `static` **toExtended**(`obj`): `any`
+
+Converter the non JSON primitives to extended types.
+
+#### Parameters
+
+##### obj
+
+`any`
+
+The object to convert.
+
+#### Returns
+
+`any`
+
+The object with extended properties.
+
+***
+
+### fromExtended()
+
+> `static` **fromExtended**(`obj`): `any`
+
+Converter the extended types to non JSON primitives.
+
+#### Parameters
+
+##### obj
+
+`any`
+
+The object to convert.
+
+#### Returns
+
+`any`
+
+The object with regular properties.

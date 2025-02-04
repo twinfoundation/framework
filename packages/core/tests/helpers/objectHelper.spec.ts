@@ -312,4 +312,52 @@ describe("ObjectHelper", () => {
 			name: "Jane Doe"
 		});
 	});
+
+	test("can convert an object with extended types", () => {
+		expect(
+			ObjectHelper.toExtended({
+				str: "foo",
+				num: 123,
+				bool: true,
+				array: [1, 2, 3],
+				object: { foo: "bar" },
+				dt: new Date(Date.UTC(1974, 7, 16, 9, 10, 11, 123)),
+				bigint: BigInt(123),
+				uint8: new Uint8Array([1, 2, 3])
+			})
+		).toEqual({
+			str: "foo",
+			num: 123,
+			bool: true,
+			array: [1, 2, 3],
+			object: { foo: "bar" },
+			dt: { "@ext": "date", value: 145876211123 },
+			bigint: { "@ext": "bigint", value: "123" },
+			uint8: { "@ext": "uint8array", value: "AQID" }
+		});
+	});
+
+	test("can convert an object containing extended types", () => {
+		expect(
+			ObjectHelper.fromExtended({
+				str: "foo",
+				num: 123,
+				bool: true,
+				array: [1, 2, 3],
+				object: { foo: "bar" },
+				dt: { "@ext": "date", value: 145876211123 },
+				bigint: { "@ext": "bigint", value: "123" },
+				uint8: { "@ext": "uint8array", value: "AQID" }
+			})
+		).toEqual({
+			str: "foo",
+			num: 123,
+			bool: true,
+			array: [1, 2, 3],
+			object: { foo: "bar" },
+			dt: new Date(Date.UTC(1974, 7, 16, 9, 10, 11, 123)),
+			bigint: BigInt(123),
+			uint8: new Uint8Array([1, 2, 3])
+		});
+	});
 });

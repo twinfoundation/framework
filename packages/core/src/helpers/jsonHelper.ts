@@ -81,7 +81,8 @@ export class JsonHelper {
 	 * @param space Adds indentation, white space, and line break characters to the return-value JSON text to make it easier to read.
 	 * @returns The stringified object.
 	 */
-	public static stringifyEx(object: unknown, space?: string | number): string {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public static stringifyEx(object: any, space?: string | number): string {
 		// We want to keep the 'this' intact for the replacer
 		// eslint-disable-next-line @typescript-eslint/unbound-method
 		return JSON.stringify(object, JsonHelper.stringifyExReplacer, space);
@@ -92,7 +93,8 @@ export class JsonHelper {
 	 * @param json The object to pause.
 	 * @returns The object.
 	 */
-	public static parseEx(json: string): unknown {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public static parseEx(json: string): any {
 		// We want to keep the 'this' intact for the reviver
 		// eslint-disable-next-line @typescript-eslint/unbound-method
 		return JSON.parse(json, JsonHelper.parseExReviver);

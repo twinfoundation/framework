@@ -113,7 +113,7 @@ Stringify the JSON with support for extended data types date/bigint/uint8array.
 
 ##### object
 
-`unknown`
+`any`
 
 The object to stringify.
 
@@ -133,7 +133,7 @@ The stringified object.
 
 ### parseEx()
 
-> `static` **parseEx**(`json`): `unknown`
+> `static` **parseEx**(`json`): `any`
 
 Parse the JSON string with support for extended data types date/bigint/uint8array.
 
@@ -147,7 +147,7 @@ The object to pause.
 
 #### Returns
 
-`unknown`
+`any`
 
 The object.
 

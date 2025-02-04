@@ -277,4 +277,26 @@ export class ObjectHelper {
 
 		return obj as Partial<T>;
 	}
+
+	/**
+	 * Converter the non JSON primitives to extended types.
+	 * @param obj The object to convert.
+	 * @returns The object with extended properties.
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public static toExtended(obj: any): any {
+		const jsonExtended = JsonHelper.stringifyEx(obj);
+		return JSON.parse(jsonExtended);
+	}
+
+	/**
+	 * Converter the extended types to non JSON primitives.
+	 * @param obj The object to convert.
+	 * @returns The object with regular properties.
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public static fromExtended(obj: any): any {
+		const jsonExtended = JsonHelper.stringifyEx(obj);
+		return JsonHelper.parseEx(jsonExtended);
+	}
 }
