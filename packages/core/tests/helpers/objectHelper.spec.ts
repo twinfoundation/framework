@@ -268,7 +268,7 @@ describe("ObjectHelper", () => {
 
 	test("Can extract a property from a document and don't remove it", async () => {
 		const doc = {
-			"@context": "http://schema.org/",
+			"@context": "https://schema.org",
 			"@type": "Person",
 			name: "Jane Doe"
 		};
@@ -276,7 +276,7 @@ describe("ObjectHelper", () => {
 		const val = ObjectHelper.extractProperty(doc, ["@type"], false);
 		expect(val).toEqual("Person");
 		expect(doc).toEqual({
-			"@context": "http://schema.org/",
+			"@context": "https://schema.org",
 			"@type": "Person",
 			name: "Jane Doe"
 		});
@@ -284,7 +284,7 @@ describe("ObjectHelper", () => {
 
 	test("Can extract a property from a document and remove it", async () => {
 		const doc = {
-			"@context": "http://schema.org/",
+			"@context": "https://schema.org",
 			"@type": "Person",
 			name: "Jane Doe"
 		};
@@ -292,14 +292,14 @@ describe("ObjectHelper", () => {
 		const val = ObjectHelper.extractProperty(doc, ["@type"]);
 		expect(val).toEqual("Person");
 		expect(doc).toEqual({
-			"@context": "http://schema.org/",
+			"@context": "https://schema.org",
 			name: "Jane Doe"
 		});
 	});
 
 	test("Can extract a property from a document and remove it with multiple matching properties", async () => {
 		const doc = {
-			"@context": "http://schema.org/",
+			"@context": "https://schema.org",
 			"@type": "Person",
 			type: "Person",
 			name: "Jane Doe"
@@ -308,7 +308,7 @@ describe("ObjectHelper", () => {
 		const val = ObjectHelper.extractProperty(doc, ["@type", "type"]);
 		expect(val).toEqual("Person");
 		expect(doc).toEqual({
-			"@context": "http://schema.org/",
+			"@context": "https://schema.org",
 			name: "Jane Doe"
 		});
 	});
