@@ -26,6 +26,7 @@ export * from "./helpers/jsonHelper";
 export * from "./helpers/objectHelper";
 export * from "./helpers/randomHelper";
 export * from "./helpers/stringHelper";
+export * from "./helpers/uint8ArrayHelper";
 export * from "./models/coerceType";
 export * from "./models/compressionType";
 export * from "./models/IComponent";

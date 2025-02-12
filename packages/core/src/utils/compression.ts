@@ -1,8 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-/* eslint-disable no-bitwise */
 import { nameof } from "@twin.org/nameof";
 import { Guards } from "./guards";
+import { Is } from "./is";
+import { Uint8ArrayHelper } from "../helpers/uint8ArrayHelper";
 import { CompressionType } from "../models/compressionType";
 
 /**
@@ -25,21 +26,24 @@ export class Compression {
 		Guards.uint8Array(Compression._CLASS_NAME, nameof(bytes), bytes);
 		Guards.arrayOneOf(Compression._CLASS_NAME, nameof(type), type, Object.values(CompressionType));
 
-		const blob = new Blob([bytes]);
-		const ds = new CompressionStream(type);
-		const compressedStream = blob.stream().pipeThrough(ds);
-		const compressedBlob = await new Response(compressedStream).blob();
-		const ab = await compressedBlob.arrayBuffer();
-		const compressedBytes = new Uint8Array(ab);
+		const cs = new CompressionStream(type);
+		const writer = cs.writable.getWriter();
+		await writer.write(bytes);
+		await writer.close();
+
+		const reader = cs.readable.getReader();
+		const chunks = await Compression.streamToChunks(reader);
+
+		const concatenated = Uint8ArrayHelper.concat(chunks);
 
 		// GZIP header contains a byte which specifies the OS the
 		// compression was performed on. We set this to 3 (Unix) to ensure
 		// that we produce consistent results.
-		if (type === "gzip" && compressedBytes.length >= 10) {
-			compressedBytes[9] = 3;
+		if (type === "gzip" && concatenated.length >= 10) {
+			concatenated[9] = 3;
 		}
 
-		return compressedBytes;
+		return concatenated;
 	}
 
 	/**
@@ -55,11 +59,35 @@ export class Compression {
 		Guards.uint8Array(Compression._CLASS_NAME, nameof(compressedBytes), compressedBytes);
 		Guards.arrayOneOf(Compression._CLASS_NAME, nameof(type), type, Object.values(CompressionType));
 
-		const blob = new Blob([compressedBytes]);
-		const ds = new DecompressionStream(type);
-		const decompressedStream = blob.stream().pipeThrough(ds);
-		const decompressedBlob = await new Response(decompressedStream).blob();
-		const ab = await decompressedBlob.arrayBuffer();
-		return new Uint8Array(ab);
+		const cs = new DecompressionStream(type);
+		const writer = cs.writable.getWriter();
+		await writer.write(compressedBytes);
+		await writer.close();
+
+		const reader = cs.readable.getReader();
+		const chunks = await Compression.streamToChunks(reader);
+
+		return Uint8ArrayHelper.concat(chunks);
+	}
+
+	/**
+	 * Read the stream and create a list of chunks.
+	 * @param reader The reader to read the chunks from.
+	 * @returns The chunks.
+	 * @internal
+	 */
+	private static async streamToChunks(reader: ReadableStreamDefaultReader): Promise<Uint8Array[]> {
+		const chunks: Uint8Array[] = [];
+
+		let done = false;
+		do {
+			const chunk = await reader.read();
+			done = chunk.done;
+			if (!done && Is.uint8Array(chunk.value)) {
+				chunks.push(chunk.value);
+			}
+		} while (!done);
+
+		return chunks;
 	}
 }
