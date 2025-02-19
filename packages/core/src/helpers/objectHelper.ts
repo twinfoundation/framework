@@ -299,4 +299,31 @@ export class ObjectHelper {
 		const jsonExtended = JsonHelper.stringifyEx(obj);
 		return JsonHelper.parseEx(jsonExtended);
 	}
+
+	/**
+	 * Remove empty properties from an object.
+	 * @param obj The object to remove the empty properties from.
+	 * @param options The options for the removal.
+	 * @param options.removeUndefined Remove undefined properties, defaults to true.
+	 * @param options.removeNull Remove null properties, defaults to false.
+	 * @returns The object with empty properties removed.
+	 */
+	public static removeEmptyProperties<T = unknown>(
+		obj: T,
+		options?: { removeUndefined?: boolean; removeNull?: boolean }
+	): T {
+		if (Is.object(obj)) {
+			const removeUndefined = options?.removeUndefined ?? true;
+			const removeNull = options?.removeNull ?? false;
+			const newObj: { [id: string]: unknown } = {};
+			const keys = Object.keys(obj);
+			for (const key of keys) {
+				if (!((removeUndefined && Is.undefined(obj[key])) || (removeNull && Is.null(obj[key])))) {
+					newObj[key] = ObjectHelper.removeEmptyProperties(obj[key], options);
+				}
+			}
+			return newObj as T;
+		}
+		return obj;
+	}
 }

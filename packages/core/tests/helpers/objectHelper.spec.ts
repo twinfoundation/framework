@@ -360,4 +360,42 @@ describe("ObjectHelper", () => {
 			uint8: new Uint8Array([1, 2, 3])
 		});
 	});
+
+	test("can remove undefined properties from an object", () => {
+		expect(
+			ObjectHelper.removeEmptyProperties({
+				str: "foo",
+				num: undefined,
+				bool: true,
+				array: [1, 2, 3],
+				object: { foo: undefined, bar: 123 }
+			})
+		).toEqual({
+			str: "foo",
+			bool: true,
+			array: [1, 2, 3],
+			object: { bar: 123 }
+		});
+	});
+
+	test("can remove null bot not properties from an object", () => {
+		expect(
+			ObjectHelper.removeEmptyProperties(
+				{
+					str: "foo",
+					num: undefined,
+					bool: true,
+					array: [1, 2, 3],
+					object: { foo: null, bar: 123 }
+				},
+				{ removeUndefined: false, removeNull: true }
+			)
+		).toEqual({
+			str: "foo",
+			bool: true,
+			num: undefined,
+			array: [1, 2, 3],
+			object: { bar: 123 }
+		});
+	});
 });

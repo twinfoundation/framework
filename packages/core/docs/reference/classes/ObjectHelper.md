@@ -411,3 +411,45 @@ The object to convert.
 `any`
 
 The object with regular properties.
+
+***
+
+### removeEmptyProperties()
+
+> `static` **removeEmptyProperties**\<`T`\>(`obj`, `options`?): `T`
+
+Remove empty properties from an object.
+
+#### Type Parameters
+
+• **T** = `unknown`
+
+#### Parameters
+
+##### obj
+
+`T`
+
+The object to remove the empty properties from.
+
+##### options?
+
+The options for the removal.
+
+###### removeUndefined
+
+`boolean`
+
+Remove undefined properties, defaults to true.
+
+###### removeNull
+
+`boolean`
+
+Remove null properties, defaults to false.
+
+#### Returns
+
+`T`
+
+The object with empty properties removed.
