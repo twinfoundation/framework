@@ -323,6 +323,12 @@ export class ObjectHelper {
 				}
 			}
 			return newObj as T;
+		} else if (Is.array(obj)) {
+			const arr = [];
+			for (const element of obj) {
+				arr.push(ObjectHelper.removeEmptyProperties(element, options));
+			}
+			return arr as T;
 		}
 		return obj;
 	}

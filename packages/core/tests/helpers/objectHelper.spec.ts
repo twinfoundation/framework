@@ -368,17 +368,22 @@ describe("ObjectHelper", () => {
 				num: undefined,
 				bool: true,
 				array: [1, 2, 3],
-				object: { foo: undefined, bar: 123 }
+				object: { foo: undefined, bar: 123 },
+				subArray: [
+					{ foo: undefined, bar: 123 },
+					{ foo: undefined, bar: 123 }
+				]
 			})
 		).toEqual({
 			str: "foo",
 			bool: true,
 			array: [1, 2, 3],
-			object: { bar: 123 }
+			object: { bar: 123 },
+			subArray: [{ bar: 123 }, { bar: 123 }]
 		});
 	});
 
-	test("can remove null bot not properties from an object", () => {
+	test("can remove null but not properties from an object", () => {
 		expect(
 			ObjectHelper.removeEmptyProperties(
 				{
@@ -386,7 +391,11 @@ describe("ObjectHelper", () => {
 					num: undefined,
 					bool: true,
 					array: [1, 2, 3],
-					object: { foo: null, bar: 123 }
+					object: { foo: null, bar: 123 },
+					subArray: [
+						{ foo: null, bar: 123 },
+						{ foo: null, bar: 123 }
+					]
 				},
 				{ removeUndefined: false, removeNull: true }
 			)
@@ -395,7 +404,8 @@ describe("ObjectHelper", () => {
 			bool: true,
 			num: undefined,
 			array: [1, 2, 3],
-			object: { bar: 123 }
+			object: { bar: 123 },
+			subArray: [{ bar: 123 }, { bar: 123 }]
 		});
 	});
 });
