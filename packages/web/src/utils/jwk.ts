@@ -1,0 +1,33 @@
+// Copyright 2024 IOTA Stiftung.
+// SPDX-License-Identifier: Apache-2.0.
+import { GeneralError, Guards } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
+import { importJWK } from "jose";
+import type { IJwk } from "../models/IJwk";
+import type { JwkCryptoKey } from "../models/jwkCryptoKey";
+
+/**
+ * Class to handle JSON Web Keys.
+ */
+export class Jwk {
+	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<Jwk>();
+
+	/**
+	 * Convert the JWK to a crypto key.
+	 * @param jwk The JWK to convert.
+	 * @returns The crypto key.
+	 */
+	public static async toCryptoKey(jwk: IJwk): Promise<JwkCryptoKey> {
+		Guards.object<IJwk>(Jwk._CLASS_NAME, nameof(jwk), jwk);
+
+		try {
+			return importJWK(jwk);
+		} catch (err) {
+			throw new GeneralError(Jwk._CLASS_NAME, "jwkImportFailed", undefined, err);
+		}
+	}
+}

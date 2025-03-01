@@ -9,7 +9,11 @@
 		},
 		"jwt": {
 			"noKeyOrSigner": "No key or signer was provided for JWT creation",
-			"noKeyOrVerifier": "No key or verifier was provided for JWT creation"
+			"noKeyOrVerifier": "No key or verifier was provided for JWT creation",
+			"verifyFailed": "Failed to verify JWT"
+		},
+		"jwk": {
+			"jwkImportFailed": "Failed to import JWK"
 		}
 	},
 	"errorMessages": {

@@ -1,6 +1,6 @@
 # Class: Jwt
 
-Class to encode and decode JSON Web Tokens.
+Class to handle JSON Web Tokens.
 
 ## Constructors
 
@@ -42,7 +42,7 @@ The payload to encode.
 
 ##### key
 
-`Uint8Array`
+[`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)
 
 The key for signing the token, can be omitted if a signer is provided.
 
@@ -82,7 +82,7 @@ The payload to encode.
 
 ##### signer
 
-(`alg`, `key`, `payload`) => `Promise`\<`Uint8Array`\>
+(`alg`, `key`, `header`, `payload`) => `Promise`\<`string`\>
 
 Custom signer method.
 
@@ -124,15 +124,15 @@ The decoded payload.
 
 ### verify()
 
-> `static` **verify**\<`U`, `T`\>(`token`, `key`): `Promise`\<\{ `verified`: `boolean`; `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
+> `static` **verify**\<`T`, `U`\>(`token`, `key`): `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 Verify a token.
 
 #### Type Parameters
 
-• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
-• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -144,13 +144,13 @@ The token to verify.
 
 ##### key
 
-`Uint8Array`
+[`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)
 
 The key for verifying the token
 
 #### Returns
 
-`Promise`\<\{ `verified`: `boolean`; `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
+`Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 The decoded payload.
 
@@ -158,15 +158,15 @@ The decoded payload.
 
 ### verifyWithVerifier()
 
-> `static` **verifyWithVerifier**\<`U`, `T`\>(`token`, `verifier`): `Promise`\<\{ `verified`: `boolean`; `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
+> `static` **verifyWithVerifier**\<`T`, `U`\>(`token`, `verifier`): `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 Verify a token.
 
 #### Type Parameters
 
-• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
-• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -178,13 +178,13 @@ The token to verify.
 
 ##### verifier
 
-(`alg`, `key`, `payload`, `signature`) => `Promise`\<`boolean`\>
+(`token`, `key`) => `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 Custom verification method.
 
 #### Returns
 
-`Promise`\<\{ `verified`: `boolean`; `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
+`Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 The decoded payload.
 
@@ -192,51 +192,39 @@ The decoded payload.
 
 ### verifySignature()
 
-> `static` **verifySignature**\<`U`, `T`\>(`header`?, `payload`?, `signature`?, `key`?, `verifier`?): `Promise`\<`boolean`\>
+> `static` **verifySignature**\<`T`, `U`\>(`token`, `key`?, `verifier`?): `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 Verify a token by parts.
 
 #### Type Parameters
 
-• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
-• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
-##### header?
+##### token
 
-`U`
+`string`
 
-The header to verify.
-
-##### payload?
-
-`T`
-
-The payload to verify.
-
-##### signature?
-
-`Uint8Array`
-
-The signature to verify.
+The token to verify.
 
 ##### key?
 
-`Uint8Array`
+[`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)
 
 The key for verifying the token, if not provided no verification occurs.
 
 ##### verifier?
 
-(`alg`, `key`, `payload`, `signature`) => `Promise`\<`boolean`\>
+(`token`, `key`) => `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 Custom verification method.
 
 #### Returns
 
-`Promise`\<`boolean`\>
+`Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 True if the parts are verified.
 
@@ -244,7 +232,7 @@ True if the parts are verified.
 
 ### defaultSigner()
 
-> `static` **defaultSigner**(`alg`, `key`, `payload`): `Promise`\<`Uint8Array`\>
+> `static` **defaultSigner**(`alg`, `key`, `header`, `payload`): `Promise`\<`string`\>
 
 The default signer for the JWT.
 
@@ -252,7 +240,7 @@ The default signer for the JWT.
 
 ##### alg
 
-[`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
+`string`
 
 The algorithm to use.
 
@@ -260,17 +248,23 @@ The algorithm to use.
 
 The key to sign with.
 
-`undefined` | `Uint8Array`
+`undefined` | [`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)
+
+##### header
+
+[`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+The header to sign.
 
 ##### payload
 
-`Uint8Array`
+[`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 The payload to sign.
 
 #### Returns
 
-`Promise`\<`Uint8Array`\>
+`Promise`\<`string`\>
 
 The signature.
 
@@ -278,38 +272,32 @@ The signature.
 
 ### defaultVerifier()
 
-> `static` **defaultVerifier**(`alg`, `key`, `payload`, `signature`): `Promise`\<`boolean`\>
+> `static` **defaultVerifier**\<`T`, `U`\>(`token`, `key`): `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 The default verifier for the JWT.
 
+#### Type Parameters
+
+• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+
 #### Parameters
 
-##### alg
+##### token
 
-[`JwtAlgorithms`](../type-aliases/JwtAlgorithms.md)
+`string`
 
-The algorithm to use.
+The token to verify.
 
 ##### key
 
 The key to verify with.
 
-`undefined` | `Uint8Array`
-
-##### payload
-
-`Uint8Array`
-
-The payload to verify.
-
-##### signature
-
-`Uint8Array`
-
-The signature to verify.
+`undefined` | [`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)
 
 #### Returns
 
-`Promise`\<`boolean`\>
+`Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 True if the signature was verified.
