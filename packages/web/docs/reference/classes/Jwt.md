@@ -16,27 +16,27 @@ Class to handle JSON Web Tokens.
 
 ### encode()
 
-> `static` **encode**\<`U`, `T`\>(`header`, `payload`, `key`): `Promise`\<`string`\>
+> `static` **encode**\<`T`, `U`\>(`header`, `payload`, `key`): `Promise`\<`string`\>
 
 Encode a token.
 
 #### Type Parameters
 
-• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
-• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
 ##### header
 
-`U`
+`T`
 
 The header to encode.
 
 ##### payload
 
-`T`
+`U`
 
 The payload to encode.
 
@@ -56,33 +56,33 @@ The encoded token.
 
 ### encodeWithSigner()
 
-> `static` **encodeWithSigner**\<`U`, `T`\>(`header`, `payload`, `signer`): `Promise`\<`string`\>
+> `static` **encodeWithSigner**\<`T`, `U`\>(`header`, `payload`, `signer`): `Promise`\<`string`\>
 
 Encode a token.
 
 #### Type Parameters
 
-• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
-• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
 ##### header
 
-`U`
+`T`
 
 The header to encode.
 
 ##### payload
 
-`T`
+`U`
 
 The payload to encode.
 
 ##### signer
 
-(`alg`, `key`, `header`, `payload`) => `Promise`\<`string`\>
+(`header`, `payload`, `key`) => `Promise`\<`string`\>
 
 Custom signer method.
 
@@ -96,15 +96,15 @@ The encoded token.
 
 ### decode()
 
-> `static` **decode**\<`U`, `T`\>(`token`): `Promise`\<\{ `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
+> `static` **decode**\<`T`, `U`\>(`token`): `Promise`\<\{ `header`: `T`; `payload`: `U`; `signature`: `Uint8Array`; \}\>
 
 Decode a token.
 
 #### Type Parameters
 
-• **U** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
 
-• **T** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -116,7 +116,7 @@ The token to decode.
 
 #### Returns
 
-`Promise`\<\{ `header`: `U`; `payload`: `T`; `signature`: `Uint8Array`; \}\>
+`Promise`\<\{ `header`: `T`; `payload`: `U`; `signature`: `Uint8Array`; \}\>
 
 The decoded payload.
 
@@ -232,23 +232,11 @@ True if the parts are verified.
 
 ### defaultSigner()
 
-> `static` **defaultSigner**(`alg`, `key`, `header`, `payload`): `Promise`\<`string`\>
+> `static` **defaultSigner**(`header`, `payload`, `key`): `Promise`\<`string`\>
 
 The default signer for the JWT.
 
 #### Parameters
-
-##### alg
-
-`string`
-
-The algorithm to use.
-
-##### key
-
-The key to sign with.
-
-`undefined` | [`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)
 
 ##### header
 
@@ -261,6 +249,12 @@ The header to sign.
 [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 The payload to sign.
+
+##### key
+
+The optional key to sign with.
+
+`undefined` | [`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)
 
 #### Returns
 
@@ -301,3 +295,65 @@ The key to verify with.
 `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 True if the signature was verified.
+
+***
+
+### createSignBytes()
+
+> `static` **createSignBytes**\<`T`, `U`\>(`header`, `payload`): `Uint8Array`
+
+Create bytes for signing from header and payload.
+
+#### Type Parameters
+
+• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+
+#### Parameters
+
+##### header
+
+`T`
+
+The header.
+
+##### payload
+
+`U`
+
+The payload.
+
+#### Returns
+
+`Uint8Array`
+
+The bytes to sign.
+
+***
+
+### createTokenFromBytes()
+
+> `static` **createTokenFromBytes**(`signedBytes`, `signature`): `string`
+
+Create token from bytes and signature.
+
+#### Parameters
+
+##### signedBytes
+
+`Uint8Array`
+
+The signed bytes.
+
+##### signature
+
+`Uint8Array`
+
+The signature.
+
+#### Returns
+
+`string`
+
+The token.

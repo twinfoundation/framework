@@ -24,9 +24,9 @@ export class Jwt {
 	 * @param key The key for signing the token, can be omitted if a signer is provided.
 	 * @returns The encoded token.
 	 */
-	public static async encode<U extends IJwtHeader, T extends IJwtPayload>(
-		header: U,
-		payload: T,
+	public static async encode<T extends IJwtHeader, U extends IJwtPayload>(
+		header: T,
+		payload: U,
 		key: JwkCryptoKey
 	): Promise<string> {
 		Guards.object<IJwtHeader>(Jwt._CLASS_NAME, nameof(header), header);
@@ -35,7 +35,7 @@ export class Jwt {
 		Guards.object<IJwtPayload>(Jwt._CLASS_NAME, nameof(payload), payload);
 		Guards.defined(Jwt._CLASS_NAME, nameof(key), key);
 
-		return Jwt.internalEncode<U, T>(header, payload, key);
+		return Jwt.internalEncode<T, U>(header, payload, key);
 	}
 
 	/**
@@ -45,14 +45,13 @@ export class Jwt {
 	 * @param signer Custom signer method.
 	 * @returns The encoded token.
 	 */
-	public static async encodeWithSigner<U extends IJwtHeader, T extends IJwtPayload>(
-		header: U,
-		payload: T,
+	public static async encodeWithSigner<T extends IJwtHeader, U extends IJwtPayload>(
+		header: T,
+		payload: U,
 		signer: (
-			alg: string,
-			key: JwkCryptoKey | undefined,
 			header: IJwtHeader,
-			payload: IJwtPayload
+			payload: IJwtPayload,
+			key: JwkCryptoKey | undefined
 		) => Promise<string>
 	): Promise<string> {
 		Guards.object<IJwtHeader>(Jwt._CLASS_NAME, nameof(header), header);
@@ -61,7 +60,7 @@ export class Jwt {
 		Guards.object<IJwtPayload>(Jwt._CLASS_NAME, nameof(payload), payload);
 		Guards.function(Jwt._CLASS_NAME, nameof(signer), signer);
 
-		return Jwt.internalEncode<U, T>(header, payload, undefined, signer);
+		return Jwt.internalEncode<T, U>(header, payload, undefined, signer);
 	}
 
 	/**
@@ -69,17 +68,17 @@ export class Jwt {
 	 * @param token The token to decode.
 	 * @returns The decoded payload.
 	 */
-	public static async decode<U extends IJwtHeader, T extends IJwtPayload>(
+	public static async decode<T extends IJwtHeader, U extends IJwtPayload>(
 		token: string
 	): Promise<{
-		header?: U;
-		payload?: T;
+		header?: T;
+		payload?: U;
 		signature?: Uint8Array;
 	}> {
 		Guards.stringValue(Jwt._CLASS_NAME, nameof(token), token);
 
-		let header: U | undefined;
-		let payload: T | undefined;
+		let header: T | undefined;
+		let payload: U | undefined;
 		let signature: Uint8Array | undefined;
 
 		const segments = token.split(".");
@@ -193,27 +192,24 @@ export class Jwt {
 
 	/**
 	 * The default signer for the JWT.
-	 * @param alg The algorithm to use.
-	 * @param key The key to sign with.
 	 * @param header The header to sign.
 	 * @param payload The payload to sign.
+	 * @param key The optional key to sign with.
 	 * @returns The signature.
 	 */
 	public static async defaultSigner(
-		alg: string,
-		key: JwkCryptoKey | undefined,
 		header: IJwtHeader,
-		payload: IJwtPayload
+		payload: IJwtPayload,
+		key: JwkCryptoKey | undefined
 	): Promise<string> {
-		Guards.defined(Jwt._CLASS_NAME, nameof(key), key);
 		Guards.object(Jwt._CLASS_NAME, nameof(header), header);
 		Guards.object(Jwt._CLASS_NAME, nameof(payload), payload);
+		Guards.defined(Jwt._CLASS_NAME, nameof(key), key);
 
 		const signer = new SignJWT(payload);
-		header.alg = alg;
 		signer.setProtectedHeader(header);
 
-		if (alg === "EdDSA" && Is.uint8Array(key)) {
+		if (header.alg === "EdDSA" && Is.uint8Array(key)) {
 			// crypto.subtle.importKey does not support Ed25519 keys in raw format.
 			// We need to convert the key to PKCS8 format before importing.
 			// The PKCS8 format is the raw key prefixed with the ASN.1 sequence for an Ed25519 private key.
@@ -258,6 +254,40 @@ export class Jwt {
 	}
 
 	/**
+	 * Create bytes for signing from header and payload.
+	 * @param header The header.
+	 * @param payload The payload.
+	 * @returns The bytes to sign.
+	 */
+	public static createSignBytes<T extends IJwtHeader, U extends IJwtPayload>(
+		header: T,
+		payload: U
+	): Uint8Array {
+		const segments: string[] = [];
+
+		const headerBytes = Converter.utf8ToBytes(JSON.stringify(header));
+		segments.push(Converter.bytesToBase64Url(headerBytes));
+
+		const payloadBytes = Converter.utf8ToBytes(JSON.stringify(payload));
+		segments.push(Converter.bytesToBase64Url(payloadBytes));
+
+		return Converter.utf8ToBytes(segments.join("."));
+	}
+
+	/**
+	 * Create token from bytes and signature.
+	 * @param signedBytes The signed bytes.
+	 * @param signature The signature.
+	 * @returns The token.
+	 */
+	public static createTokenFromBytes(signedBytes: Uint8Array, signature: Uint8Array): string {
+		const signedBytesUtf8 = Converter.bytesToUtf8(signedBytes);
+		const signatureBase64 = Converter.bytesToBase64Url(signature);
+
+		return `${signedBytesUtf8}.${signatureBase64}`;
+	}
+
+	/**
 	 * Encode a token.
 	 * @param header The header to encode.
 	 * @param payload The payload to encode.
@@ -266,15 +296,14 @@ export class Jwt {
 	 * @returns The encoded token.
 	 * @internal
 	 */
-	private static async internalEncode<U extends IJwtHeader, T extends IJwtPayload>(
-		header: U,
-		payload: T,
+	private static async internalEncode<T extends IJwtHeader, U extends IJwtPayload>(
+		header: T,
+		payload: U,
 		key?: JwkCryptoKey,
 		signer?: (
-			alg: string,
-			key: JwkCryptoKey | undefined,
 			header: IJwtHeader,
-			payload: IJwtPayload
+			payload: IJwtPayload,
+			key: JwkCryptoKey | undefined
 		) => Promise<string>
 	): Promise<string> {
 		const hasKey = Is.notEmpty(key);
@@ -283,12 +312,12 @@ export class Jwt {
 			throw new GeneralError(Jwt._CLASS_NAME, "noKeyOrSigner");
 		}
 
-		signer ??= async (alg, k, h, p): Promise<string> => Jwt.defaultSigner(alg, k, h, p);
+		signer ??= async (h, p, k): Promise<string> => Jwt.defaultSigner(h, p, k);
 
 		if (Is.undefined(header.typ)) {
 			header.typ = "JWT";
 		}
 
-		return signer(header.alg, key, header, payload);
+		return signer(header, payload, key);
 	}
 }

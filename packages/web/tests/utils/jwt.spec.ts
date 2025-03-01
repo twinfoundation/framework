@@ -77,9 +77,8 @@ describe("Jwt", () => {
 		const token = await Jwt.encodeWithSigner(
 			{ alg: "HS256" },
 			{ sub: "123456", iat: 100000000 },
-			async (alg, key, header, payload) => {
+			async (header, payload, key) => {
 				const signer = new SignJWT(payload);
-				header.alg = alg;
 				signer.setProtectedHeader(header);
 				return signer.sign(Converter.utf8ToBytes("my-key"));
 			}
