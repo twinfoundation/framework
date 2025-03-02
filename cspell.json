@@ -22,6 +22,7 @@
 		"ARGB",
 		"Bech",
 		"chacha",
+		"crit",
 		"decryptor",
 		"encryptor",
 		"Hmac",

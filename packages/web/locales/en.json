@@ -16,6 +16,10 @@
 		},
 		"jwk": {
 			"jwkImportFailed": "Failed to import JWK"
+		},
+		"jws": {
+			"createFailed": "Failed to create JWS",
+			"verifyFailed": "Failed to verify JWS"
 		}
 	},
 	"errorMessages": {

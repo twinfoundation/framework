@@ -45,4 +45,25 @@ describe("Jwk", () => {
 		expect(importedKey.algorithm).toEqual({ name: "Ed25519" });
 		expect(importedKey.usages).toEqual(["sign"]);
 	});
+
+	test("can import an Ed25519 public key", async () => {
+		const privateKey = new Uint8Array(32).fill(170);
+		const publicKey = Ed25519.publicKeyFromPrivateKey(privateKey);
+
+		const importedKey = (await Jwk.fromEd25519Public(publicKey)) as CryptoKey;
+		expect(importedKey.extractable).toEqual(true);
+		expect(importedKey.type).toEqual("public");
+		expect(importedKey.algorithm).toEqual({ name: "Ed25519" });
+		expect(importedKey.usages).toEqual(["verify"]);
+	});
+
+	test("can import an Ed25519 private key", async () => {
+		const privateKey = new Uint8Array(32).fill(170);
+
+		const importedKey = (await Jwk.fromEd25519Private(privateKey)) as CryptoKey;
+		expect(importedKey.extractable).toEqual(false);
+		expect(importedKey.type).toEqual("private");
+		expect(importedKey.algorithm).toEqual({ name: "Ed25519" });
+		expect(importedKey.usages).toEqual(["sign"]);
+	});
 });

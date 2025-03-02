@@ -13,5 +13,6 @@ export * from "./models/jwkCryptoKey";
 export * from "./models/mimeTypes";
 export * from "./utils/fetchHelper";
 export * from "./utils/jwk";
+export * from "./utils/jws";
 export * from "./utils/jwt";
 export * from "./utils/mimeTypeHelper";

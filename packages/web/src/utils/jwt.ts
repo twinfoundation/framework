@@ -31,8 +31,6 @@ export class Jwt {
 		key: JwkCryptoKey
 	): Promise<string> {
 		Guards.object<IJwtHeader>(Jwt._CLASS_NAME, nameof(header), header);
-		Guards.stringValue(Jwt._CLASS_NAME, nameof(header.alg), header.alg);
-
 		Guards.object<IJwtPayload>(Jwt._CLASS_NAME, nameof(payload), payload);
 		Guards.defined(Jwt._CLASS_NAME, nameof(key), key);
 
