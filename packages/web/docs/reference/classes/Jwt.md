@@ -294,7 +294,7 @@ The key to verify with.
 
 `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
-True if the signature was verified.
+The header and payload if verification successful.
 
 ***
 
