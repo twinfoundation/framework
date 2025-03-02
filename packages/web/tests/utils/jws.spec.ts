@@ -7,7 +7,7 @@ import { Jws } from "../../src/utils/jws";
 describe("Jws", () => {
 	test("can create a signature", async () => {
 		const privateKey = new Uint8Array(32).fill(170);
-		const importedKey = (await Jwk.fromEd25519Private(privateKey)) as CryptoKey;
+		const importedKey = await Jwk.fromEd25519Private(privateKey);
 
 		const hash = new Uint8Array(32).fill(85);
 		const jws = await Jws.create(importedKey, hash);
@@ -19,7 +19,7 @@ describe("Jws", () => {
 	test("can verify a signature", async () => {
 		const privateKey = new Uint8Array(32).fill(170);
 		const publicKey = Ed25519.publicKeyFromPrivateKey(privateKey);
-		const importedKey = (await Jwk.fromEd25519Public(publicKey)) as CryptoKey;
+		const importedKey = await Jwk.fromEd25519Public(publicKey);
 
 		const hash = new Uint8Array(32).fill(85);
 		const verified = await Jws.verify(

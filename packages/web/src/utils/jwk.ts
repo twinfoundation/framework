@@ -37,7 +37,7 @@ export class Jwk {
 	 * @param privateKey The private key to use.
 	 * @returns The crypto key.
 	 */
-	public static async fromEd25519Private(privateKey: Uint8Array): Promise<JwkCryptoKey> {
+	public static async fromEd25519Private(privateKey: Uint8Array): Promise<CryptoKey> {
 		Guards.uint8Array(Jwk._CLASS_NAME, nameof(privateKey), privateKey);
 
 		try {
@@ -52,7 +52,7 @@ export class Jwk {
 				d: Converter.bytesToBase64Url(privateKey)
 			};
 
-			return importJWK(jwk);
+			return (await importJWK(jwk)) as CryptoKey;
 		} catch (err) {
 			throw new GeneralError(Jwk._CLASS_NAME, "jwkImportFailed", undefined, err);
 		}
@@ -63,7 +63,7 @@ export class Jwk {
 	 * @param publicKey The private key to use.
 	 * @returns The crypto key.
 	 */
-	public static async fromEd25519Public(publicKey: Uint8Array): Promise<JwkCryptoKey> {
+	public static async fromEd25519Public(publicKey: Uint8Array): Promise<CryptoKey> {
 		Guards.uint8Array(Jwk._CLASS_NAME, nameof(publicKey), publicKey);
 
 		try {
@@ -75,7 +75,7 @@ export class Jwk {
 				x: Converter.bytesToBase64Url(publicKey)
 			};
 
-			return importJWK(jwk);
+			return (await importJWK(jwk)) as CryptoKey;
 		} catch (err) {
 			throw new GeneralError(Jwk._CLASS_NAME, "jwkImportFailed", undefined, err);
 		}
