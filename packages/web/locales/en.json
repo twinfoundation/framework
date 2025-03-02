@@ -10,7 +10,9 @@
 		"jwt": {
 			"noKeyOrSigner": "No key or signer was provided for JWT creation",
 			"noKeyOrVerifier": "No key or verifier was provided for JWT creation",
-			"verifyFailed": "Failed to verify JWT"
+			"verifyFailed": "Failed to verify JWT",
+			"invalidTokenParts": "The JSON Web Token could not be parsed, it should contain three parts separated by dots",
+			"invalidSigningBytes": "The signing bytes are invalid, it should contain two parts separated by a dot"
 		},
 		"jwk": {
 			"jwkImportFailed": "Failed to import JWK"

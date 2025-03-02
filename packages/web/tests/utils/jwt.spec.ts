@@ -213,4 +213,48 @@ describe("Jwt", () => {
 		expect(decoded?.payload?.sub).toEqual("123456");
 		expect(decoded?.payload?.iat).toEqual(100000000);
 	});
+
+	test("can convert a header and payload to signing bytes", async () => {
+		const signingBytes = Jwt.toSigningBytes(
+			{ alg: "HS256", typ: "JWT" },
+			{ sub: "123456", iat: 100000000 }
+		);
+		expect(Converter.bytesToUtf8(signingBytes)).toEqual(
+			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0"
+		);
+	});
+
+	test("can convert signing bytes to header and payload", async () => {
+		const { header, payload } = Jwt.fromSigningBytes(
+			Converter.utf8ToBytes(
+				"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0"
+			)
+		);
+		expect(header).toEqual({ alg: "HS256", typ: "JWT" });
+		expect(payload).toEqual({ sub: "123456", iat: 100000000 });
+	});
+
+	test("can convert a token to signing bytes and signature bytes", async () => {
+		const { signingBytes, signature } = Jwt.tokenToBytes(
+			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc"
+		);
+		expect(Converter.bytesToUtf8(signingBytes)).toEqual(
+			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0"
+		);
+		expect(Converter.bytesToBase64Url(signature)).toEqual(
+			"6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc"
+		);
+	});
+
+	test("can convert signing bytes and signature bytes to token", async () => {
+		const token = Jwt.tokenFromBytes(
+			Converter.utf8ToBytes(
+				"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0"
+			),
+			Converter.base64UrlToBytes("6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc")
+		);
+		expect(token).toEqual(
+			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTYiLCJpYXQiOjEwMDAwMDAwMH0.6zW3IrkPpisqfnBQdv79hX_em32FAmil3qp3aCDpUSc"
+		);
+	});
 });

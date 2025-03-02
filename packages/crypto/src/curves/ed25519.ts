@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { ed25519 } from "@noble/curves/ed25519";
-import { GeneralError, Guards } from "@twin.org/core";
+import { GeneralError, Guards, Uint8ArrayHelper } from "@twin.org/core";
 import { nameof } from "@twin.org/nameof";
 
 /**
@@ -89,5 +89,29 @@ export class Ed25519 {
 		} catch {
 			return false;
 		}
+	}
+
+	/**
+	 * Convert a private key in PKCS8 format.
+	 * @param privateKey The private key to convert.
+	 * @returns The private key in PKCS8 format.
+	 */
+	public static async privateKeyToPKCS8(privateKey: Uint8Array): Promise<CryptoKey> {
+		Guards.uint8Array(Ed25519._CLASS_NAME, nameof(privateKey), privateKey);
+
+		if (privateKey.length !== Ed25519.PRIVATE_KEY_SIZE) {
+			throw new GeneralError(Ed25519._CLASS_NAME, "privateKeyLength", {
+				requiredSize: Ed25519.PRIVATE_KEY_SIZE,
+				actualSize: privateKey.length
+			});
+		}
+
+		// crypto.subtle.importKey does not support Ed25519 keys in raw format.
+		// We need to convert the key to PKCS8 format before importing.
+		// The PKCS8 format is the raw key prefixed with the ASN.1 sequence for an Ed25519 private key.
+		// The ASN.1 sequence is 48 46 02 01 00 30 05 06 03 2b 65 70 04 20 04 20
+		const pkcs8Prefix = new Uint8Array([48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 112, 4, 34, 4, 32]); // 0x302e020100300506032b657004220420
+		const fullKey = Uint8ArrayHelper.concat([pkcs8Prefix, privateKey]);
+		return crypto.subtle.importKey("pkcs8", fullKey, "Ed25519", false, ["sign"]);
 	}
 }

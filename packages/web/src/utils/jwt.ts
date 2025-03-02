@@ -1,6 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Converter, GeneralError, Guards, Is, Uint8ArrayHelper } from "@twin.org/core";
+import { Converter, GeneralError, Guards, Is, ObjectHelper } from "@twin.org/core";
+import { Ed25519 } from "@twin.org/crypto";
 import { nameof } from "@twin.org/nameof";
 import { jwtVerify, SignJWT } from "jose";
 import type { IJwtHeader } from "../models/IJwtHeader";
@@ -209,21 +210,12 @@ export class Jwt {
 		const signer = new SignJWT(payload);
 		signer.setProtectedHeader(header);
 
+		let finalKey = key;
 		if (header.alg === "EdDSA" && Is.uint8Array(key)) {
-			// crypto.subtle.importKey does not support Ed25519 keys in raw format.
-			// We need to convert the key to PKCS8 format before importing.
-			// The PKCS8 format is the raw key prefixed with the ASN.1 sequence for an Ed25519 private key.
-			// The ASN.1 sequence is 48 46 02 01 00 30 05 06 03 2b 65 70 04 20 04 20
-			const pkcs8Prefix = new Uint8Array([
-				48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 112, 4, 34, 4, 32
-			]); // 0x302e020100300506032b657004220420
-			const pkcs8PrivateKey = Uint8ArrayHelper.concat([pkcs8Prefix, key]);
-			const imported = await crypto.subtle.importKey("pkcs8", pkcs8PrivateKey, "Ed25519", false, [
-				"sign"
-			]);
-			return signer.sign(imported);
+			// Jose does not support Ed25519 keys in raw format, so we need to convert it to PKCS8.
+			finalKey = await Ed25519.privateKeyToPKCS8(key);
 		}
-		return signer.sign(key);
+		return signer.sign(finalKey);
 	}
 
 	/**
@@ -259,10 +251,13 @@ export class Jwt {
 	 * @param payload The payload.
 	 * @returns The bytes to sign.
 	 */
-	public static createSignBytes<T extends IJwtHeader, U extends IJwtPayload>(
+	public static toSigningBytes<T extends IJwtHeader, U extends IJwtPayload>(
 		header: T,
 		payload: U
 	): Uint8Array {
+		Guards.object<T>(Jwt._CLASS_NAME, nameof(header), header);
+		Guards.object<U>(Jwt._CLASS_NAME, nameof(payload), payload);
+
 		const segments: string[] = [];
 
 		const headerBytes = Converter.utf8ToBytes(JSON.stringify(header));
@@ -275,16 +270,72 @@ export class Jwt {
 	}
 
 	/**
-	 * Create token from bytes and signature.
-	 * @param signedBytes The signed bytes.
+	 * Create header and payload from signing bytes.
+	 * @param signingBytes The signing bytes from a token.
+	 * @returns The header and payload.
+	 * @throws If the signing bytes are invalid
+	 */
+	public static fromSigningBytes<T extends IJwtHeader, U extends IJwtPayload>(
+		signingBytes: Uint8Array
+	): {
+		header: T;
+		payload: U;
+	} {
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(signingBytes), signingBytes);
+
+		const segments = Converter.bytesToUtf8(signingBytes).split(".");
+		if (segments.length !== 2) {
+			throw new GeneralError(Jwt._CLASS_NAME, "invalidSigningBytes");
+		}
+
+		const headerBytes = Converter.base64UrlToBytes(segments[0]);
+		const payloadBytes = Converter.base64UrlToBytes(segments[1]);
+
+		return {
+			header: ObjectHelper.fromBytes<T>(headerBytes),
+			payload: ObjectHelper.fromBytes<U>(payloadBytes)
+		};
+	}
+
+	/**
+	 * Convert signed bytes and signature bytes to token.
+	 * @param signingBytes The signed bytes.
 	 * @param signature The signature.
 	 * @returns The token.
 	 */
-	public static createTokenFromBytes(signedBytes: Uint8Array, signature: Uint8Array): string {
-		const signedBytesUtf8 = Converter.bytesToUtf8(signedBytes);
+	public static tokenFromBytes(signingBytes: Uint8Array, signature: Uint8Array): string {
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(signingBytes), signingBytes);
+		Guards.uint8Array(Jwt._CLASS_NAME, nameof(signature), signature);
+		const signedBytesUtf8 = Converter.bytesToUtf8(signingBytes);
 		const signatureBase64 = Converter.bytesToBase64Url(signature);
-
 		return `${signedBytesUtf8}.${signatureBase64}`;
+	}
+
+	/**
+	 * Convert the token to signing bytes and signature bytes.
+	 * @param token The token to convert to bytes.
+	 * @returns The decoded bytes.
+	 * @throws If the token is invalid.
+	 */
+	public static tokenToBytes(token: string): {
+		signingBytes: Uint8Array;
+		signature: Uint8Array;
+	} {
+		Guards.stringValue(Jwt._CLASS_NAME, nameof(token), token);
+
+		const segments: string[] = token.split(".");
+
+		if (segments.length !== 3) {
+			throw new GeneralError(Jwt._CLASS_NAME, "invalidTokenParts");
+		}
+
+		const signingBytes = Converter.utf8ToBytes(`${segments[0]}.${segments[1]}`);
+		const signature = Converter.base64UrlToBytes(segments[2]);
+
+		return {
+			signingBytes,
+			signature
+		};
 	}
 
 	/**

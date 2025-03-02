@@ -298,9 +298,9 @@ True if the signature was verified.
 
 ***
 
-### createSignBytes()
+### toSigningBytes()
 
-> `static` **createSignBytes**\<`T`, `U`\>(`header`, `payload`): `Uint8Array`
+> `static` **toSigningBytes**\<`T`, `U`\>(`header`, `payload`): `Uint8Array`
 
 Create bytes for signing from header and payload.
 
@@ -332,15 +332,55 @@ The bytes to sign.
 
 ***
 
-### createTokenFromBytes()
+### fromSigningBytes()
 
-> `static` **createTokenFromBytes**(`signedBytes`, `signature`): `string`
+> `static` **fromSigningBytes**\<`T`, `U`\>(`signingBytes`): `object`
 
-Create token from bytes and signature.
+Create header and payload from signing bytes.
+
+#### Type Parameters
+
+• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
-##### signedBytes
+##### signingBytes
+
+`Uint8Array`
+
+The signing bytes from a token.
+
+#### Returns
+
+`object`
+
+The header and payload.
+
+##### header
+
+> **header**: `T`
+
+##### payload
+
+> **payload**: `U`
+
+#### Throws
+
+If the signing bytes are invalid
+
+***
+
+### tokenFromBytes()
+
+> `static` **tokenFromBytes**(`signingBytes`, `signature`): `string`
+
+Convert signed bytes and signature bytes to token.
+
+#### Parameters
+
+##### signingBytes
 
 `Uint8Array`
 
@@ -357,3 +397,37 @@ The signature.
 `string`
 
 The token.
+
+***
+
+### tokenToBytes()
+
+> `static` **tokenToBytes**(`token`): `object`
+
+Convert the token to signing bytes and signature bytes.
+
+#### Parameters
+
+##### token
+
+`string`
+
+The token to convert to bytes.
+
+#### Returns
+
+`object`
+
+The decoded bytes.
+
+##### signingBytes
+
+> **signingBytes**: `Uint8Array`
+
+##### signature
+
+> **signature**: `Uint8Array`
+
+#### Throws
+
+If the token is invalid.
