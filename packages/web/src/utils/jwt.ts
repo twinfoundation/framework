@@ -222,7 +222,7 @@ export class Jwt {
 	 * The default verifier for the JWT.
 	 * @param token The token to verify.
 	 * @param key The key to verify with.
-	 * @returns True if the signature was verified.
+	 * @returns The header and payload if verification successful.
 	 */
 	public static async defaultVerifier<T extends IJwtHeader, U extends IJwtPayload>(
 		token: string,
