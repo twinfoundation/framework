@@ -107,7 +107,7 @@ export class Is {
 		return (
 			Is.stringValue(value) &&
 			// eslint-disable-next-line unicorn/better-regex
-			/^(?:[A-Za-z0-9-_]{4})*(?:[A-Za-z0-9-_]{2}==|[A-Za-z0-9-_]{3}=)?$/.test(value)
+			/^([A-Za-z0-9-_])*$/.test(value)
 		);
 	}
 

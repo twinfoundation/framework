@@ -73,4 +73,19 @@ describe("Jwk", () => {
 			x: "5zTqbCtiV95yNV5HKqBaTEh-a0Y8Ap7TBt8vAbVja1g"
 		});
 	});
+
+	test("can convert jwk to raw keys", async () => {
+		const bytes = await Jwk.toRaw({
+			alg: "EdDSA",
+			crv: "Ed25519",
+			kty: "OKP",
+			use: "enc",
+			d: "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqo",
+			x: "5zTqbCtiV95yNV5HKqBaTEh-a0Y8Ap7TBt8vAbVja1g"
+		});
+		const privateKey = new Uint8Array(32).fill(170);
+		const publicKey = Ed25519.publicKeyFromPrivateKey(privateKey);
+		expect(bytes?.publicKey).toEqual(publicKey);
+		expect(bytes?.privateKey).toEqual(privateKey);
+	});
 });

@@ -139,12 +139,16 @@ describe("Is", () => {
 		expect(Is.stringBase64Url("!")).toEqual(false);
 	});
 
-	test("stringBase64 can fail with base64 string", () => {
+	test("stringBase64Url can fail with base64 string", () => {
 		expect(Is.stringBase64Url("Pio6bkd2KmQpc3I+VUc6IGE2bnI/MWlfXFw=")).toEqual(false);
 	});
 
-	test("stringBase64 can succeed with base64 url string", () => {
-		expect(Is.stringBase64Url("Pio6bkd2KmQpc3I-VUc6IGE2bnI_MWlfXFw=")).toEqual(true);
+	test("stringBase64Url can fail with base64 url string ending with =", () => {
+		expect(Is.stringBase64Url("Pio6bkd2KmQpc3I-VUc6IGE2bnI_MWlfXFw=")).toEqual(false);
+	});
+
+	test("stringBase64Url can succeed with base64 url string", () => {
+		expect(Is.stringBase64Url("Pio6bkd2KmQpc3I-VUc6IGE2bnI_MWlfXFw")).toEqual(true);
 	});
 
 	test("stringHex can fail if value is an empty string", () => {

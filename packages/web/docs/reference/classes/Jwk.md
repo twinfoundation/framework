@@ -77,3 +77,25 @@ The private key to use.
 `Promise`\<[`IJwk`](../interfaces/IJwk.md)\>
 
 The crypto key.
+
+***
+
+### toRaw()
+
+> `static` **toRaw**(`jwk`): `Promise`\<\{ `publicKey`: `Uint8Array`; `privateKey`: `Uint8Array`; \}\>
+
+Convert the JWK to raw keys.
+
+#### Parameters
+
+##### jwk
+
+[`IJwk`](../interfaces/IJwk.md)
+
+The JWK to convert to raw.
+
+#### Returns
+
+`Promise`\<\{ `publicKey`: `Uint8Array`; `privateKey`: `Uint8Array`; \}\>
+
+The crypto key.

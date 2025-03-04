@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Converter, GeneralError, Guards } from "@twin.org/core";
+import { Converter, GeneralError, Guards, Is } from "@twin.org/core";
 import { Ed25519 } from "@twin.org/crypto";
 import { nameof } from "@twin.org/nameof";
 import { importJWK } from "jose";
@@ -71,5 +71,32 @@ export class Jwk {
 		};
 
 		return jwk;
+	}
+
+	/**
+	 * Convert the JWK to raw keys.
+	 * @param jwk The JWK to convert to raw.
+	 * @returns The crypto key.
+	 */
+	public static async toRaw(jwk: IJwk): Promise<{
+		publicKey?: Uint8Array;
+		privateKey?: Uint8Array;
+	}> {
+		Guards.object<IJwk>(Jwk._CLASS_NAME, nameof(jwk), jwk);
+
+		let publicKey: Uint8Array | undefined;
+		let privateKey: Uint8Array | undefined;
+
+		if (Is.stringBase64Url(jwk.x)) {
+			publicKey = Converter.base64UrlToBytes(jwk.x);
+		}
+		if (Is.stringBase64Url(jwk.d)) {
+			privateKey = Converter.base64UrlToBytes(jwk.d);
+		}
+
+		return {
+			publicKey,
+			privateKey
+		};
 	}
 }
