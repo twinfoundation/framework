@@ -1,8 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { GeneralError, Guards } from "@twin.org/core";
+import { GeneralError, Guards, Is } from "@twin.org/core";
 import { nameof } from "@twin.org/nameof";
 import { CompactSign, flattenedVerify } from "jose";
+import type { JwkCryptoKey } from "../models/jwkCryptoKey";
 
 /**
  * Class to handle JSON Web Signatures.
@@ -18,16 +19,21 @@ export class Jws {
 	 * Create a signature.
 	 * @param privateKey The private key to use.
 	 * @param hash The hash to sign.
+	 * @param algOverride An optional algorithm override.
 	 * @returns The signature.
 	 */
-	public static async create(privateKey: CryptoKey, hash: Uint8Array): Promise<string> {
+	public static async create(
+		privateKey: JwkCryptoKey,
+		hash: Uint8Array,
+		algOverride?: string
+	): Promise<string> {
 		Guards.defined(Jws._CLASS_NAME, nameof(privateKey), privateKey);
 		Guards.uint8Array(Jws._CLASS_NAME, nameof(hash), hash);
 
 		try {
 			const jws = await new CompactSign(hash)
 				.setProtectedHeader({
-					alg: privateKey.algorithm.name,
+					alg: Is.uint8Array(privateKey) ? (algOverride ?? "EdDSA") : privateKey.algorithm.name,
 					b64: false,
 					crit: ["b64"]
 				})
@@ -48,7 +54,7 @@ export class Jws {
 	 */
 	public static async verify(
 		jws: string,
-		publicKey: CryptoKey,
+		publicKey: JwkCryptoKey,
 		hash: Uint8Array
 	): Promise<boolean> {
 		Guards.stringValue(Jws._CLASS_NAME, nameof(jws), jws);

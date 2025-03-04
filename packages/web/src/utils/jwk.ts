@@ -37,25 +37,21 @@ export class Jwk {
 	 * @param privateKey The private key to use.
 	 * @returns The crypto key.
 	 */
-	public static async fromEd25519Private(privateKey: Uint8Array): Promise<CryptoKey> {
+	public static async fromEd25519Private(privateKey: Uint8Array): Promise<IJwk> {
 		Guards.uint8Array(Jwk._CLASS_NAME, nameof(privateKey), privateKey);
 
-		try {
-			const publicKey = Ed25519.publicKeyFromPrivateKey(privateKey);
+		const publicKey = Ed25519.publicKeyFromPrivateKey(privateKey);
 
-			const jwk: IJwk = {
-				kty: "OKP",
-				use: "sig",
-				alg: "EdDSA",
-				crv: "Ed25519",
-				x: Converter.bytesToBase64Url(publicKey),
-				d: Converter.bytesToBase64Url(privateKey)
-			};
+		const jwk: IJwk = {
+			kty: "OKP",
+			use: "enc",
+			alg: "EdDSA",
+			crv: "Ed25519",
+			x: Converter.bytesToBase64Url(publicKey),
+			d: Converter.bytesToBase64Url(privateKey)
+		};
 
-			return (await importJWK(jwk)) as CryptoKey;
-		} catch (err) {
-			throw new GeneralError(Jwk._CLASS_NAME, "jwkImportFailed", undefined, err);
-		}
+		return jwk;
 	}
 
 	/**
@@ -63,21 +59,17 @@ export class Jwk {
 	 * @param publicKey The private key to use.
 	 * @returns The crypto key.
 	 */
-	public static async fromEd25519Public(publicKey: Uint8Array): Promise<CryptoKey> {
+	public static async fromEd25519Public(publicKey: Uint8Array): Promise<IJwk> {
 		Guards.uint8Array(Jwk._CLASS_NAME, nameof(publicKey), publicKey);
 
-		try {
-			const jwk: IJwk = {
-				kty: "OKP",
-				use: "sig",
-				alg: "EdDSA",
-				crv: "Ed25519",
-				x: Converter.bytesToBase64Url(publicKey)
-			};
+		const jwk: IJwk = {
+			kty: "OKP",
+			use: "sig",
+			alg: "EdDSA",
+			crv: "Ed25519",
+			x: Converter.bytesToBase64Url(publicKey)
+		};
 
-			return (await importJWK(jwk)) as CryptoKey;
-		} catch (err) {
-			throw new GeneralError(Jwk._CLASS_NAME, "jwkImportFailed", undefined, err);
-		}
+		return jwk;
 	}
 }

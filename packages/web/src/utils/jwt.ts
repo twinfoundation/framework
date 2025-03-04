@@ -211,7 +211,7 @@ export class Jwt {
 		let finalKey = key;
 		if (header.alg === "EdDSA" && Is.uint8Array(key)) {
 			// Jose does not support Ed25519 keys in raw format, so we need to convert it to PKCS8.
-			finalKey = await Ed25519.privateKeyToPKCS8(key);
+			finalKey = await Ed25519.privateKeyToPkcs8(key);
 		}
 		return signer.sign(finalKey);
 	}

@@ -16,7 +16,7 @@ Class to handle JSON Web Signatures.
 
 ### create()
 
-> `static` **create**(`privateKey`, `hash`): `Promise`\<`string`\>
+> `static` **create**(`privateKey`, `hash`, `algOverride`?): `Promise`\<`string`\>
 
 Create a signature.
 
@@ -24,7 +24,7 @@ Create a signature.
 
 ##### privateKey
 
-`CryptoKey`
+[`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)
 
 The private key to use.
 
@@ -33,6 +33,12 @@ The private key to use.
 `Uint8Array`
 
 The hash to sign.
+
+##### algOverride?
+
+`string`
+
+An optional algorithm override.
 
 #### Returns
 
@@ -58,7 +64,7 @@ The signature to verify.
 
 ##### publicKey
 
-`CryptoKey`
+[`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)
 
 The public key to verify the signature with.
 

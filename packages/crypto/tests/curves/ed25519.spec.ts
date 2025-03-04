@@ -73,13 +73,16 @@ describe("Ed25519", () => {
 		}
 	});
 
-	test("Can convert a private key to PKCS8 format", async () => {
+	test("Can convert a private key to PKCS8 format and back again", async () => {
 		const privateKey = new Uint8Array(32).fill(170);
 
-		const pkcs8 = await Ed25519.privateKeyToPKCS8(privateKey);
-		expect(pkcs8.extractable).toEqual(false);
+		const pkcs8 = await Ed25519.privateKeyToPkcs8(privateKey);
+		expect(pkcs8.extractable).toEqual(true);
 		expect(pkcs8.type).toEqual("private");
 		expect(pkcs8.algorithm).toEqual({ name: "Ed25519" });
 		expect(pkcs8.usages).toEqual(["sign"]);
+
+		const importedPrivateKey = await Ed25519.pkcs8ToPrivateKey(pkcs8);
+		expect(importedPrivateKey).toEqual(privateKey);
 	});
 });

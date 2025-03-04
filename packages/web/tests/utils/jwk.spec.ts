@@ -50,20 +50,27 @@ describe("Jwk", () => {
 		const privateKey = new Uint8Array(32).fill(170);
 		const publicKey = Ed25519.publicKeyFromPrivateKey(privateKey);
 
-		const importedKey = (await Jwk.fromEd25519Public(publicKey)) as CryptoKey;
-		expect(importedKey.extractable).toEqual(true);
-		expect(importedKey.type).toEqual("public");
-		expect(importedKey.algorithm).toEqual({ name: "Ed25519" });
-		expect(importedKey.usages).toEqual(["verify"]);
+		const jwk = await Jwk.fromEd25519Public(publicKey);
+		expect(jwk).toEqual({
+			alg: "EdDSA",
+			crv: "Ed25519",
+			kty: "OKP",
+			use: "sig",
+			x: "5zTqbCtiV95yNV5HKqBaTEh-a0Y8Ap7TBt8vAbVja1g"
+		});
 	});
 
 	test("can import an Ed25519 private key", async () => {
 		const privateKey = new Uint8Array(32).fill(170);
 
-		const importedKey = (await Jwk.fromEd25519Private(privateKey)) as CryptoKey;
-		expect(importedKey.extractable).toEqual(false);
-		expect(importedKey.type).toEqual("private");
-		expect(importedKey.algorithm).toEqual({ name: "Ed25519" });
-		expect(importedKey.usages).toEqual(["sign"]);
+		const jwk = await Jwk.fromEd25519Private(privateKey);
+		expect(jwk).toEqual({
+			alg: "EdDSA",
+			crv: "Ed25519",
+			kty: "OKP",
+			use: "enc",
+			d: "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqo",
+			x: "5zTqbCtiV95yNV5HKqBaTEh-a0Y8Ap7TBt8vAbVja1g"
+		});
 	});
 });
