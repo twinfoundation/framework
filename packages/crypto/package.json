@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/crypto",
-	"version": "0.0.1-next.45",
+	"version": "0.0.1-next.46",
 	"description": "Contains helper methods and classes which implement cryptographic functions",
 	"repository": {
 		"type": "git",
@@ -30,7 +30,7 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.45",
+		"@twin.org/core": "0.0.1-next.46",
 		"@twin.org/nameof": "next",
 		"@noble/ciphers": "1.2.1",
 		"@noble/curves": "1.8.1",

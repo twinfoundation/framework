@@ -142,6 +142,7 @@ export class EntitySchemaHelper {
 			}
 
 			const value = entity[prop.property];
+
 			if (Is.empty(value)) {
 				// If the value is empty but the property is not optional, then it's invalid
 				if (!prop.optional) {
@@ -152,13 +153,21 @@ export class EntitySchemaHelper {
 				}
 			} else if (prop.type === "integer" && Is.integer(value)) {
 				// If the schema expects an integer and the value is an integer, then it's valid
-			} else if (prop.type === "object" && Is.object(value)) {
-				// If the schema expects an object and the value is an object, then it's valid
+			} else if (
+				prop.type === "object" &&
+				(Is.object(value) ||
+					Is.array(value) ||
+					Is.string(value) ||
+					Is.number(value) ||
+					Is.boolean(value) ||
+					Is.null(value))
+			) {
+				// If the schema expects an object and the value is anything that can be JSON serialised, then it's valid
 			} else if (prop.type === "array" && Is.array(value)) {
 				// If the schema expects an array and the value is an array, then it's valid
 			} else if (prop.type !== typeof value) {
 				// The schema type does not match the value type
-				throw new GeneralError(EntitySchemaHelper._CLASS_NAME, "invalidEntity", {
+				throw new GeneralError(EntitySchemaHelper._CLASS_NAME, "invalidEntityProperty", {
 					value,
 					property: prop.property,
 					type: prop.type

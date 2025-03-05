@@ -46,7 +46,7 @@ export class TestEntity {
 	 * An object value.
 	 */
 	@property({ type: "object", optional: true })
-	public objectValue?: { foo: string; bar: number };
+	public objectValue?: unknown;
 
 	/**
 	 * A non optional string value.
@@ -82,7 +82,7 @@ interface ITestEntity {
 	/**
 	 * An object value.
 	 */
-	objectValue?: { foo: string; bar: number };
+	objectValue?: unknown;
 
 	/**
 	 * A non optional string value.
@@ -315,7 +315,7 @@ describe("EntitySchemaHelper", () => {
 		).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "entitySchemaHelper.invalidEntity",
+				message: "entitySchemaHelper.invalidEntityProperty",
 				properties: { value: 111, property: "stringValue", type: "string" }
 			})
 		);
@@ -339,7 +339,7 @@ describe("EntitySchemaHelper", () => {
 		).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "entitySchemaHelper.invalidEntity",
+				message: "entitySchemaHelper.invalidEntityProperty",
 				properties: { value: "aaa", property: "numberValue", type: "number" }
 			})
 		);
@@ -363,7 +363,7 @@ describe("EntitySchemaHelper", () => {
 		).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "entitySchemaHelper.invalidEntity",
+				message: "entitySchemaHelper.invalidEntityProperty",
 				properties: { value: 123.45, property: "integerValue", type: "integer" }
 			})
 		);
@@ -378,7 +378,7 @@ describe("EntitySchemaHelper", () => {
 		).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "entitySchemaHelper.invalidEntity",
+				message: "entitySchemaHelper.invalidEntityProperty",
 				properties: { value: "aaa", property: "integerValue", type: "integer" }
 			})
 		);
@@ -402,7 +402,7 @@ describe("EntitySchemaHelper", () => {
 		).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "entitySchemaHelper.invalidEntity",
+				message: "entitySchemaHelper.invalidEntityProperty",
 				properties: { value: "aaa", property: "booleanValue", type: "boolean" }
 			})
 		);
@@ -426,13 +426,13 @@ describe("EntitySchemaHelper", () => {
 		).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "entitySchemaHelper.invalidEntity",
+				message: "entitySchemaHelper.invalidEntityProperty",
 				properties: { value: "aaa", property: "arrayValue", type: "array" }
 			})
 		);
 	});
 
-	test("can validate a schema with an object property", async () => {
+	test("can validate a schema with an object property containing object", async () => {
 		expect(
 			EntitySchemaHelper.validateEntity<ITestEntity>(
 				{ objectValue: { foo: "", bar: 123 }, nonOptionalString: "" },
@@ -441,17 +441,53 @@ describe("EntitySchemaHelper", () => {
 		).toBeUndefined();
 	});
 
+	test("can validate a schema with an object property containing string", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ objectValue: "foo", nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
+	test("can validate a schema with an object property containing number", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ objectValue: 123, nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
+	test("can validate a schema with an object property containing boolean", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ objectValue: true, nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
+	test("can validate a schema with an object property containing array", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ objectValue: [123], nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
 	test("can fail to validate a schema with an object property", async () => {
 		expect(() =>
 			EntitySchemaHelper.validateEntity(
-				{ objectValue: "aaa" } as unknown as ITestEntity,
+				{ objectValue: 1n, nonOptionalString: "" } as unknown as ITestEntity,
 				testEntitySchema
 			)
 		).toThrow(
 			expect.objectContaining({
 				name: "GeneralError",
-				message: "entitySchemaHelper.invalidEntity",
-				properties: { value: "aaa", property: "objectValue", type: "object" }
+				message: "entitySchemaHelper.invalidEntityProperty",
+				properties: { value: 1n, property: "objectValue", type: "object" }
 			})
 		);
 	});
