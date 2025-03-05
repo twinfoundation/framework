@@ -113,4 +113,64 @@ export class EntitySchemaHelper {
 
 		return finalSortKeys;
 	}
+
+	/**
+	 * Validate the entity against the schema.
+	 * @param entity The entity to validate.
+	 * @param entitySchema The schema to validate against.
+	 * @throws If the entity is invalid.
+	 */
+	public static validateEntity<T>(entity: T, entitySchema: IEntitySchema<T>): void {
+		Guards.object(EntitySchemaHelper._CLASS_NAME, nameof(entity), entity);
+		Guards.object<IEntitySchema<T>>(
+			EntitySchemaHelper._CLASS_NAME,
+			nameof(entitySchema),
+			entitySchema
+		);
+
+		const properties = entitySchema.properties ?? [];
+		if (properties.length === 0 && Is.objectValue(entity)) {
+			throw new GeneralError(EntitySchemaHelper._CLASS_NAME, "invalidEntityProperties");
+		}
+
+		const allKeys = Object.keys(entity);
+
+		for (const prop of properties) {
+			const idx = allKeys.indexOf(prop.property as string);
+			if (idx !== -1) {
+				allKeys.splice(idx, 1);
+			}
+
+			const value = entity[prop.property];
+			if (Is.empty(value)) {
+				// If the value is empty but the property is not optional, then it's invalid
+				if (!prop.optional) {
+					throw new GeneralError(EntitySchemaHelper._CLASS_NAME, "invalidOptional", {
+						property: prop.property,
+						type: prop.type
+					});
+				}
+			} else if (prop.type === "integer" && Is.integer(value)) {
+				// If the schema expects an integer and the value is an integer, then it's valid
+			} else if (prop.type === "object" && Is.object(value)) {
+				// If the schema expects an object and the value is an object, then it's valid
+			} else if (prop.type === "array" && Is.array(value)) {
+				// If the schema expects an array and the value is an array, then it's valid
+			} else if (prop.type !== typeof value) {
+				// The schema type does not match the value type
+				throw new GeneralError(EntitySchemaHelper._CLASS_NAME, "invalidEntity", {
+					value,
+					property: prop.property,
+					type: prop.type
+				});
+			}
+		}
+
+		if (allKeys.length > 0) {
+			// There are keys in the entity that are not in the schema
+			throw new GeneralError(EntitySchemaHelper._CLASS_NAME, "invalidEntityKeys", {
+				keys: allKeys.join(", ")
+			});
+		}
+	}
 }

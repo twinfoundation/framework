@@ -125,3 +125,37 @@ The override sort keys.
 `undefined` \| [`IEntitySort`](../interfaces/IEntitySort.md)\<`T`\>[]
 
 The finalised sort keys.
+
+***
+
+### validateEntity()
+
+> `static` **validateEntity**\<`T`\>(`entity`, `entitySchema`): `void`
+
+Validate the entity against the schema.
+
+#### Type Parameters
+
+• **T**
+
+#### Parameters
+
+##### entity
+
+`T`
+
+The entity to validate.
+
+##### entitySchema
+
+[`IEntitySchema`](../interfaces/IEntitySchema.md)\<`T`\>
+
+The schema to validate against.
+
+#### Returns
+
+`void`
+
+#### Throws
+
+If the entity is invalid.

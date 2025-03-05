@@ -1,9 +1,96 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 import { I18n } from "@twin.org/core";
+import { entity } from "../../src/decorators/entityDecorator";
+import { property } from "../../src/decorators/propertyDecorator";
 import type { IEntitySchema } from "../../src/models/IEntitySchema";
 import { SortDirection } from "../../src/models/sortDirection";
 import { EntitySchemaHelper } from "../../src/utils/entitySchemaHelper";
+
+/**
+ * Test interface for validation.
+ */
+@entity()
+export class TestEntity {
+	/**
+	 * A string value.
+	 */
+	@property({ type: "string", optional: true })
+	public stringValue?: string;
+
+	/**
+	 * A number value.
+	 */
+	@property({ type: "number", optional: true })
+	public numberValue?: number;
+
+	/**
+	 * An integer value.
+	 */
+	@property({ type: "integer", optional: true })
+	public integerValue?: number;
+
+	/**
+	 * A boolean value.
+	 */
+	@property({ type: "boolean", optional: true })
+	public booleanValue?: boolean;
+
+	/**
+	 * An array value.
+	 */
+	@property({ type: "array", optional: true })
+	public arrayValue?: string[];
+
+	/**
+	 * An object value.
+	 */
+	@property({ type: "object", optional: true })
+	public objectValue?: { foo: string; bar: number };
+
+	/**
+	 * A non optional string value.
+	 */
+	@property({ type: "string", optional: false })
+	public nonOptionalString!: string;
+}
+
+/**
+ * Test interface for validation.
+ */
+interface ITestEntity {
+	/**
+	 * A string value.
+	 */
+	stringValue?: string;
+	/**
+	 * A number value.
+	 */
+	numberValue?: number;
+	/**
+	 * An integer value.
+	 */
+	integerValue?: number;
+	/**
+	 * A boolean value.
+	 */
+	booleanValue?: boolean;
+	/**
+	 * An array value.
+	 */
+	arrayValue?: string[];
+	/**
+	 * An object value.
+	 */
+	objectValue?: { foo: string; bar: number };
+
+	/**
+	 * A non optional string value.
+	 */
+	nonOptionalString: string;
+}
+
+const testEntitySchema: IEntitySchema<ITestEntity> = EntitySchemaHelper.getSchema(TestEntity);
 
 describe("EntitySchemaHelper", () => {
 	beforeAll(async () => {
@@ -200,5 +287,205 @@ describe("EntitySchemaHelper", () => {
 		expect(result?.length).toEqual(1);
 		expect(result?.[0].property).toEqual("id2");
 		expect(result?.[0].sortDirection).toEqual(SortDirection.Ascending);
+	});
+
+	test("can validate an empty object against an empty schema", async () => {
+		const schema: IEntitySchema = {
+			type: "foo"
+		};
+
+		expect(EntitySchemaHelper.validateEntity({}, schema)).toBeUndefined();
+	});
+
+	test("can validate a schema with a string property", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ stringValue: "", nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
+	test("can fail to validate a schema with a string property", async () => {
+		expect(() =>
+			EntitySchemaHelper.validateEntity(
+				{ stringValue: 111 } as unknown as ITestEntity,
+				testEntitySchema
+			)
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "entitySchemaHelper.invalidEntity",
+				properties: { value: 111, property: "stringValue", type: "string" }
+			})
+		);
+	});
+
+	test("can validate a schema with a number property", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ numberValue: 12.56, nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
+	test("can fail to validate a schema with a number property", async () => {
+		expect(() =>
+			EntitySchemaHelper.validateEntity(
+				{ numberValue: "aaa" } as unknown as ITestEntity,
+				testEntitySchema
+			)
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "entitySchemaHelper.invalidEntity",
+				properties: { value: "aaa", property: "numberValue", type: "number" }
+			})
+		);
+	});
+
+	test("can validate a schema with an integer property", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ integerValue: 12, nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
+	test("can fail to validate a schema with an integer property with floating point", async () => {
+		expect(() =>
+			EntitySchemaHelper.validateEntity(
+				{ integerValue: 123.45 } as unknown as ITestEntity,
+				testEntitySchema
+			)
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "entitySchemaHelper.invalidEntity",
+				properties: { value: 123.45, property: "integerValue", type: "integer" }
+			})
+		);
+	});
+
+	test("can fail to validate a schema with an integer property", async () => {
+		expect(() =>
+			EntitySchemaHelper.validateEntity(
+				{ integerValue: "aaa" } as unknown as ITestEntity,
+				testEntitySchema
+			)
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "entitySchemaHelper.invalidEntity",
+				properties: { value: "aaa", property: "integerValue", type: "integer" }
+			})
+		);
+	});
+
+	test("can validate a schema with a boolean property", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ booleanValue: true, nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
+	test("can fail to validate a schema with a number property", async () => {
+		expect(() =>
+			EntitySchemaHelper.validateEntity(
+				{ booleanValue: "aaa" } as unknown as ITestEntity,
+				testEntitySchema
+			)
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "entitySchemaHelper.invalidEntity",
+				properties: { value: "aaa", property: "booleanValue", type: "boolean" }
+			})
+		);
+	});
+
+	test("can validate a schema with an array property", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ arrayValue: [], nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
+	test("can fail to validate a schema with an array property", async () => {
+		expect(() =>
+			EntitySchemaHelper.validateEntity(
+				{ arrayValue: "aaa" } as unknown as ITestEntity,
+				testEntitySchema
+			)
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "entitySchemaHelper.invalidEntity",
+				properties: { value: "aaa", property: "arrayValue", type: "array" }
+			})
+		);
+	});
+
+	test("can validate a schema with an object property", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>(
+				{ objectValue: { foo: "", bar: 123 }, nonOptionalString: "" },
+				testEntitySchema
+			)
+		).toBeUndefined();
+	});
+
+	test("can fail to validate a schema with an object property", async () => {
+		expect(() =>
+			EntitySchemaHelper.validateEntity(
+				{ objectValue: "aaa" } as unknown as ITestEntity,
+				testEntitySchema
+			)
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "entitySchemaHelper.invalidEntity",
+				properties: { value: "aaa", property: "objectValue", type: "object" }
+			})
+		);
+	});
+
+	test("can validate a schema with a non optional property", async () => {
+		expect(
+			EntitySchemaHelper.validateEntity<ITestEntity>({ nonOptionalString: "" }, testEntitySchema)
+		).toBeUndefined();
+	});
+
+	test("can fail to validate a schema with an non optional property", async () => {
+		expect(() =>
+			EntitySchemaHelper.validateEntity({} as unknown as ITestEntity, testEntitySchema)
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "entitySchemaHelper.invalidOptional",
+				properties: { property: "nonOptionalString", type: "string" }
+			})
+		);
+	});
+
+	test("can fail if the entity has additional properties not in the schema", async () => {
+		expect(() =>
+			EntitySchemaHelper.validateEntity(
+				{ a: 1, b: 2, nonOptionalString: "" } as unknown as ITestEntity,
+				testEntitySchema
+			)
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "entitySchemaHelper.invalidEntityKeys",
+				properties: { keys: "a, b" }
+			})
+		);
 	});
 });

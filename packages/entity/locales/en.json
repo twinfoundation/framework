@@ -2,7 +2,11 @@
 	"error": {
 		"entitySchemaHelper": {
 			"noIsPrimary": "Property \"entitySchema.properties\" must contain a value with isPrimary set",
-			"multipleIsPrimary": "Property \"entitySchema.properties\" contains more than one property with isPrimary set"
+			"multipleIsPrimary": "Property \"entitySchema.properties\" contains more than one property with isPrimary set",
+			"invalidEntityProperties": "The schema has no properties defined, but the entity has properties",
+			"invalidEntity": "The entity value of \"{value}\" does not match the type \"{type}\" for property \"{property}\"",
+			"invalidOptional": "The entity property \"{property}\" of type \"{type}\" is not optional, but no value has been provided",
+			"invalidEntityKeys": "The entity had additional properties that are not in the schema, \"{keys}\""
 		}
 	}
 }
