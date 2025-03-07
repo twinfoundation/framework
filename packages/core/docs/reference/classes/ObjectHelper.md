@@ -62,7 +62,7 @@ Convert a bytes to an object.
 
 The bytes to convert to an object.
 
-`undefined` | `null` | `Uint8Array`
+`undefined` | `null` | `Uint8Array`\<`ArrayBufferLike`\>
 
 #### Returns
 
@@ -436,13 +436,13 @@ The object to remove the empty properties from.
 
 The options for the removal.
 
-###### removeUndefined
+###### removeUndefined?
 
 `boolean`
 
 Remove undefined properties, defaults to true.
 
-###### removeNull
+###### removeNull?
 
 `boolean`
 

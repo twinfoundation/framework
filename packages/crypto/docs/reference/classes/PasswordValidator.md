@@ -45,19 +45,19 @@ The list of failures to add to.
 
 Options to configure the testing.
 
-###### minLength
+###### minLength?
 
 `number`
 
 The minimum length of the password, defaults to 8.
 
-###### maxLength
+###### maxLength?
 
 `number`
 
 The minimum length of the password, defaults to 128.
 
-###### minPhraseLength
+###### minPhraseLength?
 
 `number`
 

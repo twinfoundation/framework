@@ -46,7 +46,7 @@ The directory for the locales, default to relative to the script.
 
 Additional options.
 
-###### overrideOutputWidth
+###### overrideOutputWidth?
 
 `number`
 

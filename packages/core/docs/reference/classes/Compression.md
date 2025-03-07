@@ -16,7 +16,7 @@ A class to handle compression.
 
 ### compress()
 
-> `static` **compress**(`bytes`, `type`): `Promise`\<`Uint8Array`\>
+> `static` **compress**(`bytes`, `type`): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 Compress bytes using GZIP.
 
@@ -36,7 +36,7 @@ The type of compression to use.
 
 #### Returns
 
-`Promise`\<`Uint8Array`\>
+`Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 The compressed bytes.
 
@@ -44,7 +44,7 @@ The compressed bytes.
 
 ### decompress()
 
-> `static` **decompress**(`compressedBytes`, `type`): `Promise`\<`Uint8Array`\>
+> `static` **decompress**(`compressedBytes`, `type`): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 Decompress a gzipped compressed byte array.
 
@@ -64,6 +64,6 @@ The type of compression to use.
 
 #### Returns
 
-`Promise`\<`Uint8Array`\>
+`Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 The decompressed bytes.

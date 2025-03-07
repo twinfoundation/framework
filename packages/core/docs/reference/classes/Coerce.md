@@ -254,7 +254,7 @@ TypeError If the value can not be coerced.
 
 ### uint8Array()
 
-> `static` **uint8Array**(`value`): `undefined` \| `Uint8Array`
+> `static` **uint8Array**(`value`): `undefined` \| `Uint8Array`\<`ArrayBufferLike`\>
 
 Coerce the value to a Uint8Array.
 
@@ -268,7 +268,7 @@ The value to coerce.
 
 #### Returns
 
-`undefined` \| `Uint8Array`
+`undefined` \| `Uint8Array`\<`ArrayBufferLike`\>
 
 The value if it can be coerced.
 

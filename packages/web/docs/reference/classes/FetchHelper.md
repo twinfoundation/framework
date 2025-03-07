@@ -44,7 +44,7 @@ The http method.
 
 Request to send to the endpoint.
 
-`string` | `Uint8Array`
+`string` | `Uint8Array`\<`ArrayBufferLike`\>
 
 ##### options?
 
@@ -114,7 +114,7 @@ The response.
 
 ### fetchBinary()
 
-> `static` **fetchBinary**\<`T`\>(`source`, `url`, `method`, `requestData`?, `options`?): `Promise`\<`Uint8Array` \| `T`\>
+> `static` **fetchBinary**\<`T`\>(`source`, `url`, `method`, `requestData`?, `options`?): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\> \| `T`\>
 
 Perform a request for binary data.
 
@@ -144,7 +144,7 @@ The http method.
 
 ##### requestData?
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBufferLike`\>
 
 Request to send to the endpoint.
 
@@ -156,7 +156,7 @@ Options for sending the requests.
 
 #### Returns
 
-`Promise`\<`Uint8Array` \| `T`\>
+`Promise`\<`Uint8Array`\<`ArrayBufferLike`\> \| `T`\>
 
 The response.
 

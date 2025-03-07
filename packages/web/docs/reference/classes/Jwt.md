@@ -96,7 +96,7 @@ The encoded token.
 
 ### decode()
 
-> `static` **decode**\<`T`, `U`\>(`token`): `Promise`\<\{ `header`: `T`; `payload`: `U`; `signature`: `Uint8Array`; \}\>
+> `static` **decode**\<`T`, `U`\>(`token`): `Promise`\<\{ `header`: `T`; `payload`: `U`; `signature`: `Uint8Array`\<`ArrayBufferLike`\>; \}\>
 
 Decode a token.
 
@@ -116,7 +116,7 @@ The token to decode.
 
 #### Returns
 
-`Promise`\<\{ `header`: `T`; `payload`: `U`; `signature`: `Uint8Array`; \}\>
+`Promise`\<\{ `header`: `T`; `payload`: `U`; `signature`: `Uint8Array`\<`ArrayBufferLike`\>; \}\>
 
 The decoded payload.
 

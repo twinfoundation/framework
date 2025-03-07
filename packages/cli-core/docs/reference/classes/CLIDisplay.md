@@ -26,7 +26,7 @@ The default output method for writing standard messages.
 
 The message to output.
 
-`string` | `Uint8Array`
+`string` | `Uint8Array`\<`ArrayBufferLike`\>
 
 #### Returns
 
@@ -46,7 +46,7 @@ The default output method for writing error messages.
 
 The message to output.
 
-`string` | `Uint8Array`
+`string` | `Uint8Array`\<`ArrayBufferLike`\>
 
 #### Returns
 

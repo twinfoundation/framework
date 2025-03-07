@@ -20,7 +20,7 @@ The output length.
 
 ##### key?
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBufferLike`\>
 
 Optional key for the hash.
 
@@ -70,7 +70,7 @@ The block to operate on.
 
 ##### key?
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBufferLike`\>
 
 Optional key for the hash.
 
@@ -98,7 +98,7 @@ The block to operate on.
 
 ##### key?
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBufferLike`\>
 
 Optional key for the hash.
 
@@ -126,7 +126,7 @@ The block to operate on.
 
 ##### key?
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBufferLike`\>
 
 Optional key for the hash.
 

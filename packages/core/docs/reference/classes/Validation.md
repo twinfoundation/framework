@@ -130,19 +130,19 @@ Optional i18n resource of the field name to display in the message.
 
 Additional options for the validation.
 
-###### format
+###### format?
 
 `RegExp` \| `"base64"` \| `"base58"` \| `"hex"`
 
 Specific format to check.
 
-###### minLength
+###### minLength?
 
 `number`
 
 The minimum length of the string.
 
-###### maxLength
+###### maxLength?
 
 `number`
 
@@ -192,13 +192,13 @@ Optional i18n resource of the field name to display in the message.
 
 Additional options for the validation.
 
-###### minLength
+###### minLength?
 
 `number`
 
 The minimum length of the string.
 
-###### maxLength
+###### maxLength?
 
 `number`
 
@@ -248,13 +248,13 @@ Optional i18n resource of the field name to display in the message.
 
 Additional options for the validation.
 
-###### minValue
+###### minValue?
 
 `number`
 
 The minimum value of the number.
 
-###### maxValue
+###### maxValue?
 
 `number`
 
@@ -304,13 +304,13 @@ Optional i18n resource of the field name to display in the message.
 
 Additional options for the validation.
 
-###### minValue
+###### minValue?
 
 `number`
 
 The minimum value of the integer.
 
-###### maxValue
+###### maxValue?
 
 `number`
 
@@ -360,13 +360,13 @@ Optional i18n resource of the field name to display in the message.
 
 Additional options for the validation.
 
-###### minValue
+###### minValue?
 
 `bigint`
 
 The minimum value of the bigint.
 
-###### maxValue
+###### maxValue?
 
 `bigint`
 
@@ -844,7 +844,7 @@ True if the value is one of the items in the options.
 
 ### uint8Array()
 
-> `static` **uint8Array**(`property`, `value`, `failures`, `fieldNameResource`?): `value is Uint8Array`
+> `static` **uint8Array**(`property`, `value`, `failures`, `fieldNameResource`?): `value is Uint8Array<ArrayBufferLike>`
 
 Is the property a Uint8Array.
 
@@ -876,7 +876,7 @@ Optional i18n resource of the field name to display in the message.
 
 #### Returns
 
-`value is Uint8Array`
+`value is Uint8Array<ArrayBufferLike>`
 
 True if the value is a Uint8Array.
 

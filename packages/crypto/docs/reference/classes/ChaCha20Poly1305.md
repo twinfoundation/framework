@@ -26,7 +26,7 @@ The nonce.
 
 ##### aad?
 
-`Uint8Array`
+`Uint8Array`\<`ArrayBufferLike`\>
 
 The additional authenticated data.
 

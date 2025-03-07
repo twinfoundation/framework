@@ -82,7 +82,7 @@ The crypto key.
 
 ### toRaw()
 
-> `static` **toRaw**(`jwk`): `Promise`\<\{ `publicKey`: `Uint8Array`; `privateKey`: `Uint8Array`; \}\>
+> `static` **toRaw**(`jwk`): `Promise`\<\{ `publicKey`: `Uint8Array`\<`ArrayBufferLike`\>; `privateKey`: `Uint8Array`\<`ArrayBufferLike`\>; \}\>
 
 Convert the JWK to raw keys.
 
@@ -96,6 +96,6 @@ The JWK to convert to raw.
 
 #### Returns
 
-`Promise`\<\{ `publicKey`: `Uint8Array`; `privateKey`: `Uint8Array`; \}\>
+`Promise`\<\{ `publicKey`: `Uint8Array`\<`ArrayBufferLike`\>; `privateKey`: `Uint8Array`\<`ArrayBufferLike`\>; \}\>
 
 The crypto key.

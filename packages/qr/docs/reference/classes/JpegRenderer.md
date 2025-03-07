@@ -16,7 +16,7 @@ Class to render qr data as jpeg.
 
 ### render()
 
-> `static` **render**(`cellData`, `options`?): `Promise`\<`Uint8Array`\>
+> `static` **render**(`cellData`, `options`?): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 Render the QR code data as a bitmap.
 
@@ -36,6 +36,6 @@ The options for rendering.
 
 #### Returns
 
-`Promise`\<`Uint8Array`\>
+`Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 The bitmap content.

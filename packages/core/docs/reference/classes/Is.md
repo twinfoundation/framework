@@ -676,7 +676,7 @@ True if the value is an element from the options array.
 
 ### uint8Array()
 
-> `static` **uint8Array**(`value`): `value is Uint8Array`
+> `static` **uint8Array**(`value`): `value is Uint8Array<ArrayBufferLike>`
 
 Is the value a Uint8Array.
 
@@ -690,7 +690,7 @@ The value to test.
 
 #### Returns
 
-`value is Uint8Array`
+`value is Uint8Array<ArrayBufferLike>`
 
 True if the value is a Uint8Array.
 
@@ -698,7 +698,7 @@ True if the value is a Uint8Array.
 
 ### typedArray()
 
-> `static` **typedArray**(`value`): value is Int8Array \| Uint8Array \| Int16Array \| Uint16Array \| Int32Array \| Uint32Array \| Float32Array \| Float64Array
+> `static` **typedArray**(`value`): value is Int8Array\<ArrayBufferLike\> \| Uint8Array\<ArrayBufferLike\> \| Int16Array\<ArrayBufferLike\> \| Uint16Array\<ArrayBufferLike\> \| Int32Array\<ArrayBufferLike\> \| Uint32Array\<ArrayBufferLike\> \| Float32Array\<ArrayBufferLike\> \| Float64Array\<ArrayBufferLike\>
 
 Is the value a TypedArray.
 
@@ -712,7 +712,7 @@ The value to test.
 
 #### Returns
 
-value is Int8Array \| Uint8Array \| Int16Array \| Uint16Array \| Int32Array \| Uint32Array \| Float32Array \| Float64Array
+value is Int8Array\<ArrayBufferLike\> \| Uint8Array\<ArrayBufferLike\> \| Int16Array\<ArrayBufferLike\> \| Uint16Array\<ArrayBufferLike\> \| Int32Array\<ArrayBufferLike\> \| Uint32Array\<ArrayBufferLike\> \| Float32Array\<ArrayBufferLike\> \| Float64Array\<ArrayBufferLike\>
 
 True if the value is a TypedArray.
 

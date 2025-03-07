@@ -17,7 +17,7 @@ Based on https://github.com/photopea/UPNG.js.
 
 ### encode()
 
-> **encode**(`buffers`, `w`, `h`): `Promise`\<`Uint8Array`\>
+> **encode**(`buffers`, `w`, `h`): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 Encode the image frames to png.
 
@@ -43,6 +43,6 @@ The image height.
 
 #### Returns
 
-`Promise`\<`Uint8Array`\>
+`Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 The data for the image.

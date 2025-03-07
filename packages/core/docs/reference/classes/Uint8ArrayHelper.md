@@ -24,7 +24,7 @@ Concatenate multiple arrays.
 
 ##### arrays
 
-`Uint8Array`[]
+`Uint8Array`\<`ArrayBufferLike`\>[]
 
 The array to concatenate.
 

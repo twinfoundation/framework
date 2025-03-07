@@ -816,7 +816,7 @@ GuardError If the value does not match the assertion.
 
 ### uint8Array()
 
-> `static` **uint8Array**(`source`, `property`, `value`): `asserts value is Uint8Array`
+> `static` **uint8Array**(`source`, `property`, `value`): `asserts value is Uint8Array<ArrayBufferLike>`
 
 Is the property a Uint8Array.
 
@@ -842,7 +842,7 @@ The value to test.
 
 #### Returns
 
-`asserts value is Uint8Array`
+`asserts value is Uint8Array<ArrayBufferLike>`
 
 #### Throws
 
