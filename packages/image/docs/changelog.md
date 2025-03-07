@@ -1,5 +1,5 @@
 # @twin.org/image - Changelog
 
-## 0.0.1-next.46
+## 0.0.1-next.47
 
 - Initial Release

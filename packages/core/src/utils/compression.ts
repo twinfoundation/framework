@@ -29,7 +29,7 @@ export class Compression {
 		const compressionPipe = blob.stream().pipeThrough(compressionStream);
 		const compressedBlob = await new Response(compressionPipe).blob();
 
-		const compressedBytes = await compressedBlob.bytes();
+		const compressedBytes = new Uint8Array(await compressedBlob.arrayBuffer());
 
 		// GZIP header contains a byte which specifies the OS the
 		// compression was performed on. We set this to 3 (Unix) to ensure
@@ -59,6 +59,6 @@ export class Compression {
 		const decompressionPipe = blob.stream().pipeThrough(decompressionStream);
 		const decompressedBlob = await new Response(decompressionPipe).blob();
 
-		return decompressedBlob.bytes();
+		return new Uint8Array(await decompressedBlob.bytes());
 	}
 }
