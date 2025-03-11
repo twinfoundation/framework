@@ -16,7 +16,7 @@
 	"scripts": {
 		"clean": "rimraf dist coverage",
 		"build": "tsc",
-		"build:watch": "tsc-watch --onSuccess \"npm run bundle:esm\"",
+		"dev": "nodemon --watch src --ext ts --exec \"npm run build && npm run bundle:esm\"",
 		"test": "vitest --run --config ./vitest.config.ts --no-cache",
 		"coverage": "vitest --run --coverage --config ./vitest.config.ts --no-cache",
 		"bundle:esm": "rollup --config rollup.config.mjs --environment MODULE:esm",
@@ -42,7 +42,7 @@
 		"rimraf": "6.0.1",
 		"rollup": "4.34.9",
 		"ts-patch": "3.3.0",
-		"tsc-watch": "6.2.1",
+		"nodemon": "3.1.9",
 		"typedoc": "0.27.9",
 		"typedoc-plugin-markdown": "4.4.2",
 		"typescript": "5.8.2",
