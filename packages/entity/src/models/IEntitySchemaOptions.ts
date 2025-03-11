@@ -4,7 +4,6 @@
 /**
  * Definition for an entity schema options.
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IEntitySchemaOptions {
 	/**
 	 * Description of the object.

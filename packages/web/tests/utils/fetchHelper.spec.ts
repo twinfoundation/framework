@@ -250,7 +250,6 @@ describe("FetchHelper", () => {
 	});
 
 	test("can fail to get a response with a custom status code", async () => {
-		// eslint-disable-next-line no-restricted-syntax
 		fetchMock.mockRejectedValue({ httpStatus: HttpStatusCode.badGateway });
 		await expect(FetchHelper.fetch("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",
@@ -262,7 +261,6 @@ describe("FetchHelper", () => {
 	});
 
 	test("can fail to get a response with a custom status text", async () => {
-		// eslint-disable-next-line no-restricted-syntax
 		fetchMock.mockRejectedValue({ statusText: "foo" });
 		await expect(FetchHelper.fetch("source", "url", "GET")).rejects.toMatchObject({
 			name: "FetchError",

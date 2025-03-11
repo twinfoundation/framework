@@ -26,7 +26,8 @@ export class Jwk {
 		Guards.object<IJwk>(Jwk._CLASS_NAME, nameof(jwk), jwk);
 
 		try {
-			return importJWK(jwk);
+			const imported = await importJWK(jwk);
+			return imported;
 		} catch (err) {
 			throw new GeneralError(Jwk._CLASS_NAME, "jwkImportFailed", undefined, err);
 		}

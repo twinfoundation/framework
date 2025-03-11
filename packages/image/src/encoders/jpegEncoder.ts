@@ -2,8 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
 /* eslint-disable no-mixed-operators */
-/* eslint-disable array-bracket-newline */
-
 import { GeneralError } from "@twin.org/core";
 import { nameof } from "@twin.org/nameof";
 
@@ -271,9 +269,6 @@ export class JpegEncoder {
 			x = 0;
 			while (x < quadWidth) {
 				start = quadWidth * y + x;
-				p = start;
-				col = -1;
-				row = 0;
 
 				for (pos = 0; pos < 64; pos++) {
 					row = pos >> 3; // /8
@@ -292,7 +287,7 @@ export class JpegEncoder {
 
 					r = imageData[p++];
 					g = imageData[p++];
-					b = imageData[p++];
+					b = imageData[p];
 
 					// use lookup table (slightly faster)
 					this._ydu[pos] =
@@ -368,7 +363,7 @@ export class JpegEncoder {
 			throw new GeneralError(JpegEncoder._CLASS_NAME, "invalidQuality", { value: quality });
 		}
 
-		let sf = 0;
+		let sf;
 		if (quality < 50) {
 			sf = Math.floor(5000 / quality);
 		} else {

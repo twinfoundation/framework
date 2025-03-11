@@ -150,7 +150,7 @@ export class Base64 {
 				(Base64._REVERSE_LOOKUP[base64.charCodeAt(i + 1)] << 4) |
 				(Base64._REVERSE_LOOKUP[base64.charCodeAt(i + 2)] >> 2);
 			arr[curByte++] = (tmp >> 8) & 0xff;
-			arr[curByte++] = tmp & 0xff;
+			arr[curByte] = tmp & 0xff;
 		}
 
 		return arr;

@@ -3,7 +3,6 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable no-mixed-operators */
 /* eslint-disable no-continue */
-/* eslint-disable unicorn/prefer-math-trunc */
 import { Compression } from "@twin.org/core";
 import type { Frame } from "./png/frame";
 import type { ImageData } from "./png/imageData";
@@ -590,8 +589,8 @@ export class PngEncoder {
 	): boolean {
 		const w = Math.min(sw, tw);
 		const h = Math.min(sh, th);
-		let si = 0;
-		let ti = 0;
+		let si;
+		let ti;
 		for (let y = 0; y < h; y++) {
 			for (let x = 0; x < w; x++) {
 				if (xOffset >= 0 && yOffset >= 0) {
@@ -920,7 +919,7 @@ export class PngEncoder {
 		const A = rj;
 		let b = [0.5, 0.5, 0.5, 0.5];
 		let mi = 0;
-		let tmi = 0;
+		let tmi;
 
 		if (N !== 0) {
 			for (let i = 0; i < 10; i++) {

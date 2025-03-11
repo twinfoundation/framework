@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-/* eslint-disable promise/prefer-await-to-then */
 import { Worker } from "node:worker_threads";
 import { BaseError, GeneralError, Is } from "@twin.org/core";
 import { nameof } from "@twin.org/nameof";

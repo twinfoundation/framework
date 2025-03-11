@@ -3,7 +3,6 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable no-continue */
 /* eslint-disable no-mixed-operators */
-/* eslint-disable unicorn/prefer-math-trunc */
 import { GeneralError, Is } from "@twin.org/core";
 import { nameof } from "@twin.org/nameof";
 import { QRAlphaNumeric } from "./data/qrAlphaNumeric";

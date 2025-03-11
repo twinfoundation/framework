@@ -266,6 +266,9 @@ export class Coerce {
 	 * @returns The coerced value.
 	 */
 	public static byType(value: unknown, type?: CoerceType): unknown {
+		if (Is.undefined(type)) {
+			return value;
+		}
 		switch (type) {
 			case CoerceType.String:
 				return Coerce.string(value);
@@ -287,8 +290,6 @@ export class Coerce {
 				return Coerce.object(value);
 			case CoerceType.Uint8Array:
 				return Coerce.uint8Array(value);
-			default:
-				return value;
 		}
 	}
 }

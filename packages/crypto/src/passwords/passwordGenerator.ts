@@ -19,7 +19,7 @@ export class PasswordGenerator {
 
 		while (chars.length < length) {
 			const charSet = chars.length === 0 ? alphabet : alphabet2;
-			let b = 0;
+			let b;
 			do {
 				b = RandomHelper.generate(1)[0];
 			} while (b >= charSet.length);

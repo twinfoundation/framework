@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-/* eslint-disable no-bitwise */
 
 import { HDKey as HDKeySecp256k1 } from "@scure/bip32";
 import { Converter, GeneralError } from "@twin.org/core";

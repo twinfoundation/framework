@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-/* eslint-disable max-classes-per-file */
 import { nameof } from "@twin.org/nameof";
 import { Factory } from "../../src/factories/factory";
 import type { IComponent } from "../../src/models/IComponent";

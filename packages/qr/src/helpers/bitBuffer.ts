@@ -1,7 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
-/* eslint-disable unicorn/prefer-math-trunc */
 /**
  * Class for maintaining data bits.
  * Based on https://github.com/kazuhikoarase/qrcode-generator/ .

@@ -21,7 +21,7 @@ export class JsonHelper {
 		if (
 			object === null ||
 			typeof object !== "object" ||
-			("toJSON" in object && object.toJSON instanceof Function)
+			("toJSON" in object && Is.function(object.toJSON))
 		) {
 			// Primitive data type
 			buffer.push(JSON.stringify(object));

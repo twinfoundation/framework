@@ -1,7 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
-/* eslint-disable unicorn/prefer-math-trunc */
 import { GeneralError } from "@twin.org/core";
 import { nameof } from "@twin.org/nameof";
 import { MathHelper } from "./mathHelper";
@@ -136,7 +135,6 @@ export class QRHelper {
 	/**
 	 * @internal
 	 */
-	// eslint-disable-next-line unicorn/prefer-math-trunc
 	private static readonly _G15: number =
 		(1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0);
 
@@ -144,7 +142,6 @@ export class QRHelper {
 	 * @internal
 	 */
 	private static readonly _G18: number =
-		// eslint-disable-next-line unicorn/prefer-math-trunc
 		(1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0);
 
 	/**
@@ -176,8 +173,8 @@ export class QRHelper {
 		errorCorrectLevel: ErrorCorrectLevel
 	): number {
 		const t = typeNumber - 1;
-		let e = 0;
-		let m = 0;
+		let e;
+		let m;
 
 		switch (errorCorrectLevel) {
 			case ErrorCorrectLevel.L:

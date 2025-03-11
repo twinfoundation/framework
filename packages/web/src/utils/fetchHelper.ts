@@ -173,8 +173,6 @@ export class FetchHelper {
 		}
 
 		if (retryCount > 1 && attempt === retryCount) {
-			// False positive as FetchError is derived from Error
-			// eslint-disable-next-line @typescript-eslint/only-throw-error
 			throw new FetchError(
 				source,
 				`${FetchHelper._CLASS_NAME_CAMEL_CASE}.retryLimitExceeded`,
@@ -184,6 +182,7 @@ export class FetchHelper {
 			);
 		}
 
+		// eslint-disable-next-line @typescript-eslint/only-throw-error
 		throw lastError;
 	}
 
@@ -251,8 +250,6 @@ export class FetchHelper {
 			try {
 				return (await response.json()) as U;
 			} catch (err) {
-				// False positive as FetchError is derived from Error
-				// eslint-disable-next-line @typescript-eslint/only-throw-error
 				throw new FetchError(
 					source,
 					`${FetchHelper._CLASS_NAME_CAMEL_CASE}.decodingJSON`,
@@ -265,8 +262,6 @@ export class FetchHelper {
 
 		const errorResponseData = await response.json();
 
-		// False positive as FetchError is derived from Error
-		// eslint-disable-next-line @typescript-eslint/only-throw-error
 		throw new FetchError(
 			source,
 			`${FetchHelper._CLASS_NAME_CAMEL_CASE}.failureStatusText`,
@@ -337,8 +332,6 @@ export class FetchHelper {
 			try {
 				return (await response.json()) as T;
 			} catch (err) {
-				// False positive as FetchError is derived from Error
-				// eslint-disable-next-line @typescript-eslint/only-throw-error
 				throw new FetchError(
 					source,
 					`${FetchHelper._CLASS_NAME_CAMEL_CASE}.decodingJSON`,
@@ -351,8 +344,6 @@ export class FetchHelper {
 
 		const errorResponseData = await response.json();
 
-		// False positive as FetchError is derived from Error
-		// eslint-disable-next-line @typescript-eslint/only-throw-error
 		throw new FetchError(
 			source,
 			`${FetchHelper._CLASS_NAME_CAMEL_CASE}.failureStatusText`,

@@ -1,7 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-/* eslint-disable no-bitwise */
-
 import { Guards } from "@twin.org/core";
 import { nameof } from "@twin.org/nameof";
 import * as otp from "micro-key-producer/otp.js";
