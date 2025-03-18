@@ -1,6 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
+import { nameof } from "@twin.org/nameof";
 import { applyPatch, createPatch, type Operation } from "rfc6902";
+import { ObjectHelper } from "./objectHelper";
+import { GeneralError } from "../errors/generalError";
 import type { IPatchOperation } from "../models/IPatchOperation";
 import { Converter } from "../utils/converter";
 import { Is } from "../utils/is";
@@ -9,6 +12,12 @@ import { Is } from "../utils/is";
  * Helpers methods for JSON objects.
  */
 export class JsonHelper {
+	/**
+	 * Runtime name for the class.
+	 * @internal
+	 */
+	private static readonly _CLASS_NAME: string = nameof<JsonHelper>();
+
 	/**
 	 * Serializes in canonical format.
 	 * Based on https://www.rfc-editor.org/rfc/rfc8785.
@@ -70,9 +79,19 @@ export class JsonHelper {
 	 * @param object The object to patch.
 	 * @param patches The second object.
 	 * @returns The updated object.
+	 * @throws GeneralError if the patch fails.
 	 */
 	public static patch<T = unknown>(object: T, patches: IPatchOperation[]): T {
-		return applyPatch(object, patches as Operation[]) as T;
+		const clone = ObjectHelper.clone(object);
+		const result = applyPatch(clone, patches as Operation[]);
+
+		for (let i = 0; i < result.length; i++) {
+			if (!Is.empty(result[i])) {
+				throw new GeneralError(JsonHelper._CLASS_NAME, "failedPatch", { index: i }, result[i]);
+			}
+		}
+
+		return clone;
 	}
 
 	/**

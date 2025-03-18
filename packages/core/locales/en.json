@@ -95,6 +95,9 @@
 		},
 		"base58": {
 			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"
+		},
+		"jsonHelper": {
+			"failedPatch": "Failed to patch the JSON object, patch index \"{index}\" failed"
 		}
 	},
 	"errorNames": {

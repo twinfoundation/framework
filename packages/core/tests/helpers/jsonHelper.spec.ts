@@ -91,4 +91,67 @@ describe("JsonHelper", () => {
 			uint8: new Uint8Array([1, 2, 3])
 		});
 	});
+
+	test("can create a diff set", () => {
+		const obj1 = {
+			str: "foo",
+			num: 123,
+			bool: true
+		};
+
+		const obj2 = {
+			str: "foo",
+			num: 456,
+			bool: true
+		};
+
+		const diff = JsonHelper.diff(obj1, obj2);
+		expect(diff).toEqual([
+			{
+				path: "/num",
+				op: "replace",
+				value: 456
+			}
+		]);
+	});
+
+	test("can apply a diff set", () => {
+		const obj1 = {
+			str: "foo",
+			num: 123,
+			bool: true
+		};
+
+		const result = JsonHelper.patch(obj1, [
+			{
+				path: "/num",
+				op: "replace",
+				value: 456
+			}
+		]);
+
+		expect(result).toEqual({
+			str: "foo",
+			num: 456,
+			bool: true
+		});
+	});
+
+	test("can fail to apply a diff set", () => {
+		const obj1 = {
+			str: "foo",
+			num: 123,
+			bool: true
+		};
+
+		expect(() =>
+			JsonHelper.patch(obj1, [
+				{
+					path: "/num1",
+					op: "replace",
+					value: 456
+				}
+			])
+		).toThrow("failedPatch");
+	});
 });

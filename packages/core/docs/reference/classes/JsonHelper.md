@@ -101,6 +101,10 @@ The second object.
 
 The updated object.
 
+#### Throws
+
+GeneralError if the patch fails.
+
 ***
 
 ### stringifyEx()
