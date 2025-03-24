@@ -87,7 +87,7 @@ jobs:
   post-publish:
     needs: publish
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -100,7 +100,7 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
-      # Publish the GitHub releases    
+      # Publish the GitHub releases
       - name: Release Please
         run: |
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
@@ -115,7 +115,7 @@ jobs:
           # Use the manifest file to get the package names and versions
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
           PACKAGES=$(jq -r 'keys[]' $MANIFEST_FILE)
-          
+
           for KEY in $PACKAGES; do
             KEY_VALUE=$(jq -r ".\"$KEY\"" $MANIFEST_FILE)
             echo "Processing: $KEY: $KEY_VALUE"
