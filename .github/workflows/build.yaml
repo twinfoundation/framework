@@ -6,7 +6,7 @@ on:
   push:
 
 jobs:
-  dist:
+  dist-all-packages:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
