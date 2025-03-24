@@ -3,7 +3,6 @@ name: Run dist for the whole repo
 on:
   workflow_dispatch:
   pull_request:
-  push:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
