@@ -40,7 +40,7 @@ jobs:
         run: npx patch-package --patch-dir release
 
       # Run please-release so that it generates a PR which bumps the versions and updates the changelogs
-      # The PR can then be reviewed and merged, once merge run the publish action to actually publish the release and npm packages
+      # The PR can then be reviewed and merged, once merged run the publish action to actually publish the release and npm packages
       - name: Release Please
         run: |
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
