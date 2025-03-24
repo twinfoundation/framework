@@ -59,7 +59,7 @@ All commits messages should be of the format `prefix: <message>`. The prefixes s
 - style:
 - test:
 
-e.g. `fix: Endless loop in data lookup`
+e.g. `fix: endless loop in data lookup`
 
 ## Publishing Production
 
