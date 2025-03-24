@@ -1,9 +1,9 @@
-name: Build, Lint, Test, Docs Next
+name: Run dist for the whole repo
 
 on:
+  workflow_dispatch:
   pull_request:
-    branches-ignore:
-      - main
+  push:
 
 jobs:
   dist:
