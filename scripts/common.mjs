@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { spawn } from 'node:child_process';
 import fs from 'node:fs/promises';
-import path from 'node:path';
 
 /**
  * Load a JSON file.
