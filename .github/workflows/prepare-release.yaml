@@ -18,7 +18,9 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write
+      contents: write # Needed for creating/updating branches and PRs
+      pull-requests: write # Needed for creating PRs
+      id-token: write # Keep your existing permissions
 
     # Make sure we only perform prerelease on next branch and prod on main branch
     if: (github.ref == 'refs/heads/main' && github.event.inputs.semverType != 'prerelease') || (github.ref == 'refs/heads/next' && github.event.inputs.semverType == 'prerelease')
@@ -26,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -46,4 +50,4 @@ jobs:
         run: |
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
-          node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GHA_RELEASE_TOKEN }}
+          node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GITHUB_TOKEN }}
