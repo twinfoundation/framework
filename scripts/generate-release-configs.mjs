@@ -119,8 +119,12 @@ async function generateManifest(targetDirectory, versionBase, packageNames) {
 
 		const config = {};
 
+		const newVersion = versionBase === 'prod' ? versionParts[0] : currentVersion;
+
+		config['.'] = newVersion
+
 		for (const packageName of packageNames) {
-			config[`packages/${packageName}`] = versionBase === 'prod' ? versionParts[0] : currentVersion;
+			config[`packages/${packageName}`] = newVersion;
 		}
 
 		if (!(await directoryExists(targetDirectory))) {

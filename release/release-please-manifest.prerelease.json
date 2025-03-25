@@ -1,4 +1,5 @@
 {
+	".": "0.0.1-next.49",
 	"packages/cli-core": "0.0.1-next.49",
 	"packages/core": "0.0.1-next.49",
 	"packages/crypto": "0.0.1-next.49",
