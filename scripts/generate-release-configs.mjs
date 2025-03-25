@@ -4,7 +4,7 @@
  * This script will generate configuration files for release-please.
  *
  * Usage:
- * npm run generate-release-configs <path-to-config-directory>
+ * npm run generate-release-configs <path-to-release-config-directory>
  */
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
