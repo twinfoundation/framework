@@ -14,6 +14,7 @@ on:
           - 'major'
 
 jobs:
+  # Prepare all the packages for update
   prepare:
     runs-on: ubuntu-latest
     permissions:
