@@ -9,43 +9,35 @@
 	"packages": {
 		"packages/cli-core": {
 			"package-name": "cli-core",
-			"changelog-path": "docs/changelog.md",
-			"extra-files": ["src/version.ts"]
+			"changelog-path": "docs/changelog.md"
 		},
 		"packages/core": {
 			"package-name": "core",
-			"changelog-path": "docs/changelog.md",
-			"extra-files": ["src/version.ts"]
+			"changelog-path": "docs/changelog.md"
 		},
 		"packages/crypto": {
 			"package-name": "crypto",
-			"changelog-path": "docs/changelog.md",
-			"extra-files": ["src/version.ts"]
+			"changelog-path": "docs/changelog.md"
 		},
 		"packages/entity": {
 			"package-name": "entity",
-			"changelog-path": "docs/changelog.md",
-			"extra-files": ["src/version.ts"]
+			"changelog-path": "docs/changelog.md"
 		},
 		"packages/image": {
 			"package-name": "image",
-			"changelog-path": "docs/changelog.md",
-			"extra-files": ["src/version.ts"]
+			"changelog-path": "docs/changelog.md"
 		},
 		"packages/modules": {
 			"package-name": "modules",
-			"changelog-path": "docs/changelog.md",
-			"extra-files": ["src/version.ts"]
+			"changelog-path": "docs/changelog.md"
 		},
 		"packages/qr": {
 			"package-name": "qr",
-			"changelog-path": "docs/changelog.md",
-			"extra-files": ["src/version.ts"]
+			"changelog-path": "docs/changelog.md"
 		},
 		"packages/web": {
 			"package-name": "web",
-			"changelog-path": "docs/changelog.md",
-			"extra-files": ["src/version.ts"]
+			"changelog-path": "docs/changelog.md"
 		},
 		"apps/crypto-cli": {
 			"package-name": "crypto-cli",

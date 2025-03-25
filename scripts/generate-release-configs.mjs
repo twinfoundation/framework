@@ -88,9 +88,12 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 		const packageNameParts = packageName.split('/');
 		config.packages[packageName] = {
 			'package-name': packageNameParts[1],
-			'changelog-path': `docs/changelog.md`,
-			'extra-files': [`src/version.ts`]
+			'changelog-path': `docs/changelog.md`
 		};
+
+		if (await fileExists(path.join(packageName, 'src/version.ts'))) {
+			config.packages[packageName]['extra-files'] = [`src/version.ts`];
+		}
 
 		config.plugins[1].components.push(packageName);
 	}
