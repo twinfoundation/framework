@@ -47,6 +47,7 @@ jobs:
       # Run please-release so that it generates a PR which bumps the versions and updates the changelogs
       # The PR can then be reviewed and merged, once merged run the publish action to actually publish the release and npm packages
       - name: Release Please
+        id: release_please
         run: |
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
