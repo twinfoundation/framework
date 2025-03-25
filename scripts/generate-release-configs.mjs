@@ -87,8 +87,13 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 			'changelog-path': `docs/changelog.md`
 		};
 
-		if (await fileExists(path.join(packageName, 'src/version.ts'))) {
-			config.packages[packageName]['extra-files'] = [`src/version.ts`];
+		const embeddedVersionFiles = ['src/cli.ts', 'tests/cli.spec.ts'];
+
+		for (const embeddedVersionFile of embeddedVersionFiles) {
+			if (await fileExists(path.join(packageName, embeddedVersionFile))) {
+				config.packages[packageName]['extra-files'] ??= [];
+				config.packages[packageName]['extra-files'].push(embeddedVersionFile);
+			}
 		}
 
 		config.plugins[1].components.push(packageNameParts[1]);
