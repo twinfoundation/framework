@@ -51,14 +51,14 @@ jobs:
         run: |
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
-          OUTPUT=$(node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GITHUB_TOKEN }} --json)
+          OUTPUT=$(node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GITHUB_TOKEN }})
 
           echo "Release-please output: $OUTPUT"
 
           # Extract PR number if a PR was created
-          if [[ "$OUTPUT" == *"pull_request_url"* ]]; then
-            PR_URL=$(echo $OUTPUT | jq -r '.pullRequestUrl')
-            PR_NUMBER=$(echo $PR_URL | awk -F/ '{print $NF}')
+          if [[ "$OUTPUT" == *"Successfully opened pull request:"* ]]; then
+            # Extract PR number using grep and sed
+            PR_NUMBER=$(echo "$OUTPUT" | grep -o "Successfully opened pull request: [0-9]\+" | sed 's/Successfully opened pull request: //')
             echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
             echo "PR created: #$PR_NUMBER"
           else
