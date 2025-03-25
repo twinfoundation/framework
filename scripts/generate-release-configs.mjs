@@ -79,7 +79,8 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 				groupName: 'repo',
 				components: []
 			}
-		]
+		],
+		"extra-files": []
 	};
 
 	for (const packageName of packageNames) {
@@ -89,6 +90,7 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 		};
 
 		config.plugins[1].components.push(packageName);
+		config['extra-files'].push(`packages/${packageName}/src/version.ts`);
 	}
 
 	if (!(await directoryExists(targetDirectory))) {

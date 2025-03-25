@@ -59,5 +59,16 @@
 				"crypto-cli"
 			]
 		}
+	],
+	"extra-files": [
+		"packages/cli-core/src/version.ts",
+		"packages/core/src/version.ts",
+		"packages/crypto/src/version.ts",
+		"packages/entity/src/version.ts",
+		"packages/image/src/version.ts",
+		"packages/modules/src/version.ts",
+		"packages/qr/src/version.ts",
+		"packages/web/src/version.ts",
+		"packages/crypto-cli/src/version.ts"
 	]
 }
