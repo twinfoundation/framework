@@ -71,4 +71,5 @@ jobs:
         run: |
           gh pr review ${{ steps.release_please.outputs.pr_number }} --approve
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # We need to use a different token for the approval as you can't approve your own PRs
+          GH_TOKEN: ${{ secrets.GHA_RELEASE_TOKEN }}
