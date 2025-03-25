@@ -68,7 +68,7 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 	const config = {
 		"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
 		description: `Auto-Generated Release Please configuration for ${semVerType}`,
-		'pull-request-header': `:robot: ${semVerType} release prepared`,
+		'pull-request-header': `chore: :robot: ${semVerType} release prepared`,
 		'release-type': 'node',
 		versioning: versioning[semVerType],
 		prerelease: semVerType === 'prerelease',

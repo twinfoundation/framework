@@ -1,11 +1,12 @@
 {
 	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
 	"description": "Auto-Generated Release Please configuration for prerelease",
-	"pull-request-header": ":robot: prerelease release prepared",
+	"pull-request-header": "chore: :robot: prerelease release prepared",
 	"release-type": "node",
 	"versioning": "prerelease",
 	"prerelease": true,
 	"prerelease-type": "next",
+	"release-as": "0.0.1-next.50",
 	"packages": {
 		"packages/cli-core": {
 			"package-name": "cli-core",
