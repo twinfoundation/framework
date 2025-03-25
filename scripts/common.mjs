@@ -98,9 +98,10 @@ export async function isSymbolicLink(item) {
 /**
  * Get the list of directory names from a specified directory.
  * @param dir The directory to get the list of directory names from.
+ * @param prefix The prefix to add to the directory names.
  * @returns The list of directory names.
  */
-export async function gatherDirectoryNames(dir) {
+export async function gatherDirectoryNames(dir, prefix) {
 	const dirNames = [];
 
 	if (await directoryExists(dir)) {
@@ -109,7 +110,7 @@ export async function gatherDirectoryNames(dir) {
 
 		for (const entry of allEntries) {
 			if (entry.isDirectory()) {
-				dirNames.push(entry.name);
+				dirNames.push(`${prefix}${entry.name}`);
 			}
 		}
 	}

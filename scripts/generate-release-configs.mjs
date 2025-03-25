@@ -34,8 +34,8 @@ async function run() {
 
 	process.stdout.write(`Target Directory: ${targetDirectory}\n`);
 
-	const packageNames = await gatherDirectoryNames('packages');
-	const appNames = await gatherDirectoryNames('apps');
+	const packageNames = await gatherDirectoryNames('packages', 'packages/');
+	const appNames = await gatherDirectoryNames('apps', 'apps/');
 	packageNames.push(...appNames);
 
 	await generateConfig(targetDirectory, 'major', packageNames);
@@ -66,7 +66,7 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 	process.stdout.write(`\nGenerating config for ${semVerType}...\n`);
 
 	const config = {
-		"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+		$schema: 'https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json',
 		description: `Auto-Generated Release Please configuration for ${semVerType}`,
 		'pull-request-header': `chore: :robot: ${semVerType} release prepared`,
 		'release-type': 'node',
@@ -85,8 +85,9 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 	};
 
 	for (const packageName of packageNames) {
-		config.packages[`packages/${packageName}`] = {
-			'package-name': packageName,
+		const packageNameParts = packageName.split('/');
+		config.packages[packageName] = {
+			'package-name': packageNameParts[1],
 			'changelog-path': `docs/changelog.md`,
 			'extra-files': [`src/version.ts`]
 		};
@@ -124,7 +125,7 @@ async function generateManifest(targetDirectory, versionBase, packageNames) {
 		config['.'] = newVersion;
 
 		for (const packageName of packageNames) {
-			config[`packages/${packageName}`] = newVersion;
+			config[packageName] = newVersion;
 		}
 
 		if (!(await directoryExists(targetDirectory))) {
