@@ -20,13 +20,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Restore root node_modules from cache
-        id: node-cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
-
       - name: Install dependencies
         run: npm ci
 
