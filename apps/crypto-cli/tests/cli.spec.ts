@@ -3,6 +3,7 @@
 import path from "node:path";
 import { CLIDisplay } from "@twin.org/cli-core";
 import { CLI } from "../src/cli";
+import { VERSION } from "../src/version";
 
 let writeBuffer: string[] = [];
 let errorBuffer: string[] = [];
@@ -29,7 +30,7 @@ describe("CLI", () => {
 		});
 		expect(exitCode).toBe(0);
 		expect(writeBuffer.length).toEqual(16);
-		expect(writeBuffer[0].includes("0.0.1-next.49")).toEqual(true);
+		expect(writeBuffer[0].includes(VERSION)).toEqual(true);
 		expect(writeBuffer[1]).toEqual("");
 		expect(writeBuffer[2]).toEqual("");
 		expect(writeBuffer[3]).toEqual("");

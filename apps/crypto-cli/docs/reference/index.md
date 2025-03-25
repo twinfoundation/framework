@@ -4,6 +4,10 @@
 
 - [CLI](classes/CLI.md)
 
+## Variables
+
+- [VERSION](variables/VERSION.md)
+
 ## Functions
 
 - [buildCommandAddress](functions/buildCommandAddress.md)

@@ -2,16 +2,26 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { spawn } from 'node:child_process';
 import fs from 'node:fs/promises';
+import path from 'node:path';
 
 /**
  * Load a JSON file.
- * @param filePath The path th load as JSON.
+ * @param filePath The path to load as JSON.
  * @returns The loaded JSON.
  */
 export async function loadJson(filePath) {
 	const content = await fs.readFile(filePath, 'utf8');
 
 	return JSON.parse(content);
+}
+
+/**
+ * Save a JSON file.
+ * @param filePath The path to save the object as JSON.
+ * @param obj The object to save as JSON.
+ */
+export async function saveJson(filePath, obj) {
+	await fs.writeFile(filePath, JSON.stringify(obj, undefined, '\t'), 'utf8');
 }
 
 /**
@@ -83,4 +93,26 @@ export async function isSymbolicLink(item) {
 	} catch {
 		return false;
 	}
+}
+
+/**
+ * Get the list of directory names from a specified directory.
+ * @param dir The directory to get the list of directory names from.
+ * @returns The list of directory names.
+ */
+export async function gatherDirectoryNames(dir) {
+	const dirNames = [];
+
+	if (await directoryExists(dir)) {
+		const fullDir = path.resolve(dir);
+		const allEntries = await fs.readdir(fullDir, { withFileTypes: true });
+
+		for (const entry of allEntries) {
+			if (entry.isDirectory()) {
+				dirNames.push(entry.name);
+			}
+		}
+	}
+
+	return dirNames;
 }

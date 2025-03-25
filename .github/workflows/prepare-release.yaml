@@ -1,0 +1,48 @@
+name: Prepare a release
+
+on:
+  workflow_dispatch:
+    inputs:
+      semverType:
+        description: 'Which type of semver to release'
+        required: true
+        type: choice
+        options:
+          - 'prerelease'
+          - 'patch'
+          - 'minor'
+          - 'major'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+
+    # Make sure we only perform prerelease on next branch and prod on main branch
+    if: (github.ref == 'refs/heads/main' && github.event.inputs.semverType != 'prerelease') || (github.ref == 'refs/heads/next' && github.event.inputs.semverType == 'prerelease')
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: NPM Install
+        run: npm install
+
+      # Patch please-release with our own version of the prerelease strategy which always just increments the prerelease version
+      - name: Patch release-please prerelease versioning strategy
+        run: npx patch-package --patch-dir release
+
+      # Run please-release so that it generates a PR which bumps the versions and updates the changelogs
+      # The PR can then be reviewed and merged, once merged run the publish action to actually publish the release and npm packages
+      - name: Release Please
+        run: |
+          CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
+          MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
+          node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url ${{ github.repository }} --target-branch ${{ github.ref_name}} --token=${{ secrets.GHA_RELEASE_TOKEN }}

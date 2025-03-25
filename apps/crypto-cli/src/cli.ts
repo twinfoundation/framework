@@ -6,6 +6,7 @@ import { CLIBase } from "@twin.org/cli-core";
 import type { Command } from "commander";
 import { buildCommandAddress } from "./commands/address";
 import { buildCommandMnemonic } from "./commands/mnemonic";
+import { VERSION } from "./version";
 
 /**
  * The main entry point for the CLI.
@@ -28,7 +29,7 @@ export class CLI extends CLIBase {
 			{
 				title: "TWIN Crypto",
 				appName: "twin-crypto",
-				version: "0.0.1-next.49",
+				version: VERSION,
 				icon: "🌍",
 				supportsEnvFiles: true,
 				overrideOutputWidth: options?.overrideOutputWidth

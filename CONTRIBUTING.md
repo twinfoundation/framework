@@ -43,6 +43,24 @@ The `next` branch is where all PRs should be merged to, in preparation for a fin
 - When creating a branch for a fix use the format e.g. `fix/my-fix`
 - When creating a branch for a chore e.g. dependency update use the format e.g. `chore/my-chore`
 
+## Commit Naming
+
+All commits messages should be of the format `prefix: <message>`. The prefixes should be one of the following:
+
+- build:
+- chore:
+- ci:
+- docs:
+- feat:
+- fix:
+- perf:
+- refactor:
+- revert:
+- style:
+- test:
+
+e.g. `fix: endless loop in data lookup`
+
 ## Publishing Production
 
 To publish a `production` version of a package you should perform the following steps:
