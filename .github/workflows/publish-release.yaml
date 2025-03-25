@@ -1,4 +1,4 @@
-name: Prepare a release
+name: Publish a release
 
 on:
   workflow_dispatch:
@@ -20,6 +20,7 @@ jobs:
     permissions:
       id-token: write
 
+    # Make sure we only perform prerelease on next branch and prod on main branch
     if: (github.ref == 'refs/heads/main' && github.event.inputs.semverType != 'prerelease') || (github.ref == 'refs/heads/next' && github.event.inputs.semverType == 'prerelease')
 
     strategy:
