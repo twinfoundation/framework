@@ -1,4 +1,4 @@
-name: Run dist for all packages
+name: Build
 
 on:
   workflow_dispatch:
