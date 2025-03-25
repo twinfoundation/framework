@@ -4,6 +4,7 @@
 	"versioning": "prerelease",
 	"prerelease": true,
 	"prerelease-type": "next",
+	"initial-version": "0.0.1-next.49",
 	"packages": {
 		"packages/cli-core": {
 			"package-name": "cli-core",
