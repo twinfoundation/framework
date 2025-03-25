@@ -66,7 +66,7 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 	process.stdout.write(`\nGenerating config for ${semVerType}...\n`);
 
 	const config = {
-		'description': `Auto-Generated Release Please configuration for ${semVerType}`,
+		description: `Auto-Generated Release Please configuration for ${semVerType}`,
 		'pull-request-header': `:robot: ${semVerType} release prepared`,
 		'release-type': 'node',
 		versioning: versioning[semVerType],
@@ -80,18 +80,17 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 				groupName: 'repo',
 				components: []
 			}
-		],
-		"extra-files": []
+		]
 	};
 
 	for (const packageName of packageNames) {
 		config.packages[`packages/${packageName}`] = {
 			'package-name': packageName,
-			'changelog-path': `docs/changelog.md`
+			'changelog-path': `docs/changelog.md`,
+			'extra-files': [`src/version.ts`]
 		};
 
 		config.plugins[1].components.push(packageName);
-		config['extra-files'].push(`packages/${packageName}/src/version.ts`);
 	}
 
 	if (!(await directoryExists(targetDirectory))) {
@@ -121,7 +120,7 @@ async function generateManifest(targetDirectory, versionBase, packageNames) {
 
 		const newVersion = versionBase === 'prod' ? versionParts[0] : currentVersion;
 
-		config['.'] = newVersion
+		config['.'] = newVersion;
 
 		for (const packageName of packageNames) {
 			config[`packages/${packageName}`] = newVersion;
