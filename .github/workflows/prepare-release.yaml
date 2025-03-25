@@ -60,17 +60,15 @@ jobs:
             # Extract PR number using grep and sed
             PR_NUMBER=$(echo "$OUTPUT" | grep -o "Successfully opened pull request: [0-9]\+" | sed 's/Successfully opened pull request: //')
             echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
-            echo "PR created: #$PR_NUMBER"
+            echo "PR created: $PR_NUMBER"
           else
             echo "No PR was created"
           fi
 
-      # Add the workflow triggering user as a reviewer if PR was created
+      # Automatically approve the PR
       - name: Add reviewer to PR
         if: steps.release_please.outputs.pr_number != ''
         run: |
-          echo "Adding ${{ github.triggering_actor }} as reviewer to PR #${{ steps.release_please.outputs.pr_number }}"
-          gh pr edit ${{ steps.release_please.outputs.pr_number }} --add-reviewer ${{ github.triggering_actor }}
-          echo "Reviewer added successfully"
+          gh pr review ${{ steps.release_please.outputs.pr_number }} --approve
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
