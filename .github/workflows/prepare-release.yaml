@@ -51,3 +51,26 @@ jobs:
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
           node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GITHUB_TOKEN }}
+
+      # Add the workflow triggering user as a reviewer
+      - name: Find and update PR with reviewer
+        run: |
+          # Find the PR number
+          PR_TITLE_PREFIX="chore: ${{ github.event.inputs.semverType }} release prepared"
+          echo "Looking for PR with title starting with: $PR_TITLE_PREFIX"
+          PR_NUMBER=$(gh pr list --state open --author app/github-actions --json number,title --jq '.[] | select(.title | startswith("'"$PR_TITLE_PREFIX"'")) | .number')
+
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No matching PR found"
+            exit 0
+          fi
+
+          echo "Found PR #$PR_NUMBER"
+
+          # Add workflow trigger user as reviewer
+          echo "Adding ${{ github.triggering_actor }} as reviewer"
+          gh pr edit $PR_NUMBER --add-reviewer ${{ github.triggering_actor }}
+
+          echo "Reviewer added successfully"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
