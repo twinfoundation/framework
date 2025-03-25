@@ -14,7 +14,7 @@ on:
           - 'major'
 
 jobs:
-  publish:
+  prepare:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

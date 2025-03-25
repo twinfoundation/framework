@@ -26,8 +26,8 @@
 		"prepare": "husky"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.8.0",
-		"@commitlint/config-conventional": "^19.8.0",
+		"@commitlint/cli": "19.8.0",
+		"@commitlint/config-conventional": "19.8.0",
 		"@typescript-eslint/eslint-plugin": "7.13.1",
 		"cspell": "8.17.5",
 		"eslint": "8.57.0",
@@ -41,9 +41,10 @@
 		"eslint-plugin-unicorn": "56.0.1",
 		"eslint-plugin-unused-imports": "3.2.0",
 		"fast-glob": "3.3.3",
-		"husky": "^9.1.7",
+		"husky": "9.1.7",
 		"markdownlint-cli": "0.44.0",
-		"prettier": "3.5.3"
+		"prettier": "3.5.3",
+		"release-please": "17.0.0"
 	},
 	"workspaces": [
 		"packages/core",
