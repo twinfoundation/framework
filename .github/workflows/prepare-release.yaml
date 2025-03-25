@@ -38,7 +38,7 @@ jobs:
           cache: 'npm'
 
       - name: NPM Install
-        run: npm install
+        run: npm ci
 
       # Patch please-release with our own version of the prerelease strategy which always just increments the prerelease version
       - name: Patch release-please prerelease versioning strategy
