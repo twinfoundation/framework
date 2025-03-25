@@ -73,6 +73,7 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 		versioning: versioning[semVerType],
 		prerelease: semVerType === 'prerelease',
 		'prerelease-type': semVerType === 'prerelease' ? 'next' : '',
+		'separate-pull-requests': false,
 		packages: {},
 		plugins: [
 			'node-workspace',

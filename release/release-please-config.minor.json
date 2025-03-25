@@ -6,6 +6,7 @@
 	"versioning": "always-bump-minor",
 	"prerelease": false,
 	"prerelease-type": "",
+	"separate-pull-requests": false,
 	"packages": {
 		"packages/cli-core": {
 			"package-name": "cli-core",
@@ -42,7 +43,9 @@
 		"apps/crypto-cli": {
 			"package-name": "crypto-cli",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": ["src/version.ts"]
+			"extra-files": [
+				"src/version.ts"
+			]
 		}
 	},
 	"plugins": [
