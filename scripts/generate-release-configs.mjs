@@ -66,6 +66,7 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 	process.stdout.write(`\nGenerating config for ${semVerType}...\n`);
 
 	const config = {
+		'description': `Auto-Generated Release Please configuration for ${semVerType}`,
 		'pull-request-header': `:robot: ${semVerType} release prepared`,
 		'release-type': 'node',
 		versioning: versioning[semVerType],

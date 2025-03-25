@@ -1,4 +1,5 @@
 {
+	"description": "Auto-Generated Release Please configuration for patch",
 	"pull-request-header": ":robot: patch release prepared",
 	"release-type": "node",
 	"versioning": "always-bump-patch",
