@@ -50,27 +50,26 @@ jobs:
         run: |
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
-          node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GITHUB_TOKEN }}
+          OUTPUT=$(node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GITHUB_TOKEN }} --json)
 
-      # Add the workflow triggering user as a reviewer
-      - name: Find and update PR with reviewer
-        run: |
-          # Find the PR number
-          PR_TITLE_PREFIX="chore: ${{ github.event.inputs.semverType }} release prepared"
-          echo "Looking for PR with title starting with: $PR_TITLE_PREFIX"
-          PR_NUMBER=$(gh pr list --state open --author app/github-actions --json number,title --jq '.[] | select(.title | startswith("'"$PR_TITLE_PREFIX"'")) | .number')
+          echo "Release-please output: $OUTPUT"
 
-          if [ -z "$PR_NUMBER" ]; then
-            echo "No matching PR found"
-            exit 0
+          # Extract PR number if a PR was created
+          if [[ "$OUTPUT" == *"pull_request_url"* ]]; then
+            PR_URL=$(echo $OUTPUT | jq -r '.pullRequestUrl')
+            PR_NUMBER=$(echo $PR_URL | awk -F/ '{print $NF}')
+            echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+            echo "PR created: #$PR_NUMBER"
+          else
+            echo "No PR was created"
           fi
 
-          echo "Found PR #$PR_NUMBER"
-
-          # Add workflow trigger user as reviewer
-          echo "Adding ${{ github.triggering_actor }} as reviewer"
-          gh pr edit $PR_NUMBER --add-reviewer ${{ github.triggering_actor }}
-
+      # Add the workflow triggering user as a reviewer if PR was created
+      - name: Add reviewer to PR
+        if: steps.release_please.outputs.pr_number != ''
+        run: |
+          echo "Adding ${{ github.triggering_actor }} as reviewer to PR #${{ steps.release_please.outputs.pr_number }}"
+          gh pr edit ${{ steps.release_please.outputs.pr_number }} --add-reviewer ${{ github.triggering_actor }}
           echo "Reviewer added successfully"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
