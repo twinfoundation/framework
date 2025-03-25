@@ -96,7 +96,7 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 			config.packages[packageName]['extra-files'] = [`src/version.ts`];
 		}
 
-		config.plugins[1].components.push(packageName);
+		config.plugins[1].components.push(packageNameParts[1]);
 	}
 
 	if (!(await directoryExists(targetDirectory))) {

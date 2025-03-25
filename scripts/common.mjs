@@ -21,7 +21,7 @@ export async function loadJson(filePath) {
  * @param obj The object to save as JSON.
  */
 export async function saveJson(filePath, obj) {
-	await fs.writeFile(filePath, JSON.stringify(obj, undefined, '\t'), 'utf8');
+	await fs.writeFile(filePath, `${JSON.stringify(obj, undefined, '\t')}\n`, 'utf8');
 }
 
 /**

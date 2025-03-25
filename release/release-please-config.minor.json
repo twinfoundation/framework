@@ -52,15 +52,15 @@
 			"type": "linked-versions",
 			"groupName": "repo",
 			"components": [
-				"packages/cli-core",
-				"packages/core",
-				"packages/crypto",
-				"packages/entity",
-				"packages/image",
-				"packages/modules",
-				"packages/qr",
-				"packages/web",
-				"apps/crypto-cli"
+				"cli-core",
+				"core",
+				"crypto",
+				"entity",
+				"image",
+				"modules",
+				"qr",
+				"web",
+				"crypto-cli"
 			]
 		}
 	]
