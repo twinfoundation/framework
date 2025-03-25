@@ -9,28 +9,20 @@
 	"prerelease-type": "next",
 	"separate-pull-requests": false,
 	"packages": {
-		"packages/cli-core": {
-			"package-name": "cli-core",
-			"changelog-path": "docs/changelog.md"
-		},
 		"packages/core": {
 			"package-name": "core",
-			"changelog-path": "docs/changelog.md"
-		},
-		"packages/crypto": {
-			"package-name": "crypto",
 			"changelog-path": "docs/changelog.md"
 		},
 		"packages/entity": {
 			"package-name": "entity",
 			"changelog-path": "docs/changelog.md"
 		},
-		"packages/image": {
-			"package-name": "image",
+		"packages/crypto": {
+			"package-name": "crypto",
 			"changelog-path": "docs/changelog.md"
 		},
-		"packages/modules": {
-			"package-name": "modules",
+		"packages/image": {
+			"package-name": "image",
 			"changelog-path": "docs/changelog.md"
 		},
 		"packages/qr": {
@@ -39,6 +31,14 @@
 		},
 		"packages/web": {
 			"package-name": "web",
+			"changelog-path": "docs/changelog.md"
+		},
+		"packages/modules": {
+			"package-name": "modules",
+			"changelog-path": "docs/changelog.md"
+		},
+		"packages/cli-core": {
+			"package-name": "cli-core",
 			"changelog-path": "docs/changelog.md"
 		},
 		"apps/crypto-cli": {
@@ -53,14 +53,14 @@
 			"type": "linked-versions",
 			"groupName": "repo",
 			"components": [
-				"cli-core",
 				"core",
-				"crypto",
 				"entity",
+				"crypto",
 				"image",
-				"modules",
 				"qr",
 				"web",
+				"modules",
+				"cli-core",
 				"crypto-cli"
 			]
 		}

@@ -94,26 +94,3 @@ export async function isSymbolicLink(item) {
 		return false;
 	}
 }
-
-/**
- * Get the list of directory names from a specified directory.
- * @param dir The directory to get the list of directory names from.
- * @param prefix The prefix to add to the directory names.
- * @returns The list of directory names.
- */
-export async function gatherDirectoryNames(dir, prefix) {
-	const dirNames = [];
-
-	if (await directoryExists(dir)) {
-		const fullDir = path.resolve(dir);
-		const allEntries = await fs.readdir(fullDir, { withFileTypes: true });
-
-		for (const entry of allEntries) {
-			if (entry.isDirectory()) {
-				dirNames.push(`${prefix}${entry.name}`);
-			}
-		}
-	}
-
-	return dirNames;
-}

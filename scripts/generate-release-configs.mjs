@@ -8,13 +8,7 @@
  */
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import {
-	directoryExists,
-	fileExists,
-	gatherDirectoryNames,
-	loadJson,
-	saveJson
-} from './common.mjs';
+import { directoryExists, fileExists, loadJson, saveJson } from './common.mjs';
 
 /**
  * Execute the process.
@@ -34,9 +28,9 @@ async function run() {
 
 	process.stdout.write(`Target Directory: ${targetDirectory}\n`);
 
-	const packageNames = await gatherDirectoryNames('packages', 'packages/');
-	const appNames = await gatherDirectoryNames('apps', 'apps/');
-	packageNames.push(...appNames);
+	const packageJson = await loadJson('package.json');
+
+	const packageNames = packageJson.workspaces;
 
 	await generateConfig(targetDirectory, 'major', packageNames);
 	await generateConfig(targetDirectory, 'minor', packageNames);
