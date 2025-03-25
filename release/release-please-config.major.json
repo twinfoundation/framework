@@ -43,9 +43,7 @@
 		"apps/crypto-cli": {
 			"package-name": "crypto-cli",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/version.ts"
-			]
+			"extra-files": ["src/version.ts"]
 		}
 	},
 	"plugins": [
