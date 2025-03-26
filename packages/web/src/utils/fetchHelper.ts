@@ -382,6 +382,16 @@ export class FetchHelper {
 	}
 
 	/**
+	 * Set a cache entry.
+	 * @param url The url for the request.
+	 * @param value The value to cache.
+	 * @returns The cache entry if it exists.
+	 */
+	public static async setCacheEntry<T>(url: string, value: T): Promise<void> {
+		AsyncCache.set<T>(`${FetchHelper._CACHE_PREFIX}${url}`, value);
+	}
+
+	/**
 	 * Remove a cache entry.
 	 * @param url The url for the request.
 	 */

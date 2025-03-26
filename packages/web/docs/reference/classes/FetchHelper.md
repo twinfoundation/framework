@@ -200,6 +200,38 @@ The cache entry if it exists.
 
 ***
 
+### setCacheEntry()
+
+> `static` **setCacheEntry**\<`T`\>(`url`, `value`): `Promise`\<`void`\>
+
+Set a cache entry.
+
+#### Type Parameters
+
+• **T**
+
+#### Parameters
+
+##### url
+
+`string`
+
+The url for the request.
+
+##### value
+
+`T`
+
+The value to cache.
+
+#### Returns
+
+`Promise`\<`void`\>
+
+The cache entry if it exists.
+
+***
+
 ### removeCacheEntry()
 
 > `static` **removeCacheEntry**(`url`): `void`

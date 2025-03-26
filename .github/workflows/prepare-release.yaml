@@ -1,75 +1,98 @@
 name: Prepare Release
 
 on:
+  # This workflow is triggered manually from the GitHub UI
   workflow_dispatch:
     inputs:
+      # Allow the user to choose which type of release to prepare
       semverType:
         description: 'Which type of semver to release'
         required: true
         type: choice
         options:
-          - 'prerelease'
-          - 'patch'
-          - 'minor'
-          - 'major'
+          - 'prerelease' # For development releases (e.g., 0.1.0-next.1)
+          - 'patch' # For bug fixes (e.g., 0.1.1)
+          - 'minor' # For new features (e.g., 0.2.0)
+          - 'major' # For breaking changes (e.g., 1.0.0)
 
 jobs:
-  # Prepare all the packages for update
+  # Prepare all the packages for update by creating a PR with version bumps and changelog updates
   prepare:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Needed for creating/updating branches and PRs
-      pull-requests: write # Needed for creating PRs
-      id-token: write # Keep your existing permissions
+      contents: write # Needed for creating/updating branches for version bumps
+      pull-requests: write # Needed for creating the release PR
+      id-token: write # Keep existing permissions for authentication
 
-    # Make sure we only perform prerelease on next branch and prod on main branch
+    # Enforce branching strategy rules:
+    # 1. Prereleases (next.X) can only be created from the 'next' branch
+    # 2. Production releases can only be created from the 'main' branch
     if: (github.ref == 'refs/heads/main' && github.event.inputs.semverType != 'prerelease') || (github.ref == 'refs/heads/next' && github.event.inputs.semverType == 'prerelease')
 
     steps:
+      # Clone the repository to the runner
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
 
+      # Set up Node.js environment for running npm commands
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '20' # Use Node.js 20.x
 
+      # Install dependencies as specified in package-lock.json
       - name: NPM Install
-        run: npm ci
+        run: npm ci # Using 'ci' for clean, reproducible installs
 
-      # Patch please-release with our own version of the prerelease strategy which always just increments the prerelease version
+      # Apply custom patches to release-please to modify its behavior
+      # This customizes how prerelease versioning works to always increment the prerelease number
+      # without bumping the core version (e.g., 0.1.0-next.1 → 0.1.0-next.2 rather than 0.2.0-next.0)
       - name: Patch release-please prerelease versioning strategy
         run: npx patch-package --patch-dir release
 
-      # Run please-release so that it generates a PR which bumps the versions and updates the changelogs
-      # The PR can then be reviewed and merged, once merged run the publish action to actually publish the release and npm packages
+      # Run release-please to:
+      # 1. Analyze commits since last release
+      # 2. Determine appropriate version bumps
+      # 3. Update package.json versions
+      # 4. Update package.json versions
+      # 5. Update any files with embedded versions
+      # 6. Create a PR with all these changes
       - name: Release Please
-        id: release_please
+        id: release_please # ID allows referencing this step later
         run: |
+          # Select configuration files based on release type (prerelease vs production)
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
+
+          # Execute release-please and capture its output
           OUTPUT=$(node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GITHUB_TOKEN }})
 
           echo "Release-please output: $OUTPUT"
 
-          # Extract PR number if a PR was created
+          # Parse the output to extract the PR number if one was created
           if [[ "$OUTPUT" == *"Successfully opened pull request:"* ]]; then
             # Extract PR number using grep and sed
             PR_NUMBER=$(echo "$OUTPUT" | grep -o "Successfully opened pull request: [0-9]\+" | sed 's/Successfully opened pull request: //')
+            
+            # Save PR number as step output for use in subsequent steps
             echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
             echo "PR created: $PR_NUMBER"
           else
+            # No PR was created - this happens when there are no conventional commits
+            # that would trigger a version bump since the last release
             echo "No PR was created"
           fi
 
-      # Automatically approve the PR
+      # Automatically approve the PR to speed up the release process
+      # This is necessary because PRs opened by the github-actions bot cannot be merged
+      # without approval, even with branch protection disabled
       - name: Add reviewer to PR
-        if: steps.release_please.outputs.pr_number != ''
+        if: steps.release_please.outputs.pr_number != '' # Only run if a PR was created
         run: |
           gh pr review ${{ steps.release_please.outputs.pr_number }} --approve
         env:
           # We need to use a different token for the approval as you can't approve your own PRs
-          GH_TOKEN: ${{ secrets.GHA_RELEASE_TOKEN }}
+          # This token must be from a different user with write access to the repository
+          GH_TOKEN: ${{ secrets.GHA_RELEASE_TOKEN }} # Personal access token from a different user

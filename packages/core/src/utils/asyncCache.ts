@@ -51,6 +51,20 @@ export class AsyncCache {
 	}
 
 	/**
+	 * Set an entry into the cache.
+	 * @param key The key to set in the cache.
+	 * @param value The value to set in the cache.
+	 * @param ttlMs The TTL of the entry in the cache in ms, defaults to 1s.
+	 * @returns Nothing.
+	 */
+	public static async set<T = unknown>(key: string, value: T, ttlMs?: number): Promise<void> {
+		AsyncCache._cache[key] = {
+			response: Promise.resolve(value),
+			expires: ttlMs === 0 ? 0 : Date.now() + (ttlMs ?? 1000)
+		};
+	}
+
+	/**
 	 * Remove an entry from the cache.
 	 * @param key The key to remove from the cache.
 	 */

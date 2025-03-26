@@ -78,6 +78,44 @@ The item from the cache if it exists.
 
 ***
 
+### set()
+
+> `static` **set**\<`T`\>(`key`, `value`, `ttlMs`?): `Promise`\<`void`\>
+
+Set an entry into the cache.
+
+#### Type Parameters
+
+• **T** = `unknown`
+
+#### Parameters
+
+##### key
+
+`string`
+
+The key to set in the cache.
+
+##### value
+
+`T`
+
+The value to set in the cache.
+
+##### ttlMs?
+
+`number`
+
+The TTL of the entry in the cache in ms, defaults to 1s.
+
+#### Returns
+
+`Promise`\<`void`\>
+
+Nothing.
+
+***
+
 ### remove()
 
 > `static` **remove**(`key`): `void`
