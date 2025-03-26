@@ -133,25 +133,3 @@ jobs:
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
           npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GITHUB_TOKEN }}
-
-      # Add the artifacts to the GitHub releases
-      - name: Add artifacts to release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Use the manifest file to get the package names and versions
-          MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
-          PACKAGES=$(jq -r 'keys[]' $MANIFEST_FILE)
-
-          for KEY in $PACKAGES; do
-            VERSION=$(jq -r ".\"$KEY\"" $MANIFEST_FILE)
-            echo "Processing: $KEY: $VERSION"
-
-            IFS='/' read -ra KEY_PARTS <<< "$KEY"
-            PACKAGE_NAME=${KEY_PARTS[1]}
-            
-            cd $KEY
-            npm pack
-            gh release upload ${PACKAGE_NAME}-v$VERSION ${PACKAGE_NAME}-$VERSION.tgz
-            cd ../..
-          done
