@@ -51,7 +51,7 @@ jobs:
 
   # This job publishes each package to NPM
   # It runs once per package pattern from the read-workspaces job
-  publish:
+  publish-packages:
     runs-on: ubuntu-latest
     permissions:
       id-token: write # Needed for npm provenance
@@ -111,8 +111,8 @@ jobs:
   # Once the packages have been published we create the releases on GitHub
   # No need to use a patched version of please-release here as the version
   # numbers were already incremented in the prepare-release action
-  post-publish:
-    needs: publish
+  publish-gh-releases:
+    needs: publish-packages
     runs-on: ubuntu-latest
 
     steps:
