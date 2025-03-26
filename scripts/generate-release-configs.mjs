@@ -88,7 +88,7 @@ async function generateConfig(targetDirectory, semVerType, packageNames) {
 			'changelog-path': `docs/changelog.md`
 		};
 
-		const embeddedVersionFiles = ['src/cli.ts', 'tests/cli.spec.ts'];
+		const embeddedVersionFiles = ['src/cli.ts', 'tests/cli.spec.ts', 'src/index.ts'];
 
 		for (const embeddedVersionFile of embeddedVersionFiles) {
 			if (await fileExists(path.join(packageName, embeddedVersionFile))) {
