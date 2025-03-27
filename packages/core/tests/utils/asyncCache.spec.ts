@@ -70,4 +70,11 @@ describe("AsyncCache", () => {
 		expect(settledResult[1].status === "fulfilled" && settledResult[1].value === 1).toEqual(true);
 		expect(counterIncrement).toHaveBeenCalledTimes(1);
 	});
+
+	test("can set a value in the cache and retrieve it", async () => {
+		await AsyncCache.set("key", 1);
+
+		const value = await AsyncCache.get("key");
+		expect(value).toEqual(1);
+	});
 });
