@@ -60,7 +60,7 @@ export class AsyncCache {
 	public static async set<T = unknown>(key: string, value: T, ttlMs?: number): Promise<void> {
 		AsyncCache._cache[key] = {
 			response: Promise.resolve(value),
-			expires: ttlMs === 0 ? 0 : Date.now() + (ttlMs ?? 1000)
+			expires: Date.now() + (ttlMs ?? 1000)
 		};
 	}
 
