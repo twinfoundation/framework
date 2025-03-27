@@ -27,10 +27,8 @@ jobs:
       # This output will be consumed by the publish job's matrix
       packages: ${{ steps.read-workspaces.outputs.packages }}
 
-    # Enforce branch rules:
-    # 1. Only run prerelease versions on the next branch
-    # 2. Only run production versions (patch/minor/major) on the main branch
-    if: (github.ref == 'refs/heads/main' && github.event.inputs.semverType != 'prerelease') || (github.ref == 'refs/heads/next' && github.event.inputs.semverType == 'prerelease')
+    # Enforce branching strategy rules, we only allow releases created on the next branch:
+    if: github.ref == 'refs/heads/next'
 
     steps:
       # Get the code from the repository
