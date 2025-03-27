@@ -65,7 +65,7 @@ jobs:
       # 5. Update any files with embedded versions
       # 6. Create a PR with all these changes
       - name: Release Please
-        id: release_please # ID allows referencing this step later
+        id: release-please # ID allows referencing this step later
         run: |
           # Select configuration files based on release type (prerelease vs production)
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
@@ -94,9 +94,9 @@ jobs:
       # This is necessary because PRs opened by the github-actions bot cannot be merged
       # without approval, even with branch protection disabled
       - name: Add reviewer to PR
-        if: steps.release_please.outputs.pr_number != '' # Only run if a PR was created
+        if: steps.release-please.outputs.pr_number != '' # Only run if a PR was created
         run: |
-          gh pr review ${{ steps.release_please.outputs.pr_number }} --approve
+          gh pr review ${{ steps.release-please.outputs.pr_number }} --approve
         env:
           # We need to use a different token for the approval as you can't approve your own PRs
           # This token must be from a different user with write access to the repository
