@@ -1,5 +1,20 @@
 # @twin.org/web - Changelog
 
+## [0.0.2](https://github.com/twinfoundation/framework/compare/web-v0.0.1...web-v0.0.2) (2025-03-27)
+
+
+### Features
+
+* add set method for async caches ([ba34b55](https://github.com/twinfoundation/framework/commit/ba34b55e651ad56ab8fc59e139e4af631c19cda0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.51 to 0.0.2
+    * @twin.org/crypto bumped from 0.0.1-next.51 to 0.0.2
+
 ## [0.0.1-next.51](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.50...web-v0.0.1-next.51) (2025-03-27)
 
 
