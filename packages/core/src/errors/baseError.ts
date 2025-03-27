@@ -1,6 +1,5 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
 import { StringHelper } from "../helpers/stringHelper";
 import type { IError } from "../models/IError";
 import { Is } from "../utils/is";
@@ -205,6 +204,18 @@ export class BaseError extends Error implements IError {
 	}
 
 	/**
+	 * Test to see if any of the errors or children are from a specific class.
+	 * @param error The error to test.
+	 * @param cls The class to check for.
+	 * @returns True if the error has the specific class.
+	 */
+	public static someErrorClass(error: unknown, cls: string): error is BaseError {
+		const errorClass = StringHelper.camelCase(cls);
+		const regExp = new RegExp(`^${errorClass}\\.`);
+		return BaseError.flatten(error).some(e => BaseError.isErrorMessage(e, regExp));
+	}
+
+	/**
 	 * Test to see if any of the errors or children have the given error code.
 	 * @param error The error to test.
 	 * @param code The code to check for.
@@ -216,10 +227,9 @@ export class BaseError extends Error implements IError {
 
 	/**
 	 * Serialize the error to the error model.
-	 * @param includeStack Include the stack in the error.
 	 * @returns The error model.
 	 */
-	public toJsonObject(includeStack?: boolean): IError {
+	public toJsonObject(): IError {
 		const err: Partial<IError> = {};
 		if (Is.stringValue(this.name)) {
 			err.name = this.name;
@@ -233,11 +243,11 @@ export class BaseError extends Error implements IError {
 		if (Is.object(this.properties)) {
 			err.properties = this.properties;
 		}
-		if (Is.stringValue(this.stack) && includeStack) {
+		if (Is.stringValue(this.stack)) {
 			err.stack = this.stack;
 		}
 		if (Is.notEmpty(this.inner)) {
-			err.inner = BaseError.fromError(this.inner).toJsonObject(includeStack);
+			err.inner = BaseError.fromError(this.inner).toJsonObject();
 		}
 		return err as IError;
 	}

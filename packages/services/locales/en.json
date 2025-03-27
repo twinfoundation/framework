@@ -1,9 +1,0 @@
-{
-	"error": {
-		"serviceFactory": {
-			"noServiceUnregister": "There is no service registered with the name \"{name}\"",
-			"noServiceAlias": "There is no service registered with the name \"{name}\" that can be aliased",
-			"noServiceGet": "The requested service \"{name}\" does not exist in the factory"
-		}
-	}
-}

@@ -4,16 +4,16 @@ Model for a local.
 
 ## Properties
 
-### code
-
-• **code**: `string`
-
-The code.
-
-___
-
 ### label
 
-• **label**: `string`
+> **label**: `string`
 
 The label.
+
+***
+
+### code
+
+> **code**: `string`
+
+The code.

@@ -1,35 +1,27 @@
 # Interface: IComparator
 
-Interface defining comparison operator.
+Interface defining comparator operator.
 
 ## Properties
 
-### comparison
-
-• **comparison**: [`ComparisonType`](../enums/ComparisonType.md)
-
-The comparison to perform.
-
-___
-
-### logicalOperator
-
-• `Optional` **logicalOperator**: [`LogicalOperator`](../enums/LogicalOperator.md)
-
-The logical operator to use.
-
-___
-
 ### property
 
-• **property**: `string`
+> **property**: `string`
 
-The name of the property in the object to compare.
+The name of the property in the object to check.
 
-___
+***
 
 ### value
 
-• **value**: `unknown`
+> **value**: `unknown`
 
-The value of the property to compare.
+The value of the property to check.
+
+***
+
+### comparison
+
+> **comparison**: [`ComparisonOperator`](../type-aliases/ComparisonOperator.md)
+
+The comparison to perform.

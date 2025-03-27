@@ -15,9 +15,9 @@ module.exports = {
 		'plugin:promise/recommended',
 		'plugin:unicorn/all'
 	],
-	ignorePatterns: ['dist', 'coverage', 'rollup.config.mjs'],
+	ignorePatterns: ['dist', 'coverage', 'rollup.config.mjs', 'vitest.config.ts.timestamp*'],
 	parserOptions: {
-		ecmaVersion: 2020,
+		ecmaVersion: 2022,
 		project: './tsconfig.eslint.json',
 		sourceType: 'module',
 		tsconfigRootDir: __dirname
@@ -141,7 +141,7 @@ module.exports = {
 		'no-compare-neg-zero': ['error'],
 		'no-cond-assign': ['error'],
 		'no-confusing-arrow': ['error'],
-		'no-console': ['off'],
+		'no-console': ['error'],
 		'no-constant-binary-expression': ['error'],
 		'no-const-assign': ['off'],
 		'no-constant-condition': ['error'],
@@ -226,14 +226,23 @@ module.exports = {
 					'new Error is disallowed as it is not specific enough, and bypasses the i18n formatting'
 			},
 			{
-				selector: 'ImportDeclaration[source.value=/\\.$/]',
+				selector: String.raw`ImportDeclaration[source.value=/\.$/]`,
 				message:
 					'Importing from paths ending in "." are not allowed, use specific file import instead to avoid circular dependencies'
 			},
 			{
-				selector: 'PropertyDefinition[value!=null][static=false]',
+				selector: String.raw`ImportDeclaration[source.value=/\..src$/]`,
+				message:
+					'Importing from paths ending in "/src" are not allowed, use specific file import instead to avoid circular dependencies'
+			},
+			{
+				selector: 'PropertyDefinition[value!=null][static=false][key.name!=CLASS_NAME]',
 				message:
 					'Do not use property initializers inline, perform the initialization in the constructor instead'
+			},
+			{
+				selector: 'TSEnumDeclaration',
+				message: 'Do not use enums, instead use iterable union types'
 			}
 		],
 		'no-return-assign': ['error'],
@@ -333,6 +342,18 @@ module.exports = {
 		'template-curly-spacing': ['error'],
 		'template-tag-spacing': ['error'],
 		'unicode-bom': ['error'],
+		'promise/always-return': ['error'],
+		'promise/no-return-wrap': ['error'],
+		'promise/param-names': ['error'],
+		'promise/catch-or-return': ['error'],
+		'promise/no-multiple-resolved': ['error'],
+		'promise/no-nesting': ['error'],
+		'promise/no-promise-in-callback': ['error'],
+		'promise/no-callback-in-promise': ['error'],
+		'promise/no-new-statics': ['error'],
+		'promise/no-return-in-finally': ['error'],
+		'promise/prefer-await-to-then': ['error'],
+		'promise/valid-params': ['error'],
 		'unicorn/better-regex': ['error'],
 		'unicorn/catch-error-name': ['off'],
 		'unicorn/consistent-function-scoping': ['error'],
@@ -380,7 +401,7 @@ module.exports = {
 		'unicorn/prefer-negative-index': ['error'],
 		'unicorn/prefer-node-append': ['error'],
 		'unicorn/prefer-node-remove': ['error'],
-		'unicorn/prefer-node-protocol': ['off'],
+		'unicorn/prefer-node-protocol': ['error'],
 		'unicorn/prefer-number-properties': ['error'],
 		'unicorn/prefer-optional-catch-binding': ['error'],
 		'unicorn/prefer-query-selector': ['error'],
@@ -513,6 +534,12 @@ module.exports = {
 			}
 		},
 		{
+			files: ['setupTestEnv.ts', '*.spec.ts'],
+			rules: {
+				'no-console': ['off']
+			}
+		},
+		{
 			extends: [
 				'plugin:@typescript-eslint/recommended',
 				'plugin:@typescript-eslint/recommended-requiring-type-checking',
@@ -543,7 +570,7 @@ module.exports = {
 				'@typescript-eslint/object-curly-spacing': ['off'],
 				'@typescript-eslint/default-param-last': ['error'],
 				'@typescript-eslint/dot-notation': ['error'],
-				'@typescript-eslint/explicit-function-return-type': ['error'],
+				'@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
 				'@typescript-eslint/explicit-member-accessibility': [
 					'error',
 					{
@@ -594,6 +621,7 @@ module.exports = {
 				'@typescript-eslint/no-array-constructor': ['error'],
 				'@typescript-eslint/no-base-to-string': ['error'],
 				'@typescript-eslint/no-dupe-class-members': ['error'],
+				'@typescript-eslint/no-duplicate-type-constituents': ['error', { ignoreUnions: true }],
 				'@typescript-eslint/no-dynamic-delete': ['off'],
 				'@typescript-eslint/no-empty-function': ['off'],
 				'@typescript-eslint/no-empty-interface': ['error'],
@@ -625,7 +653,6 @@ module.exports = {
 				'@typescript-eslint/no-require-imports': ['error'],
 				'@typescript-eslint/no-shadow': ['error'],
 				'@typescript-eslint/no-this-alias': ['error'],
-				'@typescript-eslint/no-throw-literal': ['error'],
 				'@typescript-eslint/no-type-alias': ['off'],
 				'@typescript-eslint/no-unnecessary-boolean-literal-compare': ['error'],
 				'@typescript-eslint/no-unnecessary-condition': ['off'],
@@ -649,6 +676,7 @@ module.exports = {
 				'@typescript-eslint/no-use-before-define': ['off'],
 				'@typescript-eslint/no-useless-constructor': ['error'],
 				'@typescript-eslint/no-var-requires': ['error'],
+				'@typescript-eslint/only-throw-error': ['error'],
 				'@typescript-eslint/prefer-as-const': ['error'],
 				'@typescript-eslint/prefer-for-of': ['off'],
 				'@typescript-eslint/prefer-function-type': ['error'],

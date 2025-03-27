@@ -4,20 +4,37 @@ Class to represent a color.
 
 ## Constructors
 
-### constructor
+### new Color()
 
-• **new Color**(`alpha`, `red`, `green`, `blue`): [`Color`](Color.md)
+> **new Color**(`alpha`, `red`, `green`, `blue`): [`Color`](Color.md)
 
 Create a new instance of color.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `alpha` | `number` | The alpha element of the color. |
-| `red` | `number` | The red element of the color. |
-| `green` | `number` | The green element of the color. |
-| `blue` | `number` | The blue element of the color. |
+##### alpha
+
+`number`
+
+The alpha element of the color.
+
+##### red
+
+`number`
+
+The red element of the color.
+
+##### green
+
+`number`
+
+The green element of the color.
+
+##### blue
+
+`number`
+
+The blue element of the color.
 
 #### Returns
 
@@ -25,9 +42,57 @@ Create a new instance of color.
 
 ## Methods
 
-### alpha
+### fromHex()
 
-▸ **alpha**(): `number`
+> `static` **fromHex**(`hex`): [`Color`](Color.md)
+
+Construct a color from a hex string.
+
+#### Parameters
+
+##### hex
+
+`string`
+
+The hex string to parse.
+
+#### Returns
+
+[`Color`](Color.md)
+
+The color.
+
+#### Throws
+
+Error if the format is incorrect.
+
+***
+
+### coerce()
+
+> `static` **coerce**(`value`): `undefined` \| [`Color`](Color.md)
+
+Coerce an unknown type to a color.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to try and convert.
+
+#### Returns
+
+`undefined` \| [`Color`](Color.md)
+
+The color if one can be created.
+
+***
+
+### alpha()
+
+> **alpha**(): `number`
 
 Get the alpha element.
 
@@ -37,81 +102,11 @@ Get the alpha element.
 
 The alpha element.
 
-___
+***
 
-### argb
+### red()
 
-▸ **argb**(): `number`
-
-Get color as argb.
-
-#### Returns
-
-`number`
-
-The color as argb.
-
-___
-
-### blue
-
-▸ **blue**(): `number`
-
-Get the blue element.
-
-#### Returns
-
-`number`
-
-The blue element.
-
-___
-
-### green
-
-▸ **green**(): `number`
-
-Get the green element.
-
-#### Returns
-
-`number`
-
-The green element.
-
-___
-
-### hex
-
-▸ **hex**(): `string`
-
-Get color as hex no alpha.
-
-#### Returns
-
-`string`
-
-The color as hex with no alpha component.
-
-___
-
-### hexWithAlpha
-
-▸ **hexWithAlpha**(): `string`
-
-Get color as hex with alpha.
-
-#### Returns
-
-`string`
-
-The color as hex with with alpha component.
-
-___
-
-### red
-
-▸ **red**(): `number`
+> **red**(): `number`
 
 Get the red element.
 
@@ -121,25 +116,53 @@ Get the red element.
 
 The red element.
 
-___
+***
 
-### rgbText
+### green()
 
-▸ **rgbText**(): `string`
+> **green**(): `number`
 
-Get color as rgb text.
+Get the green element.
 
 #### Returns
 
-`string`
+`number`
 
-The color as rgb.
+The green element.
 
-___
+***
 
-### rgba
+### blue()
 
-▸ **rgba**(): `number`
+> **blue**(): `number`
+
+Get the blue element.
+
+#### Returns
+
+`number`
+
+The blue element.
+
+***
+
+### argb()
+
+> **argb**(): `number`
+
+Get color as argb.
+
+#### Returns
+
+`number`
+
+The color as argb.
+
+***
+
+### rgba()
+
+> **rgba**(): `number`
 
 Get color as rgba.
 
@@ -149,11 +172,25 @@ Get color as rgba.
 
 The color as rgba.
 
-___
+***
 
-### rgbaText
+### rgbText()
 
-▸ **rgbaText**(): `string`
+> **rgbText**(): `string`
+
+Get color as rgb text.
+
+#### Returns
+
+`string`
+
+The color as rgb.
+
+***
+
+### rgbaText()
+
+> **rgbaText**(): `string`
 
 Get color as rgba text.
 
@@ -163,46 +200,30 @@ Get color as rgba text.
 
 The color as rgba.
 
-___
+***
 
-### coerce
+### hex()
 
-▸ **coerce**(`value`): `undefined` \| [`Color`](Color.md)
+> **hex**(): `string`
 
-Coerce an unknown type to a color.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to try and convert. |
+Get color as hex no alpha.
 
 #### Returns
 
-`undefined` \| [`Color`](Color.md)
+`string`
 
-The color if one can be created.
+The color as hex with no alpha component.
 
-___
+***
 
-### fromHex
+### hexWithAlpha()
 
-▸ **fromHex**(`hex`): [`Color`](Color.md)
+> **hexWithAlpha**(): `string`
 
-Construct a color from a hex string.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `hex` | `string` | The hex string to parse. |
+Get color as hex with alpha.
 
 #### Returns
 
-[`Color`](Color.md)
+`string`
 
-The color.
-
-**`Throws`**
-
-Error if the format is incorrect.
+The color as hex with with alpha component.

@@ -2,48 +2,46 @@
 
 Options for rendering as text.
 
-## Hierarchy
+## Extends
 
 - [`IRendererOptions`](IRendererOptions.md)
 
-  ↳ **`ITextRendererOptions`**
-
 ## Properties
 
-### cellSize
+### cellSize?
 
-• `Optional` **cellSize**: `number`
+> `optional` **cellSize**: `number`
 
 The cell size.
 
 #### Inherited from
 
-[IRendererOptions](IRendererOptions.md).[cellSize](IRendererOptions.md#cellsize)
+[`IRendererOptions`](IRendererOptions.md).[`cellSize`](IRendererOptions.md#cellsize)
 
-___
+***
 
-### marginSize
+### marginSize?
 
-• `Optional` **marginSize**: `number`
+> `optional` **marginSize**: `number`
 
 The margin size.
 
 #### Inherited from
 
-[IRendererOptions](IRendererOptions.md).[marginSize](IRendererOptions.md#marginsize)
+[`IRendererOptions`](IRendererOptions.md).[`marginSize`](IRendererOptions.md#marginsize)
 
-___
+***
 
-### offChar
+### onChar?
 
-• `Optional` **offChar**: `string`
-
-The character to use for off pixels.
-
-___
-
-### onChar
-
-• `Optional` **onChar**: `string`
+> `optional` **onChar**: `string`
 
 The character to use for on pixels.
+
+***
+
+### offChar?
+
+> `optional` **offChar**: `string`
+
+The character to use for off pixels.

@@ -1,7 +1,9 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
 /* eslint-disable no-bitwise */
+import { Base58 } from "../encoding/base58";
 import { Base64 } from "../encoding/base64";
+import { Base64Url } from "../encoding/base64Url";
 import { HexHelper } from "../helpers/hexHelper";
 
 /**
@@ -230,6 +232,42 @@ export class Converter {
 	 */
 	public static base64ToBytes(base64: string): Uint8Array {
 		return Base64.decode(base64);
+	}
+
+	/**
+	 * Convert bytes to base64 url string.
+	 * @param bytes The bytes to convert.
+	 * @returns A base64 url string of the bytes.
+	 */
+	public static bytesToBase64Url(bytes: Uint8Array): string {
+		return Base64Url.encode(bytes);
+	}
+
+	/**
+	 * Convert a base64 url string to bytes.
+	 * @param base64Url The base64 url string.
+	 * @returns The bytes.
+	 */
+	public static base64UrlToBytes(base64Url: string): Uint8Array {
+		return Base64Url.decode(base64Url);
+	}
+
+	/**
+	 * Convert bytes to base58 string.
+	 * @param bytes The bytes to convert.
+	 * @returns A base58 string of the bytes.
+	 */
+	public static bytesToBase58(bytes: Uint8Array): string {
+		return Base58.encode(bytes);
+	}
+
+	/**
+	 * Convert a base58 string to bytes.
+	 * @param base58 The base58 string.
+	 * @returns The bytes.
+	 */
+	public static base58ToBytes(base58: string): Uint8Array {
+		return Base58.decode(base58);
 	}
 
 	/**

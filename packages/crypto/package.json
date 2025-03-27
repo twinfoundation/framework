@@ -1,10 +1,10 @@
 {
-	"name": "@gtsc/crypto",
-	"version": "0.0.2",
-	"description": "Framework Crypto packages for GTSC",
+	"name": "@twin.org/crypto",
+	"version": "0.0.1-next.50",
+	"description": "Contains helper methods and classes which implement cryptographic functions",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/gtscio/framework.git",
+		"url": "git+https://github.com/twinfoundation/framework.git",
 		"directory": "packages/crypto"
 	},
 	"author": "martyn.janes@iota.org",
@@ -15,44 +15,55 @@
 	},
 	"scripts": {
 		"clean": "rimraf dist coverage docs/reference",
-		"build": "tspc",
-		"test": "vitest --run --coverage --config ./vitest.config.ts",
+		"build": "tsc",
+		"dev": "nodemon --watch src --ext ts --exec \"npm run build && npm run bundle:esm\"",
+		"test": "vitest --run --config ./vitest.config.ts --no-cache",
+		"coverage": "vitest --run --coverage --config ./vitest.config.ts --no-cache",
 		"bundle:esm": "rollup --config rollup.config.mjs --environment MODULE:esm",
 		"bundle:cjs": "rollup --config rollup.config.mjs --environment MODULE:cjs",
 		"bundle": "npm run bundle:esm && npm run bundle:cjs",
 		"docs:clean": "rimraf docs/reference",
 		"docs:generate": "typedoc",
-		"docs:finalise": "rimraf docs/reference/README.md",
-		"docs": "npm run docs:clean && npm run docs:generate && npm run docs:finalise",
-		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs"
+		"docs": "npm run docs:clean && npm run docs:generate",
+		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs",
+		"dist:no-test": "npm run clean && npm run build && npm run bundle && npm run docs",
+		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@gtsc/core": "^0.0.2",
-		"@gtsc/nameof": "^0.0.2"
+		"@twin.org/core": "0.0.1-next.50",
+		"@twin.org/nameof": "next",
+		"@noble/ciphers": "1.2.1",
+		"@noble/curves": "1.8.1",
+		"@noble/hashes": "1.7.1",
+		"@scure/base": "1.2.4",
+		"@scure/bip32": "1.6.2",
+		"@scure/bip39": "1.5.4",
+		"micro-key-producer": "0.7.5"
 	},
 	"devDependencies": {
-		"@gtsc/nameof-transformer": "^0.0.2",
-		"@vitest/coverage-v8": "^1.4.0",
-		"copyfiles": "^2.4.1",
-		"rimraf": "^5.0.5",
-		"rollup": "^4.13.0",
-		"rollup-plugin-typescript2": "^0.36.0",
-		"ts-patch": "^3.1.2",
-		"typedoc": "^0.25.12",
-		"typedoc-plugin-markdown": "^3.17.1",
-		"typescript": "^5.4.2",
-		"vitest": "^1.4.0"
+		"@twin.org/nameof-transformer": "next",
+		"@twin.org/nameof-vitest-plugin": "next",
+		"@vitest/coverage-v8": "3.0.8",
+		"copyfiles": "2.4.1",
+		"rimraf": "6.0.1",
+		"rollup": "4.34.9",
+		"ts-patch": "3.3.0",
+		"nodemon": "3.1.9",
+		"typedoc": "0.27.9",
+		"typedoc-plugin-markdown": "4.4.2",
+		"typescript": "5.8.2",
+		"vitest": "3.0.8"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",
 	"types": "./dist/types/index.d.ts",
 	"exports": {
 		".": {
+			"types": "./dist/types/index.d.ts",
 			"require": "./dist/cjs/index.cjs",
-			"import": "./dist/esm/index.mjs",
-			"types": "./dist/types/index.d.ts"
+			"import": "./dist/esm/index.mjs"
 		},
-		"./locales": "./locales"
+		"./locales/*.json": "./locales/*.json"
 	},
 	"files": [
 		"dist/cjs",

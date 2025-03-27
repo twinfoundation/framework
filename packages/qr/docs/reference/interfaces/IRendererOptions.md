@@ -2,26 +2,23 @@
 
 Options for rendering.
 
-## Hierarchy
+## Extended by
 
-- **`IRendererOptions`**
-
-  ↳ [`IBitmapRendererOptions`](IBitmapRendererOptions.md)
-
-  ↳ [`ITextRendererOptions`](ITextRendererOptions.md)
+- [`IBitmapRendererOptions`](IBitmapRendererOptions.md)
+- [`ITextRendererOptions`](ITextRendererOptions.md)
 
 ## Properties
 
-### cellSize
+### cellSize?
 
-• `Optional` **cellSize**: `number`
+> `optional` **cellSize**: `number`
 
 The cell size.
 
-___
+***
 
-### marginSize
+### marginSize?
 
-• `Optional` **marginSize**: `number`
+> `optional` **marginSize**: `number`
 
 The margin size.

@@ -1,0 +1,28 @@
+{
+	"error": {
+		"fetchHelper": {
+			"decodingJSON": "Decoding JSON failed for route \"{route}\"",
+			"failureStatusText": "The request to the API failed: \"{statusText}\"",
+			"connectivity": "The request failed, the API could be offline, or there are other connectivity issues",
+			"timeout": "The request timed out",
+			"general": "A general failure occurred during the request"
+		},
+		"jwt": {
+			"noKeyOrSigner": "No key or signer was provided for JWT creation",
+			"noKeyOrVerifier": "No key or verifier was provided for JWT creation",
+			"verifyFailed": "Failed to verify JWT",
+			"invalidTokenParts": "The JSON Web Token could not be parsed, it should contain three parts separated by dots",
+			"invalidSigningBytes": "The signing bytes are invalid, it should contain two parts separated by a dot"
+		},
+		"jwk": {
+			"jwkImportFailed": "Failed to import JWK"
+		},
+		"jws": {
+			"createFailed": "Failed to create JWS",
+			"verifyFailed": "Failed to verify JWS"
+		}
+	},
+	"errorMessages": {
+		"fetch": "Fetch"
+	}
+}

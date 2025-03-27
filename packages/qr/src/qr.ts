@@ -4,8 +4,8 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-mixed-operators */
 /* eslint-disable unicorn/prefer-math-trunc */
-import { GeneralError, Is } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
+import { GeneralError, Is } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 import { QRAlphaNumeric } from "./data/qrAlphaNumeric";
 import { QRByte8 } from "./data/qrByte8";
 import { QRNumber } from "./data/qrNumber";

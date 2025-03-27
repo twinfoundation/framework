@@ -1,18 +1,22 @@
 {
 	"error": {
 		"guard": {
-			"length32Multiple": "Property \"{property}\" length should be a multiple of 32, it is \"{value}\"",
-			"lengthEntropy": "Property \"{property}\" length should be a multiple of 4, >=16 and <= 32, it is \"{value}\"",
-			"length3Multiple": "Property \"{property}\" length should be a multiple of 3, it is \"{value}\"",
-			"greaterThan0": "Property \"{property}\" must be greater than zero, it is \"{value}\""
+			"length32Multiple": "Property \"{property}\" should be a multiple of 32, it is {value}",
+			"lengthEntropy": "Property \"{property}\" should be a multiple of 4, >=16 and <= 32, it is {value}",
+			"length3Multiple": "Property \"{property}\" should be a multiple of 3, it is {value}",
+			"greaterThan0": "Property \"{property}\" must be greater than zero, it is {value}"
 		},
 		"bip39": {
 			"missingMnemonicWord": "The mnemonic contains a word not in the wordlist, \"{value}\"",
-			"checksumMismatch": "The checksum does not match \"{newChecksum}\" != \"${checksumBits}\""
+			"checksumMismatch": "The checksum does not match \"{newChecksum}\" != \"{checksumBits}\""
 		},
 		"ed25519": {
-			"seedLength": "The seed length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\"",
-			"privateKeyLength": "The private key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\""
+			"privateKeyLength": "The private key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\"",
+			"publicKeyLength": "The public key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\""
+		},
+		"secp256k1": {
+			"privateKeyLength": "The private key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\"",
+			"publicKeyLength": "The public key length is incorrect, it should be \"{requiredSize}\" but is \"{actualSize}\""
 		},
 		"x25519": {
 			"invalidPublicKey": "Invalid Ed25519 Public Key"
@@ -21,30 +25,27 @@
 			"outputLength64": "The output length should be between 1 and 64, it is \"{outputLength}\"",
 			"keyLength64": "The key length should be between 1 and 64, it is \"{keyLength}\""
 		},
-		"sha1": {
-			"alreadyFinalised": "The hash has already been finalised"
-		},
 		"sha512": {
-			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\"",
-			"alreadyFinalised": "The hash has already been finalised"
+			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\""
 		},
 		"sha256": {
-			"bitSize": "Only 224 or 256 bits are supported, it is \"{bitSize}\"",
-			"alreadyFinalised": "The hash has already been finalised"
+			"bitSize": "Only 224 or 256 bits are supported, it is \"{bitSize}\""
 		},
-		"base32": {
-			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"
+		"sha3": {
+			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\""
 		},
-		"base64": {
-			"length4Multiple": "Invalid length should be a multiple of 4, it is \"{value}\""
+		"hmacSha256": {
+			"bitSize": "Only 224 or 256 bits are supported, it is \"{bitSize}\""
 		},
-		"bech64": {
-			"noSeparator": "There is no separator \"{value}\" in the data",
-			"separatorPos": "The separator position is \"{value}\", which is too early in the string",
-			"separatorNoSpace": "The separator position is \"{value}\", which doesn't leave enough space for data",
-			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset",
-			"excessPadding": "The data contains excess padding",
-			"nonZeroPadding": "The data contains non-zero padding"
+		"hmacSha512": {
+			"bitSize": "Only 224, 256, 384 or 512 bits are supported, it is \"{bitSize}\""
+		},
+		"bech32": {
+			"decodeFailed": "The address contains decoding failed for address \"{bech32}\"",
+			"invalidChecksum": "The address contains an invalid checksum in address, \"{bech32}\"",
+			"separatorMisused": "The separator character '1' should only be used between hrp and data, \"{bech32}\"",
+			"lowerUpper": "The address my use either lowercase or uppercase, \"{bech32}\"",
+			"dataTooShort": "The address does not contain enough data to decode, \"{bech32}\""
 		},
 		"pbkdf2": {
 			"keyTooLong": "The requested key length \"{keyLength}\" is too long, based on the \"{macLength}\""
@@ -56,6 +57,12 @@
 			"authTagDecrypting": "Can not get the auth tag when decrypting",
 			"authTagEncrypting": "Can not set the auth tag when encrypting",
 			"noAuthTagSet": "The auth tag has not been set"
+		},
+		"bip44": {
+			"unsupportedKeyType": "The key type \"{keyType}\" is not supported"
+		},
+		"slip0010": {
+			"invalidSeed": "The seed is invalid \"{seed}\""
 		}
 	}
 }

@@ -1,22 +1,28 @@
 # Class: Blake2b
 
 Class to help with Blake2B Signature scheme.
-TypeScript conversion from https://github.com/dcposch/blakejs.
 
 ## Constructors
 
-### constructor
+### new Blake2b()
 
-• **new Blake2b**(`outLen`, `key?`): [`Blake2b`](Blake2b.md)
+> **new Blake2b**(`outputLength`, `key`?): [`Blake2b`](Blake2b.md)
 
 Create a new instance of Blake2b.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `outLen` | `number` | Output length between 1 and 64 bytes. |
-| `key?` | `Uint8Array` | Optional key. |
+##### outputLength
+
+`number`
+
+The output length.
+
+##### key?
+
+`Uint8Array`\<`ArrayBufferLike`\>
+
+Optional key for the hash.
 
 #### Returns
 
@@ -26,140 +32,142 @@ Create a new instance of Blake2b.
 
 ### SIZE\_160
 
-▪ `Static` **SIZE\_160**: `number` = `20`
+> `static` **SIZE\_160**: `number` = `20`
 
 Blake2b 160.
 
-___
+***
 
 ### SIZE\_256
 
-▪ `Static` **SIZE\_256**: `number` = `32`
+> `static` **SIZE\_256**: `number` = `32`
 
 Blake2b 256.
 
-___
+***
 
 ### SIZE\_512
 
-▪ `Static` **SIZE\_512**: `number` = `64`
+> `static` **SIZE\_512**: `number` = `64`
 
 Blake2b 512.
 
 ## Methods
 
-### final
+### sum160()
 
-▸ **final**(): `Uint8Array`
+> `static` **sum160**(`block`, `key`?): `Uint8Array`
 
-Completes a BLAKE2b streaming hash.
+Perform Sum 160 on the block.
+
+#### Parameters
+
+##### block
+
+`Uint8Array`
+
+The block to operate on.
+
+##### key?
+
+`Uint8Array`\<`ArrayBufferLike`\>
+
+Optional key for the hash.
 
 #### Returns
 
 `Uint8Array`
 
-The final data.
+The sum 160 of the block.
 
-___
+***
 
-### init
+### sum256()
 
-▸ **init**(`outputLength`, `key?`): `void`
+> `static` **sum256**(`block`, `key`?): `Uint8Array`
 
-Creates a BLAKE2b hashing context.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `outputLength` | `number` | Output length between 1 and 64 bytes. |
-| `key?` | `Uint8Array` | Optional key. |
-
-#### Returns
-
-`void`
-
-**`Throws`**
-
-Error if the output length is not between 1 and 64 bytes.
-
-___
-
-### update
-
-▸ **update**(`input`): `void`
-
-Updates a BLAKE2b streaming hash.
+Perform Sum 256 on the block.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `input` | `Uint8Array` | The data to hash. |
+##### block
 
-#### Returns
+`Uint8Array`
 
-`void`
+The block to operate on.
 
-___
+##### key?
 
-### sum160
+`Uint8Array`\<`ArrayBufferLike`\>
 
-▸ **sum160**(`data`, `key?`): `Uint8Array`
-
-Perform Sum 160 on the data.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `Uint8Array` | The data to operate on. |
-| `key?` | `Uint8Array` | Optional key for the hash. |
+Optional key for the hash.
 
 #### Returns
 
 `Uint8Array`
 
-The sum 160 of the data.
+The sum 256 of the block.
 
-___
+***
 
-### sum256
+### sum512()
 
-▸ **sum256**(`data`, `key?`): `Uint8Array`
+> `static` **sum512**(`block`, `key`?): `Uint8Array`
 
-Perform Sum 256 on the data.
+Perform Sum 512 on the block.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `Uint8Array` | The data to operate on. |
-| `key?` | `Uint8Array` | Optional key for the hash. |
+##### block
+
+`Uint8Array`
+
+The block to operate on.
+
+##### key?
+
+`Uint8Array`\<`ArrayBufferLike`\>
+
+Optional key for the hash.
 
 #### Returns
 
 `Uint8Array`
 
-The sum 256 of the data.
+The sum 512 of the block.
 
-___
+***
 
-### sum512
+### update()
 
-▸ **sum512**(`data`, `key?`): `Uint8Array`
+> **update**(`block`): [`Blake2b`](Blake2b.md)
 
-Perform Sum 512 on the data.
+Update the hash with the block.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `Uint8Array` | The data to operate on. |
-| `key?` | `Uint8Array` | Optional key for the hash. |
+##### block
+
+`Uint8Array`
+
+The block to update the hash with.
+
+#### Returns
+
+[`Blake2b`](Blake2b.md)
+
+The instance for chaining.
+
+***
+
+### digest()
+
+> **digest**(): `Uint8Array`
+
+Get the digest for the hash.
 
 #### Returns
 
 `Uint8Array`
 
-The sum 512 of the data.
+The instance for chaining.

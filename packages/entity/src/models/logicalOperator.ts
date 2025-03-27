@@ -2,15 +2,22 @@
 // SPDX-License-Identifier: Apache-2.0.
 
 /**
- * An enum defining logical operators.
+ * The logical operators for condition combining.
  */
-export enum LogicalOperator {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const LogicalOperator = {
 	/**
 	 * Logical operator AND.
 	 */
-	AND = "AND",
+	And: "and",
+
 	/**
 	 * Logical operator OR.
 	 */
-	OR = "OR"
-}
+	Or: "or"
+} as const;
+
+/**
+ * The logical operators for condition combining.
+ */
+export type LogicalOperator = (typeof LogicalOperator)[keyof typeof LogicalOperator];

@@ -4,8 +4,8 @@
 /* eslint-disable no-mixed-operators */
 /* eslint-disable array-bracket-newline */
 
-import { GeneralError } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
+import { GeneralError } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 
 /**
  * JPEG Encoder.

@@ -4,9 +4,9 @@ Class to render qr data as text.
 
 ## Constructors
 
-### constructor
+### new TextRenderer()
 
-• **new TextRenderer**(): [`TextRenderer`](TextRenderer.md)
+> **new TextRenderer**(): [`TextRenderer`](TextRenderer.md)
 
 #### Returns
 
@@ -14,18 +14,25 @@ Class to render qr data as text.
 
 ## Methods
 
-### render
+### render()
 
-▸ **render**(`cellData`, `options?`): `Promise`\<`string`\>
+> `static` **render**(`cellData`, `options`?): `Promise`\<`string`\>
 
 Render the QR code data as text.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `cellData` | [`QRCellData`](../modules.md#qrcelldata) | The cell data for the QR code. |
-| `options?` | [`ITextRendererOptions`](../interfaces/ITextRendererOptions.md) | The options for rendering. |
+##### cellData
+
+[`QRCellData`](../type-aliases/QRCellData.md)
+
+The cell data for the QR code.
+
+##### options?
+
+[`ITextRendererOptions`](../interfaces/ITextRendererOptions.md)
+
+The options for rendering.
 
 #### Returns
 

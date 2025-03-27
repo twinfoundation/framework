@@ -61,22 +61,92 @@ export class Is {
 	}
 
 	/**
+	 * Is the value a JSON string.
+	 * @param value The value to test.
+	 * @returns True if the value is a JSON string.
+	 */
+	public static json(value: unknown): value is string {
+		if (!Is.stringValue(value)) {
+			return false;
+		}
+
+		try {
+			const json = JSON.parse(value);
+			return (
+				Is.object(json) ||
+				Is.array(json) ||
+				Is.string(json) ||
+				Is.number(json) ||
+				Is.boolean(json) ||
+				Is.null(json)
+			);
+		} catch {
+			return false;
+		}
+	}
+
+	/**
+	 * Is the value a base64 string.
+	 * @param value The value to test.
+	 * @returns True if the value is a base64 string.
+	 */
+	public static stringBase64(value: unknown): value is string {
+		return (
+			Is.stringValue(value) &&
+			// eslint-disable-next-line unicorn/better-regex
+			/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(value)
+		);
+	}
+
+	/**
+	 * Is the value a base64 url string.
+	 * @param value The value to test.
+	 * @returns True if the value is a base64 string.
+	 */
+	public static stringBase64Url(value: unknown): value is string {
+		return (
+			Is.stringValue(value) &&
+			// eslint-disable-next-line unicorn/better-regex
+			/^([A-Za-z0-9-_])*$/.test(value)
+		);
+	}
+
+	/**
+	 * Is the value a base58 string.
+	 * @param value The value to test.
+	 * @returns True if the value is a base58 string.
+	 */
+	public static stringBase58(value: unknown): value is string {
+		return (
+			Is.stringValue(value) &&
+			// eslint-disable-next-line unicorn/better-regex
+			/^[A-HJ-NP-Za-km-z1-9]*$/.test(value)
+		);
+	}
+
+	/**
 	 * Is the value a hex string.
 	 * @param value The value to test.
+	 * @param allowPrefix Allow the hex to have the 0x prefix.
 	 * @returns True if the value is a hex string.
 	 */
-	public static stringHex(value: unknown): value is string {
-		return Is.string(value) && HexHelper.isHex(value);
+	public static stringHex(value: unknown, allowPrefix: boolean = false): value is string {
+		return Is.string(value) && HexHelper.isHex(value, allowPrefix);
 	}
 
 	/**
 	 * Is the value a hex string of fixed length.
 	 * @param value The value to test.
 	 * @param length The length to test.
+	 * @param allowPrefix Allow the hex to have the 0x prefix.
 	 * @returns True if the value is a hex string of required length.
 	 */
-	public static stringHexLength(value: unknown, length: number): value is string {
-		return Is.stringHex(value) && value.length === length;
+	public static stringHexLength(
+		value: unknown,
+		length: number,
+		allowPrefix: boolean = false
+	): value is string {
+		return Is.stringHex(value, allowPrefix) && value.length === length;
 	}
 
 	/**
@@ -91,10 +161,19 @@ export class Is {
 	/**
 	 * Is the value an integer.
 	 * @param value The value to test.
-	 * @returns True if the value is a number.
+	 * @returns True if the value is an integer.
 	 */
 	public static integer(value: unknown): value is number {
 		return Is.number(value) && Number.isInteger(value);
+	}
+
+	/**
+	 * Is the value a big integer.
+	 * @param value The value to test.
+	 * @returns True if the value is a big integer.
+	 */
+	public static bigint(value: unknown): value is bigint {
+		return typeof value === "bigint";
 	}
 
 	/**
@@ -171,7 +250,7 @@ export class Is {
 	 * @param value The value to test.
 	 * @returns True if the value is a date.
 	 */
-	public static seconds(value: unknown): value is number {
+	public static timestampSeconds(value: unknown): value is number {
 		if (!Is.integer(value)) {
 			return false;
 		}
@@ -184,7 +263,7 @@ export class Is {
 	 * @param value The value to test.
 	 * @returns True if the value is a date.
 	 */
-	public static milliseconds(value: unknown): value is number {
+	public static timestampMilliseconds(value: unknown): value is number {
 		if (!Is.integer(value)) {
 			return false;
 		}
@@ -240,12 +319,7 @@ export class Is {
 	 * @returns True if the value is an element from the options array.
 	 */
 	public static arrayOneOf<T>(value: T, options: T[]): value is T {
-		if (
-			Is.empty(value) ||
-			!Is.stringValue(value) ||
-			!Is.array<T>(options) ||
-			!options.includes(value)
-		) {
+		if (Is.empty(value) || !Is.array<T>(options) || !options.includes(value)) {
 			return false;
 		}
 
@@ -296,10 +370,28 @@ export class Is {
 	 */
 	public static email(value: unknown): value is string {
 		return (
-			Is.string(value) &&
+			Is.stringValue(value) &&
 			/^[\w!#$%&'*+./=?^`{|}~-]+@[\dA-Za-z](?:[\dA-Za-z-]{0,61}[\dA-Za-z])?(?:\.[\dA-Za-z](?:[\dA-Za-z-]{0,61}[\dA-Za-z])?)*$/.test(
 				value
 			)
 		);
+	}
+
+	/**
+	 * Is the value a promise.
+	 * @param value The value to test.
+	 * @returns True if the value is a promise.
+	 */
+	public static promise<T = unknown>(value: unknown): value is Promise<T> {
+		return value instanceof Promise;
+	}
+
+	/**
+	 * Is the value a regexp.
+	 * @param value The value to test.
+	 * @returns True if the value is a regexp.
+	 */
+	public static regexp(value: unknown): value is RegExp {
+		return value instanceof RegExp;
 	}
 }

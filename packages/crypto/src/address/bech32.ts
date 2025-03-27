@@ -1,9 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-/* eslint-disable no-bitwise */
-
-import { GeneralError } from "@gtsc/core";
-import { nameof } from "@gtsc/nameof";
+import { bech32 } from "@scure/base";
+import { BaseError, GeneralError, Guards, Is } from "@twin.org/core";
+import { nameof } from "@twin.org/nameof";
 
 /**
  * Bech32 encoding and decoding.
@@ -16,278 +15,67 @@ export class Bech32 {
 	private static readonly _CLASS_NAME: string = nameof<Bech32>();
 
 	/**
-	 * The alphabet to use.
-	 * @internal
-	 */
-	/* cspell:disable-next-line */
-	private static readonly _CHARSET: string = "qpzry9x8gf2tvdw0s3jn54khce6mua7l";
-
-	/**
-	 * The separator between human readable part and data.
-	 * @internal
-	 */
-	private static readonly _SEPARATOR: string = "1";
-
-	/**
-	 * The generator constants;
-	 * @internal
-	 */
-	private static readonly _GENERATOR: Uint32Array = Uint32Array.from([
-		0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3
-	]);
-
-	/**
 	 * Encode the buffer.
 	 * @param humanReadablePart The header.
 	 * @param data The data to encode.
 	 * @returns The encoded data.
 	 */
 	public static encode(humanReadablePart: string, data: Uint8Array): string {
-		return Bech32.encode5BitArray(humanReadablePart, Bech32.to5Bit(data));
-	}
-
-	/**
-	 * Encode the 5 bit data buffer.
-	 * @param humanReadablePart The header.
-	 * @param data5Bit The data to encode.
-	 * @returns The encoded data.
-	 */
-	public static encode5BitArray(humanReadablePart: string, data5Bit: Uint8Array): string {
-		const checksum = Bech32.createChecksum(humanReadablePart, data5Bit);
-
-		let ret = `${humanReadablePart}${Bech32._SEPARATOR}`;
-
-		for (let i = 0; i < data5Bit.length; i++) {
-			ret += Bech32._CHARSET.charAt(data5Bit[i]);
-		}
-
-		for (let i = 0; i < checksum.length; i++) {
-			ret += Bech32._CHARSET.charAt(checksum[i]);
-		}
-
-		return ret;
+		Guards.stringValue(Bech32._CLASS_NAME, "humanReadablePart", humanReadablePart);
+		Guards.uint8Array(Bech32._CLASS_NAME, "data", data);
+		return bech32.encode(humanReadablePart, bech32.toWords(data));
 	}
 
 	/**
 	 * Decode a bech32 string.
 	 * @param bech The text to decode.
 	 * @returns The decoded data or undefined if it could not be decoded.
+	 * @throws An error if the decoding fails.
 	 */
-	public static decode(bech: string):
-		| {
-				humanReadablePart: string;
-				data: Uint8Array;
-		  }
-		| undefined {
-		const result = Bech32.decodeTo5BitArray(bech);
-		return result
-			? {
-					humanReadablePart: result.humanReadablePart,
-					data: Bech32.from5Bit(result.data)
-				}
-			: undefined;
-	}
+	public static decode(bech: string): {
+		humanReadablePart: string;
+		data: Uint8Array;
+	} {
+		Guards.stringValue(Bech32._CLASS_NAME, "bech", bech);
 
-	/**
-	 * Decode a bech32 string to 5 bit array.
-	 * @param bech The text to decode.
-	 * @returns The decoded data or undefined if it could not be decoded.
-	 * @throws GeneralError if the bech32 string is invalid.
-	 */
-	public static decodeTo5BitArray(
-		bech: string
-	): { humanReadablePart: string; data: Uint8Array } | undefined {
-		bech = bech.toLowerCase();
-
-		const separatorPos = bech.lastIndexOf(Bech32._SEPARATOR);
-		if (separatorPos === -1) {
-			throw new GeneralError(Bech32._CLASS_NAME, "noSeparator", { value: Bech32._SEPARATOR });
-		}
-
-		if (separatorPos < 1) {
-			throw new GeneralError(Bech32._CLASS_NAME, "separatorPos", { value: separatorPos });
-		}
-
-		if (separatorPos + 7 > bech.length) {
-			throw new GeneralError(Bech32._CLASS_NAME, "separatorNoSpace", { value: separatorPos });
-		}
-
-		const data = new Uint8Array(bech.length - separatorPos - 1);
-		let idx = 0;
-
-		for (let i = separatorPos + 1; i < bech.length; i++) {
-			const bChar = bech.charAt(i);
-			const d = Bech32._CHARSET.indexOf(bChar);
-			if (d === -1) {
-				throw new GeneralError(Bech32._CLASS_NAME, "invalidCharacter", { value: bChar });
+		try {
+			const result = bech32.decodeToBytes(bech);
+			return {
+				humanReadablePart: result.prefix,
+				data: result.bytes
+			};
+		} catch (err) {
+			if (BaseError.isErrorMessage(err, /checksum/)) {
+				throw new GeneralError(Bech32._CLASS_NAME, "invalidChecksum", { bech: bech32 });
+			} else if (BaseError.isErrorMessage(err, /between prefix and data only/i)) {
+				throw new GeneralError(Bech32._CLASS_NAME, "separatorMisused", { bech: bech32 });
+			} else if (BaseError.isErrorMessage(err, /lowercase or uppercase/i)) {
+				throw new GeneralError(Bech32._CLASS_NAME, "lowerUpper", { bech: bech32 });
+			} else if (
+				BaseError.isErrorMessage(err, /must be at least/i) ||
+				BaseError.isErrorMessage(err, /wrong string length/i)
+			) {
+				throw new GeneralError(Bech32._CLASS_NAME, "dataTooShort", { bech: bech32 });
 			}
-			data[idx++] = Bech32._CHARSET.indexOf(bChar);
+
+			throw new GeneralError(Bech32._CLASS_NAME, "decodeFailed", { bech: bech32 }, err);
 		}
-
-		const humanReadablePart = bech.slice(0, separatorPos);
-
-		if (!Bech32.verifyChecksum(humanReadablePart, data)) {
-			return undefined;
-		}
-
-		return { humanReadablePart, data: data.slice(0, -6) };
 	}
 
 	/**
-	 * Convert the input bytes into 5 bit data.
-	 * @param bytes The bytes to convert.
-	 * @returns The data in 5 bit form.
-	 */
-	public static to5Bit(bytes: Uint8Array): Uint8Array {
-		return Bech32.convertBits(bytes, 8, 5, true);
-	}
-
-	/**
-	 * Convert the 5 bit data to 8 bit.
-	 * @param fiveBit The 5 bit data to convert.
-	 * @returns The 5 bit data converted to 8 bit.
-	 */
-	public static from5Bit(fiveBit: Uint8Array): Uint8Array {
-		return Bech32.convertBits(fiveBit, 5, 8, false);
-	}
-
-	/**
-	 * Does the given string match the bech32 pattern.
-	 * @param humanReadablePart The human readable part.
-	 * @param bech32Text The text to test.
+	 * Is the input a bech 32 address.
+	 * @param bech The value to test.
 	 * @returns True if this is potentially a match.
 	 */
-	public static matches(humanReadablePart: string, bech32Text?: string): boolean {
-		if (!bech32Text) {
-			return false;
-		}
-		const regEx = new RegExp(`^${humanReadablePart}1[${Bech32._CHARSET}]{6,}$`);
-		return regEx.test(bech32Text);
-	}
-
-	/**
-	 * Create the checksum from the human readable part and the data.
-	 * @param humanReadablePart The human readable part.
-	 * @param data The data.
-	 * @returns The checksum.
-	 * @internal
-	 */
-	private static createChecksum(humanReadablePart: string, data: Uint8Array): Uint8Array {
-		const expanded = Bech32.humanReadablePartExpand(humanReadablePart);
-
-		const values = new Uint8Array(expanded.length + data.length + 6);
-		values.set(expanded, 0);
-		values.set(data, expanded.length);
-		values.set([0, 0, 0, 0, 0, 0], expanded.length + data.length);
-
-		const mod = Bech32.polymod(values) ^ 1;
-
-		const ret = new Uint8Array(6);
-		for (let i = 0; i < 6; i++) {
-			ret[i] = (mod >> (5 * (5 - i))) & 31;
-		}
-		return ret;
-	}
-
-	/**
-	 * Verify the checksum given the human readable part and data.
-	 * @param humanReadablePart The human readable part to validate the checksum.
-	 * @param data The data to validate the checksum.
-	 * @returns True if the checksum was verified.
-	 * @internal
-	 */
-	private static verifyChecksum(humanReadablePart: string, data: Uint8Array): boolean {
-		const expanded = Bech32.humanReadablePartExpand(humanReadablePart);
-
-		const values = new Uint8Array(expanded.length + data.length);
-		values.set(expanded, 0);
-		values.set(data, expanded.length);
-
-		return Bech32.polymod(values) === 1;
-	}
-
-	/**
-	 * Calculate the polymod of the values.
-	 * @param values The values to calculate the polymod for.
-	 * @returns The polymod of the values.
-	 * @internal
-	 */
-	private static polymod(values: Uint8Array): number {
-		let chk = 1;
-		for (let p = 0; p < values.length; p++) {
-			const top = chk >> 25;
-			chk = ((chk & 0x1ffffff) << 5) ^ values[p];
-			for (let i = 0; i < 5; ++i) {
-				if ((top >> i) & 1) {
-					chk ^= Bech32._GENERATOR[i];
-				}
+	public static isBech32(bech: unknown): bech is string {
+		try {
+			if (Is.stringValue(bech)) {
+				const result = bech32.decodeToBytes(bech);
+				return (
+					Is.stringValue(result.prefix) && Is.uint8Array(result.bytes) && result.bytes.length > 0
+				);
 			}
-		}
-		return chk;
-	}
-
-	/**
-	 * Expand the human readable part.
-	 * @param humanReadablePart The human readable part to expand.
-	 * @returns The expanded human readable part.
-	 * @internal
-	 */
-	private static humanReadablePartExpand(humanReadablePart: string): Uint8Array {
-		const twoLen = humanReadablePart.length * 2;
-		const ret = new Uint8Array(twoLen + 1);
-		let idx = 0;
-		for (let i = 0; i < humanReadablePart.length; i++) {
-			ret[idx++] = humanReadablePart.charCodeAt(i) >> 5;
-		}
-		ret[idx++] = 0;
-		for (let i = 0; i < humanReadablePart.length; i++) {
-			ret[idx++] = humanReadablePart.charCodeAt(i) & 31;
-		}
-		return ret;
-	}
-
-	/**
-	 * Convert input data from one bit resolution to another.
-	 * @param data The data to convert.
-	 * @param fromBits The resolution of the input data.
-	 * @param toBits The required resolution of the output data.
-	 * @param padding Include padding in the output.
-	 * @returns The converted data,
-	 * @internal
-	 */
-	private static convertBits(
-		data: Uint8Array,
-		fromBits: number,
-		toBits: number,
-		padding: boolean
-	): Uint8Array {
-		let value = 0;
-		let bits = 0;
-		const maxV = (1 << toBits) - 1;
-		const res = [];
-
-		for (let i = 0; i < data.length; i++) {
-			value = (value << fromBits) | data[i];
-			bits += fromBits;
-
-			while (bits >= toBits) {
-				bits -= toBits;
-				res.push((value >> bits) & maxV);
-			}
-		}
-
-		if (padding) {
-			if (bits > 0) {
-				res.push((value << (toBits - bits)) & maxV);
-			}
-		} else {
-			if (bits >= fromBits) {
-				throw new GeneralError(Bech32._CLASS_NAME, "excessPadding");
-			}
-			if ((value << (toBits - bits)) & maxV) {
-				throw new GeneralError(Bech32._CLASS_NAME, "nonZeroPadding");
-			}
-		}
-		return new Uint8Array(res);
+		} catch {}
+		return false;
 	}
 }

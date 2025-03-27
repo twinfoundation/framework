@@ -4,7 +4,7 @@
 /* eslint-disable no-mixed-operators */
 /* eslint-disable no-continue */
 /* eslint-disable unicorn/prefer-math-trunc */
-import pako from "pako";
+import { Compression } from "@twin.org/core";
 import type { Frame } from "./png/frame";
 import type { ImageData } from "./png/imageData";
 import type { Leaf } from "./png/leaf";
@@ -21,7 +21,7 @@ export class PngEncoder {
 	 * @param h The image height.
 	 * @returns The data for the image.
 	 */
-	public encode(buffers: ArrayBuffer[], w: number, h: number): Uint8Array {
+	public async encode(buffers: ArrayBuffer[], w: number, h: number): Promise<Uint8Array> {
 		const ps = 0;
 		const forbidPlte = false;
 		const data = new Uint8Array(buffers[0].byteLength * buffers.length + 100);
@@ -31,7 +31,7 @@ export class PngEncoder {
 		}
 		let offset = 8;
 
-		const nImg = this.compressPNG(buffers, w, h, ps, forbidPlte);
+		const nImg = await this.compressPNG(buffers, w, h, ps, forbidPlte);
 
 		this.writeUint(data, offset, 13);
 		offset += 4;
@@ -179,13 +179,13 @@ export class PngEncoder {
 	/**
 	 * @internal
 	 */
-	private compressPNG(
+	private async compressPNG(
 		buffers: ArrayBuffer[],
 		w: number,
 		h: number,
 		ps: number,
 		forbidPlte: boolean
-	): ImageData {
+	): Promise<ImageData> {
 		const out = this.compress(buffers, w, h, ps, 0, forbidPlte);
 		for (let i = 0; i < buffers.length; i++) {
 			const frm = out.frames[i];
@@ -194,7 +194,7 @@ export class PngEncoder {
 			const bpl = frm.bpl;
 			const bpp = frm.bpp;
 			const fData = new Uint8Array(nw * bpl + nh);
-			frm.cImg = this.filterZero(frm.img, nh, bpp, bpl, fData);
+			frm.cImg = await this.filterZero(frm.img, nh, bpp, bpl, fData);
 		}
 		return out;
 	}
@@ -422,13 +422,13 @@ export class PngEncoder {
 	/**
 	 * @internal
 	 */
-	private filterZero(
+	private async filterZero(
 		img: Uint8Array,
 		h: number,
 		bpp: number,
 		bpl: number,
 		data: Uint8Array
-	): Uint8Array {
+	): Promise<Uint8Array> {
 		const fls = [];
 		for (let t = 0; t < 5; t++) {
 			if (h * bpl > 500000 && (t === 2 || t === 3 || t === 4)) {
@@ -437,7 +437,8 @@ export class PngEncoder {
 			for (let y = 0; y < h; y++) {
 				this.filterLine(data, img, y, bpl, bpp, t);
 			}
-			fls.push(pako.deflate(data));
+			const deflated = await Compression.compress(data, "deflate");
+			fls.push(deflated);
 			if (bpp === 1) {
 				break;
 			}

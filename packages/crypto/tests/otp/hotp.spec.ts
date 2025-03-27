@@ -1,7 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
-import { Converter } from "@gtsc/core";
+import { Converter } from "@twin.org/core";
 import { Hotp } from "../../src/otp/hotp";
 
 describe("Hotp", () => {
@@ -23,7 +22,6 @@ describe("Hotp", () => {
 
 		for (let i = 0; i < expected.length; i++) {
 			expect(Hotp.generate(key, i)).toEqual(expected[i]);
-			expect(Hotp.verify(expected[i], key)).toEqual(0 - i);
 		}
 	});
 });

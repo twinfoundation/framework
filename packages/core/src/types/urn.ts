@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { nameof } from "@gtsc/nameof";
+import { nameof } from "@twin.org/nameof";
 import { GuardError } from "../errors/guardError";
 import { RandomHelper } from "../helpers/randomHelper";
 import type { IValidationFailure } from "../models/IValidationFailure";
@@ -19,28 +19,29 @@ export class Urn {
 	private static readonly _CLASS_NAME: string = nameof<Urn>();
 
 	/**
-	 * The identifier for the namespace.
-	 * @internal
-	 */
-	private readonly _namespaceIdentifier: string;
-
-	/**
 	 * The specific part of the namespace.
 	 * @internal
 	 */
-	private readonly _namespaceSpecific: string;
+	private readonly _urnParts: string[];
 
 	/**
 	 * Create a new instance of Urn.
 	 * @param namespaceIdentifier The identifier for the namespace.
 	 * @param namespaceSpecific The specific part of the namespace.
 	 */
-	constructor(namespaceIdentifier: string, namespaceSpecific: string) {
+	constructor(namespaceIdentifier: string, namespaceSpecific: string | string[]) {
 		Guards.stringValue(Urn._CLASS_NAME, nameof(namespaceIdentifier), namespaceIdentifier);
-		Guards.stringValue(Urn._CLASS_NAME, nameof(namespaceSpecific), namespaceSpecific);
+
 		// Strip leading and trailing colons
-		this._namespaceIdentifier = this.stripColons(namespaceIdentifier);
-		this._namespaceSpecific = this.stripColons(namespaceSpecific);
+		this._urnParts = [this.stripColons(namespaceIdentifier)];
+
+		if (Is.array(namespaceSpecific)) {
+			Guards.arrayValue(Urn._CLASS_NAME, nameof(namespaceSpecific), namespaceSpecific);
+			this._urnParts.push(...namespaceSpecific);
+		} else {
+			Guards.stringValue(Urn._CLASS_NAME, nameof(namespaceSpecific), namespaceSpecific);
+			this._urnParts.push(...this.stripColons(namespaceSpecific).split(":"));
+		}
 	}
 
 	/**
@@ -74,7 +75,7 @@ export class Urn {
 	}
 
 	/**
-	 * Try and parse a string into the urn parts it must start with urn:.
+	 * Try and parse a string into the urn parts.
 	 * @param urn The urn to parse.
 	 * @returns The formatted urn or undefined if the value is not a urn.
 	 */
@@ -85,25 +86,25 @@ export class Urn {
 
 		const parts = urn.split(":");
 
-		if (parts.length < 3) {
+		if (parts[0] === "urn") {
+			parts.shift();
+		}
+
+		if (parts.length < 2) {
 			return;
 		}
 
-		if (parts[0] !== "urn") {
+		if (!/[\da-z][\da-z-]{0,31}/.test(parts[0])) {
 			return;
 		}
 
-		if (!/[\da-z][\da-z-]{0,31}/.test(parts[1])) {
-			return;
-		}
-
-		for (let i = 2; i < parts.length; i++) {
+		for (let i = 1; i < parts.length; i++) {
 			if (!/[\d!#$%'()*+,./:;=?@_a-z-]+/.test(parts[i])) {
 				return;
 			}
 		}
 
-		return new Urn(parts[1], parts.slice(2).join(":"));
+		return new Urn(parts[0], parts.slice(1));
 	}
 
 	/**
@@ -112,13 +113,13 @@ export class Urn {
 	 * @returns The formatted urn.
 	 */
 	public static fromValidString(urn: string): Urn {
-		if (urn.startsWith("urn:")) {
-			urn = urn.slice(4);
-		}
-
 		const parts = urn.split(":");
 
-		return new Urn(parts[0], parts.slice(1).join(":"));
+		if (parts[0] === "urn") {
+			parts.shift();
+		}
+
+		return new Urn(parts[0], parts.slice(1));
 	}
 
 	/**
@@ -188,19 +189,46 @@ export class Urn {
 	}
 
 	/**
+	 * Get the parts.
+	 * @param startIndex The index to start from, defaults to 0.
+	 * @returns The parts.
+	 */
+	public parts(startIndex: number = 0): string[] {
+		return this._urnParts.slice(startIndex);
+	}
+
+	/**
 	 * Get the namespace identifier.
 	 * @returns The namespace identifier.
 	 */
 	public namespaceIdentifier(): string {
-		return this._namespaceIdentifier;
+		return this._urnParts[0];
+	}
+
+	/**
+	 * Get the namespace method, the first component after the identifier.
+	 * @returns The namespace method.
+	 */
+	public namespaceMethod(): string {
+		return this._urnParts.length > 1 ? this._urnParts[1] : "";
+	}
+
+	/**
+	 * Get the namespace specific parts.
+	 * @param startIndex The index to start from, defaults to 0.
+	 * @returns The namespace specific parts.
+	 */
+	public namespaceSpecificParts(startIndex: number = 0): string[] {
+		return this._urnParts.length > 1 ? this._urnParts.slice(startIndex + 1) : [];
 	}
 
 	/**
 	 * Get the namespace specific.
+	 * @param startIndex The index to start from, defaults to 0.
 	 * @returns The namespace specific.
 	 */
-	public namespaceSpecific(): string {
-		return this._namespaceSpecific;
+	public namespaceSpecific(startIndex: number = 0): string {
+		return this._urnParts.length > 1 ? this._urnParts.slice(startIndex + 1).join(":") : "";
 	}
 
 	/**
@@ -208,10 +236,8 @@ export class Urn {
 	 * @param omitPrefix Omit the urn: prefix from the string.
 	 * @returns The formatted urn.
 	 */
-	public toString(omitPrefix?: boolean): string {
-		return omitPrefix
-			? `${this._namespaceIdentifier}:${this._namespaceSpecific}`
-			: `urn:${this._namespaceIdentifier}:${this._namespaceSpecific}`;
+	public toString(omitPrefix: boolean = true): string {
+		return omitPrefix ? this._urnParts.join(":") : `urn:${this._urnParts.join(":")}`;
 	}
 
 	/**

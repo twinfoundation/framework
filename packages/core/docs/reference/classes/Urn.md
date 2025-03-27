@@ -4,18 +4,25 @@ Class to help with urns.
 
 ## Constructors
 
-### constructor
+### new Urn()
 
-• **new Urn**(`namespaceIdentifier`, `namespaceSpecific`): [`Urn`](Urn.md)
+> **new Urn**(`namespaceIdentifier`, `namespaceSpecific`): [`Urn`](Urn.md)
 
 Create a new instance of Urn.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `namespaceIdentifier` | `string` | The identifier for the namespace. |
-| `namespaceSpecific` | `string` | The specific part of the namespace. |
+##### namespaceIdentifier
+
+`string`
+
+The identifier for the namespace.
+
+##### namespaceSpecific
+
+The specific part of the namespace.
+
+`string` | `string`[]
 
 #### Returns
 
@@ -23,9 +30,217 @@ Create a new instance of Urn.
 
 ## Methods
 
-### namespaceIdentifier
+### generateRandom()
 
-▸ **namespaceIdentifier**(): `string`
+> `static` **generateRandom**(`namespace`): [`Urn`](Urn.md)
+
+Generate a random identifier with 32 byte id.
+
+#### Parameters
+
+##### namespace
+
+`string`
+
+The prefix for the urn.
+
+#### Returns
+
+[`Urn`](Urn.md)
+
+A new Id in URN format.
+
+***
+
+### hasNamespace()
+
+> `static` **hasNamespace**(`urn`, `namespace`): `boolean`
+
+Does the provided urn match the namespace.
+
+#### Parameters
+
+##### urn
+
+`string`
+
+The urn to check.
+
+##### namespace
+
+`string`
+
+The namespace to match.
+
+#### Returns
+
+`boolean`
+
+True if the namespace matches.
+
+***
+
+### tryParseExact()
+
+> `static` **tryParseExact**(`urn`): `undefined` \| [`Urn`](Urn.md)
+
+Try and parse a string into the urn parts.
+
+#### Parameters
+
+##### urn
+
+`unknown`
+
+The urn to parse.
+
+#### Returns
+
+`undefined` \| [`Urn`](Urn.md)
+
+The formatted urn or undefined if the value is not a urn.
+
+***
+
+### fromValidString()
+
+> `static` **fromValidString**(`urn`): [`Urn`](Urn.md)
+
+Construct a urn from a string that has already been validated.
+
+#### Parameters
+
+##### urn
+
+`string`
+
+The urn to parse.
+
+#### Returns
+
+[`Urn`](Urn.md)
+
+The formatted urn.
+
+***
+
+### addPrefix()
+
+> `static` **addPrefix**(`urn`): `undefined` \| `string`
+
+Add a urn: prefix if there isn't one already.
+
+#### Parameters
+
+##### urn
+
+`unknown`
+
+The urn string to add a prefix to.
+
+#### Returns
+
+`undefined` \| `string`
+
+The urn with a prefix.
+
+***
+
+### guard()
+
+> `static` **guard**(`source`, `property`, `value`): `asserts value is string`
+
+Parse a string into the urn parts.
+
+#### Parameters
+
+##### source
+
+`string`
+
+The source of the error.
+
+##### property
+
+`string`
+
+The name of the property.
+
+##### value
+
+`unknown`
+
+The urn to parse.
+
+#### Returns
+
+`asserts value is string`
+
+#### Throws
+
+GuardError If the value does not match the assertion.
+
+***
+
+### validate()
+
+> `static` **validate**(`property`, `value`, `failures`): `value is string`
+
+Validate a string as a Urn.
+
+#### Parameters
+
+##### property
+
+`string`
+
+Throw an exception if the urn property is invalid.
+
+##### value
+
+`unknown`
+
+The urn to parse.
+
+##### failures
+
+[`IValidationFailure`](../interfaces/IValidationFailure.md)[]
+
+The list of failures to add to.
+
+#### Returns
+
+`value is string`
+
+The formatted urn.
+
+***
+
+### parts()
+
+> **parts**(`startIndex`): `string`[]
+
+Get the parts.
+
+#### Parameters
+
+##### startIndex
+
+`number` = `0`
+
+The index to start from, defaults to 0.
+
+#### Returns
+
+`string`[]
+
+The parts.
+
+***
+
+### namespaceIdentifier()
+
+> **namespaceIdentifier**(): `string`
 
 Get the namespace identifier.
 
@@ -35,13 +250,57 @@ Get the namespace identifier.
 
 The namespace identifier.
 
-___
+***
 
-### namespaceSpecific
+### namespaceMethod()
 
-▸ **namespaceSpecific**(): `string`
+> **namespaceMethod**(): `string`
+
+Get the namespace method, the first component after the identifier.
+
+#### Returns
+
+`string`
+
+The namespace method.
+
+***
+
+### namespaceSpecificParts()
+
+> **namespaceSpecificParts**(`startIndex`): `string`[]
+
+Get the namespace specific parts.
+
+#### Parameters
+
+##### startIndex
+
+`number` = `0`
+
+The index to start from, defaults to 0.
+
+#### Returns
+
+`string`[]
+
+The namespace specific parts.
+
+***
+
+### namespaceSpecific()
+
+> **namespaceSpecific**(`startIndex`): `string`
 
 Get the namespace specific.
+
+#### Parameters
+
+##### startIndex
+
+`number` = `0`
+
+The index to start from, defaults to 0.
 
 #### Returns
 
@@ -49,169 +308,24 @@ Get the namespace specific.
 
 The namespace specific.
 
-___
+***
 
-### toString
+### toString()
 
-▸ **toString**(`omitPrefix?`): `string`
+> **toString**(`omitPrefix`): `string`
 
 Convert the parts in to a full string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `omitPrefix?` | `boolean` | Omit the urn: prefix from the string. |
+##### omitPrefix
+
+`boolean` = `true`
+
+Omit the urn: prefix from the string.
 
 #### Returns
 
 `string`
-
-The formatted urn.
-
-___
-
-### addPrefix
-
-▸ **addPrefix**(`urn`): `undefined` \| `string`
-
-Add a urn: prefix if there isn't one already.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `urn` | `unknown` | The urn string to add a prefix to. |
-
-#### Returns
-
-`undefined` \| `string`
-
-The urn with a prefix.
-
-___
-
-### fromValidString
-
-▸ **fromValidString**(`urn`): [`Urn`](Urn.md)
-
-Construct a urn from a string that has already been validated.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `urn` | `string` | The urn to parse. |
-
-#### Returns
-
-[`Urn`](Urn.md)
-
-The formatted urn.
-
-___
-
-### generateRandom
-
-▸ **generateRandom**(`namespace`): [`Urn`](Urn.md)
-
-Generate a random identifier with 32 byte id.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `namespace` | `string` | The prefix for the urn. |
-
-#### Returns
-
-[`Urn`](Urn.md)
-
-A new Id in URN format.
-
-___
-
-### guard
-
-▸ **guard**(`source`, `property`, `value`): asserts value is string
-
-Parse a string into the urn parts.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | The source of the error. |
-| `property` | `string` | The name of the property. |
-| `value` | `unknown` | The urn to parse. |
-
-#### Returns
-
-asserts value is string
-
-**`Throws`**
-
-GuardError If the value does not match the assertion.
-
-___
-
-### hasNamespace
-
-▸ **hasNamespace**(`urn`, `namespace`): `boolean`
-
-Does the provided urn match the namespace.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `urn` | `string` | The urn to check. |
-| `namespace` | `string` | The namespace to match. |
-
-#### Returns
-
-`boolean`
-
-True if the namespace matches.
-
-___
-
-### tryParseExact
-
-▸ **tryParseExact**(`urn`): `undefined` \| [`Urn`](Urn.md)
-
-Try and parse a string into the urn parts it must start with urn:.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `urn` | `unknown` | The urn to parse. |
-
-#### Returns
-
-`undefined` \| [`Urn`](Urn.md)
-
-The formatted urn or undefined if the value is not a urn.
-
-___
-
-### validate
-
-▸ **validate**(`property`, `value`, `failures`): value is string
-
-Validate a string as a Urn.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `property` | `string` | Throw an exception if the urn property is invalid. |
-| `value` | `unknown` | The urn to parse. |
-| `failures` | [`IValidationFailure`](../interfaces/IValidationFailure.md)[] | The list of failures to add to. |
-
-#### Returns
-
-value is string
 
 The formatted urn.

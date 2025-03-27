@@ -3,7 +3,7 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable no-mixed-operators */
 
-import { nameof } from "@gtsc/nameof";
+import { nameof } from "@twin.org/nameof";
 import { GeneralError } from "../errors/generalError";
 
 /**
@@ -159,7 +159,7 @@ export class Base64 {
 	/**
 	 * Convert a byte array to base 64.
 	 * @param bytes The byte array to convert.
-	 * @returns The data as bas64 string.
+	 * @returns The data as base64 string.
 	 */
 	public static encode(bytes: Uint8Array): string {
 		let tmp;
@@ -170,9 +170,7 @@ export class Base64 {
 
 		// go through the array every three bytes, we'll deal with trailing stuff later
 		for (let i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
-			parts.push(
-				Base64.encodeChunk(bytes, i, i + maxChunkLength > len2 ? len2 : i + maxChunkLength)
-			);
+			parts.push(Base64.encodeChunk(bytes, i, Math.min(i + maxChunkLength, len2)));
 		}
 
 		// pad the end with zeros, but make sure to not forget the extra bytes

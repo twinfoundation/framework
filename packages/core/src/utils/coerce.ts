@@ -1,7 +1,8 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
+import { Converter } from "./converter";
 import { Is } from "./is";
+import { CoerceType } from "../models/coerceType";
 
 /**
  * Coerce an object from one type to another.
@@ -55,6 +56,46 @@ export class Coerce {
 		}
 		if (Is.date(value)) {
 			return value.getTime();
+		}
+	}
+
+	/**
+	 * Coerce the value to an integer.
+	 * @param value The value to coerce.
+	 * @throws TypeError If the value can not be coerced.
+	 * @returns The value if it can be coerced.
+	 */
+	public static integer(value: unknown): number | undefined {
+		const num = Coerce.number(value);
+		if (!Is.undefined(num)) {
+			return Math.trunc(num);
+		}
+	}
+
+	/**
+	 * Coerce the value to a bigint.
+	 * @param value The value to coerce.
+	 * @throws TypeError If the value can not be coerced.
+	 * @returns The value if it can be coerced.
+	 */
+	public static bigint(value: unknown): bigint | undefined {
+		if (Is.undefined(value)) {
+			return value;
+		}
+		if (Is.bigint(value)) {
+			return value;
+		}
+		if (Is.number(value)) {
+			return BigInt(value);
+		}
+		if (Is.string(value)) {
+			const parsed = Number.parseFloat(value);
+			if (Is.integer(parsed)) {
+				return BigInt(parsed);
+			}
+		}
+		if (Is.boolean(value)) {
+			return value ? 1n : 0n;
 		}
 	}
 
@@ -175,6 +216,79 @@ export class Coerce {
 				);
 				return new Date(utc);
 			}
+		}
+	}
+
+	/**
+	 * Coerce the value to an object.
+	 * @param value The value to coerce.
+	 * @throws TypeError If the value can not be coerced.
+	 * @returns The value if it can be coerced.
+	 */
+	public static object<T = unknown>(value: unknown): T | undefined {
+		if (Is.undefined(value)) {
+			return value;
+		}
+		if (Is.object<T>(value)) {
+			return value;
+		}
+		if (Is.stringValue(value)) {
+			try {
+				return JSON.parse(value) as T;
+			} catch {}
+		}
+	}
+
+	/**
+	 * Coerce the value to a Uint8Array.
+	 * @param value The value to coerce.
+	 * @throws TypeError If the value can not be coerced.
+	 * @returns The value if it can be coerced.
+	 */
+	public static uint8Array(value: unknown): Uint8Array | undefined {
+		if (Is.undefined(value)) {
+			return value;
+		}
+		if (Is.string(value)) {
+			if (Is.stringHex(value.toLowerCase(), true)) {
+				return Converter.hexToBytes(value.toLowerCase());
+			}
+			if (Is.stringBase64(value)) {
+				return Converter.base64ToBytes(value);
+			}
+		}
+	}
+
+	/**
+	 * Coerces a value based on the coercion type.
+	 * @param value The value to coerce.
+	 * @param type The coercion type to perform.
+	 * @returns The coerced value.
+	 */
+	public static byType(value: unknown, type?: CoerceType): unknown {
+		switch (type) {
+			case CoerceType.String:
+				return Coerce.string(value);
+			case CoerceType.Number:
+				return Coerce.number(value);
+			case CoerceType.Integer:
+				return Coerce.integer(value);
+			case CoerceType.BigInt:
+				return Coerce.bigint(value);
+			case CoerceType.Boolean:
+				return Coerce.boolean(value);
+			case CoerceType.Date:
+				return Coerce.date(value);
+			case CoerceType.DateTime:
+				return Coerce.dateTime(value);
+			case CoerceType.Time:
+				return Coerce.time(value);
+			case CoerceType.Object:
+				return Coerce.object(value);
+			case CoerceType.Uint8Array:
+				return Coerce.uint8Array(value);
+			default:
+				return value;
 		}
 	}
 }

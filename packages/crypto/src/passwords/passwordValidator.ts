@@ -1,7 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
-import { type IValidationFailure, Validation } from "@gtsc/core";
+import { type IValidationFailure, Validation } from "@twin.org/core";
 
 /**
  * Test password strength.

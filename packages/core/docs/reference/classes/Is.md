@@ -4,9 +4,9 @@ Class to check types of objects.
 
 ## Constructors
 
-### constructor
+### new Is()
 
-• **new Is**(): [`Is`](Is.md)
+> **new Is**(): [`Is`](Is.md)
 
 #### Returns
 
@@ -14,216 +14,63 @@ Class to check types of objects.
 
 ## Methods
 
-### array
+### undefined()
 
-▸ **array**\<`T`\>(`value`): value is T[]
+> `static` **undefined**(`value`): `value is undefined`
 
-Is the value an array.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
+Is the property undefined.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
-value is T[]
+`value is undefined`
 
-True if the value is an array.
+True if the value is a empty.
 
-___
+***
 
-### arrayOneOf
+### null()
 
-▸ **arrayOneOf**\<`T`\>(`value`, `options`): value is T
+> `static` **null**(`value`): `value is null`
 
-Is the value an array with at least one element.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
+Is the property null.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `T` | The value to test. |
-| `options` | `T`[] | The options the value must be one of. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
-value is T
+`value is null`
 
-True if the value is an element from the options array.
+True if the value is a empty.
 
-___
+***
 
-### arrayValue
+### empty()
 
-▸ **arrayValue**\<`T`\>(`value`): value is T[]
-
-Is the value an array with at least one element.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is T[]
-
-True if the value is an array with at least one element.
-
-___
-
-### boolean
-
-▸ **boolean**(`value`): value is boolean
-
-Is the value a boolean.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is boolean
-
-True if the value is a boolean.
-
-___
-
-### date
-
-▸ **date**(`value`): value is Date
-
-Is the value a date.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is Date
-
-True if the value is a date.
-
-___
-
-### dateEmpty
-
-▸ **dateEmpty**(`value`): `boolean`
-
-Is the value an empty date.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-`boolean`
-
-True if the value is an empty date.
-
-___
-
-### dateString
-
-▸ **dateString**(`value`): `boolean`
-
-Is the value a date string.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-`boolean`
-
-True if the value is a string in ISO 8601 date format.
-
-___
-
-### dateTimeString
-
-▸ **dateTimeString**(`value`): `boolean`
-
-Is the value a date string.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-`boolean`
-
-True if the value is a string in ISO 8601 date/time format.
-
-___
-
-### email
-
-▸ **email**(`value`): value is string
-
-Is the value a string formatted as an email address.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is string
-
-True if the value is a string.
-
-___
-
-### empty
-
-▸ **empty**(`value`): value is undefined \| null
+> `static` **empty**(`value`): value is undefined \| null
 
 Is the property null or undefined.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
@@ -231,79 +78,21 @@ value is undefined \| null
 
 True if the value is a empty.
 
-___
+***
 
-### function
+### notEmpty()
 
-▸ **function**(`value`): value is Function
-
-Is the property a function.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is Function
-
-True if the value is a function.
-
-___
-
-### integer
-
-▸ **integer**(`value`): value is number
-
-Is the value an integer.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is number
-
-True if the value is a number.
-
-___
-
-### milliseconds
-
-▸ **milliseconds**(`value`): value is number
-
-Is the value a timestamp in milliseconds.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is number
-
-True if the value is a date.
-
-___
-
-### notEmpty
-
-▸ **notEmpty**(`value`): `boolean`
+> `static` **notEmpty**(`value`): `boolean`
 
 Is the property is not null or undefined.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
@@ -311,212 +100,391 @@ Is the property is not null or undefined.
 
 True if the value is a not empty.
 
-___
+***
 
-### null
+### string()
 
-▸ **null**(`value`): value is null
-
-Is the property null.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is null
-
-True if the value is a empty.
-
-___
-
-### number
-
-▸ **number**(`value`): value is number
-
-Is the value a number.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is number
-
-True if the value is a number.
-
-___
-
-### object
-
-▸ **object**\<`T`\>(`value`): value is T
-
-Is the value an object.
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | \{ `[id: string]`: `unknown`;  } |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is T
-
-True if the value is a object.
-
-___
-
-### objectValue
-
-▸ **objectValue**\<`T`\>(`value`): value is T
-
-Is the value an object with at least one property.
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | \{ `[id: string]`: `unknown`;  } |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is T
-
-True if the value is a object.
-
-___
-
-### seconds
-
-▸ **seconds**(`value`): value is number
-
-Is the value a timestamp in seconds.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-
-#### Returns
-
-value is number
-
-True if the value is a date.
-
-___
-
-### string
-
-▸ **string**(`value`): value is string
+> `static` **string**(`value`): `value is string`
 
 Is the value a string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
-value is string
+`value is string`
 
 True if the value is a string.
 
-___
+***
 
-### stringHex
+### stringValue()
 
-▸ **stringHex**(`value`): value is string
+> `static` **stringValue**(`value`): `value is string`
+
+Is the value a string.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is string`
+
+True if the value is a string.
+
+***
+
+### json()
+
+> `static` **json**(`value`): `value is string`
+
+Is the value a JSON string.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is string`
+
+True if the value is a JSON string.
+
+***
+
+### stringBase64()
+
+> `static` **stringBase64**(`value`): `value is string`
+
+Is the value a base64 string.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is string`
+
+True if the value is a base64 string.
+
+***
+
+### stringBase64Url()
+
+> `static` **stringBase64Url**(`value`): `value is string`
+
+Is the value a base64 url string.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is string`
+
+True if the value is a base64 string.
+
+***
+
+### stringBase58()
+
+> `static` **stringBase58**(`value`): `value is string`
+
+Is the value a base58 string.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is string`
+
+True if the value is a base58 string.
+
+***
+
+### stringHex()
+
+> `static` **stringHex**(`value`, `allowPrefix`): `value is string`
 
 Is the value a hex string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
+
+##### allowPrefix
+
+`boolean` = `false`
+
+Allow the hex to have the 0x prefix.
 
 #### Returns
 
-value is string
+`value is string`
 
 True if the value is a hex string.
 
-___
+***
 
-### stringHexLength
+### stringHexLength()
 
-▸ **stringHexLength**(`value`, `length`): value is string
+> `static` **stringHexLength**(`value`, `length`, `allowPrefix`): `value is string`
 
 Is the value a hex string of fixed length.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
-| `length` | `number` | The length to test. |
+##### value
+
+`unknown`
+
+The value to test.
+
+##### length
+
+`number`
+
+The length to test.
+
+##### allowPrefix
+
+`boolean` = `false`
+
+Allow the hex to have the 0x prefix.
 
 #### Returns
 
-value is string
+`value is string`
 
 True if the value is a hex string of required length.
 
-___
+***
 
-### stringValue
+### number()
 
-▸ **stringValue**(`value`): value is string
+> `static` **number**(`value`): `value is number`
 
-Is the value a string.
+Is the value a number.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
-value is string
+`value is number`
 
-True if the value is a string.
+True if the value is a number.
 
-___
+***
 
-### timeString
+### integer()
 
-▸ **timeString**(`value`): `boolean`
+> `static` **integer**(`value`): `value is number`
+
+Is the value an integer.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is number`
+
+True if the value is an integer.
+
+***
+
+### bigint()
+
+> `static` **bigint**(`value`): `value is bigint`
+
+Is the value a big integer.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is bigint`
+
+True if the value is a big integer.
+
+***
+
+### boolean()
+
+> `static` **boolean**(`value`): `value is boolean`
+
+Is the value a boolean.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is boolean`
+
+True if the value is a boolean.
+
+***
+
+### date()
+
+> `static` **date**(`value`): `value is Date`
+
+Is the value a date.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is Date`
+
+True if the value is a date.
+
+***
+
+### dateEmpty()
+
+> `static` **dateEmpty**(`value`): `boolean`
+
+Is the value an empty date.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`boolean`
+
+True if the value is an empty date.
+
+***
+
+### dateString()
+
+> `static` **dateString**(`value`): `boolean`
+
+Is the value a date string.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`boolean`
+
+True if the value is a string in ISO 8601 date format.
+
+***
+
+### dateTimeString()
+
+> `static` **dateTimeString**(`value`): `boolean`
+
+Is the value a date string.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`boolean`
+
+True if the value is a string in ISO 8601 date/time format.
+
+***
+
+### timeString()
+
+> `static` **timeString**(`value`): `boolean`
 
 Is the value a time string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
@@ -524,62 +492,318 @@ Is the value a time string.
 
 True if the value is a string in ISO 8601 time format.
 
-___
+***
 
-### typedArray
+### timestampSeconds()
 
-▸ **typedArray**(`value`): value is Int8Array \| Uint8Array \| Int16Array \| Uint16Array \| Int32Array \| Uint32Array \| Float32Array \| Float64Array
+> `static` **timestampSeconds**(`value`): `value is number`
 
-Is the value a TypedArray.
+Is the value a timestamp in seconds.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
-value is Int8Array \| Uint8Array \| Int16Array \| Uint16Array \| Int32Array \| Uint32Array \| Float32Array \| Float64Array
+`value is number`
 
-True if the value is a TypedArray.
+True if the value is a date.
 
-___
+***
 
-### uint8Array
+### timestampMilliseconds()
 
-▸ **uint8Array**(`value`): value is Uint8Array
+> `static` **timestampMilliseconds**(`value`): `value is number`
+
+Is the value a timestamp in milliseconds.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is number`
+
+True if the value is a date.
+
+***
+
+### object()
+
+> `static` **object**\<`T`\>(`value`): `value is T`
+
+Is the value an object.
+
+#### Type Parameters
+
+• **T** = \{\}
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is T`
+
+True if the value is a object.
+
+***
+
+### objectValue()
+
+> `static` **objectValue**\<`T`\>(`value`): `value is T`
+
+Is the value an object with at least one property.
+
+#### Type Parameters
+
+• **T** = \{\}
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is T`
+
+True if the value is a object.
+
+***
+
+### array()
+
+> `static` **array**\<`T`\>(`value`): `value is T[]`
+
+Is the value an array.
+
+#### Type Parameters
+
+• **T**
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is T[]`
+
+True if the value is an array.
+
+***
+
+### arrayValue()
+
+> `static` **arrayValue**\<`T`\>(`value`): `value is T[]`
+
+Is the value an array with at least one element.
+
+#### Type Parameters
+
+• **T**
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is T[]`
+
+True if the value is an array with at least one element.
+
+***
+
+### arrayOneOf()
+
+> `static` **arrayOneOf**\<`T`\>(`value`, `options`): `value is T`
+
+Is the value an array with at least one element.
+
+#### Type Parameters
+
+• **T**
+
+#### Parameters
+
+##### value
+
+`T`
+
+The value to test.
+
+##### options
+
+`T`[]
+
+The options the value must be one of.
+
+#### Returns
+
+`value is T`
+
+True if the value is an element from the options array.
+
+***
+
+### uint8Array()
+
+> `static` **uint8Array**(`value`): `value is Uint8Array<ArrayBufferLike>`
 
 Is the value a Uint8Array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
-value is Uint8Array
+`value is Uint8Array<ArrayBufferLike>`
 
 True if the value is a Uint8Array.
 
-___
+***
 
-### undefined
+### typedArray()
 
-▸ **undefined**(`value`): value is undefined
+> `static` **typedArray**(`value`): value is Int8Array\<ArrayBufferLike\> \| Uint8Array\<ArrayBufferLike\> \| Int16Array\<ArrayBufferLike\> \| Uint16Array\<ArrayBufferLike\> \| Int32Array\<ArrayBufferLike\> \| Uint32Array\<ArrayBufferLike\> \| Float32Array\<ArrayBufferLike\> \| Float64Array\<ArrayBufferLike\>
 
-Is the property undefined.
+Is the value a TypedArray.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `unknown` | The value to test. |
+##### value
+
+`unknown`
+
+The value to test.
 
 #### Returns
 
-value is undefined
+value is Int8Array\<ArrayBufferLike\> \| Uint8Array\<ArrayBufferLike\> \| Int16Array\<ArrayBufferLike\> \| Uint16Array\<ArrayBufferLike\> \| Int32Array\<ArrayBufferLike\> \| Uint32Array\<ArrayBufferLike\> \| Float32Array\<ArrayBufferLike\> \| Float64Array\<ArrayBufferLike\>
 
-True if the value is a empty.
+True if the value is a TypedArray.
+
+***
+
+### function()
+
+> `static` **function**(`value`): `value is (args: unknown[]) => unknown`
+
+Is the property a function.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is (args: unknown[]) => unknown`
+
+True if the value is a function.
+
+***
+
+### email()
+
+> `static` **email**(`value`): `value is string`
+
+Is the value a string formatted as an email address.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is string`
+
+True if the value is a string.
+
+***
+
+### promise()
+
+> `static` **promise**\<`T`\>(`value`): `value is Promise<T>`
+
+Is the value a promise.
+
+#### Type Parameters
+
+• **T** = `unknown`
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is Promise<T>`
+
+True if the value is a promise.
+
+***
+
+### regexp()
+
+> `static` **regexp**(`value`): `value is RegExp`
+
+Is the value a regexp.
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to test.
+
+#### Returns
+
+`value is RegExp`
+
+True if the value is a regexp.

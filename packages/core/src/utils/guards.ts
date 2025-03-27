@@ -9,6 +9,19 @@ import { HexHelper } from "../helpers/hexHelper";
  */
 export class Guards {
 	/**
+	 * Is the property defined.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static defined(source: string, property: string, value: unknown): asserts value {
+		if (Is.undefined(value)) {
+			throw new GuardError(source, "guard.undefined", property, value);
+		}
+	}
+
+	/**
 	 * Is the property a string.
 	 * @param source The source of the error.
 	 * @param property The name of the property.
@@ -42,19 +55,85 @@ export class Guards {
 	}
 
 	/**
-	 * Is the property a string with a hex value.
+	 * Is the property a JSON value.
 	 * @param source The source of the error.
 	 * @param property The name of the property.
 	 * @param value The value to test.
 	 * @throws GuardError If the value does not match the assertion.
 	 */
-	public static stringHex(
+	public static json(source: string, property: string, value: unknown): asserts value is string {
+		if (!Is.json(value)) {
+			throw new GuardError(source, "guard.stringJson", property, value);
+		}
+	}
+
+	/**
+	 * Is the property a base64 string.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static stringBase64(
 		source: string,
 		property: string,
 		value: unknown
 	): asserts value is string {
+		if (!Is.stringBase64(value)) {
+			throw new GuardError(source, "guard.base64", property, value);
+		}
+	}
+
+	/**
+	 * Is the property a base64 url string.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static stringBase64Url(
+		source: string,
+		property: string,
+		value: unknown
+	): asserts value is string {
+		if (!Is.stringBase64Url(value)) {
+			throw new GuardError(source, "guard.base64Url", property, value);
+		}
+	}
+
+	/**
+	 * Is the property a base58 string.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static stringBase58(
+		source: string,
+		property: string,
+		value: unknown
+	): asserts value is string {
+		if (!Is.stringBase58(value)) {
+			throw new GuardError(source, "guard.base58", property, value);
+		}
+	}
+
+	/**
+	 * Is the property a string with a hex value.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @param allowPrefix Allow the hex to have the 0x prefix.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static stringHex(
+		source: string,
+		property: string,
+		value: unknown,
+		allowPrefix: boolean = false
+	): asserts value is string {
 		Guards.stringValue(source, property, value);
-		if (!HexHelper.isHex(value)) {
+		if (!HexHelper.isHex(value, allowPrefix)) {
 			throw new GuardError(source, "guard.stringHex", property, value);
 		}
 	}
@@ -65,16 +144,18 @@ export class Guards {
 	 * @param property The name of the property.
 	 * @param value The value to test.
 	 * @param length The length of the string to match.
+	 * @param allowPrefix Allow the hex to have the 0x prefix.
 	 * @throws GuardError If the value does not match the assertion.
 	 */
 	public static stringHexLength(
 		source: string,
 		property: string,
 		value: unknown,
-		length: number
+		length: number,
+		allowPrefix: boolean = false
 	): asserts value is string {
-		Guards.stringHex(source, property, value);
-		if (value.length !== length) {
+		Guards.stringHex(source, property, value, allowPrefix);
+		if (HexHelper.stripPrefix(value).length !== length) {
 			throw new GuardError(
 				source,
 				"guard.stringHexLength",
@@ -108,6 +189,19 @@ export class Guards {
 	public static integer(source: string, property: string, value: unknown): asserts value is number {
 		if (!Is.integer(value)) {
 			throw new GuardError(source, "guard.integer", property, value);
+		}
+	}
+
+	/**
+	 * Is the property a bigint.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static bigint(source: string, property: string, value: unknown): asserts value is bigint {
+		if (!Is.bigint(value)) {
+			throw new GuardError(source, "guard.bigint", property, value);
 		}
 	}
 
@@ -148,13 +242,13 @@ export class Guards {
 	 * @param value The value to test.
 	 * @throws GuardError If the value does not match the assertion.
 	 */
-	public static milliseconds(
+	public static timestampMilliseconds(
 		source: string,
 		property: string,
 		value: unknown
 	): asserts value is number {
-		if (!Is.milliseconds(value)) {
-			throw new GuardError(source, "guard.milliseconds", property, value);
+		if (!Is.timestampMilliseconds(value)) {
+			throw new GuardError(source, "guard.timestampMilliseconds", property, value);
 		}
 	}
 
@@ -165,9 +259,13 @@ export class Guards {
 	 * @param value The value to test.
 	 * @throws GuardError If the value does not match the assertion.
 	 */
-	public static seconds(source: string, property: string, value: unknown): asserts value is number {
-		if (!Is.seconds(value)) {
-			throw new GuardError(source, "guard.seconds", property, value);
+	public static timestampSeconds(
+		source: string,
+		property: string,
+		value: unknown
+	): asserts value is number {
+		if (!Is.timestampSeconds(value)) {
+			throw new GuardError(source, "guard.timestampSeconds", property, value);
 		}
 	}
 

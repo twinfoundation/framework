@@ -4,48 +4,48 @@ Model to describe the parts of a url.
 
 ## Properties
 
-### hash
+### schema
 
-• `Optional` **hash**: `string`
+> **schema**: `string`
 
-The hash for the url.
+The schema for the url.
 
-___
+***
 
 ### host
 
-• **host**: `string`
+> **host**: `string`
 
 The host for the url.
 
-___
+***
 
-### params
+### port?
 
-• `Optional` **params**: `string`
-
-The params for the url.
-
-___
-
-### path
-
-• **path**: `string`
-
-The path for the url.
-
-___
-
-### port
-
-• `Optional` **port**: `number`
+> `optional` **port**: `number`
 
 The port for the url.
 
-___
+***
 
-### schema
+### path
 
-• **schema**: `string`
+> **path**: `string`
 
-The schema for the url.
+The path for the url.
+
+***
+
+### params?
+
+> `optional` **params**: `string`
+
+The params for the url.
+
+***
+
+### hash?
+
+> `optional` **hash**: `string`
+
+The hash for the url.

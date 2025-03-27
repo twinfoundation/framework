@@ -1,0 +1,49 @@
+name: Publish Release
+
+# GHA_RELEASE_TOKEN requires
+# contents: read/write
+# pull requests: read/write
+# workflows: read/write
+
+on:
+  workflow_dispatch:
+    inputs:
+      semverType:
+        description: 'Which type of semver to release'
+        required: true
+        type: choice
+        options:
+          - 'prerelease' # For development releases (e.g. 1.0.0-next.1)
+          - 'patch' # For bug fixes (e.g. 1.0.1)
+          - 'minor' # For new features (e.g. 1.1.0)
+          - 'major' # For breaking changes (e.g. 2.0.0)
+
+jobs:
+  # Once the packages have been published we create the releases on GitHub
+  # No need to use a patched version of please-release here as the version
+  # numbers were already incremented in the prepare-release action
+  publish-gh-releases:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+
+      # Publish the GitHub releases
+      - name: Release Please
+        run: |
+          CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
+          MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
+          echo "Config File: ${CONFIG_FILE}"
+          echo "Manifest File: ${MANIFEST_FILE}"
+          echo "Repo: ${{ github.repository }}"
+          echo "Target Branch: ${{ github.ref_name}}"
+          npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GHA_RELEASE_TOKEN }}

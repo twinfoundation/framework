@@ -1,69 +1,12 @@
 {
 	"error": {
-		"validation": {
-			"empty": "The value must be empty",
-			"notEmpty": "The value must not be empty",
-			"notRecognised": "The value is unrecognised",
-			"beText": "The value must be text",
-			"beNumber": "The value must be a number",
-			"beWholeNumber": "The value must be a whole number",
-			"beBoolean": "The value must be true or false",
-			"beDate": "The value must be a date",
-			"beDateTime": "The value must be a date/time",
-			"beTime": "The value must be a time",
-			"beMilliseconds": "The value must be a timestamp in milliseconds",
-			"beSeconds": "The value must be a timestamp in seconds",
-			"beObject": "The value must be an object",
-			"beArray": "The value must be an array",
-			"beArrayValue": "The value must be an array with at least one item",
-			"beByteArray": "The value must be a byte array",
-			"beUrn": "The value must be a correctly formatted urn",
-			"beUrl": "The value must be a correctly formatted url",
-			"beJSON": "The value must be correctly formatted JSON",
-			"beEmail": "The value must be a correctly formatted e-mail address",
-			"failed": "Validation failed",
-			"failedObject": "Validation of \"{objectName}\" failed"
-		},
-		"guard": {
-			"string": "Property \"{property}\" must be a string, it is \"{value}\"",
-			"stringEmpty": "Property \"{property}\" must have a value, it is empty",
-			"stringHex": "Property \"{property}\" must be a hex string, it is \"{value}\"",
-			"stringHexLength": "Property \"{property}\" must be a hex string of length \"{options}\", it is \"{value}\"",
-			"number": "Property \"{property}\" must be a number, it is \"{value}\"",
-			"integer": "Property \"{property}\" must be an integer, it is \"{value}\"",
-			"boolean": "Property \"{property}\" must be a boolean, it is \"{value}\"",
-			"date": "Property \"{property}\" must be a date, it is \"{value}\"",
-			"milliseconds": "Property \"{property}\" must be a timestamp in milliseconds, it is \"{value}\"",
-			"seconds": "Property \"{property}\" must be a timestamp in seconds, it is \"{value}\"",
-			"objectUndefined": "Property \"{property}\" must be an object, it is \"undefined\"",
-			"object": "Property \"{property}\" must be an object, it is \"{value}\"",
-			"objectValue": "Property \"{property}\" must be an object, with at least one property, it is \"{value}\"",
-			"array": "Property \"{property}\" must be an array, it is \"{value}\"",
-			"arrayValue": "Property \"{property}\" must be an array with at least one item",
-			"arrayOneOf": "Property \"{property}\" must be one of [{options}], it is \"{value}\"",
-			"uint8Array": "Property \"{property}\" must be a Uint8Array, it is \"{value}\"",
-			"function": "Property \"{property}\" must be a function, it is \"{value}\"",
-			"urn": "Property \"{property}\" must be a Urn formatted string, it is \"{value}\"",
-			"url": "Property \"{property}\" must be a Url formatted string, it is \"{value}\"",
-			"email": "Property \"{property}\" must be string in e-mail format, it is \"{value}\""
-		},
-		"objectHelper": {
-			"failedBytesToJSON": "Failed converting bytes to JSON"
-		},
-		"common": {
-			"notImplementedMethod": "The method \"{method}\" has not been implemented",
-			"validation": "Validation failed"
+		"entitySchemaHelper": {
+			"noIsPrimary": "Property \"entitySchema.properties\" must contain a value with isPrimary set",
+			"multipleIsPrimary": "Property \"entitySchema.properties\" contains more than one property with isPrimary set",
+			"invalidEntityProperties": "The schema has no properties defined, but the entity has properties",
+			"invalidEntityProperty": "The entity value of \"{value}\" does not match the type \"{type}\" for property \"{property}\"",
+			"invalidOptional": "The entity property \"{property}\" of type \"{type}\" is not optional, but no value has been provided",
+			"invalidEntityKeys": "The entity had additional properties that are not in the schema, \"{keys}\""
 		}
-	},
-	"errorNames": {
-		"error": "Error",
-		"generalError": "General",
-		"guardError": "Guard",
-		"conflictError": "Conflict",
-		"notFoundError": "Not Found",
-		"notSupportedError": "Not Supported",
-		"alreadyExistsError": "Already Exists",
-		"notImplementedError": "Not Implemented",
-		"validationError": "Validation"
 	}
 }

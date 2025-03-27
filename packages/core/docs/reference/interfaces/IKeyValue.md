@@ -2,24 +2,22 @@
 
 Interface describing a key/value pair.
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
+• **T**
 
 ## Properties
 
 ### key
 
-• **key**: `string`
+> **key**: `string`
 
 The key for the item.
 
-___
+***
 
 ### value
 
-• **value**: `T`
+> **value**: `T`
 
 The value for the item.

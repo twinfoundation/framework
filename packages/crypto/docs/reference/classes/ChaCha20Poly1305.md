@@ -2,150 +2,78 @@
 
 Implementation of the ChaCha20Poly1305 cipher.
 
+## Constructors
+
+### new ChaCha20Poly1305()
+
+> **new ChaCha20Poly1305**(`key`, `nonce`, `aad`?): [`ChaCha20Poly1305`](ChaCha20Poly1305.md)
+
+Create a new instance of ChaCha20Poly1305.
+
+#### Parameters
+
+##### key
+
+`Uint8Array`
+
+The key.
+
+##### nonce
+
+`Uint8Array`
+
+The nonce.
+
+##### aad?
+
+`Uint8Array`\<`ArrayBufferLike`\>
+
+The additional authenticated data.
+
+#### Returns
+
+[`ChaCha20Poly1305`](ChaCha20Poly1305.md)
+
 ## Methods
 
-### final
+### encrypt()
 
-▸ **final**(): `void`
+> **encrypt**(`block`): `Uint8Array`
 
-Finalise the data.
+Encrypt the block.
 
-#### Returns
+#### Parameters
 
-`void`
+##### block
 
-**`Throws`**
+`Uint8Array`
 
-GeneralError if the auth tag is not set when decrypting.
-
-**`Throws`**
-
-GeneralError if the authentication fails.
-
-___
-
-### getAuthTag
-
-▸ **getAuthTag**(): `Uint8Array`
-
-Get the auth tag.
+The block to encrypt.
 
 #### Returns
 
 `Uint8Array`
 
-The auth tag.
+The block encrypted.
 
-**`Throws`**
+***
 
-GeneralError if trying to get the auth tag while decrypting.
+### decrypt()
 
-**`Throws`**
+> **decrypt**(`block`): `Uint8Array`
 
-GeneralError if the auth tag is not set.
-
-___
-
-### setAAD
-
-▸ **setAAD**(`aad`): `void`
-
-Set the AAD.
+Decrypt the block.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `aad` | `Uint8Array` | The aad to set. |
+##### block
 
-#### Returns
+`Uint8Array`
 
-`void`
-
-**`Throws`**
-
-GeneralError if the aad is set after data.
-
-___
-
-### setAuthTag
-
-▸ **setAuthTag**(`authTag`): `void`
-
-Set the auth tag.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `authTag` | `Uint8Array` | Set the auth tag. |
-
-#### Returns
-
-`void`
-
-**`Throws`**
-
-GeneralError if trying to set the auth tag while encrypting.
-
-___
-
-### update
-
-▸ **update**(`input`): `Uint8Array`
-
-Update the cipher with more data.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `input` | `Uint8Array` | The input data to include. |
+The block to decrypt.
 
 #### Returns
 
 `Uint8Array`
 
-The updated data.
-
-___
-
-### decryptor
-
-▸ **decryptor**(`key`, `nonce`): [`ChaCha20Poly1305`](ChaCha20Poly1305.md)
-
-Create a ChaCha20Poly1305 decryptor.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | `Uint8Array` | The key. |
-| `nonce` | `Uint8Array` | The nonce. |
-
-#### Returns
-
-[`ChaCha20Poly1305`](ChaCha20Poly1305.md)
-
-Decryptor instance of ChaCha20Poly1305.
-
-___
-
-### encryptor
-
-▸ **encryptor**(`key`, `nonce`): [`ChaCha20Poly1305`](ChaCha20Poly1305.md)
-
-Create a ChaCha20Poly1305 encryptor.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | `Uint8Array` | The key. |
-| `nonce` | `Uint8Array` | The nonce. |
-
-#### Returns
-
-[`ChaCha20Poly1305`](ChaCha20Poly1305.md)
-
-Encryptor instance of ChaCha20Poly1305.
+The block decrypted.

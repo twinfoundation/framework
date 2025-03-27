@@ -1,34 +1,53 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
-import { Converter } from "@gtsc/core";
+import { Converter, I18n } from "@twin.org/core";
 import { Bech32 } from "../../src/address/bech32";
 
 describe("Bech32", () => {
-	test("Can fail to decode if there is no separator", () => {
-		expect(() => Bech32.decode("a".repeat(91))).toThrow("bech32.noSeparator");
-	});
-
-	test("Can fail to decode if the separator is too early", () => {
-		expect(() => Bech32.decode(`1${"a".repeat(89)}`)).toThrow("bech32.separatorPos");
-	});
-
-	test("Can fail to decode if the separator is too late", () => {
-		expect(() => Bech32.decode(`${"a".repeat(84)}1${"a".repeat(5)}`)).toThrow(
-			"bech32.separatorNoSpace"
-		);
-	});
-
-	test("Can fail to decode with non 5 bit characters", () => {
-		expect(() => Bech32.decodeTo5BitArray("iot1!aaaaa")).toThrow("bech32.invalidCharacter");
+	beforeAll(async () => {
+		I18n.addDictionary("en", await import("../../locales/en.json"));
 	});
 
 	test("Can fail to decode with invalid checksum", () => {
-		const result = Bech32.decode(
-			"iota1q9f0mlq8yxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp99"
+		expect(() =>
+			Bech32.decode("iota1q9f0mlq8yxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp99")
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "bech32.invalidChecksum"
+			})
 		);
+	});
 
-		expect(result).toBeUndefined();
+	test("Can fail to decode with separator misused", () => {
+		expect(() =>
+			Bech32.decode("iopq9f0mlq8yxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp98")
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "bech32.separatorMisused"
+			})
+		);
+	});
+
+	test("Can fail to decode with mix of lowercase and uppercase", () => {
+		expect(() =>
+			Bech32.decode("iopq9f0mlq8yxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73uTryjtzcp98")
+		).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "bech32.lowerUpper"
+			})
+		);
+	});
+
+	test("Can fail to decode with not enough data", () => {
+		expect(() => Bech32.decode("iot1q9f0m")).toThrow(
+			expect.objectContaining({
+				name: "GeneralError",
+				message: "bech32.dataTooShort"
+			})
+		);
 	});
 
 	test("Can encode a string", () => {
@@ -55,38 +74,38 @@ describe("Bech32", () => {
 	});
 
 	test("Can fail to match empty address", () => {
-		expect(Bech32.matches("iota", "")).toEqual(false);
+		expect(Bech32.isBech32("")).toEqual(false);
 	});
 
 	test("Can fail to match undefined address", () => {
-		expect(Bech32.matches("iota")).toEqual(false);
+		expect(Bech32.isBech32("iota")).toEqual(false);
 	});
 
 	test("Can fail to match address too short", () => {
-		expect(Bech32.matches("iota", "iot1q9f0m")).toEqual(false);
+		expect(Bech32.isBech32("iot1q9f0m")).toEqual(false);
 	});
 
 	test("Can fail to match address hrp mismatch", () => {
 		expect(
-			Bech32.matches("iota", "iop1q9f0mlq8yxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp98")
+			Bech32.isBech32("iop1q9f0mlq8yxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp98")
 		).toEqual(false);
 	});
 
 	test("Can fail to match address seprator missing", () => {
 		expect(
-			Bech32.matches("iota", "iopq9f0mlq8yxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp98")
+			Bech32.isBech32("iopq9f0mlq8yxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp98")
 		).toEqual(false);
 	});
 
 	test("Can fail to match address invalid chars", () => {
 		expect(
-			Bech32.matches("iota", "iota1q9f0mlqZyxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp98")
+			Bech32.isBech32("iota1q9f0mlqZyxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp98")
 		).toEqual(false);
 	});
 
 	test("Can match address", () => {
 		expect(
-			Bech32.matches("iota", "iota1q9f0mlq8yxpx2nck8a0slxnzr4ef2ek8f5gqxlzd0wasgp73utryjtzcp98")
+			Bech32.isBech32("iota1qrmhx628sac676880a8h8kzeuc8443035j4w69hnduf3686s9amngcdvl0h")
 		).toEqual(true);
 	});
 });

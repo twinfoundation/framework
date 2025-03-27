@@ -1,19 +1,25 @@
 {
 	"eslint.validate": ["javascript", "typescript"],
 	"[javascript]": {
-		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.tabSize": 2,
 		"editor.codeActionsOnSave": {
-			"source.fixAll": "always"
+			"source.fixAll.eslint": "always"
 		}
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.tabSize": 2,
 		"editor.codeActionsOnSave": {
-			"source.fixAll": "always"
+			"source.fixAll.eslint": "always"
 		}
 	},
 	"prettier.configPath": ".prettierrc",
-	"cSpell.autoFormatConfigFile": true
+	"cSpell.autoFormatConfigFile": true,
+	"vitest.disableWorkspaceWarning": true,
+	"markdownlint.lintWorkspaceGlobs": [
+		"**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+		"!**/node_modules",
+		"**/docs/reference/**"
+	]
 }

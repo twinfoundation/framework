@@ -4,9 +4,9 @@ import testData from "./base64.json";
 import { Base64 } from "../../src/encoding/base64";
 import { Converter } from "../../src/utils/converter";
 
-// Test vectorss
+// Test vectors
 // https://datatracker.ietf.org/doc/html/rfc4648#section-10
-describe("Base64Helper", () => {
+describe("Base64", () => {
 	test("Can encode bytes to base64", () => {
 		expect(Base64.encode(new Uint8Array([1, 2, 3, 4]))).toEqual("AQIDBA==");
 	});

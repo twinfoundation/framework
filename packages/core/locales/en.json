@@ -1,40 +1,64 @@
 {
 	"error": {
 		"validation": {
-			"empty": "The value must be empty",
-			"notEmpty": "The value must not be empty",
-			"notRecognised": "The value is unrecognised",
-			"beText": "The value must be text",
-			"beNumber": "The value must be a number",
-			"beWholeNumber": "The value must be a whole number",
-			"beBoolean": "The value must be true or false",
-			"beDate": "The value must be a date",
-			"beDateTime": "The value must be a date/time",
-			"beTime": "The value must be a time",
-			"beMilliseconds": "The value must be a timestamp in milliseconds",
-			"beSeconds": "The value must be a timestamp in seconds",
-			"beObject": "The value must be an object",
-			"beArray": "The value must be an array",
-			"beArrayValue": "The value must be an array with at least one item",
-			"beByteArray": "The value must be a byte array",
-			"beUrn": "The value must be a correctly formatted urn",
-			"beUrl": "The value must be a correctly formatted url",
-			"beJSON": "The value must be correctly formatted JSON",
-			"beEmail": "The value must be a correctly formatted e-mail address",
+			"beEmpty": "{fieldName} must be empty",
+			"beNotEmpty": "{fieldName} must not be empty",
+			"beText": "{fieldName} must be text",
+			"beTextValue": "{fieldName} must contain some text",
+			"beTextMinMax": "{fieldName} must be longer than {minLength} and shorter than {maxLength} characters",
+			"beTextMin": "{fieldName} must be longer than {minLength} characters",
+			"beTextMax": "{fieldName} must be shorter than {maxLength} characters",
+			"beTextBase58": "{fieldName} must be text formatted using Base58 characters",
+			"beTextBase64": "{fieldName} must be text formatted using Base64 characters",
+			"beTextHex": "{fieldName} must be text formatted using Hex characters",
+			"beTextRegExp": "{fieldName} must be text formatted using the matching pattern {format}",
+			"beNumber": "{fieldName} must be a number",
+			"beNumberMinMax": "{fieldName} must be >= {minValue} and <= {maxValue}",
+			"beNumberMin": "{fieldName} must be >= {minValue}",
+			"beNumberMax": "{fieldName} must be <= {maxValue}",
+			"beWholeNumber": "{fieldName} must be a whole number",
+			"beWholeNumberMinMax": "{fieldName} must be a whole number >= {minValue} and <= {maxValue}",
+			"beWholeNumberMin": "{fieldName} must be a whole number >= {minValue}",
+			"beWholeNumberMax": "{fieldName} must be a whole number <= {maxValue}",
+			"beBigInteger": "{fieldName} must be a bigint",
+			"beBigIntegerMinMax": "{fieldName} must be a bigint >= {minValue} and <= {maxValue}",
+			"beBigIntegerMin": "{fieldName} must be a bigint >= {minValue}",
+			"beBigIntegerMax": "{fieldName} must be a bigint <= {maxValue}",
+			"beBoolean": "{fieldName} must be true or false",
+			"beDate": "{fieldName} must be a date",
+			"beDateTime": "{fieldName} must be a date/time",
+			"beTime": "{fieldName} must be a time",
+			"beTimestampMilliseconds": "{fieldName} must be a timestamp in milliseconds",
+			"beTimestampSeconds": "{fieldName} must be a timestamp in seconds",
+			"beObject": "{fieldName} must be an object",
+			"beArray": "{fieldName} must be an array",
+			"beArrayValue": "{fieldName} must be an array with at least one item",
+			"beIncluded": "{fieldName} is unrecognised",
+			"beByteArray": "{fieldName} must be a byte array",
+			"beUrn": "{fieldName} must be a correctly formatted urn",
+			"beUrl": "{fieldName} must be a correctly formatted url",
+			"beJSON": "{fieldName} must be correctly formatted JSON",
+			"beEmail": "{fieldName} must be a correctly formatted e-mail address",
 			"failed": "Validation failed",
 			"failedObject": "Validation of \"{objectName}\" failed"
 		},
 		"guard": {
+			"undefined": "Property \"{property}\" must be defined, it is \"{value}\"",
 			"string": "Property \"{property}\" must be a string, it is \"{value}\"",
 			"stringEmpty": "Property \"{property}\" must have a value, it is empty",
+			"stringBase64": "Property \"{property}\" must be a base64 encoded string, it is \"{value}\"",
+			"stringBase64Url": "Property \"{property}\" must be a base64 url encoded string, it is \"{value}\"",
+			"stringBase58": "Property \"{property}\" must be a base58 encoded string, it is \"{value}\"",
 			"stringHex": "Property \"{property}\" must be a hex string, it is \"{value}\"",
 			"stringHexLength": "Property \"{property}\" must be a hex string of length \"{options}\", it is \"{value}\"",
+			"stringJson": "Property \"{property}\" must be a JSON string",
 			"number": "Property \"{property}\" must be a number, it is \"{value}\"",
 			"integer": "Property \"{property}\" must be an integer, it is \"{value}\"",
+			"bigint": "Property \"{property}\" must be a bigint, it is \"{value}\"",
 			"boolean": "Property \"{property}\" must be a boolean, it is \"{value}\"",
 			"date": "Property \"{property}\" must be a date, it is \"{value}\"",
-			"milliseconds": "Property \"{property}\" must be a timestamp in milliseconds, it is \"{value}\"",
-			"seconds": "Property \"{property}\" must be a timestamp in seconds, it is \"{value}\"",
+			"timestampMilliseconds": "Property \"{property}\" must be a timestamp in milliseconds, it is \"{value}\"",
+			"timestampSeconds": "Property \"{property}\" must be a timestamp in seconds, it is \"{value}\"",
 			"objectUndefined": "Property \"{property}\" must be an object, it is \"undefined\"",
 			"object": "Property \"{property}\" must be an object, it is \"{value}\"",
 			"objectValue": "Property \"{property}\" must be an object, with at least one property, it is \"{value}\"",
@@ -48,11 +72,32 @@
 			"email": "Property \"{property}\" must be string in e-mail format, it is \"{value}\""
 		},
 		"objectHelper": {
-			"failedBytesToJSON": "Failed converting bytes to JSON"
+			"failedBytesToJSON": "Failed converting bytes to JSON",
+			"cannotSetArrayIndex": "Cannot set property \"{property}\" using index \"{index}\" as it is not an array",
+			"cannotSetProperty": "Cannot set property \"{property}\" when the target is not an object"
 		},
 		"common": {
 			"notImplementedMethod": "The method \"{method}\" has not been implemented",
 			"validation": "Validation failed"
+		},
+		"factory": {
+			"noUnregister": "There is no {typeName} registered with the name \"{name}\"",
+			"noGet": "The requested {typeName} \"{name}\" does not exist in the factory"
+		},
+		"bitString": {
+			"outOfRange": "The index should be >= 0 and less than the length of the bit string"
+		},
+		"base32": {
+			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"
+		},
+		"base64": {
+			"length4Multiple": "Invalid length should be a multiple of 4, it is \"{value}\""
+		},
+		"base58": {
+			"invalidCharacter": "Data contains a character \"{invalidCharacter}\" which is not in the charset"
+		},
+		"jsonHelper": {
+			"failedPatch": "Failed to patch the JSON object, patch index \"{index}\" failed"
 		}
 	},
 	"errorNames": {
@@ -64,6 +109,10 @@
 		"notSupportedError": "Not Supported",
 		"alreadyExistsError": "Already Exists",
 		"notImplementedError": "Not Implemented",
-		"validationError": "Validation"
+		"validationError": "Validation",
+		"unprocessableError": "Unprocessable"
+	},
+	"validation": {
+		"defaultFieldName": "The field"
 	}
 }

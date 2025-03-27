@@ -2,15 +2,20 @@
 // SPDX-License-Identifier: Apache-2.0.
 import type { IValidationFailure } from "../../src/models/IValidationFailure";
 import { Urn } from "../../src/types/urn";
+import { I18n } from "../../src/utils/i18n";
 
 describe("Urn", () => {
-	test("can generate an internal id", () => {
-		const id = Urn.generateRandom("gtsc-ilt");
+	beforeAll(async () => {
+		I18n.addDictionary("en", await import("../../locales/en.json"));
+	});
 
-		const urn = id.toString().split(":");
+	test("can generate an internal id", () => {
+		const id = Urn.generateRandom("twin-ilt");
+
+		const urn = id.toString(false).split(":");
 
 		expect(urn[0]).toEqual("urn");
-		expect(urn[1]).toEqual("gtsc-ilt");
+		expect(urn[1]).toEqual("twin-ilt");
 		expect(urn[2].length).toEqual(64);
 	});
 
@@ -37,19 +42,19 @@ describe("Urn", () => {
 	test("can build an id with namespace identifier and specific", () => {
 		const urn = new Urn("aaa", "bbb");
 
-		expect(urn.toString()).toEqual("urn:aaa:bbb");
+		expect(urn.toString(false)).toEqual("urn:aaa:bbb");
 	});
 
 	test("can build an id with namespace identifier and specific with additional sections", () => {
 		const urn = new Urn("aaa", "bbb:ccc");
 
-		expect(urn.toString()).toEqual("urn:aaa:bbb:ccc");
+		expect(urn.toString(false)).toEqual("urn:aaa:bbb:ccc");
 	});
 
 	test("can build an id with namespace identifier and specific with additional colons", () => {
 		const urn = new Urn("aaa:", ":bbb");
 
-		expect(urn.toString()).toEqual("urn:aaa:bbb");
+		expect(urn.toString(false)).toEqual("urn:aaa:bbb");
 	});
 
 	test("can fail fromValidString an empty urn", () => {
@@ -66,8 +71,8 @@ describe("Urn", () => {
 		expect(() => Urn.fromValidString("aaa")).toThrow(
 			expect.objectContaining({
 				name: "GuardError",
-				message: "guard.stringEmpty",
-				properties: { property: "namespaceSpecific", value: "" }
+				message: "guard.arrayValue",
+				properties: { property: "namespaceSpecific", value: [] }
 			})
 		);
 	});
@@ -85,19 +90,19 @@ describe("Urn", () => {
 	test("can fromValidString a full urn", () => {
 		const urn = Urn.fromValidString("urn:aaa:bbb");
 
-		expect(urn.toString()).toEqual("urn:aaa:bbb");
+		expect(urn.toString(false)).toEqual("urn:aaa:bbb");
 	});
 
 	test("can fromValidString a urn with no prefix", () => {
 		const urn = Urn.fromValidString("aaa:bbb");
 
-		expect(urn.toString()).toEqual("urn:aaa:bbb");
+		expect(urn.toString(false)).toEqual("urn:aaa:bbb");
 	});
 
 	test("can fromValidString an extended urn", () => {
 		const urn = Urn.fromValidString("aaa:bbb:ccc:ddd");
 
-		expect(urn.toString()).toEqual("urn:aaa:bbb:ccc:ddd");
+		expect(urn.toString(false)).toEqual("urn:aaa:bbb:ccc:ddd");
 	});
 
 	test("can fail to guard an empty urn and throw", () => {
@@ -118,20 +123,15 @@ describe("Urn", () => {
 				properties: { property: "foo", value: "urn:" }
 			})
 		);
+		expect(I18n.hasMessage("error.guard.urn")).toEqual(true);
 	});
 
 	test("can success to guard a valid urn", () => {
-		Urn.guard("source", "foo", "urn:aaa:bbb");
+		Urn.guard("source", "foo", "aaa:bbb");
 	});
 
 	test("can fail to tryParseExact an empty urn", () => {
 		const urn = Urn.tryParseExact("");
-
-		expect(urn).toBeUndefined();
-	});
-
-	test("can fail to tryParseExact a string not starting urn:", () => {
-		const urn = Urn.tryParseExact("rn:aaa:bbb");
 
 		expect(urn).toBeUndefined();
 	});
@@ -184,13 +184,13 @@ describe("Urn", () => {
 	test("can succeed tryParseExact a prefixed urn", () => {
 		const urn = Urn.tryParseExact("urn:aaa:bbb");
 		expect(urn).toBeDefined();
-		expect(urn?.toString()).toEqual("urn:aaa:bbb");
+		expect(urn?.toString(false)).toEqual("urn:aaa:bbb");
 	});
 
 	test("can succeed tryParseExact a prefixed urn with extended namespaceSpecific", () => {
 		const urn = Urn.tryParseExact("urn:aaa:bbb:ccc:ddd");
 		expect(urn).toBeDefined();
-		expect(urn?.toString()).toEqual("urn:aaa:bbb:ccc:ddd");
+		expect(urn?.toString(false)).toEqual("urn:aaa:bbb:ccc:ddd");
 	});
 
 	test("can fail to match a namespace with empty urn", () => {
@@ -260,11 +260,11 @@ describe("Urn", () => {
 	});
 
 	test("can get a string version of the urn with a prefix", () => {
-		expect(new Urn("aaa", "bbb").toString()).toEqual("urn:aaa:bbb");
+		expect(new Urn("aaa", "bbb").toString(false)).toEqual("urn:aaa:bbb");
 	});
 
 	test("can get a string version of an extended urn with a prefix", () => {
-		expect(new Urn("aaa", "bbb:ccc:ddd").toString()).toEqual("urn:aaa:bbb:ccc:ddd");
+		expect(new Urn("aaa", "bbb:ccc:ddd").toString(false)).toEqual("urn:aaa:bbb:ccc:ddd");
 	});
 
 	test("can get a string version of the urn without a prefix", () => {
@@ -273,5 +273,65 @@ describe("Urn", () => {
 
 	test("can get a string version of an extended urn without a prefix", () => {
 		expect(new Urn("aaa", "bbb:ccc:ddd").toString(true)).toEqual("aaa:bbb:ccc:ddd");
+	});
+
+	test("can get a namespace identifier", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceIdentifier()).toEqual("aaa");
+	});
+
+	test("can get a namespace method", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceMethod()).toEqual("bbb");
+	});
+
+	test("can get namespace specific", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceSpecific()).toEqual("bbb:ccc:ddd");
+	});
+
+	test("can get namespace specific with a start index 1", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceSpecific(1)).toEqual("ccc:ddd");
+	});
+
+	test("can get namespace specific with a start index 2", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceSpecific(2)).toEqual("ddd");
+	});
+
+	test("can get namespace specific with a start index 3", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceSpecific(3)).toEqual("");
+	});
+
+	test("can get parts", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").parts()).toEqual(["aaa", "bbb", "ccc", "ddd"]);
+	});
+
+	test("can get parts with start index 1", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").parts(1)).toEqual(["bbb", "ccc", "ddd"]);
+	});
+
+	test("can get parts with start index 2", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").parts(2)).toEqual(["ccc", "ddd"]);
+	});
+
+	test("can get parts with start index 3", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").parts(3)).toEqual(["ddd"]);
+	});
+
+	test("can get parts with start index 4", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").parts(4)).toEqual([]);
+	});
+
+	test("can get namespace specific parts", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceSpecificParts()).toEqual(["bbb", "ccc", "ddd"]);
+	});
+
+	test("can get namespace specific parts with a start index 1", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceSpecificParts(1)).toEqual(["ccc", "ddd"]);
+	});
+
+	test("can get namespace specific parts with a start index 2", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceSpecificParts(2)).toEqual(["ddd"]);
+	});
+
+	test("can get namespace specific parts with a start index 3", () => {
+		expect(new Urn("aaa", "bbb:ccc:ddd").namespaceSpecificParts(3)).toEqual([]);
 	});
 });

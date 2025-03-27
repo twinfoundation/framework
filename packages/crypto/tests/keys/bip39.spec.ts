@@ -1,11 +1,20 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-
-import { Converter } from "@gtsc/core";
+import { Converter } from "@twin.org/core";
 import testData from "./bip39.json";
 import { Bip39 } from "../../src/keys/bip39";
 
 describe("Bip39", () => {
+	test("Can generate a random mnemonic with default length", () => {
+		const mnemonic = Bip39.randomMnemonic();
+		expect(mnemonic.split(" ").length).toEqual(24);
+	});
+
+	test("Can generate a random mnemonic with custom length", () => {
+		const mnemonic = Bip39.randomMnemonic(128);
+		expect(mnemonic.split(" ").length).toEqual(12);
+	});
+
 	test("Can verify with test vectors", () => {
 		for (const test of testData) {
 			const entropyBytes = Converter.hexToBytes(test.entropy);

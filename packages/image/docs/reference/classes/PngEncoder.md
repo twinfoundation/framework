@@ -5,9 +5,9 @@ Based on https://github.com/photopea/UPNG.js.
 
 ## Constructors
 
-### constructor
+### new PngEncoder()
 
-• **new PngEncoder**(): [`PngEncoder`](PngEncoder.md)
+> **new PngEncoder**(): [`PngEncoder`](PngEncoder.md)
 
 #### Returns
 
@@ -15,22 +15,34 @@ Based on https://github.com/photopea/UPNG.js.
 
 ## Methods
 
-### encode
+### encode()
 
-▸ **encode**(`buffers`, `w`, `h`): `Uint8Array`
+> **encode**(`buffers`, `w`, `h`): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 Encode the image frames to png.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `buffers` | `ArrayBuffer`[] | The frame buffers to encode. |
-| `w` | `number` | The image width. |
-| `h` | `number` | The image height. |
+##### buffers
+
+`ArrayBuffer`[]
+
+The frame buffers to encode.
+
+##### w
+
+`number`
+
+The image width.
+
+##### h
+
+`number`
+
+The image height.
 
 #### Returns
 
-`Uint8Array`
+`Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 The data for the image.
