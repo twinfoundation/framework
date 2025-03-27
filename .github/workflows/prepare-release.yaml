@@ -1,5 +1,10 @@
 name: Prepare Release
 
+# GHA_RELEASE_TOKEN requires
+# contents: read/write
+# pull requests: read/write
+# workflows: read/write
+
 on:
   # This workflow is triggered manually from the GitHub UI
   workflow_dispatch:
