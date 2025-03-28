@@ -27,8 +27,10 @@ jobs:
       # This output will be consumed by the publish job's matrix
       packages: ${{ steps.read-workspaces.outputs.packages }}
 
-    # Enforce branching strategy rules, we only allow releases created on the next branch:
-    if: github.ref == 'refs/heads/next'
+    # Enforce branching strategy rules:
+    # 1. Prereleases (next.X) can only be created from the 'next' branch
+    # 2. Production releases can only be created from the 'main' branch
+    if: (github.ref == 'refs/heads/main' && github.event.inputs.semverType != 'prerelease') || (github.ref == 'refs/heads/next' && github.event.inputs.semverType == 'prerelease')
 
     steps:
       # Get the code from the repository

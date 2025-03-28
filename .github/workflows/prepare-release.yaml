@@ -29,8 +29,10 @@ jobs:
       pull-requests: write # Needed for creating the release PR
       id-token: write # Keep existing permissions for authentication
 
-    # Enforce branching strategy rules, we only allow releases created on the next branch:
-    if: github.ref == 'refs/heads/next'
+    # Enforce branching strategy rules:
+    # 1. Prereleases (next.X) can only be created from the 'next' branch
+    # 2. Production releases can only be created from the 'main' branch
+    if: (github.ref == 'refs/heads/main' && github.event.inputs.semverType != 'prerelease') || (github.ref == 'refs/heads/next' && github.event.inputs.semverType == 'prerelease')
 
     steps:
       # Clone the repository to the runner
