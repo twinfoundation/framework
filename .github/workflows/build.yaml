@@ -11,6 +11,13 @@ concurrency:
 jobs:
   dist-all-packages:
     runs-on: ubuntu-latest
+
+    # Add env vars for tests
+    env:
+      TEST_MNEMONIC: ${{ secrets.TEST_MNEMONIC }}
+      TEST_2_MNEMONIC: ${{ secrets.TEST_2_MNEMONIC }}
+      TEST_NODE_MNEMONIC: ${{ secrets.TEST_NODE_MNEMONIC }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4

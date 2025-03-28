@@ -62,6 +62,12 @@ jobs:
       id-token: write # Needed for npm provenance
     needs: read-workspaces # Wait for the read-workspaces job to complete
 
+    # Add env vars for tests
+    env:
+      TEST_MNEMONIC: ${{ secrets.TEST_MNEMONIC }}
+      TEST_2_MNEMONIC: ${{ secrets.TEST_2_MNEMONIC }}
+      TEST_NODE_MNEMONIC: ${{ secrets.TEST_NODE_MNEMONIC }}
+
     # Use a matrix strategy to process each package pattern in parallel
     # but limit to one at a time for controlled publishing order
     strategy:
