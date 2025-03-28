@@ -89,6 +89,10 @@ jobs:
           node-version: 20 # Use Node.js 20.x
           registry-url: 'https://registry.npmjs.org' # Set NPM registry URL
 
+      # Setup any services required for tests here
+
+      # End setup for tests
+
       # Remove the root package.json to prevent dependency conflicts
       - name: Remove Mono-Repo Node Modules
         run: |

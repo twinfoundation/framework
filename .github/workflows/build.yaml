@@ -19,17 +19,25 @@ jobs:
       TEST_NODE_MNEMONIC: ${{ secrets.TEST_NODE_MNEMONIC }}
 
     steps:
+      # Get the code
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Setup Node
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # Install dependencies
       - name: Install dependencies
         run: npm ci
 
+      # Setup any services required for tests here
+
+      # End setup for tests
+
+      # Run Lint and Dist
       - name: Run Lint and Dist
         run: |
           npm run lint
