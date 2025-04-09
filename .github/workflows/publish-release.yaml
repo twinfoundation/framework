@@ -119,7 +119,14 @@ jobs:
         run: |
           NPM_TAG=${{ github.event.inputs.semverType == 'prerelease' && 'next' || 'latest' }}
           cd ${{ matrix.package }}
-          npm publish --provenance --access public --tag ${NPM_TAG}
+          # Check if package is private
+          IS_PRIVATE=$(node -e "console.log(require('./package.json').private === true ? 'true' : 'false')")
+
+          if [ "$IS_PRIVATE" = "true" ]; then
+            echo "Package is marked as private, skipping publication"
+          else
+            npm publish --provenance --access public --tag ${NPM_TAG}
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -147,4 +154,4 @@ jobs:
         run: |
           CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
-          npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GHA_RELEASE_TOKEN }}
+          npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name }} --token=${{ secrets.GHA_RELEASE_TOKEN }}
