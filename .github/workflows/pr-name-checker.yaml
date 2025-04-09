@@ -1,0 +1,20 @@
+name: PR Name Checker
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  pr-name-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Lint PR title
+        run: |
+          echo "${{ github.event.pull_request.title }}" | npx --yes commitlint
