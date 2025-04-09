@@ -1,7 +1,6 @@
 name: PR Name Checker
 
 on:
-  workflow_dispatch:
   pull_request:
     types: [opened, edited, synchronize, reopened]
 
@@ -15,6 +14,10 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: |
+          npm install @commitlint/config-conventional @commitlint/cli -g
+
       - name: Lint PR title
         run: |
-          echo "${{ github.event.pull_request.title }}" | npx --yes commitlint
+          echo "${{ github.event.pull_request.title }}" | npx commitlint
