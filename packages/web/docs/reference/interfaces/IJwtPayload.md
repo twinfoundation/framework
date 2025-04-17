@@ -9,3 +9,5 @@ The fields in a JSON Web Token payload.
 ## Indexable
 
 \[`propName`: `string`\]: `unknown`
+
+Any other JWT Claim Set member.

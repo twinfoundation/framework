@@ -5,13 +5,13 @@ https://www.rfc-editor.org/rfc/rfc4648#section-5.
 
 ## Constructors
 
-### new Base64Url()
+### Constructor
 
-> **new Base64Url**(): [`Base64Url`](Base64Url.md)
+> **new Base64Url**(): `Base64Url`
 
 #### Returns
 
-[`Base64Url`](Base64Url.md)
+`Base64Url`
 
 ## Methods
 

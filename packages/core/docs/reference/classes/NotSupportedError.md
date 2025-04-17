@@ -8,9 +8,9 @@ Class to handle errors when a feature is unsupported.
 
 ## Constructors
 
-### new NotSupportedError()
+### Constructor
 
-> **new NotSupportedError**(`source`, `message`, `inner`?): [`NotSupportedError`](NotSupportedError.md)
+> **new NotSupportedError**(`source`, `message`, `inner?`): `NotSupportedError`
 
 Create a new instance of NotSupportedError.
 
@@ -36,11 +36,11 @@ The inner error if we have wrapped another error.
 
 #### Returns
 
-[`NotSupportedError`](NotSupportedError.md)
+`NotSupportedError`
 
 #### Overrides
 
-[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructors)
+[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructor)
 
 ## Properties
 
@@ -52,7 +52,7 @@ The source of the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`source`](BaseError.md#source-1)
+[`BaseError`](BaseError.md).[`source`](BaseError.md#source)
 
 ***
 
@@ -68,7 +68,7 @@ Any additional information for the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties-1)
+[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties)
 
 ***
 
@@ -80,7 +80,7 @@ The inner error if there was one.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner-1)
+[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner)
 
 ***
 

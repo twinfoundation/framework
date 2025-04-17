@@ -4,13 +4,13 @@ Class to help with mime types.
 
 ## Constructors
 
-### new MimeTypeHelper()
+### Constructor
 
-> **new MimeTypeHelper**(): [`MimeTypeHelper`](MimeTypeHelper.md)
+> **new MimeTypeHelper**(): `MimeTypeHelper`
 
 #### Returns
 
-[`MimeTypeHelper`](MimeTypeHelper.md)
+`MimeTypeHelper`
 
 ## Methods
 

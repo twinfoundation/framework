@@ -8,9 +8,9 @@ Class to handle errors.
 
 ## Constructors
 
-### new GeneralError()
+### Constructor
 
-> **new GeneralError**(`source`, `message`, `properties`?, `inner`?): [`GeneralError`](GeneralError.md)
+> **new GeneralError**(`source`, `message`, `properties?`, `inner?`): `GeneralError`
 
 Create a new instance of GeneralError.
 
@@ -40,11 +40,11 @@ The inner error if we have wrapped another error.
 
 #### Returns
 
-[`GeneralError`](GeneralError.md)
+`GeneralError`
 
 #### Overrides
 
-[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructors)
+[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructor)
 
 ## Properties
 
@@ -56,7 +56,7 @@ The source of the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`source`](BaseError.md#source-1)
+[`BaseError`](BaseError.md).[`source`](BaseError.md#source)
 
 ***
 
@@ -72,7 +72,7 @@ Any additional information for the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties-1)
+[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties)
 
 ***
 
@@ -84,7 +84,7 @@ The inner error if there was one.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner-1)
+[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner)
 
 ***
 

@@ -4,9 +4,9 @@ Class to help with bip32 paths.
 
 ## Constructors
 
-### new Bip32Path()
+### Constructor
 
-> **new Bip32Path**(`initialPath`?): [`Bip32Path`](Bip32Path.md)
+> **new Bip32Path**(`initialPath?`): `Bip32Path`
 
 Create a new instance of Bip32Path.
 
@@ -20,13 +20,13 @@ Initial path to create.
 
 #### Returns
 
-[`Bip32Path`](Bip32Path.md)
+`Bip32Path`
 
 ## Methods
 
 ### fromPath()
 
-> `static` **fromPath**(`bip32Path`): [`Bip32Path`](Bip32Path.md)
+> `static` **fromPath**(`bip32Path`): `Bip32Path`
 
 Construct a new path by cloning an existing one.
 
@@ -34,13 +34,13 @@ Construct a new path by cloning an existing one.
 
 ##### bip32Path
 
-[`Bip32Path`](Bip32Path.md)
+`Bip32Path`
 
 The path to clone.
 
 #### Returns
 
-[`Bip32Path`](Bip32Path.md)
+`Bip32Path`
 
 A new instance of Bip32Path.
 

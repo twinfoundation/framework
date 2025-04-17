@@ -9,3 +9,5 @@ The fields in a JSON Web Token header.
 ## Indexable
 
 \[`propName`: `string`\]: `unknown`
+
+Any other JWS Header member.

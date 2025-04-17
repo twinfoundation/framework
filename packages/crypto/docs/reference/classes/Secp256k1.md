@@ -4,13 +4,13 @@ Implementation of secp256k1.
 
 ## Constructors
 
-### new Secp256k1()
+### Constructor
 
-> **new Secp256k1**(): [`Secp256k1`](Secp256k1.md)
+> **new Secp256k1**(): `Secp256k1`
 
 #### Returns
 
-[`Secp256k1`](Secp256k1.md)
+`Secp256k1`
 
 ## Properties
 

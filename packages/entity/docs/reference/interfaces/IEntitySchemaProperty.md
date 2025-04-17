@@ -4,7 +4,9 @@ Definition for an entity schema property.
 
 ## Type Parameters
 
-• **T** = `unknown`
+### T
+
+`T` = `unknown`
 
 ## Properties
 

@@ -4,9 +4,9 @@ Class to represent a color.
 
 ## Constructors
 
-### new Color()
+### Constructor
 
-> **new Color**(`alpha`, `red`, `green`, `blue`): [`Color`](Color.md)
+> **new Color**(`alpha`, `red`, `green`, `blue`): `Color`
 
 Create a new instance of color.
 
@@ -38,13 +38,13 @@ The blue element of the color.
 
 #### Returns
 
-[`Color`](Color.md)
+`Color`
 
 ## Methods
 
 ### fromHex()
 
-> `static` **fromHex**(`hex`): [`Color`](Color.md)
+> `static` **fromHex**(`hex`): `Color`
 
 Construct a color from a hex string.
 
@@ -58,7 +58,7 @@ The hex string to parse.
 
 #### Returns
 
-[`Color`](Color.md)
+`Color`
 
 The color.
 
@@ -70,7 +70,7 @@ Error if the format is incorrect.
 
 ### coerce()
 
-> `static` **coerce**(`value`): `undefined` \| [`Color`](Color.md)
+> `static` **coerce**(`value`): `undefined` \| `Color`
 
 Coerce an unknown type to a color.
 
@@ -84,7 +84,7 @@ The value to try and convert.
 
 #### Returns
 
-`undefined` \| [`Color`](Color.md)
+`undefined` \| `Color`
 
 The color if one can be created.
 

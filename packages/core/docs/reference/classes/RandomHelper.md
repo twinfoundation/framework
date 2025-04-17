@@ -4,13 +4,13 @@ Class to help with random generation.
 
 ## Constructors
 
-### new RandomHelper()
+### Constructor
 
-> **new RandomHelper**(): [`RandomHelper`](RandomHelper.md)
+> **new RandomHelper**(): `RandomHelper`
 
 #### Returns
 
-[`RandomHelper`](RandomHelper.md)
+`RandomHelper`
 
 ## Methods
 

@@ -4,13 +4,13 @@ Helpers methods for JSON objects.
 
 ## Constructors
 
-### new JsonHelper()
+### Constructor
 
-> **new JsonHelper**(): [`JsonHelper`](JsonHelper.md)
+> **new JsonHelper**(): `JsonHelper`
 
 #### Returns
 
-[`JsonHelper`](JsonHelper.md)
+`JsonHelper`
 
 ## Methods
 
@@ -46,7 +46,9 @@ Based on https://www.rfc-editor.org/rfc/rfc6902.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -79,7 +81,9 @@ Based on https://www.rfc-editor.org/rfc/rfc6902.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -109,7 +113,7 @@ GeneralError if the patch fails.
 
 ### stringifyEx()
 
-> `static` **stringifyEx**(`object`, `space`?): `string`
+> `static` **stringifyEx**(`object`, `space?`): `string`
 
 Stringify the JSON with support for extended data types date/bigint/uint8array.
 

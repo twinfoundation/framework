@@ -4,13 +4,13 @@ Implementation of Bip39 for mnemonic generation.
 
 ## Constructors
 
-### new Bip39()
+### Constructor
 
-> **new Bip39**(): [`Bip39`](Bip39.md)
+> **new Bip39**(): `Bip39`
 
 #### Returns
 
-[`Bip39`](Bip39.md)
+`Bip39`
 
 ## Methods
 
@@ -80,7 +80,7 @@ Error if the length of the entropy is not a multiple of 4, or is less than 16 or
 
 ### mnemonicToSeed()
 
-> `static` **mnemonicToSeed**(`mnemonic`, `password`?): `Uint8Array`
+> `static` **mnemonicToSeed**(`mnemonic`, `password?`): `Uint8Array`
 
 Convert a mnemonic to a seed.
 

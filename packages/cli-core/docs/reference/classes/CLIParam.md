@@ -4,13 +4,13 @@ Parameter utilities for the CLI.
 
 ## Constructors
 
-### new CLIParam()
+### Constructor
 
-> **new CLIParam**(): [`CLIParam`](CLIParam.md)
+> **new CLIParam**(): `CLIParam`
 
 #### Returns
 
-[`CLIParam`](CLIParam.md)
+`CLIParam`
 
 ## Methods
 
@@ -130,7 +130,7 @@ An error if the option is invalid.
 
 ### number()
 
-> `static` **number**(`optionName`, `optionValue`, `allowEnvVar`, `minValue`, `maxValue`?): `number`
+> `static` **number**(`optionName`, `optionValue`, `allowEnvVar`, `minValue`, `maxValue?`): `number`
 
 Check the option to see if it exists and is a number.
 
@@ -180,7 +180,7 @@ An error if the option is invalid.
 
 ### integer()
 
-> `static` **integer**(`optionName`, `optionValue`, `allowEnvVar`, `minValue`, `maxValue`?): `number`
+> `static` **integer**(`optionName`, `optionValue`, `allowEnvVar`, `minValue`, `maxValue?`): `number`
 
 Check the option to see if it exists and is an integer.
 
@@ -230,7 +230,7 @@ An error if the option is invalid.
 
 ### bigint()
 
-> `static` **bigint**(`optionName`, `optionValue`, `allowEnvVar`, `minValue`, `maxValue`?): `bigint`
+> `static` **bigint**(`optionName`, `optionValue`, `allowEnvVar`, `minValue`, `maxValue?`): `bigint`
 
 Check the option to see if it exists and is a big number.
 

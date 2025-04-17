@@ -4,13 +4,13 @@ Utilities function for helping in the CLI.
 
 ## Constructors
 
-### new CLIUtils()
+### Constructor
 
-> **new CLIUtils**(): [`CLIUtils`](CLIUtils.md)
+> **new CLIUtils**(): `CLIUtils`
 
 #### Returns
 
-[`CLIUtils`](CLIUtils.md)
+`CLIUtils`
 
 ## Methods
 
@@ -110,7 +110,9 @@ Read a JSON file and parse it.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -136,7 +138,9 @@ Read a JSON file and parse it, synchronously.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -296,7 +300,9 @@ Write a JSON file.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 

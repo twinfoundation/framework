@@ -4,19 +4,19 @@ Class to render qr data as png.
 
 ## Constructors
 
-### new PngRenderer()
+### Constructor
 
-> **new PngRenderer**(): [`PngRenderer`](PngRenderer.md)
+> **new PngRenderer**(): `PngRenderer`
 
 #### Returns
 
-[`PngRenderer`](PngRenderer.md)
+`PngRenderer`
 
 ## Methods
 
 ### render()
 
-> `static` **render**(`cellData`, `options`?): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
+> `static` **render**(`cellData`, `options?`): `Promise`\<`Uint8Array`\<`ArrayBufferLike`\>\>
 
 Render the QR code data as a bitmap.
 

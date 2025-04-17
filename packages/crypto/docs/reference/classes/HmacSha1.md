@@ -4,9 +4,9 @@ Class to help with HmacSha1 scheme.
 
 ## Constructors
 
-### new HmacSha1()
+### Constructor
 
-> **new HmacSha1**(`key`): [`HmacSha1`](HmacSha1.md)
+> **new HmacSha1**(`key`): `HmacSha1`
 
 Create a new instance of HmacSha1.
 
@@ -20,7 +20,7 @@ The key for the hmac.
 
 #### Returns
 
-[`HmacSha1`](HmacSha1.md)
+`HmacSha1`
 
 ## Methods
 
@@ -54,7 +54,7 @@ The sum of the block.
 
 ### update()
 
-> **update**(`block`): [`HmacSha1`](HmacSha1.md)
+> **update**(`block`): `HmacSha1`
 
 Update the hash with the block.
 
@@ -68,7 +68,7 @@ The block to update the hash with.
 
 #### Returns
 
-[`HmacSha1`](HmacSha1.md)
+`HmacSha1`
 
 The instance for chaining.
 

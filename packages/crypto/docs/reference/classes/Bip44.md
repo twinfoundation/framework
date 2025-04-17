@@ -4,13 +4,13 @@ Implementation of Bip44 for address generation.
 
 ## Constructors
 
-### new Bip44()
+### Constructor
 
-> **new Bip44**(): [`Bip44`](Bip44.md)
+> **new Bip44**(): `Bip44`
 
 #### Returns
 
-[`Bip44`](Bip44.md)
+`Bip44`
 
 ## Methods
 

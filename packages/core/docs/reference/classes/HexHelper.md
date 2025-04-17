@@ -4,13 +4,13 @@ Helper methods for hex conversions.
 
 ## Constructors
 
-### new HexHelper()
+### Constructor
 
-> **new HexHelper**(): [`HexHelper`](HexHelper.md)
+> **new HexHelper**(): `HexHelper`
 
 #### Returns
 
-[`HexHelper`](HexHelper.md)
+`HexHelper`
 
 ## Methods
 

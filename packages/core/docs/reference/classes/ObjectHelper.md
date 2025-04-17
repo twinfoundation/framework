@@ -4,13 +4,13 @@ Class to help with objects.
 
 ## Constructors
 
-### new ObjectHelper()
+### Constructor
 
-> **new ObjectHelper**(): [`ObjectHelper`](ObjectHelper.md)
+> **new ObjectHelper**(): `ObjectHelper`
 
 #### Returns
 
-[`ObjectHelper`](ObjectHelper.md)
+`ObjectHelper`
 
 ## Methods
 
@@ -22,7 +22,9 @@ Convert an object to bytes.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -54,7 +56,9 @@ Convert a bytes to an object.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -84,7 +88,9 @@ Make a deep clone of an object.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -110,9 +116,13 @@ Deep merge objects.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
 
-• **U** = `unknown`
+`T` = `unknown`
+
+##### U
+
+`U` = `unknown`
 
 #### Parameters
 
@@ -138,13 +148,15 @@ The combined deep merge of the objects.
 
 ### equal()
 
-> `static` **equal**\<`T`\>(`obj1`, `obj2`, `strictPropertyOrder`?): `boolean`
+> `static` **equal**\<`T`\>(`obj1`, `obj2`, `strictPropertyOrder?`): `boolean`
 
 Does one object equal another.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -182,7 +194,9 @@ Get the property of an unknown object.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -276,7 +290,9 @@ Extract a property from the object, providing alternative names.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -308,13 +324,15 @@ The property if available.
 
 ### pick()
 
-> `static` **pick**\<`T`\>(`obj`, `keys`?): `Partial`\<`T`\>
+> `static` **pick**\<`T`\>(`obj`, `keys?`): `Partial`\<`T`\>
 
 Pick a subset of properties from an object.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -340,13 +358,15 @@ The partial object.
 
 ### omit()
 
-> `static` **omit**\<`T`\>(`obj`, `keys`?): `Partial`\<`T`\>
+> `static` **omit**\<`T`\>(`obj`, `keys?`): `Partial`\<`T`\>
 
 Omit a subset of properties from an object.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -416,13 +436,15 @@ The object with regular properties.
 
 ### removeEmptyProperties()
 
-> `static` **removeEmptyProperties**\<`T`\>(`obj`, `options`?): `T`
+> `static` **removeEmptyProperties**\<`T`\>(`obj`, `options?`): `T`
 
 Remove empty properties from an object.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 

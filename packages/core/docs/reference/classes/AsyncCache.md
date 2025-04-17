@@ -4,13 +4,13 @@ Cache the results from asynchronous requests.
 
 ## Constructors
 
-### new AsyncCache()
+### Constructor
 
-> **new AsyncCache**(): [`AsyncCache`](AsyncCache.md)
+> **new AsyncCache**(): `AsyncCache`
 
 #### Returns
 
-[`AsyncCache`](AsyncCache.md)
+`AsyncCache`
 
 ## Methods
 
@@ -22,7 +22,9 @@ Execute an async request and cache the result.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -60,7 +62,9 @@ Get an entry from the cache.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -80,13 +84,15 @@ The item from the cache if it exists.
 
 ### set()
 
-> `static` **set**\<`T`\>(`key`, `value`, `ttlMs`?): `Promise`\<`void`\>
+> `static` **set**\<`T`\>(`key`, `value`, `ttlMs?`): `Promise`\<`void`\>
 
 Set an entry into the cache.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -138,7 +144,7 @@ The key to remove from the cache.
 
 ### clearCache()
 
-> `static` **clearCache**(`prefix`?): `void`
+> `static` **clearCache**(`prefix?`): `void`
 
 Clear the cache.
 

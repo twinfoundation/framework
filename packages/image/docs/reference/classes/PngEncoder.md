@@ -5,13 +5,13 @@ Based on https://github.com/photopea/UPNG.js.
 
 ## Constructors
 
-### new PngEncoder()
+### Constructor
 
-> **new PngEncoder**(): [`PngEncoder`](PngEncoder.md)
+> **new PngEncoder**(): `PngEncoder`
 
 #### Returns
 
-[`PngEncoder`](PngEncoder.md)
+`PngEncoder`
 
 ## Methods
 

@@ -4,9 +4,9 @@ A class to represent a bit string.
 
 ## Constructors
 
-### new BitString()
+### Constructor
 
-> **new BitString**(`numberBits`): [`BitString`](BitString.md)
+> **new BitString**(`numberBits`): `BitString`
 
 Create a new instance of BitString.
 
@@ -20,13 +20,13 @@ The length of the bit string.
 
 #### Returns
 
-[`BitString`](BitString.md)
+`BitString`
 
 ## Methods
 
 ### fromBits()
 
-> `static` **fromBits**(`bits`, `numberBits`): [`BitString`](BitString.md)
+> `static` **fromBits**(`bits`, `numberBits`): `BitString`
 
 Create a new instance of BitString from a bit array.
 
@@ -46,7 +46,7 @@ The number of bits in the bit string.
 
 #### Returns
 
-[`BitString`](BitString.md)
+`BitString`
 
 The new instance of BitString.
 

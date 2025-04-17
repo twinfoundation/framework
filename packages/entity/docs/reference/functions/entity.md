@@ -1,6 +1,6 @@
 # Function: entity()
 
-> **entity**(`options`?): `any`
+> **entity**(`options?`): `any`
 
 Decorator to produce schema data for entity.
 

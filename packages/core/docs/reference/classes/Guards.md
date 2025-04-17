@@ -4,13 +4,13 @@ Class to handle guard operations for parameters.
 
 ## Constructors
 
-### new Guards()
+### Constructor
 
-> **new Guards**(): [`Guards`](Guards.md)
+> **new Guards**(): `Guards`
 
 #### Returns
 
-[`Guards`](Guards.md)
+`Guards`
 
 ## Methods
 
@@ -616,7 +616,9 @@ Is the property an object.
 
 #### Type Parameters
 
-• **T** = \{\}
+##### T
+
+`T` = \{[`id`: `string`]: `unknown`; \}
 
 #### Parameters
 
@@ -656,7 +658,9 @@ Is the property is an object with at least one property.
 
 #### Type Parameters
 
-• **T** = \{\}
+##### T
+
+`T` = \{[`id`: `string`]: `unknown`; \}
 
 #### Parameters
 
@@ -696,7 +700,9 @@ Is the property is an array.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -736,7 +742,9 @@ Is the property is an array with at least one item.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -776,7 +784,9 @@ Is the property one of a list of items.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 

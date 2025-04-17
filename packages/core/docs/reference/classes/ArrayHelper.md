@@ -4,13 +4,13 @@ Class to help with arrays.
 
 ## Constructors
 
-### new ArrayHelper()
+### Constructor
 
-> **new ArrayHelper**(): [`ArrayHelper`](ArrayHelper.md)
+> **new ArrayHelper**(): `ArrayHelper`
 
 #### Returns
 
-[`ArrayHelper`](ArrayHelper.md)
+`ArrayHelper`
 
 ## Methods
 

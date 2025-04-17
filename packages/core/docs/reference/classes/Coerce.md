@@ -4,13 +4,13 @@ Coerce an object from one type to another.
 
 ## Constructors
 
-### new Coerce()
+### Constructor
 
-> **new Coerce**(): [`Coerce`](Coerce.md)
+> **new Coerce**(): `Coerce`
 
 #### Returns
 
-[`Coerce`](Coerce.md)
+`Coerce`
 
 ## Methods
 
@@ -230,7 +230,9 @@ Coerce the value to an object.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -280,7 +282,7 @@ TypeError If the value can not be coerced.
 
 ### byType()
 
-> `static` **byType**(`value`, `type`?): `unknown`
+> `static` **byType**(`value`, `type?`): `unknown`
 
 Coerces a value based on the coercion type.
 

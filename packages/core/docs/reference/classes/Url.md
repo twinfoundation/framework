@@ -4,9 +4,9 @@ Class to help with urls.
 
 ## Constructors
 
-### new Url()
+### Constructor
 
-> **new Url**(`url`): [`Url`](Url.md)
+> **new Url**(`url`): `Url`
 
 Create a new instance of Url.
 
@@ -20,13 +20,13 @@ The url string.
 
 #### Returns
 
-[`Url`](Url.md)
+`Url`
 
 ## Methods
 
 ### tryParseExact()
 
-> `static` **tryParseExact**(`url`): `undefined` \| [`Url`](Url.md)
+> `static` **tryParseExact**(`url`): `undefined` \| `Url`
 
 Try and parse a string into the url parts.
 
@@ -40,7 +40,7 @@ The url to parse.
 
 #### Returns
 
-`undefined` \| [`Url`](Url.md)
+`undefined` \| `Url`
 
 The formatted url or undefined if the value is not a url.
 
@@ -140,7 +140,7 @@ The formatted url.
 
 ### fromParts()
 
-> `static` **fromParts**(`urlParts`): [`Url`](Url.md)
+> `static` **fromParts**(`urlParts`): `Url`
 
 Construct a url from valid parts.
 
@@ -154,7 +154,7 @@ The url to create the parts from.
 
 #### Returns
 
-[`Url`](Url.md)
+`Url`
 
 The formatted url.
 

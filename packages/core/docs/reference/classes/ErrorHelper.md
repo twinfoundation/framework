@@ -4,13 +4,13 @@ Error helper functions.
 
 ## Constructors
 
-### new ErrorHelper()
+### Constructor
 
-> **new ErrorHelper**(): [`ErrorHelper`](ErrorHelper.md)
+> **new ErrorHelper**(): `ErrorHelper`
 
 #### Returns
 
-[`ErrorHelper`](ErrorHelper.md)
+`ErrorHelper`
 
 ## Methods
 
