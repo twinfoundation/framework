@@ -5,9 +5,9 @@ Based on https://github.com/kazuhikoarase/qrcode-generator/ .
 
 ## Constructors
 
-### new QR()
+### Constructor
 
-> **new QR**(`typeNumber`, `errorCorrectLevel`): [`QR`](QR.md)
+> **new QR**(`typeNumber`, `errorCorrectLevel`): `QR`
 
 Create a new instance of QR.
 
@@ -27,7 +27,7 @@ Create a new instance of QR.
 
 #### Returns
 
-[`QR`](QR.md)
+`QR`
 
 #### Throws
 

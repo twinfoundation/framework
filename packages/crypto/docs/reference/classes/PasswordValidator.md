@@ -5,19 +5,19 @@ Ref https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Implement_Proper_
 
 ## Constructors
 
-### new PasswordValidator()
+### Constructor
 
-> **new PasswordValidator**(): [`PasswordValidator`](PasswordValidator.md)
+> **new PasswordValidator**(): `PasswordValidator`
 
 #### Returns
 
-[`PasswordValidator`](PasswordValidator.md)
+`PasswordValidator`
 
 ## Methods
 
 ### validate()
 
-> `static` **validate**(`property`, `password`, `failures`, `options`?): `void`
+> `static` **validate**(`property`, `password`, `failures`, `options?`): `void`
 
 Test the strength of the password.
 

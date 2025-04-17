@@ -4,13 +4,13 @@ Class to help with base63 Encoding/Decoding.
 
 ## Constructors
 
-### new Base32()
+### Constructor
 
-> **new Base32**(): [`Base32`](Base32.md)
+> **new Base32**(): `Base32`
 
 #### Returns
 
-[`Base32`](Base32.md)
+`Base32`
 
 ## Methods
 

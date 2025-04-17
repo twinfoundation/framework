@@ -4,25 +4,27 @@ Class to perform sort operations on entities.
 
 ## Constructors
 
-### new EntitySorter()
+### Constructor
 
-> **new EntitySorter**(): [`EntitySorter`](EntitySorter.md)
+> **new EntitySorter**(): `EntitySorter`
 
 #### Returns
 
-[`EntitySorter`](EntitySorter.md)
+`EntitySorter`
 
 ## Methods
 
 ### sort()
 
-> `static` **sort**\<`T`\>(`entities`, `entitySorters`?): `T`[]
+> `static` **sort**\<`T`\>(`entities`, `entitySorters?`): `T`[]
 
 Sort a list of entities using multiple keys and direction.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -54,7 +56,9 @@ Compare two properties.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 

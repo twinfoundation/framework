@@ -4,15 +4,15 @@ Perform a SHA-1 hash on the block.
 
 ## Constructors
 
-### new Sha1()
+### Constructor
 
-> **new Sha1**(): [`Sha1`](Sha1.md)
+> **new Sha1**(): `Sha1`
 
 Create a new instance of Sha1.
 
 #### Returns
 
-[`Sha1`](Sha1.md)
+`Sha1`
 
 ## Methods
 
@@ -40,7 +40,7 @@ The sum of the block.
 
 ### update()
 
-> **update**(`block`): [`Sha1`](Sha1.md)
+> **update**(`block`): `Sha1`
 
 Update the hash with the block.
 
@@ -54,7 +54,7 @@ The block to update the hash with.
 
 #### Returns
 
-[`Sha1`](Sha1.md)
+`Sha1`
 
 The instance for chaining.
 

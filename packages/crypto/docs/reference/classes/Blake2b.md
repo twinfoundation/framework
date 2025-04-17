@@ -4,9 +4,9 @@ Class to help with Blake2B Signature scheme.
 
 ## Constructors
 
-### new Blake2b()
+### Constructor
 
-> **new Blake2b**(`outputLength`, `key`?): [`Blake2b`](Blake2b.md)
+> **new Blake2b**(`outputLength`, `key?`): `Blake2b`
 
 Create a new instance of Blake2b.
 
@@ -26,7 +26,7 @@ Optional key for the hash.
 
 #### Returns
 
-[`Blake2b`](Blake2b.md)
+`Blake2b`
 
 ## Properties
 
@@ -56,7 +56,7 @@ Blake2b 512.
 
 ### sum160()
 
-> `static` **sum160**(`block`, `key`?): `Uint8Array`
+> `static` **sum160**(`block`, `key?`): `Uint8Array`
 
 Perform Sum 160 on the block.
 
@@ -84,7 +84,7 @@ The sum 160 of the block.
 
 ### sum256()
 
-> `static` **sum256**(`block`, `key`?): `Uint8Array`
+> `static` **sum256**(`block`, `key?`): `Uint8Array`
 
 Perform Sum 256 on the block.
 
@@ -112,7 +112,7 @@ The sum 256 of the block.
 
 ### sum512()
 
-> `static` **sum512**(`block`, `key`?): `Uint8Array`
+> `static` **sum512**(`block`, `key?`): `Uint8Array`
 
 Perform Sum 512 on the block.
 
@@ -140,7 +140,7 @@ The sum 512 of the block.
 
 ### update()
 
-> **update**(`block`): [`Blake2b`](Blake2b.md)
+> **update**(`block`): `Blake2b`
 
 Update the hash with the block.
 
@@ -154,7 +154,7 @@ The block to update the hash with.
 
 #### Returns
 
-[`Blake2b`](Blake2b.md)
+`Blake2b`
 
 The instance for chaining.
 

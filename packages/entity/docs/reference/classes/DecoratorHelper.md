@@ -4,13 +4,13 @@ Class to help with decorators.
 
 ## Constructors
 
-### new DecoratorHelper()
+### Constructor
 
-> **new DecoratorHelper**(): [`DecoratorHelper`](DecoratorHelper.md)
+> **new DecoratorHelper**(): `DecoratorHelper`
 
 #### Returns
 
-[`DecoratorHelper`](DecoratorHelper.md)
+`DecoratorHelper`
 
 ## Methods
 
@@ -22,7 +22,9 @@ Get the schema from the reflection metadata.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -48,7 +50,9 @@ Set the schema from the reflection metadata.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 

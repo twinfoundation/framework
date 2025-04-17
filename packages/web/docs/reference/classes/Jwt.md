@@ -4,13 +4,13 @@ Class to handle JSON Web Tokens.
 
 ## Constructors
 
-### new Jwt()
+### Constructor
 
-> **new Jwt**(): [`Jwt`](Jwt.md)
+> **new Jwt**(): `Jwt`
 
 #### Returns
 
-[`Jwt`](Jwt.md)
+`Jwt`
 
 ## Methods
 
@@ -22,9 +22,13 @@ Encode a token.
 
 #### Type Parameters
 
-• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+##### T
 
-• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+`T` *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+##### U
+
+`U` *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -62,9 +66,13 @@ Encode a token.
 
 #### Type Parameters
 
-• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+##### T
 
-• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+`T` *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+##### U
+
+`U` *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -102,9 +110,13 @@ Decode a token.
 
 #### Type Parameters
 
-• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+##### T
 
-• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+`T` *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+##### U
+
+`U` *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -130,9 +142,13 @@ Verify a token.
 
 #### Type Parameters
 
-• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+##### T
 
-• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+`T` *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+##### U
+
+`U` *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -164,9 +180,13 @@ Verify a token.
 
 #### Type Parameters
 
-• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+##### T
 
-• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+`T` *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+##### U
+
+`U` *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -192,15 +212,19 @@ The decoded payload.
 
 ### verifySignature()
 
-> `static` **verifySignature**\<`T`, `U`\>(`token`, `key`?, `verifier`?): `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
+> `static` **verifySignature**\<`T`, `U`\>(`token`, `key?`, `verifier?`): `Promise`\<\{ `header`: `T`; `payload`: `U`; \}\>
 
 Verify a token by parts.
 
 #### Type Parameters
 
-• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+##### T
 
-• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+`T` *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+##### U
+
+`U` *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -272,9 +296,13 @@ The default verifier for the JWT.
 
 #### Type Parameters
 
-• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+##### T
 
-• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+`T` *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+##### U
+
+`U` *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -306,9 +334,13 @@ Create bytes for signing from header and payload.
 
 #### Type Parameters
 
-• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+##### T
 
-• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+`T` *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+##### U
+
+`U` *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 
@@ -340,9 +372,13 @@ Create header and payload from signing bytes.
 
 #### Type Parameters
 
-• **T** *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+##### T
 
-• **U** *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
+`T` *extends* [`IJwtHeader`](../interfaces/IJwtHeader.md)
+
+##### U
+
+`U` *extends* [`IJwtPayload`](../interfaces/IJwtPayload.md)
 
 #### Parameters
 

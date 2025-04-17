@@ -4,13 +4,13 @@ Helper functions for modules.
 
 ## Constructors
 
-### new ModuleHelper()
+### Constructor
 
-> **new ModuleHelper**(): [`ModuleHelper`](ModuleHelper.md)
+> **new ModuleHelper**(): `ModuleHelper`
 
 #### Returns
 
-[`ModuleHelper`](ModuleHelper.md)
+`ModuleHelper`
 
 ## Properties
 
@@ -30,7 +30,9 @@ Get the module entry.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -66,7 +68,9 @@ Get the method from a module.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -96,13 +100,15 @@ GeneralError if executing the module entry failed.
 
 ### execModuleMethod()
 
-> `static` **execModuleMethod**\<`T`\>(`module`, `method`, `args`?): `Promise`\<`T`\>
+> `static` **execModuleMethod**\<`T`\>(`module`, `method`, `args?`): `Promise`\<`T`\>
 
 Execute the method in the module.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -138,13 +144,15 @@ GeneralError if executing the module entry failed.
 
 ### execModuleMethodThread()
 
-> `static` **execModuleMethodThread**\<`T`\>(`module`, `method`, `args`?): `Promise`\<`T`\>
+> `static` **execModuleMethodThread**\<`T`\>(`module`, `method`, `args?`): `Promise`\<`T`\>
 
 Execute the method in the module in a thread.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 

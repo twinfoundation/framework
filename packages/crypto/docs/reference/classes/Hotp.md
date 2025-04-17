@@ -5,13 +5,13 @@ Implementation of https://datatracker.ietf.org/doc/html/rfc4226 .
 
 ## Constructors
 
-### new Hotp()
+### Constructor
 
-> **new Hotp**(): [`Hotp`](Hotp.md)
+> **new Hotp**(): `Hotp`
 
 #### Returns
 
-[`Hotp`](Hotp.md)
+`Hotp`
 
 ## Methods
 

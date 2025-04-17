@@ -14,7 +14,7 @@ The name of the component.
 
 ### bootstrap()?
 
-> `optional` **bootstrap**(`nodeLoggingConnectorType`, `componentState`?): `Promise`\<`boolean`\>
+> `optional` **bootstrap**(`nodeLoggingConnectorType`, `componentState?`): `Promise`\<`boolean`\>
 
 Bootstrap the component by creating and initializing any resources it needs.
 
@@ -40,7 +40,7 @@ True if the bootstrapping process was successful.
 
 ### start()?
 
-> `optional` **start**(`nodeIdentity`, `nodeLoggingConnectorType`, `componentState`?): `Promise`\<`void`\>
+> `optional` **start**(`nodeIdentity`, `nodeLoggingConnectorType`, `componentState?`): `Promise`\<`void`\>
 
 The component needs to be started when the node is initialized.
 
@@ -72,7 +72,7 @@ Nothing.
 
 ### stop()?
 
-> `optional` **stop**(`nodeIdentity`, `nodeLoggingConnectorType`, `componentState`?): `Promise`\<`void`\>
+> `optional` **stop**(`nodeIdentity`, `nodeLoggingConnectorType`, `componentState?`): `Promise`\<`void`\>
 
 The component needs to be stopped when the node is closed.
 

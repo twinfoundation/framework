@@ -4,9 +4,9 @@ Class to help with urns.
 
 ## Constructors
 
-### new Urn()
+### Constructor
 
-> **new Urn**(`namespaceIdentifier`, `namespaceSpecific`): [`Urn`](Urn.md)
+> **new Urn**(`namespaceIdentifier`, `namespaceSpecific`): `Urn`
 
 Create a new instance of Urn.
 
@@ -26,13 +26,13 @@ The specific part of the namespace.
 
 #### Returns
 
-[`Urn`](Urn.md)
+`Urn`
 
 ## Methods
 
 ### generateRandom()
 
-> `static` **generateRandom**(`namespace`): [`Urn`](Urn.md)
+> `static` **generateRandom**(`namespace`): `Urn`
 
 Generate a random identifier with 32 byte id.
 
@@ -46,7 +46,7 @@ The prefix for the urn.
 
 #### Returns
 
-[`Urn`](Urn.md)
+`Urn`
 
 A new Id in URN format.
 
@@ -82,7 +82,7 @@ True if the namespace matches.
 
 ### tryParseExact()
 
-> `static` **tryParseExact**(`urn`): `undefined` \| [`Urn`](Urn.md)
+> `static` **tryParseExact**(`urn`): `undefined` \| `Urn`
 
 Try and parse a string into the urn parts.
 
@@ -96,7 +96,7 @@ The urn to parse.
 
 #### Returns
 
-`undefined` \| [`Urn`](Urn.md)
+`undefined` \| `Urn`
 
 The formatted urn or undefined if the value is not a urn.
 
@@ -104,7 +104,7 @@ The formatted urn or undefined if the value is not a urn.
 
 ### fromValidString()
 
-> `static` **fromValidString**(`urn`): [`Urn`](Urn.md)
+> `static` **fromValidString**(`urn`): `Urn`
 
 Construct a urn from a string that has already been validated.
 
@@ -118,7 +118,7 @@ The urn to parse.
 
 #### Returns
 
-[`Urn`](Urn.md)
+`Urn`
 
 The formatted urn.
 

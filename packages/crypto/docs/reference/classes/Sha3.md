@@ -4,9 +4,9 @@ Perform a SHA-3 hash on the block.
 
 ## Constructors
 
-### new Sha3()
+### Constructor
 
-> **new Sha3**(`bits`): [`Sha3`](Sha3.md)
+> **new Sha3**(`bits`): `Sha3`
 
 Create a new instance of Sha3.
 
@@ -20,7 +20,7 @@ The number of bits.
 
 #### Returns
 
-[`Sha3`](Sha3.md)
+`Sha3`
 
 ## Properties
 
@@ -146,7 +146,7 @@ The sum 512 of the block.
 
 ### update()
 
-> **update**(`block`): [`Sha3`](Sha3.md)
+> **update**(`block`): `Sha3`
 
 Update the hash with the block.
 
@@ -160,7 +160,7 @@ The block to update the hash with.
 
 #### Returns
 
-[`Sha3`](Sha3.md)
+`Sha3`
 
 The instance for chaining.
 

@@ -4,19 +4,23 @@ Factory for creating implementation of generic types.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Methods
 
 ### createFactory()
 
-> `static` **createFactory**\<`U`\>(`typeName`, `autoInstance`, `matcher`?): [`Factory`](Factory.md)\<`U`\>
+> `static` **createFactory**\<`U`\>(`typeName`, `autoInstance`, `matcher?`): `Factory`\<`U`\>
 
 Create a new factory, which is shared throughout all library instances.
 
 #### Type Parameters
 
-• **U**
+##### U
+
+`U`
 
 #### Parameters
 
@@ -40,7 +44,7 @@ Match the name of the instance.
 
 #### Returns
 
-[`Factory`](Factory.md)\<`U`\>
+`Factory`\<`U`\>
 
 The factory instance.
 
@@ -92,7 +96,9 @@ Register a new generator.
 
 #### Type Parameters
 
-• **U**
+##### U
+
+`U`
 
 #### Parameters
 
@@ -150,7 +156,9 @@ Get a generator instance.
 
 #### Type Parameters
 
-• **U**
+##### U
+
+`U`
 
 #### Parameters
 
@@ -184,7 +192,9 @@ Get a generator instance with no exceptions.
 
 #### Type Parameters
 
-• **U**
+##### U
+
+`U`
 
 #### Parameters
 

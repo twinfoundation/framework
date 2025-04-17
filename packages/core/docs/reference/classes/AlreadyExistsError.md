@@ -8,9 +8,9 @@ Class to handle errors which are triggered by data already existing.
 
 ## Constructors
 
-### new AlreadyExistsError()
+### Constructor
 
-> **new AlreadyExistsError**(`source`, `message`, `existingId`?, `inner`?): [`AlreadyExistsError`](AlreadyExistsError.md)
+> **new AlreadyExistsError**(`source`, `message`, `existingId?`, `inner?`): `AlreadyExistsError`
 
 Create a new instance of AlreadyExistsError.
 
@@ -42,11 +42,11 @@ The inner error if we have wrapped another error.
 
 #### Returns
 
-[`AlreadyExistsError`](AlreadyExistsError.md)
+`AlreadyExistsError`
 
 #### Overrides
 
-[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructors)
+[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructor)
 
 ## Properties
 
@@ -66,7 +66,7 @@ The source of the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`source`](BaseError.md#source-1)
+[`BaseError`](BaseError.md).[`source`](BaseError.md#source)
 
 ***
 
@@ -82,7 +82,7 @@ Any additional information for the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties-1)
+[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties)
 
 ***
 
@@ -94,7 +94,7 @@ The inner error if there was one.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner-1)
+[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner)
 
 ## Methods
 

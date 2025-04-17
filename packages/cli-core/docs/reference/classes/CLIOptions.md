@@ -4,13 +4,13 @@ Utilities for getting standard options.
 
 ## Constructors
 
-### new CLIOptions()
+### Constructor
 
-> **new CLIOptions**(): [`CLIOptions`](CLIOptions.md)
+> **new CLIOptions**(): `CLIOptions`
 
 #### Returns
 
-[`CLIOptions`](CLIOptions.md)
+`CLIOptions`
 
 ## Methods
 

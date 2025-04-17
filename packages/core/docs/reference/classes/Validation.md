@@ -4,19 +4,19 @@ Class to handle validation operations.
 
 ## Constructors
 
-### new Validation()
+### Constructor
 
-> **new Validation**(): [`Validation`](Validation.md)
+> **new Validation**(): `Validation`
 
 #### Returns
 
-[`Validation`](Validation.md)
+`Validation`
 
 ## Methods
 
 ### empty()
 
-> `static` **empty**(`property`, `value`, `failures`, `fieldNameResource`?): value is undefined \| null
+> `static` **empty**(`property`, `value`, `failures`, `fieldNameResource?`): value is undefined \| null
 
 Is the property null or undefined.
 
@@ -56,7 +56,7 @@ True if the value is a empty.
 
 ### notEmpty()
 
-> `static` **notEmpty**(`property`, `value`, `failures`, `fieldNameResource`?): `boolean`
+> `static` **notEmpty**(`property`, `value`, `failures`, `fieldNameResource?`): `boolean`
 
 Is the property is not null or undefined.
 
@@ -96,7 +96,7 @@ True if the value is a not empty.
 
 ### string()
 
-> `static` **string**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is string`
+> `static` **string**(`property`, `value`, `failures`, `fieldNameResource?`, `options?`): `value is string`
 
 Is the property a string.
 
@@ -158,7 +158,7 @@ True if the value is a valid string.
 
 ### stringValue()
 
-> `static` **stringValue**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is string`
+> `static` **stringValue**(`property`, `value`, `failures`, `fieldNameResource?`, `options?`): `value is string`
 
 Is the property a string with a value.
 
@@ -214,7 +214,7 @@ True if the value is a valid string.
 
 ### number()
 
-> `static` **number**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is number`
+> `static` **number**(`property`, `value`, `failures`, `fieldNameResource?`, `options?`): `value is number`
 
 Is the property a number.
 
@@ -270,7 +270,7 @@ True if the value is a valid number.
 
 ### integer()
 
-> `static` **integer**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is number`
+> `static` **integer**(`property`, `value`, `failures`, `fieldNameResource?`, `options?`): `value is number`
 
 Is the property an integer.
 
@@ -326,7 +326,7 @@ True if the value is a valid integer.
 
 ### bigint()
 
-> `static` **bigint**(`property`, `value`, `failures`, `fieldNameResource`?, `options`?): `value is bigint`
+> `static` **bigint**(`property`, `value`, `failures`, `fieldNameResource?`, `options?`): `value is bigint`
 
 Is the property a bigint.
 
@@ -382,7 +382,7 @@ True if the value is a valid bigint.
 
 ### boolean()
 
-> `static` **boolean**(`property`, `value`, `failures`, `fieldNameResource`?): `value is boolean`
+> `static` **boolean**(`property`, `value`, `failures`, `fieldNameResource?`): `value is boolean`
 
 Is the property a boolean.
 
@@ -422,7 +422,7 @@ True if the value is a boolean.
 
 ### date()
 
-> `static` **date**(`property`, `value`, `failures`, `fieldNameResource`?): `value is Date`
+> `static` **date**(`property`, `value`, `failures`, `fieldNameResource?`): `value is Date`
 
 Is the property a date.
 
@@ -462,7 +462,7 @@ True if the value is a date.
 
 ### dateString()
 
-> `static` **dateString**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
+> `static` **dateString**(`property`, `value`, `failures`, `fieldNameResource?`): `value is string`
 
 Is the property a date in ISO 8601 format.
 
@@ -502,7 +502,7 @@ True if the value is a date.
 
 ### dateTimeString()
 
-> `static` **dateTimeString**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
+> `static` **dateTimeString**(`property`, `value`, `failures`, `fieldNameResource?`): `value is string`
 
 Is the property a date/time in ISO 8601 format.
 
@@ -542,7 +542,7 @@ True if the value is a date/time.
 
 ### timeString()
 
-> `static` **timeString**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
+> `static` **timeString**(`property`, `value`, `failures`, `fieldNameResource?`): `value is string`
 
 Is the property a time in ISO 8601 format.
 
@@ -582,7 +582,7 @@ True if the value is a time.
 
 ### timestampMilliseconds()
 
-> `static` **timestampMilliseconds**(`property`, `value`, `failures`, `fieldNameResource`?): `value is number`
+> `static` **timestampMilliseconds**(`property`, `value`, `failures`, `fieldNameResource?`): `value is number`
 
 Is the property a timestamp in milliseconds.
 
@@ -622,7 +622,7 @@ True if the value is a timestamp in milliseconds.
 
 ### timestampSeconds()
 
-> `static` **timestampSeconds**(`property`, `value`, `failures`, `fieldNameResource`?): `value is number`
+> `static` **timestampSeconds**(`property`, `value`, `failures`, `fieldNameResource?`): `value is number`
 
 Is the property a timestamp in seconds.
 
@@ -662,13 +662,15 @@ True if the value is a timestamp in seconds.
 
 ### object()
 
-> `static` **object**\<`T`\>(`property`, `value`, `failures`, `fieldNameResource`?): `value is T`
+> `static` **object**\<`T`\>(`property`, `value`, `failures`, `fieldNameResource?`): `value is T`
 
 Is the property an object.
 
 #### Type Parameters
 
-• **T** = \{\}
+##### T
+
+`T` = \{[`id`: `string`]: `unknown`; \}
 
 #### Parameters
 
@@ -706,13 +708,15 @@ True if the value is a object.
 
 ### array()
 
-> `static` **array**\<`T`\>(`property`, `value`, `failures`, `fieldNameResource`?): `value is T[]`
+> `static` **array**\<`T`\>(`property`, `value`, `failures`, `fieldNameResource?`): `value is T[]`
 
 Is the property an array.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -750,13 +754,15 @@ True if the value is an array.
 
 ### arrayValue()
 
-> `static` **arrayValue**\<`T`\>(`property`, `value`, `failures`, `fieldNameResource`?): `value is T[]`
+> `static` **arrayValue**\<`T`\>(`property`, `value`, `failures`, `fieldNameResource?`): `value is T[]`
 
 Is the property an array with at least one item.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -794,13 +800,15 @@ True if the value is an array with at least one element.
 
 ### arrayOneOf()
 
-> `static` **arrayOneOf**\<`T`\>(`property`, `value`, `options`, `failures`, `fieldNameResource`?): `value is T`
+> `static` **arrayOneOf**\<`T`\>(`property`, `value`, `options`, `failures`, `fieldNameResource?`): `value is T`
 
 Is the property one of a list of items.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -844,7 +852,7 @@ True if the value is one of the items in the options.
 
 ### uint8Array()
 
-> `static` **uint8Array**(`property`, `value`, `failures`, `fieldNameResource`?): `value is Uint8Array<ArrayBufferLike>`
+> `static` **uint8Array**(`property`, `value`, `failures`, `fieldNameResource?`): `value is Uint8Array<ArrayBufferLike>`
 
 Is the property a Uint8Array.
 
@@ -884,7 +892,7 @@ True if the value is a Uint8Array.
 
 ### json()
 
-> `static` **json**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
+> `static` **json**(`property`, `value`, `failures`, `fieldNameResource?`): `value is string`
 
 Is the property valid JSON.
 
@@ -924,7 +932,7 @@ True if the value is valid JSON.
 
 ### email()
 
-> `static` **email**(`property`, `value`, `failures`, `fieldNameResource`?): `value is string`
+> `static` **email**(`property`, `value`, `failures`, `fieldNameResource?`): `value is string`
 
 Is the property a string in e-mail format.
 

@@ -5,13 +5,13 @@ Implementation of https://datatracker.ietf.org/doc/html/rfc4226 .
 
 ## Constructors
 
-### new Totp()
+### Constructor
 
-> **new Totp**(): [`Totp`](Totp.md)
+> **new Totp**(): `Totp`
 
 #### Returns
 
-[`Totp`](Totp.md)
+`Totp`
 
 ## Methods
 

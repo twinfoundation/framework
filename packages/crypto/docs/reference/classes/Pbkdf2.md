@@ -4,13 +4,13 @@ Implementation of the password based key derivation function 2.
 
 ## Constructors
 
-### new Pbkdf2()
+### Constructor
 
-> **new Pbkdf2**(): [`Pbkdf2`](Pbkdf2.md)
+> **new Pbkdf2**(): `Pbkdf2`
 
 #### Returns
 
-[`Pbkdf2`](Pbkdf2.md)
+`Pbkdf2`
 
 ## Methods
 

@@ -4,13 +4,13 @@ Class to handle JSON Web Keys.
 
 ## Constructors
 
-### new Jwk()
+### Constructor
 
-> **new Jwk**(): [`Jwk`](Jwk.md)
+> **new Jwk**(): `Jwk`
 
 #### Returns
 
-[`Jwk`](Jwk.md)
+`Jwk`
 
 ## Methods
 

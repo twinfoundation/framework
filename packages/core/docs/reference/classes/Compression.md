@@ -4,13 +4,13 @@ A class to handle compression.
 
 ## Constructors
 
-### new Compression()
+### Constructor
 
-> **new Compression**(): [`Compression`](Compression.md)
+> **new Compression**(): `Compression`
 
 #### Returns
 
-[`Compression`](Compression.md)
+`Compression`
 
 ## Methods
 

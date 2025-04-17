@@ -50,6 +50,6 @@ The stack trace for the error.
 
 ### inner?
 
-> `optional` **inner**: [`IError`](IError.md)
+> `optional` **inner**: `IError`
 
 The inner error if there was one.

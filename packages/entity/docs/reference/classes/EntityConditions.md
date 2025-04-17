@@ -4,25 +4,27 @@ Class to perform condition checks.
 
 ## Constructors
 
-### new EntityConditions()
+### Constructor
 
-> **new EntityConditions**(): [`EntityConditions`](EntityConditions.md)
+> **new EntityConditions**(): `EntityConditions`
 
 #### Returns
 
-[`EntityConditions`](EntityConditions.md)
+`EntityConditions`
 
 ## Methods
 
 ### check()
 
-> `static` **check**\<`T`\>(`entity`, `condition`?): `boolean`
+> `static` **check**\<`T`\>(`entity`, `condition?`): `boolean`
 
 See if the entity matches the conditions.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -54,7 +56,9 @@ See if the entity matches the conditions.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 

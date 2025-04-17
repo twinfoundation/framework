@@ -4,13 +4,13 @@ Bech32 encoding and decoding.
 
 ## Constructors
 
-### new Bech32()
+### Constructor
 
-> **new Bech32**(): [`Bech32`](Bech32.md)
+> **new Bech32**(): `Bech32`
 
 #### Returns
 
-[`Bech32`](Bech32.md)
+`Bech32`
 
 ## Methods
 

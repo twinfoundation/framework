@@ -8,9 +8,9 @@ Class to handle errors which are triggered by data guards.
 
 ## Constructors
 
-### new GuardError()
+### Constructor
 
-> **new GuardError**(`source`, `message`, `propertyName`, `propertyValue`, `propertyOptions`?): [`GuardError`](GuardError.md)
+> **new GuardError**(`source`, `message`, `propertyName`, `propertyValue`, `propertyOptions?`): `GuardError`
 
 Create a new instance of GuardError.
 
@@ -48,11 +48,11 @@ The property options which might be allowed.
 
 #### Returns
 
-[`GuardError`](GuardError.md)
+`GuardError`
 
 #### Overrides
 
-[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructors)
+[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructor)
 
 ## Properties
 
@@ -64,7 +64,7 @@ The source of the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`source`](BaseError.md#source-1)
+[`BaseError`](BaseError.md).[`source`](BaseError.md#source)
 
 ***
 
@@ -80,7 +80,7 @@ Any additional information for the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties-1)
+[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties)
 
 ***
 
@@ -92,7 +92,7 @@ The inner error if there was one.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner-1)
+[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner)
 
 ***
 

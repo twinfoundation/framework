@@ -4,19 +4,19 @@ Convert arrays to and from different formats.
 
 ## Constructors
 
-### new Converter()
+### Constructor
 
-> **new Converter**(): [`Converter`](Converter.md)
+> **new Converter**(): `Converter`
 
 #### Returns
 
-[`Converter`](Converter.md)
+`Converter`
 
 ## Methods
 
 ### bytesToUtf8()
 
-> `static` **bytesToUtf8**(`array`, `startIndex`?, `length`?): `string`
+> `static` **bytesToUtf8**(`array`, `startIndex?`, `length?`): `string`
 
 Encode a raw array to UTF8 string.
 
@@ -72,7 +72,7 @@ The array.
 
 ### bytesToHex()
 
-> `static` **bytesToHex**(`array`, `includePrefix`, `startIndex`?, `length`?, `reverse`?): `string`
+> `static` **bytesToHex**(`array`, `includePrefix`, `startIndex?`, `length?`, `reverse?`): `string`
 
 Encode a raw array to hex string.
 
@@ -118,7 +118,7 @@ The array formatted as hex.
 
 ### hexToBytes()
 
-> `static` **hexToBytes**(`hex`, `reverse`?): `Uint8Array`
+> `static` **hexToBytes**(`hex`, `reverse?`): `Uint8Array`
 
 Decode a hex string to raw array.
 

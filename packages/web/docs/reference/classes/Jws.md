@@ -4,19 +4,19 @@ Class to handle JSON Web Signatures.
 
 ## Constructors
 
-### new Jws()
+### Constructor
 
-> **new Jws**(): [`Jws`](Jws.md)
+> **new Jws**(): `Jws`
 
 #### Returns
 
-[`Jws`](Jws.md)
+`Jws`
 
 ## Methods
 
 ### create()
 
-> `static` **create**(`privateKey`, `hash`, `algOverride`?): `Promise`\<`string`\>
+> `static` **create**(`privateKey`, `hash`, `algOverride?`): `Promise`\<`string`\>
 
 Create a signature.
 

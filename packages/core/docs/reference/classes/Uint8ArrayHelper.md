@@ -4,13 +4,13 @@ Class to help with uint8 arrays.
 
 ## Constructors
 
-### new Uint8ArrayHelper()
+### Constructor
 
-> **new Uint8ArrayHelper**(): [`Uint8ArrayHelper`](Uint8ArrayHelper.md)
+> **new Uint8ArrayHelper**(): `Uint8ArrayHelper`
 
 #### Returns
 
-[`Uint8ArrayHelper`](Uint8ArrayHelper.md)
+`Uint8ArrayHelper`
 
 ## Methods
 
