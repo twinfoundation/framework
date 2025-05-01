@@ -1,5 +1,12 @@
 # @twin.org/core - Changelog
 
+## [0.0.1-next.53](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.52...core-v0.0.1-next.53) (2025-05-01)
+
+
+### Features
+
+* async cache don't cache failures unless requested ([658ec4b](https://github.com/twinfoundation/framework/commit/658ec4b67a58a075de4702a3886d151e25ad3ddc))
+
 ## [0.0.1-next.52](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.51...core-v0.0.1-next.52) (2025-04-17)
 
 
