@@ -71,6 +71,87 @@ describe("AsyncCache", () => {
 		expect(counterIncrement).toHaveBeenCalledTimes(1);
 	});
 
+	test("can not cache if the promise throws", async () => {
+		const res = AsyncCache.exec("key", 1, async () => {
+			// eslint-disable-next-line no-restricted-syntax
+			throw new Error("Test error");
+		});
+		expect(Is.promise(res)).toEqual(true);
+		expect(counter).toEqual(0);
+
+		const res2 = AsyncCache.exec("key", 1, async () => counterIncrement(1000));
+		expect(Is.promise(res2)).toEqual(true);
+		expect(counter).toEqual(0);
+
+		const settledResult = await Promise.allSettled([res, res2]);
+		expect(
+			settledResult[0].status === "rejected" &&
+				settledResult[0].reason instanceof Error &&
+				settledResult[0].reason.message === "Test error"
+		).toEqual(true);
+		expect(settledResult[1].status === "fulfilled" && settledResult[1].value === 1).toEqual(true);
+		expect(counterIncrement).toHaveBeenCalledTimes(1);
+	});
+
+	test("can cache if the promise throws and the cache failures is set", async () => {
+		const res = AsyncCache.exec(
+			"key",
+			1,
+			async () => {
+				// eslint-disable-next-line no-restricted-syntax
+				throw new Error("Test error");
+			},
+			true
+		);
+		expect(Is.promise(res)).toEqual(true);
+		expect(counter).toEqual(0);
+
+		const res2 = AsyncCache.exec("key", 1, async () => counterIncrement(1000));
+		expect(Is.promise(res2)).toEqual(true);
+		expect(counter).toEqual(0);
+
+		const settledResult = await Promise.allSettled([res, res2]);
+		expect(
+			settledResult[0].status === "rejected" &&
+				settledResult[0].reason instanceof Error &&
+				settledResult[0].reason.message === "Test error"
+		).toEqual(true);
+		expect(
+			settledResult[1].status === "rejected" &&
+				settledResult[1].reason instanceof Error &&
+				settledResult[1].reason.message === "Test error"
+		).toEqual(true);
+		expect(counterIncrement).toHaveBeenCalledTimes(0);
+	});
+
+	test("can not cache if the promise throws and secondary promise also throws", async () => {
+		const res = AsyncCache.exec("key", 1, async () => {
+			// eslint-disable-next-line no-restricted-syntax
+			throw new Error("Test error");
+		});
+		expect(Is.promise(res)).toEqual(true);
+		expect(counter).toEqual(0);
+
+		const res2 = AsyncCache.exec("key", 1, async () => {
+			// eslint-disable-next-line no-restricted-syntax
+			throw new Error("Test error 2");
+		});
+		expect(Is.promise(res2)).toEqual(true);
+		expect(counter).toEqual(0);
+
+		const settledResult = await Promise.allSettled([res, res2]);
+		expect(
+			settledResult[0].status === "rejected" &&
+				settledResult[0].reason instanceof Error &&
+				settledResult[0].reason.message === "Test error"
+		).toEqual(true);
+		expect(
+			settledResult[1].status === "rejected" &&
+				settledResult[1].reason instanceof Error &&
+				settledResult[1].reason.message === "Test error 2"
+		).toEqual(true);
+	});
+
 	test("can set a value in the cache and retrieve it", async () => {
 		await AsyncCache.set("key", 1);
 
