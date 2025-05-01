@@ -1,5 +1,19 @@
 # @twin.org/crypto - Changelog
 
+## [0.0.1-next.53](https://github.com/twinfoundation/framework/compare/crypto-v0.0.1-next.52...crypto-v0.0.1-next.53) (2025-05-01)
+
+
+### Miscellaneous Chores
+
+* **crypto:** Synchronize repo versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.52 to 0.0.1-next.53
+
 ## [0.0.1-next.52](https://github.com/twinfoundation/framework/compare/crypto-v0.0.1-next.51...crypto-v0.0.1-next.52) (2025-04-17)
 
 
