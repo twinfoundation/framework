@@ -144,7 +144,8 @@ export class FetchHelper {
 						HttpStatusCode.serviceUnavailable,
 						{
 							url
-						}
+						},
+						err
 					);
 				} else {
 					const isAbort = isErr && err.name === "AbortError";
@@ -162,7 +163,8 @@ export class FetchHelper {
 						source,
 						`${FetchHelper._CLASS_NAME_CAMEL_CASE}.${isAbort ? "timeout" : "general"}`,
 						httpStatus,
-						props
+						props,
+						err
 					);
 				}
 			} finally {
