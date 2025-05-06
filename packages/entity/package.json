@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/entity",
-	"version": "0.0.1-next.53",
+	"version": "0.0.1-next.54",
 	"description": "Helpers for defining and working with entities",
 	"repository": {
 		"type": "git",
@@ -31,7 +31,7 @@
 	},
 	"dependencies": {
 		"@twin.org/nameof": "next",
-		"@twin.org/core": "0.0.1-next.53",
+		"@twin.org/core": "0.0.1-next.54",
 		"reflect-metadata": "0.2.2"
 	},
 	"devDependencies": {
