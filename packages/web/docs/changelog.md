@@ -1,5 +1,20 @@
 # @twin.org/web - Changelog
 
+## [0.0.1-next.54](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.53...web-v0.0.1-next.54) (2025-05-06)
+
+
+### Bug Fixes
+
+* wrap inner error within FetchError / 2 ([#134](https://github.com/twinfoundation/framework/issues/134)) ([2ddb101](https://github.com/twinfoundation/framework/commit/2ddb101c3778be4e99559e37aa036cd7101585fb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.53 to 0.0.1-next.54
+    * @twin.org/crypto bumped from 0.0.1-next.53 to 0.0.1-next.54
+
 ## [0.0.1-next.53](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.52...web-v0.0.1-next.53) (2025-05-01)
 
 
