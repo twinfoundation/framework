@@ -33,7 +33,7 @@ export class Jws {
 		try {
 			const jws = await new CompactSign(hash)
 				.setProtectedHeader({
-					alg: Is.uint8Array(privateKey) ? (algOverride ?? "EdDSA") : privateKey.algorithm.name,
+					alg: algOverride ?? (Is.uint8Array(privateKey) ? "EdDSA" : privateKey.algorithm.name),
 					b64: false,
 					crit: ["b64"]
 				})

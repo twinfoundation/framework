@@ -16,7 +16,7 @@ Class to handle JSON Web Keys.
 
 ### toCryptoKey()
 
-> `static` **toCryptoKey**(`jwk`): `Promise`\<[`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)\>
+> `static` **toCryptoKey**(`jwk`, `alg?`): `Promise`\<[`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)\>
 
 Convert the JWK to a crypto key.
 
@@ -27,6 +27,12 @@ Convert the JWK to a crypto key.
 [`IJwk`](../interfaces/IJwk.md)
 
 The JWK to convert.
+
+##### alg?
+
+`string`
+
+The alg to be used, defaults to jwk.alg.
 
 #### Returns
 
