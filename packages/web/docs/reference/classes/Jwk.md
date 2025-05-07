@@ -32,7 +32,7 @@ The JWK to convert.
 
 `string`
 
-The alg to be used.
+The alg to be used, defaults to jwk.alg.
 
 #### Returns
 
