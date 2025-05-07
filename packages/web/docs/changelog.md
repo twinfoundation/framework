@@ -1,5 +1,20 @@
 # @twin.org/web - Changelog
 
+## [0.0.1-next.55](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.54...web-v0.0.1-next.55) (2025-05-07)
+
+
+### Features
+
+* ensure the alg is the correct one when generating JWK or JWS ([#136](https://github.com/twinfoundation/framework/issues/136)) ([46a5af1](https://github.com/twinfoundation/framework/commit/46a5af127192d7048068275d14f555f09add3642))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.54 to 0.0.1-next.55
+    * @twin.org/crypto bumped from 0.0.1-next.54 to 0.0.1-next.55
+
 ## [0.0.1-next.54](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.53...web-v0.0.1-next.54) (2025-05-06)
 
 
