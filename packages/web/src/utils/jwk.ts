@@ -20,13 +20,13 @@ export class Jwk {
 	/**
 	 * Convert the JWK to a crypto key.
 	 * @param jwk The JWK to convert.
+	 * @param alg The alg to be used.
 	 * @returns The crypto key.
 	 */
-	public static async toCryptoKey(jwk: IJwk): Promise<JwkCryptoKey> {
+	public static async toCryptoKey(jwk: IJwk, alg?: string): Promise<JwkCryptoKey> {
 		Guards.object<IJwk>(Jwk._CLASS_NAME, nameof(jwk), jwk);
-
 		try {
-			return importJWK(jwk);
+			return importJWK(jwk, alg ?? jwk.alg);
 		} catch (err) {
 			throw new GeneralError(Jwk._CLASS_NAME, "jwkImportFailed", undefined, err);
 		}
