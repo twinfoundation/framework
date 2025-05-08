@@ -1,5 +1,12 @@
 # @twin.org/core - Changelog
 
+## [0.0.1-next.56](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.55...core-v0.0.1-next.56) (2025-05-08)
+
+
+### Features
+
+* add ObjectOrArray and ArrayHelper methods ([0ac9077](https://github.com/twinfoundation/framework/commit/0ac907764d64b38ad1b04b0e9c3027055b527559))
+
 ## [0.0.1-next.55](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.54...core-v0.0.1-next.55) (2025-05-07)
 
 
