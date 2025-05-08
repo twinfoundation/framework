@@ -39,3 +39,73 @@ The second array.
 `boolean`
 
 True if both arrays are empty of have the same values.
+
+***
+
+### fromObjectOrArray()
+
+Convert an object or array to an array.
+
+#### Param
+
+The object or array to convert.
+
+#### Call Signature
+
+> `static` **fromObjectOrArray**\<`T`\>(`value`): `undefined`
+
+Convert an object or array to an array.
+
+##### Type Parameters
+
+###### T
+
+`T` = `unknown`
+
+##### Parameters
+
+###### value
+
+`undefined`
+
+The object or array to convert.
+
+##### Returns
+
+`undefined`
+
+The array.
+
+##### Param
+
+The object or array to convert.
+
+#### Call Signature
+
+> `static` **fromObjectOrArray**\<`T`\>(`value`): `T`[]
+
+Convert an object or array to an array.
+
+##### Type Parameters
+
+###### T
+
+`T` = `unknown`
+
+##### Parameters
+
+###### value
+
+[`ObjectOrArray`](../type-aliases/ObjectOrArray.md)\<`T`\>
+
+The object or array to convert.
+
+##### Returns
+
+`T`[]
+
+The array.
+
+##### Param
+
+The object or array to convert.

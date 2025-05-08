@@ -40,6 +40,7 @@ export * from "./models/ILocalesIndex";
 export * from "./models/IPatchOperation";
 export * from "./models/IUrlParts";
 export * from "./models/IValidationFailure";
+export * from "./models/objectOrArray";
 export * from "./types/bitString";
 export * from "./types/url";
 export * from "./types/urn";

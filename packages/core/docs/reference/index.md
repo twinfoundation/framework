@@ -59,6 +59,7 @@
 
 - [CoerceType](type-aliases/CoerceType.md)
 - [CompressionType](type-aliases/CompressionType.md)
+- [ObjectOrArray](type-aliases/ObjectOrArray.md)
 
 ## Variables
 
