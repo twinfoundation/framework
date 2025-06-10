@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { Is } from "./is";
 import { GuardError } from "../errors/guardError";
+import { ArrayHelper } from "../helpers/arrayHelper";
 import { HexHelper } from "../helpers/hexHelper";
+import type { ObjectOrArray } from "../models/objectOrArray";
 
 /**
  * Class to handle guard operations for parameters.
@@ -364,6 +366,80 @@ export class Guards {
 		}
 		if (!options.includes(value)) {
 			throw new GuardError(source, "guard.arrayOneOf", property, value, options.join(", "));
+		}
+	}
+
+	/**
+	 * Does the array start with the specified data.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @param startValues The values that must start the array.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static arrayStartsWith<T>(
+		source: string,
+		property: string,
+		value: unknown,
+		startValues: ObjectOrArray<T>
+	): asserts value is T[] {
+		if (!Is.arrayValue<T>(value)) {
+			throw new GuardError(source, "guard.array", property, value);
+		}
+
+		const startValuesArray = ArrayHelper.fromObjectOrArray(startValues);
+
+		if (!Is.arrayValue<T>(startValuesArray)) {
+			throw new GuardError(source, "guard.array", property, startValuesArray);
+		}
+
+		for (let i = 0; i < startValuesArray.length; i++) {
+			if (value[i] !== startValuesArray[i]) {
+				throw new GuardError(
+					source,
+					"guard.arrayStartsWith",
+					property,
+					value,
+					startValuesArray.join(", ")
+				);
+			}
+		}
+	}
+
+	/**
+	 * Does the array end with the specified data.
+	 * @param source The source of the error.
+	 * @param property The name of the property.
+	 * @param value The value to test.
+	 * @param endValues The values that must end the array.
+	 * @throws GuardError If the value does not match the assertion.
+	 */
+	public static arrayEndsWith<T>(
+		source: string,
+		property: string,
+		value: unknown,
+		endValues: ObjectOrArray<T>
+	): asserts value is T[] {
+		if (!Is.arrayValue<T>(value)) {
+			throw new GuardError(source, "guard.array", property, value);
+		}
+
+		const endValuesArray = ArrayHelper.fromObjectOrArray(endValues);
+
+		if (!Is.arrayValue<T>(endValuesArray)) {
+			throw new GuardError(source, "guard.array", property, endValuesArray);
+		}
+
+		for (let i = 0; i < endValuesArray.length; i++) {
+			if (value[value.length - i - 1] !== endValuesArray[endValuesArray.length - i - 1]) {
+				throw new GuardError(
+					source,
+					"guard.arrayEndsWith",
+					property,
+					value,
+					endValuesArray.join(", ")
+				);
+			}
 		}
 	}
 

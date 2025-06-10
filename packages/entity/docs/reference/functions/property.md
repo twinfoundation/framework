@@ -8,7 +8,7 @@ Decorator to produce schema property data for entities.
 
 ### options
 
-`Omit`\<[`IEntitySchemaProperty`](../interfaces/IEntitySchemaProperty.md)\<`unknown`\>, `"property"`\>
+`Omit`\<[`IEntitySchemaProperty`](../interfaces/IEntitySchemaProperty.md), `"property"`\>
 
 The options for the property.
 

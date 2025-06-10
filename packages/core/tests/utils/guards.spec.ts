@@ -265,6 +265,48 @@ describe("Guards", () => {
 		expect(Guards.arrayOneOf("source", "propName", 1, [1, 2, 3])).toBeUndefined();
 	});
 
+	test("arrayStartsWith can fail if value is not an array", () => {
+		expect(() => Guards.arrayStartsWith("source", "propName", 1, [4])).toThrow(
+			expect.objectContaining({ name: "GuardError", message: "guard.array" })
+		);
+	});
+
+	test("arrayStartsWith can fail if value does not start with the specificied values", () => {
+		expect(() => Guards.arrayStartsWith("source", "propName", [1, 2, 3], [4])).toThrow(
+			expect.objectContaining({ name: "GuardError", message: "guard.arrayStartsWith" })
+		);
+		expect(I18n.hasMessage("error.guard.arrayStartsWith")).toEqual(true);
+	});
+
+	test("arrayStartsWith can succeed if value starts with provided values", () => {
+		expect(Guards.arrayStartsWith("source", "propName", [1, 2, 3], [1])).toBeUndefined();
+	});
+
+	test("arrayStartsWith can succeed if value starts with multiple provided values", () => {
+		expect(Guards.arrayStartsWith("source", "propName", [1, 2, 3], [1, 2])).toBeUndefined();
+	});
+
+	test("arrayStartsWith can fail if value is not an array", () => {
+		expect(() => Guards.arrayStartsWith("source", "propName", 1, [4])).toThrow(
+			expect.objectContaining({ name: "GuardError", message: "guard.array" })
+		);
+	});
+
+	test("arrayEndsWith can fail if value does not end with the specificied values", () => {
+		expect(() => Guards.arrayEndsWith("source", "propName", [1, 2, 3], [4])).toThrow(
+			expect.objectContaining({ name: "GuardError", message: "guard.arrayEndsWith" })
+		);
+		expect(I18n.hasMessage("error.guard.arrayEndsWith")).toEqual(true);
+	});
+
+	test("arrayEndsWith can succeed if value ends with provided values", () => {
+		expect(Guards.arrayEndsWith("source", "propName", [1, 2, 3], [3])).toBeUndefined();
+	});
+
+	test("arrayEndsWith can succeed if value ends with multiple provided values", () => {
+		expect(Guards.arrayEndsWith("source", "propName", [1, 2, 3], [2, 3])).toBeUndefined();
+	});
+
 	test("uint8Array can fail if value is not a Uint8Array", () => {
 		expect(() => Guards.uint8Array("source", "propName", undefined)).toThrow(
 			expect.objectContaining({ name: "GuardError", message: "guard.uint8Array" })

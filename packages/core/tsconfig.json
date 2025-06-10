@@ -15,7 +15,8 @@
 		"declaration": true,
 		"declarationDir": "dist/types",
 		"types": [],
-		"plugins": [{ "transform": "@twin.org/nameof-transformer" }]
+		"plugins": [{ "transform": "@twin.org/nameof-transformer" }],
+		"skipLibCheck": true
 	},
 	"include": ["src/**/*.ts"]
 }
