@@ -1,5 +1,20 @@
 # @twin.org/qr - Changelog
 
+## [0.0.1-next.57](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.56...qr-v0.0.1-next.57) (2025-06-10)
+
+
+### Features
+
+* add guards arrayEndsWith and arrayStartsWith ([95d875e](https://github.com/twinfoundation/framework/commit/95d875ec8ccb4713c145fdde941d4cfedcec2ed3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.56 to 0.0.1-next.57
+    * @twin.org/image bumped from 0.0.1-next.56 to 0.0.1-next.57
+
 ## [0.0.1-next.56](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.55...qr-v0.0.1-next.56) (2025-05-08)
 
 
