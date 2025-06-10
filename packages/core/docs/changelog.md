@@ -1,5 +1,12 @@
 # @twin.org/core - Changelog
 
+## [0.0.1-next.57](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.56...core-v0.0.1-next.57) (2025-06-10)
+
+
+### Features
+
+* add guards arrayEndsWith and arrayStartsWith ([95d875e](https://github.com/twinfoundation/framework/commit/95d875ec8ccb4713c145fdde941d4cfedcec2ed3))
+
 ## [0.0.1-next.56](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.55...core-v0.0.1-next.56) (2025-05-08)
 
 
