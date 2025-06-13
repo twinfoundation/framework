@@ -1,6 +1,6 @@
 # TWIN Framework
 
-This mono-repository contains some of the fundamental packages that the rest of the TWIN packages depend on. There are lots of utility functions and helper classes.
+This mono-repository contains some of the fundamental packages that the rest of the TWIN packages depend on. Utility functions and helper classes.
 
 ## Packages
 
