@@ -36,7 +36,7 @@ export class CLIParam {
 	}
 
 	/**
-	 * Check the option to see if it exists.
+	 * Check the option to see if the String exists.
 	 * @param optionName The name of the option.
 	 * @param optionValue The option value.
 	 * @param allowEnvVar Allow the option to be read from an env var.
@@ -54,7 +54,7 @@ export class CLIParam {
 	}
 
 	/**
-	 * Check the option to see if it a url.
+	 * Check the option to see if it is a url.
 	 * @param optionName The name of the option.
 	 * @param optionValue The option value.
 	 * @param allowEnvVar Allow the option to be read from an env var.
