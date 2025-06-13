@@ -126,42 +126,44 @@ export class ModuleHelper {
 		return new Promise((resolve, reject) => {
 			const worker = new Worker(
 				`
-	    const { workerData, parentPort } = require('worker_threads');
+			  (async () => {
+				const { workerData, parentPort } = await import('worker_threads');
 
-			function rejectError(type, innerError) {
-				parentPort.postMessage({ errorType: type, innerError });
-			}
+				function rejectError(type, innerError) {
+					parentPort.postMessage({ errorType: type, innerError });
+				}
 
-			function resolveResult(result) {
-				Promise.resolve(result).then(res => parentPort.postMessage({ result: res }));
-			}
+				function resolveResult(result) {
+					Promise.resolve(result).then(res => parentPort.postMessage({ result: res }));
+				}
 
-			const { module, method, args } = workerData;
+				const { module, method, args } = workerData;
 
-			import(module)
-				.then(moduleInstance => {
-					const methodParts = method.split(".");
-					const moduleEntry = moduleInstance[methodParts[0]];
+				import(module)
+					.then(moduleInstance => {
+						const methodParts = method.split(".");
+						const moduleEntry = moduleInstance[methodParts[0]];
 
-					if (moduleEntry === undefined) {
-						rejectError("entryNotFound");
-					} else if (methodParts.length === 2) {
-						const moduleMethod = moduleEntry[methodParts[1]];
-						if (typeof moduleMethod === "function") {
-							resolveResult(moduleMethod(...(args ?? [])));
+						if (moduleEntry === undefined) {
+							rejectError("entryNotFound");
+						} else if (methodParts.length === 2) {
+							const moduleMethod = moduleEntry[methodParts[1]];
+							if (typeof moduleMethod === "function") {
+								resolveResult(moduleMethod(...(args ?? [])));
+							} else {
+								rejectError("notFunction");
+							}
+						} else if (typeof moduleEntry === "function") {
+							resolveResult(moduleEntry(...(args ?? [])));
 						} else {
 							rejectError("notFunction");
 						}
-					} else if (typeof moduleEntry === "function") {
-						resolveResult(moduleEntry(...(args ?? [])));
-					} else {
-						rejectError("notFunction");
-					}
-				})
-				.catch(err => {
-					rejectError("moduleNotFound", err);
-				});
-	  `,
+					})
+					.catch(err => {
+						rejectError("moduleNotFound", err);
+					});
+			})();
+			`,
 				{ eval: true, workerData: { module, method, args: args ?? [] } }
 			);
 
