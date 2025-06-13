@@ -56,7 +56,7 @@ An error if the option is invalid.
 
 > `static` **stringValue**(`optionName`, `optionValue`, `allowEnvVar`): `string`
 
-Check the option to see if it exists.
+Check the option to see if the String exists.
 
 #### Parameters
 
@@ -94,7 +94,7 @@ An error if the option is invalid.
 
 > `static` **url**(`optionName`, `optionValue`, `allowEnvVar`): `string`
 
-Check the option to see if it a url.
+Check the option to see if it is a url.
 
 #### Parameters
 
