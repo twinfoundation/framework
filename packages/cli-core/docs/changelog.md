@@ -1,5 +1,20 @@
 # @twin.org/cli-core - Changelog
 
+## [0.0.1-next.58](https://github.com/twinfoundation/framework/compare/cli-core-v0.0.1-next.57...cli-core-v0.0.1-next.58) (2025-06-13)
+
+
+### Bug Fixes
+
+* framework pr naming convention ([#142](https://github.com/twinfoundation/framework/issues/142)) ([e29acee](https://github.com/twinfoundation/framework/commit/e29acee2fbec42506091956d6ba8b8ce25a90008))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.57 to 0.0.1-next.58
+    * @twin.org/crypto bumped from 0.0.1-next.57 to 0.0.1-next.58
+
 ## [0.0.1-next.57](https://github.com/twinfoundation/framework/compare/cli-core-v0.0.1-next.56...cli-core-v0.0.1-next.57) (2025-06-10)
 
 
