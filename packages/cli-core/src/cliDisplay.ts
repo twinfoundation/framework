@@ -61,7 +61,7 @@ export class CLIDisplay {
 			CLIDisplay.writeError("\n");
 		}
 
-		const formatted = ErrorHelper.formatErrors(error);
+		const formatted = ErrorHelper.formatErrors(error, true);
 		CLIDisplay.writeError(chalk.red(formatted.map(e => `\t${e}`).join("\n")));
 		if (lineBreaks) {
 			CLIDisplay.writeError("\n");

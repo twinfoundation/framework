@@ -16,7 +16,7 @@ Error helper functions.
 
 ### formatErrors()
 
-> `static` **formatErrors**(`error`): `string`[]
+> `static` **formatErrors**(`error`, `includeDetails?`): `string`[]
 
 Format Errors and returns just their messages.
 
@@ -27,6 +27,12 @@ Format Errors and returns just their messages.
 `unknown`
 
 The error to format.
+
+##### includeDetails?
+
+`boolean`
+
+Whether to include error details, defaults to false.
 
 #### Returns
 

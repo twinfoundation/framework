@@ -112,7 +112,7 @@ export class BaseError extends Error implements IError {
 	public static flatten(err: unknown): IError[] {
 		const flattened: IError[] = [];
 
-		let e: IError | undefined = BaseError.fromError(err).toJsonObject();
+		let e: IError | undefined = BaseError.fromError(err).toJsonObject(true);
 
 		while (e) {
 			const inner: IError | undefined = e.inner;
