@@ -1,5 +1,22 @@
 # @twin.org/crypto-cli - Changelog
 
+## [0.0.1-next.60](https://github.com/twinfoundation/framework/compare/crypto-cli-v0.0.1-next.59...crypto-cli-v0.0.1-next.60) (2025-06-17)
+
+
+### Bug Fixes
+
+* crypto CLI address output to JSON ([0398604](https://github.com/twinfoundation/framework/commit/0398604c5ad7673eddf1ee7bed7fafa94f3526f8))
+* crypto CLI address output to JSON ([3397bfb](https://github.com/twinfoundation/framework/commit/3397bfbdde6be5dcb40b490009891e14338e2af7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/cli-core bumped from 0.0.1-next.59 to 0.0.1-next.60
+    * @twin.org/core bumped from 0.0.1-next.59 to 0.0.1-next.60
+    * @twin.org/crypto bumped from 0.0.1-next.59 to 0.0.1-next.60
+
 ## [0.0.1-next.59](https://github.com/twinfoundation/framework/compare/crypto-cli-v0.0.1-next.58...crypto-cli-v0.0.1-next.59) (2025-06-17)
 
 
