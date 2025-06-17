@@ -227,9 +227,10 @@ export class BaseError extends Error implements IError {
 
 	/**
 	 * Serialize the error to the error model.
+	 * @param includeStackTrace Whether to include the error stack in the model, defaults to false.
 	 * @returns The error model.
 	 */
-	public toJsonObject(): IError {
+	public toJsonObject(includeStackTrace?: boolean): IError {
 		const err: Partial<IError> = {};
 		if (Is.stringValue(this.name)) {
 			err.name = this.name;
@@ -243,11 +244,11 @@ export class BaseError extends Error implements IError {
 		if (Is.object(this.properties)) {
 			err.properties = this.properties;
 		}
-		if (Is.stringValue(this.stack)) {
+		if ((includeStackTrace ?? false) && Is.stringValue(this.stack)) {
 			err.stack = this.stack;
 		}
 		if (Is.notEmpty(this.inner)) {
-			err.inner = BaseError.fromError(this.inner).toJsonObject();
+			err.inner = BaseError.fromError(this.inner).toJsonObject(includeStackTrace);
 		}
 		return err as IError;
 	}
