@@ -1,5 +1,21 @@
 # @twin.org/crypto-cli - Changelog
 
+## [0.0.1-next.59](https://github.com/twinfoundation/framework/compare/crypto-cli-v0.0.1-next.58...crypto-cli-v0.0.1-next.59) (2025-06-17)
+
+
+### Miscellaneous Chores
+
+* **crypto-cli:** Synchronize repo versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/cli-core bumped from 0.0.1-next.58 to 0.0.1-next.59
+    * @twin.org/core bumped from 0.0.1-next.58 to 0.0.1-next.59
+    * @twin.org/crypto bumped from 0.0.1-next.58 to 0.0.1-next.59
+
 ## [0.0.1-next.58](https://github.com/twinfoundation/framework/compare/crypto-cli-v0.0.1-next.57...crypto-cli-v0.0.1-next.58) (2025-06-13)
 
 

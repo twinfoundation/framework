@@ -1,5 +1,19 @@
 # @twin.org/modules - Changelog
 
+## [0.0.1-next.59](https://github.com/twinfoundation/framework/compare/modules-v0.0.1-next.58...modules-v0.0.1-next.59) (2025-06-17)
+
+
+### Miscellaneous Chores
+
+* **modules:** Synchronize repo versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.58 to 0.0.1-next.59
+
 ## [0.0.1-next.58](https://github.com/twinfoundation/framework/compare/modules-v0.0.1-next.57...modules-v0.0.1-next.58) (2025-06-13)
 
 

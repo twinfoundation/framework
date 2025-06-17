@@ -1,5 +1,20 @@
 # @twin.org/web - Changelog
 
+## [0.0.1-next.59](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.58...web-v0.0.1-next.59) (2025-06-17)
+
+
+### Features
+
+* propagate includeStackTrace on error conversion ([098fc72](https://github.com/twinfoundation/framework/commit/098fc729939ea3127f2bdcc0ddb6754096c5f919))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.58 to 0.0.1-next.59
+    * @twin.org/crypto bumped from 0.0.1-next.58 to 0.0.1-next.59
+
 ## [0.0.1-next.58](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.57...web-v0.0.1-next.58) (2025-06-13)
 
 
