@@ -1,5 +1,21 @@
 # @twin.org/qr - Changelog
 
+## [0.0.1-next.62](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.61...qr-v0.0.1-next.62) (2025-06-17)
+
+
+### Features
+
+* add guards arrayEndsWith and arrayStartsWith ([95d875e](https://github.com/twinfoundation/framework/commit/95d875ec8ccb4713c145fdde941d4cfedcec2ed3))
+* use new shared store mechanism ([#131](https://github.com/twinfoundation/framework/issues/131)) ([934385b](https://github.com/twinfoundation/framework/commit/934385b2fbaf9f5c00a505ebf9d093bd5a425f55))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.61 to 0.0.1-next.62
+    * @twin.org/image bumped from 0.0.1-next.61 to 0.0.1-next.62
+
 ## [0.0.1-next.61](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.60...qr-v0.0.1-next.61) (2025-06-17)
 
 

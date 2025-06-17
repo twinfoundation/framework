@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/core",
-	"version": "0.0.1-next.61",
+	"version": "0.0.1-next.62",
 	"description": "Helper methods/classes for data type checking/validation/guarding/error handling",
 	"repository": {
 		"type": "git",

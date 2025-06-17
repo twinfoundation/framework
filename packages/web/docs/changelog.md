@@ -1,5 +1,29 @@
 # @twin.org/web - Changelog
 
+## [0.0.1-next.62](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.61...web-v0.0.1-next.62) (2025-06-17)
+
+
+### Features
+
+* add guards arrayEndsWith and arrayStartsWith ([95d875e](https://github.com/twinfoundation/framework/commit/95d875ec8ccb4713c145fdde941d4cfedcec2ed3))
+* add set method for async caches ([ba34b55](https://github.com/twinfoundation/framework/commit/ba34b55e651ad56ab8fc59e139e4af631c19cda0))
+* ensure the alg is the correct one when generating JWK or JWS ([#136](https://github.com/twinfoundation/framework/issues/136)) ([46a5af1](https://github.com/twinfoundation/framework/commit/46a5af127192d7048068275d14f555f09add3642))
+* propagate includeStackTrace on error conversion ([098fc72](https://github.com/twinfoundation/framework/commit/098fc729939ea3127f2bdcc0ddb6754096c5f919))
+* use new shared store mechanism ([#131](https://github.com/twinfoundation/framework/issues/131)) ([934385b](https://github.com/twinfoundation/framework/commit/934385b2fbaf9f5c00a505ebf9d093bd5a425f55))
+
+
+### Bug Fixes
+
+* wrap inner error within FetchError / 2 ([#134](https://github.com/twinfoundation/framework/issues/134)) ([2ddb101](https://github.com/twinfoundation/framework/commit/2ddb101c3778be4e99559e37aa036cd7101585fb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.61 to 0.0.1-next.62
+    * @twin.org/crypto bumped from 0.0.1-next.61 to 0.0.1-next.62
+
 ## [0.0.1-next.61](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.60...web-v0.0.1-next.61) (2025-06-17)
 
 
