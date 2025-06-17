@@ -1,11 +1,11 @@
 {
-	"packages/cli-core": "0.0.1-next.60",
-	"packages/core": "0.0.1-next.60",
-	"packages/crypto": "0.0.1-next.60",
-	"packages/entity": "0.0.1-next.60",
-	"packages/image": "0.0.1-next.60",
-	"packages/modules": "0.0.1-next.60",
-	"packages/qr": "0.0.1-next.60",
-	"packages/web": "0.0.1-next.60",
-	"apps/crypto-cli": "0.0.1-next.60"
+	"packages/cli-core": "0.0.1-next.61",
+	"packages/core": "0.0.1-next.61",
+	"packages/crypto": "0.0.1-next.61",
+	"packages/entity": "0.0.1-next.61",
+	"packages/image": "0.0.1-next.61",
+	"packages/modules": "0.0.1-next.61",
+	"packages/qr": "0.0.1-next.61",
+	"packages/web": "0.0.1-next.61",
+	"apps/crypto-cli": "0.0.1-next.61"
 }

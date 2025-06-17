@@ -1,5 +1,12 @@
 # @twin.org/core - Changelog
 
+## [0.0.1-next.61](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.60...core-v0.0.1-next.61) (2025-06-17)
+
+
+### Features
+
+* support indexed properties set in objects ([b9c001d](https://github.com/twinfoundation/framework/commit/b9c001dc4614f6ff7486f4370735a553613d823a))
+
 ## [0.0.1-next.60](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.59...core-v0.0.1-next.60) (2025-06-17)
 
 
