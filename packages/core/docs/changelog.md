@@ -1,5 +1,12 @@
 # @twin.org/core - Changelog
 
+## [0.0.1-next.60](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.59...core-v0.0.1-next.60) (2025-06-17)
+
+
+### Features
+
+* improve error display in CLI ([94b6ca8](https://github.com/twinfoundation/framework/commit/94b6ca8bdcfe3ca7671c4095b436ea7bddaae98e))
+
 ## [0.0.1-next.59](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.58...core-v0.0.1-next.59) (2025-06-17)
 
 

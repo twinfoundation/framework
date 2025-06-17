@@ -1,5 +1,19 @@
 # @twin.org/image - Changelog
 
+## [0.0.1-next.60](https://github.com/twinfoundation/framework/compare/image-v0.0.1-next.59...image-v0.0.1-next.60) (2025-06-17)
+
+
+### Miscellaneous Chores
+
+* **image:** Synchronize repo versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.59 to 0.0.1-next.60
+
 ## [0.0.1-next.59](https://github.com/twinfoundation/framework/compare/image-v0.0.1-next.58...image-v0.0.1-next.59) (2025-06-17)
 
 

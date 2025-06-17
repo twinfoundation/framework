@@ -1,5 +1,20 @@
 # @twin.org/qr - Changelog
 
+## [0.0.1-next.60](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.59...qr-v0.0.1-next.60) (2025-06-17)
+
+
+### Miscellaneous Chores
+
+* **qr:** Synchronize repo versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.59 to 0.0.1-next.60
+    * @twin.org/image bumped from 0.0.1-next.59 to 0.0.1-next.60
+
 ## [0.0.1-next.59](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.58...qr-v0.0.1-next.59) (2025-06-17)
 
 
