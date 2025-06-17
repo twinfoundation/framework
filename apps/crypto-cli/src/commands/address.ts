@@ -131,9 +131,7 @@ export async function actionCommandAddress(
 	CLIDisplay.task(I18n.formatMessage("commands.address.progress.generatingAddresses"));
 	CLIDisplay.break();
 
-	const addressDictionary: {
-		[index: number]: { address: string; privateKey: string; publicKey: string };
-	} = {};
+	const addresses: { address: string; privateKey: string; publicKey: string }[] = [];
 
 	for (let i = start; i < start + count; i++) {
 		let addressKeyPair;
@@ -158,7 +156,7 @@ export async function actionCommandAddress(
 			);
 		}
 
-		addressDictionary[i] = {
+		addresses.push({
 			address: addressKeyPair.address,
 			privateKey:
 				keyFormat === "hex"
@@ -168,39 +166,32 @@ export async function actionCommandAddress(
 				keyFormat === "hex"
 					? Converter.bytesToHex(addressKeyPair.publicKey, true)
 					: Converter.bytesToBase64(addressKeyPair.publicKey)
-		};
+		});
 
 		if (opts.console) {
 			CLIDisplay.value(I18n.formatMessage("commands.address.labels.index"), i);
-			CLIDisplay.value(
-				I18n.formatMessage("commands.address.labels.address"),
-				addressDictionary[i].address
-			);
+			CLIDisplay.value(I18n.formatMessage("commands.address.labels.address"), addresses[i].address);
 			CLIDisplay.value(
 				I18n.formatMessage("commands.address.labels.private-key"),
-				addressDictionary[i].privateKey
+				addresses[i].privateKey
 			);
 			CLIDisplay.value(
 				I18n.formatMessage("commands.address.labels.public-key"),
-				addressDictionary[i].publicKey
+				addresses[i].publicKey
 			);
 			CLIDisplay.break();
 		}
 	}
 
 	if (Is.stringValue(opts?.json)) {
-		await CLIUtils.writeJsonFile(opts.json, addressDictionary, opts.mergeJson);
+		await CLIUtils.writeJsonFile(opts.json, { addresses }, opts.mergeJson);
 	}
 	if (Is.stringValue(opts?.env)) {
 		const output = [];
-		for (const addressIndex in addressDictionary) {
-			output.push(`ADDRESS_${addressIndex}="${addressDictionary[addressIndex].address}"`);
-			output.push(
-				`ADDRESS_${addressIndex}_PRIVATE_KEY="${addressDictionary[addressIndex].privateKey}"`
-			);
-			output.push(
-				`ADDRESS_${addressIndex}_PUBLIC_KEY="${addressDictionary[addressIndex].publicKey}"`
-			);
+		for (const [addressIndex, address] of addresses.entries()) {
+			output.push(`ADDRESS_${addressIndex}="${address.address}"`);
+			output.push(`ADDRESS_${addressIndex}_PRIVATE_KEY="${address.privateKey}"`);
+			output.push(`ADDRESS_${addressIndex}_PUBLIC_KEY="${address.publicKey}"`);
 		}
 		await CLIUtils.writeEnvFile(opts.env, output, opts.mergeEnv);
 	}
