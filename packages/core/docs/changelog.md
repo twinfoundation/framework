@@ -1,5 +1,13 @@
 # @twin.org/core - Changelog
 
+## [0.0.1-next.59](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.58...core-v0.0.1-next.59) (2025-06-17)
+
+
+### Features
+
+* propagate includeStackTrace on error conversion ([8471cbb](https://github.com/twinfoundation/framework/commit/8471cbb71f8fc98247a0e92126c438c1a8b04d9b))
+* propagate includeStackTrace on error conversion ([818337d](https://github.com/twinfoundation/framework/commit/818337d50d14bf5a7e8b3204649aa7527115cca9))
+
 ## [0.0.1-next.58](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.57...core-v0.0.1-next.58) (2025-06-13)
 
 
