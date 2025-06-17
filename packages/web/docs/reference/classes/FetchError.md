@@ -406,9 +406,17 @@ True if the error has the name.
 
 ### toJsonObject()
 
-> **toJsonObject**(): `IError`
+> **toJsonObject**(`includeStackTrace?`): `IError`
 
 Serialize the error to the error model.
+
+#### Parameters
+
+##### includeStackTrace?
+
+`boolean`
+
+Whether to include the error stack in the model, defaults to false.
 
 #### Returns
 
