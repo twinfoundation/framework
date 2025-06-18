@@ -1,5 +1,20 @@
 # @twin.org/web - Changelog
 
+## [0.0.1-next.63](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.62...web-v0.0.1-next.63) (2025-06-18)
+
+
+### Features
+
+* add kid method to Jwk ([bc9239e](https://github.com/twinfoundation/framework/commit/bc9239ed9896a053d83e00ca221e962704ebc277))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.62 to 0.0.1-next.63
+    * @twin.org/crypto bumped from 0.0.1-next.62 to 0.0.1-next.63
+
 ## [0.0.1-next.62](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.61...web-v0.0.1-next.62) (2025-06-17)
 
 
