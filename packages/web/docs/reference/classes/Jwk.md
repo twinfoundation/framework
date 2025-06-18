@@ -105,3 +105,25 @@ The JWK to convert to raw.
 `Promise`\<\{ `publicKey?`: `Uint8Array`\<`ArrayBufferLike`\>; `privateKey?`: `Uint8Array`\<`ArrayBufferLike`\>; \}\>
 
 The crypto key.
+
+***
+
+### generateKid()
+
+> `static` **generateKid**(`jwk`): `Promise`\<`string`\>
+
+Generate a KID for the JWK.
+
+#### Parameters
+
+##### jwk
+
+[`IJwk`](../interfaces/IJwk.md)
+
+The JWK to generate a KID for.
+
+#### Returns
+
+`Promise`\<`string`\>
+
+The KID.

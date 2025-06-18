@@ -88,4 +88,17 @@ describe("Jwk", () => {
 		expect(bytes?.publicKey).toEqual(publicKey);
 		expect(bytes?.privateKey).toEqual(privateKey);
 	});
+
+	test("generate a kid for a jwk", async () => {
+		const jwk: IJwk = {
+			alg: "EdDSA",
+			crv: "Ed25519",
+			kty: "OKP",
+			use: "enc",
+			d: "nWGxne_9WmC6hEr0kuwsxERJxWl7MmkZcDusAxyuf2A",
+			x: "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+		};
+		const kid = await Jwk.generateKid(jwk);
+		expect(kid).toEqual("kPrK_qmxVWaYVA9wwBF6Iuo3vVzz7TxHCTwXBygrS4k");
+	});
 });
