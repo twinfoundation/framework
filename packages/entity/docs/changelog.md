@@ -1,5 +1,19 @@
 # @twin.org/entity - Changelog
 
+## [0.0.1-next.63](https://github.com/twinfoundation/framework/compare/entity-v0.0.1-next.62...entity-v0.0.1-next.63) (2025-06-18)
+
+
+### Miscellaneous Chores
+
+* **entity:** Synchronize repo versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.62 to 0.0.1-next.63
+
 ## [0.0.1-next.62](https://github.com/twinfoundation/framework/compare/entity-v0.0.1-next.61...entity-v0.0.1-next.62) (2025-06-17)
 
 
