@@ -1,5 +1,19 @@
 # @twin.org/modules - Changelog
 
+## [0.0.1-next.65](https://github.com/twinfoundation/framework/compare/modules-v0.0.1-next.64...modules-v0.0.1-next.65) (2025-06-19)
+
+
+### Features
+
+* improve async pattern and error handling ([aaa1f68](https://github.com/twinfoundation/framework/commit/aaa1f6879d60adf04b78b0c1bbbec50f2873f020))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.64 to 0.0.1-next.65
+
 ## [0.0.1-next.64](https://github.com/twinfoundation/framework/compare/modules-v0.0.1-next.63...modules-v0.0.1-next.64) (2025-06-19)
 
 

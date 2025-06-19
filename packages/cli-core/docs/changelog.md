@@ -1,5 +1,20 @@
 # @twin.org/cli-core - Changelog
 
+## [0.0.1-next.65](https://github.com/twinfoundation/framework/compare/cli-core-v0.0.1-next.64...cli-core-v0.0.1-next.65) (2025-06-19)
+
+
+### Miscellaneous Chores
+
+* **cli-core:** Synchronize repo versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.64 to 0.0.1-next.65
+    * @twin.org/crypto bumped from 0.0.1-next.64 to 0.0.1-next.65
+
 ## [0.0.1-next.64](https://github.com/twinfoundation/framework/compare/cli-core-v0.0.1-next.63...cli-core-v0.0.1-next.64) (2025-06-19)
 
 
