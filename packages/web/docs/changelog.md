@@ -1,5 +1,20 @@
 # @twin.org/web - Changelog
 
+## [0.0.1-next.64](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.63...web-v0.0.1-next.64) (2025-06-19)
+
+
+### Features
+
+* add zlib/deflate mime types detection ([72c472b](https://github.com/twinfoundation/framework/commit/72c472b5a35a973e7109336f5b6cdd84dbb8bbcb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.63 to 0.0.1-next.64
+    * @twin.org/crypto bumped from 0.0.1-next.63 to 0.0.1-next.64
+
 ## [0.0.1-next.63](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.62...web-v0.0.1-next.63) (2025-06-18)
 
 
