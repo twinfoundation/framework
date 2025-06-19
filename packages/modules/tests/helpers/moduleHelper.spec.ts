@@ -54,6 +54,12 @@ describe("ModuleHelper", () => {
 		expect(await ModuleHelper.execModuleMethod(TEST_MODULE, "testMethodAdd", [1, 2])).toEqual(3);
 	});
 
+	test("execModuleMethod can get a result from a function with parameters async", async () => {
+		expect(await ModuleHelper.execModuleMethod(TEST_MODULE, "testMethodAddAsync", [4, 5])).toEqual(
+			20
+		);
+	});
+
 	test("execModuleMethod can get a result from a function with parameters from a module", async () => {
 		expect(
 			await ModuleHelper.execModuleMethod("@twin.org/core", "StringHelper.camelCase", ["foo-bar"])
@@ -112,11 +118,47 @@ describe("ModuleHelper", () => {
 		);
 	});
 
+	test("execModuleMethodThread can get a result from a function with parameters async", async () => {
+		expect(
+			await ModuleHelper.execModuleMethodThread(TEST_MODULE, "testMethodAddAsync", [4, 5])
+		).toEqual(20);
+	});
+
 	test("execModuleMethodThread can get a result from a function with parameters from a module", async () => {
 		expect(
 			await ModuleHelper.execModuleMethodThread("@twin.org/core", "StringHelper.camelCase", [
 				"foo-bar"
 			])
 		).toEqual("fooBar");
+	});
+
+	test("execModuleMethodThread can throw if a function throws an error", async () => {
+		await expect(
+			ModuleHelper.execModuleMethodThread(TEST_MODULE, "testMethodWithError")
+		).rejects.toMatchObject({
+			name: "GeneralError",
+			source: "ModuleHelper",
+			message: "moduleHelper.resultError",
+			properties: {
+				module: TEST_MODULE,
+				entry: "testMethodWithError"
+			},
+			inner: { name: "Error", message: "This is a test error" }
+		});
+	});
+
+	test("execModuleMethodThread can throw if a function throws an error async", async () => {
+		await expect(
+			ModuleHelper.execModuleMethodThread(TEST_MODULE, "testMethodWithErrorAsync")
+		).rejects.toMatchObject({
+			name: "GeneralError",
+			source: "ModuleHelper",
+			message: "moduleHelper.resultError",
+			properties: {
+				module: TEST_MODULE,
+				entry: "testMethodWithErrorAsync"
+			},
+			inner: { name: "Error", message: "This is a test error async" }
+		});
 	});
 });
