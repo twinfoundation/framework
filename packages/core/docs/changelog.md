@@ -1,5 +1,12 @@
 # @twin.org/core - Changelog
 
+## [0.0.1-next.64](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.63...core-v0.0.1-next.64) (2025-06-19)
+
+
+### Features
+
+* add zlib/deflate mime types detection ([72c472b](https://github.com/twinfoundation/framework/commit/72c472b5a35a973e7109336f5b6cdd84dbb8bbcb))
+
 ## [0.0.1-next.63](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.62...core-v0.0.1-next.63) (2025-06-18)
 
 

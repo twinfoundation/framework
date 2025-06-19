@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/crypto-cli",
-	"version": "0.0.1-next.63",
+	"version": "0.0.1-next.64",
 	"description": "A command line interface for interacting with the crypto tools",
 	"repository": {
 		"type": "git",
@@ -31,9 +31,9 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/cli-core": "0.0.1-next.63",
-		"@twin.org/core": "0.0.1-next.63",
-		"@twin.org/crypto": "0.0.1-next.63",
+		"@twin.org/cli-core": "0.0.1-next.64",
+		"@twin.org/core": "0.0.1-next.64",
+		"@twin.org/crypto": "0.0.1-next.64",
 		"@twin.org/nameof": "next",
 		"commander": "14.0.0"
 	},
