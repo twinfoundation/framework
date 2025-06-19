@@ -34,7 +34,7 @@ export class Compression {
 		// GZIP header contains a byte which specifies the OS the
 		// compression was performed on. We set this to 3 (Unix) to ensure
 		// that we produce consistent results.
-		if (type === "gzip" && compressedBytes.length >= 10) {
+		if (type === CompressionType.Gzip && compressedBytes.length >= 10) {
 			compressedBytes[9] = 3;
 		}
 

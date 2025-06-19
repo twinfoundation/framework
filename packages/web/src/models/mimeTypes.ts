@@ -52,6 +52,11 @@ export const MimeTypes = {
 	Gzip: "application/gzip",
 
 	/**
+	 * Application deflate - application/zlib
+	 */
+	Zlib: "application/zlib",
+
+	/**
 	 * Application BZIP2 - application/x-bzip2
 	 */
 	Bzip2: "application/x-bzip2",

@@ -46,6 +46,14 @@ export class MimeTypeHelper {
 			return MimeTypes.Gzip;
 		}
 
+		if (
+			MimeTypeHelper.checkBytes(data, [0x78, 0x01]) ||
+			MimeTypeHelper.checkBytes(data, [0x78, 0x9c]) ||
+			MimeTypeHelper.checkBytes(data, [0x78, 0xda])
+		) {
+			return MimeTypes.Zlib;
+		}
+
 		if (MimeTypeHelper.checkBytes(data, [0x42, 0x5a, 0x68])) {
 			return MimeTypes.Bzip2;
 		}
@@ -107,6 +115,7 @@ export class MimeTypeHelper {
 			[MimeTypes.Xml]: "xml",
 			[MimeTypes.OctetStream]: "bin",
 			[MimeTypes.Gzip]: "gzip",
+			[MimeTypes.Zlib]: "zlib",
 			[MimeTypes.Bzip2]: "bz2",
 			[MimeTypes.Zip]: "zip",
 			[MimeTypes.Pdf]: "pdf",
