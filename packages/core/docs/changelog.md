@@ -1,5 +1,12 @@
 # @twin.org/core - Changelog
 
+## [0.0.1-next.66](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.65...core-v0.0.1-next.66) (2025-06-26)
+
+
+### Features
+
+* improve base error data extraction ([dccc933](https://github.com/twinfoundation/framework/commit/dccc93361a1544b41db0e7c126ff90e858d87960))
+
 ## [0.0.1-next.65](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.64...core-v0.0.1-next.65) (2025-06-19)
 
 
