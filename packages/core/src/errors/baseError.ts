@@ -70,7 +70,9 @@ export class BaseError extends Error implements IError {
 		let inner;
 		let stack;
 
-		if (Is.object<BaseError>(err)) {
+		if (Is.object<{ error: string }>(err) && Is.stringValue(err.error)) {
+			message = err.error;
+		} else if (Is.object<BaseError>(err)) {
 			if (Is.stringValue(err.name)) {
 				name = err.name;
 			}
@@ -89,8 +91,6 @@ export class BaseError extends Error implements IError {
 			if (Is.notEmpty(err.stack)) {
 				stack = err.stack;
 			}
-		} else if (Is.object<{ error: string }>(err) && Is.stringValue(err.error)) {
-			message = err.error;
 		} else if (Is.stringValue(err)) {
 			message = err;
 		} else {
