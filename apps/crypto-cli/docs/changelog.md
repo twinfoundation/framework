@@ -1,5 +1,21 @@
 # @twin.org/crypto-cli - Changelog
 
+## [0.0.1-next.67](https://github.com/twinfoundation/framework/compare/crypto-cli-v0.0.1-next.66...crypto-cli-v0.0.1-next.67) (2025-06-26)
+
+
+### Bug Fixes
+
+* remove bech32 from crypto-cli ([892aa5f](https://github.com/twinfoundation/framework/commit/892aa5f746a4bc806f2dada3611c03fadcfe5a7b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/cli-core bumped from 0.0.1-next.66 to 0.0.1-next.67
+    * @twin.org/core bumped from 0.0.1-next.66 to 0.0.1-next.67
+    * @twin.org/crypto bumped from 0.0.1-next.66 to 0.0.1-next.67
+
 ## [0.0.1-next.66](https://github.com/twinfoundation/framework/compare/crypto-cli-v0.0.1-next.65...crypto-cli-v0.0.1-next.66) (2025-06-26)
 
 
