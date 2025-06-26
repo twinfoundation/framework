@@ -1,5 +1,12 @@
 # @twin.org/core - Changelog
 
+## [0.0.1-next.67](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.66...core-v0.0.1-next.67) (2025-06-26)
+
+
+### Miscellaneous Chores
+
+* **core:** Synchronize repo versions
+
 ## [0.0.1-next.66](https://github.com/twinfoundation/framework/compare/core-v0.0.1-next.65...core-v0.0.1-next.66) (2025-06-26)
 
 
