@@ -119,11 +119,7 @@ async function processDependencies(isProduction, dependencies, versionCache, pac
 				}
 				dependencies[name] = `^${versionCache[name]}`;
 			} else if (!isProduction) {
-				if (version.startsWith('^')) {
-					dependencies[name] = 'next';
-				} else {
-					dependencies[name] = packageVersion;
-				}
+				dependencies[name] = versionCache[name] ?? 'next';
 			}
 		}
 	}
