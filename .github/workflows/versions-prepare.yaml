@@ -62,7 +62,7 @@ jobs:
       - name: Create Version Bump Branch
         run: |
           # Create a new branch based on the current branch
-          git checkout -b release/versions-prepare-${{ github.event.inputs.versionType }}
+          git checkout -b release/versions-prepare-${{ github.event.inputs.versionType }}.${{ github.run_id }}.${{ github.run_attempt }}
 
       # Update the versions
       - name: Update Versions
@@ -101,7 +101,7 @@ jobs:
             --title "chore: prepare versions for ${{ github.event.inputs.versionType }}" \
             --body "This PR prepares the versions of all packages for the ${{ github.event.inputs.versionType }}." \
             --base $BASE_BRANCH \
-            --head release/versions-prepare-${{ github.event.inputs.versionType }})
+            --head release/versions-prepare-${{ github.event.inputs.versionType }}).${{ github.run_id }}.${{ github.run_attempt }}
 
           # Extract PR number from URL
           PR_NUMBER=$(echo $PR_URL | grep -o '[0-9]\+$')
