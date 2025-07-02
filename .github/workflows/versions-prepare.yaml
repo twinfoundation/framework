@@ -39,12 +39,16 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
           fetch-depth: 0 # Needed for merge operations
 
+      # Set git config once for all subsequent steps
+      - name: Configure Git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
       # If we are updating next version we need to ensure we merge the latest changes from main
       - name: Merge Main into Next
         if: github.event.inputs.versionType == 'next' # Only run this step if we are update next versions
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git merge --strategy-option theirs origin/main
 
       # Set up Node.js environment for running npm commands
@@ -83,8 +87,6 @@ jobs:
       # Stage all changes for commit
       - name: Commit Changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git add .
           git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           git push origin HEAD
@@ -103,6 +105,8 @@ jobs:
           # Extract PR number from URL
           PR_NUMBER=$(echo $PR_URL | grep -o '[0-9]\+$')
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Automatically approve the PR to speed up the process
       - name: Approve PR
