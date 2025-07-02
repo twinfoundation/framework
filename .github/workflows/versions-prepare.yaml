@@ -87,7 +87,7 @@ jobs:
 
       # Stage all changes for commit
       - name: Commit Changes
-        uses: qoomon/actions--create-commit@v1
+        uses: flex-development/gh-commit@1.0.0
         with:
           message: "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           token: ${{ secrets.GITHUB_TOKEN }}
