@@ -11,7 +11,7 @@ import { execAsync, fileExists, loadJson, saveJson } from './common.mjs';
  * Execute the process.
  */
 async function run() {
-	process.stdout.write('Prepare Versions\n');
+	process.stdout.write('Versions Prepare\n');
 	process.stdout.write('================\n');
 	process.stdout.write('\n');
 	process.stdout.write(`Platform: ${process.platform}\n`);

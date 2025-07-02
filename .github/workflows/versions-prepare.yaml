@@ -1,4 +1,4 @@
-name: Prepare Versions
+name: Versions Prepare
 
 # GHA_RELEASE_TOKEN requires
 # contents: read/write
@@ -21,7 +21,7 @@ on:
 jobs:
   # Prepare all the packages by updating their versions to the latest for production
   # or to 'next' for next updates
-  prepare-versions:
+  versions-prepare:
     runs-on: ubuntu-latest
     permissions:
       contents: write # Needed for creating/updating branches for version bumps
@@ -57,14 +57,14 @@ jobs:
       - name: Create Version Bump Branch
         run: |
           # Create a new branch based on the current branch
-          git checkout -b release/prepare-versions-${{ github.event.inputs.versionType }}
+          git checkout -b release/versions-prepare-${{ github.event.inputs.versionType }}
 
       # Update the versions
       - name: Update Versions
         id: update-versions
         run: |
           # Run the custom script to update package versions
-          node scripts/prepare-versions.mjs ${{ github.event.inputs.versionType }}
+          node scripts/versions-prepare.mjs ${{ github.event.inputs.versionType }}
 
       # Rebuild the package-lock.json to ensure it reflects the new versions
       - name: Rebuild package-lock.json
@@ -98,7 +98,7 @@ jobs:
             --title "chore: prepare versions for ${{ github.event.inputs.versionType }}" \
             --body "This PR prepares the versions of all packages for the ${{ github.event.inputs.versionType }}." \
             --base $BASE_BRANCH \
-            --head release/prepare-versions-${{ github.event.inputs.versionType }})
+            --head release/versions-prepare-${{ github.event.inputs.versionType }})
 
           # Extract PR number from URL
           PR_NUMBER=$(echo $PR_URL | grep -o '[0-9]\+$')
