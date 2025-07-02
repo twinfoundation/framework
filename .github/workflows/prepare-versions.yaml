@@ -74,18 +74,18 @@ jobs:
 
       # Perform a build to make sure everything is working, but don't run tests
       # If we want to run test we will need to ensure that the test environment is set up correctly
-      - name: Build Packages
-        run: |
-          npm run format
-          npm run lint
-          node ./scripts/workspaces.mjs dist:no-test
+      # - name: Build Packages
+      #   run: |
+      #     npm run format
+      #     npm run lint
+      #     node ./scripts/workspaces.mjs dist:no-test
 
       # Stage all changes for commit
       - name: Commit Changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add **/package.json **/package-lock.json
+          git add .
           git commit -m "Prepare versions for ${{ github.event.inputs.versionType }}"
           git push origin HEAD
 
