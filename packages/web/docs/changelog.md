@@ -1,5 +1,36 @@
 # @twin.org/web - Changelog
 
+## [0.0.1-next.69](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.68...web-v0.0.1-next.69) (2025-07-02)
+
+
+### Features
+
+* add guards arrayEndsWith and arrayStartsWith ([95d875e](https://github.com/twinfoundation/framework/commit/95d875ec8ccb4713c145fdde941d4cfedcec2ed3))
+* add kid method to Jwk ([bc9239e](https://github.com/twinfoundation/framework/commit/bc9239ed9896a053d83e00ca221e962704ebc277))
+* add set method for async caches ([ba34b55](https://github.com/twinfoundation/framework/commit/ba34b55e651ad56ab8fc59e139e4af631c19cda0))
+* add zlib/deflate mime types detection ([72c472b](https://github.com/twinfoundation/framework/commit/72c472b5a35a973e7109336f5b6cdd84dbb8bbcb))
+* ensure the alg is the correct one when generating JWK or JWS ([#136](https://github.com/twinfoundation/framework/issues/136)) ([46a5af1](https://github.com/twinfoundation/framework/commit/46a5af127192d7048068275d14f555f09add3642))
+* propagate includeStackTrace on error conversion ([098fc72](https://github.com/twinfoundation/framework/commit/098fc729939ea3127f2bdcc0ddb6754096c5f919))
+* relocate core packages from tools ([bcab8f3](https://github.com/twinfoundation/framework/commit/bcab8f3160442ea4fcaf442947462504f3d6a17d))
+* use new shared store mechanism ([#131](https://github.com/twinfoundation/framework/issues/131)) ([934385b](https://github.com/twinfoundation/framework/commit/934385b2fbaf9f5c00a505ebf9d093bd5a425f55))
+
+
+### Bug Fixes
+
+* wrap inner error within FetchError / 2 ([#134](https://github.com/twinfoundation/framework/issues/134)) ([2ddb101](https://github.com/twinfoundation/framework/commit/2ddb101c3778be4e99559e37aa036cd7101585fb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.68 to 0.0.1-next.69
+    * @twin.org/crypto bumped from 0.0.1-next.68 to 0.0.1-next.69
+    * @twin.org/nameof bumped from 0.0.1-next.68 to 0.0.1-next.69
+  * devDependencies
+    * @twin.org/nameof-transformer bumped from 0.0.1-next.68 to 0.0.1-next.69
+    * @twin.org/nameof-vitest-plugin bumped from 0.0.1-next.68 to 0.0.1-next.69
+
 ## [0.0.1-next.68](https://github.com/twinfoundation/framework/compare/web-v0.0.1-next.67...web-v0.0.1-next.68) (2025-07-02)
 
 
