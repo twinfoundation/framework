@@ -57,14 +57,6 @@ jobs:
         with:
           node-version: '20' # Use Node.js 20.x
 
-      # Create a new branch for the version update
-      - name: Create Version Update Branch
-        run: |
-          BRANCH_NAME="release/versions-prepare-${{ github.event.inputs.versionType }}-${{ github.run_number }}-${{ github.run_attempt }}"
-          git checkout -b $BRANCH_NAME
-          git push --set-upstream origin $BRANCH_NAME
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
-
       # Update the versions
       - name: Update Versions
         id: update-versions
@@ -86,13 +78,21 @@ jobs:
       #     npm run lint
       #     node ./scripts/workspaces.mjs dist:no-test
 
+      # Create a new branch for the version update
+      - name: Create Version Update Branch
+        run: |
+          BRANCH_NAME="release/versions-prepare-${{ github.event.inputs.versionType }}-${{ github.run_number }}-${{ github.run_attempt }}"
+          git checkout -b $BRANCH_NAME
+          git push --set-upstream origin $BRANCH_NAME
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          
       # Stage all changes for commit
       - name: Commit Changes
         uses: flex-development/gh-commit@1.0.0
         with:
           message: "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           token: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{ env.BRANCH_NAME }})
+          ref: ${{ env.BRANCH_NAME }}
           # author_email: "41898282+github-actions[bot]@users.noreply.github.com"
           # git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           # git push origin HEAD
