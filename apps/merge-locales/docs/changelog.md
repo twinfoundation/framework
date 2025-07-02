@@ -1,5 +1,29 @@
 # @twin.org/ts-to-openapi - Changelog
 
+## [0.0.1-next.69](https://github.com/twinfoundation/framework/compare/merge-locales-v0.0.1-next.68...merge-locales-v0.0.1-next.69) (2025-07-02)
+
+
+### Features
+
+* relocate core packages from tools ([bcab8f3](https://github.com/twinfoundation/framework/commit/bcab8f3160442ea4fcaf442947462504f3d6a17d))
+
+
+### Bug Fixes
+
+* repo urls in package.json for moved packages ([31ae463](https://github.com/twinfoundation/framework/commit/31ae463095dfa8c0e48bb5bb12316f1e8abb9a4c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/cli-core bumped from 0.0.1-next.68 to 0.0.1-next.69
+    * @twin.org/core bumped from 0.0.1-next.68 to 0.0.1-next.69
+    * @twin.org/nameof bumped from 0.0.1-next.68 to 0.0.1-next.69
+  * devDependencies
+    * @twin.org/nameof-transformer bumped from 0.0.1-next.68 to 0.0.1-next.69
+    * @twin.org/nameof-vitest-plugin bumped from 0.0.1-next.68 to 0.0.1-next.69
+
 ## [0.0.1-next.68](https://github.com/twinfoundation/framework/compare/merge-locales-v0.0.1-next.67...merge-locales-v0.0.1-next.68) (2025-07-02)
 
 
