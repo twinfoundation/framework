@@ -1,5 +1,37 @@
 # @twin.org/crypto-cli - Changelog
 
+## [0.0.1-next.70](https://github.com/twinfoundation/framework/compare/crypto-cli-v0.0.1-next.69...crypto-cli-v0.0.1-next.70) (2025-07-02)
+
+
+### Features
+
+* add guards arrayEndsWith and arrayStartsWith ([95d875e](https://github.com/twinfoundation/framework/commit/95d875ec8ccb4713c145fdde941d4cfedcec2ed3))
+* add version type ([ae50cd9](https://github.com/twinfoundation/framework/commit/ae50cd99d342ed8eeb55290a52e9fed80a2af99e))
+* relocate core packages from tools ([bcab8f3](https://github.com/twinfoundation/framework/commit/bcab8f3160442ea4fcaf442947462504f3d6a17d))
+* remove version type ([553aa55](https://github.com/twinfoundation/framework/commit/553aa55bd79b8f930155035e522af2b0f6e3d0c8))
+* use new shared store mechanism ([#131](https://github.com/twinfoundation/framework/issues/131)) ([934385b](https://github.com/twinfoundation/framework/commit/934385b2fbaf9f5c00a505ebf9d093bd5a425f55))
+
+
+### Bug Fixes
+
+* crypto CLI address output to JSON ([0398604](https://github.com/twinfoundation/framework/commit/0398604c5ad7673eddf1ee7bed7fafa94f3526f8))
+* crypto CLI address output to JSON ([3397bfb](https://github.com/twinfoundation/framework/commit/3397bfbdde6be5dcb40b490009891e14338e2af7))
+* remove bech32 from crypto-cli ([892aa5f](https://github.com/twinfoundation/framework/commit/892aa5f746a4bc806f2dada3611c03fadcfe5a7b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/cli-core bumped from 0.0.1-next.69 to 0.0.1-next.70
+    * @twin.org/core bumped from 0.0.1-next.69 to 0.0.1-next.70
+    * @twin.org/crypto bumped from 0.0.1-next.69 to 0.0.1-next.70
+    * @twin.org/nameof bumped from 0.0.1-next.69 to 0.0.1-next.70
+  * devDependencies
+    * @twin.org/merge-locales bumped from 0.0.1-next.69 to 0.0.1-next.70
+    * @twin.org/nameof-transformer bumped from 0.0.1-next.69 to 0.0.1-next.70
+    * @twin.org/nameof-vitest-plugin bumped from 0.0.1-next.69 to 0.0.1-next.70
+
 ## [0.0.1-next.69](https://github.com/twinfoundation/framework/compare/crypto-cli-v0.0.1-next.68...crypto-cli-v0.0.1-next.69) (2025-07-02)
 
 

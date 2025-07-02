@@ -1,5 +1,24 @@
 # @twin.org/nameof-vitest-plugin - Changelog
 
+## [0.0.1-next.70](https://github.com/twinfoundation/framework/compare/nameof-vitest-plugin-v0.0.1-next.69...nameof-vitest-plugin-v0.0.1-next.70) (2025-07-02)
+
+
+### Features
+
+* relocate core packages from tools ([bcab8f3](https://github.com/twinfoundation/framework/commit/bcab8f3160442ea4fcaf442947462504f3d6a17d))
+
+
+### Bug Fixes
+
+* repo urls in package.json for moved packages ([31ae463](https://github.com/twinfoundation/framework/commit/31ae463095dfa8c0e48bb5bb12316f1e8abb9a4c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/nameof-transformer bumped from 0.0.1-next.69 to 0.0.1-next.70
+
 ## [0.0.1-next.69](https://github.com/twinfoundation/framework/compare/nameof-vitest-plugin-v0.0.1-next.68...nameof-vitest-plugin-v0.0.1-next.69) (2025-07-02)
 
 

@@ -1,5 +1,26 @@
 # @twin.org/qr - Changelog
 
+## [0.0.1-next.70](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.69...qr-v0.0.1-next.70) (2025-07-02)
+
+
+### Features
+
+* add guards arrayEndsWith and arrayStartsWith ([95d875e](https://github.com/twinfoundation/framework/commit/95d875ec8ccb4713c145fdde941d4cfedcec2ed3))
+* relocate core packages from tools ([bcab8f3](https://github.com/twinfoundation/framework/commit/bcab8f3160442ea4fcaf442947462504f3d6a17d))
+* use new shared store mechanism ([#131](https://github.com/twinfoundation/framework/issues/131)) ([934385b](https://github.com/twinfoundation/framework/commit/934385b2fbaf9f5c00a505ebf9d093bd5a425f55))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.69 to 0.0.1-next.70
+    * @twin.org/image bumped from 0.0.1-next.69 to 0.0.1-next.70
+    * @twin.org/nameof bumped from 0.0.1-next.69 to 0.0.1-next.70
+  * devDependencies
+    * @twin.org/nameof-transformer bumped from 0.0.1-next.69 to 0.0.1-next.70
+    * @twin.org/nameof-vitest-plugin bumped from 0.0.1-next.69 to 0.0.1-next.70
+
 ## [0.0.1-next.69](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.68...qr-v0.0.1-next.69) (2025-07-02)
 
 
