@@ -57,6 +57,8 @@ async function run() {
  * @returns The updated package.json.
  */
 async function processPackage(isProduction, workspacePackageJson, versionCache) {
+	const originalVersion = workspacePackageJson.version;
+
 	const releaseParts = workspacePackageJson.version.split('-');
 
 	if (isProduction) {
@@ -70,25 +72,27 @@ async function processPackage(isProduction, workspacePackageJson, versionCache) 
 		workspacePackageJson.version = `${versionParts[0]}.${versionParts[1]}.${nextPatch}-next.0`;
 	}
 
+	versionCache[workspacePackageJson.name] = workspacePackageJson.version;
+
 	// Convert all `next` dependencies to the current version for prod.
 	// Or the fixed version back to `next` for next.
 	await processDependencies(
 		isProduction,
 		workspacePackageJson.dependencies,
 		versionCache,
-		workspacePackageJson.version
+		originalVersion
 	);
 	await processDependencies(
 		isProduction,
 		workspacePackageJson.devDependencies,
 		versionCache,
-		workspacePackageJson.version
+		originalVersion
 	);
 	await processDependencies(
 		isProduction,
 		workspacePackageJson.peerDependencies,
 		versionCache,
-		workspacePackageJson.version
+		originalVersion
 	);
 
 	return workspacePackageJson;
@@ -107,7 +111,7 @@ async function processDependencies(isProduction, dependencies, versionCache, pac
 	}
 	for (const [name, version] of Object.entries(dependencies)) {
 		if (name.startsWith('@twin.org')) {
-			if (isProduction && version === 'next') {
+			if (isProduction && (version === 'next' || version === packageVersion)) {
 				if (!versionCache[name]) {
 					process.stdout.write(`\tResolving Version for: ${name}\n`);
 					versionCache[name] = await execAsync(`npm view "${name}" version`);
