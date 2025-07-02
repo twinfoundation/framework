@@ -4,6 +4,7 @@ import { nameof } from "@twin.org/nameof";
 import { GeneralError } from "../errors/generalError";
 import { Guards } from "../utils/guards";
 import { Is } from "../utils/is";
+import { SharedStore } from "../utils/sharedStore";
 
 /**
  * Factory for creating implementation of generic types.
@@ -14,12 +15,6 @@ export class Factory<T> {
 	 * @internal
 	 */
 	private static readonly _CLASS_NAME: string = nameof<Factory<unknown>>();
-
-	/**
-	 * Store all the created factories.
-	 * @internal
-	 */
-	private static readonly _factories: { [typeName: string]: Factory<unknown> } = {};
 
 	/**
 	 * Type name for the instances.
@@ -94,10 +89,12 @@ export class Factory<T> {
 		autoInstance: boolean = false,
 		matcher?: (names: string[], name: string) => string | undefined
 	): Factory<U> {
-		if (Is.undefined(Factory._factories[typeName])) {
-			Factory._factories[typeName] = new Factory<U>(typeName, autoInstance, matcher);
+		const factories = Factory.getFactories();
+
+		if (Is.undefined(factories[typeName])) {
+			factories[typeName] = new Factory<U>(typeName, autoInstance, matcher);
 		}
-		return Factory._factories[typeName] as Factory<U>;
+		return factories[typeName] as Factory<U>;
 	}
 
 	/**
@@ -105,15 +102,26 @@ export class Factory<T> {
 	 * @returns All the factories.
 	 */
 	public static getFactories(): { [typeName: string]: Factory<unknown> } {
-		return Factory._factories;
+		let factories = SharedStore.get<{
+			[typeName: string]: Factory<unknown>;
+		}>("factories");
+
+		if (Is.undefined(factories)) {
+			factories = {};
+			SharedStore.set("factories", factories);
+		}
+
+		return factories;
 	}
 
 	/**
 	 * Reset all the factories, which removes any created instances, but not the registrations.
 	 */
 	public static resetFactories(): void {
-		for (const typeName in Factory._factories) {
-			Factory._factories[typeName].reset();
+		const factories = Factory.getFactories();
+
+		for (const typeName in factories) {
+			factories[typeName].reset();
 		}
 	}
 
@@ -121,8 +129,10 @@ export class Factory<T> {
 	 * Clear all the factories, which removes anything registered with the factories.
 	 */
 	public static clearFactories(): void {
-		for (const typeName in Factory._factories) {
-			Factory._factories[typeName].clear();
+		const factories = Factory.getFactories();
+
+		for (const typeName in factories) {
+			factories[typeName].clear();
 		}
 	}
 

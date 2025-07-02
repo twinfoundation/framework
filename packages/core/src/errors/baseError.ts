@@ -70,7 +70,9 @@ export class BaseError extends Error implements IError {
 		let inner;
 		let stack;
 
-		if (Is.object<BaseError>(err)) {
+		if (Is.object<{ error: string }>(err) && Is.stringValue(err.error)) {
+			message = err.error;
+		} else if (Is.object<BaseError>(err)) {
 			if (Is.stringValue(err.name)) {
 				name = err.name;
 			}
@@ -89,8 +91,6 @@ export class BaseError extends Error implements IError {
 			if (Is.notEmpty(err.stack)) {
 				stack = err.stack;
 			}
-		} else if (Is.object<{ error: string }>(err) && Is.stringValue(err.error)) {
-			message = err.error;
 		} else if (Is.stringValue(err)) {
 			message = err;
 		} else {
@@ -112,7 +112,7 @@ export class BaseError extends Error implements IError {
 	public static flatten(err: unknown): IError[] {
 		const flattened: IError[] = [];
 
-		let e: IError | undefined = BaseError.fromError(err).toJsonObject();
+		let e: IError | undefined = BaseError.fromError(err).toJsonObject(true);
 
 		while (e) {
 			const inner: IError | undefined = e.inner;
@@ -227,9 +227,10 @@ export class BaseError extends Error implements IError {
 
 	/**
 	 * Serialize the error to the error model.
+	 * @param includeStackTrace Whether to include the error stack in the model, defaults to false.
 	 * @returns The error model.
 	 */
-	public toJsonObject(): IError {
+	public toJsonObject(includeStackTrace?: boolean): IError {
 		const err: Partial<IError> = {};
 		if (Is.stringValue(this.name)) {
 			err.name = this.name;
@@ -243,11 +244,11 @@ export class BaseError extends Error implements IError {
 		if (Is.object(this.properties)) {
 			err.properties = this.properties;
 		}
-		if (Is.stringValue(this.stack)) {
+		if ((includeStackTrace ?? false) && Is.stringValue(this.stack)) {
 			err.stack = this.stack;
 		}
 		if (Is.notEmpty(this.inner)) {
-			err.inner = BaseError.fromError(this.inner).toJsonObject();
+			err.inner = BaseError.fromError(this.inner).toJsonObject(includeStackTrace);
 		}
 		return err as IError;
 	}

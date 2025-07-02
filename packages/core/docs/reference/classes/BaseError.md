@@ -25,9 +25,9 @@ Class to handle errors.
 
 ## Constructors
 
-### new BaseError()
+### Constructor
 
-> **new BaseError**(`name`, `source`, `message`, `properties`?, `inner`?): [`BaseError`](BaseError.md)
+> **new BaseError**(`name`, `source`, `message`, `properties?`, `inner?`): `BaseError`
 
 Create a new instance of BaseError.
 
@@ -63,7 +63,7 @@ The inner error if we have wrapped another error.
 
 #### Returns
 
-[`BaseError`](BaseError.md)
+`BaseError`
 
 #### Overrides
 
@@ -113,7 +113,7 @@ The inner error if there was one.
 
 ### fromError()
 
-> `static` **fromError**(`err`): [`BaseError`](BaseError.md)
+> `static` **fromError**(`err`): `BaseError`
 
 Construct an error from an existing one.
 
@@ -127,7 +127,7 @@ The existing error.
 
 #### Returns
 
-[`BaseError`](BaseError.md)
+`BaseError`
 
 The new instance.
 
@@ -375,9 +375,17 @@ True if the error has the name.
 
 ### toJsonObject()
 
-> **toJsonObject**(): [`IError`](../interfaces/IError.md)
+> **toJsonObject**(`includeStackTrace?`): [`IError`](../interfaces/IError.md)
 
 Serialize the error to the error model.
+
+#### Parameters
+
+##### includeStackTrace?
+
+`boolean`
+
+Whether to include the error stack in the model, defaults to false.
 
 #### Returns
 

@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/cli-core",
-	"version": "0.0.1-next.51",
+	"version": "0.0.1",
 	"description": "Core classes for building a CLI",
 	"repository": {
 		"type": "git",
@@ -31,27 +31,27 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.51",
-		"@twin.org/crypto": "0.0.1-next.51",
-		"@twin.org/nameof": "next",
+		"@twin.org/core": "^0.0.1",
+		"@twin.org/crypto": "^0.0.1",
+		"@twin.org/nameof": "^0.0.1",
 		"chalk": "5.4.1",
-		"commander": "13.1.0",
-		"dotenv": "16.4.7"
+		"commander": "14.0.0",
+		"dotenv": "16.5.0"
 	},
 	"devDependencies": {
-		"@twin.org/nameof-transformer": "next",
-		"@twin.org/nameof-vitest-plugin": "next",
-		"@types/node": "22.13.9",
-		"@vitest/coverage-v8": "3.0.8",
+		"@twin.org/nameof-transformer": "^0.0.1",
+		"@twin.org/nameof-vitest-plugin": "^0.0.1",
+		"@types/node": "24.0.0",
+		"@vitest/coverage-v8": "3.2.3",
 		"copyfiles": "2.4.1",
 		"rimraf": "6.0.1",
-		"rollup": "4.34.9",
+		"rollup": "4.42.0",
 		"ts-patch": "3.3.0",
-		"nodemon": "3.1.9",
-		"typedoc": "0.27.9",
-		"typedoc-plugin-markdown": "4.4.2",
-		"typescript": "5.8.2",
-		"vitest": "3.0.8"
+		"nodemon": "3.1.10",
+		"typedoc": "0.28.5",
+		"typedoc-plugin-markdown": "4.6.4",
+		"typescript": "5.8.3",
+		"vitest": "3.2.3"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",

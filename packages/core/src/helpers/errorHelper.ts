@@ -14,10 +14,23 @@ export class ErrorHelper {
 	/**
 	 * Format Errors and returns just their messages.
 	 * @param error The error to format.
+	 * @param includeDetails Whether to include error details, defaults to false.
 	 * @returns The error formatted including any inner errors.
 	 */
-	public static formatErrors(error: unknown): string[] {
-		return ErrorHelper.localizeErrors(error).map(e => e.message);
+	public static formatErrors(error: unknown, includeDetails?: boolean): string[] {
+		const localizedErrors = ErrorHelper.localizeErrors(error);
+		if (includeDetails ?? false) {
+			const output: string[] = [];
+			for (const err of localizedErrors) {
+				let detailedError = err.message;
+				if (Is.stringValue(err.stack)) {
+					detailedError += `\n${err.stack}`;
+				}
+				output.push(detailedError);
+			}
+			return output;
+		}
+		return localizedErrors.map(e => e.message);
 	}
 
 	/**

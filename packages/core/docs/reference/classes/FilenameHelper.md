@@ -4,13 +4,13 @@ Class to help with filenames.
 
 ## Constructors
 
-### new FilenameHelper()
+### Constructor
 
-> **new FilenameHelper**(): [`FilenameHelper`](FilenameHelper.md)
+> **new FilenameHelper**(): `FilenameHelper`
 
 #### Returns
 
-[`FilenameHelper`](FilenameHelper.md)
+`FilenameHelper`
 
 ## Methods
 

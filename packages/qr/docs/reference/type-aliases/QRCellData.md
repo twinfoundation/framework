@@ -1,5 +1,5 @@
 # Type Alias: QRCellData
 
-> **QRCellData**: (`boolean` \| `null`)[][]
+> **QRCellData** = (`boolean` \| `null`)[][]
 
 Definition of type for QR Code Cell data.

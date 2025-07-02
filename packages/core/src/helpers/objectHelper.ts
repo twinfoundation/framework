@@ -164,6 +164,8 @@ export class ObjectHelper {
 				if (arrayIndex >= 0) {
 					if (Is.array(pathValue)) {
 						pathValue[arrayIndex] = value;
+					} else if (Is.object(pathValue)) {
+						pathValue[arrayIndex] = value;
 					} else {
 						throw new GeneralError(ObjectHelper._CLASS_NAME, "cannotSetArrayIndex", {
 							property,

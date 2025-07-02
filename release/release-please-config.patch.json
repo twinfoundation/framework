@@ -7,70 +7,70 @@
 	"release-type": "node",
 	"versioning": "always-bump-patch",
 	"packages": {
+		"packages/nameof-transformer": {
+			"package-name": "nameof-transformer",
+			"changelog-path": "docs/changelog.md",
+			"extra-files": ["src/index.ts"]
+		},
+		"packages/nameof-vitest-plugin": {
+			"package-name": "nameof-vitest-plugin",
+			"changelog-path": "docs/changelog.md",
+			"extra-files": ["src/index.ts"]
+		},
+		"packages/nameof": {
+			"package-name": "nameof",
+			"changelog-path": "docs/changelog.md",
+			"extra-files": ["src/index.ts"]
+		},
 		"packages/core": {
 			"package-name": "core",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/index.ts"
-			]
+			"extra-files": ["src/index.ts"]
 		},
 		"packages/entity": {
 			"package-name": "entity",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/index.ts"
-			]
+			"extra-files": ["src/index.ts"]
 		},
 		"packages/crypto": {
 			"package-name": "crypto",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/index.ts"
-			]
+			"extra-files": ["src/index.ts"]
 		},
 		"packages/image": {
 			"package-name": "image",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/index.ts"
-			]
+			"extra-files": ["src/index.ts"]
 		},
 		"packages/qr": {
 			"package-name": "qr",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/index.ts"
-			]
+			"extra-files": ["src/index.ts"]
 		},
 		"packages/web": {
 			"package-name": "web",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/index.ts"
-			]
+			"extra-files": ["src/index.ts"]
 		},
 		"packages/modules": {
 			"package-name": "modules",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/index.ts"
-			]
+			"extra-files": ["src/index.ts"]
 		},
 		"packages/cli-core": {
 			"package-name": "cli-core",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/index.ts"
-			]
+			"extra-files": ["src/index.ts"]
+		},
+		"apps/merge-locales": {
+			"package-name": "merge-locales",
+			"changelog-path": "docs/changelog.md",
+			"extra-files": ["src/cli.ts", "tests/cli.spec.ts", "src/index.ts"]
 		},
 		"apps/crypto-cli": {
 			"package-name": "crypto-cli",
 			"changelog-path": "docs/changelog.md",
-			"extra-files": [
-				"src/cli.ts",
-				"tests/cli.spec.ts",
-				"src/index.ts"
-			]
+			"extra-files": ["src/cli.ts", "tests/cli.spec.ts", "src/index.ts"]
 		}
 	},
 	"plugins": [
@@ -79,6 +79,9 @@
 			"type": "linked-versions",
 			"groupName": "repo",
 			"components": [
+				"nameof-transformer",
+				"nameof-vitest-plugin",
+				"nameof",
 				"core",
 				"entity",
 				"crypto",
@@ -87,6 +90,7 @@
 				"web",
 				"modules",
 				"cli-core",
+				"merge-locales",
 				"crypto-cli"
 			]
 		}

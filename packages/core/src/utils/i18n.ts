@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { IntlMessageFormat } from "intl-messageformat";
 import { Is } from "./is";
+import { SharedStore } from "./sharedStore";
+import type { II18nShared } from "../models/II18nShared";
 import type { ILocaleDictionary } from "../models/ILocaleDictionary";
 
 /**
@@ -14,44 +16,16 @@ export class I18n {
 	public static DEFAULT_LOCALE: string = "en";
 
 	/**
-	 * Dictionaries for lookups.
-	 * @internal
-	 */
-	private static _localeDictionaries: {
-		[locale: string]: { [key: string]: string };
-	} = {};
-
-	/**
-	 * The current locale.
-	 * @internal
-	 */
-	private static _currentLocale: string = I18n.DEFAULT_LOCALE;
-
-	/**
-	 * Change handler for the locale being updated.
-	 * @internal
-	 */
-	private static readonly _localeChangedHandlers: {
-		[id: string]: (locale: string) => void;
-	} = {};
-
-	/**
-	 * Change handler for the dictionaries being updated.
-	 * @internal
-	 */
-	private static readonly _dictionaryChangedHandlers: {
-		[id: string]: (locale: string) => void;
-	} = {};
-
-	/**
 	 * Set the locale.
 	 * @param locale The new locale.
 	 */
 	public static setLocale(locale: string): void {
-		I18n._currentLocale = locale;
+		const i18nShared = I18n.getI18nShared();
 
-		for (const callback in I18n._localeChangedHandlers) {
-			I18n._localeChangedHandlers[callback](I18n._currentLocale);
+		i18nShared.currentLocale = locale;
+
+		for (const callback in i18nShared.localeChangedHandlers) {
+			i18nShared.localeChangedHandlers[callback](i18nShared.currentLocale);
 		}
 	}
 
@@ -60,7 +34,8 @@ export class I18n {
 	 * @returns The current locale.
 	 */
 	public static getLocale(): string {
-		return I18n._currentLocale;
+		const i18nShared = I18n.getI18nShared();
+		return i18nShared.currentLocale;
 	}
 
 	/**
@@ -69,12 +44,14 @@ export class I18n {
 	 * @param dictionary The dictionary to add.
 	 */
 	public static addDictionary(locale: string, dictionary: ILocaleDictionary): void {
+		const i18nShared = I18n.getI18nShared();
+
 		const mergedKeys: { [key: string]: string } = {};
 		I18n.flattenTranslationKeys(dictionary, "", mergedKeys);
-		I18n._localeDictionaries[locale] = mergedKeys;
+		i18nShared.localeDictionaries[locale] = mergedKeys;
 
-		for (const callback in I18n._dictionaryChangedHandlers) {
-			I18n._dictionaryChangedHandlers[callback](I18n._currentLocale);
+		for (const callback in i18nShared.dictionaryChangedHandlers) {
+			i18nShared.dictionaryChangedHandlers[callback](i18nShared.currentLocale);
 		}
 	}
 
@@ -84,7 +61,8 @@ export class I18n {
 	 * @returns The dictionary of undefined if it does not exist.
 	 */
 	public static getDictionary(locale: string): { [key: string]: string } | undefined {
-		return I18n._localeDictionaries[locale];
+		const i18nShared = I18n.getI18nShared();
+		return i18nShared.localeDictionaries[locale];
 	}
 
 	/**
@@ -94,7 +72,8 @@ export class I18n {
 	public static getAllDictionaries(): {
 		[locale: string]: { [key: string]: string };
 	} {
-		return I18n._localeDictionaries;
+		const i18nShared = I18n.getI18nShared();
+		return i18nShared.localeDictionaries;
 	}
 
 	/**
@@ -103,7 +82,8 @@ export class I18n {
 	 * @param handler The handler to add.
 	 */
 	public static addLocaleHandler(id: string, handler: (locale: string) => void): void {
-		I18n._localeChangedHandlers[id] = handler;
+		const i18nShared = I18n.getI18nShared();
+		i18nShared.localeChangedHandlers[id] = handler;
 	}
 
 	/**
@@ -111,7 +91,8 @@ export class I18n {
 	 * @param id The id of the handler.
 	 */
 	public static removeLocaleHandler(id: string): void {
-		delete I18n._localeChangedHandlers[id];
+		const i18nShared = I18n.getI18nShared();
+		delete i18nShared.localeChangedHandlers[id];
 	}
 
 	/**
@@ -120,7 +101,8 @@ export class I18n {
 	 * @param handler The handler to add.
 	 */
 	public static addDictionaryHandler(id: string, handler: (locale: string) => void): void {
-		I18n._dictionaryChangedHandlers[id] = handler;
+		const i18nShared = I18n.getI18nShared();
+		i18nShared.dictionaryChangedHandlers[id] = handler;
 	}
 
 	/**
@@ -128,7 +110,8 @@ export class I18n {
 	 * @param id The id of the handler.
 	 */
 	public static removeDictionaryHandler(id: string): void {
-		delete I18n._dictionaryChangedHandlers[id];
+		const i18nShared = I18n.getI18nShared();
+		delete i18nShared.dictionaryChangedHandlers[id];
 	}
 
 	/**
@@ -143,25 +126,29 @@ export class I18n {
 		values?: { [key: string]: unknown },
 		overrideLocale?: string
 	): string {
-		let cl = overrideLocale ?? I18n._currentLocale;
+		const i18nShared = I18n.getI18nShared();
+
+		let cl = overrideLocale ?? i18nShared.currentLocale;
 		if (cl.startsWith("debug-")) {
 			cl = I18n.DEFAULT_LOCALE;
 		}
 
-		if (!I18n._localeDictionaries[cl]) {
+		if (!i18nShared.localeDictionaries[cl]) {
 			return `!!Missing ${cl}`;
 		}
-		if (!I18n._localeDictionaries[cl][key]) {
+		if (!i18nShared.localeDictionaries[cl][key]) {
 			return `!!Missing ${cl}.${key}`;
 		}
 
-		if (I18n._currentLocale === "debug-k") {
+		if (i18nShared.currentLocale === "debug-k") {
 			return key;
 		}
 
-		let ret = new IntlMessageFormat(I18n._localeDictionaries[cl][key], cl).format(values) as string;
+		let ret = new IntlMessageFormat(i18nShared.localeDictionaries[cl][key], cl).format(
+			values
+		) as string;
 
-		if (I18n._currentLocale === "debug-x") {
+		if (i18nShared.currentLocale === "debug-x") {
 			ret = ret.replace(/[a-z]/g, "x").replace(/[A-Z]/g, "x").replace(/\d/g, "n");
 		}
 
@@ -174,7 +161,8 @@ export class I18n {
 	 * @returns True if the key exists.
 	 */
 	public static hasMessage(key: string): boolean {
-		return Is.string(I18n._localeDictionaries[I18n._currentLocale]?.[key]);
+		const i18nShared = I18n.getI18nShared();
+		return Is.string(i18nShared.localeDictionaries[i18nShared.currentLocale]?.[key]);
 	}
 
 	/**
@@ -198,5 +186,26 @@ export class I18n {
 				I18n.flattenTranslationKeys(val, mergedPath, mergedKeys);
 			}
 		}
+	}
+
+	/**
+	 * Get the I18n shared data.
+	 * @returns The I18n shared data.
+	 * @internal
+	 */
+	private static getI18nShared(): II18nShared {
+		let i18nShared = SharedStore.get<II18nShared>("i18n");
+
+		if (Is.undefined(i18nShared)) {
+			i18nShared = {
+				localeDictionaries: {},
+				currentLocale: I18n.DEFAULT_LOCALE,
+				localeChangedHandlers: {},
+				dictionaryChangedHandlers: {}
+			};
+			SharedStore.set<II18nShared>("i18n", i18nShared);
+		}
+
+		return i18nShared;
 	}
 }

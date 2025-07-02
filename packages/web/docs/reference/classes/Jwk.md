@@ -4,19 +4,19 @@ Class to handle JSON Web Keys.
 
 ## Constructors
 
-### new Jwk()
+### Constructor
 
-> **new Jwk**(): [`Jwk`](Jwk.md)
+> **new Jwk**(): `Jwk`
 
 #### Returns
 
-[`Jwk`](Jwk.md)
+`Jwk`
 
 ## Methods
 
 ### toCryptoKey()
 
-> `static` **toCryptoKey**(`jwk`): `Promise`\<[`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)\>
+> `static` **toCryptoKey**(`jwk`, `alg?`): `Promise`\<[`JwkCryptoKey`](../type-aliases/JwkCryptoKey.md)\>
 
 Convert the JWK to a crypto key.
 
@@ -27,6 +27,12 @@ Convert the JWK to a crypto key.
 [`IJwk`](../interfaces/IJwk.md)
 
 The JWK to convert.
+
+##### alg?
+
+`string`
+
+The alg to be used, defaults to jwk.alg.
 
 #### Returns
 
@@ -82,7 +88,7 @@ The crypto key.
 
 ### toRaw()
 
-> `static` **toRaw**(`jwk`): `Promise`\<\{ `publicKey`: `Uint8Array`\<`ArrayBufferLike`\>; `privateKey`: `Uint8Array`\<`ArrayBufferLike`\>; \}\>
+> `static` **toRaw**(`jwk`): `Promise`\<\{ `publicKey?`: `Uint8Array`\<`ArrayBufferLike`\>; `privateKey?`: `Uint8Array`\<`ArrayBufferLike`\>; \}\>
 
 Convert the JWK to raw keys.
 
@@ -96,6 +102,28 @@ The JWK to convert to raw.
 
 #### Returns
 
-`Promise`\<\{ `publicKey`: `Uint8Array`\<`ArrayBufferLike`\>; `privateKey`: `Uint8Array`\<`ArrayBufferLike`\>; \}\>
+`Promise`\<\{ `publicKey?`: `Uint8Array`\<`ArrayBufferLike`\>; `privateKey?`: `Uint8Array`\<`ArrayBufferLike`\>; \}\>
 
 The crypto key.
+
+***
+
+### generateKid()
+
+> `static` **generateKid**(`jwk`): `Promise`\<`string`\>
+
+Generate a KID for the JWK.
+
+#### Parameters
+
+##### jwk
+
+[`IJwk`](../interfaces/IJwk.md)
+
+The JWK to generate a KID for.
+
+#### Returns
+
+`Promise`\<`string`\>
+
+The KID.

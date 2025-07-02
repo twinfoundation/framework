@@ -4,13 +4,13 @@ Class to handle guard operations for parameters.
 
 ## Constructors
 
-### new Guards()
+### Constructor
 
-> **new Guards**(): [`Guards`](Guards.md)
+> **new Guards**(): `Guards`
 
 #### Returns
 
-[`Guards`](Guards.md)
+`Guards`
 
 ## Methods
 
@@ -616,7 +616,9 @@ Is the property an object.
 
 #### Type Parameters
 
-• **T** = \{\}
+##### T
+
+`T` = \{[`id`: `string`]: `unknown`; \}
 
 #### Parameters
 
@@ -656,7 +658,9 @@ Is the property is an object with at least one property.
 
 #### Type Parameters
 
-• **T** = \{\}
+##### T
+
+`T` = \{[`id`: `string`]: `unknown`; \}
 
 #### Parameters
 
@@ -696,7 +700,9 @@ Is the property is an array.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -736,7 +742,9 @@ Is the property is an array with at least one item.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -776,7 +784,9 @@ Is the property one of a list of items.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -807,6 +817,102 @@ The options the value must be one of.
 #### Returns
 
 `asserts value is T`
+
+#### Throws
+
+GuardError If the value does not match the assertion.
+
+***
+
+### arrayStartsWith()
+
+> `static` **arrayStartsWith**\<`T`\>(`source`, `property`, `value`, `startValues`): `asserts value is T[]`
+
+Does the array start with the specified data.
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+#### Parameters
+
+##### source
+
+`string`
+
+The source of the error.
+
+##### property
+
+`string`
+
+The name of the property.
+
+##### value
+
+`unknown`
+
+The value to test.
+
+##### startValues
+
+[`ObjectOrArray`](../type-aliases/ObjectOrArray.md)\<`T`\>
+
+The values that must start the array.
+
+#### Returns
+
+`asserts value is T[]`
+
+#### Throws
+
+GuardError If the value does not match the assertion.
+
+***
+
+### arrayEndsWith()
+
+> `static` **arrayEndsWith**\<`T`\>(`source`, `property`, `value`, `endValues`): `asserts value is T[]`
+
+Does the array end with the specified data.
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+#### Parameters
+
+##### source
+
+`string`
+
+The source of the error.
+
+##### property
+
+`string`
+
+The name of the property.
+
+##### value
+
+`unknown`
+
+The value to test.
+
+##### endValues
+
+[`ObjectOrArray`](../type-aliases/ObjectOrArray.md)\<`T`\>
+
+The values that must end the array.
+
+#### Returns
+
+`asserts value is T[]`
 
 #### Throws
 

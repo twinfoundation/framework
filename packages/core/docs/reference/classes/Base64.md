@@ -5,13 +5,13 @@ Sourced from https://github.com/beatgammit/base64-js.
 
 ## Constructors
 
-### new Base64()
+### Constructor
 
-> **new Base64**(): [`Base64`](Base64.md)
+> **new Base64**(): `Base64`
 
 #### Returns
 
-[`Base64`](Base64.md)
+`Base64`
 
 ## Methods
 

@@ -4,13 +4,13 @@ Class to check types of objects.
 
 ## Constructors
 
-### new Is()
+### Constructor
 
-> **new Is**(): [`Is`](Is.md)
+> **new Is**(): `Is`
 
 #### Returns
 
-[`Is`](Is.md)
+`Is`
 
 ## Methods
 
@@ -546,7 +546,9 @@ Is the value an object.
 
 #### Type Parameters
 
-• **T** = \{\}
+##### T
+
+`T` = \{[`id`: `string`]: `unknown`; \}
 
 #### Parameters
 
@@ -572,7 +574,9 @@ Is the value an object with at least one property.
 
 #### Type Parameters
 
-• **T** = \{\}
+##### T
+
+`T` = \{[`id`: `string`]: `unknown`; \}
 
 #### Parameters
 
@@ -598,7 +602,9 @@ Is the value an array.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -624,7 +630,9 @@ Is the value an array with at least one element.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -650,7 +658,9 @@ Is the value an array with at least one element.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -698,7 +708,7 @@ True if the value is a Uint8Array.
 
 ### typedArray()
 
-> `static` **typedArray**(`value`): value is Int8Array\<ArrayBufferLike\> \| Uint8Array\<ArrayBufferLike\> \| Int16Array\<ArrayBufferLike\> \| Uint16Array\<ArrayBufferLike\> \| Int32Array\<ArrayBufferLike\> \| Uint32Array\<ArrayBufferLike\> \| Float32Array\<ArrayBufferLike\> \| Float64Array\<ArrayBufferLike\>
+> `static` **typedArray**(`value`): value is Uint8Array\<ArrayBufferLike\> \| Int8Array\<ArrayBufferLike\> \| Uint16Array\<ArrayBufferLike\> \| Int16Array\<ArrayBufferLike\> \| Uint32Array\<ArrayBufferLike\> \| Int32Array\<ArrayBufferLike\> \| Float32Array\<ArrayBufferLike\> \| Float64Array\<ArrayBufferLike\>
 
 Is the value a TypedArray.
 
@@ -712,7 +722,7 @@ The value to test.
 
 #### Returns
 
-value is Int8Array\<ArrayBufferLike\> \| Uint8Array\<ArrayBufferLike\> \| Int16Array\<ArrayBufferLike\> \| Uint16Array\<ArrayBufferLike\> \| Int32Array\<ArrayBufferLike\> \| Uint32Array\<ArrayBufferLike\> \| Float32Array\<ArrayBufferLike\> \| Float64Array\<ArrayBufferLike\>
+value is Uint8Array\<ArrayBufferLike\> \| Int8Array\<ArrayBufferLike\> \| Uint16Array\<ArrayBufferLike\> \| Int16Array\<ArrayBufferLike\> \| Uint32Array\<ArrayBufferLike\> \| Int32Array\<ArrayBufferLike\> \| Float32Array\<ArrayBufferLike\> \| Float64Array\<ArrayBufferLike\>
 
 True if the value is a TypedArray.
 
@@ -770,7 +780,9 @@ Is the value a promise.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 

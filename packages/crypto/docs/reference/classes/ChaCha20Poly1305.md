@@ -4,9 +4,9 @@ Implementation of the ChaCha20Poly1305 cipher.
 
 ## Constructors
 
-### new ChaCha20Poly1305()
+### Constructor
 
-> **new ChaCha20Poly1305**(`key`, `nonce`, `aad`?): [`ChaCha20Poly1305`](ChaCha20Poly1305.md)
+> **new ChaCha20Poly1305**(`key`, `nonce`, `aad?`): `ChaCha20Poly1305`
 
 Create a new instance of ChaCha20Poly1305.
 
@@ -32,7 +32,7 @@ The additional authenticated data.
 
 #### Returns
 
-[`ChaCha20Poly1305`](ChaCha20Poly1305.md)
+`ChaCha20Poly1305`
 
 ## Methods
 

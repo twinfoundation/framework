@@ -8,9 +8,9 @@ Class to handle errors which are triggered by data not being found.
 
 ## Constructors
 
-### new NotFoundError()
+### Constructor
 
-> **new NotFoundError**(`source`, `message`, `notFoundId`?, `inner`?): [`NotFoundError`](NotFoundError.md)
+> **new NotFoundError**(`source`, `message`, `notFoundId?`, `inner?`): `NotFoundError`
 
 Create a new instance of NotFoundError.
 
@@ -42,11 +42,11 @@ The inner error if we have wrapped another error.
 
 #### Returns
 
-[`NotFoundError`](NotFoundError.md)
+`NotFoundError`
 
 #### Overrides
 
-[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructors)
+[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructor)
 
 ## Properties
 
@@ -58,7 +58,7 @@ The source of the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`source`](BaseError.md#source-1)
+[`BaseError`](BaseError.md).[`source`](BaseError.md#source)
 
 ***
 
@@ -74,7 +74,7 @@ Any additional information for the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties-1)
+[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties)
 
 ***
 
@@ -86,7 +86,7 @@ The inner error if there was one.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner-1)
+[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner)
 
 ***
 
@@ -402,9 +402,17 @@ True if the error has the name.
 
 ### toJsonObject()
 
-> **toJsonObject**(): [`IError`](../interfaces/IError.md)
+> **toJsonObject**(`includeStackTrace?`): [`IError`](../interfaces/IError.md)
 
 Serialize the error to the error model.
+
+#### Parameters
+
+##### includeStackTrace?
+
+`boolean`
+
+Whether to include the error stack in the model, defaults to false.
 
 #### Returns
 

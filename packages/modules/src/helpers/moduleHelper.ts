@@ -125,43 +125,49 @@ export class ModuleHelper {
 	): Promise<T> {
 		return new Promise((resolve, reject) => {
 			const worker = new Worker(
-				`
-	    const { workerData, parentPort } = require('worker_threads');
+				`(async () => {
+	try {
+		const { workerData, parentPort } = await import('node:worker_threads');
 
-			function rejectError(type, innerError) {
-				parentPort.postMessage({ errorType: type, innerError });
+		function rejectError(type, innerError) {
+			parentPort.postMessage({ errorType: type, innerError });
+		}
+
+		async function executeMethod(method) {
+			try {
+				const result = await method(...(args ?? []));
+
+				parentPort.postMessage({ result });
+			} catch (err) {
+				rejectError('resultError', err);
 			}
+		}
 
-			function resolveResult(result) {
-				Promise.resolve(result).then(res => parentPort.postMessage({ result: res }));
+		const { module, method, args } = workerData;
+
+		const moduleInstance = await import(module);
+		const methodParts = method.split('.');
+		const moduleEntry = moduleInstance[methodParts[0]];
+
+		if (moduleEntry === undefined) {
+			rejectError('entryNotFound');
+		} else if (methodParts.length === 2) {
+			const moduleMethod = moduleEntry[methodParts[1]];
+			if (typeof moduleMethod === 'function') {
+				await executeMethod(moduleMethod, args);
+			} else {
+				rejectError('notFunction');
 			}
-
-			const { module, method, args } = workerData;
-
-			import(module)
-				.then(moduleInstance => {
-					const methodParts = method.split(".");
-					const moduleEntry = moduleInstance[methodParts[0]];
-
-					if (moduleEntry === undefined) {
-						rejectError("entryNotFound");
-					} else if (methodParts.length === 2) {
-						const moduleMethod = moduleEntry[methodParts[1]];
-						if (typeof moduleMethod === "function") {
-							resolveResult(moduleMethod(...(args ?? [])));
-						} else {
-							rejectError("notFunction");
-						}
-					} else if (typeof moduleEntry === "function") {
-						resolveResult(moduleEntry(...(args ?? [])));
-					} else {
-						rejectError("notFunction");
-					}
-				})
-				.catch(err => {
-					rejectError("moduleNotFound", err);
-				});
-	  `,
+		} else if (typeof moduleEntry === 'function') {
+			await executeMethod(moduleEntry, args);
+		} else {
+			rejectError('notFunction');
+		}
+	} catch (err) {
+		rejectError('moduleNotFound', err);
+	}
+})();
+			`,
 				{ eval: true, workerData: { module, method, args: args ?? [] } }
 			);
 

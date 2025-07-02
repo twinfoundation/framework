@@ -4,13 +4,13 @@ Class to help with string.
 
 ## Constructors
 
-### new StringHelper()
+### Constructor
 
-> **new StringHelper**(): [`StringHelper`](StringHelper.md)
+> **new StringHelper**(): `StringHelper`
 
 #### Returns
 
-[`StringHelper`](StringHelper.md)
+`StringHelper`
 
 ## Methods
 

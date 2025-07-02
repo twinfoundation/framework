@@ -8,9 +8,9 @@ Class to represent errors from fetch.
 
 ## Constructors
 
-### new FetchError()
+### Constructor
 
-> **new FetchError**(`source`, `message`, `httpStatus`, `properties`?, `inner`?): [`FetchError`](FetchError.md)
+> **new FetchError**(`source`, `message`, `httpStatus`, `properties?`, `inner?`): `FetchError`
 
 Create a new instance of FetchError.
 
@@ -46,7 +46,7 @@ The inner error if we have wrapped another error.
 
 #### Returns
 
-[`FetchError`](FetchError.md)
+`FetchError`
 
 #### Overrides
 
@@ -406,9 +406,17 @@ True if the error has the name.
 
 ### toJsonObject()
 
-> **toJsonObject**(): `IError`
+> **toJsonObject**(`includeStackTrace?`): `IError`
 
 Serialize the error to the error model.
+
+#### Parameters
+
+##### includeStackTrace?
+
+`boolean`
+
+Whether to include the error stack in the model, defaults to false.
 
 #### Returns
 

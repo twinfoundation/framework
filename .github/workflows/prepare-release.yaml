@@ -72,7 +72,7 @@ jobs:
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
 
           # Execute release-please and capture its output
-          OUTPUT=$(node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name}} --token=${{ secrets.GITHUB_TOKEN }})
+          OUTPUT=$(node_modules/.bin/release-please release-pr --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name }} --token=${{ secrets.GITHUB_TOKEN }})
 
           echo "Release-please output: $OUTPUT"
 

@@ -139,11 +139,12 @@ async function findPackageDetails(targetPackage) {
 				const repoPackageJsonFilename = path.join(repoDirRoot, repoDir.name, 'package.json');
 				if (await fileExists(repoPackageJsonFilename)) {
 					const repoPackageJson = await loadJson(repoPackageJsonFilename);
-					if (
-						Array.isArray(repoPackageJson.workspaces) &&
-						repoPackageJson.workspaces.includes(`packages/${packageNameOnly}`)
-					) {
-						targetDir = path.join(repoDirRoot, repoDir.name, 'packages', packageNameOnly);
+					if (Array.isArray(repoPackageJson.workspaces)) {
+						if (repoPackageJson.workspaces.includes(`packages/${packageNameOnly}`)) {
+							targetDir = path.join(repoDirRoot, repoDir.name, 'packages', packageNameOnly);
+						} else if (repoPackageJson.workspaces.includes(`apps/${packageNameOnly}`)) {
+							targetDir = path.join(repoDirRoot, repoDir.name, 'apps', packageNameOnly);
+						}
 					}
 				}
 			}

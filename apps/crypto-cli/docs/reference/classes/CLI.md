@@ -8,57 +8,19 @@ The main entry point for the CLI.
 
 ## Constructors
 
-### new CLI()
+### Constructor
 
-> **new CLI**(): [`CLI`](CLI.md)
+> **new CLI**(): `CLI`
 
 #### Returns
 
-[`CLI`](CLI.md)
+`CLI`
 
 #### Inherited from
 
 `CLIBase.constructor`
 
 ## Methods
-
-### run()
-
-> **run**(`argv`, `localesDirectory`?, `options`?): `Promise`\<`number`\>
-
-Run the app.
-
-#### Parameters
-
-##### argv
-
-`string`[]
-
-The process arguments.
-
-##### localesDirectory?
-
-`string`
-
-The directory for the locales, default to relative to the script.
-
-##### options?
-
-Additional options.
-
-###### overrideOutputWidth?
-
-`number`
-
-Override the output width.
-
-#### Returns
-
-`Promise`\<`number`\>
-
-The exit code.
-
-***
 
 ### execute()
 
@@ -119,3 +81,41 @@ The root program command.
 #### Inherited from
 
 `CLIBase.configureRoot`
+
+***
+
+### run()
+
+> **run**(`argv`, `localesDirectory?`, `options?`): `Promise`\<`number`\>
+
+Run the app.
+
+#### Parameters
+
+##### argv
+
+`string`[]
+
+The process arguments.
+
+##### localesDirectory?
+
+`string`
+
+The directory for the locales, default to relative to the script.
+
+##### options?
+
+Additional options.
+
+###### overrideOutputWidth?
+
+`number`
+
+Override the output width.
+
+#### Returns
+
+`Promise`\<`number`\>
+
+The exit code.

@@ -8,9 +8,9 @@ Class to handle errors which are triggered by access not being unauthorized.
 
 ## Constructors
 
-### new UnauthorizedError()
+### Constructor
 
-> **new UnauthorizedError**(`source`, `message`, `inner`?): [`UnauthorizedError`](UnauthorizedError.md)
+> **new UnauthorizedError**(`source`, `message`, `inner?`): `UnauthorizedError`
 
 Create a new instance of UnauthorizedError.
 
@@ -36,11 +36,11 @@ The inner error if we have wrapped another error.
 
 #### Returns
 
-[`UnauthorizedError`](UnauthorizedError.md)
+`UnauthorizedError`
 
 #### Overrides
 
-[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructors)
+[`BaseError`](BaseError.md).[`constructor`](BaseError.md#constructor)
 
 ## Properties
 
@@ -52,7 +52,7 @@ The source of the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`source`](BaseError.md#source-1)
+[`BaseError`](BaseError.md).[`source`](BaseError.md#source)
 
 ***
 
@@ -68,7 +68,7 @@ Any additional information for the error.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties-1)
+[`BaseError`](BaseError.md).[`properties`](BaseError.md#properties)
 
 ***
 
@@ -80,7 +80,7 @@ The inner error if there was one.
 
 #### Inherited from
 
-[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner-1)
+[`BaseError`](BaseError.md).[`inner`](BaseError.md#inner)
 
 ***
 
@@ -396,9 +396,17 @@ True if the error has the name.
 
 ### toJsonObject()
 
-> **toJsonObject**(): [`IError`](../interfaces/IError.md)
+> **toJsonObject**(`includeStackTrace?`): [`IError`](../interfaces/IError.md)
 
 Serialize the error to the error model.
+
+#### Parameters
+
+##### includeStackTrace?
+
+`boolean`
+
+Whether to include the error stack in the model, defaults to false.
 
 #### Returns
 

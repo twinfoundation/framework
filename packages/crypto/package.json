@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/crypto",
-	"version": "0.0.1-next.51",
+	"version": "0.0.1",
 	"description": "Contains helper methods and classes which implement cryptographic functions",
 	"repository": {
 		"type": "git",
@@ -30,29 +30,29 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/core": "0.0.1-next.51",
-		"@twin.org/nameof": "next",
-		"@noble/ciphers": "1.2.1",
-		"@noble/curves": "1.8.1",
-		"@noble/hashes": "1.7.1",
-		"@scure/base": "1.2.4",
-		"@scure/bip32": "1.6.2",
-		"@scure/bip39": "1.5.4",
-		"micro-key-producer": "0.7.5"
+		"@twin.org/core": "^0.0.1",
+		"@twin.org/nameof": "^0.0.1",
+		"@noble/ciphers": "1.3.0",
+		"@noble/curves": "1.9.2",
+		"@noble/hashes": "1.8.0",
+		"@scure/base": "1.2.6",
+		"@scure/bip32": "1.7.0",
+		"@scure/bip39": "1.6.0",
+		"micro-key-producer": "0.7.6"
 	},
 	"devDependencies": {
-		"@twin.org/nameof-transformer": "next",
-		"@twin.org/nameof-vitest-plugin": "next",
-		"@vitest/coverage-v8": "3.0.8",
+		"@twin.org/nameof-transformer": "^0.0.1",
+		"@twin.org/nameof-vitest-plugin": "^0.0.1",
+		"@vitest/coverage-v8": "3.2.3",
 		"copyfiles": "2.4.1",
 		"rimraf": "6.0.1",
-		"rollup": "4.34.9",
+		"rollup": "4.42.0",
 		"ts-patch": "3.3.0",
-		"nodemon": "3.1.9",
-		"typedoc": "0.27.9",
-		"typedoc-plugin-markdown": "4.4.2",
-		"typescript": "5.8.2",
-		"vitest": "3.0.8"
+		"nodemon": "3.1.10",
+		"typedoc": "0.28.5",
+		"typedoc-plugin-markdown": "4.6.4",
+		"typescript": "5.8.3",
+		"vitest": "3.2.3"
 	},
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",

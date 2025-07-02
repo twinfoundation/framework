@@ -60,6 +60,12 @@ Application Octet Stream, arbitrary binary - application/octet-stream
 
 Application GZIP - application/gzip
 
+### Zlib
+
+> `readonly` **Zlib**: `"application/zlib"` = `"application/zlib"`
+
+Application deflate - application/zlib
+
 ### Bzip2
 
 > `readonly` **Bzip2**: `"application/x-bzip2"` = `"application/x-bzip2"`

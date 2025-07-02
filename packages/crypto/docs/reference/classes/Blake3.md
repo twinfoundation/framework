@@ -4,9 +4,9 @@ Class to help with Blake3 Signature scheme.
 
 ## Constructors
 
-### new Blake3()
+### Constructor
 
-> **new Blake3**(`outputLength`, `key`?): [`Blake3`](Blake3.md)
+> **new Blake3**(`outputLength`, `key?`): `Blake3`
 
 Create a new instance of Blake3.
 
@@ -26,7 +26,7 @@ Optional key for the hash.
 
 #### Returns
 
-[`Blake3`](Blake3.md)
+`Blake3`
 
 ## Properties
 
@@ -48,7 +48,7 @@ Blake3 512.
 
 ### sum256()
 
-> `static` **sum256**(`block`, `key`?): `Uint8Array`
+> `static` **sum256**(`block`, `key?`): `Uint8Array`
 
 Perform Sum 256 on the block.
 
@@ -76,7 +76,7 @@ The sum 256 of the block.
 
 ### sum512()
 
-> `static` **sum512**(`block`, `key`?): `Uint8Array`
+> `static` **sum512**(`block`, `key?`): `Uint8Array`
 
 Perform Sum 512 on the block.
 
@@ -104,7 +104,7 @@ The sum 512 of the block.
 
 ### update()
 
-> **update**(`block`): [`Blake3`](Blake3.md)
+> **update**(`block`): `Blake3`
 
 Update the hash with the block.
 
@@ -118,7 +118,7 @@ The block to update the hash with.
 
 #### Returns
 
-[`Blake3`](Blake3.md)
+`Blake3`
 
 The instance for chaining.
 

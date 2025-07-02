@@ -4,13 +4,13 @@ Generate random passwords.
 
 ## Constructors
 
-### new PasswordGenerator()
+### Constructor
 
-> **new PasswordGenerator**(): [`PasswordGenerator`](PasswordGenerator.md)
+> **new PasswordGenerator**(): `PasswordGenerator`
 
 #### Returns
 
-[`PasswordGenerator`](PasswordGenerator.md)
+`PasswordGenerator`
 
 ## Methods
 

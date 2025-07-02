@@ -4,13 +4,13 @@ The main entry point for the CLI.
 
 ## Constructors
 
-### new CLIBase()
+### Constructor
 
-> **new CLIBase**(): [`CLIBase`](CLIBase.md)
+> **new CLIBase**(): `CLIBase`
 
 #### Returns
 
-[`CLIBase`](CLIBase.md)
+`CLIBase`
 
 ## Methods
 

@@ -4,7 +4,9 @@ Definition of an entity property sort details.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Properties
 

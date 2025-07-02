@@ -1,0 +1,61 @@
+{
+	"name": "@twin.org/nameof-vitest-plugin",
+	"version": "0.0.1",
+	"description": "A Vitest plugin which perform the nameof transformation",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/twinfoundation/framework.git",
+		"directory": "packages/nameof-vitest-plugin"
+	},
+	"author": "martyn.janes@iota.org",
+	"license": "Apache-2.0",
+	"type": "module",
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"scripts": {
+		"clean": "rimraf dist coverage",
+		"build": "tsc",
+		"dev": "nodemon --watch src --ext ts --exec \"npm run build && npm run bundle:esm\"",
+		"test": "vitest --run --config ./vitest.config.ts --no-cache",
+		"coverage": "vitest --run --coverage --config ./vitest.config.ts --no-cache",
+		"bundle:esm": "rollup --config rollup.config.mjs --environment MODULE:esm",
+		"bundle:cjs": "rollup --config rollup.config.mjs --environment MODULE:cjs",
+		"bundle": "npm run bundle:esm && npm run bundle:cjs",
+		"docs:clean": "rimraf docs/reference",
+		"docs:generate": "typedoc",
+		"docs": "npm run docs:clean && npm run docs:generate",
+		"dist": "npm run clean && npm run build && npm run test && npm run bundle && npm run docs",
+		"dist:no-test": "npm run clean && npm run build && npm run bundle && npm run docs"
+	},
+	"dependencies": {
+		"@twin.org/nameof-transformer": "^0.0.1"
+	},
+	"devDependencies": {
+		"@vitest/coverage-v8": "3.2.3",
+		"copyfiles": "2.4.1",
+		"rimraf": "6.0.1",
+		"rollup": "4.42.0",
+		"nodemon": "3.1.10",
+		"typedoc": "0.28.5",
+		"typedoc-plugin-markdown": "4.6.4",
+		"typescript": "5.8.3",
+		"vitest": "3.2.3"
+	},
+	"main": "./dist/cjs/index.cjs",
+	"module": "./dist/esm/index.mjs",
+	"exports": {
+		".": {
+			"types": "./dist/types/index.d.ts",
+			"require": "./dist/cjs/index.cjs",
+			"import": "./dist/esm/index.mjs"
+		}
+	},
+	"files": [
+		"dist/cjs",
+		"dist/esm",
+		"dist/types",
+		"locales",
+		"docs"
+	]
+}

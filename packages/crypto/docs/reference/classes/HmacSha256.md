@@ -4,9 +4,9 @@ Class to help with HmacSha256 scheme.
 
 ## Constructors
 
-### new HmacSha256()
+### Constructor
 
-> **new HmacSha256**(`key`, `bits`): [`HmacSha256`](HmacSha256.md)
+> **new HmacSha256**(`key`, `bits`): `HmacSha256`
 
 Create a new instance of HmacSha256.
 
@@ -26,7 +26,7 @@ The number of bits.
 
 #### Returns
 
-[`HmacSha256`](HmacSha256.md)
+`HmacSha256`
 
 ## Properties
 
@@ -104,7 +104,7 @@ The sum 256 of the block.
 
 ### update()
 
-> **update**(`block`): [`HmacSha256`](HmacSha256.md)
+> **update**(`block`): `HmacSha256`
 
 Update the hash with the block.
 
@@ -118,7 +118,7 @@ The block to update the hash with.
 
 #### Returns
 
-[`HmacSha256`](HmacSha256.md)
+`HmacSha256`
 
 The instance for chaining.
 

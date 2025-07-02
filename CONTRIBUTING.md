@@ -39,11 +39,25 @@ The `main` branch is always the most recently published versions of the packages
 
 The `next` branch is where all PRs should be merged to, in preparation for a final merge to `main`.
 
-- When creating a branch for a feature use the format e.g. `feature/my-feature`
-- When creating a branch for a fix use the format e.g. `fix/my-fix`
+- When creating a branch for a feature use the format e.g. `feat/my-feature`
+- When creating a branch for a bugfix use the format e.g. `bugfix/my-fix`
 - When creating a branch for a chore e.g. dependency update use the format e.g. `chore/my-chore`
 
+All of the possible prefixes are:
+
+- feature
+- bugfix
+- hotfix
+- release
+- chore
+
+## PR Naming
+
+When creating a PR from a branch the name of the PR should follow the same convention as the commit naming.
+
 ## Commit Naming
+
+All commits messages should be of the format `prefix: <message>`. The prefixes should be one of the following:
 
 All commits messages should be of the format `prefix: <message>`. The prefixes should be one of the following:
 
@@ -61,25 +75,22 @@ All commits messages should be of the format `prefix: <message>`. The prefixes s
 
 e.g. `fix: endless loop in data lookup`
 
-## Publishing Production
-
-To publish a `production` version of a package you should perform the following steps:
-
-- Increment the version in package.json following semver rules e.g. `1.0.0`.
-- Make sure it does not reference any `next` versions in it's dependencies.
-- Update the CHANGELOG.md for the package with the relevant changes.
-- Create a PR for the changes and have it approved.
-- The PR with the version and changelog modifications is merged to `next`.
-- When the PR is merged to `main` you will be able to run the `Publish Production` GitHub Action, which will publish the new version to the npm registry.
-
 ## Publishing Next
 
 To publish a `next` version of a package you should perform the following steps:
 
-- Update the version in package.json following semver rules using `-next.n` as the suffix e.g. `1.0.0-next.9`.
-- Create a PR for the changes and have it approved.
-- The PR is merged to `next`.
-- When the PR is merged to `next` you will be able to run the `Publish Next` GitHub Action, which will publish the new version to the npm registry.
+- Run the `Prepare Release` GitHub action on `next` with the semver type set to `prerelease` which will bump the versions, update changelogs and generate a PR
+- Once the PR has been checked it should be merged to the `next` branch
+- Run the `Publish Release` GitHub action to publish the NPM packages tagged as `next`, and add GitHub releases tagged as prerelease
+
+## Publishing Production
+
+To publish a `production` version of a package you should perform the following steps:
+
+- Merge the current `next` branch to main
+- Run the `Prepare Release` GitHub action on `main` with the semver type set to `major`, `minor` or `patch` which will bump the versions, update changelogs and generate a PR
+- Once the PR has been checked it should be merged to the `main` branch
+- Run the `Publish Release` GitHub action to publish the NPM packages, and add GitHub releases
 
 ## Documentation
 

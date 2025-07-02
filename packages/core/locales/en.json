@@ -65,6 +65,8 @@
 			"array": "Property \"{property}\" must be an array, it is \"{value}\"",
 			"arrayValue": "Property \"{property}\" must be an array with at least one item",
 			"arrayOneOf": "Property \"{property}\" must be one of [{options}], it is \"{value}\"",
+			"arrayStartsWith": "Property \"{property}\" must be an array starting with [{startValues}], it is \"{value}\"",
+			"arrayEndsWith": "Property \"{property}\" must be an array ending with [{endValues}], it is \"{value}\"",
 			"uint8Array": "Property \"{property}\" must be a Uint8Array, it is \"{value}\"",
 			"function": "Property \"{property}\" must be a function, it is \"{value}\"",
 			"urn": "Property \"{property}\" must be a Urn formatted string, it is \"{value}\"",

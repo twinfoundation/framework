@@ -4,13 +4,13 @@ Class to help with entity schema operations.
 
 ## Constructors
 
-### new EntitySchemaHelper()
+### Constructor
 
-> **new EntitySchemaHelper**(): [`EntitySchemaHelper`](EntitySchemaHelper.md)
+> **new EntitySchemaHelper**(): `EntitySchemaHelper`
 
 #### Returns
 
-[`EntitySchemaHelper`](EntitySchemaHelper.md)
+`EntitySchemaHelper`
 
 ## Methods
 
@@ -22,7 +22,9 @@ Get the schema for the specified object.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -48,7 +50,9 @@ Get the primary key from the entity schema.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -78,7 +82,9 @@ Get the sort properties from the schema.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -98,13 +104,15 @@ The sort keys from the schema or undefined if there are none.
 
 ### buildSortProperties()
 
-> `static` **buildSortProperties**\<`T`\>(`entitySchema`, `overrideSortKeys`?): `undefined` \| [`IEntitySort`](../interfaces/IEntitySort.md)\<`T`\>[]
+> `static` **buildSortProperties**\<`T`\>(`entitySchema`, `overrideSortKeys?`): `undefined` \| [`IEntitySort`](../interfaces/IEntitySort.md)\<`T`\>[]
 
 Build sort properties from the schema and override if necessary.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -136,7 +144,9 @@ Validate the entity against the schema.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 

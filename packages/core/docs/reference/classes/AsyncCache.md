@@ -4,25 +4,27 @@ Cache the results from asynchronous requests.
 
 ## Constructors
 
-### new AsyncCache()
+### Constructor
 
-> **new AsyncCache**(): [`AsyncCache`](AsyncCache.md)
+> **new AsyncCache**(): `AsyncCache`
 
 #### Returns
 
-[`AsyncCache`](AsyncCache.md)
+`AsyncCache`
 
 ## Methods
 
 ### exec()
 
-> `static` **exec**\<`T`\>(`key`, `ttlMs`, `requestMethod`): `undefined` \| `Promise`\<`T`\>
+> `static` **exec**\<`T`\>(`key`, `ttlMs`, `requestMethod`, `cacheFailures?`): `undefined` \| `Promise`\<`T`\>
 
 Execute an async request and cache the result.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -44,6 +46,12 @@ The TTL of the entry in the cache.
 
 The method to call if not cached.
 
+##### cacheFailures?
+
+`boolean`
+
+Cache failure results, defaults to false.
+
 #### Returns
 
 `undefined` \| `Promise`\<`T`\>
@@ -60,7 +68,9 @@ Get an entry from the cache.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -80,13 +90,15 @@ The item from the cache if it exists.
 
 ### set()
 
-> `static` **set**\<`T`\>(`key`, `value`, `ttlMs`?): `Promise`\<`void`\>
+> `static` **set**\<`T`\>(`key`, `value`, `ttlMs?`): `Promise`\<`void`\>
 
 Set an entry into the cache.
 
 #### Type Parameters
 
-• **T** = `unknown`
+##### T
+
+`T` = `unknown`
 
 #### Parameters
 
@@ -138,7 +150,7 @@ The key to remove from the cache.
 
 ### clearCache()
 
-> `static` **clearCache**(`prefix`?): `void`
+> `static` **clearCache**(`prefix?`): `void`
 
 Clear the cache.
 

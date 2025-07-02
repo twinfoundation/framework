@@ -4,13 +4,13 @@ Display utilities for the CLI.
 
 ## Constructors
 
-### new CLIDisplay()
+### Constructor
 
-> **new CLIDisplay**(): [`CLIDisplay`](CLIDisplay.md)
+> **new CLIDisplay**(): `CLIDisplay`
 
 #### Returns
 
-[`CLIDisplay`](CLIDisplay.md)
+`CLIDisplay`
 
 ## Properties
 
@@ -178,7 +178,7 @@ The level of indentation.
 
 ### task()
 
-> `static` **task**(`label`, `task`?): `void`
+> `static` **task**(`label`, `task?`): `void`
 
 Display a task with a label.
 

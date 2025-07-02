@@ -6,7 +6,7 @@ Interface describing a patch operation to add a property.
 
 ### op
 
-> **op**: `"replace"` \| `"add"` \| `"remove"` \| `"copy"` \| `"move"` \| `"test"`
+> **op**: `"add"` \| `"remove"` \| `"replace"` \| `"move"` \| `"copy"` \| `"test"`
 
 The operation that was performed on the item.
 

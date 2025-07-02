@@ -4,25 +4,27 @@ Environment variable helper.
 
 ## Constructors
 
-### new EnvHelper()
+### Constructor
 
-> **new EnvHelper**(): [`EnvHelper`](EnvHelper.md)
+> **new EnvHelper**(): `EnvHelper`
 
 #### Returns
 
-[`EnvHelper`](EnvHelper.md)
+`EnvHelper`
 
 ## Methods
 
 ### envToJson()
 
-> `static` **envToJson**\<`T`\>(`envVars`, `prefix`?): `T`
+> `static` **envToJson**\<`T`\>(`envVars`, `prefix?`): `T`
 
 Get the environment variable as an object with camel cased names.
 
 #### Type Parameters
 
-• **T** = \{\}
+##### T
+
+`T` = \{[`id`: `string`]: `string`; \}
 
 #### Parameters
 

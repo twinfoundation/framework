@@ -38,12 +38,14 @@
 - [Guards](classes/Guards.md)
 - [I18n](classes/I18n.md)
 - [Is](classes/Is.md)
+- [SharedStore](classes/SharedStore.md)
 - [Validation](classes/Validation.md)
 
 ## Interfaces
 
 - [IComponent](interfaces/IComponent.md)
 - [IError](interfaces/IError.md)
+- [II18nShared](interfaces/II18nShared.md)
 - [IKeyValue](interfaces/IKeyValue.md)
 - [ILabelledValue](interfaces/ILabelledValue.md)
 - [ILocale](interfaces/ILocale.md)
@@ -57,6 +59,7 @@
 
 - [CoerceType](type-aliases/CoerceType.md)
 - [CompressionType](type-aliases/CompressionType.md)
+- [ObjectOrArray](type-aliases/ObjectOrArray.md)
 
 ## Variables
 

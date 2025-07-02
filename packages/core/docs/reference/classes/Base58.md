@@ -4,13 +4,13 @@ Class to help with base58 Encoding/Decoding.
 
 ## Constructors
 
-### new Base58()
+### Constructor
 
-> **new Base58**(): [`Base58`](Base58.md)
+> **new Base58**(): `Base58`
 
 #### Returns
 
-[`Base58`](Base58.md)
+`Base58`
 
 ## Methods
 

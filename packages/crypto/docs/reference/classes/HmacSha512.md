@@ -4,9 +4,9 @@ Class to help with HmacSha512 scheme.
 
 ## Constructors
 
-### new HmacSha512()
+### Constructor
 
-> **new HmacSha512**(`key`, `bits`): [`HmacSha512`](HmacSha512.md)
+> **new HmacSha512**(`key`, `bits`): `HmacSha512`
 
 Create a new instance of HmacSha512.
 
@@ -26,7 +26,7 @@ The number of bits.
 
 #### Returns
 
-[`HmacSha512`](HmacSha512.md)
+`HmacSha512`
 
 ## Properties
 
@@ -176,7 +176,7 @@ The sum 224 of the block.
 
 ### update()
 
-> **update**(`block`): [`HmacSha512`](HmacSha512.md)
+> **update**(`block`): `HmacSha512`
 
 Update the hash with the block.
 
@@ -190,7 +190,7 @@ The block to update the hash with.
 
 #### Returns
 
-[`HmacSha512`](HmacSha512.md)
+`HmacSha512`
 
 The instance for chaining.
 

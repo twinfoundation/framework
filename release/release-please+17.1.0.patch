@@ -1,8 +1,8 @@
 diff --git a/node_modules/release-please/build/src/versioning-strategies/prerelease.js b/node_modules/release-please/build/src/versioning-strategies/prerelease.js
-index 370f2d0..9bcd032 100644
+index 370f2d0..eef00de 100644
 --- a/node_modules/release-please/build/src/versioning-strategies/prerelease.js
 +++ b/node_modules/release-please/build/src/versioning-strategies/prerelease.js
-@@ -111,39 +111,39 @@ class PrereleaseVersioningStrategy extends default_1.DefaultVersioningStrategy {
+@@ -111,39 +111,6 @@ class PrereleaseVersioningStrategy extends default_1.DefaultVersioningStrategy {
          this.prereleaseType = options.prereleaseType;
      }
      determineReleaseType(version, commits) {
@@ -39,39 +39,6 @@ index 370f2d0..9bcd032 100644
 -                return new PrereleaseMinorVersionUpdate(this.prereleaseType);
 -            }
 -        }
-+        // // iterate through list of commits and find biggest commit type
-+        // let breaking = 0;
-+        // let features = 0;
-+        // for (const commit of commits) {
-+        //     const releaseAs = commit.notes.find(note => note.title === 'RELEASE AS');
-+        //     if (releaseAs) {
-+        //         // commits are handled newest to oldest, so take the first one (newest) found
-+        //         this.logger.debug(`found Release-As: ${releaseAs.text}, forcing version`);
-+        //         return new versioning_strategy_1.CustomVersionUpdate(version_1.Version.parse(releaseAs.text).toString());
-+        //     }
-+        //     if (commit.breaking) {
-+        //         breaking++;
-+        //     }
-+        //     else if (commit.type === 'feat' || commit.type === 'feature') {
-+        //         features++;
-+        //     }
-+        // }
-+        // if (breaking > 0) {
-+        //     if (version.isPreMajor && this.bumpMinorPreMajor) {
-+        //         return new PrereleaseMinorVersionUpdate(this.prereleaseType);
-+        //     }
-+        //     else {
-+        //         return new PrereleaseMajorVersionUpdate(this.prereleaseType);
-+        //     }
-+        // }
-+        // else if (features > 0) {
-+        //     if (version.isPreMajor && this.bumpPatchForMinorPreMajor) {
-+        //         return new PrereleasePatchVersionUpdate(this.prereleaseType);
-+        //     }
-+        //     else {
-+        //         return new PrereleaseMinorVersionUpdate(this.prereleaseType);
-+        //     }
-+        // }
          return new PrereleasePatchVersionUpdate(this.prereleaseType);
      }
  }

@@ -1,7 +1,7 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { Converter, GeneralError, Guards, Is } from "@twin.org/core";
-import { Ed25519 } from "@twin.org/crypto";
+import { Converter, GeneralError, Guards, Is, JsonHelper, ObjectHelper } from "@twin.org/core";
+import { Ed25519, Sha256 } from "@twin.org/crypto";
 import { nameof } from "@twin.org/nameof";
 import { importJWK } from "jose";
 import type { IJwk } from "../models/IJwk";
@@ -20,13 +20,13 @@ export class Jwk {
 	/**
 	 * Convert the JWK to a crypto key.
 	 * @param jwk The JWK to convert.
+	 * @param alg The alg to be used, defaults to jwk.alg.
 	 * @returns The crypto key.
 	 */
-	public static async toCryptoKey(jwk: IJwk): Promise<JwkCryptoKey> {
+	public static async toCryptoKey(jwk: IJwk, alg?: string): Promise<JwkCryptoKey> {
 		Guards.object<IJwk>(Jwk._CLASS_NAME, nameof(jwk), jwk);
-
 		try {
-			return importJWK(jwk);
+			return importJWK(jwk, alg);
 		} catch (err) {
 			throw new GeneralError(Jwk._CLASS_NAME, "jwkImportFailed", undefined, err);
 		}
@@ -98,5 +98,22 @@ export class Jwk {
 			publicKey,
 			privateKey
 		};
+	}
+
+	/**
+	 * Generate a KID for the JWK.
+	 * @param jwk The JWK to generate a KID for.
+	 * @returns The KID.
+	 */
+	public static async generateKid(jwk: IJwk): Promise<string> {
+		Guards.object<IJwk>(Jwk._CLASS_NAME, nameof(jwk), jwk);
+
+		const kidProps = ObjectHelper.pick(jwk, ["crv", "kty", "x"]);
+
+		const canonicalJson = JsonHelper.canonicalize(kidProps);
+
+		const hash = Sha256.sum256(Converter.utf8ToBytes(canonicalJson));
+
+		return Converter.bytesToBase64Url(hash);
 	}
 }

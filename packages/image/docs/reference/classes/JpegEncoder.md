@@ -5,15 +5,15 @@ Based on JPEG encoder ported to JavaScript and optimized by Andreas Ritter.
 
 ## Constructors
 
-### new JpegEncoder()
+### Constructor
 
-> **new JpegEncoder**(): [`JpegEncoder`](JpegEncoder.md)
+> **new JpegEncoder**(): `JpegEncoder`
 
 Create a new instance of JpegEncoder.
 
 #### Returns
 
-[`JpegEncoder`](JpegEncoder.md)
+`JpegEncoder`
 
 ## Methods
 

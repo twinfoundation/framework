@@ -68,10 +68,6 @@
 					"param": "--account '<'number'>'",
 					"description": "The account used to generate the addresses."
 				},
-				"hrp": {
-					"param": "--hrp '<'hrp'>'",
-					"description": "The human readable part for the addresses if generating bech32 format."
-				},
 				"coin": {
 					"param": "--coin '<'coin'>'",
 					"description": "The coin type used to generate the addresses."
@@ -93,7 +89,6 @@
 				"start": "Start",
 				"count": "Count",
 				"account": "Account",
-				"hrp": "HRP",
 				"coin": "Coin",
 				"key-type": "Key Type",
 				"key-format": "Key Format",
