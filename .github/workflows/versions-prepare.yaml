@@ -72,11 +72,11 @@ jobs:
 
       # Perform a build to make sure everything is working, but don't run tests
       # If we want to run test we will need to ensure that the test environment is set up correctly
-      # - name: Build Packages
-      #   run: |
-      #     npm run format
-      #     npm run lint
-      #     node ./scripts/workspaces.mjs dist:no-test
+      - name: Build Packages
+        run: |
+          npm run format
+          npm run lint
+          node ./scripts/workspaces.mjs dist:no-test
 
       # Create a new branch for the version update
       - name: Create Version Update Branch
@@ -93,11 +93,6 @@ jobs:
           message: "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ env.BRANCH_NAME }}
-          # author_email: "41898282+github-actions[bot]@users.noreply.github.com"
-          # git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
-          # git push origin HEAD
-        # env:
-        #   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Create a PR with the changes
       - name: Create Update PR
