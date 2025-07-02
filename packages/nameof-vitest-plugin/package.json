@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/nameof-vitest-plugin",
-	"version": "0.0.1",
+	"version": "0.0.2-next.0",
 	"description": "A Vitest plugin which perform the nameof transformation",
 	"repository": {
 		"type": "git",
@@ -29,7 +29,7 @@
 		"dist:no-test": "npm run clean && npm run build && npm run bundle && npm run docs"
 	},
 	"dependencies": {
-		"@twin.org/nameof-transformer": "^0.0.1"
+		"@twin.org/nameof-transformer": "next"
 	},
 	"devDependencies": {
 		"@vitest/coverage-v8": "3.2.3",
