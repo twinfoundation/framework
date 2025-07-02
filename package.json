@@ -57,8 +57,8 @@
 		"packages/qr",
 		"packages/web",
 		"packages/modules",
-		"apps/merge-locales",
 		"packages/cli-core",
+		"apps/merge-locales",
 		"apps/crypto-cli"
 	],
 	"type": "module"
