@@ -1,5 +1,12 @@
 # @twin.org/nameof-transformer - Changelog
 
+## [0.0.1-next.68](https://github.com/twinfoundation/framework/compare/nameof-transformer-v0.0.1-next.67...nameof-transformer-v0.0.1-next.68) (2025-07-02)
+
+
+### Features
+
+* relocate core packages from tools ([bcab8f3](https://github.com/twinfoundation/framework/commit/bcab8f3160442ea4fcaf442947462504f3d6a17d))
+
 ## [0.0.1-next.28](https://github.com/twinfoundation/tools/compare/nameof-transformer-v0.0.1-next.27...nameof-transformer-v0.0.1-next.28) (2025-06-18)
 
 

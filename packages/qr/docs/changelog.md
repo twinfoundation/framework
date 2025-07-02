@@ -1,5 +1,24 @@
 # @twin.org/qr - Changelog
 
+## [0.0.1-next.68](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.67...qr-v0.0.1-next.68) (2025-07-02)
+
+
+### Features
+
+* relocate core packages from tools ([bcab8f3](https://github.com/twinfoundation/framework/commit/bcab8f3160442ea4fcaf442947462504f3d6a17d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/core bumped from 0.0.1-next.67 to 0.0.1-next.68
+    * @twin.org/image bumped from 0.0.1-next.67 to 0.0.1-next.68
+    * @twin.org/nameof bumped from 0.0.1-next.67 to 0.0.1-next.68
+  * devDependencies
+    * @twin.org/nameof-transformer bumped from 0.0.1-next.67 to 0.0.1-next.68
+    * @twin.org/nameof-vitest-plugin bumped from 0.0.1-next.67 to 0.0.1-next.68
+
 ## [0.0.1-next.67](https://github.com/twinfoundation/framework/compare/qr-v0.0.1-next.66...qr-v0.0.1-next.67) (2025-06-26)
 
 
