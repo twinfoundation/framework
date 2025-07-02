@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/image",
-	"version": "0.0.1-next.70",
+	"version": "0.0.1",
 	"description": "Classes for image manipulation",
 	"repository": {
 		"type": "git",
