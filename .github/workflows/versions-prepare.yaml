@@ -91,7 +91,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add .
-          git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
+          git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}" -S
           git push origin HEAD
 
       # Create a PR with the changes
