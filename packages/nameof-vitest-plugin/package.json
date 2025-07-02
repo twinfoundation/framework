@@ -4,7 +4,7 @@
 	"description": "A Vitest plugin which perform the nameof transformation",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/twinfoundation/tools.git",
+		"url": "git+https://github.com/twinfoundation/framework.git",
 		"directory": "packages/nameof-vitest-plugin"
 	},
 	"author": "martyn.janes@iota.org",

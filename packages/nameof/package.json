@@ -4,7 +4,7 @@
 	"description": "Provides the definitions for the methods which are processed by the nameof-transformer",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/twinfoundation/tools.git",
+		"url": "git+https://github.com/twinfoundation/framework.git",
 		"directory": "packages/nameof"
 	},
 	"author": "martyn.janes@iota.org",

@@ -4,7 +4,7 @@
 	"description": "Tool to merge locale files from all dependencies",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/twinfoundation/tools.git",
+		"url": "git+https://github.com/twinfoundation/framework.git",
 		"directory": "apps/merge-locales"
 	},
 	"author": "martyn.janes@iota.org",

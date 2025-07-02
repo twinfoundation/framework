@@ -4,7 +4,7 @@
 	"description": "A TypeScript transformer which converts types and properties to their actual name for use at runtime",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/twinfoundation/tools.git",
+		"url": "git+https://github.com/twinfoundation/framework.git",
 		"directory": "packages/nameof-transformer"
 	},
 	"author": "martyn.janes@iota.org",
