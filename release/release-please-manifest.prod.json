@@ -1,11 +1,15 @@
 {
-	"packages/cli-core": "0.0.1",
-	"packages/core": "0.0.1",
-	"packages/crypto": "0.0.1",
-	"packages/entity": "0.0.1",
-	"packages/image": "0.0.1",
-	"packages/modules": "0.0.1",
-	"packages/qr": "0.0.1",
-	"packages/web": "0.0.1",
-	"apps/crypto-cli": "0.0.1"
+	"packages/cli-core": "0.0.0",
+	"packages/core": "0.0.0",
+	"packages/crypto": "0.0.0",
+	"packages/entity": "0.0.0",
+	"packages/image": "0.0.0",
+	"packages/modules": "0.0.0",
+	"packages/nameof-transformer": "0.0.0",
+	"packages/nameof-vitest-plugin": "0.0.0",
+	"packages/nameof": "0.0.0",
+	"packages/qr": "0.0.0",
+	"packages/web": "0.0.0",
+	"apps/merge-locales": "0.0.0",
+	"apps/crypto-cli": "0.0.0"
 }

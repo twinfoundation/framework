@@ -1,0 +1,46 @@
+{
+	"error": {
+		"commands": {
+			"merge-locales": {
+				"configFailed": "Configuration failed to load."
+			}
+		}
+	},
+	"commands": {
+		"merge-locales": {
+			"options": {
+				"config": {
+					"param": "--config '<'file'>'",
+					"description": "Path to the JSON configuration file."
+				}
+			},
+			"progress": {
+				"loadingConfigJson": "Loading Config JSON",
+				"creatingOutputDirectory": "Creating Output Directory",
+				"writingMergedLocales": "Writing Merged Locales",
+				"mergingLocalesForPackage": "Merging Locales for Package"
+			},
+			"labels": {
+				"configJson": "Config JSON",
+				"workingDirectory": "Working Directory",
+				"outputDirectory": "Output Directory",
+				"npmRoot": "NPM Root",
+				"sourcePackages": "Source Packages",
+				"writingLocale": "Writing Locale",
+				"mergingLocale": "Merging Locale"
+			}
+		}
+	},
+	"cli": {
+		"progress": {
+			"done": "Done.",
+			"error": "Error"
+		},
+		"options": {
+			"lang": {
+				"param": "--lang '<'lang'>'",
+				"description": "The language to display the output in."
+			}
+		}
+	}
+}

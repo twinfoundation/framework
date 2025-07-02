@@ -5,7 +5,11 @@
 	"packages/entity": "0.0.1-next.67",
 	"packages/image": "0.0.1-next.67",
 	"packages/modules": "0.0.1-next.67",
+	"packages/nameof-transformer": "0.0.1-next.67",
+	"packages/nameof-vitest-plugin": "0.0.1-next.67",
+	"packages/nameof": "0.0.1-next.67",
 	"packages/qr": "0.0.1-next.67",
 	"packages/web": "0.0.1-next.67",
+	"apps/merge-locales": "0.0.1-next.67",
 	"apps/crypto-cli": "0.0.1-next.67"
 }

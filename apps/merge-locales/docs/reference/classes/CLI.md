@@ -1,0 +1,147 @@
+# Class: CLI
+
+The main entry point for the CLI.
+
+## Extends
+
+- `CLIBase`
+
+## Constructors
+
+### Constructor
+
+> **new CLI**(): `CLI`
+
+#### Returns
+
+`CLI`
+
+#### Inherited from
+
+`CLIBase.constructor`
+
+## Methods
+
+### execute()
+
+> **execute**(`options`, `localesDirectory`, `argv`): `Promise`\<`number`\>
+
+Execute the command line processing.
+
+#### Parameters
+
+##### options
+
+`ICliOptions`
+
+The options for the CLI.
+
+##### localesDirectory
+
+`string`
+
+The path to load the locales from.
+
+##### argv
+
+`string`[]
+
+The process arguments.
+
+#### Returns
+
+`Promise`\<`number`\>
+
+The exit code.
+
+#### Inherited from
+
+`CLIBase.execute`
+
+***
+
+### getCommands()
+
+> `protected` **getCommands**(`program`): `Command`[]
+
+Get the commands for the CLI, override in derived class to supply your own.
+
+#### Parameters
+
+##### program
+
+`Command`
+
+The main program that the commands will be added to.
+
+#### Returns
+
+`Command`[]
+
+The commands for the CLI.
+
+#### Inherited from
+
+`CLIBase.getCommands`
+
+***
+
+### run()
+
+> **run**(`argv`, `localesDirectory?`, `options?`): `Promise`\<`number`\>
+
+Run the app.
+
+#### Parameters
+
+##### argv
+
+`string`[]
+
+The process arguments.
+
+##### localesDirectory?
+
+`string`
+
+The directory for the locales, default to relative to the script.
+
+##### options?
+
+Additional options.
+
+###### overrideOutputWidth?
+
+`number`
+
+Override the output width.
+
+#### Returns
+
+`Promise`\<`number`\>
+
+The exit code.
+
+***
+
+### configureRoot()
+
+> `protected` **configureRoot**(`program`): `void`
+
+Configure any options or actions at the root program level.
+
+#### Parameters
+
+##### program
+
+`Command`
+
+The root program command.
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+`CLIBase.configureRoot`

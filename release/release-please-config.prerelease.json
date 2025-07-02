@@ -9,6 +9,21 @@
 	"prerelease": true,
 	"prerelease-type": "next",
 	"packages": {
+		"packages/nameof-transformer": {
+			"package-name": "nameof-transformer",
+			"changelog-path": "docs/changelog.md",
+			"extra-files": ["src/index.ts"]
+		},
+		"packages/nameof-vitest-plugin": {
+			"package-name": "nameof-vitest-plugin",
+			"changelog-path": "docs/changelog.md",
+			"extra-files": ["src/index.ts"]
+		},
+		"packages/nameof": {
+			"package-name": "nameof",
+			"changelog-path": "docs/changelog.md",
+			"extra-files": ["src/index.ts"]
+		},
 		"packages/core": {
 			"package-name": "core",
 			"changelog-path": "docs/changelog.md",
@@ -44,6 +59,11 @@
 			"changelog-path": "docs/changelog.md",
 			"extra-files": ["src/index.ts"]
 		},
+		"apps/merge-locales": {
+			"package-name": "merge-locales",
+			"changelog-path": "docs/changelog.md",
+			"extra-files": ["src/cli.ts", "tests/cli.spec.ts", "src/index.ts"]
+		},
 		"packages/cli-core": {
 			"package-name": "cli-core",
 			"changelog-path": "docs/changelog.md",
@@ -61,6 +81,9 @@
 			"type": "linked-versions",
 			"groupName": "repo",
 			"components": [
+				"nameof-transformer",
+				"nameof-vitest-plugin",
+				"nameof",
 				"core",
 				"entity",
 				"crypto",
@@ -68,6 +91,7 @@
 				"qr",
 				"web",
 				"modules",
+				"merge-locales",
 				"cli-core",
 				"crypto-cli"
 			]
