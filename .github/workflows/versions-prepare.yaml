@@ -42,9 +42,8 @@ jobs:
       # Set git config once for all subsequent steps
       - name: Configure Git
         run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git config --global commit.gpgsign true  # GitHub handles signing automatically
+          # git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # git config --global user.name "github-actions[bot]"
 
       # If we are updating next version we need to ensure we merge the latest changes from main
       - name: Merge Main into Next
@@ -61,8 +60,9 @@ jobs:
       # Create a new branch for the version update
       - name: Create Version Update Branch
         run: |
-          # Create a new branch based on the current branch
-          git checkout -b release/versions-prepare-${{ github.event.inputs.versionType }}-${{ github.run_number }}-${{ github.run_attempt }}
+          BRANCH_NAME="release/versions-prepare-${{ github.event.inputs.versionType }}-${{ github.run_number }}-${{ github.run_attempt }}"
+          git checkout -b $BRANCH_NAME
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
       # Update the versions
       - name: Update Versions
@@ -88,6 +88,8 @@ jobs:
       # Stage all changes for commit
       - name: Commit Changes
         run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git add .
           git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           git push origin HEAD
@@ -101,7 +103,7 @@ jobs:
             --title "chore: prepare versions for ${{ github.event.inputs.versionType }}" \
             --body "This PR prepares the versions of all packages for ${{ github.event.inputs.versionType }}." \
             --base $BASE_BRANCH \
-            --head release/versions-prepare-${{ github.event.inputs.versionType }}-${{ github.run_number }}-${{ github.run_attempt }})
+            --head ${{ env.BRANCH_NAME }})
 
           # Extract PR number from URL
           PR_NUMBER=$(echo $PR_URL | grep -o '[0-9]\+$')
