@@ -86,7 +86,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Prepare versions for ${{ github.event.inputs.versionType }}"
+          git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           git push origin HEAD
 
       # Create a PR with the changes
@@ -95,7 +95,7 @@ jobs:
         run: |
           BASE_BRANCH="${{ github.event.inputs.versionType == 'production' && 'main' || 'next' }}"
           PR_URL=$(gh pr create \
-            --title "Prepare Versions for ${{ github.event.inputs.versionType }}" \
+            --title "chore: prepare versions for ${{ github.event.inputs.versionType }}" \
             --body "This PR prepares the versions of all packages for the ${{ github.event.inputs.versionType }}." \
             --base $BASE_BRANCH \
             --head release/prepare-versions-${{ github.event.inputs.versionType }})
