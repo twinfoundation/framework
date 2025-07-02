@@ -62,7 +62,7 @@ jobs:
         run: |
           BRANCH_NAME="release/versions-prepare-${{ github.event.inputs.versionType }}-${{ github.run_number }}-${{ github.run_attempt }}"
           git checkout -b $BRANCH_NAME
-          git push
+          git push --set-upstream origin $BRANCH_NAME
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
       # Update the versions
