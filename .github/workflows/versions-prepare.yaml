@@ -87,14 +87,15 @@ jobs:
 
       # Stage all changes for commit
       - name: Commit Changes
-        run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add .
-          git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
-          git push origin HEAD
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: qoomon/actions--create-commit@v1
+        with:
+          message: "chore: prepare versions for ${{ github.event.inputs.versionType }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # author_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          # git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
+          # git push origin HEAD
+        # env:
+        #   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Create a PR with the changes
       - name: Create Update PR
