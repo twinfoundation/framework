@@ -93,6 +93,8 @@ jobs:
           git add .
           git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           git push origin HEAD
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Create a PR with the changes
       - name: Create Update PR
