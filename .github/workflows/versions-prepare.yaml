@@ -44,7 +44,7 @@ jobs:
         run: |
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git config --global commit.gpgsign false  # GitHub handles signing automatically
+          git config --global commit.gpgsign true  # GitHub handles signing automatically
 
       # If we are updating next version we need to ensure we merge the latest changes from main
       - name: Merge Main into Next
@@ -99,7 +99,7 @@ jobs:
           BASE_BRANCH="${{ github.event.inputs.versionType == 'production' && 'main' || 'next' }}"
           PR_URL=$(gh pr create \
             --title "chore: prepare versions for ${{ github.event.inputs.versionType }}" \
-            --body "This PR prepares the versions of all packages for the ${{ github.event.inputs.versionType }}." \
+            --body "This PR prepares the versions of all packages for ${{ github.event.inputs.versionType }}." \
             --base $BASE_BRANCH \
             --head release/versions-prepare-${{ github.event.inputs.versionType }}-${{ github.run_number }}-${{ github.run_attempt }})
 
