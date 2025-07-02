@@ -49,6 +49,8 @@ jobs:
       - name: Merge Main into Next
         if: github.event.inputs.versionType == 'next' # Only run this step if we are update next versions
         run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
           git merge --strategy-option theirs origin/main
 
       # Set up Node.js environment for running npm commands
