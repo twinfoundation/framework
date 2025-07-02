@@ -1,6 +1,6 @@
 // Copyright 2024 IOTA Stiftung.
 // SPDX-License-Identifier: Apache-2.0.
-import { spawn } from 'node:child_process';
+import { exec, spawn } from 'node:child_process';
 import fs from 'node:fs/promises';
 
 /**
@@ -47,6 +47,23 @@ export async function runShellCmd(app, args, cwd) {
 				reject(new Error('Run failed'));
 			} else {
 				resolve();
+			}
+		});
+	});
+}
+
+/**
+ * Execute a command asynchronously.
+ * @param command The command to execute
+ * @returns The stdout output
+ */
+export function execAsync(command) {
+	return new Promise((resolve, reject) => {
+		exec(command, { encoding: 'utf8' }, (error, stdout, stderr) => {
+			if (error) {
+				reject(error);
+			} else {
+				resolve(stdout.trim());
 			}
 		});
 	});

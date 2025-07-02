@@ -23,6 +23,8 @@
 		"local-link": "node ./scripts/local-link.mjs",
 		"commitlint": "commitlint --edit",
 		"generate-release-configs": "node scripts/generate-release-configs.mjs release",
+		"prepare-versions:production": "node scripts/prepare-versions.mjs production",
+		"prepare-versions:next": "node scripts/prepare-versions.mjs next",
 		"prepare": "husky"
 	},
 	"devDependencies": {

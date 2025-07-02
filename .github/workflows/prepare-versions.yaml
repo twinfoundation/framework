@@ -1,0 +1,115 @@
+name: Prepare Versions
+
+# GHA_RELEASE_TOKEN requires
+# contents: read/write
+# pull requests: read/write
+# workflows: read/write
+
+on:
+  # This workflow is triggered manually from the GitHub UI
+  workflow_dispatch:
+    inputs:
+      # Allow the user to choose which type of update to prepare
+      versionType:
+        description: 'Which type version processing'
+        required: true
+        type: choice
+        options:
+          - 'production' # For production updates (e.g., 0.1.0)
+          - 'next' # For next updates (e.g., 0.1.0-next.1)
+
+jobs:
+  # Prepare all the packages by updating their versions to the latest for production
+  # or to 'next' for next updates
+  prepare-versions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed for creating/updating branches for version bumps
+      pull-requests: write # Needed for creating the PR
+      id-token: write # Keep existing permissions for authentication
+
+    # Enforce branching strategy rules, we only run on next branch:
+    if: github.ref == 'refs/heads/next'
+
+    steps:
+      # Clone the repository to the runner
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
+          fetch-depth: 0 # Needed for merge operations
+
+      # If we are updating next version we need to ensure we merge the latest changes from main
+      - name: Merge Main into Next
+        if: github.event.inputs.versionType == 'next' # Only run this step if we are update next versions
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git merge --strategy-option theirs origin/main
+
+      # Set up Node.js environment for running npm commands
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Use Node.js 20.x
+
+      # Create a new branch for the version bump
+      - name: Create Version Bump Branch
+        run: |
+          # Create a new branch based on the current branch
+          git checkout -b release/prepare-versions-${{ github.event.inputs.versionType }}
+
+      # Update the versions
+      - name: Update Versions
+        id: update-versions
+        run: |
+          # Run the custom script to update package versions
+          node scripts/prepare-versions.mjs ${{ github.event.inputs.versionType }}
+
+      # Rebuild the package-lock.json to ensure it reflects the new versions
+      - name: Rebuild package-lock.json
+        run: |
+          rm -f package-lock.json
+          npm install
+
+      # Perform a build to make sure everything is working, but don't run tests
+      # If we want to run test we will need to ensure that the test environment is set up correctly
+      - name: Build Packages
+        run: |
+          npm run format
+          npm run lint
+          node ./scripts/workspaces.mjs dist:no-test
+
+      # Stage all changes for commit
+      - name: Commit Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add **/package.json **/package-lock.json
+          git commit -m "Prepare versions for ${{ github.event.inputs.versionType }}"
+          git push origin HEAD
+
+      # Create a PR with the changes
+      - name: Create Update PR
+        id: create-pr
+        run: |
+          BASE_BRANCH="${{ github.event.inputs.versionType == 'production' && 'main' || 'next' }}"
+          PR_URL=$(gh pr create \
+            --title "Prepare Versions for ${{ github.event.inputs.versionType }}" \
+            --body "This PR prepares the versions of all packages for the ${{ github.event.inputs.versionType }}." \
+            --base $BASE_BRANCH \
+            --head release/prepare-versions-${{ github.event.inputs.versionType }})
+
+          # Extract PR number from URL
+          PR_NUMBER=$(echo $PR_URL | grep -o '[0-9]\+$')
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
+      # Automatically approve the PR to speed up the process
+      - name: Approve PR
+        if: steps.create-pr.outputs.pr_number != ''
+        run: |
+          gh pr review ${{ steps.create-pr.outputs.pr_number }} --approve
+        env:
+          # We need to use a different token for the approval as you can't approve your own PRs
+          # This token must be from a different user with write access to the repository
+          GH_TOKEN: ${{ secrets.GHA_RELEASE_TOKEN }} # Personal access token from a different user
