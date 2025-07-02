@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/web",
-	"version": "0.0.1-next.70",
+	"version": "0.0.1",
 	"description": "Contains classes for use with web operations",
 	"repository": {
 		"type": "git",
