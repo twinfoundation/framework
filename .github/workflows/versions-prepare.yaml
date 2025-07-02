@@ -62,6 +62,7 @@ jobs:
         run: |
           BRANCH_NAME="release/versions-prepare-${{ github.event.inputs.versionType }}-${{ github.run_number }}-${{ github.run_attempt }}"
           git checkout -b $BRANCH_NAME
+          git push
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
       # Update the versions
@@ -91,6 +92,7 @@ jobs:
         with:
           message: "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ env.BRANCH_NAME }})
           # author_email: "41898282+github-actions[bot]@users.noreply.github.com"
           # git commit -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
           # git push origin HEAD
