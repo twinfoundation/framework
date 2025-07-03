@@ -1,101 +1,322 @@
 # Contributing
 
-To contribute to this repository please follow the guidelines outlines below.
+Thank you for your interest in contributing to this project! This guide will help you understand our development workflow and standards.
 
-## Building
+## Table of Contents
 
-To completely build all of the packages run the following command.
+- [Getting Started](#getting-started)
+- [Development Workflow](#development-workflow)
+- [Code Standards](#code-standards)
+- [Branch Management](#branch-management)
+- [Commit Standards](#commit-standards)
+- [Pull Request Process](#pull-request-process)
+- [Release Process](#release-process)
+- [Documentation](#documentation)
+
+## Getting Started
+
+### Prerequisites
+
+- **Node.js** 20.x or later
+- **npm** (comes with Node.js)
+- **Git**
+
+### Initial Setup
+
+1. **Fork the repository** and clone your fork:
+
+   ```shell
+   git clone https://github.com/your-username/framework.git
+   cd framework
+   ```
+
+2. **Install dependencies**:
+
+   ```shell
+   npm ci
+   ```
+
+3. **Verify setup** by running a full build:
+
+   ```shell
+   npm run dist
+   ```
+
+## Development Workflow
+
+### Building the Project
+
+To build all packages in the monorepo:
 
 ```shell
 npm run dist
 ```
 
-This command will clean the current output, build the code, execute the tests, package and generate docs.
+This command performs the following operations in sequence:
 
-The output will be a `dist` folder for each package, the folder contains the following:
+1. **Clean** - Removes existing build artifacts
+2. **Build** - Compiles TypeScript to JavaScript
+3. **Test** - Runs the complete test suite
+4. **Package** - Creates distribution packages
+5. **Generate Docs** - Creates API documentation
 
-- `esm` - An ESM format module for the package
-- `cjs` - An CommonJS format module for the package
-- `types` - A folder containing TypeScript Definition files .d.ts
-- `docs` - Auto generated documentation for the package in markdown format
+### Build Output Structure
 
-## Code Quality
+Each package will have a `dist` folder containing:
 
-The code, config and docs should be formatted using prettier and linting checked before committing new code using the following commands.
+- **`esm/`** - ES Module format for modern bundlers and Node.js
+- **`cjs/`** - CommonJS format for Node.js compatibility
+- **`types/`** - TypeScript declaration files (`.d.ts`)
+- **`docs/`** - Auto-generated API documentation in Markdown format
+
+### Development Commands
 
 ```shell
+# Format code with Prettier
 npm run format
+
+# Run ESLint checks
+npm run lint
+
+# Run tests only
+npm run test
+
+# Build without tests (faster during development)
+npm run build
+
+# Clean build artifacts
+npm run clean
 ```
 
-and
+## Code Standards
+
+### Quality Requirements
+
+Before committing code, ensure it meets our quality standards:
+
+1. **Format your code:**
+
+   ```shell
+   npm run format
+   ```
+
+2. **Fix linting issues:**
+
+   ```shell
+   npm run lint
+   ```
+
+3. **Run tests:**
+
+   ```shell
+   npm run test
+   ```
+
+### Code Style Guidelines
+
+- Use **TypeScript** for all new code
+- Follow the existing code style (enforced by Prettier)
+- Add **JSDoc comments** for public APIs
+- Use **meaningful variable and function names**
+- Keep functions **small and focused**
+- Write **comprehensive tests** for new features
+
+## Branch Management
+
+### Branch Strategy
+
+We use a **dual-branch strategy**:
+
+- **`main`** - Production-ready code with stable, published versions
+- **`next`** - Development branch where all PRs are merged for testing
+
+### Branch Naming Convention
+
+We follow the [Conventional Branch](https://conventional-branch.github.io/) specification.
+
+Use descriptive names with appropriate prefixes:
+
+| Type          | Format                | Example                         |
+| ------------- | --------------------- | ------------------------------- |
+| **Features**  | `feat/description`    | `feat/user-authentication`      |
+| **Bug Fixes** | `bugfix/description`  | `bugfix/memory-leak-fix`        |
+| **Hot Fixes** | `hotfix/description`  | `hotfix/security-vulnerability` |
+| **Chores**    | `chore/description`   | `chore/update-dependencies`     |
+| **Releases**  | `release/description` | `release/v1.2.0`                |
+
+### Branch Workflow
+
+1. **Create a branch** from `next`:
+
+   ```shell
+   git checkout next
+   git pull origin next
+   git checkout -b feat/your-feature-name
+   ```
+
+2. **Make your changes** and commit following our [commit standards](#commit-standards)
+
+3. **Push your branch** and create a Pull Request targeting `next`
+
+## Commit Standards
+
+We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+
+### Commit Message Format
+
+```commit
+<type>: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+### Commit Types
+
+| Type         | Description                  | Example                                      |
+| ------------ | ---------------------------- | -------------------------------------------- |
+| **feat**     | New feature                  | `feat: add user authentication`              |
+| **fix**      | Bug fix                      | `fix: resolve memory leak in data processor` |
+| **docs**     | Documentation changes        | `docs: update API reference`                 |
+| **style**    | Code style changes           | `style: fix formatting in utils`             |
+| **refactor** | Code refactoring             | `refactor: simplify error handling`          |
+| **perf**     | Performance improvements     | `perf: optimize database queries`            |
+| **test**     | Test additions/modifications | `test: add unit tests for validator`         |
+| **build**    | Build system changes         | `build: update webpack config`               |
+| **ci**       | CI configuration changes     | `ci: add automated testing`                  |
+| **chore**    | Maintenance tasks            | `chore: update dependencies`                 |
+| **revert**   | Revert previous commit       | `revert: revert commit abc123`               |
+
+### Commit Examples
 
 ```shell
-npm run lint
+# Good commit messages
+git commit -m "feat: add JWT token validation"
+git commit -m "fix: prevent endless loop in data lookup"
+git commit -m "docs: update installation instructions"
+
+# Bad commit messages (avoid these)
+git commit -m "fix stuff"
+git commit -m "WIP"
+git commit -m "changes"
 ```
 
-## Branch Naming
+## Pull Request Process
 
-The `main` branch is always the most recently published versions of the packages.
+### PR Requirements
 
-The `next` branch is where all PRs should be merged to, in preparation for a final merge to `main`.
+- **Target Branch**: Always target `next` branch
+- **Title**: Follow commit message format (e.g., `feat: add new feature`)
+- **Description**: Provide clear description of changes and motivation
+- **Tests**: Include tests for new functionality
+- **Documentation**: Update docs if needed
 
-- When creating a branch for a feature use the format e.g. `feat/my-feature`
-- When creating a branch for a bugfix use the format e.g. `bugfix/my-fix`
-- When creating a branch for a chore e.g. dependency update use the format e.g. `chore/my-chore`
+### PR Checklist
 
-All of the possible prefixes are:
+Before submitting your PR:
 
-- feature
-- bugfix
-- hotfix
-- release
-- chore
+- [ ] Code builds successfully (`npm run dist`)
+- [ ] All tests pass (`npm run test`)
+- [ ] Code is formatted (`npm run format`)
+- [ ] No linting errors (`npm run lint`)
+- [ ] Documentation updated if needed
+- [ ] Commit messages follow conventions
+- [ ] PR title follows commit message format
 
-## PR Naming
+### Review Process
 
-When creating a PR from a branch the name of the PR should follow the same convention as the commit naming.
+1. **Automated Checks**: CI will run tests and quality checks
+2. **Code Review**: Maintainers will review your code
+3. **Feedback**: Address any requested changes
+4. **Approval**: Once approved, your PR will be merged to `next`
 
-## Commit Naming
+## Release Process
 
-All commits messages should be of the format `prefix: <message>`. The prefixes should be one of the following:
+### Next (Prerelease) Versions
 
-All commits messages should be of the format `prefix: <message>`. The prefixes should be one of the following:
+For development/beta releases from the `next` branch:
 
-- build:
-- chore:
-- ci:
-- docs:
-- feat:
-- fix:
-- perf:
-- refactor:
-- revert:
-- style:
-- test:
+1. **Prepare Release**:
 
-e.g. `fix: endless loop in data lookup`
+   - Run `Prepare Release` GitHub Action on `next` branch
+   - Set semver type to `prerelease`
+   - This creates a PR with version bumps and changelog updates
 
-## Publishing Next
+2. **Review & Merge**:
 
-To publish a `next` version of a package you should perform the following steps:
+   - Review the generated PR carefully
+   - Merge the PR to `next` branch
 
-- Run the `Prepare Release` GitHub action on `next` with the semver type set to `prerelease` which will bump the versions, update changelogs and generate a PR
-- Once the PR has been checked it should be merged to the `next` branch
-- Run the `Publish Release` GitHub action to publish the NPM packages tagged as `next`, and add GitHub releases tagged as prerelease
+3. **Publish**:
+   - Run `Publish Release` GitHub Action
+   - Publishes packages to NPM with `next` tag
+   - Creates GitHub releases marked as prerelease
 
-## Publishing Production
+### Production Versions
 
-To publish a `production` version of a package you should perform the following steps:
+For stable releases to the `main` branch:
 
-- Merge the current `next` branch to main
-- Run the `Prepare Release` GitHub action on `main` with the semver type set to `major`, `minor` or `patch` which will bump the versions, update changelogs and generate a PR
-- Once the PR has been checked it should be merged to the `main` branch
-- Run the `Publish Release` GitHub action to publish the NPM packages, and add GitHub releases
+1. **Prepare Main Branch**:
+
+   - Run `Versions Prepare` on `main` branch
+   - Set type to `production`
+   - Creates PR merging `next` to `main`
+
+2. **Merge to Main**:
+
+   - Review and merge the preparation PR
+
+3. **Prepare Release**:
+
+   - Run `Prepare Release` GitHub Action on `main` branch
+   - Choose semver type: `major`, `minor`, or `patch`
+   - Creates PR with version bumps and changelog updates
+
+4. **Merge Release**:
+
+   - Review and merge the release PR
+
+5. **Publish**:
+
+   - Run `Publish Release` GitHub Action
+   - Publishes packages to NPM with `latest` tag
+   - Creates stable GitHub releases
+
+6. **Update Next Branch**:
+   - Run `Versions Prepare` on `next` branch
+   - Updates `next` branch versions to reflect published version
+
+If running `Prepare Release` fails it will most likely leave a PR in a state where it is impossible to generate a new release. If this happens then look for a PR (might be closed) that is tagged with `autorelease: pending` and remove the tag.
+
+### Version Strategy
+
+| Branch | Purpose             | NPM Tag  | GitHub Release |
+| ------ | ------------------- | -------- | -------------- |
+| `next` | Development/Testing | `next`   | Prerelease     |
+| `main` | Production          | `latest` | Stable         |
 
 ## Documentation
 
-The documentation is auto-generated for each package using typedoc which consumes the comments from the source.
+### API Documentation
 
-In addition the `docs` folder for each repo contains additional content, like an overview and examples.
+Documentation is auto-generated from TypeScript comments using **TypeDoc**:
 
-The output generated in the `dist` folder from each package is then merged automatically in to the main docs site.
+### Documentation Structure
+
+- **Source Comments**: JSDoc comments in TypeScript source files
+- **Package Docs**: Additional content in each package's `docs/` folder
+- **Auto-Generation**: Built documentation is merged into the main docs site
+
+### Development Tips
+
+1. **Use meaningful commit messages** - they become part of the changelog
+2. **Write comprehensive tests** - helps prevent regressions
+3. **Keep PRs focused** - smaller PRs are easier to review and merge
+4. **Update documentation** - help others understand your changes
+5. **Follow conventions** - consistency makes the codebase maintainable
+6. **Test locally** - run the full build before pushing
+
+---
+
+**Thank you for contributing!** Your efforts help make this project better for everyone. 🚀
