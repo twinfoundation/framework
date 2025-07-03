@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/nameof-transformer",
-	"version": "0.0.1",
+	"version": "0.0.2-next.0",
 	"description": "A TypeScript transformer which converts types and properties to their actual name for use at runtime",
 	"repository": {
 		"type": "git",
