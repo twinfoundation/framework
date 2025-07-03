@@ -77,7 +77,7 @@ jobs:
             let prodVersion = semver.inc(currentVersion, semverType);
 
             const config = JSON.parse(fs.readFileSync('release/release-please-config.prod.json', 'utf8'));
-            config["release-as"] = prodVersion;
+            config['release-as'] = prodVersion;
             fs.writeFileSync('release/release-please-config.prod.json', JSON.stringify(config, null, 2));
           "
 
