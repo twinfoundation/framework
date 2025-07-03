@@ -79,7 +79,7 @@ jobs:
             const config = JSON.parse(fs.readFileSync('release/release-please-config.prod.json', 'utf8'));
             config["release-as"] = prodVersion;
             fs.writeFileSync('release/release-please-config.prod.json', JSON.stringify(config, null, 2));
-          ")
+          "
 
       # Release please will not see any changes if next has been merged into main
       # This step ensures that release-please runs even if there are no conventional commits
