@@ -57,27 +57,15 @@ jobs:
       - name: Patch release-please prerelease versioning strategy
         run: npx patch-package --patch-dir release
 
-      # Calculate the prod version based on the current branch
-      # As release-please versioning strategy doesn't work when pre major releases
-      - name: Calculate prod version
+      # Update the release-please configuration files based on the selected semver type
+      - name: Update release-please prod config
         if: github.ref == 'refs/heads/main' # Only run this step if we are creating a production release
-        id: calc-version
         run: |
-          # Install semver package if not already available
-          npm install semver --no-save
-
-          # Read the first version from the production manifest and increment it using semver
-          # Then save it to the config file as a fixed release version
+          # Update the versioning strategy based on the selected semver type
           node -e "
             const fs = require('fs');
-            const semver = require('semver');
-            const manifest = JSON.parse(fs.readFileSync('release/release-please-manifest.prod.json', 'utf8'));
-            const currentVersion = Object.values(manifest)[0];
-            const semverType = '${{ github.event.inputs.semverType }}';
-            let prodVersion = semver.inc(currentVersion, semverType);
-
             const config = JSON.parse(fs.readFileSync('release/release-please-config.prod.json', 'utf8'));
-            config['release-as'] = prodVersion;
+            config['versioning'] = 'always-bump-${{ github.event.inputs.semverType }}';
             fs.writeFileSync('release/release-please-config.prod.json', JSON.stringify(config, null, 2));
           "
 
