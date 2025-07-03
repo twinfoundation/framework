@@ -57,15 +57,38 @@ jobs:
       - name: Patch release-please prerelease versioning strategy
         run: npx patch-package --patch-dir release
 
+      # Calculate the prod version based on the current branch
+      # As release-please versioning strategy doesn't work when pre major releases
+      - name: Calculate prod version
+        if: github.ref == 'refs/heads/main' # Only run this step if we are creating a production release
+        id: calc-version
+        run: |
+          # Install semver package if not already available
+          npm install semver --no-save
+
+          # Read the first version from the production manifest and increment it using semver
+          PROD_VERSION=$(node -e "
+            const fs = require('fs');
+            const semver = require('semver');
+            const manifest = JSON.parse(fs.readFileSync('release/release-please-manifest.prod.json', 'utf8'));
+            const currentVersion = Object.values(manifest)[0];
+            const semverType = '${{ github.event.inputs.semverType }}';
+            let prodVersion = semver.inc(currentVersion, semverType);
+            console.log(prodVersion);
+          ")
+
+          # Output the calculated production version
+          echo "prod_version=$(echo "$PROD_VERSION" | tail -1)" >> $GITHUB_OUTPUT
+
       # Release please will not see any changes if next has been merged into main
       # This step ensures that release-please runs even if there are no conventional commits
       - name: Force release by adding commit
-        if: github.event.inputs.versionType == 'main' # Only run this step if we are creating a production release
+        if: github.ref == 'refs/heads/main' # Only run this step if we are creating a production release
         run: |
           # Create a commit to ensure release-please runs even if there are no conventional commits
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git commit --allow-empty -m "feat: release to production"
+          git commit --allow-empty -m "feat: release to production ${{ steps.calc-version.outputs.prod_version }}" -m "Release-As: ${{ steps.calc-version.outputs.prod_version }}"
 
       # Run release-please to:
       # 1. Analyze commits since last release
