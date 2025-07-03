@@ -2,6 +2,12 @@
 // SPDX-License-Identifier: Apache-2.0.
 import { execSync } from 'node:child_process';
 
+// Skip validation if running in GitHub Actions
+if (process.env.GITHUB_ACTIONS === 'true') {
+	// eslint-disable-next-line unicorn/no-process-exit
+	process.exit(0);
+}
+
 const branchName = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
 const pattern = /^(feature|bugfix|hotfix|release|chore)\/[\da-z-]+?$/;
 
