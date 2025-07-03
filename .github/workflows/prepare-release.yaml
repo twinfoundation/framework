@@ -59,13 +59,33 @@ jobs:
 
       # Release please will not see any changes if next has been merged into main
       # This step ensures that release-please runs even if there are no conventional commits
+      # We create an empty commit through the GH API as using the git CLI will be prevented by branch protection rules
       - name: Force release by adding commit
-        if: github.ref == 'refs/heads/main' # Only run this step if we are creating a production release
-        uses: flex-development/gh-commit@1.0.0
-        with:
-          message: 'feat: release to production'
-          token: ${{ secrets.GHA_RELEASE_TOKEN }} # Personal access token with write access to the repository
-          ref: 'main' # Ensure we are committing to the main branch
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Get current commit SHA
+          CURRENT_SHA=$(gh api /repos/${{ github.repository }}/git/ref/heads/main --jq '.object.sha')
+
+          # Get tree SHA
+          TREE_SHA=$(gh api /repos/${{ github.repository }}/git/commits/$CURRENT_SHA --jq '.tree.sha')
+
+          # Create new commit
+          NEW_SHA=$(gh api /repos/${{ github.repository }}/git/commits \
+            --method POST \
+            -f message='feat: release to production' \
+            -f tree="$TREE_SHA" \
+            -f parents[]="$CURRENT_SHA" \
+            -f 'author[name]=github-actions[bot]' \
+            -f 'author[email]=41898282+github-actions[bot]@users.noreply.github.com' \
+            --jq '.sha')
+
+          # Update branch reference with force
+          gh api /repos/${{ github.repository }}/git/refs/heads/main \
+            --method PATCH \
+            -f sha="$NEW_SHA" \
+            -F force=true
+        env:
+          GH_TOKEN: ${{ secrets.GHA_RELEASE_TOKEN }}
 
       # Update the release-please configuration files based on the selected semver type
       - name: Update release-please prod config
