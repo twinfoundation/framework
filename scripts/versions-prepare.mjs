@@ -196,22 +196,41 @@ async function processDependencies(isProduction, prodVersion, dependencies, vers
 			if (isProduction) {
 				// PRODUCTION MODE: Convert "next" references to actual published versions
 				// If the dependency is set to "next", we need to resolve it to the actual version
-				if (version === 'next' && !versionCache[name]) {
-					process.stdout.write(`\tResolving Version for: ${name}\n`);
-					versionCache[name] = await execAsync(`npm view "${name}" version`);
-					process.stdout.write(`\tVersion: ${versionCache[name]}\n`);
+				if (version === 'next' || version.startsWith('>=')) {
+					await getPackageVersion(name, 'latest', versionCache);
 				}
 				// Set the dependency to a caret range of the resolved or production version
 				// This allows compatible updates (e.g., ^1.2.3 allows 1.2.4 but not 1.3.0)
-
-				dependencies[name] = `^${versionCache[name] ?? prodVersion}`;
-			} else {
+				dependencies[name] =
+					`${version.startsWith('>=') ? '>= ' : '^'}${versionCache[name] ?? prodVersion}`;
+			} else if (!isProduction) {
 				// NEXT MODE: Convert fixed versions back to "next" references
 				// For development, use either the cached version which will be a local package
 				// or "next" to get latest prerelease
-				dependencies[name] = versionCache[name] ?? 'next';
+				if (version.startsWith('>=')) {
+					// If this is a peer dependency we need to lookup the current next version
+					await getPackageVersion(name, 'next', versionCache);
+					dependencies[name] = `>= ${versionCache[name]}`;
+				} else {
+					dependencies[name] = versionCache[name] ?? 'next';
+				}
 			}
 		}
+	}
+}
+
+/**
+ * Get the version of a package from npm.
+ * @param name The name of the package to get the version for.
+ * @param tag The tag to use when fetching the version (e.g., "next").
+ * @param versionCache A cache for package versions to avoid redundant lookups.
+ */
+async function getPackageVersion(name, tag, versionCache) {
+	if (!versionCache[name]) {
+		process.stdout.write(`\tResolving Version for: ${name} ${tag}\n`);
+		const version = await execAsync(`npm view "${name}@${tag}" version`);
+		versionCache[name] = version;
+		process.stdout.write(`\tVersion: ${versionCache[name]}\n`);
 	}
 }
 

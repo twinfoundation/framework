@@ -73,7 +73,6 @@ jobs:
       # Perform a build to make sure everything is working, but don't run tests
       # If we want to run test we will need to ensure that the test environment is set up correctly
       - name: Build Packages
-        if: github.event.inputs.versionType == 'main' # Only run this step if we are updating main versions
         run: |
           npm run format
           npm run lint
