@@ -1,5 +1,13 @@
 # @twin.org/nameof - Changelog
 
+## 0.0.0 (2025-07-03)
+
+
+### Features
+
+* release to production ([829d53d](https://github.com/twinfoundation/framework/commit/829d53d3953b1e1b40b0243c04cfdfd3842aac7b))
+* release to production ([5cf3a76](https://github.com/twinfoundation/framework/commit/5cf3a76a09eff2e6414d0cba846c7c37400a11d6))
+
 ## [0.0.1-next.70](https://github.com/twinfoundation/framework/compare/nameof-v0.0.1-next.69...nameof-v0.0.1-next.70) (2025-07-02)
 
 
