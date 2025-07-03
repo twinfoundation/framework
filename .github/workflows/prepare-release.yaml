@@ -69,17 +69,6 @@ jobs:
             fs.writeFileSync('release/release-please-config.prod.json', JSON.stringify(config, null, 2));
           "
 
-      # Release please will not see any changes if next has been merged into main
-      # This step ensures that release-please runs even if there are no conventional commits
-      # - name: Force release by adding commit
-      #   if: github.ref == 'refs/heads/main' # Only run this step if we are creating a production release
-      #   run: |
-      #     # Create a commit to ensure release-please runs even if there are no conventional commits
-      #     git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      #     git config --global user.name "github-actions[bot]"
-      #     git commit --allow-empty -m "feat: release to production ${{ steps.calc-version.outputs.prod_version }}" -m "Release-As: ${{ steps.calc-version.outputs.prod_version }}"
-      #     git push
-
       # Run release-please to:
       # 1. Analyze commits since last release
       # 2. Determine appropriate version bumps
