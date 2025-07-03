@@ -1,5 +1,25 @@
 # @twin.org/ts-to-openapi - Changelog
 
+## 0.0.1 (2025-07-03)
+
+
+### Features
+
+* release to production ([829d53d](https://github.com/twinfoundation/framework/commit/829d53d3953b1e1b40b0243c04cfdfd3842aac7b))
+* release to production ([5cf3a76](https://github.com/twinfoundation/framework/commit/5cf3a76a09eff2e6414d0cba846c7c37400a11d6))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @twin.org/cli-core bumped from ^0.0.0 to ^0.0.1
+    * @twin.org/core bumped from ^0.0.0 to ^0.0.1
+    * @twin.org/nameof bumped from ^0.0.0 to ^0.0.1
+  * devDependencies
+    * @twin.org/nameof-transformer bumped from ^0.0.0 to ^0.0.1
+    * @twin.org/nameof-vitest-plugin bumped from ^0.0.0 to ^0.0.1
+
 ## [0.0.1-next.70](https://github.com/twinfoundation/framework/compare/merge-locales-v0.0.1-next.69...merge-locales-v0.0.1-next.70) (2025-07-02)
 
 

@@ -7,16 +7,6 @@ name: Publish Release
 
 on:
   workflow_dispatch:
-    inputs:
-      semverType:
-        description: 'Which type of semver to release'
-        required: true
-        type: choice
-        options:
-          - 'prerelease' # For development releases (e.g. 1.0.0-next.1)
-          - 'patch' # For bug fixes (e.g. 1.0.1)
-          - 'minor' # For new features (e.g. 1.1.0)
-          - 'major' # For breaking changes (e.g. 2.0.0)
 
 jobs:
   # This job extracts all workspace packages from package.json
@@ -28,9 +18,8 @@ jobs:
       packages: ${{ steps.read-workspaces.outputs.packages }}
 
     # Enforce branching strategy rules:
-    # 1. Prereleases (next.X) can only be created from the 'next' branch
-    # 2. Production releases can only be created from the 'main' branch
-    if: (github.ref == 'refs/heads/main' && github.event.inputs.semverType != 'prerelease') || (github.ref == 'refs/heads/next' && github.event.inputs.semverType == 'prerelease')
+    # We only release production from main and prereleases from next
+    if: (github.ref == 'refs/heads/main') || (github.ref == 'refs/heads/next')
 
     steps:
       # Get the code from the repository
@@ -117,7 +106,7 @@ jobs:
       # Publish the package to NPM and tag the release as next if it's a prerelease
       - name: Publish NPM Package
         run: |
-          NPM_TAG=${{ github.event.inputs.semverType == 'prerelease' && 'next' || 'latest' }}
+          NPM_TAG=${{ github.event.inputs.github.ref == 'refs/heads/next' && 'next' || 'latest' }}
           cd ${{ matrix.package }}
           # Check if package is private
           IS_PRIVATE=$(node -e "console.log(require('./package.json').private === true ? 'true' : 'false')")
@@ -152,6 +141,6 @@ jobs:
       # Publish the GitHub releases
       - name: Release Please
         run: |
-          CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
-          MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
+          CONFIG_FILE=release/release-please-config.${{ github.event.inputs.github.ref == 'refs/heads/next' && 'prerelease' || 'prod' }}.json
+          MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.github.ref == 'refs/heads/next' && 'prerelease' || 'prod' }}.json
           npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name }} --token=${{ secrets.GHA_RELEASE_TOKEN }}

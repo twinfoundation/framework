@@ -1,6 +1,6 @@
 {
 	"name": "@twin.org/entity",
-	"version": "0.0.1",
+	"version": "0.0.2-next.0",
 	"description": "Helpers for defining and working with entities",
 	"repository": {
 		"type": "git",
@@ -30,13 +30,13 @@
 		"prepare": "ts-patch install -s"
 	},
 	"dependencies": {
-		"@twin.org/nameof": "^0.0.1",
-		"@twin.org/core": "^0.0.1",
+		"@twin.org/nameof": "0.0.2-next.0",
+		"@twin.org/core": "0.0.2-next.0",
 		"reflect-metadata": "0.2.2"
 	},
 	"devDependencies": {
-		"@twin.org/nameof-transformer": "^0.0.1",
-		"@twin.org/nameof-vitest-plugin": "^0.0.1",
+		"@twin.org/nameof-transformer": "0.0.2-next.0",
+		"@twin.org/nameof-vitest-plugin": "0.0.2-next.0",
 		"@vitest/coverage-v8": "3.2.3",
 		"copyfiles": "2.4.1",
 		"rimraf": "6.0.1",
