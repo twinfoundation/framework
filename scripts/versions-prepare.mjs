@@ -3,9 +3,19 @@
 /**
  * This script is used to update the package versions when promoting
  * the next branch to production, or updating the next version after release.
+ *
+ * It handles two main scenarios:
+ * 1. Production: Updates all packages from prerelease versions to stable versions
+ * 2. Next: Updates all packages to the next prerelease version for development
+ *
+ * The script also manages internal dependencies between @twin.org packages,
+ * ensuring they reference the correct versions of each other.
  */
 import path from 'node:path';
-import { execAsync, fileExists, loadJson, saveJson } from './common.mjs';
+import { execAsync, loadJson, saveJson } from './common.mjs';
+
+const MANIFEST_PRODUCTION_FILENAME = 'release/release-please-manifest.prod.json';
+const MANIFEST_PRERELEASE_FILENAME = 'release/release-please-manifest.prerelease.json';
 
 /**
  * Execute the process.
@@ -28,22 +38,64 @@ async function run() {
 
 	process.stdout.write(`Command: ${command}\n`);
 
-	const packageJson = await loadJson('package.json');
+	// Read the production release manifest to determine version information
+	// This file contains the current stable versions of all packages
+	process.stdout.write(`Loading release-please manifest: ${MANIFEST_PRODUCTION_FILENAME}\n`);
+	const releaseManifestProd = await loadJson(MANIFEST_PRODUCTION_FILENAME);
+
+	// Extract the current production version from the first package in the manifest
+	// All packages in the monorepo should have the same version
+	const prodVersion = Object.entries(releaseManifestProd)[0][1];
+
+	// Calculate the next prerelease version by incrementing the patch number
+	// Example: 1.2.3 -> 1.2.4-next.0
+	const versionParts = prodVersion.split('.');
+	const nextPatch = Number.parseInt(versionParts[2], 10) + 1;
+	const nextVersion = `${versionParts[0]}.${versionParts[1]}.${nextPatch}-next.0`;
+
+	process.stdout.write(`Production Version: ${prodVersion}\n\n`);
+	process.stdout.write(`Next Version: ${nextVersion}\n\n`);
+
+	// Load the root package.json to get the list of workspaces
+	const repoPackageJson = await loadJson('package.json');
 
 	const versionCache = {};
 	const isProduction = command === 'production';
 
-	for (const workspace of packageJson.workspaces) {
+	for (const workspace of repoPackageJson.workspaces) {
 		const workspacePackageJsonFilename = path.join(workspace, 'package.json');
-		if (await fileExists(workspacePackageJsonFilename)) {
-			process.stdout.write(`Processing: ${workspacePackageJsonFilename}\n`);
+		process.stdout.write(`Processing: ${workspacePackageJsonFilename}\n`);
 
-			const workspacePackageJson = await loadJson(workspacePackageJsonFilename);
+		// Load the current package.json for this workspace
+		const workspacePackageJson = await loadJson(workspacePackageJsonFilename);
 
-			const updatedPackage = await processPackage(isProduction, workspacePackageJson, versionCache);
+		// Process the package: update version and dependencies
+		const updatedPackage = await processPackage(
+			isProduction,
+			prodVersion,
+			nextVersion,
+			workspacePackageJson,
+			versionCache
+		);
 
-			await saveJson(workspacePackageJsonFilename, updatedPackage);
+		// Save the updated package.json
+		await saveJson(workspacePackageJsonFilename, updatedPackage);
+	}
+
+	// If we're updating for next (prerelease), also update the prerelease manifest
+	// This ensures release-please knows about the new prerelease versions
+	if (!isProduction) {
+		// If we are updating the next version, we also need to update the
+		// release-please manifest for next.
+		process.stdout.write(`Updating release-please manifest: ${MANIFEST_PRERELEASE_FILENAME}\n`);
+		const releaseManifestNext = await loadJson(MANIFEST_PRERELEASE_FILENAME);
+
+		const keys = Object.keys(releaseManifestNext);
+		for (const key of keys) {
+			releaseManifestNext[key] = nextVersion;
 		}
+
+		await saveJson(MANIFEST_PRERELEASE_FILENAME, releaseManifestNext);
 	}
 
 	process.stdout.write('\nDone.\n');
@@ -52,47 +104,50 @@ async function run() {
 /**
  * Process a workspace package.
  * @param isProduction Whether the command is for production or next.
+ * @param prodVersion The production version to use when processing the package.
+ * @param nextVersion The next version to use when processing the package.
  * @param workspacePackageJson The package.json of the workspace to process.
  * @param versionCache A cache for package versions to avoid redundant lookups.
  * @returns The updated package.json.
  */
-async function processPackage(isProduction, workspacePackageJson, versionCache) {
-	const originalVersion = workspacePackageJson.version;
-
-	const releaseParts = workspacePackageJson.version.split('-');
-
+async function processPackage(
+	isProduction,
+	prodVersion,
+	nextVersion,
+	workspacePackageJson,
+	versionCache
+) {
+	// Update the package's own version based on the operation type
 	if (isProduction) {
-		// Remove any pre-release tags.
-		workspacePackageJson.version = releaseParts[0];
+		// For production: set to the stable production version
+		workspacePackageJson.version = prodVersion;
 	} else {
-		// Ensure the version is a pre-release version.
-		// By using the current prod version and incrementing the patch version.
-		const versionParts = releaseParts[0].split('.');
-		const nextPatch = Number.parseInt(versionParts[2], 10) + 1;
-		workspacePackageJson.version = `${versionParts[0]}.${versionParts[1]}.${nextPatch}-next.0`;
+		// For next: set to the next prerelease version
+		workspacePackageJson.version = nextVersion;
 	}
 
+	// Cache this package's version to avoid redundant lookups when processing dependencies
 	versionCache[workspacePackageJson.name] = workspacePackageJson.version;
 
-	// Convert all `next` dependencies to the current version for prod.
-	// Or the fixed version back to `next` for next.
+	// Process all types of dependencies that might reference other @twin.org packages
+	// This ensures internal dependencies are updated to the correct versions
 	await processDependencies(
 		isProduction,
+		prodVersion,
 		workspacePackageJson.dependencies,
-		versionCache,
-		originalVersion
+		versionCache
 	);
 	await processDependencies(
 		isProduction,
+		prodVersion,
 		workspacePackageJson.devDependencies,
-		versionCache,
-		originalVersion
+		versionCache
 	);
 	await processDependencies(
 		isProduction,
+		prodVersion,
 		workspacePackageJson.peerDependencies,
-		versionCache,
-		originalVersion
+		versionCache
 	);
 
 	return workspacePackageJson;
@@ -101,24 +156,33 @@ async function processPackage(isProduction, workspacePackageJson, versionCache) 
 /**
  * Process the dependencies of a package.
  * @param isProduction Whether the command is for production or next.
+ * @param prodVersion The production version to use when processing the dependencies.
  * @param dependencies The dependencies to process.
  * @param versionCache A cache for package versions to avoid redundant lookups.
- * @param packageVersion The version of the package being processed.
  */
-async function processDependencies(isProduction, dependencies, versionCache, packageVersion) {
+async function processDependencies(isProduction, prodVersion, dependencies, versionCache) {
 	if (!dependencies) {
 		return;
 	}
 	for (const [name, version] of Object.entries(dependencies)) {
+		// Only process @twin.org packages (internal dependencies)
 		if (name.startsWith('@twin.org')) {
-			if (isProduction && (version === 'next' || version === packageVersion)) {
-				if (!versionCache[name]) {
+			if (isProduction) {
+				// PRODUCTION MODE: Convert "next" references to actual published versions
+				// If the dependency is set to "next", we need to resolve it to the actual version
+				if (version === 'next' && !versionCache[name]) {
 					process.stdout.write(`\tResolving Version for: ${name}\n`);
 					versionCache[name] = await execAsync(`npm view "${name}" version`);
 					process.stdout.write(`\tVersion: ${versionCache[name]}\n`);
 				}
-				dependencies[name] = `^${versionCache[name]}`;
-			} else if (!isProduction) {
+				// Set the dependency to a caret range of the resolved or production version
+				// This allows compatible updates (e.g., ^1.2.3 allows 1.2.4 but not 1.3.0)
+
+				dependencies[name] = `^${versionCache[name] ?? prodVersion}`;
+			} else {
+				// NEXT MODE: Convert fixed versions back to "next" references
+				// For development, use either the cached version which will be a local package
+				// or "next" to get latest prerelease
 				dependencies[name] = versionCache[name] ?? 'next';
 			}
 		}
