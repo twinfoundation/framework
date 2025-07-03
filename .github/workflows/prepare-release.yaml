@@ -57,15 +57,28 @@ jobs:
       - name: Patch release-please prerelease versioning strategy
         run: npx patch-package --patch-dir release
 
+      # Update the release-please configuration files based on the selected semver type
+      - name: Update release-please prod config
+        if: github.ref == 'refs/heads/main' # Only run this step if we are creating a production release
+        run: |
+          # Update the versioning strategy based on the selected semver type
+          node -e "
+            const fs = require('fs');
+            const config = JSON.parse(fs.readFileSync('release/release-please-config.prod.json', 'utf8'));
+            config['versioning'] = 'always-bump-${{ github.event.inputs.semverType }}';
+            fs.writeFileSync('release/release-please-config.prod.json', JSON.stringify(config, null, 2));
+          "
+
       # Release please will not see any changes if next has been merged into main
       # This step ensures that release-please runs even if there are no conventional commits
-      - name: Force release by adding commit
-        if: github.event.inputs.versionType == 'main' # Only run this step if we are creating a production release
-        run: |
-          # Create a commit to ensure release-please runs even if there are no conventional commits
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git commit --allow-empty -m "feat: release to production"
+      # - name: Force release by adding commit
+      #   if: github.ref == 'refs/heads/main' # Only run this step if we are creating a production release
+      #   run: |
+      #     # Create a commit to ensure release-please runs even if there are no conventional commits
+      #     git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      #     git config --global user.name "github-actions[bot]"
+      #     git commit --allow-empty -m "feat: release to production ${{ steps.calc-version.outputs.prod_version }}" -m "Release-As: ${{ steps.calc-version.outputs.prod_version }}"
+      #     git push
 
       # Run release-please to:
       # 1. Analyze commits since last release
@@ -78,7 +91,7 @@ jobs:
         id: release-please # ID allows referencing this step later
         run: |
           # Select configuration files based on release type (prerelease vs production)
-          CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
+          CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
 
           # Execute release-please and capture its output
