@@ -11,11 +11,13 @@
  * The script also manages internal dependencies between @twin.org packages,
  * ensuring they reference the correct versions of each other.
  */
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import { execAsync, loadJson, saveJson } from './common.mjs';
 
 const MANIFEST_PRODUCTION_FILENAME = 'release/release-please-manifest.prod.json';
 const MANIFEST_PRERELEASE_FILENAME = 'release/release-please-manifest.prerelease.json';
+const CONFIG_PRERELEASE_FILENAME = 'release/release-please-config.prerelease.json';
 
 /**
  * Execute the process.
@@ -96,6 +98,30 @@ async function run() {
 		}
 
 		await saveJson(MANIFEST_PRERELEASE_FILENAME, releaseManifestNext);
+
+		// We also need to update any files specified in the release-please-manifest
+		process.stdout.write('Updating release-please-config extra-files\n');
+		const releaseConfig = await loadJson(CONFIG_PRERELEASE_FILENAME);
+		if (releaseConfig.packages) {
+			for (const packageName of Object.keys(releaseConfig.packages)) {
+				const packageConfig = releaseConfig.packages[packageName];
+				if (Array.isArray(packageConfig['extra-files'])) {
+					for (const extraFile of packageConfig['extra-files']) {
+						const filename = path.join(packageName, extraFile);
+						process.stdout.write(`\tProcessing: ${filename}\n`);
+						const contents = await fs.readFile(filename, 'utf8');
+						const lines = contents.split('\n');
+						for (let i = 0; i < lines.length; i++) {
+							if (lines[i].includes('x-release-please-version')) {
+								lines[i] = lines[i].replace(prodVersion, nextVersion);
+							}
+						}
+						await fs.writeFile(filename, lines.join('\n'), 'utf8');
+					}
+				}
+			}
+			await saveJson(CONFIG_PRERELEASE_FILENAME, releaseConfig);
+		}
 	}
 
 	process.stdout.write('\nDone.\n');
