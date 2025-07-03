@@ -42,8 +42,8 @@ jobs:
       # Set git config once for all subsequent steps
       - name: Configure Git
         run: |
-          # git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
 
       # If we are updating next version we need to ensure we merge the latest changes from main
       - name: Merge Main into Next
