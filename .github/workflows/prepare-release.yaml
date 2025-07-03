@@ -101,7 +101,7 @@ jobs:
         id: release-please # ID allows referencing this step later
         run: |
           # Select configuration files based on release type (prerelease vs production)
-          CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType }}.json
+          CONFIG_FILE=release/release-please-config.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
           MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.semverType == 'prerelease' && 'prerelease' || 'prod' }}.json
 
           # Execute release-please and capture its output
