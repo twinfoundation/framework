@@ -38,11 +38,11 @@ async function run() {
 		throw new Error('Invalid command specified, use either production or next');
 	}
 
-	process.stdout.write(`Command: ${command}\n`);
+	process.stdout.write(`Command: ${command}\n\n`);
 
 	// Read the production release manifest to determine version information
 	// This file contains the current stable versions of all packages
-	process.stdout.write(`Loading release-please manifest: ${MANIFEST_PRODUCTION_FILENAME}\n`);
+	process.stdout.write(`Loading release-please manifest: ${MANIFEST_PRODUCTION_FILENAME}\n\n`);
 	const releaseManifestProd = await loadJson(MANIFEST_PRODUCTION_FILENAME);
 
 	// Extract the current production version from the first package in the manifest
@@ -55,7 +55,7 @@ async function run() {
 	const nextPatch = Number.parseInt(versionParts[2], 10) + 1;
 	const nextVersion = `${versionParts[0]}.${versionParts[1]}.${nextPatch}-next.0`;
 
-	process.stdout.write(`Production Version: ${prodVersion}\n\n`);
+	process.stdout.write(`Production Version: ${prodVersion}\n`);
 	process.stdout.write(`Next Version: ${nextVersion}\n\n`);
 
 	// Load the root package.json to get the list of workspaces
@@ -200,29 +200,36 @@ async function processDependencies(
 	if (!dependencies) {
 		return;
 	}
-	for (const packageKey of Object.keys(dependencies)) {
+	for (const [name, version] of Object.entries(dependencies)) {
 		// Only process @twin.org packages (internal dependencies)
-		if (packageKey.startsWith('@twin.org')) {
+		if (name.startsWith('@twin.org')) {
 			if (isPeerDependency) {
 				// If it's a peer dependency, we just match the major version
 				// This allows the package to work with any compatible version
-				await getPackageVersion(packageKey, 'latest', versionCache);
-				const latest = versionCache[packageKey];
-				const latestMajor = `${latest.split('.')[0]}.x`;
-				dependencies[packageKey] = `${latestMajor}`;
+				await getPackageVersion(name, 'latest', versionCache);
+				const latest = versionCache[name];
+				const latestMajor = Number.parseInt(latest.split('.')[0], 10);
+				dependencies[name] = `>=${latestMajor}.0.0-0 <${latestMajor + 1}.0.0`;
 			} else if (isProduction) {
 				// PRODUCTION MODE: Convert "next" references to actual published versions
 				// If the dependency is set to "next", we need to resolve it to the actual version
 				// Set the dependency to a caret range of the resolved or production version
 				// This allows compatible updates (e.g., ^1.2.3 allows 1.2.4 but not 1.3.0)
-				await getPackageVersion(packageKey, 'latest', versionCache);
-				dependencies[packageKey] = `^${versionCache[packageKey] ?? prodVersion}`;
+				if (version === 'next') {
+					// If the package is set to "next", we resolve it to the latest stable
+					await getPackageVersion(name, 'latest', versionCache);
+				}
+				dependencies[name] = `^${versionCache[name] ?? prodVersion}`;
 			} else if (!isProduction) {
 				// NEXT MODE: Convert fixed versions back to "next" references
 				// For development, use either the cached version which will be a local package
 				// or "next" to get latest prerelease
-				await getPackageVersion(packageKey, 'next', versionCache);
-				dependencies[packageKey] = versionCache[packageKey] ?? 'next';
+				if (version.startsWith('^')) {
+					dependencies[name] = versionCache[name] ?? 'next';
+				} else {
+					await getPackageVersion(name, 'next', versionCache);
+					dependencies[name] = versionCache[name];
+				}
 			}
 		}
 	}

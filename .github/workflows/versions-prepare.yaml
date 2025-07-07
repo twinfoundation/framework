@@ -39,17 +39,30 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
           fetch-depth: 0 # Needed for merge operations
 
+      # Import GPG key for signing commits
+      - name: Import GPG key
+        run: |
+          # Import the GPG private key from secrets, which should be base64 encoded
+          echo "$GPG_PRIVATE_KEY" | base64 --decode | gpg --import
+          echo "GPG_KEY_ID=$GPG_KEY_ID" >> $GITHUB_ENV
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }} # Base64 encoded private key
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }} # GPG key ID
+
       # Set git config once for all subsequent steps
       - name: Configure Git
         run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github@twindev.org"
+          git config --global user.name "TWIN GitHub Bot"
+          git config --global user.signingkey "$GPG_KEY_ID"
+          git config --global commit.gpgsign true
+          git config --global tag.gpgsign true
 
       # If we are updating next version we need to ensure we merge the latest changes from main
       - name: Merge Main into Next
         if: github.event.inputs.versionType == 'next' # Only run this step if we are update next versions
         run: |
-          git merge --strategy-option theirs origin/main
+          git merge -S --no-ff --strategy-option theirs origin/main
 
       # Set up Node.js environment for running npm commands
       - name: Setup Node.js
@@ -81,18 +94,17 @@ jobs:
       # Create a new branch for the version update
       - name: Create Version Update Branch
         run: |
-          BRANCH_NAME="release/versions-prepare-${{ github.event.inputs.versionType }}-${{ github.run_number }}-${{ github.run_attempt }}"
+          BRANCH_NAME="release/versions-prepare-${{ github.event.inputs.versionType }}-$(date +%s)"
           git checkout -b $BRANCH_NAME
           git push --set-upstream origin $BRANCH_NAME
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
       # Stage all changes for commit
       - name: Commit Changes
-        uses: flex-development/gh-commit@1.0.0
-        with:
-          message: 'chore: prepare versions for ${{ github.event.inputs.versionType }}'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{ env.BRANCH_NAME }}
+        run: |
+          git add -A
+          git commit -S -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
+          git push origin $BRANCH_NAME
 
       # Create a PR with the changes
       - name: Create Update PR
@@ -120,3 +132,12 @@ jobs:
           # We need to use a different token for the approval as you can't approve your own PRs
           # This token must be from a different user with write access to the repository
           GH_TOKEN: ${{ secrets.GHA_RELEASE_TOKEN }} # Personal access token from a different user
+
+      # Cleanup: Remove the imported GPG key
+      - name: Cleanup GPG key
+        if: always()
+        run: |
+          if [ -n "$GPG_KEY_ID" ]; then
+            gpg --delete-secret-keys "$GPG_KEY_ID" || true
+            gpg --delete-keys "$GPG_KEY_ID" || true
+          fi
