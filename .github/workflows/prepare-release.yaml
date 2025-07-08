@@ -39,7 +39,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
+          token: ${{ secrets.GHA_RELEASE_TOKEN }} # Use admin PAT instead of GITHUB_TOKEN
 
       # Set up Node.js environment for running npm commands
       - name: Setup Node.js
@@ -57,14 +57,32 @@ jobs:
       - name: Patch release-please prerelease versioning strategy
         run: npx patch-package --patch-dir release
 
+      # Import GPG key for signing commits
+      - name: Import GPG key
+        run: |
+          # Import the GPG private key from secrets, which should be base64 encoded
+          echo "$GPG_PRIVATE_KEY" | base64 --decode | gpg --import
+          echo "GPG_KEY_ID=$GPG_KEY_ID" >> $GITHUB_ENV
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }} # Base64 encoded private key
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }} # GPG key ID
+
+      # Set git config once for all subsequent steps
+      - name: Configure Git
+        run: |
+          git config --global user.email "github@twindev.org"
+          git config --global user.name "TWIN GitHub Bot"
+          git config --global user.signingkey "$GPG_KEY_ID"
+          git config --global commit.gpgsign true
+          git config --global tag.gpgsign true        
+
       # Release please will not see any changes if next has been merged into main
       # This step ensures that release-please runs even if there are no conventional commits
       - name: Force release by adding commit
-        uses: qoomon/actions--create-commit@v1
         if: github.ref == 'refs/heads/main'
-        with:
-          message: 'feat: release to production'
-          allow-empty: true
+        run: |
+          git commit -S --allow-empty -m "feat: release to production"
+          git push origin main
 
       # Update the release-please configuration files based on the selected semver type
       - name: Update release-please prod config

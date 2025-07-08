@@ -81,6 +81,7 @@ jobs:
       - name: Rebuild package-lock.json
         run: |
           rm -f package-lock.json
+          rm -f node_modules
           npm install
 
       # Perform a build to make sure everything is working, but don't run tests
@@ -137,7 +138,8 @@ jobs:
       - name: Cleanup GPG key
         if: always()
         run: |
-          if [ -n "$GPG_KEY_ID" ]; then
-            gpg --delete-secret-keys "$GPG_KEY_ID" || true
-            gpg --delete-keys "$GPG_KEY_ID" || true
+          FINGERPRINT=$(gpg --list-secret-keys --with-colons "$GPG_KEY_ID" | awk -F: '/fpr:/ {print $10}' | head -1)
+          if [ -n "$FINGERPRINT" ]; then
+            gpg --batch --yes --delete-secret-keys "$FINGERPRINT" || true
+            gpg --batch --yes --delete-keys "$FINGERPRINT" || true
           fi
