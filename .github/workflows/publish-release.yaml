@@ -106,7 +106,7 @@ jobs:
       # Publish the package to NPM and tag the release as next if it's a prerelease
       - name: Publish NPM Package
         run: |
-          NPM_TAG=${{ github.event.inputs.github.ref == 'refs/heads/next' && 'next' || 'latest' }}
+          NPM_TAG=${{ github.ref == 'refs/heads/next' && 'next' || 'latest' }}
           cd ${{ matrix.package }}
           # Check if package is private
           IS_PRIVATE=$(node -e "console.log(require('./package.json').private === true ? 'true' : 'false')")
@@ -141,6 +141,6 @@ jobs:
       # Publish the GitHub releases
       - name: Release Please
         run: |
-          CONFIG_FILE=release/release-please-config.${{ github.event.inputs.github.ref == 'refs/heads/next' && 'prerelease' || 'prod' }}.json
-          MANIFEST_FILE=release/release-please-manifest.${{ github.event.inputs.github.ref == 'refs/heads/next' && 'prerelease' || 'prod' }}.json
+          CONFIG_FILE=release/release-please-config.${{ github.ref == 'refs/heads/next' && 'prerelease' || 'prod' }}.json
+          MANIFEST_FILE=release/release-please-manifest.${{ github.ref == 'refs/heads/next' && 'prerelease' || 'prod' }}.json
           npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name }} --token=${{ secrets.GHA_RELEASE_TOKEN }}
