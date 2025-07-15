@@ -1,0 +1,21 @@
+name: 'Setup Testing Environment'
+description: 'Set up the testing environment for running tests from the build workflow.'
+
+inputs:
+  test-mnemonic:
+    description: 'Test Mnemonic'
+    required: true
+  test-mnemonic-2:
+    description: 'Test Mnemonic 2'
+    required: true
+  test-mnemonic-node:
+    description: 'Test Mnemonic Node'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: No setup
+      shell: bash
+      run: |
+        echo "No setup required for this action. It is a placeholder for the testing environment setup."

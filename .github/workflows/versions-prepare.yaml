@@ -31,6 +31,12 @@ jobs:
     # Enforce branching strategy rules, we only run on next branch:
     if: github.ref == 'refs/heads/next'
 
+    # Add env vars for tests
+    env:
+      TEST_MNEMONIC: ${{ secrets.TEST_MNEMONIC }}
+      TEST_2_MNEMONIC: ${{ secrets.TEST_2_MNEMONIC }}
+      TEST_NODE_MNEMONIC: ${{ secrets.TEST_NODE_MNEMONIC }}
+
     steps:
       # Clone the repository to the runner
       - name: Checkout
@@ -60,7 +66,7 @@ jobs:
 
       # If we are updating next version we need to ensure we merge the latest changes from main
       - name: Merge Main into Next
-        if: github.event.inputs.versionType == 'next' # Only run this step if we are update next versions
+        if: github.event.inputs.versionType == 'next' # Only run this step if we are updating next versions
         run: |
           git merge -S --no-ff --strategy-option theirs origin/main
 
@@ -84,13 +90,18 @@ jobs:
           rm -f node_modules
           npm install
 
+      # Setup any services required for tests here
+      - name: Setup DLT Testing Environment
+        uses: ./.github/workflows/setup-test-env
+      # End setup for tests
+
       # Perform a build to make sure everything is working, but don't run tests
       # If we want to run test we will need to ensure that the test environment is set up correctly
       - name: Build Packages
         run: |
           npm run format
           npm run lint
-          node ./scripts/workspaces.mjs dist:no-test
+          node ./scripts/workspaces.mjs dist
 
       # Create a new branch for the version update
       - name: Create Version Update Branch
