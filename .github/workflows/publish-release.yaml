@@ -7,6 +7,15 @@ name: Publish Release
 
 on:
   workflow_dispatch:
+    inputs:
+      # Which branch are we publishing the release from?
+      releaseType:
+        description: 'Branch to prepare the release from'
+        required: true
+        type: choice
+        options:
+          - '🚧 prerelease (next branch)' # For prereleases (e.g., 0.1.0-next.1)
+          - '🚀 production (main branch)' # For production releases (e.g., 1.0.0, 1.1.0, 1.1.1)
 
 jobs:
   # This job extracts all workspace packages from package.json
@@ -17,16 +26,29 @@ jobs:
       # This output will be consumed by the publish job's matrix
       packages: ${{ steps.read-workspaces.outputs.packages }}
 
-    # Enforce branching strategy rules:
-    # We only release production from main and prereleases from next
-    if: (github.ref == 'refs/heads/main') || (github.ref == 'refs/heads/next')
-
     steps:
+      # Set branch variable based on release type
+      - name: Set target branch
+        id: set-branch
+        run: |
+          INPUT="${{ github.event.inputs.releaseType }}"
+          if [[ "$INPUT" == *"next"* ]]; then
+            BRANCH="next"
+          elif [[ "$INPUT" == *"main"* ]]; then
+            BRANCH="main"
+          else
+            echo "Error: Unrecognized release type: $INPUT"
+            exit 1
+          fi
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "Using branch: $BRANCH"
+
       # Get the code from the repository
       - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }} # Use the built-in token for GitHub Actions
+          ref: ${{ steps.set-branch.outputs.branch }} # Checkout the calculated branch
 
       # Extract workspace package patterns from package.json
       # Note: This only extracts the patterns (e.g. "packages/*"), not the resolved directories
@@ -70,6 +92,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ steps.set-branch.outputs.branch }} # Checkout the calculated branch
 
       # Configure Node.js and NPM settings
       - name: Setup Node
@@ -107,7 +130,7 @@ jobs:
       # Publish the package to NPM and tag the release as next if it's a prerelease
       - name: Publish NPM Package
         run: |
-          NPM_TAG=${{ github.ref == 'refs/heads/next' && 'next' || 'latest' }}
+          NPM_TAG=${{ steps.set-branch.outputs.branch == 'next' && 'next' || 'latest' }}
           cd ${{ matrix.package }}
           # Check if package is private
           IS_PRIVATE=$(node -e "console.log(require('./package.json').private === true ? 'true' : 'false')")
@@ -132,6 +155,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
+          ref: ${{ steps.set-branch.outputs.branch }} # Checkout the calculated branch
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -142,6 +166,6 @@ jobs:
       # Publish the GitHub releases
       - name: Release Please
         run: |
-          CONFIG_FILE=release/release-please-config.${{ github.ref == 'refs/heads/next' && 'prerelease' || 'prod' }}.json
-          MANIFEST_FILE=release/release-please-manifest.${{ github.ref == 'refs/heads/next' && 'prerelease' || 'prod' }}.json
-          npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ github.ref_name }} --token=${{ secrets.GHA_RELEASE_TOKEN }}
+          CONFIG_FILE=release/release-please-config.${{ steps.set-branch.outputs.branch == 'next' && 'prerelease' || 'prod' }}.json
+          MANIFEST_FILE=release/release-please-manifest.${{ steps.set-branch.outputs.branch == 'next' && 'prerelease' || 'prod' }}.json
+          npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ steps.set-branch.outputs.branch }} --token=${{ secrets.GHA_RELEASE_TOKEN }}

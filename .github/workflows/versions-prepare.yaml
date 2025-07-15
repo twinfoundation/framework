@@ -1,3 +1,6 @@
+# Run this workflow when we want to align all the versions on a branch for a release
+# e.g. for a production release we update to all the latest versions of the packages
+# and for a prerelease we make sure all the next versions are aligned.
 name: Versions Prepare
 
 # GHA_RELEASE_TOKEN requires
@@ -9,14 +12,14 @@ on:
   # This workflow is triggered manually from the GitHub UI
   workflow_dispatch:
     inputs:
-      # Allow the user to choose which type of update to prepare
-      versionType:
-        description: 'Which type version processing'
+      # Which branch are we publishing the release from?
+      releaseType:
+        description: 'Branch to prepare the versions on'
         required: true
         type: choice
         options:
-          - 'production' # For production updates (e.g., 0.1.0)
-          - 'next' # For next updates (e.g., 0.1.0-next.1)
+          - '🚧 prerelease (next branch)' # For prereleases (e.g., 0.1.0-next.1)
+          - '🚀 production (main branch)' # For production releases (e.g., 1.0.0, 1.1.0, 1.1.1)
 
 jobs:
   # Prepare all the packages by updating their versions to the latest for production
@@ -28,9 +31,6 @@ jobs:
       pull-requests: write # Needed for creating the PR
       id-token: write # Keep existing permissions for authentication
 
-    # Enforce branching strategy rules, we only run on next branch:
-    if: github.ref == 'refs/heads/next'
-
     # Add env vars for tests
     env:
       TEST_MNEMONIC: ${{ secrets.TEST_MNEMONIC }}
@@ -38,11 +38,28 @@ jobs:
       TEST_NODE_MNEMONIC: ${{ secrets.TEST_NODE_MNEMONIC }}
 
     steps:
+      # Set branch variable based on release type
+      - name: Set target branch
+        id: set-branch
+        run: |
+          INPUT="${{ github.event.inputs.releaseType }}"
+          if [[ "$INPUT" == *"next"* ]]; then
+            BRANCH="next"
+          elif [[ "$INPUT" == *"main"* ]]; then
+            BRANCH="main"
+          else
+            echo "Error: Unrecognized release type: $INPUT"
+            exit 1
+          fi
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "Using branch: $BRANCH"
+
       # Clone the repository to the runner
       - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
+          ref: ${{ steps.set-branch.outputs.branch }} # Checkout the calculated branch
           fetch-depth: 0 # Needed for merge operations
 
       # Import GPG key for signing commits
@@ -66,28 +83,35 @@ jobs:
 
       # If we are updating next version we need to ensure we merge the latest changes from main
       - name: Merge Main into Next
-        if: github.event.inputs.versionType == 'next' # Only run this step if we are updating next versions
+        if: steps.set-branch.outputs.branch == 'next' # Only run this step if we are updating next versions
         run: |
           git merge -S --no-ff --strategy-option theirs origin/main
 
       # Set up Node.js environment for running npm commands
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20' # Use Node.js 20.x
+
+      # Create a new branch for the version update
+      - name: Create Version Update Branch
+        run: |
+          BRANCH_NAME="release/versions-prepare-${{ steps.set-branch.outputs.branch }}-$(date +%s)"
+          git checkout -b $BRANCH_NAME
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
       # Update the versions
       - name: Update Versions
         id: update-versions
         run: |
           # Run the custom script to update package versions
-          node scripts/versions-prepare.mjs ${{ github.event.inputs.versionType }}
+          node scripts/versions-prepare.mjs ${{ steps.set-branch.outputs.branch == 'next' && 'next' || 'production' }}
 
       # Rebuild the package-lock.json to ensure it reflects the new versions
       - name: Rebuild package-lock.json
         run: |
           rm -f package-lock.json
-          rm -f node_modules
+          rm -rf node_modules
           npm install
 
       # Setup any services required for tests here
@@ -103,29 +127,21 @@ jobs:
           npm run lint
           node ./scripts/workspaces.mjs dist
 
-      # Create a new branch for the version update
-      - name: Create Version Update Branch
-        run: |
-          BRANCH_NAME="release/versions-prepare-${{ github.event.inputs.versionType }}-$(date +%s)"
-          git checkout -b $BRANCH_NAME
-          git push --set-upstream origin $BRANCH_NAME
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
-
       # Stage all changes for commit
       - name: Commit Changes
         run: |
           git add -A
-          git commit -S -m "chore: prepare versions for ${{ github.event.inputs.versionType }}"
+          git commit -S -m "chore: prepare versions for ${{ steps.set-branch.outputs.branch }}"
           git push origin $BRANCH_NAME
 
       # Create a PR with the changes
       - name: Create Update PR
         id: create-pr
         run: |
-          BASE_BRANCH="${{ github.event.inputs.versionType == 'production' && 'main' || 'next' }}"
+          BASE_BRANCH="${{ steps.set-branch.outputs.branch }}"
           PR_URL=$(gh pr create \
-            --title "chore: prepare versions for ${{ github.event.inputs.versionType }}" \
-            --body "This PR prepares the versions of all packages for ${{ github.event.inputs.versionType }}." \
+            --title "chore: prepare versions for ${{ steps.set-branch.outputs.branch }}" \
+            --body "This PR prepares the versions of all packages for ${{ steps.set-branch.outputs.branch }}." \
             --base $BASE_BRANCH \
             --head ${{ env.BRANCH_NAME }})
 
