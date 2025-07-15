@@ -106,8 +106,6 @@ jobs:
         uses: ./.github/workflows/setup-test-env
         with:
           package: ${{ matrix.package }} # Pass the current package to the setup script
-        with:
-          package: ${{ matrix.package }} # Pass the current package to the setup script
 
       # Remove the root package.json to prevent dependency conflicts
       - name: Remove Mono-Repo Node Modules
