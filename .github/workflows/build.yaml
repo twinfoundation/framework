@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       # Setup any services required for tests here
-      - name: Setup DLT Testing Environment
+      - name: Setup Test Environment
         uses: ./.github/workflows/setup-test-env
       # End setup for tests
 
