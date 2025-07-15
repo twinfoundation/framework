@@ -247,13 +247,11 @@ Before submitting your PR:
 For development/beta releases from the `next` branch:
 
 1. **Prepare Release**:
-
    - Run `Prepare Release` GitHub Action on `next` branch
    - Set semver type to `prerelease`
    - This creates a PR with version bumps and changelog updates
 
 2. **Review & Merge**:
-
    - Review the generated PR carefully
    - Merge the PR to `next` branch
 
@@ -267,27 +265,22 @@ For development/beta releases from the `next` branch:
 For stable releases to the `main` branch:
 
 1. **Prepare Main Branch**:
-
    - Run `Versions Prepare` on `main` branch
    - Set type to `production`
    - Creates PR merging `next` to `main`
 
 2. **Merge to Main**:
-
    - Review and merge the preparation PR
 
 3. **Prepare Release**:
-
    - Run `Prepare Release` GitHub Action on `main` branch
    - Choose semver type: `major`, `minor`, or `patch`
    - Creates PR with version bumps and changelog updates
 
 4. **Merge Release**:
-
    - Review and merge the release PR
 
 5. **Publish**:
-
    - Run `Publish Release` GitHub Action
    - Publishes packages to NPM with `latest` tag
    - Creates stable GitHub releases

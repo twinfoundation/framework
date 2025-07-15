@@ -76,10 +76,6 @@ The object or array to convert.
 
 The array.
 
-##### Param
-
-The object or array to convert.
-
 #### Call Signature
 
 > `static` **fromObjectOrArray**\<`T`\>(`value`): `T`[]
@@ -105,7 +101,3 @@ The object or array to convert.
 `T`[]
 
 The array.
-
-##### Param
-
-The object or array to convert.
