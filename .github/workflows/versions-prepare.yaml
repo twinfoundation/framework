@@ -117,7 +117,6 @@ jobs:
       # Setup any services required for tests here
       - name: Setup Test Environment
         uses: ./.github/workflows/setup-test-env
-      # End setup for tests
 
       # Perform a build to make sure everything is working, but don't run tests
       # If we want to run test we will need to ensure that the test environment is set up correctly

@@ -104,7 +104,6 @@ jobs:
       # Setup any services required for tests here
       - name: Setup Test Environment
         uses: ./.github/workflows/setup-test-env
-      # End setup for tests
 
       # Remove the root package.json to prevent dependency conflicts
       - name: Remove Mono-Repo Node Modules

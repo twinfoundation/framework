@@ -41,7 +41,6 @@ jobs:
       # Setup any services required for tests here
       - name: Setup Test Environment
         uses: ./.github/workflows/setup-test-env
-      # End setup for tests
 
       # Run Lint and Dist
       - name: Run Lint and Dist
