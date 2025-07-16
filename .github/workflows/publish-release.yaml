@@ -114,11 +114,25 @@ jobs:
           rm package.json
           rm package-lock.json
 
-      # For each package install its dependencies and perform the dist task
+      # Install dependencies with retry for the specific package
+      - name: Install dependencies
+        run: |
+          cd ${{ matrix.package }}
+          for i in {1..3}; do
+            npm install && break || {
+              if [ $i -eq 3 ]; then
+                echo "npm install failed after 3 attempts"
+                exit 1
+              fi
+              echo "npm install failed, retrying in 30 seconds (attempt $i/3)..."
+              sleep 30
+            }
+          done
+
+      # Now we run the dist command for the specific package
       - name: Run Dist
         run: |
           cd ${{ matrix.package }}
-          npm install
           npm run dist
 
       # Before we publish the package to NPM we remove all the scripts and devDependencies
