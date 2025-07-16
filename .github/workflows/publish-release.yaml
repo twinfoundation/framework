@@ -25,6 +25,7 @@ jobs:
     outputs:
       # This output will be consumed by the publish job's matrix
       packages: ${{ steps.read-workspaces.outputs.packages }}
+      branch: ${{ steps.set-branch.outputs.branch }}
 
     steps:
       # Set branch variable based on release type
@@ -85,6 +86,7 @@ jobs:
       max-parallel: 1 # Process one package at a time (important for interdependent packages)
       matrix:
         package: ${{ fromJson(needs.read-workspaces.outputs.packages) }} # Each pattern becomes a separate job
+        branch: ${{ steps.set-branch.outputs.branch }}
 
     steps:
       # Get the code from the repository
@@ -92,7 +94,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{ steps.set-branch.outputs.branch }} # Checkout the calculated branch
+          ref: ${{ needs.read-workspaces.outputs.branch }} # Checkout the calculated branch
 
       # Configure Node.js and NPM settings
       - name: Setup Node
@@ -131,7 +133,7 @@ jobs:
       # Publish the package to NPM and tag the release as next if it's a prerelease
       - name: Publish NPM Package
         run: |
-          NPM_TAG=${{ steps.set-branch.outputs.branch == 'next' && 'next' || 'latest' }}
+          NPM_TAG=${{ needs.read-workspaces.outputs.branch == 'next' && 'next' || 'latest' }}
           cd ${{ matrix.package }}
           # Check if package is private
           IS_PRIVATE=$(node -e "console.log(require('./package.json').private === true ? 'true' : 'false')")
@@ -149,14 +151,14 @@ jobs:
   # numbers were already incremented in the prepare-release action
   publish-gh-releases:
     runs-on: ubuntu-latest
-    needs: publish-packages
+    needs: [publish-packages, read-workspaces]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }} # Using GITHUB_TOKEN makes actions run as github-actions bot
-          ref: ${{ steps.set-branch.outputs.branch }} # Checkout the calculated branch
+          ref: ${{ needs.read-workspaces.outputs.branch }} # Checkout the calculated branch
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -167,6 +169,6 @@ jobs:
       # Publish the GitHub releases
       - name: Release Please
         run: |
-          CONFIG_FILE=release/release-please-config.${{ steps.set-branch.outputs.branch == 'next' && 'prerelease' || 'prod' }}.json
-          MANIFEST_FILE=release/release-please-manifest.${{ steps.set-branch.outputs.branch == 'next' && 'prerelease' || 'prod' }}.json
-          npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ steps.set-branch.outputs.branch }} --token=${{ secrets.GHA_RELEASE_TOKEN }}
+          CONFIG_FILE=release/release-please-config.${{ needs.read-workspaces.outputs.branch == 'next' && 'prerelease' || 'prod' }}.json
+          MANIFEST_FILE=release/release-please-manifest.${{ needs.read-workspaces.outputs.branch == 'next' && 'prerelease' || 'prod' }}.json
+          npx --yes release-please github-release --config-file=${CONFIG_FILE} --manifest-file=${MANIFEST_FILE} --repo-url=${{ github.repository }} --target-branch=${{ needs.read-workspaces.outputs.branch }} --token=${{ secrets.GHA_RELEASE_TOKEN }}
